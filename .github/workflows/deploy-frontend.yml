@@ -27,11 +27,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # 🚀 NUEVO PASO: Preparamos una carpeta temporal con ambas apps
+      - name: Prepare deployment folder
+        run: |
+          mkdir -p deploy_output
+          cp -r frontend/* deploy_output/
+          cp -r app-tiendas deploy_output/app-tiendas
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ★ LA MAGIA ESTÁ AQUÍ: Solo sube la carpeta 'frontend'
-          path: './frontend'
+          # ★ AHORA SUBIMOS LA CARPETA COMBINADA
+          path: './deploy_output'
 
       - name: Deploy to GitHub Pages
         id: deployment
