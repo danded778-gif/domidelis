@@ -244,17 +244,16 @@ async function obtenerPedidoPorId(pedidoId) {
 }
 
 // ============================================
-// SERVIR FRONTEND ESTÁTICO — Solo en desarrollo
+// SERVIR FRONTEND ESTÁTICO (Local y Producción)
 // ============================================
-if (isDev) {
-    const frontendPath = path.join(__dirname, '../frontend');
-    console.log(`📂 Sirviendo frontend desde: ${frontendPath}`);
-    app.use(express.static(frontendPath));
-    // 🚀 NUEVO: Servir la App de Tiendas
-    const tiendasPath = path.join(__dirname, '../app-tiendas');
-    console.log(`📂 Sirviendo app-tiendas desde: ${tiendasPath}`);
-    app.use('/app-tiendas', express.static(tiendasPath));
-}
+const frontendPath = path.join(__dirname, '../frontend');
+app.use(express.static(frontendPath));
+console.log(`📂 Sirviendo frontend desde: ${frontendPath}`);
+
+// Servir la App de Tiendas
+const tiendasPath = path.join(__dirname, '../app-tiendas');
+app.use('/app-tiendas', express.static(tiendasPath));
+console.log(`📂 Sirviendo app-tiendas desde: ${tiendasPath}`);
 
 app.get('/api/status', (req, res) => {
     res.json({ status: 'online', modo: isDev ? 'development' : 'production' });
