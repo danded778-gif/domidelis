@@ -1,12 +1,11 @@
 // Detectar si estamos en local, ngrok o producción
 const esLocal = window.location.hostname === 'localhost' || 
                 window.location.hostname === '127.0.0.1' || 
-                window.location.hostname.includes('.ngrok-free.dev') || 
-                window.location.hostname.includes('.ngrok.io');
+                window.location.hostname.includes('.ngrok-free.dev');
 
-// Si es local o ngrok, apunta al servidor local. Si no, a Railway.
+// Si es local, apunta a tu servidor local. Si es Railway, apunta a Railway.
 const API_URL = esLocal
-    ? window.location.origin + '/api/tienda'  // Usa el mismo origen (ngrok o localhost)
+    ? window.location.origin + '/api/tienda'
     : 'https://prueba-production-b9fb.up.railway.app/api/tienda';
 
 // Sesión exclusiva para la tienda (Guarda el JWT)
