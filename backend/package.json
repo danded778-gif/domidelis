@@ -1,6 +1,6 @@
 {
   "name": "backend-domicilios",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Backend Domicilios - Proxy + Socket.IO + Push + Frontend estático",
   "main": "server.js",
   "scripts": {
