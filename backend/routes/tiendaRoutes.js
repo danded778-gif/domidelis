@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzWPItJZZ-UK2CcPbi0v5BqQiv_WR5-DAxCE2HAW3VWx5Kv5Yfs9nPPXc_UyCm_eSv6Eg/exec'; // Asegúrate de usar tu URL correcta
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwIiA3LB_C1mITpOFMH7IhGglOr7I0oQF20i24BrSmCdOLYttbmDXbnwnl4kEXr6F3f2Q/exec'; // Asegúrate de usar tu URL correcta
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // ============================================
@@ -17,7 +17,7 @@ function verifyTienda(req, res, next) {
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
         if (decoded.rol !== 'tienda') return res.status(403).json({ error: 'Acceso exclusivo para establecimientos.' });
-        req.tienda = decoded; // id, nombre, rol
+        req.tienda = decoded;
         next();
     } catch (err) {
         return res.status(401).json({ error: 'Token inválido o expirado.' });
@@ -59,14 +59,14 @@ router.get('/productos', verifyTienda, async (req, res) => {
 });
 
 // ============================================
-// RUTA: Obtener Pedidos de la Tienda (Con cálculo de subtotal)
+// RUTA: Obtener Pedidos de la Tienda (Calculando Subtotal)
 // ============================================
 router.get('/pedidos', verifyTienda, async (req, res) => {
     try {
         const response = await axios.get(`${GAS_URL}?action=getPedidosTienda&tiendaId=${req.tienda.id}`);
         const pedidos = response.data;
 
-        // 🚀 MAGIA: Procesar cada pedido para ocultar domicilio y productos ajenos
+        // Procesar cada pedido
         const pedidosProcesados = pedidos.map(pedido => {
             let productosDeTienda = [];
             let subtotalTienda = 0;
@@ -77,15 +77,24 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
                 // 1. Filtrar SOLO los productos que le pertenecen a esta tienda
                 productosDeTienda = todosLosProductos.filter(p => String(p.tiendaId) === String(req.tienda.id));
                 
-                // 2. Calcular el subtotal (Sumar precio * cantidad de SUS productos)
+                // 2. Calcular el subtotal de la tienda
                 subtotalTienda = productosDeTienda.reduce((suma, p) => {
-                    const precio = parseFloat(p.precio) || 0;
-                    const cantidad = parseInt(p.cantidad) || 1;
-                    return suma + (precio * cantidad);
+                    /* 
+                       ★ CORRECCIÓN KEY ★
+                       client.js ya calcula y guarda 'subtotal' por cada item.
+                       Si existe p.subtotal, lo usamos directo.
+                       Si no existe (datos viejos), multiplicamos precioUnitario * cantidad
+                    */
+                    if (p.subtotal !== undefined && p.subtotal !== null) {
+                        return suma + parseFloat(p.subtotal);
+                    } else {
+                        const precio = parseFloat(p.precioUnitario || p.precio || 0);
+                        const cantidad = parseInt(p.cantidad || 1);
+                        return suma + (precio * cantidad);
+                    }
                 }, 0);
 
             } catch (e) {
-                // Si el JSON está malo, lo dejamos vacío para no romper la app
                 productosDeTienda = [];
                 subtotalTienda = 0;
             }
@@ -93,8 +102,8 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
             // 3. Devolver el pedido modificado
             return {
                 ...pedido,
-                productosJson: JSON.stringify(productosDeTienda), // Reescribimos el JSON solo con sus productos
-                total: subtotalTienda // Sobreescribimos el total. Ahora es SUBTOTAL (sin domicilio ni otros)
+                productosJson: JSON.stringify(productosDeTienda), // Solo sus productos
+                total: subtotalTienda // Sobreescribimos el total con el SUBTOTAL de la tienda
             };
         });
 
