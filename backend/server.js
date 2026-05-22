@@ -250,6 +250,10 @@ if (isDev) {
     const frontendPath = path.join(__dirname, '../frontend');
     console.log(`📂 Sirviendo frontend desde: ${frontendPath}`);
     app.use(express.static(frontendPath));
+    // 🚀 NUEVO: Servir la App de Tiendas
+    const tiendasPath = path.join(__dirname, '../app-tiendas');
+    console.log(`📂 Sirviendo app-tiendas desde: ${tiendasPath}`);
+    app.use('/app-tiendas', express.static(tiendasPath));
 }
 
 app.get('/api/status', (req, res) => {
@@ -405,7 +409,6 @@ app.all('/api', verificarToken, async (req, res) => {
         }
     }
 });
-
 // ============================================
 // SOCKET.IO — Conexiones y Rooms
 // ============================================
@@ -435,7 +438,8 @@ app.get('/api/suscripciones/estado', (req, res) => {
     }));
     res.json({ total: suscripciones.size, suscripciones: lista });
 });
-
+const tiendaRoutes = require('./routes/tiendaRoutes'); // <--- RUTAS NUEVAS PARA TIENDAS
+app.use('/api/tienda', tiendaRoutes);                 // <--- USAMOS EL NUEVO ROUTER PARA RUTAS DE TIENDAS
 // ============================================
 // INICIAR SERVIDOR
 // ============================================
