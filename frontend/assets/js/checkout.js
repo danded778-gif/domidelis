@@ -10,11 +10,30 @@
     // INICIO
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
+        initZonaCheckout(); // <--- INICIALIZAR SELECTOR DE ZONA
         renderResumen();
         initPagoSeleccion();
         initFormSubmit();
     });
+    // ============================================
+// SINCRONIZAR SELECTOR DE ZONA EN CHECKOUT
+// ============================================
+function initZonaCheckout() {
+    const selectZona = document.getElementById('zona-checkout');
+    if (!selectZona) return;
 
+    // 1. Pre-seleccionar la zona que venía del index.html
+    selectZona.value = APP_CONFIG.zonaActual;
+
+    // 2. Cuando el cliente cambie la zona en el checkout, actualizar todo
+    selectZona.addEventListener('change', (e) => {
+        APP_CONFIG.zonaActual = e.target.value;
+        localStorage.setItem('zonaSeleccionada', e.target.value);
+        
+        // Volver a renderizar el resumen para que actualice el precio del envío
+        renderResumen(); 
+    });
+}
     // ============================================
     // RENDER RESUMEN DEL CARRITO
     // ============================================
@@ -108,7 +127,8 @@
         const nombre = document.getElementById('nombre').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
         const direccion = document.getElementById('direccion').value.trim();
-        const barrio = document.getElementById('barrio').value.trim();
+        const zonaSeleccionada = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
+        const barrio = zonaSeleccionada.nombre; // El barrio es el nombre real de la zona seleccionada
         const referencias = document.getElementById('referencias').value.trim();
         const metodoPago = metodoPagoSeleccionado;
         const carrito = obtenerCarrito();
