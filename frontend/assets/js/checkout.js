@@ -1,5 +1,6 @@
 // ============================================
-// checkout.js — Compatible con iOS (WhatsApp sincronico)
+// checkout.js — Compatible con iOS (WhatsApp sincrónico)
+// Blindado contra datos incompletos o erróneos
 // ============================================
 (function () {
     'use strict';
@@ -10,30 +11,34 @@
     // INICIO
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
-        initZonaCheckout(); // <--- INICIALIZAR SELECTOR DE ZONA
-        renderResumen();
+        initZonaCheckout(); // Sincroniza el selector de zona
+        renderResumen();    // Muestra los productos y calcula el envío
         initPagoSeleccion();
         initFormSubmit();
     });
+
     // ============================================
-// SINCRONIZAR SELECTOR DE ZONA EN CHECKOUT
-// ============================================
-function initZonaCheckout() {
-    const selectZona = document.getElementById('zona-checkout');
-    if (!selectZona) return;
+    // SINCRONIZAR SELECTOR DE ZONA EN CHECKOUT
+    // Esto garantiza que al cambiar la zona, el precio
+    // del envío se actualice en tiempo real en el resumen.
+    // ============================================
+    function initZonaCheckout() {
+        const selectZona = document.getElementById('zona-checkout');
+        if (!selectZona) return;
 
-    // 1. Pre-seleccionar la zona que venía del index.html
-    selectZona.value = APP_CONFIG.zonaActual;
+        // 1. Pre-seleccionar la zona que venía del index.html
+        selectZona.value = APP_CONFIG.zonaActual;
 
-    // 2. Cuando el cliente cambie la zona en el checkout, actualizar todo
-    selectZona.addEventListener('change', (e) => {
-        APP_CONFIG.zonaActual = e.target.value;
-        localStorage.setItem('zonaSeleccionada', e.target.value);
-        
-        // Volver a renderizar el resumen para que actualice el precio del envío
-        renderResumen(); 
-    });
-}
+        // 2. Cuando el cliente cambie la zona en el checkout, actualizar todo
+        selectZona.addEventListener('change', (e) => {
+            APP_CONFIG.zonaActual = e.target.value;
+            localStorage.setItem('zonaSeleccionada', e.target.value);
+
+            // Volver a renderizar el resumen para que actualice el precio del envío
+            renderResumen();
+        });
+    }
+
     // ============================================
     // RENDER RESUMEN DEL CARRITO
     // ============================================
@@ -76,6 +81,7 @@ function initZonaCheckout() {
 
         container.innerHTML = html;
 
+        // Calculamos el envío basado en la zona seleccionada
         const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
         const envio = zona.envio;
         const total = subtotal + envio;
@@ -121,23 +127,68 @@ function initZonaCheckout() {
     }
 
     // ============================================
-    // PROCESAR PEDIDO
+    // PROCESAR PEDIDO (VALIDACIONES BLINDADAS)
     // ============================================
     function procesarPedido() {
         const nombre = document.getElementById('nombre').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
         const direccion = document.getElementById('direccion').value.trim();
         const zonaSeleccionada = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
-        const barrio = zonaSeleccionada.nombre; // El barrio es el nombre real de la zona seleccionada
+        const barrio = zonaSeleccionada.nombre; // El barrio ahora sale de la zona seleccionada
         const referencias = document.getElementById('referencias').value.trim();
         const metodoPago = metodoPagoSeleccionado;
         const carrito = obtenerCarrito();
 
-        if (!nombre) { mostrarNotificacion('Ingresa tu nombre', 'error'); document.getElementById('nombre').focus(); return; }
-        if (!telefono) { mostrarNotificacion('Ingresa tu telefono', 'error'); document.getElementById('telefono').focus(); return; }
-        if (!direccion) { mostrarNotificacion('Ingresa la direccion de entrega', 'error'); document.getElementById('direccion').focus(); return; }
-        if (!metodoPago) { mostrarNotificacion('Selecciona un metodo de pago', 'error'); return; }
-        if (carrito.length === 0) { mostrarNotificacion('El carrito esta vacio', 'error'); return; }
+        // ============================================================
+        // ★ MURO DE SEGURIDAD ★
+        // Si alguna de estas reglas no se cumple, se hace un "return"
+        // y el código nunca llega a abrir WhatsApp.
+        // ============================================================
+
+        // 1. Nombre: obligatorio y al menos 3 caracteres
+        if (!nombre || nombre.length < 3) { 
+            mostrarNotificacion('Ingresa tu nombre completo', 'error'); 
+            document.getElementById('nombre').focus(); 
+            return; 
+        }
+
+        // 2. Teléfono: obligatorio y EXACTAMENTE 10 números
+        const telefonoValido = /^[0-9]{10}$/.test(telefono);
+        if (!telefonoValido) { 
+            mostrarNotificacion('El teléfono debe tener exactamente 10 números', 'error'); 
+            document.getElementById('telefono').focus(); 
+            return; 
+        }
+
+        // 3. Dirección: obligatoria
+        if (!direccion) { 
+            mostrarNotificacion('Ingresa la dirección de entrega', 'error'); 
+            document.getElementById('direccion').focus(); 
+            return; 
+        }
+
+        // 4. Zona: obligatoria (evita que se mande sin tarifa de envío)
+        if (!APP_CONFIG.zonaActual) { 
+            mostrarNotificacion('Selecciona tu zona de envío', 'error'); 
+            document.getElementById('zona-checkout').focus(); 
+            return; 
+        }
+
+        // 5. Método de pago: obligatorio
+        if (!metodoPago) { 
+            mostrarNotificacion('Selecciona un método de pago', 'error'); 
+            return; 
+        }
+
+        // 6. Carrito: no vacío
+        if (carrito.length === 0) { 
+            mostrarNotificacion('El carrito está vacío', 'error'); 
+            return; 
+        }
+
+        // ============================================================
+        // SI LLEGA HASTA AQUÍ, TODOS LOS DATOS SON CORRECTOS
+        // ============================================================
 
         const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
         let subtotal = 0;
