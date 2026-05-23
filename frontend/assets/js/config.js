@@ -31,7 +31,7 @@ const APP_CONFIG = {
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
     zonas: {
-        centro: { nombre: 'Parque principal', envio: 5000 },
+        centro: { nombre: 'P. principal', envio: 5000 },
         norte: { nombre: 'La judea', envio: 5000 },
         sur: { nombre: 'La chapa', envio: 6000 },
         oriente: { nombre: 'Vargas', envio: 8000 },
