@@ -40,7 +40,7 @@ const APP_CONFIG = {
         puente: { nombre: 'B.las pollas', envio: 5000 },
         cdla: { nombre: 'Cdla Chapa', envio: 6000 },
         bomberos: { nombre: 'Bomberos', envio: 5000 },
-        señorcaido: { nombre: 'Señor caido', envio: 5000 },
+        señorcaido: { nombre: 'Señor caido', envio: 6000 },
         calvario: { nombre: 'Calvario', envio: 5000 },
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },

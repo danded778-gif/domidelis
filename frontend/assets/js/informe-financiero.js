@@ -67,19 +67,19 @@ function llenarSelectTiendaInforme() {
 
 // ─── FILTROS ────────────────────────────────
 function establecerPeriodo(periodo, btn) {
-    // Activar botón
-    document.querySelectorAll('.inf-preset-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.inf-preset-btn')
+        .forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
     const desde = document.getElementById('inf-fecha-desde');
     const hasta = document.getElementById('inf-fecha-hasta');
-    const hoy = new Date();
-    const fmt = d => d.toISOString().split('T')[0];
+    
+    const hoy = hoyEnColombia();
 
     switch (periodo) {
         case 'hoy':
-            desde.value = fmt(hoy);
-            hasta.value = fmt(hoy);
+            desde.value = hoy;
+            hasta.value = hoy;
             break;
         case 'ayer': {
             const ayer = new Date(hoy);
@@ -593,4 +593,20 @@ function destruirChart(id) {
         chartsInstancias[id].destroy();
         delete chartsInstancias[id];
     }
+}
+function hoyEnColombia() {
+    return new Date().toLocaleDateString('en-CA', { 
+        timeZone: 'America/Bogota' 
+    });
+}
+
+function formatearFechaColombiana(fecha) {
+    return fecha.toLocaleDateString('en-CA', { 
+        timeZone: 'America/Bogota' 
+    });
+}
+
+function fechaColombiaADate(fechaStr, esFinDeDia = false) {
+    const hora = esFinDeDia ? 'T23:59:59' : 'T00:00:00';
+    return new Date(fechaStr + hora + '-05:00');
 }
