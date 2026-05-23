@@ -6,7 +6,7 @@
 const isDev = false;
 const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
-    : 'soluvencon-v1.5.7'; 
+    : 'soluvencon-v1.5.9'; 
 
 // ★ NUEVO: Baúl exclusivo para imágenes que NO se borrará con las actualizaciones de la app
 const IMAGES_CACHE_NAME = 'soluvencon-img-cache-v1'; 
