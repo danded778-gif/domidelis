@@ -31,14 +31,22 @@ const APP_CONFIG = {
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
     zonas: {
-        centro:    { nombre: 'Parque principal', envio: 3000 },
-        norte:     { nombre: 'La judea',        envio: 3500 },
-        sur:       { nombre: 'La chapa',        envio: 4000 },
-        oriente:   { nombre: 'Vargas',          envio: 7000 },
-        occidente: { nombre: 'Sale marinilla',   envio: 3500 },
-        sanjose:   { nombre: 'La judea',           envio: 3500 },
-        bosque:    { nombre: 'no definido',          envio: 4000 },
-        prado:     { nombre: 'no definido',            envio: 3500 }
+        centro: { nombre: 'Parque principal', envio: 5000 },
+        norte: { nombre: 'La judea', envio: 5000 },
+        sur: { nombre: 'La chapa', envio: 6000 },
+        oriente: { nombre: 'Vargas', envio: 8000 },
+        occidente: { nombre: 'Sali marinilla', envio: 5000 },
+        salida: { nombre: 'B.monseñor', envio: 5000 },
+        puente: { nombre: 'B.las pollas', envio: 5000 },
+        cdla: { nombre: 'Cdla Chapa', envio: 6000 },
+        bomberos: { nombre: 'Bomberos', envio: 5000 },
+        señorcaido: { nombre: 'Señor caido', envio: 5000 },
+        calvario: { nombre: 'Calvario', envio: 5000 },
+        barandas: { nombre: 'Barandas amarilla', envio: 5000 },
+        vista: { nombre: 'Vista hermosa', envio: 6000 },
+        hospital: { nombre: 'Hospital', envio: 5000 },
+        bodegas: { nombre: 'Sali Bodegas', envio: 6000 }
+        
     }
 };
 
