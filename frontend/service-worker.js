@@ -6,7 +6,10 @@
 const isDev = false;
 const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
-    : 'soluvencon-v1.5.8'; 
+    : 'soluvencon-v1.5.7'; 
+
+// ★ NUEVO: Baúl exclusivo para imágenes que NO se borrará con las actualizaciones de la app
+const IMAGES_CACHE_NAME = 'soluvencon-img-cache-v1'; 
 
 // Archivos que se cachean al instalar
 const ARCHIVOS_ESTATICOS = [
@@ -45,9 +48,6 @@ const RECURSOS_EXTERNOS = [
 // ============================================
 // INSTALAR — Cachear todo lo estático
 // ============================================
-// ============================================
-// INSTALAR — Cachear todo lo estático
-// ============================================
 self.addEventListener('install', (event) => {
   console.log('[SW] Instalando...');
 
@@ -56,7 +56,6 @@ self.addEventListener('install', (event) => {
       .then((cache) => {
         console.log('[SW] Cacheando archivos estáticos...');
         
-        // NUEVA FORMA: Cachear locales uno por uno (sin fallar si falta alguno)
         const promLocales = Promise.allSettled(
           ARCHIVOS_ESTATICOS.map(archivo => {
             return fetch(archivo)
@@ -73,7 +72,6 @@ self.addEventListener('install', (event) => {
           })
         );
 
-        // Cachear externos (sin fallar si no hay red) - Esto ya estaba perfecto
         const promExternos = Promise.allSettled(
           RECURSOS_EXTERNOS.map(url =>
             fetch(url).then(resp => {
@@ -90,6 +88,7 @@ self.addEventListener('install', (event) => {
       })
   );
 });
+
 // ============================================
 // ACTIVAR — Limpiar cachés viejas
 // ============================================
@@ -101,7 +100,8 @@ self.addEventListener('activate', (event) => {
       .then((nombresCache) => {
         return Promise.all(
           nombresCache
-            .filter((nombre) => nombre !== CACHE_NAME)
+            // ★ NUEVO: NO borrar la caché de imágenes cuando actualices la app
+            .filter((nombre) => nombre !== CACHE_NAME && nombre !== IMAGES_CACHE_NAME)
             .map((nombre) => {
               console.log('[SW] Borrando caché vieja:', nombre);
               return caches.delete(nombre);
@@ -123,24 +123,21 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
 
   // ─── NO cachear peticiones a nuestra API ───
-  // La API cambia constantemente (pedidos, tiendas)
   if (url.pathname.startsWith('/api')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          // Solo cachear GET, no POST
-        if (response.ok && request.method === 'GET') {
-        const clon = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(request, clon));
-}
-return response;
+          if (response.ok && request.method === 'GET') {
+            const clon = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, clon));
+          }
+          return response;
         })
         .catch(() => {
-          // Si no hay red, intentar servir desde caché
           return caches.match(request).then(cached => {
             return cached || new Response(
-            JSON.stringify({ success: false, error: 'Sin conexión' }),
-            { headers: { 'Content-Type': 'application/json' }, status: 503 }
+              JSON.stringify({ success: false, error: 'Sin conexión' }),
+              { headers: { 'Content-Type': 'application/json' }, status: 503 }
             );
           });
         })
@@ -161,18 +158,52 @@ return response;
     return;
   }
 
-  // ─── NO cachear peticiones POST (formularios, acciones) ───
+  // ─── NO cachear peticiones POST ───
   if (request.method !== 'GET') {
     event.respondWith(fetch(request));
     return;
   }
 
-  // ─── CACHE FIRST para todo lo demás (HTML, CSS, JS, imágenes, fuentes) ───
+  // ★ NUEVO: ESTRATEGIA DEDICADA PARA IMÁGENES DE GITHUB (Vital para 3G)
+  // Interceptamos las fotos de los productos antes de que pasen al bloque genérico
+  if (url.hostname.includes('githubusercontent.com') && 
+     (url.pathname.includes('.jpg') || url.pathname.includes('.png') || url.pathname.includes('.webp'))) {
+    
+    event.respondWith(
+      caches.open(IMAGES_CACHE_NAME).then(cache => {
+        return cache.match(request).then(cachedResponse => {
+          if (cachedResponse) {
+            // ¡Ya la tenemos en el celular! La mostramos al instante
+            // Y de fondo, vamos a GitHub a buscar si hay una nueva (por si cambiaste la foto)
+            fetch(request).then(networkResponse => {
+              if (networkResponse && networkResponse.ok) {
+                cache.put(request, networkResponse);
+              }
+            }).catch(() => {}); // Silenciar error si no hay red
+            
+            return cachedResponse; // Entrega instantánea
+          }
+
+          // No está en caché (primera vez) → Vamos a GitHub
+          return fetch(request).then(networkResponse => {
+            if (networkResponse && networkResponse.ok) {
+              // La guardamos en el baúl de imágenes para toda la vida
+              cache.put(request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        });
+      })
+    );
+    return; // Detenemos la ejecución para que no pase al bloque de abajo
+  }
+
+  // ─── CACHE FIRST para todo lo demás (HTML, CSS, JS, fuentes) ───
   event.respondWith(
     caches.match(request)
       .then((cached) => {
         if (cached) {
-          // Actualizar caché en segundo plano (stale-while-revalidate)
+          // Actualizar caché en segundo plano
           const fetchPromise = fetch(request)
             .then((networkResponse) => {
               if (networkResponse && networkResponse.ok) {
@@ -191,7 +222,6 @@ return response;
         return fetch(request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.ok) {
-              // Cachear la respuesta nueva
               const clon = networkResponse.clone();
               caches.open(CACHE_NAME).then(cache => {
                 cache.put(request, clon);
@@ -200,11 +230,9 @@ return response;
             return networkResponse;
           })
           .catch(() => {
-            // Sin red y sin caché → página offline para HTML
             if (request.headers.get('accept')?.includes('text/html')) {
               return caches.match('/index.html');
             }
-            // Para otros recursos, error silencioso
             return new Response('', { status: 408 });
           });
       })
@@ -212,17 +240,12 @@ return response;
 });
 
 // ============================================
-// PUSH — Notificaciones desde el servidor
+// PUSH Y CLICK EN NOTIFICACIÓN (Quedan igual)
 // ============================================
 self.addEventListener('push', (event) => {
   console.log('[SW] Push recibido');
-
   let data = {};
-  try {
-    data = event.data.json();
-  } catch (e) {
-    data = { title: 'SOLUVENCON', body: 'Nueva notificación' };
-  }
+  try { data = event.data.json(); } catch (e) { data = { title: 'SOLUVENCON', body: 'Nueva notificación' }; }
 
   event.waitUntil(
     self.registration.showNotification(data.title || 'SOLUVENCON', {
@@ -233,37 +256,21 @@ self.addEventListener('push', (event) => {
       requireInteraction: true,
       vibrate: [200, 100, 200, 100, 200],
       renotify: true,
-      data: {
-        url: data.url || '/',
-        pedidoId: data.pedidoId || null,
-        tipo: data.tipo || 'general'
-      }
+      data: { url: data.url || '/', pedidoId: data.pedidoId || null, tipo: data.tipo || 'general' }
     })
   );
 });
 
-// ============================================
-// CLICK EN NOTIFICACIÓN
-// ============================================
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-
   const urlToOpen = event.notification.data?.url || '/';
-
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then((clientList) => {
-        // Si ya hay ventana abierta, enfocarla
         for (const client of clientList) {
-          if (client.url.includes(urlToOpen) && 'focus' in client) {
-            return client.focus();
-          }
+          if (client.url.includes(urlToOpen) && 'focus' in client) return client.focus();
         }
-        // Si no, abrir nueva
-        if (clients.openWindow) {
-          return clients.openWindow(urlToOpen);
-        }
+        if (clients.openWindow) return clients.openWindow(urlToOpen);
       })
   );
 });
-
