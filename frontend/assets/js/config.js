@@ -41,11 +41,14 @@ const APP_CONFIG = {
         cdla: { nombre: 'Cdla Chapa', envio: 6000 },
         bomberos: { nombre: 'Bomberos', envio: 5000 },
         señorcaido: { nombre: 'Señor caido', envio: 6000 },
+        Ccaido: { nombre: 'Cp señor caido', envio: 7000 },
+        bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
         calvario: { nombre: 'Calvario', envio: 5000 },
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },
         hospital: { nombre: 'Hospital', envio: 5000 },
         bodegas: { nombre: 'Sali Bodegas', envio: 6000 }
+
         
     }
 };

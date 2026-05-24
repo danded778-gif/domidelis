@@ -8,30 +8,40 @@
    ============================================ */
 :root {
     /* Colores principales */
-    --primary: #E63946;      /* Rojo principal - acciones urgentes */
-    --secondary: #F4A261;    /* Naranja - acentos cálidos */
-    --accent: #2A9D8F;      /* Verde azulado - éxito/confirmación */
-    --dark: #5D4037;        /* Marrón oscuro - texto principal */
-    --light: #FFF8E7;       /* Crema - fondo */
+    --primary: #E63946;
+    /* Rojo principal - acciones urgentes */
+    --secondary: #F4A261;
+    /* Naranja - acentos cálidos */
+    --accent: #2A9D8F;
+    /* Verde azulado - éxito/confirmación */
+    --dark: #5D4037;
+    /* Marrón oscuro - texto principal */
+    --light: #FFF8E7;
+    /* Crema - fondo */
     --white: #FFFFFF;
-    --gray: #6c757d;        /* Gris medio - texto secundario */
-    
+    --gray: #6c757d;
+    /* Gris medio - texto secundario */
+
     /* Estados funcionales */
-    --success: #28a745;      /* Verde - entregado/completado */
-    --warning: #ffc107;     /* Amarillo - pendiente/atención */
-    --danger: #dc3545;      /* Rojo oscuro - cancelado/error */
-    --info: #17a2b8;        /* Azul - en camino/información */
-    
+    --success: #28a745;
+    /* Verde - entregado/completado */
+    --warning: #ffc107;
+    /* Amarillo - pendiente/atención */
+    --danger: #dc3545;
+    /* Rojo oscuro - cancelado/error */
+    --info: #17a2b8;
+    /* Azul - en camino/información */
+
     /* Sombras y efectos */
-    --shadow: 0 10px 30px rgba(0,0,0,0.08);
-    --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
     --shadow-urgent: 0 10px 30px rgba(230, 57, 70, 0.3);
-    
+
     /* Dimensiones */
     --border-radius: 20px;
     --border-radius-sm: 12px;
     --border-radius-lg: 50px;
-    
+
     /* Transiciones */
     --transition: all 0.3s ease;
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -73,7 +83,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -92,13 +102,13 @@ nav {
     gap: 10px;
 }
 
-.logo i { 
-    font-size: 2rem; 
-    color: var(--primary); 
+.logo i {
+    font-size: 2rem;
+    color: var(--primary);
 }
 
-.logo span { 
-    color: var(--primary); 
+.logo span {
+    color: var(--primary);
 }
 
 .nav-links {
@@ -118,8 +128,8 @@ nav {
     gap: 0.5rem;
 }
 
-.nav-links a:hover { 
-    color: var(--primary); 
+.nav-links a:hover {
+    color: var(--primary);
 }
 
 .mobile-menu {
@@ -128,6 +138,7 @@ nav {
     cursor: pointer;
     color: var(--white);
 }
+
 /* ============================================
    4. HERO SECTION
    ============================================ */
@@ -137,7 +148,8 @@ nav {
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-top: 0;        /* SIN margen — main ya lo empuja */
+    margin-top: 0;
+    /* SIN margen — main ya lo empuja */
     padding-top: 4rem;
     padding-bottom: 3rem;
 }
@@ -186,12 +198,12 @@ nav {
 .btn-primary {
     background: var(--primary);
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(230,57,70,0.4);
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(230,57,70,0.5);
+    box-shadow: 0 6px 25px rgba(230, 57, 70, 0.5);
 }
 
 .btn-secondary {
@@ -461,7 +473,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.3) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -477,7 +489,7 @@ nav {
     font-size: 0.7rem;
     font-weight: 700;
     z-index: 2;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .product-info {
@@ -527,7 +539,7 @@ nav {
     cursor: pointer;
     z-index: 998;
     border: 4px solid white;
-    box-shadow: 0 6px 25px rgba(230,57,70,0.6);
+    box-shadow: 0 6px 25px rgba(230, 57, 70, 0.6);
     transition: var(--transition);
     -webkit-tap-highlight-color: transparent;
 }
@@ -540,7 +552,7 @@ nav {
 .cart-float:hover {
     transform: scale(1.12);
     background: var(--accent);
-    box-shadow: 0 8px 30px rgba(230,57,70,0.7);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.7);
 }
 
 .cart-counter {
@@ -558,7 +570,7 @@ nav {
     align-items: center;
     justify-content: center;
     border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(220,53,69,0.5);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
 }
 
 /* Panel lateral del carrito */
@@ -574,7 +586,7 @@ nav {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
     transform: translateX(100%);
 }
 
@@ -588,7 +600,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(93,64,55,0.6);
+    background: rgba(93, 64, 55, 0.6);
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
@@ -611,7 +623,7 @@ nav {
 }
 
 .cart-close {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
     font-size: 1.5rem;
@@ -627,7 +639,7 @@ nav {
 
 .cart-close:hover {
     transform: rotate(90deg);
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .cart-items {
@@ -788,7 +800,7 @@ nav {
     font-size: 1.8rem;
     z-index: 997;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     transition: var(--transition);
 }
 
@@ -818,7 +830,8 @@ footer {
     margin-bottom: 1rem;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
     color: #aaa;
     text-decoration: none;
     font-size: 0.9rem;
@@ -837,7 +850,7 @@ footer {
 .social-links a {
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -854,7 +867,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.85rem;
     color: #aaa;
 }
@@ -863,9 +876,19 @@ footer {
    12. ANIMACIONES GLOBALES
    ============================================ */
 @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    80% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
@@ -873,6 +896,7 @@ footer {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -880,12 +904,21 @@ footer {
 }
 
 @keyframes slideDown {
-    from { transform: translate(-50%, -100px); opacity: 0; }
-    to { transform: translate(-50%, 0); opacity: 1; }
+    from {
+        transform: translate(-50%, -100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Spinner/Loader */
@@ -939,14 +972,17 @@ footer {
     margin-bottom: 1rem;
     color: #ddd;
 }
+
 /* ============================================
    14. PANELES DE ADMINISTRACIÓN
    ============================================ */
 main {
     margin-top: 55px;
-    padding: 2rem 0;      /* RESTAURADO — admin lo necesita */
+    padding: 2rem 0;
+    /* RESTAURADO — admin lo necesita */
     flex: 1;
 }
+
 .section-title {
     font-size: 1.8rem;
     margin-bottom: 2rem;
@@ -987,7 +1023,8 @@ table {
     margin-top: 1rem;
 }
 
-th, td {
+th,
+td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -1021,10 +1058,25 @@ tr:hover {
     display: inline-block;
 }
 
-.badge-pendiente { background: var(--warning); color: #000; }
-.badge-en-camino { background: var(--info); color: #fff; }
-.badge-entregado { background: var(--success); color: #fff; }
-.badge-cancelado { background: var(--danger); color: #fff; }
+.badge-pendiente {
+    background: var(--warning);
+    color: #000;
+}
+
+.badge-en-camino {
+    background: var(--info);
+    color: #fff;
+}
+
+.badge-entregado {
+    background: var(--success);
+    color: #fff;
+}
+
+.badge-cancelado {
+    background: var(--danger);
+    color: #fff;
+}
 
 /* ============================================
    16. PEDIDOS DEL DOMICILIARIO
@@ -1052,10 +1104,16 @@ tr:hover {
 }
 
 /* Estados visuales de pedidos */
-.pedido-card.pendiente { border-left-color: var(--warning); }
-.pedido-card.en-camino { border-left-color: var(--info); }
-.pedido-card.entregado { 
-    border-left-color: var(--success); 
+.pedido-card.pendiente {
+    border-left-color: var(--warning);
+}
+
+.pedido-card.en-camino {
+    border-left-color: var(--info);
+}
+
+.pedido-card.entregado {
+    border-left-color: var(--success);
     background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
 }
 
@@ -1077,10 +1135,25 @@ tr:hover {
     text-transform: uppercase;
 }
 
-.estado-pendiente { background: var(--warning); color: #000; }
-.estado-en-camino { background: var(--info); color: #fff; }
-.estado-entregado { background: var(--success); color: #fff; }
-.estado-cancelado { background: var(--danger); color: #fff; }
+.estado-pendiente {
+    background: var(--warning);
+    color: #000;
+}
+
+.estado-en-camino {
+    background: var(--info);
+    color: #fff;
+}
+
+.estado-entregado {
+    background: var(--success);
+    color: #fff;
+}
+
+.estado-cancelado {
+    background: var(--danger);
+    color: #fff;
+}
 
 .pedido-info p {
     margin-bottom: 0.5rem;
@@ -1136,7 +1209,7 @@ tr:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -1271,7 +1344,7 @@ tr:hover {
 }
 
 /* Avatar del domiciliario */
-.domiciliario-item > div:first-child {
+.domiciliario-item>div:first-child {
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, var(--dark), var(--accent));
@@ -1287,7 +1360,7 @@ tr:hover {
 }
 
 /* Información del domiciliario */
-.domiciliario-item > div:nth-child(2) {
+.domiciliario-item>div:nth-child(2) {
     flex: 1;
 }
 
@@ -1310,7 +1383,7 @@ tr:hover {
 }
 
 /* Icono de selección */
-.domiciliario-item > div:last-child {
+.domiciliario-item>div:last-child {
     color: var(--primary);
     font-size: 1.2rem;
     margin-left: 12px;
@@ -1632,8 +1705,15 @@ tr:hover {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================================
@@ -1947,7 +2027,7 @@ tr:hover {
     background: white;
     border-radius: 16px;
     padding: 1.2rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -2003,17 +2083,27 @@ tr:hover {
 }
 
 @keyframes pulse-icon {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 @keyframes pulse-urgente {
-    0%, 100% { 
-        transform: scale(1); 
+
+    0%,
+    100% {
+        transform: scale(1);
         box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
     }
-    50% { 
-        transform: scale(1.1); 
+
+    50% {
+        transform: scale(1.1);
         box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
     }
 }
@@ -2124,7 +2214,7 @@ tr:hover {
 
 .notificacion-activacion button:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- 24.7 Indicador de Estado en Vivo ---------- */
@@ -2154,14 +2244,22 @@ tr:hover {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
 /* ============================================
    25. RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 768px) {
+
     /* Navegación móvil */
     .nav-links {
         display: none;
@@ -2175,38 +2273,40 @@ tr:hover {
         text-align: center;
         gap: 1rem;
     }
-    
+
     .nav-links.active {
         display: flex;
     }
-    
+
     .mobile-menu {
         display: block;
     }
-    
+
     /* Hero */
     .hero {
-        padding: 5rem 0 4rem;
+        padding: 2rem 0 3rem;
     }
-    
+
     .hero h1 {
-        font-size: 7rem;
-    }
-    
-    .section-title {
         font-size: 1.6rem;
     }
-    
+
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
     /* Grids */
-    .stores-grid, .menu-grid {
+    .stores-grid,
+    .menu-grid {
         grid-template-columns: 1fr;
     }
-    
+
     /* Carrito */
     .cart-panel {
         max-width: 100%;
     }
-    
+
     .cart-float {
         width: 64px;
         height: 64px;
@@ -2215,6 +2315,7 @@ tr:hover {
         right: 25px;
         border-width: 3px;
     }
+
     .whatsapp-float {
         width: 45px;
         height: 45px;
@@ -2222,80 +2323,81 @@ tr:hover {
         bottom: 20px;
         left: 20px;
     }
-    
+
     /* Admin */
     .admin-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .pedidos-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .checkout-grid {
         grid-template-columns: 1fr;
     }
-    
+
     /* Tablas */
     table {
         font-size: 0.85rem;
     }
-    
-    th, td {
+
+    th,
+    td {
         padding: 0.6rem;
     }
-    
+
     /* Modales */
     .modal-content {
         padding: 1.5rem;
         margin: 1rem;
     }
-    
+
     #modalAsignarDomiciliario .modal-content {
         max-width: 100%;
         margin: 0.5rem;
         padding: 1.2rem;
     }
-    
+
     /* Domiciliarios en modal */
     .domiciliario-item {
         padding: 12px;
     }
-    
-    .domiciliario-item > div:first-child {
+
+    .domiciliario-item>div:first-child {
         width: 40px;
         height: 40px;
         font-size: 1.1rem;
     }
-    
+
     /* Tabs */
     .tabs-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-    
+
     .tab-btn {
         white-space: nowrap;
         padding: 0.8rem 1rem;
         font-size: 0.9rem;
     }
-    
+
     /* Historial */
     .historial-header {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .historial-stats {
         width: 100%;
         justify-content: space-around;
     }
-    
+
     .stat-box {
         flex: 1;
         padding: 0.8rem;
     }
-    
+
     /* Notificaciones flotantes en móvil */
     .notificacion-flotante {
         left: 10px;
@@ -2306,35 +2408,35 @@ tr:hover {
         border-left: none;
         border-top: 5px solid var(--success);
     }
-    
+
     .notificacion-flotante.mostrar {
         right: 10px;
         left: 10px;
         bottom: 20px;
     }
-    
+
     .notificacion-nuevo-domi {
         border-left: none;
         border-top-color: var(--accent);
     }
-    
+
     .notificacion-pedido-urgente {
         border-left: none;
         border-top-color: var(--primary);
         flex-wrap: wrap;
     }
-    
+
     .notif-acciones {
         flex-direction: row;
         width: 100%;
         margin-top: 0.5rem;
     }
-    
+
     .btn-asignar-ahora {
         flex: 1;
         justify-content: center;
     }
-    
+
     /* Banner de activación en móvil */
     .notificacion-activacion {
         top: 80px;
@@ -2346,10 +2448,17 @@ tr:hover {
         justify-content: center;
         text-align: center;
     }
-    
+
     @keyframes slideDown {
-        from { transform: translateY(-100px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+        from {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
     /* Responsive para el selector de zona */
@@ -2361,13 +2470,13 @@ tr:hover {
         width: 100%;
         box-sizing: border-box;
     }
-    
+
     .zone-selector select {
         width: 100%;
         font-size: 0.9rem;
         padding: 0.6rem;
     }
-    
+
     .zone-selector i {
         display: none;
     }
@@ -2377,37 +2486,37 @@ tr:hover {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .filtro-grupo select,
     .filtro-grupo input {
         width: 100%;
     }
-    
+
     .acciones-masivas {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .btn-accion-masiva {
         width: 100%;
         justify-content: center;
     }
-    
+
     .contador-seleccionados {
         margin-left: 0;
         text-align: center;
         width: 100%;
     }
-    
+
     #tablaHistorialPedidos {
         font-size: 0.85rem;
     }
-    
+
     #tablaHistorialPedidos th,
     #tablaHistorialPedidos td {
         padding: 0.8rem 0.5rem;
     }
-    
+
     .domiciliario-tag {
         font-size: 0.75rem;
         padding: 0.2rem 0.5rem;
@@ -2429,16 +2538,16 @@ tr:hover {
     .hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .zone-selector {
         flex-direction: column;
     }
-    
+
     .btn {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
     }
-    
+
     .modal-header h3 {
         font-size: 1.1rem;
     }
@@ -2575,22 +2684,22 @@ header .nav-links li a:hover {
     header nav {
         padding: 8px 0;
     }
-    
+
     header .logo {
         font-size: 1.rem;
     }
-    
+
     header .nav-links {
         width: 100%;
         justify-content: space-between;
         padding: 8px 0 0;
         border-top: 1px solid #eee;
     }
-    
+
     header .nav-links li {
         flex: 1;
     }
-    
+
     header .nav-links li a {
         justify-content: center;
         width: 100%;
@@ -2598,7 +2707,7 @@ header .nav-links li a:hover {
         font-size: 0.8rem;
         padding: 12px 8px;
     }
-    
+
     #user-display {
         font-size: 0.75rem !important;
     }
@@ -2627,11 +2736,11 @@ header .nav-links li a:hover {
         gap: 0.5rem;
         border-radius: 0 0 16px 16px;
     }
-    
+
     header .nav-links.active {
         display: flex;
     }
-    
+
     header .mobile-menu {
         display: block;
         font-size: 1.5rem;
@@ -2644,16 +2753,16 @@ header .nav-links li a:hover {
         border-radius: 10px;
         transition: background 0.2s;
     }
-    
+
     header .mobile-menu:hover,
     header .mobile-menu.active {
         background: rgba(230, 57, 70, 0.3);
     }
-    
+
     header .nav-links li {
         width: 100%;
     }
-    
+
     header .nav-links li a,
     header .nav-links li span {
         width: 100%;
@@ -2666,14 +2775,14 @@ header .nav-links li a:hover {
         font-size: 0.95rem;
         min-height: 48px;
     }
-    
+
     header .nav-links li a {
         color: var(--white);
-        background: rgba(255,255,255, 0.1);
+        background: rgba(255, 255, 255, 0.1);
         text-decoration: none;
         transition: background 0.2s;
     }
-    
+
     header .nav-links li a:hover {
         background: var(--primary);
         color: #fff;
@@ -2691,6 +2800,7 @@ header .nav-links li a:hover {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
 /* ============================================
    30. EXPLOSIÓN DE COMIDA RÁPIDA 🍔🍟🍕
    Se ejecuta cuando se agrega el primer producto
@@ -2714,10 +2824,12 @@ header .nav-links li a:hover {
         transform: translate(0, 0) scale(0) rotate(0deg);
         opacity: 1;
     }
+
     20% {
         transform: translate(var(--x1), var(--y1)) scale(1.3) rotate(var(--r1));
         opacity: 1;
     }
+
     100% {
         transform: translate(var(--x2), var(--y2)) scale(0.3) rotate(var(--r2));
         opacity: 0;
@@ -2730,10 +2842,21 @@ header .nav-links li a:hover {
 }
 
 @keyframes fiestaCarrito {
-    0% { transform: scale(0) rotate(-180deg); }
-    50% { transform: scale(1.3) rotate(10deg); }
-    70% { transform: scale(0.9) rotate(-5deg); }
-    100% { transform: scale(1) rotate(0deg); }
+    0% {
+        transform: scale(0) rotate(-180deg);
+    }
+
+    50% {
+        transform: scale(1.3) rotate(10deg);
+    }
+
+    70% {
+        transform: scale(0.9) rotate(-5deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 /* Brillo alrededor del carrito en la fiesta */
@@ -2751,6 +2874,140 @@ header .nav-links li a:hover {
 }
 
 @keyframes brilloCarrito {
-    0% { transform: scale(0.5); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   HERO — LANZAMIENTO (nuevos estilos)
+   ============================================ */
+
+/* Badge de lanzamiento */
+.launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.45rem 1.2rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+    animation: badge-pulse 2.5s ease-in-out infinite;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--white);
+    animation: dot-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes dot-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes badge-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Descuento destacado — pill blanco sobre el gradiente */
+.hero-discount {
+    display: inline-block;
+    background: var(--white);
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    animation: pulse-descuento 2s ease-in-out infinite;
+}
+
+.discount-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+@keyframes pulse-descuento {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+/* Ajuste del ::before — ahora incluye licor */
+.hero::before {
+    content: '🍔';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.10;
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Nuevo ::after — emoji de licor al lado izquierdo */
+.hero::after {
+    content: '🥃';
+    position: absolute;
+    font-size: 12rem;
+    opacity: 0.08;
+    top: 20px;
+    left: -30px;
+}
+
+/* Ajuste del h1 para el nuevo copy */
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.hero p {
+    position: relative;
+    z-index: 1;
+}
+
+/* Zone-selector también necesita z-index para estar sobre ::after */
+.zone-selector {
+    position: relative;
+    z-index: 1000;
 }
