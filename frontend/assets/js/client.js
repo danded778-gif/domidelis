@@ -197,7 +197,58 @@ async function verMenuTienda(tiendaId) {
     }
 }
 
+// ============================================
+// EXPLOSIÓN DE COMIDA RÁPIDA 🍔🍟🍕
+// Se ejecuta SOLO cuando se agrega el primer producto al carrito
+// ============================================
+function crearExplosionComida() {
+    const emojisComida = ['🍔', '🍟', '🍕', '🌭', '🍗', '🥪', '🌮', '🍿', '🥤', '🍩'];
+    const cantidad = 14;
+    const contenedor = document.createElement('div');
+    contenedor.className = 'explosion-comida';
+
+    // Centro de la pantalla
+    const centroX = window.innerWidth / 2;
+    const centroY = window.innerHeight / 2;
+
+    contenedor.style.left = centroX + 'px';
+    contenedor.style.top = centroY + 'px';
+    document.body.appendChild(contenedor);
+
+    for (let i = 0; i < cantidad; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji-comida';
+        emoji.textContent = emojisComida[Math.floor(Math.random() * emojisComida.length)];
+
+        const angulo = (Math.PI * 2 * i) / cantidad + (Math.random() - 0.5) * 0.6;
+        const distancia1 = 60 + Math.random() * 50;
+        const distancia2 = 140 + Math.random() * 120;
+
+        const x1 = Math.cos(angulo) * distancia1;
+        const y1 = Math.sin(angulo) * distancia1 - 60;
+        const x2 = Math.cos(angulo) * distancia2;
+        const y2 = Math.sin(angulo) * distancia2 + 100;
+
+        const rot1 = Math.random() * 360 - 180;
+        const rot2 = rot1 + Math.random() * 360 - 180;
+
+        emoji.style.setProperty('--x1', x1 + 'px');
+        emoji.style.setProperty('--y1', y1 + 'px');
+        emoji.style.setProperty('--x2', x2 + 'px');
+        emoji.style.setProperty('--y2', y2 + 'px');
+        emoji.style.setProperty('--r1', rot1 + 'deg');
+        emoji.style.setProperty('--r2', rot2 + 'deg');
+        emoji.style.animationDelay = (Math.random() * 0.15) + 's';
+
+        contenedor.appendChild(emoji);
+    }
+
+    setTimeout(() => contenedor.remove(), 1400);
+}
+
 function agregarAlCarrito(producto, cantidadTipo) {
+    const carritoVacio = carrito.length === 0;
+
     const item = {
         id: producto.id,
         nombre: producto.nombre,
@@ -205,7 +256,6 @@ function agregarAlCarrito(producto, cantidadTipo) {
         cantidadTipo: cantidadTipo,
         cantidad: 1,
         subtotal: producto.precio,
-        // ★ GUARDAR tiendaId y tiendaNombre
         tiendaId: producto.tiendaId || null,
         tiendaNombre: producto.tiendaNombre || null
     };
@@ -222,11 +272,16 @@ function agregarAlCarrito(producto, cantidadTipo) {
     actualizarCarritoUI();
     mostrarNotificacion(`${producto.nombre} agregado al carrito`);
 
+    // ★★★ EXPLOSIÓN DE COMIDA - Solo si es el primer producto ★★★
+    if (carritoVacio) {
+        crearExplosionComida();
+    }
+
     const botones = document.querySelectorAll('.btn-agregar-unidad');
     botones.forEach(btn => {
         if (btn.getAttribute('onclick').includes(`"id":${producto.id}`)) {
             const textoOriginal = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> ¡Agregado!';
+            btn.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
             btn.style.background = '#28a745';
             btn.disabled = true;
             setTimeout(() => {
@@ -240,6 +295,10 @@ function agregarAlCarrito(producto, cantidadTipo) {
     const cartFloat = document.getElementById("cart-float");
     if (cartFloat) {
         cartFloat.classList.add("pulse");
+        if (carritoVacio) {
+            cartFloat.classList.add("aparecer-con-fiesta");
+            setTimeout(() => cartFloat.classList.remove("aparecer-con-fiesta"), 1000);
+        }
         setTimeout(() => cartFloat.classList.remove("pulse"), 500);
     }
 }
