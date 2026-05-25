@@ -70,7 +70,9 @@ async function cargarTiendas() {
         `;
     }
 }
-
+// ============================================
+// renderizarTiendas() y verMenuTienda() (Quedan igual)
+// ============================================ 
 function renderizarTiendas() {
     const container = document.getElementById("stores-grid");
     if (!container) return;
@@ -86,6 +88,8 @@ function renderizarTiendas() {
 
     container.innerHTML = tiendas.map(tienda => {
         const tieneImagen = tienda.imagen && tienda.imagen.trim() !== '';
+        const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
+
         return `
         <div class="store-card" onclick="verMenuTienda(${tienda.id})">
             <div class="store-img" style="${tieneImagen ? `background-image: url('${tienda.imagen}');` : ''}">
@@ -95,6 +99,7 @@ function renderizarTiendas() {
             </div>
             <div class="store-info">
                 <h3>${tienda.nombre}</h3>
+                ${tieneDesc ? `<p class="store-desc">${tienda.descripcion}</p>` : ''}
                 <p><i class="fas fa-map-marker-alt"></i> ${tienda.direccion}</p>
                 <p><i class="fas fa-clock"></i> ${tienda.horario || "11am - 10pm"}</p>
                 <div class="store-rating">${generarEstrellas(tienda.rating || 5)}</div>
@@ -202,6 +207,12 @@ async function verMenuTienda(tiendaId) {
 // Se ejecuta SOLO cuando se agrega el primer producto al carrito
 // ============================================
 function crearExplosionComida() {
+    // ★ VIBRACIÓN EN MÓVILES ★
+    if (navigator.vibrate) {
+        // Patrón: vibración corta, pausa, vibración, pausa, vibración larga
+        navigator.vibrate([50, 100, 50, 100, 100]);
+    }
+
     const emojisComida = ['🍔', '🍟', '🍕', '🌭', '🍗', '🥪', '🌮', '🍿', '🥤', '🍩'];
     const cantidad = 14;
     const contenedor = document.createElement('div');
