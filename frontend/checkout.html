@@ -98,6 +98,12 @@
                             <textarea id="referencias" rows="2" placeholder="Ej: con cebolla, puerta cafe, etc."
                                 maxlength="100"></textarea>
                         </div>
+                                     <!-- ★ CAMPO DE CÓDIGO PROMO (Solo lectura, aparece si es válido) ★ -->
+            <div class="form-group" id="grupo-codigo-promo" style="display: none;">
+                <label><i class="fas fa-tag"></i> Código de Promoción Aplicado</label>
+                <input type="text" id="codigoPromoCheckout" class="form-control" readonly 
+                       style="background: #e8f5e9; color: #2e7d32; font-weight: 700; cursor: not-allowed; border: 2px solid #2e7d32;">
+            </div>
 
                         <input type="hidden" id="metodoPago" value="">
                     </form>

@@ -15,7 +15,17 @@
         renderResumen();    // Muestra los productos y calcula el envío
         initPagoSeleccion();
         initFormSubmit();
+         // ★ MOSTRAR CÓDIGO PROMO SI EXISTE EN LA MEMORIA ★
+        const codigoGuardado = localStorage.getItem('domidelis_codigo_promo');
+        const grupoCodigo = document.getElementById('grupo-codigo-promo');
+        const inputCodigo = document.getElementById('codigoPromoCheckout');
+
+        if (codigoGuardado && grupoCodigo && inputCodigo) {
+            grupoCodigo.style.display = 'block'; // Muestra el div
+            inputCodigo.value = codigoGuardado;  // Llena el valor
+        }
     });
+
 
     // ============================================
     // SINCRONIZAR SELECTOR DE ZONA EN CHECKOUT
@@ -249,6 +259,8 @@
                 zona: APP_CONFIG.zonaActual, envio,
                 subtotal, total, items: carrito
             });
+            // ★ BORRAR CÓDIGO PROMO DESPUÉS DE USADO ★
+            localStorage.removeItem('domidelis_codigo_promo');
         }, 500);
 
         setTimeout(() => {
@@ -391,6 +403,12 @@
         msg += `💰 *TOTAL:* ${formatearPrecio(data.total)}\n\n`;
         msg += `💳 *Pago:* ${data.metodoPago}\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n`;
+          // ★ ENVIAR CÓDIGO EN WHATSAPP SI HAY ★
+        const codigoPromo = localStorage.getItem('domidelis_codigo_promo');
+        if (codigoPromo) {
+            msg += `\n🎟️ *CÓDIGO DE PROMOCIÓN:* ${codigoPromo}\n`;
+            msg += `_(Validar y aplicar descuento manualmente)_\n`;
+        }
         msg += `⏰ ${new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' })}`;
 
         return msg;

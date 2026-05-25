@@ -429,6 +429,32 @@
             </div>
         </div>
     </footer>
+     <!-- ===== ANUNCIO PROMO DOMIDELIS ===== -->
+    <div id="popupOverlay" class="popup-overlay"></div>
+    <div id="popupAnuncio" class="popup-anuncio">
+        <div class="popup-header-bar"></div>
+        <button class="popup-cerrar" id="popupCerrarBtn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <div class="popup-imagen-wrap">
+            <span class="popup-badge">🔥 Promoción</span>
+            <div class="popup-emoji-grande">🍔🥃</div>
+        </div>
+        <div class="popup-contenido">
+            <div>
+                <div class="popup-subtitulo">Oferta Exclusiva</div>
+                <h2>¡Ingresa tu código y gana!</h2>
+                <p>¿Viste nuestro cartel? Escribe el código aquí y obtén beneficios en tu pedido.</p>
+            </div>
+            <div>
+                <div class="popup-codigo-container" id="popupCodigoContainer">
+                    <input type="text" id="popupCodigoInput" class="popup-input" placeholder="Escribe tu código" maxlength="20">
+                    <button class="popup-btn-validar" id="popupValidarBtn"><i class="fas fa-check"></i></button>
+                </div>
+                <div class="popup-exito" id="popupExito" style="display: none;">
+                    <i class="fas fa-check-circle"></i> ¡Código guardado con éxito!
+                </div>
+                <p class="popup-nota">El código se aplicará al finalizar tu compra.</p>
+            </div>
+        </div>
 
     <button id="btn-volver-arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})"
         style="display:none;position:fixed;bottom:110px;left:40px;width:50px;height:50px;background:var(--dark);color:white;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:996;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all .3s ease;">
