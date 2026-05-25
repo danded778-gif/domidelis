@@ -116,7 +116,7 @@ async function verMenuTienda(tiendaId) {
     container.innerHTML = `
         <div style="text-align:center; padding: 4rem 0; width:100%;">
             <div class="spinner" style="margin: 0 auto 1rem;"></div>
-            <p style="color: var(--gray);">Conectando el Menu</p>
+            <p style="color: var(--gray);">Conectando el Menu ...</p>
         </div>
     `;
 
