@@ -274,7 +274,7 @@
                 <!-- Badge de lanzamiento — primero que todo -->
                 <div class="launch-badge">
                     <span class="badge-dot"></span>
-                    🚀 LANZAMIENTO 
+                    🚀 LANZAMIENTO
                 </div>
 
                 <!-- Título principal: la valla publicitaria -->
@@ -322,6 +322,11 @@
             </div>
         </div>
     </main>
+
+    <!-- ★ INDICADOR DE SCROLL (Fuera del container para centrado perfecto) ★ -->
+    <div class="scroll-down-indicator" id="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
 
     <!-- ===== BANNER INSTALAR APP (Android con beforeinstallprompt) ===== -->
     <div class="install-banner" id="install-banner" role="dialog" aria-label="Instalar aplicación">
@@ -703,13 +708,22 @@
         OfflineGame.init();
     </script>
 
-
     <script>
         const btnArriba = document.getElementById('btn-volver-arriba');
         window.addEventListener('scroll', () => {
             btnArriba.style.display = window.scrollY > 600 ? 'flex' : 'none';
             btnArriba.style.alignItems = 'center';
             btnArriba.style.justifyContent = 'center';
+
+            // ★ OCULTAR FLECHA DE SCROLL ★
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            if (scrollIndicator) {
+                if (window.scrollY > 50) { // Si baja más de 50px, desaparece
+                    scrollIndicator.classList.add('hide');
+                } else {
+                    scrollIndicator.classList.remove('hide');
+                }
+            }
         });
     </script>
 

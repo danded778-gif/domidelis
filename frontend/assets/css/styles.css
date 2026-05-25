@@ -3028,3 +3028,58 @@ header .nav-links li a:hover {
     position: relative;
     z-index: 1000;
 }
+/* ============================================
+   32. INDICADOR DE SCROLL (FLECHA ABAJO)
+   ============================================ */
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    /* Centrado perfecto y tamaño grande */
+    width: 52px;
+    height: 52px;
+    background-color: var(--dark); /* Marrón oscuro - resalta en claros y en rojos */
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 10;
+    /* Animación de rebote centrada */
+    animation: rebote-flecha 2s ease-in-out infinite;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(-50%); /* Lo centra al usar left: 50% */
+}
+
+/* Clase que se agrega al hacer scroll para que desaparezca */
+.scroll-down-indicator.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px); /* Se desvanece cayendo */
+    pointer-events: none;
+}
+
+@keyframes rebote-flecha {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-12px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-6px);
+    }
+}
+
+/* En móviles */
+@media (max-width: 768px) {
+    .scroll-down-indicator {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+        bottom: 15px;
+    }
+}
