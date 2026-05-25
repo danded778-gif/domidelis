@@ -117,32 +117,45 @@ function aplicarFiltrosInforme() {
     const tiendaId = document.getElementById('inf-tienda').value;
     const metodo = document.getElementById('inf-metodo').value;
 
-    // Desactivar presets si las fechas no coinciden
     document.querySelectorAll('.inf-preset-btn').forEach(b => b.classList.remove('active'));
 
     let filtrados = [...window._infPedidos];
 
-    // Filtro fecha desde
     if (desde) {
         const d = new Date(desde + 'T00:00:00');
         filtrados = filtrados.filter(p => new Date(p.fecha) >= d);
     }
-    // Filtro fecha hasta
     if (hasta) {
         const d = new Date(hasta + 'T23:59:59');
         filtrados = filtrados.filter(p => new Date(p.fecha) <= d);
     }
-    // Filtro tienda
-    if (tiendaId) {
-        filtrados = filtrados.filter(p => {
-            let productos = [];
-            try { productos = JSON.parse(p.productosJson || '[]'); } catch (e) { }
-            return productos.some(pr => String(pr.tiendaId) === tiendaId);
-        });
-    }
-    // Filtro método de pago
     if (metodo) {
         filtrados = filtrados.filter(p => (p.metodoPago || '') === metodo);
+    }
+
+    if (tiendaId) {
+        filtrados = filtrados
+            .map(p => {
+                let productos = [];
+                try { productos = JSON.parse(p.productosJson || '[]'); } catch (e) { }
+
+                const productosFiltrados = productos.filter(
+                    pr => String(pr.tiendaId) === tiendaId
+                );
+
+                if (productosFiltrados.length === 0) return null;
+
+                const nuevoTotal = productosFiltrados.reduce(
+                    (s, pr) => s + (parseFloat(pr.subtotal) || 0), 0
+                );
+
+                return {
+                    ...p,
+                    productosJson: JSON.stringify(productosFiltrados),
+                    total: nuevoTotal
+                };
+            })
+            .filter(Boolean);
     }
 
     renderizarInforme(filtrados);

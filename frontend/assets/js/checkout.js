@@ -53,35 +53,57 @@
             return;
         }
 
-        let html = '';
+        const tiendas = {};
         let subtotal = 0;
 
         carrito.forEach(item => {
+            const tiendaKey = item.tiendaId || 'sin-tienda';
+            const tiendaNombre = item.tiendaNombre || 'Sin tienda';
+
+            if (!tiendas[tiendaKey]) {
+                tiendas[tiendaKey] = { nombre: tiendaNombre, items: [] };
+            }
+
             const cantidad = parseInt(item.cantidad) || 1;
             const precioUnitario = parseInt(item.precioUnitario) || parseInt(item.precio) || 0;
             const subtotalItem = parseInt(item.subtotal) || (precioUnitario * cantidad);
-            const cantidadTipo = item.cantidadTipo || 'UND';
-            const tiendaNombre = item.tiendaNombre || '';
-
             subtotal += subtotalItem;
 
-            html += `
-                <div class="resumen-producto">
-                    <div class="resumen-prod-info">
-                        <span class="resumen-prod-nombre">${escapeQuotes(item.nombre)}</span>
-                        <span class="resumen-prod-detalle">
-                            ${cantidad}x ${cantidadTipo}${tiendaNombre ? ` <small style="color:var(--secondary)">(${tiendaNombre})</small>` : ''}
-                            — ${formatearPrecio(precioUnitario)} c/u
-                        </span>
-                    </div>
-                    <span class="resumen-prod-precio">${formatearPrecio(subtotalItem)}</span>
+            tiendas[tiendaKey].items.push({ ...item, subtotalItem, precioUnitario, cantidad });
+        });
+
+        let html = '';
+        const tiendaKeys = Object.keys(tiendas);
+
+        tiendaKeys.forEach((key, idx) => {
+            const tienda = tiendas[key];
+            html += `<div class="resumen-tienda-bloque">
+            <div class="resumen-tienda-header">
+                <i class="fas fa-store"></i> ${tienda.nombre}
+            </div>
+            <div class="resumen-tienda-productos">`;
+
+            tienda.items.forEach(item => {
+                html += `<div class="resumen-producto">
+                <div class="resumen-prod-info">
+                    <span class="resumen-prod-nombre">${escapeQuotes(item.nombre)}</span>
+                    <span class="resumen-prod-detalle">
+                        ${item.cantidad}x — ${formatearPrecio(item.precioUnitario)} c/u
+                    </span>
                 </div>
-            `;
+                <span class="resumen-prod-precio">${formatearPrecio(item.subtotalItem)}</span>
+            </div>`;
+            });
+
+            html += `</div></div>`;
+
+            if (idx < tiendaKeys.length - 1) {
+                html += `<hr class="resumen-divider">`;
+            }
         });
 
         container.innerHTML = html;
 
-        // Calculamos el envío basado en la zona seleccionada
         const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
         const envio = zona.envio;
         const total = subtotal + envio;
@@ -146,44 +168,44 @@
         // ============================================================
 
         // 1. Nombre: obligatorio y al menos 3 caracteres
-        if (!nombre || nombre.length < 3) { 
-            mostrarNotificacion('Ingresa tu nombre completo', 'error'); 
-            document.getElementById('nombre').focus(); 
-            return; 
+        if (!nombre || nombre.length < 3) {
+            mostrarNotificacion('Ingresa tu nombre completo', 'error');
+            document.getElementById('nombre').focus();
+            return;
         }
 
         // 2. Teléfono: obligatorio y EXACTAMENTE 10 números
         const telefonoValido = /^[0-9]{10}$/.test(telefono);
-        if (!telefonoValido) { 
-            mostrarNotificacion('El teléfono debe tener exactamente 10 números', 'error'); 
-            document.getElementById('telefono').focus(); 
-            return; 
+        if (!telefonoValido) {
+            mostrarNotificacion('El teléfono debe tener exactamente 10 números', 'error');
+            document.getElementById('telefono').focus();
+            return;
         }
 
         // 3. Dirección: obligatoria
-        if (!direccion) { 
-            mostrarNotificacion('Ingresa la dirección de entrega', 'error'); 
-            document.getElementById('direccion').focus(); 
-            return; 
+        if (!direccion) {
+            mostrarNotificacion('Ingresa la dirección de entrega', 'error');
+            document.getElementById('direccion').focus();
+            return;
         }
 
         // 4. Zona: obligatoria (evita que se mande sin tarifa de envío)
-        if (!APP_CONFIG.zonaActual) { 
-            mostrarNotificacion('Selecciona tu zona de envío', 'error'); 
-            document.getElementById('zona-checkout').focus(); 
-            return; 
+        if (!APP_CONFIG.zonaActual) {
+            mostrarNotificacion('Selecciona tu zona de envío', 'error');
+            document.getElementById('zona-checkout').focus();
+            return;
         }
 
         // 5. Método de pago: obligatorio
-        if (!metodoPago) { 
-            mostrarNotificacion('Selecciona un método de pago', 'error'); 
-            return; 
+        if (!metodoPago) {
+            mostrarNotificacion('Selecciona un método de pago', 'error');
+            return;
         }
 
         // 6. Carrito: no vacío
-        if (carrito.length === 0) { 
-            mostrarNotificacion('El carrito está vacío', 'error'); 
-            return; 
+        if (carrito.length === 0) {
+            mostrarNotificacion('El carrito está vacío', 'error');
+            return;
         }
 
         // ============================================================
@@ -238,59 +260,37 @@
     // ABRIR WHATSAPP — Maxima compatibilidad iOS/Android/PC
     // ============================================
     function abrirWhatsAppiOS(mensaje) {
-        // Truncar mensaje si excede el limite de iOS (~2000 chars en URL completa)
-        let msg = mensaje;
-        const telefono = APP_CONFIG.telefonoWhatsApp.replace(/\D/g, ''); // Limpiar solo numeros
+        const telefono = APP_CONFIG.telefonoWhatsApp.replace(/\D/g, '');
         const urlBase = 'https://wa.me/' + telefono;
-        const urlTest = urlBase + '?text=' + encodeURIComponent(msg);
 
-        if (urlTest.length > 1900) {
-            const carrito = obtenerCarrito();
-            msg = `🛒 *NUEVO PEDIDO #${sessionStorage.getItem('ultimoPedido') ? JSON.parse(sessionStorage.getItem('ultimoPedido')).pedidoId : ''}*\n`;
-            msg += `━━━━━━━━━━━━━━━━━━\n\n`;
-            msg += `👤 *Cliente:* ${document.getElementById('nombre').value.trim()}\n`;
-            msg += `📱 *Tel:* ${document.getElementById('telefono').value.trim()}\n`;
-            msg += `📍 *Dir:* ${document.getElementById('direccion').value.trim()}\n`;
-            msg += `\n📦 ${carrito.length} producto(s)\n`;
-            msg += `💰 *Total:* ${document.getElementById('resumenTotal').textContent}\n`;
-            msg += `💳 *Pago:* ${metodoPagoSeleccionado}\n`;
-            msg += `━━━━━━━━━━━━━━━━━━\n`;
-            msg += `(Ver detalle en el sistema)`;
+        let msg = mensaje;
+        const urlCompleta = urlBase + '?text=' + encodeURIComponent(msg);
+
+
+        if (urlCompleta.length > 3800) {
+            msg = compactarMensaje(mensaje);
         }
 
         const url = urlBase + '?text=' + encodeURIComponent(msg);
 
-        // Detectar iOS
         const esIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
             (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-        // Detectar modo PWA standalone
         const esStandalone = window.navigator.standalone === true ||
             window.matchMedia('(display-mode: standalone)').matches;
 
         if (esIOS) {
-            // ============================================================
-            // ESTRATEGIA iOS: Crear enlace <a> real y hacer clic programatico
-            // ============================================================
-
-            // Limpiar cualquier enlace anterior
             const oldLink = document.getElementById('wa-link-temp');
             if (oldLink) oldLink.remove();
 
-            // Crear enlace temporal
             const link = document.createElement('a');
             link.id = 'wa-link-temp';
             link.href = url;
-            link.target = '_blank';  // CRITICO: _blank funciona mejor en iOS
+            link.target = '_blank';
             link.rel = 'noopener noreferrer';
             link.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
 
-            // Para iOS standalone, usar el esquema whatsapp:// como fallback
             if (esStandalone) {
-                // Intentar primero con esquema de app nativa
                 link.href = 'whatsapp://send?phone=' + telefono + '&text=' + encodeURIComponent(msg);
-
-                // Si no abre en 1 segundo, fallback a wa.me
                 setTimeout(() => {
                     const fallbackLink = document.createElement('a');
                     fallbackLink.href = url;
@@ -304,33 +304,67 @@
             }
 
             document.body.appendChild(link);
-
-            // Simular evento de clic real (touch para iOS)
-            const event = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            });
+            const event = new MouseEvent('click', { view: window, bubbles: true, cancelable: true });
             link.dispatchEvent(event);
-
-            // Tambien intentar con click() nativo
             link.click();
-
-            // Limpiar
-            setTimeout(() => {
-                if (link.parentNode) link.remove();
-            }, 2000);
+            setTimeout(() => { if (link.parentNode) link.remove(); }, 2000);
 
         } else {
-            // Android y PC: nueva pestaña para no bloquear la redirección a confirmacion.html
             window.open(url, '_blank');
         }
+    }
+
+
+    function compactarMensaje(mensajeCompleto) {
+        const carrito = obtenerCarrito();
+        const pedidoData = (() => {
+            try { return JSON.parse(sessionStorage.getItem('ultimoPedido')) || {}; }
+            catch (e) { return {}; }
+        })();
+
+        const nombre = document.getElementById('nombre')?.value.trim() || '';
+        const telefono = document.getElementById('telefono')?.value.trim() || '';
+        const direccion = document.getElementById('direccion')?.value.trim() || '';
+        const total = document.getElementById('resumenTotal')?.textContent || '';
+        const pago = metodoPagoSeleccionado || '';
+
+        const tiendas = {};
+        carrito.forEach(item => {
+            const key = item.tiendaNombre || 'Sin tienda';
+            if (!tiendas[key]) tiendas[key] = [];
+            tiendas[key].push(`${item.cantidad}x ${item.nombre}`);
+        });
+
+        let msg = `*PEDIDO #${pedidoData.pedidoId || ''}*\n`;
+        msg += `Cliente: ${nombre} | Tel: ${telefono}\n`;
+        msg += `Dir: ${direccion}\n`;
+        msg += `Pago: ${pago} | Total: ${total}\n`;
+        msg += `─────────────\n`;
+
+        Object.entries(tiendas).forEach(([tienda, items]) => {
+            msg += `*${tienda}:*\n`;
+            items.forEach(i => { msg += `• ${i}\n`; });
+        });
+
+        return msg;
     }
 
     // ============================================
     // CONSTRUIR MENSAJE WHATSAPP
     // ============================================
     function construirMensaje(data) {
+        const tiendas = {};
+        data.items.forEach(item => {
+            const key = item.tiendaId || 'sin-tienda';
+            const nombre = item.tiendaNombre || 'Sin tienda';
+            if (!tiendas[key]) tiendas[key] = { nombre, items: [], subtotal: 0 };
+            const precio = parseInt(item.precioUnitario) || parseInt(item.precio) || 0;
+            const cant = parseInt(item.cantidad) || 1;
+            const sub = parseInt(item.subtotal) || (precio * cant);
+            tiendas[key].items.push({ ...item, precio, cant, sub });
+            tiendas[key].subtotal += sub;
+        });
+
         let msg = `🛒 *NUEVO PEDIDO #${data.pedidoId}*\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n\n`;
         msg += `👤 *Cliente:* ${data.nombre}\n`;
@@ -339,31 +373,25 @@
         if (data.barrio) msg += ` - ${data.barrio}`;
         msg += `\n`;
         if (data.referencias) msg += `📝 *Ref:* ${data.referencias}\n`;
-        msg += `\n📦 *Productos:*\n`;
-        msg += `─────────────────\n`;
+        msg += `\n`;
 
-        let tiendaActual = null;
-        data.items.forEach((item) => {
-            const precio = parseInt(item.precioUnitario) || parseInt(item.precio) || 0;
-            const cant = parseInt(item.cantidad) || 1;
-            const cantTipo = item.cantidadTipo || 'UND';
-            const tienda = item.tiendaNombre || '';
-
-            if (tienda && tienda !== tiendaActual) {
-                tiendaActual = tienda;
-                msg += `\n📦 *${tienda}:*\n`;
-            }
-
-            msg += `• ${cant}x ${item.nombre} (${cantTipo}) — ${formatearPrecio(precio * cant)}\n`;
+        Object.values(tiendas).forEach(tienda => {
+            msg += `🏪 *${tienda.nombre}*\n`;
+            msg += `─────────────────\n`;
+            tienda.items.forEach(item => {
+                const cantTipo = item.cantidadTipo || 'UND';
+                msg += `• ${item.cant}x ${item.nombre} (${cantTipo}) — ${formatearPrecio(item.sub)}\n`;
+            });
+            msg += `   Subtotal tienda: ${formatearPrecio(tienda.subtotal)}\n\n`;
         });
 
-        msg += `─────────────────\n`;
+        msg += `━━━━━━━━━━━━━━━━━━\n`;
         msg += `💵 *Subtotal:* ${formatearPrecio(data.subtotal)}\n`;
         msg += `🏍️ *Envío (${data.zonaNombre}):* ${formatearPrecio(data.envio)}\n`;
         msg += `💰 *TOTAL:* ${formatearPrecio(data.total)}\n\n`;
         msg += `💳 *Pago:* ${data.metodoPago}\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n`;
-        msg += `⏰ ${new Date().toLocaleString('es-CO')}`;
+        msg += `⏰ ${new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' })}`;
 
         return msg;
     }
@@ -380,8 +408,12 @@
             precioUnitario: parseInt(item.precioUnitario) || parseInt(item.precio) || 0,
             subtotal: parseInt(item.subtotal) || 0,
             tiendaId: item.tiendaId || '',
-            tiendaNombre: item.tiendaNombre || ''
+            tiendaNombre: item.tiendaNombre || '',
         })));
+
+        const fechaColombia = new Date().toLocaleString('sv-SE', {
+            timeZone: 'America/Bogota'
+        });
 
         const params = new URLSearchParams({
             action: 'crearPedido',
@@ -392,7 +424,8 @@
             total: data.total.toString(),
             metodoPago: data.metodoPago,
             zona: data.zona,
-            referencias: data.referencias || ''
+            referencias: data.referencias || '',
+            fecha: fechaColombia
         });
 
         fetch(API_URL, {

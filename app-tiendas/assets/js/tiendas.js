@@ -79,9 +79,11 @@ function renderizarPedidos(pedidos) {
         try {
             const prods = JSON.parse(pedido.productosJson);
             productosLista = prods.map(p => `${p.cantidad}x ${p.nombre}`).join(', ');
-        } catch(e) { productosLista = 'Error al leer'; }
+        } catch (e) { productosLista = 'Error al leer'; }
 
-        const fecha = new Date(pedido.fecha).toLocaleString('es-CO');
+        const fecha = new Date(pedido.fecha).toLocaleString('es-CO', {
+            timeZone: 'America/Bogota'
+        });
         const estadoClass = pedido.estado ? pedido.estado.toLowerCase().replace(/ /g, '-') : 'pendiente';
 
         contenedor.innerHTML += `

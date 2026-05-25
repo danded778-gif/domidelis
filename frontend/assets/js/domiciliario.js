@@ -6,7 +6,7 @@
 let pedidosActivosCache = [];
 let pedidosHistorialCache = [];
 let filtroHistorialActual = 'todos';
-let HISTORIAL_KEY = 'domiciliario_historial'; 
+let HISTORIAL_KEY = 'domiciliario_historial';
 let miDomiciliarioId = null;
 
 // ─── Helper: Extraer texto de tiendas de un pedido ───
@@ -27,7 +27,7 @@ async function fetchConToken(url, opciones = {}) {
         cerrarSesion(); // Si no hay token, lo sacamos
         throw new Error('Sesión expirada');
     }
-    
+
     opciones.headers = opciones.headers || {};
     if (opciones.headers instanceof Headers) {
         opciones.headers.append('Authorization', `Bearer ${token}`);
@@ -132,8 +132,8 @@ async function cargarPedidosDomiciliario(domiciliarioId) {
         const res = await fetchConToken(`${API_URL}?action=getPedidos&domiciliario=${domiciliarioId}`);
         const pedidos = await res.json();
         pedidosActivosCache = pedidos.filter(p => p.estado !== 'entregado' && p.estado !== 'cancelado');
-                pedidos
-            .filter(p => 
+        pedidos
+            .filter(p =>
                 p.estado === 'entregado' &&
                 String(p.domiciliarioId) === String(domiciliarioId)
             )
@@ -216,6 +216,12 @@ function renderizarHistorial() {
     const c = document.getElementById('pedidos-historial');
     if (!c) return;
     let filtrados = [...pedidosHistorialCache];
+
+    filtrados.sort((a, b) =>
+        new Date(b.fechaEntregaLocal || b.fecha) -
+        new Date(a.fechaEntregaLocal || a.fecha)
+    );
+
     const ahora = new Date();
 
     if (filtroHistorialActual === 'hoy') {
@@ -240,9 +246,15 @@ function renderizarHistorial() {
     c.innerHTML = filtrados.map(p => {
         let productos = []; try { productos = JSON.parse(p.productosJson); } catch (e) { }
         const fe = new Date(p.fechaEntregaLocal || p.fecha);
+
+        const fechaTexto = fe.toLocaleDateString('es-CO', {
+            timeZone: 'America/Bogota'
+        });
+
+
         const tiendasTexto = obtenerTiendasTextoDomi(p);
         return `<div class="panel-card pedido-card entregado historial-card">
-            <div class="pedido-header"><h3>Pedido #${p.id}</h3><span class="fecha-entrega"><i class="fas fa-calendar-check"></i> ${fe.toLocaleDateString('es-CO')}</span></div>
+            <div class="pedido-header"><h3>Pedido #${p.id}</h3><span class="fecha-entrega"><i class="fas fa-calendar-check"></i>${fechaTexto}</span></div>
             <div class="pedido-info">
                 ${tiendasTexto ? `<p><strong><i class="fas fa-store" style="color:var(--secondary);margin-right:4px"></i>Tienda:</strong> ${tiendasTexto}</p>` : ''}
                 <p><strong>Cliente:</strong> ${p.clienteNombre}</p>
@@ -294,7 +306,31 @@ function verDetallePedidoDomiciliario(id) {
         <p><strong>Dirección:</strong> ${p.clienteDireccion}</p>
         <p><strong>Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
         <p><strong>Ref:</strong> ${p.referencias || 'Ninguna'}</p>
-    <h4 style="margin-top:1rem">Productos:</h4><div class="productos-lista">${productos.map(x => `<div class="producto-item"><span>${x.cantidad}x ${x.nombre}</span><span>${formatearPrecio(x.subtotal)}</span></div>`).join('')}</div>
+    <h4 style="margin-top:1rem">Productos:</h4>
+        <div class="productos-lista">
+        ${(() => {
+            const tiendas = {};
+            productos.forEach(x => {
+                const key = x.tiendaNombre || 'Sin tienda';
+                if (!tiendas[key]) tiendas[key] = [];
+                tiendas[key].push(x);
+            });
+            return Object.entries(tiendas).map(([tienda, prods]) => `
+                <div style="margin-bottom:0.8rem;">
+                    <div style="font-size:0.8rem;font-weight:600;color:var(--secondary);
+                                padding:0.3rem 0.6rem;background:var(--light);
+                                border-radius:6px;margin-bottom:0.4rem;
+                                display:flex;align-items:center;gap:0.4rem;">
+                        <i class="fas fa-store"></i> ${tienda}
+                    </div>
+                    ${prods.map(x => `
+                        <div class="producto-item">
+                            <span>${x.cantidad}x ${x.nombre}</span>
+                            <span>${formatearPrecio(x.subtotal)}</span>
+                        </div>`).join('')}
+                </div>`).join('');
+        })()}
+    </div>
     <div class="total-pedido"><strong>Total: ${formatearPrecio(p.total)}</strong></div>
     <div style="margin-top:1rem;display:flex;gap:.5rem"><button class="btn btn-success" style="flex:1" onclick="marcarEntregado(${p.id});this.closest('.modal').remove()"><i class="fas fa-check"></i> Entregado</button><button class="btn btn-info" style="flex:1" onclick="verMapa('${escapeQuotes(p.clienteDireccion)}')"><i class="fas fa-map"></i> Mapa</button></div></div></div>`;
     document.body.appendChild(m);

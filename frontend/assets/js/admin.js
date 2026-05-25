@@ -49,6 +49,7 @@ function escapeQuotes(str) {
 function formatearFecha(fechaStr) {
     if (!fechaStr) return '-';
     return new Date(fechaStr).toLocaleString('es-CO', {
+        timeZone: 'America/Bogota',
         day: '2-digit', month: '2-digit', year: 'numeric',
         hour: '2-digit', minute: '2-digit'
     });
@@ -662,7 +663,28 @@ async function verDetallePedido(pedidoId) {
                 <p><strong>Estado:</strong> <span class="badge badge-${pedido.estado.replace(/\s/g, '-')}">${pedido.estado}</span></p>
                 <h4>Productos:</h4>
                 <div class="productos-lista">
-                    ${productos.map(prod => `<div class="producto-item"><span>${prod.cantidad}x ${prod.nombre} (${prod.cantidadTipo} UND)</span><span>${formatearPrecio(prod.subtotal)}</span></div>`).join('')}
+                    ${(() => {
+                        const tiendas = {};
+                        productos.forEach(prod => {
+                            const key = prod.tiendaNombre || 'Sin tienda';
+                            if (!tiendas[key]) tiendas[key] = [];
+                            tiendas[key].push(prod);
+                        });
+                        return Object.entries(tiendas).map(([tienda, prods]) => `
+                            <div style="margin-bottom:0.8rem;">
+                                <div style="font-size:0.8rem;font-weight:600;color:var(--secondary);
+                                            padding:0.3rem 0.6rem;background:var(--light);
+                                            border-radius:6px;margin-bottom:0.4rem;
+                                            display:flex;align-items:center;gap:0.4rem;">
+                                    <i class="fas fa-store"></i> ${tienda}
+                                </div>
+                                ${prods.map(prod => `
+                                    <div class="producto-item">
+                                        <span>${prod.cantidad}x ${prod.nombre} (${prod.cantidadTipo} UND)</span>
+                                        <span>${formatearPrecio(prod.subtotal)}</span>
+                                    </div>`).join('')}
+                            </div>`).join('');
+                    })()}
                 </div>
                 <div class="total-pedido"><strong>Total: ${formatearPrecio(pedido.total)}</strong></div>
             </div>
