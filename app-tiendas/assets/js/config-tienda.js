@@ -1,7 +1,7 @@
 // Detectar si estamos en local, ngrok o producción
-const esLocal = window.location.hostname === 'localhost' || 
-                window.location.hostname === '127.0.0.1' || 
-                window.location.hostname.includes('.ngrok-free.dev');
+const esLocal = window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname.includes('.ngrok-free.dev');
 
 // Si es local, apunta a tu servidor local. Si es Railway, apunta a Railway.
 const API_URL = esLocal
@@ -27,7 +27,8 @@ function cerrarSesionTienda() {
     localStorage.removeItem('tienda_token');
     localStorage.removeItem('tienda_id');
     localStorage.removeItem('tienda_nombre');
-    window.location.href = 'index.html';
+    // RUTA ACTUALIZADA: Redirige al nuevo nombre del login
+    window.location.href = 'login-tienda.html';
 }
 
 // Utilidad para pasar el token en las peticiones fetch

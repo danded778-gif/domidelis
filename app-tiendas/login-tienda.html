@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script>
+        if (localStorage.getItem('tienda_token')) {
+            window.location.replace('index-tienda.html');
+        }
+    </script>
+
     <meta name="theme-color" content="#E63946">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Mi Tienda">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi Tienda">
+    <link rel="apple-touch-icon" href="/app-tiendas/assets/img/icon-152x152.png">
+    <link rel="manifest" href="/app-tiendas/manifest-tienda.json">
+
     <title>Iniciar Sesión - Tiendas DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/tiendas.css">
+    <link rel="stylesheet" href="/app-tiendas/assets/css/tiendas.css">
 </head>
+
 <body class="body-login">
     <div class="login-box">
-        <a href="index.html" class="logo-login"><i class="fas fa-store"></i> DOMI<span>DELIS</span></a>
+        <a href="/app-tiendas/login-tienda.html" class="logo-login"><i class="fas fa-store"></i> DOMI<span>DELIS</span></a>
         <p class="subtitle">Portal de Administración de Tiendas</p>
         <div class="rol-info"><i class="fas fa-shield-alt"></i> Acceso exclusivo para establecimientos</div>
         <div class="error" id="error"></div>
@@ -22,26 +40,25 @@
             </div>
             <div class="form-group">
                 <label><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" placeholder="Tu contraseña" required autocomplete="current-password">
+                <input type="password" id="password" placeholder="Tu contraseña" required
+                    autocomplete="current-password">
             </div>
             <button type="submit" id="btnLogin" class="btn btn-primary btn-block">
                 <i class="fas fa-sign-in-alt"></i> Ingresar a mi Tienda
             </button>
         </form>
-        <a href="../frontend/index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+        <a href="../app-tiendas/index-tienda.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
     </div>
 
     <script src="assets/js/config-tienda.js"></script>
     <script>
-        if (obtenerSesionTienda().token) window.location.href = 'panel.html';
-
-        document.getElementById("formLoginTienda").addEventListener("submit", async function(e) {
+        document.getElementById("formLoginTienda").addEventListener("submit", async function (e) {
             e.preventDefault();
             const usuario = document.getElementById("usuario").value.trim();
             const password = document.getElementById("password").value.trim();
             const errorDiv = document.getElementById("error");
             const btn = document.getElementById("btnLogin");
-            
+
             errorDiv.style.display = "none";
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
@@ -56,7 +73,7 @@
 
                 if (response.ok && data.token) {
                     guardarSesionTienda(data.token, data.tienda);
-                    window.location.href = "panel.html";
+                    window.location.href = "index-tienda.html";
                 } else {
                     errorDiv.textContent = data.error || "Credenciales incorrectas";
                     errorDiv.style.display = "block";
@@ -72,4 +89,5 @@
         });
     </script>
 </body>
+
 </html>

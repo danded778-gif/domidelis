@@ -21,7 +21,7 @@ async function fetchConToken(url, opciones = {}) {
         cerrarSesion(); // Si no hay token, lo sacamos
         throw new Error('Sesión expirada');
     }
-    
+
     opciones.headers = opciones.headers || {};
     if (opciones.headers instanceof Headers) {
         opciones.headers.append('Authorization', `Bearer ${token}`);
@@ -49,7 +49,6 @@ function escapeQuotes(str) {
 function formatearFecha(fechaStr) {
     if (!fechaStr) return '-';
     return new Date(fechaStr).toLocaleString('es-CO', {
-        timeZone: 'America/Bogota',
         day: '2-digit', month: '2-digit', year: 'numeric',
         hour: '2-digit', minute: '2-digit'
     });
@@ -122,8 +121,8 @@ async function notificarPushAdmin(titulo, opciones = {}) {
         const reg = await navigator.serviceWorker.ready;
         await reg.showNotification(titulo, {
             body: opciones.body || '',
-            icon: opciones.icon || '/domidelis/assets/img/icon-192x192.png',
-            badge: opciones.badge || '/domidelis/assets/img/icon-192x192.png',
+            icon: opciones.icon || '/assets/img/icon-192x192.png',
+            badge: opciones.badge || '/assets/img/icon-192x192.png',
             tag: opciones.tag || 'admin-pedido',
             requireInteraction: true,
             vibrate: [200, 100, 200],
@@ -191,9 +190,7 @@ document.addEventListener('click', function handler() {
 async function activarPermisos() {
     initAudio();
     if (audioContext?.state === 'suspended') {
-        try { await audioContext.resume(); } catch (e) {
-            console.warn('No se pudo activar audio:', e);
-        }
+        try { await audioContext.resume(); } catch (e) { }
     }
 
     let permiso = false;
@@ -207,7 +204,7 @@ async function activarPermisos() {
     if (banner) banner.style.display = 'none';
 
     if (permiso && typeof pushManager !== 'undefined') {
-        const vapidRes = await fetchConToken(`${API_URL}/vapid-public-key`); // ✅ Con token
+        const vapidRes = await fetchConToken(`${API_URL}/api/vapid-public-key`); // ✅ Con token
         const { publicKey } = await vapidRes.json();
         await pushManager.init(publicKey);
     }
@@ -280,13 +277,14 @@ function cerrarModalTienda() {
 
 async function guardarTienda() {
     const btn = document.querySelector("#formTienda button[type='submit']");
-    const datos = {
+        const datos = {
         nombre: document.getElementById("tiendaNombre").value.trim(),
         descripcion: document.getElementById("tiendaDescripcion").value.trim(),
         direccion: document.getElementById("tiendaDireccion").value.trim(),
         horario: document.getElementById("tiendaHorario").value.trim(),
         imagen: document.getElementById("tiendaImagen").value.trim(),
-        rating: document.getElementById("tiendaRating").value || 5
+        rating: document.getElementById("tiendaRating").value || 5,
+        comision: document.getElementById("tiendaComision").value || 20
     };
     if (!datos.nombre || !datos.direccion) {
         mostrarNotificacion("Nombre y dirección obligatorios", "error");
@@ -329,6 +327,7 @@ async function editarTienda(id) {
     document.getElementById("tiendaHorario").value = tienda.horario || '11am - 10pm';
     document.getElementById("tiendaImagen").value = tienda.imagen || '';
     document.getElementById("tiendaRating").value = tienda.rating || 5;
+    document.getElementById("tiendaComision").value = tienda.comision || 20; //comision por defecto 
     document.getElementById("modalTienda").classList.add("active");
 }
 
@@ -663,28 +662,7 @@ async function verDetallePedido(pedidoId) {
                 <p><strong>Estado:</strong> <span class="badge badge-${pedido.estado.replace(/\s/g, '-')}">${pedido.estado}</span></p>
                 <h4>Productos:</h4>
                 <div class="productos-lista">
-                    ${(() => {
-                        const tiendas = {};
-                        productos.forEach(prod => {
-                            const key = prod.tiendaNombre || 'Sin tienda';
-                            if (!tiendas[key]) tiendas[key] = [];
-                            tiendas[key].push(prod);
-                        });
-                        return Object.entries(tiendas).map(([tienda, prods]) => `
-                            <div style="margin-bottom:0.8rem;">
-                                <div style="font-size:0.8rem;font-weight:600;color:var(--secondary);
-                                            padding:0.3rem 0.6rem;background:var(--light);
-                                            border-radius:6px;margin-bottom:0.4rem;
-                                            display:flex;align-items:center;gap:0.4rem;">
-                                    <i class="fas fa-store"></i> ${tienda}
-                                </div>
-                                ${prods.map(prod => `
-                                    <div class="producto-item">
-                                        <span>${prod.cantidad}x ${prod.nombre} (${prod.cantidadTipo} UND)</span>
-                                        <span>${formatearPrecio(prod.subtotal)}</span>
-                                    </div>`).join('')}
-                            </div>`).join('');
-                    })()}
+                    ${productos.map(prod => `<div class="producto-item"><span>${prod.cantidad}x ${prod.nombre} (${prod.cantidadTipo} UND)</span><span>${formatearPrecio(prod.subtotal)}</span></div>`).join('')}
                 </div>
                 <div class="total-pedido"><strong>Total: ${formatearPrecio(pedido.total)}</strong></div>
             </div>
@@ -877,12 +855,9 @@ function actualizarCheckboxMaestro() {
 }
 
 function actualizarBotonesAccionMasiva() {
-    const contenedor = document.getElementById('accionesMasivas');
     const btnEliminar = document.getElementById('btnEliminarSeleccionados');
     const contador = document.getElementById('contadorSeleccionados');
     const cantidad = pedidosSeleccionados.size;
-
-    if (contenedor) contenedor.style.display = cantidad > 0 ? 'flex' : 'none';
     if (btnEliminar) btnEliminar.style.display = cantidad > 0 ? 'inline-flex' : 'none';
     if (contador) contador.textContent = cantidad > 0 ? `${cantidad} seleccionado${cantidad !== 1 ? 's' : ''}` : '';
 }
@@ -961,13 +936,8 @@ let domiciliarioEditando = null;
 
 async function cargarDomiciliariosAdmin() {
     try {
-        const [resDomis, resPedidos] = await Promise.all([
-            fetchConToken(`${API_URL}?action=getDomiciliarios`),
-            fetchConToken(`${API_URL}?action=getPedidos`)
-        ]);
-
-        const domiciliarios = await resDomis.json();
-        const todosPedidos = await resPedidos.json();
+        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); // ✅ Con token
+        const domiciliarios = await res.json();
         domiciliariosCache = domiciliarios;
 
         const badge = document.getElementById('badge-domiciliarios');
@@ -984,13 +954,14 @@ async function cargarDomiciliariosAdmin() {
             return;
         }
 
-        // Contar pedidos por domiciliario desde datos reales
         const conteoPedidos = {};
-        todosPedidos.forEach(p => {
-            if (p.domiciliarioId) {
-                conteoPedidos[p.domiciliarioId] = (conteoPedidos[p.domiciliarioId] || 0) + 1;
-            }
-        });
+        if (window._infPedidos) {
+            window._infPedidos.forEach(p => {
+                if (p.domiciliarioId) {
+                    conteoPedidos[p.domiciliarioId] = (conteoPedidos[p.domiciliarioId] || 0) + 1;
+                }
+            });
+        }
 
         tbody.innerHTML = domiciliarios.map(d => `
             <tr>
@@ -1016,7 +987,6 @@ async function cargarDomiciliariosAdmin() {
         mostrarNotificacion('Error cargando domiciliarios', 'error');
     }
 }
-
 
 function mostrarModalDomiciliario() {
     domiciliarioEditando = null;
@@ -1054,6 +1024,7 @@ async function editarDomiciliario(id) {
     document.getElementById('domiNombre').value = domi.nombre;
     document.getElementById('domiTelefono').value = domi.telefono || '';
     document.getElementById('domiPassword').value = domi.password || '';
+    document.getElementById('domiComisionApp').value = domi.comisionApp || 0; // <--- AGREGAR ESTO 
     document.getElementById('domiPassword').type = 'text';
     document.getElementById('domi-eye-icon').className = 'fas fa-eye-slash';
     document.getElementById('modalDomiciliario').classList.add('active');
@@ -1064,7 +1035,8 @@ async function guardarDomiciliario() {
     const datos = {
         nombre: document.getElementById('domiNombre').value.trim(),
         telefono: document.getElementById('domiTelefono').value.trim(),
-        password: document.getElementById('domiPassword').value.trim()
+        password: document.getElementById('domiPassword').value.trim(),
+        comisionApp: document.getElementById('domiComisionApp').value.trim() //<--- AGREGAR porcentaje comisión app
     };
 
     if (!datos.nombre || !datos.password) {

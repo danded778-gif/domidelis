@@ -133,7 +133,7 @@ const suscripciones = new Map();
 // ============================================
 // GOOGLE APPS SCRIPT — URL fija
 // ============================================
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzWPItJZZ-UK2CcPbi0v5BqQiv_WR5-DAxCE2HAW3VWx5Kv5Yfs9nPPXc_UyCm_eSv6Eg/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyyim2bPG3F51TtXFTWW7VtpaCs1cKlyfNfWeytRvRlJhtgXRHJRYWs0b3tEcIjm8TnEQ/exec';
 
 // ============================================
 // ENDPOINTS DE SUSCRIPCIÓN PUSH
@@ -244,16 +244,17 @@ async function obtenerPedidoPorId(pedidoId) {
 }
 
 // ============================================
-// SERVIR FRONTEND ESTÁTICO (Local y Producción)
+// SERVIR FRONTEND ESTÁTICO — Solo en desarrollo
 // ============================================
-const frontendPath = path.join(__dirname, '../frontend');
-app.use(express.static(frontendPath));
-console.log(`📂 Sirviendo frontend desde: ${frontendPath}`);
-
-// Servir la App de Tiendas
-const tiendasPath = path.join(__dirname, '../app-tiendas');
-app.use('/app-tiendas', express.static(tiendasPath));
-console.log(`📂 Sirviendo app-tiendas desde: ${tiendasPath}`);
+if (isDev) {
+    const frontendPath = path.join(__dirname, '../frontend');
+    console.log(`📂 Sirviendo frontend desde: ${frontendPath}`);
+    app.use(express.static(frontendPath));
+    // 🚀 NUEVO: Servir la App de Tiendas
+    const tiendasPath = path.join(__dirname, '../app-tiendas');
+    console.log(`📂 Sirviendo app-tiendas desde: ${tiendasPath}`);
+    app.use('/app-tiendas', express.static(tiendasPath));
+}
 
 app.get('/api/status', (req, res) => {
     res.json({ status: 'online', modo: isDev ? 'development' : 'production' });

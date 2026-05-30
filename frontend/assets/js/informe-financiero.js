@@ -1,6 +1,6 @@
 // ============================================
 // informe-financiero.js — Informes del panel admin
-// Chart.js + lógica financiera
+// Chart.js + lógica financiera (Con comisiones)
 // ============================================
 
 let informeCargado = false;
@@ -81,31 +81,42 @@ function establecerPeriodo(periodo, btn) {
             desde.value = hoy;
             hasta.value = hoy;
             break;
+
         case 'ayer': {
-            const ayer = new Date(hoy);
-            ayer.setDate(hoy.getDate() - 1);
-            desde.value = fmt(ayer);
-            hasta.value = fmt(ayer);
+            const ayer = new Date(hoy + 'T12:00:00-05:00');
+            ayer.setDate(ayer.getDate() - 1);
+            const ayerStr = formatearFechaColombiana(ayer);
+            desde.value = ayerStr;
+            hasta.value = ayerStr;
             break;
         }
+
         case 'semana': {
-            const lunes = new Date(hoy);
-            lunes.setDate(hoy.getDate() - hoy.getDay());
-            lunes.setHours(0, 0, 0, 0);
-            desde.value = fmt(lunes);
-            hasta.value = fmt(hoy);
+            const ahora = new Date(new Date().toLocaleString(
+                'en-US', { timeZone: 'America/Bogota' }
+            ));
+            const diaSemana = ahora.getDay();
+            const diasHastaLunes = diaSemana === 0 ? 6 : diaSemana - 1;
+            ahora.setDate(ahora.getDate() - diasHastaLunes);
+            desde.value = formatearFechaColombiana(ahora);
+            hasta.value = hoy;
             break;
         }
-        case 'mes':
-            desde.value = fmt(new Date(hoy.getFullYear(), hoy.getMonth(), 1));
-            hasta.value = fmt(hoy);
+
+        case 'mes': {
+            const [anio, mes] = hoy.split('-');
+            desde.value = `${anio}-${mes}-01`;
+            hasta.value = hoy;
             break;
+        }
+
         case 'todos':
         default:
             desde.value = '';
             hasta.value = '';
             break;
     }
+
     aplicarFiltrosInforme();
 }
 
@@ -117,71 +128,64 @@ function aplicarFiltrosInforme() {
     const tiendaId = document.getElementById('inf-tienda').value;
     const metodo = document.getElementById('inf-metodo').value;
 
-    document.querySelectorAll('.inf-preset-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.inf-preset-btn')
+        .forEach(b => b.classList.remove('active'));
 
     let filtrados = [...window._infPedidos];
 
     if (desde) {
-        const d = new Date(desde + 'T00:00:00');
-        filtrados = filtrados.filter(p => new Date(p.fecha) >= d);
+        const desdeFecha = fechaColombiaADate(desde, false);
+        filtrados = filtrados.filter(p => new Date(p.fecha) >= desdeFecha);
     }
+
     if (hasta) {
-        const d = new Date(hasta + 'T23:59:59');
-        filtrados = filtrados.filter(p => new Date(p.fecha) <= d);
-    }
-    if (metodo) {
-        filtrados = filtrados.filter(p => (p.metodoPago || '') === metodo);
+        const hastaFecha = fechaColombiaADate(hasta, true);
+        filtrados = filtrados.filter(p => new Date(p.fecha) <= hastaFecha);
     }
 
     if (tiendaId) {
-        filtrados = filtrados
-            .map(p => {
-                let productos = [];
-                try { productos = JSON.parse(p.productosJson || '[]'); } catch (e) { }
+        filtrados = filtrados.filter(p => {
+            let productos = [];
+            try { productos = JSON.parse(p.productosJson || '[]'); } catch (e) {}
+            return productos.some(pr => String(pr.tiendaId) === tiendaId);
+        });
+    }
 
-                const productosFiltrados = productos.filter(
-                    pr => String(pr.tiendaId) === tiendaId
-                );
-
-                if (productosFiltrados.length === 0) return null;
-
-                const nuevoTotal = productosFiltrados.reduce(
-                    (s, pr) => s + (parseFloat(pr.subtotal) || 0), 0
-                );
-
-                return {
-                    ...p,
-                    productosJson: JSON.stringify(productosFiltrados),
-                    total: nuevoTotal
-                };
-            })
-            .filter(Boolean);
+    if (metodo) {
+        filtrados = filtrados.filter(p => (p.metodoPago || '') === metodo);
     }
 
     renderizarInforme(filtrados);
 }
 
-// ─── CÁLCULOS FINANCIEROS ──────────────────
+// ─── CÁLCULOS FINANCIEROS (CON COMISIONES) ──────────────────
+function obtenerComisionTienda(tid) {
+    if (!window._infTiendas) return 20; // Por defecto 20% si no hay datos
+    const t = window._infTiendas.find(t => String(t.id) === String(tid));
+    return t && t.comision ? parseFloat(t.comision) : 20; // Si la tienda no tiene, asume 20%
+}
+
 function calcularDatos(pedidos) {
-    let totalIngresos = 0;   // Suma de domicilios (tu ganancia)
-    let totalEgresos = 0;    // Suma de productos (devuelves a tiendas)
-    let totalCobrado = 0;    // Lo que pagó el cliente (productos + domicilio)
-    let tiendasMap = new Map(); // { tiendaId: { nombre, total, metodos: {}, pedidos: Set } }
-    let metodosGlobal = {};   // { 'Efectivo': total, 'Nequi': total, ... }
+    let totalDomicilios = 0;    // Lo que cobras por envío
+    let totalProductos = 0;     // Valor total vendido en productos
+    let totalComisiones = 0;    // Tu ganancia por porcentaje sobre productos
+    let totalPagarTiendas = 0;  // Lo que realmente le transfieres a las tiendas
+    let totalCobrado = 0;       // Lo que pagó el cliente en total (productos + envío)
+    
+    let tiendasMap = new Map();
+    let metodosGlobal = {};
 
     pedidos.forEach(pedido => {
         let productos = [];
         try { productos = JSON.parse(pedido.productosJson || '[]'); } catch (e) { }
 
-        // Calcular subtotal productos y envío
         const subtotalProductos = productos.reduce((s, pr) => s + (parseFloat(pr.subtotal) || 0), 0);
         const envio = parseFloat(pedido.total) - subtotalProductos;
         const totalPedido = parseFloat(pedido.total) || 0;
         const metodo = pedido.metodoPago || 'Efectivo';
 
-        // Acumular globales
-        totalIngresos += Math.max(0, envio);
-        totalEgresos += subtotalProductos;
+        totalDomicilios += Math.max(0, envio);
+        totalProductos += subtotalProductos;
         totalCobrado += totalPedido;
         metodosGlobal[metodo] = (metodosGlobal[metodo] || 0) + totalPedido;
 
@@ -199,26 +203,43 @@ function calcularDatos(pedidos) {
         });
 
         tiendasEnPedido.forEach((info, tid) => {
+            // CÁLCULO DE COMISIÓN
+            const comisionPct = obtenerComisionTienda(tid);
+            const montoComision = info.monto * (comisionPct / 100);
+            const montoPagar = info.monto - montoComision;
+
+            totalComisiones += montoComision;
+            totalPagarTiendas += montoPagar;
+
             if (!tiendasMap.has(tid)) {
                 tiendasMap.set(tid, {
                     nombre: info.nombre,
-                    total: 0,
+                    total: 0,        // Total vendido por la tienda
+                    comision: 0,     // Lo que te quedas tú
+                    aPagar: 0,       // Lo que le pagas a la tienda
                     metodos: {},
                     pedidos: new Set()
                 });
             }
             const td = tiendasMap.get(tid);
             td.total += info.monto;
+            td.comision += montoComision;
+            td.aPagar += montoPagar;
             td.metodos[metodo] = (td.metodos[metodo] || 0) + info.monto;
             td.pedidos.add(pedido.id);
         });
     });
 
+    // Ingreso Neto de la App = Domicilios cobrados + Comisiones cobradas
+    const totalIngresosApp = totalDomicilios + totalComisiones;
+
     return {
-        totalIngresos,
-        totalEgresos,
         totalCobrado,
-        balance: totalIngresos - totalEgresos,
+        totalProductos,
+        totalDomicilios,
+        totalComisiones,
+        totalIngresosApp,       // Tu ganancia real
+        totalPagarTiendas,     // Lo que le debes a las tiendas
         cantidadPedidos: pedidos.length,
         tiendas: tiendasMap,
         metodos: metodosGlobal
@@ -254,18 +275,13 @@ function renderKPIs(datos) {
     const elBalanceSub = document.getElementById('inf-kpi-balance-sub');
     const elPedidos = document.getElementById('inf-kpi-pedidos');
 
-    animarValor(elIngresos, datos.totalIngresos);
-    animarValor(elEgresos, datos.totalEgresos);
-    animarValor(elBalance, datos.balance);
+    animarValor(elIngresos, datos.totalIngresosApp); // Tu ganancia real (Envíos + Comisiones)
+    animarValor(elEgresos, datos.totalPagarTiendas); // Lo que le pagas a las tiendas
+    animarValor(elBalance, datos.totalComisiones);   // Destacamos la comisión ganada
     elPedidos.textContent = datos.cantidadPedidos;
 
-    if (datos.balance < 0) {
-        elBalanceCard.classList.add('negativo');
-        elBalanceSub.textContent = 'Pérdida neta';
-    } else {
-        elBalanceCard.classList.remove('negativo');
-        elBalanceSub.textContent = 'Tu ganancia neta';
-    }
+    elBalanceCard.classList.remove('negativo');
+    elBalanceSub.textContent = 'Ganancia por comisiones';
 }
 
 function animarValor(elemento, valorFinal) {
@@ -294,8 +310,8 @@ function renderFlujo(datos) {
     const elDevuelves = document.getElementById('inf-flujo-devuelves');
 
     if (elCliente) elCliente.textContent = formatearPesos(datos.totalCobrado);
-    if (elRetienes) elRetienes.textContent = formatearPesos(datos.totalIngresos);
-    if (elDevuelves) elDevuelves.textContent = formatearPesos(datos.totalEgresos);
+    if (elRetienes) elRetienes.textContent = formatearPesos(datos.totalIngresosApp); // Domicilios + Comisiones
+    if (elDevuelves) elDevuelves.textContent = formatearPesos(datos.totalPagarTiendas); // Solo lo de las tiendas
 }
 
 // ─── TIENDA DESTACADA ───────────────────────
@@ -322,10 +338,10 @@ function renderDestacada(datos) {
     el.style.display = 'flex';
     document.getElementById('inf-destacada-nombre').textContent = topTienda.nombre;
     document.getElementById('inf-destacada-stats').textContent =
-        `${topTienda.pedidos} pedidos · ${formatearPesos(topTienda.total)} en productos`;
+        `${topTienda.pedidos} pedidos · ${formatearPesos(topTienda.total)} en ventas`;
 }
 
-// ─── CHART: BARRAS (Ingresos vs Egresos) ────
+// ─── CHART: BARRAS (Ganancia App vs Pago Tienda) ────
 function renderChartBarras(datos) {
     destruirChart('chartBarras');
 
@@ -333,25 +349,22 @@ function renderChartBarras(datos) {
     if (!canvas) return;
 
     const labels = [];
-    const datosIngresos = [];
-    const datosEgresos = [];
+    const datosGananciaApp = [];
+    const datosPagoTiendas = [];
 
     datos.tiendas.forEach((td) => {
         labels.push(td.nombre.length > 18 ? td.nombre.substring(0, 18) + '…' : td.nombre);
-        // El ingreso por tienda = proporción de envíos
-        // Como el envío es por pedido y un pedido puede tener varias tiendas,
-        // repartimos el envío proporcionalmente al monto de productos
-        datosEgresos.push(td.total);
-        datosIngresos.push(0); // Se calcula abajo
+        
+        // Ingreso de la app por esta tienda: su comisión + su proporción del domicilio
+        let domicilioProporcional = 0;
+        if (datos.totalProductos > 0) {
+            const proporcion = td.total / datos.totalProductos;
+            domicilioProporcional = Math.round(datos.totalDomicilios * proporcion);
+        }
+        
+        datosGananciaApp.push(td.comision + domicilioProporcional);
+        datosPagoTiendas.push(td.aPagar); // Esto ya es el total menos la comisión
     });
-
-    // Calcular ingreso proporcional por tienda
-    if (datos.totalEgresos > 0) {
-        datos.tiendas.forEach((td, i) => {
-            const proporcion = td.total / datos.totalEgresos;
-            datosIngresos[i] = Math.round(datos.totalIngresos * proporcion);
-        });
-    }
 
     chartsInstancias['chartBarras'] = new Chart(canvas, {
         type: 'bar',
@@ -359,15 +372,15 @@ function renderChartBarras(datos) {
             labels,
             datasets: [
                 {
-                    label: 'Ingresos (Domicilios)',
-                    data: datosIngresos,
+                    label: 'Tu Ganancia (Comisión + Envío)',
+                    data: datosGananciaApp,
                     backgroundColor: 'rgba(42, 157, 143, 0.8)',
                     borderRadius: 6,
                     borderSkipped: false
                 },
                 {
-                    label: 'Egresos (Productos)',
-                    data: datosEgresos,
+                    label: 'A Pagar a Tienda',
+                    data: datosPagoTiendas,
                     backgroundColor: 'rgba(230, 57, 70, 0.8)',
                     borderRadius: 6,
                     borderSkipped: false
@@ -525,7 +538,6 @@ function renderResumenMetodos(datos) {
         return;
     }
 
-    // Ordenar de mayor a menor
     const ordenados = Object.entries(datos.metodos)
         .sort((a, b) => b[1] - a[1]);
 
@@ -543,18 +555,18 @@ function renderResumenMetodos(datos) {
     }).join('');
 }
 
-// ─── TABLA DESGLOSE POR TIENDA ─────────────
+// ─── TABLA DESGLOSE POR TIENDA (CON COMISIONES) ─────────────
 function renderTablaDesglose(datos) {
     const tbody = document.querySelector('#inf-tabla-desglose tbody');
     if (!tbody) return;
 
     if (datos.tiendas.size === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--gray);">Sin datos en este período</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--gray);">Sin datos en este período</td></tr>';
         return;
     }
 
     let htmlFilas = '';
-    let totalGeneral = 0;
+    let totalGeneral = 0, totalComisiones = 0, totalPagar = 0;
     let totalEfectivo = 0, totalNequi = 0, totalDaviplata = 0, totalTransferencia = 0;
     let totalPedidos = 0;
 
@@ -565,6 +577,8 @@ function renderTablaDesglose(datos) {
         const transferencia = td.metodos['Transferencia'] || 0;
 
         totalGeneral += td.total;
+        totalComisiones += td.comision;
+        totalPagar += td.aPagar;
         totalEfectivo += efectivo;
         totalNequi += nequi;
         totalDaviplata += daviplata;
@@ -575,7 +589,9 @@ function renderTablaDesglose(datos) {
             <tr>
                 <td><strong>${escapeQuotes(td.nombre)}</strong></td>
                 <td style="text-align:center;">${td.pedidos.size}</td>
-                <td><strong style="color:var(--danger);">${formatearPesos(td.total)}</strong></td>
+                <td>${formatearPesos(td.total)}</td>
+                <td style="color:var(--success);"><strong>${formatearPesos(td.comision)}</strong></td>
+                <td style="color:var(--danger);"><strong>${formatearPesos(td.aPagar)}</strong></td>
                 <td>${efectivo > 0 ? `<span class="inf-metodo-tag efectivo">${formatearPesos(efectivo)}</span>` : '—'}</td>
                 <td>${nequi > 0 ? `<span class="inf-metodo-tag nequi">${formatearPesos(nequi)}</span>` : '—'}</td>
                 <td>${daviplata > 0 ? `<span class="inf-metodo-tag daviplata">${formatearPesos(daviplata)}</span>` : '—'}</td>
@@ -589,7 +605,9 @@ function renderTablaDesglose(datos) {
         <tr class="total-row">
             <td><strong>TOTAL</strong></td>
             <td style="text-align:center;"><strong>${totalPedidos}</strong></td>
-            <td><strong style="color:var(--danger);">${formatearPesos(totalGeneral)}</strong></td>
+            <td><strong>${formatearPesos(totalGeneral)}</strong></td>
+            <td style="color:var(--success);"><strong>${formatearPesos(totalComisiones)}</strong></td>
+            <td style="color:var(--danger);"><strong>${formatearPesos(totalPagar)}</strong></td>
             <td>${totalEfectivo > 0 ? `<span class="inf-metodo-tag efectivo">${formatearPesos(totalEfectivo)}</span>` : '—'}</td>
             <td>${totalNequi > 0 ? `<span class="inf-metodo-tag nequi">${formatearPesos(totalNequi)}</span>` : '—'}</td>
             <td>${totalDaviplata > 0 ? `<span class="inf-metodo-tag daviplata">${formatearPesos(totalDaviplata)}</span>` : '—'}</td>
@@ -607,6 +625,7 @@ function destruirChart(id) {
         delete chartsInstancias[id];
     }
 }
+
 function hoyEnColombia() {
     return new Date().toLocaleDateString('en-CA', { 
         timeZone: 'America/Bogota' 
