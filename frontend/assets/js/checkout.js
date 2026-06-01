@@ -15,7 +15,7 @@
         renderResumen();    // Muestra los productos y calcula el envío
         initPagoSeleccion();
         initFormSubmit();
-         // ★ MOSTRAR CÓDIGO PROMO SI EXISTE EN LA MEMORIA ★
+        // ★ MOSTRAR CÓDIGO PROMO SI EXISTE EN LA MEMORIA ★
         const codigoGuardado = localStorage.getItem('domidelis_codigo_promo');
         const grupoCodigo = document.getElementById('grupo-codigo-promo');
         const inputCodigo = document.getElementById('codigoPromoCheckout');
@@ -114,12 +114,19 @@
 
         container.innerHTML = html;
 
-        const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
-        const envio = zona.envio;
+        const envio = calcularEnvio(carrito);
         const total = subtotal + envio;
+        const recargo = descripcionRecargo(carrito);
 
         document.getElementById('resumenSubtotal').textContent = formatearPrecio(subtotal);
-        document.getElementById('resumenEnvio').textContent = formatearPrecio(envio);
+
+        const envioEl = document.getElementById('resumenEnvio');
+        if (recargo) {
+            envioEl.innerHTML = `${formatearPrecio(envio)} <span style="background:#fff0f0;color:#c62828;font-size:0.72rem;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:4px;">${recargo}</span>`;
+        } else {
+            envioEl.textContent = formatearPrecio(envio);
+        }
+
         document.getElementById('resumenTotal').textContent = formatearPrecio(total);
     }
 
@@ -229,7 +236,7 @@
             const cant = parseInt(item.cantidad) || 1;
             subtotal += (item.subtotal) ? parseInt(item.subtotal) : (precio * cant);
         });
-        const envio = zona.envio;
+        const envio = calcularEnvio(carrito);
         const total = subtotal + envio;
 
         const pedidoId = Date.now().toString(36).toUpperCase() +
@@ -403,7 +410,7 @@
         msg += `💰 *TOTAL:* ${formatearPrecio(data.total)}\n\n`;
         msg += `💳 *Pago:* ${data.metodoPago}\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n`;
-          // ★ ENVIAR CÓDIGO EN WHATSAPP SI HAY ★
+        // ★ ENVIAR CÓDIGO EN WHATSAPP SI HAY ★
         const codigoPromo = localStorage.getItem('domidelis_codigo_promo');
         if (codigoPromo) {
             msg += `\n🎟️ *CÓDIGO DE PROMOCIÓN:* ${codigoPromo}\n`;

@@ -30,7 +30,7 @@ function inicializarEventos() {
             mobileMenu.classList.toggle("active");
         };
     }
-        // ★ LÓGICA DEL POPUP - VALIDAR Y GUARDAR CÓDIGO ★
+    // ★ LÓGICA DEL POPUP - VALIDAR Y GUARDAR CÓDIGO ★
     const popupOverlay = document.getElementById('popupOverlay');
     const popupAnuncio = document.getElementById('popupAnuncio');
     const popupCerrarBtn = document.getElementById('popupCerrarBtn');
@@ -40,8 +40,8 @@ function inicializarEventos() {
     const exitoDiv = document.getElementById('popupExito');
 
     function cerrarPopup() {
-        if(popupOverlay) popupOverlay.classList.remove('mostrar');
-        if(popupAnuncio) popupAnuncio.classList.remove('mostrar');
+        if (popupOverlay) popupOverlay.classList.remove('mostrar');
+        if (popupAnuncio) popupAnuncio.classList.remove('mostrar');
         document.body.style.overflow = '';
     }
 
@@ -49,10 +49,10 @@ function inicializarEventos() {
     if (popupOverlay) popupOverlay.onclick = cerrarPopup;
 
     if (validarBtn && codigoInput) {
-        validarBtn.onclick = function() {
+        validarBtn.onclick = function () {
             const CODIGOS_VALIDOS = ["DOMIDELIS50", "JUDEA50", "CHAPA50", "CENTRO50"]; // ★ EDITA TUS CÓDIGOS AQUÍ ★
             const codigoIngresado = codigoInput.value.trim().toUpperCase();
-            
+
             if (CODIGOS_VALIDOS.includes(codigoIngresado)) {
                 localStorage.setItem('domidelis_codigo_promo', codigoIngresado);
                 codigoContainer.style.display = 'none';
@@ -68,7 +68,7 @@ function inicializarEventos() {
                 }, 2000);
             }
         };
-        codigoInput.addEventListener('keypress', function(e) {
+        codigoInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') { e.preventDefault(); validarBtn.click(); }
         });
     }
@@ -415,12 +415,16 @@ function actualizarCarritoUI() {
     }
 
     const subtotal = carrito.reduce((s, i) => s + i.subtotal, 0);
-    const envio = APP_CONFIG.zonas[APP_CONFIG.zonaActual]?.envio || APP_CONFIG.envioBase;
+    const envio = calcularEnvio(carrito);
     const total = subtotal + envio;
+    const recargo = descripcionRecargo(carrito);
 
     const totalPriceEl = document.getElementById("cart-total-price");
     if (totalPriceEl) {
-        totalPriceEl.innerHTML = `${formatearPrecio(total)} <small>(envío: ${formatearPrecio(envio)})</small>`;
+        const recargoHtml = recargo
+            ? ` <span style="color:var(--primary);font-size:0.75rem;font-weight:600;">${recargo}</span>`
+            : '';
+        totalPriceEl.innerHTML = `${formatearPrecio(total)} <small>(envío: ${formatearPrecio(envio)}${recargoHtml ? '' : ''})</small>${recargoHtml}`;
     }
 }
 

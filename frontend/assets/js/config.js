@@ -122,6 +122,33 @@ function escapeQuotes(str) {
     return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
+function calcularEnvio(carritoItems) {
+    const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
+    const base = zona.envio;
+
+    const tiendas = new Set(
+        carritoItems
+            .filter(item => item.tiendaId)
+            .map(item => String(item.tiendaId))
+    );
+    const n = tiendas.size || 1;
+
+    const factor = Math.min(1 + 0.3 * (n - 1), 2.0);
+    return Math.round(base * factor);
+}
+
+function descripcionRecargo(carritoItems) {
+    const tiendas = new Set(
+        carritoItems
+            .filter(item => item.tiendaId)
+            .map(item => String(item.tiendaId))
+    );
+    const n = tiendas.size || 1;
+    if (n <= 1) return null;
+    const pct = Math.round(Math.min(0.3 * (n - 1), 1.0) * 100);
+    return `+${pct}% aplicado por ${n} tiendas`;
+}
+
 // ============================================
 // SOCKET.IO — Conexión global compartida
 // ============================================
