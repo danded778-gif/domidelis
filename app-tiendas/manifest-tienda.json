@@ -1,7 +1,7 @@
 {
-  "name": "DOMICILIOS",
-  "short_name": "SOLUVENCON",
-  "description": "Tu app de tiendas favorita. Rápida, fácil y seguro.",
+  "name": "DOMICILIOSDOMIDELIS - Panel de Tienda",
+  "short_name": "Mi Tienda",
+  "description": "Administra los pedidos y productos de tu tienda",
   "start_url": "./index-tienda.html",
   "scope": ".",
   "display": "standalone",
