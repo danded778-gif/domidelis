@@ -17,19 +17,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Mi Tienda">
-    <link rel="apple-touch-icon" href="/app-tiendas/assets/img/icon-152x152.png">
-    <link rel="manifest" href="manifest-tienda.json">
+    <!-- RUTAS CORREGIDAS A RELATIVAS -->
+    <link rel="apple-touch-icon" href="./assets/img/icon-152x152.png">
+    <link rel="manifest" href="./manifest-tienda.json">
 
     <title>Iniciar Sesión - Tiendas DOMIDELIS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/domidelis/app-tiendas/assets/css/tiendas.css">
+    <!-- RUTAS CORREGIDAS A RELATIVAS -->
+    <link rel="stylesheet" href="./assets/css/tiendas.css">
 </head>
 
 <body class="body-login">
     <div class="login-box">
-        <a href="/app-tiendas/login-tienda.html" class="logo-login"><i class="fas fa-store"></i> DOMI<span>DELIS</span></a>
+        <a href="./login-tienda.html" class="logo-login"><i class="fas fa-store"></i> DOMI<span>DELIS</span></a>
         <p class="subtitle">Portal de Administración de Tiendas</p>
         <div class="rol-info"><i class="fas fa-shield-alt"></i> Acceso exclusivo para establecimientos</div>
         <div class="error" id="error"></div>
@@ -47,10 +49,12 @@
                 <i class="fas fa-sign-in-alt"></i> Ingresar a mi Tienda
             </button>
         </form>
-        <a href="../app-tiendas/index-tienda.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+        <!-- RUTA CORREGIDA -->
+        <a href="./index-tienda.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
     </div>
 
-    <script src="assets/js/config-tienda.js"></script>
+    <!-- RUTA CORREGIDA -->
+    <script src="./assets/js/config-tienda.js"></script>
     <script>
         document.getElementById("formLoginTienda").addEventListener("submit", async function (e) {
             e.preventDefault();

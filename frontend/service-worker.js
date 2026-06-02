@@ -8,10 +8,8 @@ const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
     : 'soluvencon-v1.6.8'; 
 
-// ★ NUEVO: Baúl exclusivo para imágenes que NO se borrará con las actualizaciones de la app
 const IMAGES_CACHE_NAME = 'soluvencon-img-cache-v1'; 
 
-// Archivos que se cachean al instalar
 const ARCHIVOS_ESTATICOS = [
   '/domidelis/',
   '/domidelis/index.html',
@@ -37,7 +35,6 @@ const ARCHIVOS_ESTATICOS = [
   '/domidelis/assets/js/offline-game.js'
 ];
 
-// Recursos externos que también cacheamos
 const RECURSOS_EXTERNOS = [
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
@@ -46,40 +43,27 @@ const RECURSOS_EXTERNOS = [
 ];
 
 // ============================================
-// INSTALAR — Cachear todo lo estático
+// INSTALAR
 // ============================================
 self.addEventListener('install', (event) => {
   console.log('[SW] Instalando...');
-
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('[SW] Cacheando archivos estáticos...');
-        
         const promLocales = Promise.allSettled(
           ARCHIVOS_ESTATICOS.map(archivo => {
             return fetch(archivo)
               .then(resp => {
-                if (resp.ok) {
-                  return cache.put(archivo, resp);
-                } else {
-                  console.warn(`[SW] Archivo no encontrado (status ${resp.status}):`, archivo);
-                }
+                if (resp.ok) return cache.put(archivo, resp);
+                else console.warn(`[SW] Archivo no encontrado (status ${resp.status}):`, archivo);
               })
-              .catch(err => {
-                console.warn('[SW] Error al intentar cachear:', archivo, err.message);
-              });
+              .catch(err => console.warn('[SW] Error al intentar cachear:', archivo, err.message));
           })
         );
-
         const promExternos = Promise.allSettled(
-          RECURSOS_EXTERNOS.map(url =>
-            fetch(url).then(resp => {
-              if (resp.ok) return cache.put(url, resp);
-            }).catch(() => {})
-          )
+          RECURSOS_EXTERNOS.map(url => fetch(url).then(resp => { if (resp.ok) return cache.put(url, resp); }).catch(() => {}))
         );
-        
         return Promise.all([promLocales, promExternos]);
       })
       .then(() => {
@@ -90,17 +74,15 @@ self.addEventListener('install', (event) => {
 });
 
 // ============================================
-// ACTIVAR — Limpiar cachés viejas
+// ACTIVAR
 // ============================================
 self.addEventListener('activate', (event) => {
   console.log('[SW] Activando...');
-
   event.waitUntil(
     caches.keys()
       .then((nombresCache) => {
         return Promise.all(
           nombresCache
-            // ★ NUEVO: NO borrar la caché de imágenes cuando actualices la app
             .filter((nombre) => nombre !== CACHE_NAME && nombre !== IMAGES_CACHE_NAME)
             .map((nombre) => {
               console.log('[SW] Borrando caché vieja:', nombre);
@@ -116,11 +98,17 @@ self.addEventListener('activate', (event) => {
 });
 
 // ============================================
-// FETCH — Estrategia inteligente
+// FETCH
 // ============================================
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
+
+  // ★★★ NUEVA VALLA ★★★
+  // ─── NO interceptar la app de tiendas (tiene su propio SW) ───
+  if (url.pathname.includes('/app-tiendas/')) {
+    return; // Dejamos que la petición vaya a la red directamente sin pasar por este SW
+  }
 
   // ─── NO cachear peticiones a nuestra API ───
   if (url.pathname.startsWith('/api')) {
@@ -164,74 +152,54 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // ★ NUEVO: ESTRATEGIA DEDICADA PARA IMÁGENES DE GITHUB (Vital para 3G)
-  // Interceptamos las fotos de los productos antes de que pasen al bloque genérico
+  // ★ ESTRATEGIA DEDICADA PARA IMÁGENES DE GITHUB
   if (url.hostname.includes('githubusercontent.com') && 
      (url.pathname.includes('.jpg') || url.pathname.includes('.png') || url.pathname.includes('.webp'))) {
-    
     event.respondWith(
       caches.open(IMAGES_CACHE_NAME).then(cache => {
         return cache.match(request).then(cachedResponse => {
           if (cachedResponse) {
-            // ¡Ya la tenemos en el celular! La mostramos al instante
-            // Y de fondo, vamos a GitHub a buscar si hay una nueva (por si cambiaste la foto)
             fetch(request).then(networkResponse => {
-              if (networkResponse && networkResponse.ok) {
-                cache.put(request, networkResponse);
-              }
-            }).catch(() => {}); // Silenciar error si no hay red
-            
-            return cachedResponse; // Entrega instantánea
+              if (networkResponse && networkResponse.ok) cache.put(request, networkResponse);
+            }).catch(() => {});
+            return cachedResponse;
           }
-
-          // No está en caché (primera vez) → Vamos a GitHub
           return fetch(request).then(networkResponse => {
-            if (networkResponse && networkResponse.ok) {
-              // La guardamos en el baúl de imágenes para toda la vida
-              cache.put(request, networkResponse.clone());
-            }
+            if (networkResponse && networkResponse.ok) cache.put(request, networkResponse.clone());
             return networkResponse;
           });
         });
       })
     );
-    return; // Detenemos la ejecución para que no pase al bloque de abajo
+    return;
   }
 
-  // ─── CACHE FIRST para todo lo demás (HTML, CSS, JS, fuentes) ───
+  // ─── CACHE FIRST para todo lo demás ───
   event.respondWith(
     caches.match(request)
       .then((cached) => {
         if (cached) {
-          // Actualizar caché en segundo plano
           const fetchPromise = fetch(request)
             .then((networkResponse) => {
               if (networkResponse && networkResponse.ok) {
-                caches.open(CACHE_NAME).then(cache => {
-                  cache.put(request, networkResponse);
-                });
+                caches.open(CACHE_NAME).then(cache => cache.put(request, networkResponse));
               }
               return networkResponse;
             })
             .catch(() => null);
-
           return cached;
         }
-
-        // No está en caché → ir a la red
         return fetch(request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.ok) {
               const clon = networkResponse.clone();
-              caches.open(CACHE_NAME).then(cache => {
-                cache.put(request, clon);
-              });
+              caches.open(CACHE_NAME).then(cache => cache.put(request, clon));
             }
             return networkResponse;
           })
           .catch(() => {
             if (request.headers.get('accept')?.includes('text/html')) {
-              return caches.match('/index.html');
+              return caches.match('/domidelis/index.html'); // Este solo aplica si falla el index principal
             }
             return new Response('', { status: 408 });
           });
@@ -240,13 +208,11 @@ self.addEventListener('fetch', (event) => {
 });
 
 // ============================================
-// PUSH Y CLICK EN NOTIFICACIÓN (Quedan igual)
+// PUSH Y CLICK (Quedan igual)
 // ============================================
 self.addEventListener('push', (event) => {
-  console.log('[SW] Push recibido');
   let data = {};
   try { data = event.data.json(); } catch (e) { data = { title: 'SOLUVENCON', body: 'Nueva notificación' }; }
-
   event.waitUntil(
     self.registration.showNotification(data.title || 'SOLUVENCON', {
       body: data.body || 'Nueva notificación',
