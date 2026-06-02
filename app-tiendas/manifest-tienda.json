@@ -2,7 +2,7 @@
   "name": "DOMICILIOS",
   "short_name": "SOLUVENCON",
   "description": "Tu app de tiendas favorita. Rápida, fácil y seguro.",
-  "start_url": "./index.html",
+  "start_url": "./index-tienda.html",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
