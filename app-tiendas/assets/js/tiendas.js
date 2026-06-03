@@ -1,21 +1,54 @@
-if (window.location.pathname.includes('panel.html')) {
-    const sesion = obtenerSesionTienda();
-    if (!sesion.token) {
-        window.location.href = 'index.html';
-    } else {
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('titulo-tienda').innerHTML = `<i class="fas fa-store"></i> ${sesion.nombre}`;
-            cargarProductos();
-        });
+// ============================================
+// UTILIDAD: Extraer nombre del Token JWT si hace falta
+// ============================================
+function obtenerNombreDesdeToken() {
+    const token = localStorage.getItem('tienda_token');
+    if (!token) return 'Mi Tienda';
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        const datosToken = JSON.parse(jsonPayload);
+        return datosToken.nombre || 'Mi Tienda';
+    } catch (e) {
+        return 'Mi Tienda';
     }
+}
+
+// ============================================
+// INICIALIZACIÓN
+// ============================================
+const sesion = obtenerSesionTienda();
+
+// CORRECCIÓN 1: Ya no busca 'panel.html', simplemente verifica si hay sesión y si estamos en la página correcta
+if (sesion && sesion.token) {
+    document.addEventListener('DOMContentLoaded', () => {
+        const tituloElement = document.getElementById('titulo-tienda');
+        if (tituloElement) {
+            // CORRECCIÓN 2: Si el nombre no se guardó en localStorage, lo sacamos directo del Token
+            const nombreTienda = sesion.nombre || obtenerNombreDesdeToken();
+            tituloElement.innerHTML = `<i class="fas fa-store"></i> ${nombreTienda}`;
+        }
+        
+        // CORRECCIÓN 3: Esto ahora sí se ejecutará automáticamente al entrar
+        cargarProductos(); 
+    });
 }
 
 // --- PESTAÑAS ---
 function cambiarTab(tab) {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(cont => cont.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    
+    // CORRECCIÓN 4: Se eliminó 'event.currentTarget' porque causa errores silenciosos en algunos navegadores
+    // Buscamos el botón directamente por su atributo onclick
+    const botonActivo = document.querySelector(`.tab-btn[onclick*="${tab}"]`);
+    if (botonActivo) botonActivo.classList.add('active');
+    
     document.getElementById(`tab-${tab}`).classList.add('active');
+    
     if (tab === 'pedidos') cargarPedidos();
     if (tab === 'productos') cargarProductos();
 }
@@ -29,7 +62,9 @@ async function cargarProductos() {
         if (res.status === 401 || res.status === 403) return cerrarSesionTienda();
         const productos = await res.json();
         renderizarProductos(productos);
-    } catch (error) { contenedor.innerHTML = `<p style="color:red;">Error de conexión.</p>`; }
+    } catch (error) { 
+        contenedor.innerHTML = `<p style="color:red; text-align:center;">Error de conexión.</p>`; 
+    }
 }
 
 function renderizarProductos(productos) {
@@ -64,7 +99,9 @@ async function cargarPedidos() {
         if (res.status === 401 || res.status === 403) return cerrarSesionTienda();
         const pedidos = await res.json();
         renderizarPedidos(pedidos);
-    } catch (error) { contenedor.innerHTML = `<p style="color:red;">Error de conexión.</p>`; }
+    } catch (error) { 
+        contenedor.innerHTML = `<p style="color:red; text-align:center;">Error de conexión.</p>`; 
+    }
 }
 
 function renderizarPedidos(pedidos) {
