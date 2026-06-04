@@ -47,7 +47,8 @@ const APP_CONFIG = {
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },
         hospital: { nombre: 'Hospital', envio: 5000 },
-        bodegas: { nombre: 'Sali Bodegas', envio: 6000 }
+        bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
+        nogal: { nombre: 'El Nogal', envio: 5000 }
 
         
     }
