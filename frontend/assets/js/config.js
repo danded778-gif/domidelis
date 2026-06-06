@@ -47,12 +47,13 @@ const APP_CONFIG = {
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },
         hospital: { nombre: 'Hospital', envio: 5000 },
-        bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
         nogal: { nombre: 'El Nogal', envio: 5000 }
-
-        
     }
 };
+
+// ★★★ NUEVA URL DEL CATÁLOGO ESTÁTICO ★★★
+// Usamos raw.githubusercontent.com para que actúe como CDN súper rápido
+const CATALOGO_URL = 'https://raw.githubusercontent.com/danded778-gif/domidelis/main/frontend/data/catalogo.json';
 
 // ============================================
 // SESIÓN — localStorage (persiste al cerrar pestaña)
@@ -61,7 +62,6 @@ function guardarSesion(rol, usuario, id) {
     localStorage.setItem('rol', rol);
     localStorage.setItem('usuario', usuario);
     localStorage.setItem('id', id);
-    // Push-manager también lee desde aquí
     localStorage.setItem('user', JSON.stringify({ rol, usuario, id }));
 }
 
@@ -74,7 +74,6 @@ function obtenerSesion() {
 }
 
 function cerrarSesion() {
-    // Solo borrar sesión, NO el carrito ni historial
     localStorage.removeItem('rol');
     localStorage.removeItem('usuario');
     localStorage.removeItem('id');
@@ -159,14 +158,12 @@ let identificacionPendiente = null;
 function conectarSocket(rol, id) {
     identificacionPendiente = { rol, id };
 
-    // Reutilizar si ya está conectado
     if (socketGlobal && socketGlobal.connected) {
         socketGlobal.emit('identificar', { rol, id });
         console.log(`🔄 Re-identificado: ${rol}/${id}`);
         return socketGlobal;
     }
 
-    // Destruir socket viejo si existe
     if (socketGlobal) {
         socketGlobal.removeAllListeners();
         socketGlobal.close();
@@ -192,7 +189,7 @@ function conectarSocket(rol, id) {
         }
     });
 
-    socketGlobal.on('disconnect', (reason) => {
+    socketGlobal.on('Disconnect', (reason) => {
         console.warn(`⚠️ Socket desconectado: ${reason}`);
         if (reason === 'io server disconnect') {
             setTimeout(() => socketGlobal.connect(), 1000);
