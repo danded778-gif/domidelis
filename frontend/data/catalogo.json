@@ -1,0 +1,190 @@
+{
+  "version": "v2026-06-06T06-22-58",
+  "ultimaActualizacion": "2026-06-06T06:22:58.601Z",
+  "tiendas": [
+    {
+      "id": 1,
+      "nombre": "🍔 Tienda Hamburgesa",
+      "descripcion": "hamburguesas de la mejor calidad",
+      "direccion": "Cl. 50 #47-149a 47-21",
+      "horario": "2pm - 9pm",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/hamburgesa.png",
+      "activo": true,
+      "productos": [
+        {
+          "id": 101,
+          "nombre": "Hamburguesa Almuerzo",
+          "descripcion": "Hamburguesa + papas",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 102,
+          "nombre": "Hamburguesa Doble",
+          "descripcion": "Doble carne, queso",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_doble.jpg",
+          "badge": "Promocion",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 103,
+          "nombre": "hamburgesa sencilla",
+          "descripcion": "hamburgesa con tomate",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%201.png",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 104,
+          "nombre": "Hamburguesa doble extreme",
+          "descripcion": "hamburgesa doble",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
+          "badge": "NUEVO",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "🍕Tienda Pizza",
+      "descripcion": "pizzas de la mejor calidad",
+      "direccion": "Cl. 48b #50-125a 50-1",
+      "horario": "2pm - 11pm",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/pizza.png",
+      "activo": true,
+      "productos": [
+        {
+          "id": 107,
+          "nombre": "Pizza",
+          "descripcion": "pizza sencilla",
+          "precio": 25000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 108,
+          "nombre": "pizza queso",
+          "descripcion": "pizza queso",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
+          "badge": "Promocion",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 109,
+          "nombre": "Pizza Personal",
+          "descripcion": "Queso y jamón",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 113,
+          "nombre": "perrito caliente doble",
+          "descripcion": "perrito caliente doble",
+          "precio": 5000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
+          "badge": "NUEVO",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "🍟 Tienda Salchipapas",
+      "descripcion": "salchipapas de la mejor calidad",
+      "direccion": "Cl. 48b #52-126a 52-1",
+      "horario": "2pm - 11pm",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/salchipapas.png",
+      "activo": true,
+      "productos": [
+        {
+          "id": 110,
+          "nombre": "salchipapas extreme",
+          "descripcion": "salchipapas extreme",
+          "precio": 25000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%206.png",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 111,
+          "nombre": "salchipapa sencilla",
+          "descripcion": "salchipapa sencilla",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%208.png",
+          "badge": "Promocion",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 112,
+          "nombre": "Perrito caliente",
+          "descripcion": "perrito caliente",
+          "precio": 7000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%202.png",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "🍖Tienda Crunch",
+      "descripcion": "comidas rapidas",
+      "direccion": "Cl. 48b #49-12a 30-1",
+      "horario": "2pm - 11pm",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/crunch.png",
+      "activo": true,
+      "productos": [
+        {
+          "id": 105,
+          "nombre": "Arepa con Queso",
+          "descripcion": "Arepa grande con queso doble",
+          "precio": 7000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/arepa_quesos.jpg",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 106,
+          "nombre": "Burrito Grande",
+          "descripcion": "Carne, arroz, frijoles",
+          "precio": 14000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/burrito_grande.jpg",
+          "badge": "Promocion",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "aljeop",
+      "descripcion": "breves",
+      "direccion": "rapoidos",
+      "horario": "11am - 10pm",
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "activo": true,
+      "productos": []
+    }
+  ]
+}
