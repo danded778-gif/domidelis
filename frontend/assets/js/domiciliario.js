@@ -9,6 +9,9 @@ let filtroHistorialActual = 'todos';
 let HISTORIAL_KEY = 'domiciliario_historial';
 let miDomiciliarioId = null;
 
+// ★ VARIABLE GLOBAL PARA EL SONIDO REAL ★
+let audioAlerta = null;
+
 // ─── Helper: Extraer texto de tiendas de un pedido ───
 function obtenerTiendasTextoDomi(pedido) {
     let productos = [];
@@ -46,6 +49,7 @@ async function fetchConToken(url, opciones = {}) {
 
     return response;
 }
+
 // ============================================
 // CARGA INICIAL
 // ============================================
@@ -57,8 +61,14 @@ async function cargarDomiciliarioData() {
     const el = document.getElementById('user-display');
     if (el && sesion.usuario) el.innerHTML = `<i class="fas fa-user-circle"></i> ${sesion.usuario}`;
 
-
     HISTORIAL_KEY = `domiciliario_historial_${miDomiciliarioId}`;
+
+    // ★ PRECARGAR EL SONIDO AQUÍ ★
+    // Esto evita el bloqueo de los navegadores que no permiten reproducir audio sin interacción del usuario
+    if (!audioAlerta) {
+        audioAlerta = new Audio('assets/sounds/alerta.aac');
+        audioAlerta.volume = 1.0; // Volumen al máximo
+    }
 
     cargarHistorialLocal();
     await cargarPedidosDomiciliario(sesion.id);
@@ -84,44 +94,69 @@ async function cargarDomiciliarioData() {
 }
 
 // ============================================
-// NOTIFICACIÓN AL DOMICILIARIO
+// NOTIFICACIÓN AL DOMICILIARIO (SIN SONIDO DEL SISTEMA)
 // ============================================
 function notificarNuevoPedidoAsignado(data) {
     const pedidoId = data.pedidoId || (data.pedido ? data.pedido.id : '?');
     const mensaje = data.mensaje || `Pedido #${pedidoId} asignado`;
 
-    if (typeof sonidoAsignacion === 'function') sonidoAsignacion();
-    else reproducirSonidoFallback();
+    // 1. ★ REPRODUCIR NUESTRO SONIDO REAL .aac ★
+    reproducirSonidoAlerta();
+    
+    // 2. ★ INTENTAR VIBRAR (Funciona en Android PWA, no en iOS) ★
+    if (navigator.vibrate) {
+        navigator.vibrate([300, 100, 300, 100, 500]);
+    }
 
+    // 3. Mostrar Toast visual en la pantalla
     mostrarToast('🛵 Nueva Asignación', mensaje, 'pedido', 10000);
 
+    // 4. ★ NOTIFICACIÓN DEL NAVEGADOR SILENCIOSA ★
+    // Se le agrega `silent: true` para que NO reproduzca el sonido predeterminado del celular
+    // y no empalme con nuestro alerta.aac
     enviarNotificacionNavegador('Nuevo pedido asignado', {
         body: mensaje,
         icon: '/domidelis/assets/img/icon-192x192.png',
         badge: '/domidelis/assets/img/icon-192x192.png',
         tag: `pedido-${pedidoId}`,
         requireInteraction: true,
+        silent: true, // <--- ESTO APAGA EL SONIDO DEL CELULAR
+        vibrate: [300, 100, 300, 100, 500], // Intento de vibración por si el SO lo permite
         data: { url: '/domiciliario.html', pedidoId }
     });
 
+    // 5. Recargar la lista de pedidos
     cargarPedidosDomiciliario(miDomiciliarioId);
 }
 
-function reproducirSonidoFallback() {
+// ★ FUNCIÓN MEJORADA: REPRODUCIR ARCHIVO DE SONIDO ★
+function reproducirSonidoAlerta() {
     try {
-        if (typeof audioCtx !== 'undefined' && audioCtx?.state === 'running') {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-            osc.frequency.setValueAtTime(1100, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.4);
-        } else {
-            new Audio('/assets/sounds/alerta.mp3').play().catch(() => { });
+        if (!audioAlerta) {
+            audioAlerta = new Audio('assets/sounds/alerta.aac');
+            audioAlerta.volume = 1.0;
         }
-    } catch (e) { }
+        
+        // Reiniciar el audio si ya estaba reproduciéndose (para que suene completo otra vez)
+        audioAlerta.currentTime = 0;
+        
+        // Reproducir (las promesas ayudan a capturar si el navegador lo bloquea)
+        audioAlerta.play().catch(e => {
+            console.warn('⚠️ Navegador bloqueó el audio automático. Se reproducirá al tocar la pantalla.');
+            
+            // Si el navegador lo bloqueó (común en móviles si no han tocado la pantalla), 
+            // forzamos la reproducción en el primer clic del usuario
+            const desbloquearAudio = () => {
+                audioAlerta.play().catch(() => {});
+                document.removeEventListener('click', desbloquearAudio);
+                document.removeEventListener('touchstart', desbloquearAudio);
+            };
+            document.addEventListener('click', desbloquearAudio, { once: true });
+            document.addEventListener('touchstart', desbloquearAudio, { once: true });
+        });
+    } catch (e) {
+        console.error('Error al reproducir alerta.aac:', e);
+    }
 }
 
 // ============================================
@@ -250,7 +285,6 @@ function renderizarHistorial() {
         const fechaTexto = fe.toLocaleDateString('es-CO', {
             timeZone: 'America/Bogota'
         });
-
 
         const tiendasTexto = obtenerTiendasTextoDomi(p);
         return `<div class="panel-card pedido-card entregado historial-card">
@@ -408,75 +442,50 @@ setInterval(() => {
 
 // ============================================
 // KEEP ALIVE & RESUME (Mantener sesión viva)
-// Evita que el celular "mate" la app y
-// reconecta si el domiciliario minimizó la PWA
 // ============================================
 
-// 1. DETECTAR CUANDO EL USUARIO VOLVIÓ A LA APP
 document.addEventListener('visibilitychange', function () {
     if (!document.hidden) {
-        console.log('📱 [DOMI] App volvió a primer plano');
-
-        // Forzar recarga de datos por si llegaron pedidos mientras estaba minimizado
         if (miDomiciliarioId) {
             cargarPedidosDomiciliario(miDomiciliarioId);
         }
     }
 });
 
-// Cuando la ventana gana foco (ej: vuelve desde otra app)
 window.addEventListener('focus', function () {
     if (miDomiciliarioId) {
         cargarPedidosDomiciliario(miDomiciliarioId);
     }
 });
 
-// 2. ANTI-SUSPENSIÓN (Wake Lock)
-// Evita que el celular apague la pestaña si el domiciliario 
-// deja el celular encendido pero sin tocar la pantalla (ej: en el soporte de la moto)
 let wakeLock = null;
 
 async function requestWakeLock() {
     try {
         if ('wakeLock' in navigator) {
             wakeLock = await navigator.wakeLock.request('screen');
-            console.log('🔒 [DOMI] Wake Lock activo (Pantalla no se dormirá)');
-
             wakeLock.addEventListener('release', () => {
-                console.log('🔓 [DOMI] Wake Lock liberado');
-                // Si se libera sola, intentamos reacquirerla si sigue en primer plano
                 if (!document.hidden) {
                     setTimeout(requestWakeLock, 1000);
                 }
             });
         }
-    } catch (err) {
-        console.log('⚠️ Wake Lock no soportado o bloqueado:', err.message);
-    }
+    } catch (err) { }
 }
 
-// Reactivar Wake Lock si la app vuelve a primer plano
 document.addEventListener('visibilitychange', async () => {
     if (!document.hidden && !wakeLock) {
         await requestWakeLock();
     }
 });
 
-// Iniciar cuando cargue
 window.addEventListener('load', () => {
-    setTimeout(requestWakeLock, 2000); // Delay para no interferir con la carga inicial
+    setTimeout(requestWakeLock, 2000);
 });
 
-
-// 3. TIMER INVISIBLE (Keep Alive de la pestaña)
-// Los navegadores pausan los Timers si la pestaña está inactiva.
-// Este pequeño truco de audio evita que Chrome duerma la pestaña completamente.
-// (Solo funciona si la app está abierta en primer plano)
 let keepAliveInterval;
 
 function startKeepAlive() {
-    // Usamos un AudioContext silencioso para engañar al navegador 
-    // y que no considere la pestaña como "inactiva"
     if (typeof audioCtx !== 'undefined' && audioCtx && audioCtx.state === 'running') {
         keepAliveInterval = setInterval(() => {
             if (!document.hidden && audioCtx.state === 'running') {
@@ -484,21 +493,19 @@ function startKeepAlive() {
                 const gain = audioCtx.createGain();
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-                gain.gain.setValueAtTime(0, audioCtx.currentTime); // Volumen 0 (SILENCIOSO)
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
                 osc.start(audioCtx.currentTime);
                 osc.stop(audioCtx.currentTime + 0.01);
             }
-        }, 15000); // Cada 15 segundos
+        }, 15000);
     }
 }
 
-// Iniciar Keep Alive después de que el domiciliario active permisos
-// Observamos el banner de permisos
 const observerPermisos = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
         if (mutation.target.id === 'permisos-banner' && mutation.target.style.display === 'none') {
             setTimeout(startKeepAlive, 1000);
-            observerPermisos.disconnect(); // Dejar de observar
+            observerPermisos.disconnect();
         }
     });
 });
@@ -507,6 +514,5 @@ const permBanner = document.getElementById('permisos-banner');
 if (permBanner) {
     observerPermisos.observe(permBanner, { attributes: true, attributeFilter: ['style'] });
 } else {
-    // Si no hay banner, iniciar de todas formas
     setTimeout(startKeepAlive, 5000);
 }
