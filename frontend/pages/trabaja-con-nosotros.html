@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quieres trabajar con nosotros? - DOMIDELIS</title>
+    <link rel="stylesheet" href="assets/css/trabaja.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/img/favicon-32x32.png" type="image/png">
+    <!-- jsPDF para generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- ============================== -->
+    <!-- HEADER FIJO -->
+    <!-- ============================== -->
+    <header class="form-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Quieres trabajar con nosotros?</h1>
+                <p>Completa el formulario para aplicar como domiciliario</p>
+            </div>
+            <div class="header-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span id="step-label">Paso 1 de 4</span>
+                <span id="step-percent">25%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
+            </div>
+            <div class="step-indicators">
+                <div class="step-dot active" data-step="1">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>Datos</span>
+                </div>
+                <div class="step-dot" data-step="2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <span>Foto</span>
+                </div>
+                <div class="step-dot" data-step="3">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M12 22v-5"/><path d="M6 16l3-7 3 3 3-5 3 5"/></svg>
+                    <span>Moto</span>
+                </div>
+                <div class="step-dot" data-step="4">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span>Experiencia</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================== -->
+    <!-- FORMULARIO -->
+    <!-- ============================== -->
+    <main class="form-main" id="form-container">
+
+        <!-- PASO 1: Datos Personales -->
+        <section class="form-card" id="step-1">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                    <h2>Datos Personales</h2>
+                    <p class="card-desc">Ingresa tu informacion personal. Los campos con * son obligatorios.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="primerNombre">Primer Nombre *</label>
+                    <input type="text" id="primerNombre" placeholder="Ej: Juan" data-validate="name-required">
+                    <span class="error-msg" id="error-primerNombre"></span>
+                </div>
+                <div class="form-group">
+                    <label for="segundoNombre">Segundo Nombre</label>
+                    <input type="text" id="segundoNombre" placeholder="Ej: Carlos (opcional)" data-validate="name-optional">
+                    <span class="error-msg" id="error-segundoNombre"></span>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="primerApellido">Primer Apellido *</label>
+                    <input type="text" id="primerApellido" placeholder="Ej: Rodriguez" data-validate="name-required">
+                    <span class="error-msg" id="error-primerApellido"></span>
+                </div>
+                <div class="form-group">
+                    <label for="segundoApellido">Segundo Apellido *</label>
+                    <input type="text" id="segundoApellido" placeholder="Ej: Martinez" data-validate="name-required">
+                    <span class="error-msg" id="error-segundoApellido"></span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="tipoDocumento">Tipo de Documento *</label>
+                    <select id="tipoDocumento" data-validate="select-required">
+                        <option value="">Selecciona</option>
+                        <option value="CC">Cedula de Ciudadania</option>
+                        <option value="CE">Cedula de Extranjeria</option>
+                        <option value="PA">Pasaporte</option>
+                    </select>
+                    <span class="error-msg" id="error-tipoDocumento"></span>
+                </div>
+                <div class="form-group">
+                    <label for="numeroDocumento">Numero de Documento *</label>
+                    <input type="text" id="numeroDocumento" placeholder="Ej: 1098765432" data-validate="number-required">
+                    <span class="error-msg" id="error-numeroDocumento"></span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento *</label>
+                    <input type="date" id="fechaNacimiento" data-validate="date-required">
+                    <span class="error-msg" id="error-fechaNacimiento"></span>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono *</label>
+                    <input type="tel" id="telefono" placeholder="Ej: +57 300 1234567" data-validate="phone-required">
+                    <span class="error-msg" id="error-telefono"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Electronico *</label>
+                <input type="email" id="correo" placeholder="Ej: juan.rodriguez@correo.com" data-validate="email-required">
+                <span class="error-msg" id="error-correo"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Direccion de Residencia *</label>
+                <input type="text" id="direccion" placeholder="Ej: Calle 10 # 20-30, Barrio Centro" data-validate="text-required">
+                <span class="error-msg" id="error-direccion"></span>
+            </div>
+        </section>
+
+        <!-- PASO 2: Foto Personal -->
+        <section class="form-card hidden" id="step-2">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <div>
+                    <h2>Foto Personal</h2>
+                    <p class="card-desc">Sube una foto tipo hoja de vida. Formatos JPG o PNG, maximo 5MB.</p>
+                </div>
+            </div>
+
+            <!-- Zona de carga -->
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <p class="upload-text">Haz clic para subir tu foto</p>
+                <p class="upload-subtext">o arrastra y suelta aqui</p>
+                <p class="upload-hint">JPG, PNG - Maximo 5MB</p>
+            </div>
+
+            <!-- Vista previa (oculta inicialmente) -->
+            <div class="photo-preview hidden" id="photo-preview">
+                <div class="preview-container">
+                    <img id="preview-image" src="" alt="Vista previa de la foto">
+                    <button type="button" class="remove-photo" id="remove-photo" title="Eliminar foto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="photo-success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Foto cargada correctamente</span>
+                </div>
+                <button type="button" class="btn-change-photo" id="change-photo">Cambiar foto</button>
+            </div>
+
+            <input type="file" id="foto-input" accept="image/jpeg,image/png,image/jpg" class="hidden">
+
+            <div class="error-msg" id="error-foto"></div>
+
+            <div class="info-box">
+                <p class="info-title">Recomendaciones para tu foto:</p>
+                <ul>
+                    <li>Fondo blanco o claro</li>
+                    <li>Rostro visible, sin lentes oscuros</li>
+                    <li>Imagen nitida, bien iluminada</li>
+                    <li>Estilo profesional, tipo documento</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PASO 3: Requisito de Moto -->
+        <section class="form-card hidden" id="step-3">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M12 22v-5"/><path d="M6 16l3-7 3 3 3-5 3 5"/></svg>
+                </div>
+                <div>
+                    <h2>Requisito de Moto</h2>
+                    <p class="card-desc">Para el puesto de domiciliario es indispensable contar con moto propia.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="radio-label">Tienes moto propia? *</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="card-moto-si">
+                        <input type="radio" name="tieneMoto" value="si" id="moto-si">
+                        <div class="radio-card-content">
+                            <span class="radio-card-text">Si, tengo moto propia</span>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M12 22v-5"/><path d="M6 16l3-7 3 3 3-5 3 5"/></svg>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="card-moto-no">
+                        <input type="radio" name="tieneMoto" value="no" id="moto-no">
+                        <div class="radio-card-content">
+                            <span class="radio-card-text">No, no tengo moto propia</span>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                    </label>
+                </div>
+                <span class="error-msg" id="error-tieneMoto"></span>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- SECCION 5: INFORMACION DE LA MOTO (COMENTADA / OCULTA)       -->
+            <!-- ============================================================ -->
+            <!-- PARA ACTIVAR ESTA SECCION EN EL FUTURO:                       -->
+            <!-- 1. Descomenta el bloque HTML abajo                            -->
+            <!-- 2. Descomenta la seccion correspondiente en trabaja.js         -->
+            <!-- 3. Los campos necesarios son:                                  -->
+            <!--    - marcaMoto (texto, obligatorio)                            -->
+            <!--    - modeloMoto (texto, obligatorio)                           -->
+            <!--    - placaMoto (texto, obligatorio, formato placa)             -->
+            <!--    - soatVigente (select Si/No, obligatorio)                   -->
+            <!--    - licenciaConduccion (archivo PDF/JPG, obligatorio)         -->
+            <!-- 4. Actualiza las validaciones en trabaja.js                    -->
+            <!-- 5. Agrega los campos al PDF en generatePDF()                  -->
+            <!-- 6. Agrega los campos al endpoint de correo                    -->
+            <!-- ============================================================ -->
+            <!--
+            <div id="moto-info-section" class="moto-info hidden">
+                <hr class="divider">
+                <h3>Informacion de la Moto</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="marcaMoto">Marca de la Moto *</label>
+                        <input type="text" id="marcaMoto" placeholder="Ej: Honda, Yamaha">
+                        <span class="error-msg" id="error-marcaMoto"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="modeloMoto">Modelo *</label>
+                        <input type="text" id="modeloMoto" placeholder="Ej: 2023">
+                        <span class="error-msg" id="error-modeloMoto"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placaMoto">Placa *</label>
+                    <input type="text" id="placaMoto" placeholder="Ej: ABC 123" style="text-transform:uppercase">
+                    <span class="error-msg" id="error-placaMoto"></span>
+                </div>
+                <div class="form-group">
+                    <label for="soatVigente">SOAT Vigente? *</label>
+                    <select id="soatVigente">
+                        <option value="">Selecciona</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                    </select>
+                    <span class="error-msg" id="error-soatVigente"></span>
+                </div>
+                <div class="form-group">
+                    <label for="licenciaConduccion">Licencia de Conduccion *</label>
+                    <input type="file" id="licenciaConduccion" accept=".pdf,.jpg,.jpeg,.png">
+                    <span class="form-hint">PDF o JPG, maximo 5MB</span>
+                    <span class="error-msg" id="error-licenciaConduccion"></span>
+                </div>
+            </div>
+            -->
+        </section>
+
+        <!-- PASO 4: Experiencia Laboral -->
+        <section class="form-card hidden" id="step-4">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div>
+                    <h2>Experiencia Laboral</h2>
+                    <p class="card-desc">Cuentanos sobre tu experiencia como domiciliario.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="radio-label">Tienes experiencia como domiciliario? *</label>
+                <div class="radio-row">
+                    <label class="radio-inline">
+                        <input type="radio" name="tieneExperiencia" value="si" id="exp-si">
+                        <span>Si</span>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="tieneExperiencia" value="no" id="exp-no">
+                        <span>No</span>
+                    </label>
+                </div>
+                <span class="error-msg" id="error-tieneExperiencia"></span>
+            </div>
+
+            <!-- Campos condicionales de experiencia -->
+            <div class="exp-fields hidden" id="exp-fields">
+                <div class="form-group">
+                    <label for="anosExperiencia">Anos de Experiencia *</label>
+                    <input type="number" id="anosExperiencia" placeholder="Ej: 2" min="0">
+                    <span class="error-msg" id="error-anosExperiencia"></span>
+                </div>
+                <div class="form-group">
+                    <label for="empresaAnterior">Empresa Anterior</label>
+                    <input type="text" id="empresaAnterior" placeholder="Ej: Rappi, iFood (opcional)">
+                </div>
+                <hr class="divider">
+                <div class="form-group">
+                    <label for="referenciaNombre">Nombre de Referencia Laboral</label>
+                    <input type="text" id="referenciaNombre" placeholder="Ej: Pedro Gomez (opcional)">
+                </div>
+                <div class="form-group">
+                    <label for="referenciaTelefono">Telefono de Referencia</label>
+                    <input type="tel" id="referenciaTelefono" placeholder="Ej: +57 310 9876543 (opcional)">
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Resumen -->
+            <div class="summary-box" id="summary-box">
+                <h4>Resumen de tu aplicacion</h4>
+                <div class="summary-content" id="summary-content">
+                    <!-- Se llena dinamicamente -->
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Certificacion -->
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="certificaInfo">
+                    <span>Certifico que la informacion proporcionada es veridica *</span>
+                </label>
+                <p class="form-hint">Al marcar esta casilla confirmas que todos los datos ingresados son reales y correctos.</p>
+                <span class="error-msg" id="error-certificaInfo"></span>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- PANTALLA DE NO MOTO -->
+        <!-- ============================== -->
+        <section class="form-card hidden" id="no-moto-screen">
+            <div class="no-moto-content">
+                <div class="no-moto-icon">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h2>Lo sentimos</h2>
+                <p class="no-moto-text">Para el puesto de domiciliario es indispensable contar con moto propia. No puedes continuar con el proceso.</p>
+                <div class="no-moto-countdown">
+                    Seras redirigido en <span id="countdown">3</span> segundos...
+                </div>
+                <button type="button" class="btn-redirect" id="btn-redirect">Ir ahora</button>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- PANTALLA DE EXITO -->
+        <!-- ============================== -->
+        <section class="form-card hidden" id="success-screen">
+            <div class="success-content">
+                <div class="success-icon">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h2>Aplicacion enviada</h2>
+                <p class="success-text">Tu hoja de vida se ha descargado como PDF.</p>
+                <p class="success-subtext" id="success-email-msg">Se ha enviado una copia al correo configurado. Revisaremos tu aplicacion y te contactaremos pronto.</p>
+                <button type="button" class="btn-success" id="btn-success">Volver al inicio</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botones de navegacion -->
+    <div class="form-nav" id="form-nav">
+        <button type="button" class="btn-prev" id="btn-prev" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Anterior
+        </button>
+        <button type="button" class="btn-next" id="btn-next">
+            Siguiente
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="btn-submit hidden" id="btn-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Enviar mi aplicacion
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="form-footer">
+        <p>DOMIDELIS - Formulario de aplicacion domiciliario</p>
+    </footer>
+
+    <script src="assets/js/trabaja.js"></script>
+</body>
+</html>
