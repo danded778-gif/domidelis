@@ -26,7 +26,7 @@ console.log(`⚙️ Socket: ${SOCKET_URL}`);
 // CONFIGURACIÓN DE LA APP
 // ============================================
 const APP_CONFIG = {
-    nombre: 'SOLUVENCON',
+    nombre: 'DOMIDELIS',
     telefonoWhatsApp: '573005005306',
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
@@ -53,7 +53,7 @@ const APP_CONFIG = {
 
 // ★★★ NUEVA URL DEL CATÁLOGO ESTÁTICO ★★★
 // Usamos raw.githubusercontent.com para que actúe como CDN súper rápido
-const CATALOGO_URL = 'https://raw.githubusercontent.com/danded778-gif/domidelis/main/frontend/data/catalogo.json';
+const CATALOGO_URL = 'https://domidelis.top/data/catalogo.json';
 
 // ============================================
 // SESIÓN — localStorage (persiste al cerrar pestaña)

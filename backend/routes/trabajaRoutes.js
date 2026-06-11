@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-            from: 'DOMIDELIS <onboarding@resend.dev>',
+            from: 'DOMIDELIS <noreply@domidelis.top>',
             to: [destino],
             subject: `Nueva aplicacion de domiciliario: ${nombreCompleto}`,
             html: `
