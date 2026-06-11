@@ -53,7 +53,7 @@ const APP_CONFIG = {
 
 // ★★★ NUEVA URL DEL CATÁLOGO ESTÁTICO ★★★
 // Usamos raw.githubusercontent.com para que actúe como CDN súper rápido
-const CATALOGO_URL = 'https://domidelis.top/data/catalogo.json';
+const CATALOGO_URL = 'https://www.domidelis.top/data/catalogo.json';
 
 // ============================================
 // SESIÓN — localStorage (persiste al cerrar pestaña)
