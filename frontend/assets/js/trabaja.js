@@ -666,8 +666,8 @@ async function handleSubmit() {
         const data = getFormData();
         const nombreCompleto = [data.primerNombre, data.segundoNombre, data.primerApellido, data.segundoApellido].filter(Boolean).join(' ');
 
-        try {
-            const response = await fetch('/api/trabaja', {
+                try {
+            const response = await fetch('https://prueba-production-b9fb.up.railway.app/api/trabaja', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
