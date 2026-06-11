@@ -10,7 +10,7 @@
  * Para cambiar el correo donde se envia la copia del PDF:
  * 
  * OPCION 1: Cambiar directamente aqui abajo
- *   Cambia: 'contacto@domidelis.com' por tu correo
+ *   Cambia: 'solucionventasconfiables@gmail.com' por tu correo
  * 
  * OPCION 2: Configurar en el backend
  *   Archivo: backend/routes/trabajaRoutes.js
@@ -21,7 +21,7 @@
  * ============================================================
  */
 
-const CORREO_DESTINO = 'contacto@domidelis.com';
+const CORREO_DESTINO = 'solucionventasconfiables@gmail.com';
 
 // ==============================
 // ESTADO DEL FORMULARIO
