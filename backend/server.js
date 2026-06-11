@@ -22,24 +22,39 @@ if (!JWT_SECRET) {
 
 const app = express();
 const server = http.createServer(app);
-
 // ============================================
 // CORS: true en desarrollo, restringido en producción
 // ============================================
 const isDev = process.env.NODE_ENV !== 'production';
 
+// Lista de dominios permitidos
+const allowedOrigins = [
+    'https://www.domidelis.top',
+    'https://domidelis.top',
+    'http://localhost:5500',   // Por si sigues probando en local
+    'http://127.0.0.1:5500',  // Por si sigues probando en local
+    'http://localhost:3000'
+];
+
 const io = socketIo(server, {
     cors: {
-        origin: true,
+        origin: allowedOrigins, // <--- Solo estos dominios pueden conectarse por Socket
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Authorization'] // <--- AÑADIDO
+        allowedHeaders: ['Authorization']
     }
 });
 
 app.use(cors({
-    origin: true,
+    origin: function (origin, callback) {
+        // Permitir peticiones sin origen (como Postman o curl) o si están en la lista
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('No permitido por CORS'));
+        }
+    },
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'] // <--- AÑADIDO
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -167,8 +182,8 @@ app.post('/api/enviar-push', async (req, res) => {
     const { titulo, mensaje, url = '/', tipo = 'general', roles = ['admin'], pedidoId = null } = req.body;
     const payload = JSON.stringify({
         title: titulo, body: mensaje, url, tipo, pedidoId,
-        icon: '/domidelis/assets/img/icon-192x192.png',
-        badge: '/domidelis/assets/img/icon-192x192.png',
+        icon: '/assets/img/icon-192x192.png',
+        badge: '/assets/img/icon-192x192.png',
         tag: `domicilio-${tipo}-${Date.now()}`,
         requireInteraction: true,
         vibrate: [200, 100, 200],
@@ -205,8 +220,8 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
         url: '/domiciliario.html',
         tipo: 'asignacion',
         pedidoId: String(pedidoId),
-        icon: '/domidelis/assets/img/icon-192x192.png',
-        badge: '/domidelis/assets/img/icon-192x192.png',
+        icon: '/assets/img/icon-192x192.png',
+        badge: '/assets/img/icon-192x192.png',
         tag: `asignacion-${pedidoId}-${Date.now()}`,
         requireInteraction: true,
         vibrate: [200, 100, 200, 100, 200],
@@ -339,8 +354,8 @@ app.all('/api', verificarToken, async (req, res) => {
                             title: '✅ Pedido entregado',
                             body: `Pedido #${pedidoId} fue entregado`,
                             url: '/admin.html',
-                            icon: '/domidelis/assets/img/icon-192x192.png',
-                            badge: '/domidelis/assets/img/icon-192x192.png',
+                            icon: '/assets/img/icon-192x192.png',
+                            badge: '/assets/img/icon-192x192.png',
                             tag: `entregado-${pedidoId}-${Date.now()}`,
                             requireInteraction: false,
                             data: { url: '/admin.html', pedidoId, tipo: 'entregado' }

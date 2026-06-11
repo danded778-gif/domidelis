@@ -116,8 +116,8 @@ function notificarNuevoPedidoAsignado(data) {
     // y no empalme con nuestro alerta.aac
     enviarNotificacionNavegador('Nuevo pedido asignado', {
         body: mensaje,
-        icon: '/domidelis/assets/img/icon-192x192.png',
-        badge: '/domidelis/assets/img/icon-192x192.png',
+        icon: '/assets/img/icon-192x192.png',
+        badge: '/assets/img/icon-192x192.png',
         tag: `pedido-${pedidoId}`,
         requireInteraction: true,
         silent: true, // <--- ESTO APAGA EL SONIDO DEL CELULAR
