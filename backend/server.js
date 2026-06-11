@@ -440,6 +440,8 @@ app.get('/api/suscripciones/estado', (req, res) => {
 });
 const tiendaRoutes = require('./routes/tiendaRoutes'); // <--- RUTAS NUEVAS PARA TIENDAS
 app.use('/api/tienda', tiendaRoutes);                 // <--- USAMOS EL NUEVO ROUTER PARA RUTAS DE TIENDAS
+const trabajaRoutes = require('./routes/trabajaRoutes');
+app.use('/api/trabaja', trabajaRoutes);
 // ============================================
 // INICIAR SERVIDOR
 // ============================================
