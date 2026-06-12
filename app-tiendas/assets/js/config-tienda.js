@@ -8,33 +8,35 @@ const API_URL = esLocal
     ? window.location.origin + '/api/tienda'
     : 'https://prueba-production-b9fb.up.railway.app/api/tienda';
 
-// Sesión exclusiva para la tienda (Guarda el JWT)
+// Sesión exclusiva para la tienda (Guarda el JWT y la Info) - ★ ACTUALIZADO
 function guardarSesionTienda(token, tienda) {
     localStorage.setItem('tienda_token', token);
-    localStorage.setItem('tienda_id', tienda.id);
-    localStorage.setItem('tienda_nombre', tienda.nombre);
+    // ★ Guardamos todo el objeto tienda como un JSON string
+    localStorage.setItem('tienda_info', JSON.stringify(tienda));
 }
 
 function obtenerSesionTienda() {
-    return {
-        token: localStorage.getItem('tienda_token'),
-        id: localStorage.getItem('tienda_id'),
-        nombre: localStorage.getItem('tienda_nombre')
-    };
+    const token = localStorage.getItem('tienda_token');
+    let info = null;
+    try {
+        info = JSON.parse(localStorage.getItem('tienda_info'));
+    } catch (e) { info = null; }
+    return { token, info };
 }
 
 function cerrarSesionTienda() {
     localStorage.removeItem('tienda_token');
-    localStorage.removeItem('tienda_id');
-    localStorage.removeItem('tienda_nombre');
-    // RUTA ACTUALIZADA: Redirige al nuevo nombre del login
+    localStorage.removeItem('tienda_info');
     window.location.href = 'login-tienda.html';
 }
 
 // Utilidad para pasar el token en las peticiones fetch
 function authHeaders() {
     const sesion = obtenerSesionTienda();
-    return { 'Authorization': `Bearer ${sesion.token}` };
+    return { 
+        'Authorization': `Bearer ${sesion.token}`,
+        'Content-Type': 'application/json'
+    };
 }
 
 function formatearPrecio(precio) { return '$' + parseInt(precio).toLocaleString('es-CO'); }
