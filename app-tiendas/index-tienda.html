@@ -249,8 +249,6 @@
             <nav>
                 <a href="index-tienda.html" class="logo"><i class="fas fa-store"></i> MI <span>TIENDA</span></a>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#" onclick="cambiarTab('productos')"><i class="fas fa-box"></i> Productos</a></li>
-                    <li><a href="#" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i> Pedidos</a></li>
                     <li><a href="#" onclick="cerrarSesionTienda()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
                 </ul>
                 <div class="mobile-menu" onclick="document.getElementById('nav-links').classList.toggle('active')"><i
@@ -263,23 +261,116 @@
         <div class="container">
             <h2 class="section-title" id="titulo-tienda"><i class="fas fa-store"></i> Cargando...</h2>
             <div class="tabs-container">
-                <button class="tab-btn active" onclick="cambiarTab('productos')"><i class="fas fa-box"></i>
-                    Productos</button>
+                <button class="tab-btn active" onclick="cambiarTab('productos')"><i class="fas fa-box"></i> Productos</button>
                 <button class="tab-btn" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i> Pedidos</button>
+                <button class="tab-btn" onclick="cambiarTab('comision')"><i class="fas fa-percent"></i> Comisión</button>
+                <button class="tab-btn" onclick="cambiarTab('configuracion')"><i class="fas fa-cog"></i> Config</button>
             </div>
+            
+            <!-- TAB PRODUCTOS -->
             <div id="tab-productos" class="tab-content active">
-                <div class="aviso-premium"><i class="fas fa-crown"></i> <span>La edición de productos está disponible en
-                        el plan Premium.</span></div>
+                <div class="aviso-premium"><i class="fas fa-crown"></i> <span>La edición de productos está disponible en el plan Premium.</span></div>
                 <div class="products-admin-grid" id="lista-productos"></div>
             </div>
+
+            <!-- TAB PEDIDOS -->
             <div id="tab-pedidos" class="tab-content">
                 <div class="pedidos-grid" id="lista-pedidos"></div>
+            </div>
+
+            <!-- TAB COMISIÓN -->
+            <div id="tab-comision" class="tab-content">
+                <div class="comision-resumen">
+                    <div class="comision-card">
+                        <h3><i class="fas fa-coins"></i> Ventas Totales</h3>
+                        <p id="comision-ventas-total">$0</p>
+                    </div>
+                    <div class="comision-card alerta">
+                        <h3><i class="fas fa-hand-holding-usd"></i> Comisión (<span id="comision-pct-text">0</span>%)</h3>
+                        <p id="comision-descontada">$0</p>
+                    </div>
+                    <div class="comision-card exito">
+                        <h3><i class="fas fa-wallet"></i> Ganancia Neta</h3>
+                        <p id="comision-ganancia-neta">$0</p>
+                    </div>
+                </div>
+                <h2 class="section-title" style="font-size: 1.2rem; margin-top: 25px;"><i class="fas fa-list-ul"></i> Detalle de Pedidos Entregados</h2>
+                <div class="tabla-contenedor" style="overflow-x: auto;">
+                    <table class="tabla-pedidos" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="background: #1a1a2e; color: #fff;">
+                                <th style="padding: 10px;"># Pedido</th>
+                                <th style="padding: 10px;">Fecha</th>
+                                <th style="padding: 10px;">Método Pago</th>
+                                <th style="padding: 10px;">Venta Total</th>
+                                <th style="padding: 10px; color: #F4A261;">Comisión</th>
+                                <th style="padding: 10px; color: #2A9D8F;">Ganancia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-comisiones">
+                            <!-- Aquí se inyectarán las filas con JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB CONFIGURACIÓN -->
+            <div id="tab-configuracion" class="tab-content">
+                
+                <!-- Tarjeta de Información de la Tienda -->
+                <div class="config-card">
+                    <h3 class="config-title"><i class="fas fa-store"></i> Mi Información</h3>
+                    <div class="config-info-grid">
+                        <div class="config-item">
+                            <span class="config-label">Nombre de la Tienda</span>
+                            <span class="config-value" id="conf-nombre">Cargando...</span>
+                        </div>
+                        <div class="config-item highlight">
+                            <span class="config-label">Comisión por Ventas</span>
+                            <span class="config-value comision-pct" id="conf-comision">0%</span>
+                            <small class="config-hint">Este porcentaje se descuenta de cada venta realizada</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta para Actualizar Datos -->
+                <div class="config-card">
+                    <h3 class="config-title"><i class="fas fa-edit"></i> Actualizar Datos</h3>
+                    <form id="form-datos-tienda" onsubmit="guardarDatosTienda(event)">
+                        <div class="form-group">
+                            <label><i class="fas fa-map-marker-alt"></i> Dirección</label>
+                            <input type="text" id="conf-direccion" placeholder="Dirección de tu tienda">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar Cambios</button>
+                    </form>
+                </div>
+
+                <!-- Tarjeta para Cambio de Contraseña -->
+                <div class="config-card">
+                    <h3 class="config-title"><i class="fas fa-lock"></i> Cambiar Contraseña</h3>
+                    <form id="form-password-tienda" onsubmit="cambiarPasswordTienda(event)">
+                        <div class="form-group">
+                            <label>Contraseña Actual</label>
+                            <input type="password" id="conf-pass-actual" required placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>Nueva Contraseña</label>
+                            <input type="password" id="conf-pass-nueva" required placeholder="Mínimo 4 caracteres">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmar Nueva Contraseña</label>
+                            <input type="password" id="conf-pass-confirmar" required placeholder="Repetir nueva contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-key"></i> Actualizar Contraseña</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </main>
 
     <div class="install-banner" id="install-banner" role="dialog" aria-label="Instalar aplicación">
-        <div class="install-banner-icon"><img src="assets/img/icon-192x192.png" alt="Mi Tienda"></div>
+        <div class="install-banner-icon"><img src="/app-tiendas/assets/img/icon-192x192.png" alt="Mi Tienda"></div>
         <div class="install-banner-text"><strong>Instalar Mi Tienda</strong><span>Acceso rápido desde tu pantalla de
                 inicio</span></div>
         <button class="install-banner-btn" id="btn-install-app" type="button"><i class="fas fa-download"></i>
@@ -291,20 +382,20 @@
         <button class="install-manual-close" id="btn-manual-close" type="button" aria-label="Cerrar"><i
                 class="fas fa-times"></i></button>
         <div class="install-manual-header">
-            <img src="assets/img/icon-192x192.png" alt="Mi Tienda">
+            <img src="/app-tiendas/assets/img/icon-192x192.png" alt="Mi Tienda">
             <div class="install-manual-header-text"><strong>Instalar Mi Tienda</strong><span>Sigue estos pasos
                     rápidos</span></div>
         </div>
         <div class="install-manual-steps" id="install-steps-container"></div>
     </div>
 
-    <script src="assets/js/config-tienda.js"></script>
-    <script src="assets/js/tiendas.js"></script>
+    <script src="/app-tiendas/assets/js/config-tienda.js"></script>
+    <script src="/app-tiendas/assets/js/tiendas.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw-tienda.js')
+                navigator.serviceWorker.register('/app-tiendas/sw-tienda.js')
                     .then(function (reg) { console.log('✅ SW Tiendas registrado en:', reg.scope); })
                     .catch(function (err) { console.warn('⚠️ SW Tiendas error:', err); });
             });

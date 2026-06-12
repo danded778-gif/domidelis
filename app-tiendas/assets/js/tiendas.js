@@ -1,142 +1,281 @@
 // ============================================
-// UTILIDAD: Extraer nombre del Token JWT si hace falta
+// LÓGICA PRINCIPAL - PWA TIENDA (COMPLETO)
 // ============================================
-function obtenerNombreDesdeToken() {
-    const token = localStorage.getItem('tienda_token');
-    if (!token) return 'Mi Tienda';
-    try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        const datosToken = JSON.parse(jsonPayload);
-        return datosToken.nombre || 'Mi Tienda';
-    } catch (e) {
-        return 'Mi Tienda';
-    }
+
+// --- UTILIDADES ---
+function formatearPesosTienda(n) {
+    return '$' + Math.round(n).toLocaleString('es-CO');
 }
 
-// ============================================
-// INICIALIZACIÓN
-// ============================================
-const sesion = obtenerSesionTienda();
-
-// CORRECCIÓN 1: Ya no busca 'panel.html', simplemente verifica si hay sesión y si estamos en la página correcta
-if (sesion && sesion.token) {
-    document.addEventListener('DOMContentLoaded', () => {
-        const tituloElement = document.getElementById('titulo-tienda');
-        if (tituloElement) {
-            // CORRECCIÓN 2: Si el nombre no se guardó en localStorage, lo sacamos directo del Token
-            const nombreTienda = sesion.nombre || obtenerNombreDesdeToken();
-            tituloElement.innerHTML = `<i class="fas fa-store"></i> ${nombreTienda}`;
-        }
-        
-        // CORRECCIÓN 3: Esto ahora sí se ejecutará automáticamente al entrar
-        cargarProductos(); 
-    });
+function getMiComision() {
+    const sesion = obtenerSesionTienda();
+    return sesion.info && sesion.info.comision ? parseFloat(sesion.info.comision) : 20;
 }
 
-// --- PESTAÑAS ---
+// --- TABS ---
 function cambiarTab(tab) {
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(cont => cont.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     
-    // CORRECCIÓN 4: Se eliminó 'event.currentTarget' porque causa errores silenciosos en algunos navegadores
-    // Buscamos el botón directamente por su atributo onclick
-    const botonActivo = document.querySelector(`.tab-btn[onclick*="${tab}"]`);
-    if (botonActivo) botonActivo.classList.add('active');
-    
-    document.getElementById(`tab-${tab}`).classList.add('active');
-    
-    if (tab === 'pedidos') cargarPedidos();
-    if (tab === 'productos') cargarProductos();
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.currentTarget.classList.add('active');
+
+    // Cargar datos dinámicos al cambiar de tab
+    if(tab === 'productos') cargarProductos();
+    if(tab === 'pedidos') cargarPedidos();
+    if(tab === 'comision') cargarDatosComision();
+    if(tab === 'configuracion') cargarConfiguracion();
 }
 
-// --- PRODUCTOS (SOLO LECTURA) ---
+// ============================================
+// LÓGICA PARA LA PESTAÑA DE PRODUCTOS
+// ============================================
 async function cargarProductos() {
-    const contenedor = document.getElementById('lista-productos');
-    contenedor.innerHTML = '<div class="spinner" style="margin: 2rem auto;"></div>';
     try {
         const res = await fetch(`${API_URL}/productos`, { headers: authHeaders() });
-        if (res.status === 401 || res.status === 403) return cerrarSesionTienda();
+        if (!res.ok) throw new Error('Error cargando productos');
         const productos = await res.json();
-        renderizarProductos(productos);
-    } catch (error) { 
-        contenedor.innerHTML = `<p style="color:red; text-align:center;">Error de conexión.</p>`; 
-    }
-}
+        
+        const grid = document.getElementById('lista-productos');
+        if (!grid) return;
 
-function renderizarProductos(productos) {
-    const contenedor = document.getElementById('lista-productos');
-    contenedor.innerHTML = '';
-    if (productos.length === 0) {
-        contenedor.innerHTML = `<div style="text-align:center; padding: 3rem; color: var(--gray); grid-column:1/-1;"><i class="fas fa-box-open" style="font-size:3rem;"></i><p>Aún no tienes productos.</p></div>`;
-        return;
-    }
-    productos.forEach(p => {
-        const badgeHTML = p.badge ? `<span class="product-admin-badge">${p.badge}</span>` : '';
-        const imgStyle = p.imagen_url ? `background-image: url('${p.imagen_url}');` : ``;
-        const iconHTML = !p.imagen_url ? `<i class="fas fa-image default-icon"></i>` : '';
-        contenedor.innerHTML += `
+        if (productos.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; color:var(--gray); grid-column:1/-1; padding:2rem;">No tienes productos registrados.</p>';
+            return;
+        }
+
+        grid.innerHTML = productos.map(p => `
             <div class="product-admin-card">
-                <div class="product-admin-img" style="${imgStyle}">${iconHTML}</div>
+                <div class="product-admin-img" style="background-image: url('${escapeQuotes(p.imagen_url || '')}');">
+                    ${!p.imagen_url ? '<i class="fas fa-box-open default-icon"></i>' : ''}
+                </div>
                 <div class="product-admin-info">
-                    ${badgeHTML}
-                    <h4>${p.nombre}</h4>
+                    <h4>${escapeQuotes(p.nombre)}</h4>
+                    ${p.badge ? `<span class="product-admin-badge">${escapeQuotes(p.badge)}</span>` : ''}
                     <p class="product-admin-price">${formatearPrecio(p.precio)}</p>
                 </div>
-            </div>`;
-    });
+            </div>
+        `).join('');
+    } catch (err) {
+        console.error('Error cargando productos:', err);
+    }
 }
 
-// --- PEDIDOS ---
+// ============================================
+// LÓGICA PARA LA PESTAÑA DE PEDIDOS
+// ============================================
 async function cargarPedidos() {
-    const contenedor = document.getElementById('lista-pedidos');
-    contenedor.innerHTML = '<div class="spinner" style="margin: 2rem auto;"></div>';
     try {
         const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
-        if (res.status === 401 || res.status === 403) return cerrarSesionTienda();
+        if (!res.ok) throw new Error('Error cargando pedidos');
         const pedidos = await res.json();
-        renderizarPedidos(pedidos);
-    } catch (error) { 
-        contenedor.innerHTML = `<p style="color:red; text-align:center;">Error de conexión.</p>`; 
+        
+        const grid = document.getElementById('lista-pedidos');
+        if (!grid) return;
+
+        if (pedidos.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; color:var(--gray); padding:2rem;">No tienes pedidos aún.</p>';
+            return;
+        }
+
+        grid.innerHTML = pedidos.map(p => {
+            let estadoClass = p.estado === 'pendiente' ? 'pendiente' : p.estado === 'en-camino' ? 'en-camino' : 'entregado';
+            let productosHtml = '';
+            try {
+                const prods = JSON.parse(p.productosJson);
+                productosHtml = prods.map(pr => `${pr.cantidad || 1}x ${pr.nombre || 'Producto'}`).join(', ');
+            } catch(e) { productosHtml = 'Sin detalles'; }
+
+            return `
+                <div class="pedido-card-tienda ${estadoClass}">
+                    <div class="pedido-header">
+                        <span class="pedido-id">#${p.id}</span>
+                        <span class="estado-badge estado-${estadoClass}">${p.estado.toUpperCase()}</span>
+                    </div>
+                    <div class="pedido-detalles">
+                        <p><strong>Cliente:</strong> ${escapeQuotes(p.clienteNombre)}</p>
+                        <p><strong>Método Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
+                    </div>
+                    <div class="pedido-productos">${productosHtml}</div>
+                    <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">
+                        Total: ${formatearPrecio(p.total)}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } catch (err) {
+        console.error('Error cargando pedidos:', err);
     }
 }
 
-function renderizarPedidos(pedidos) {
-    const contenedor = document.getElementById('lista-pedidos');
-    contenedor.innerHTML = '';
-    if (pedidos.length === 0) {
-        contenedor.innerHTML = `<div style="text-align:center; padding: 3rem; color: var(--gray);"><i class="fas fa-receipt" style="font-size:3rem;"></i><p>No tienes pedidos aún.</p></div>`;
-        return;
-    }
-    pedidos.forEach(pedido => {
-        let productosLista = '';
-        try {
-            const prods = JSON.parse(pedido.productosJson);
-            productosLista = prods.map(p => `${p.cantidad}x ${p.nombre}`).join(', ');
-        } catch (e) { productosLista = 'Error al leer'; }
+// ============================================
+// LÓGICA PARA LA PESTAÑA DE COMISIONES
+// ============================================
+async function cargarDatosComision() {
+    const comisionPct = getMiComision();
+    
+    const pctText = document.getElementById('comision-pct-text');
+    if (pctText) pctText.innerText = comisionPct;
 
-        const fecha = new Date(pedido.fecha).toLocaleString('es-CO', {
-            timeZone: 'America/Bogota'
+    try {
+        const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
+        if (!res.ok) throw new Error('Error cargando pedidos');
+        const todosPedidos = await res.json();
+        
+        const pedidosEntregados = todosPedidos.filter(p => p.estado === 'entregado');
+
+        let totalVentas = 0;
+        let totalComision = 0;
+        let totalNeto = 0;
+        let filasHTML = '';
+
+        pedidosEntregados.forEach(pedido => {
+            const subtotalPedido = parseFloat(pedido.total) || 0; 
+            const comisionPedido = subtotalPedido * (comisionPct / 100);
+            const netoPedido = subtotalPedido - comisionPedido;
+
+            totalVentas += subtotalPedido;
+            totalComision += comisionPedido;
+            totalNeto += netoPedido;
+
+            const fechaFormateada = new Date(pedido.fecha).toLocaleDateString('es-CO', { timeZone: 'America/Bogota' });
+            filasHTML += `
+                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                    <td style="padding: 10px; text-align: center;">${pedido.id}</td>
+                    <td style="padding: 10px; text-align: center;">${fechaFormateada}</td>
+                    <td style="padding: 10px; text-align: center;">${pedido.metodoPago || 'N/A'}</td>
+                    <td style="padding: 10px; text-align: right;">${formatearPesosTienda(subtotalPedido)}</td>
+                    <td style="padding: 10px; text-align: right; color: #F4A261;">- ${formatearPesosTienda(comisionPedido)}</td>
+                    <td style="padding: 10px; text-align: right; color: #2A9D8F; font-weight: bold;">${formatearPesosTienda(netoPedido)}</td>
+                </tr>
+            `;
         });
-        const estadoClass = pedido.estado ? pedido.estado.toLowerCase().replace(/ /g, '-') : 'pendiente';
 
-        contenedor.innerHTML += `
-            <div class="pedido-card-tienda ${estadoClass}">
-                <div class="pedido-header">
-                    <span class="pedido-id">Pedido #${pedido.id}</span>
-                    <span class="estado-badge estado-${estadoClass}">${pedido.estado || 'Pendiente'}</span>
-                </div>
-                <div class="pedido-detalles">
-                    <p><strong>Cliente:</strong> ${pedido.clienteNombre}</p>
-                    <p><strong>Dirección:</strong> ${pedido.clienteDireccion}</p>
-                    <p><strong>Pago:</strong> ${pedido.metodoPago || 'Efectivo'}</p>
-                    <div class="pedido-productos"><i class="fas fa-utensils"></i> ${productosLista}</div>
-                    <p style="margin-top:0.8rem; font-size:1.2rem; color:var(--primary); font-weight:700;"><strong>Total:</strong> ${formatearPrecio(pedido.total)}</p>
-                    <p style="font-size:0.8rem; color:var(--gray); margin-top:0.5rem;"><i class="fas fa-clock"></i> ${fecha}</p>
-                </div>
-            </div>`;
-    });
+        const elVentas = document.getElementById('comision-ventas-total');
+        const elDescontada = document.getElementById('comision-descontada');
+        const elNeta = document.getElementById('comision-ganancia-neta');
+        
+        if(elVentas) elVentas.innerText = formatearPesosTienda(totalVentas);
+        if(elDescontada) elDescontada.innerText = `- ${formatearPesosTienda(totalComision)}`;
+        if(elNeta) elNeta.innerText = formatearPesosTienda(totalNeto);
+
+        const tbody = document.getElementById('tbody-comisiones');
+        if (tbody) {
+            if (totalVentas === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color:#888;">Aún no tienes pedidos entregados.</td></tr>`;
+            } else {
+                filasHTML += `
+                    <tr style="background: #5D4037; color: white; font-weight: bold; border-top: 2px solid #E63946;">
+                        <td colspan="3" style="padding: 12px; text-align: right;">TOTALES:</td>
+                        <td style="padding: 12px; text-align: right;">${formatearPesosTienda(totalVentas)}</td>
+                        <td style="padding: 12px; text-align: right;">- ${formatearPesosTienda(totalComision)}</td>
+                        <td style="padding: 12px; text-align: right;">${formatearPesosTienda(totalNeto)}</td>
+                    </tr>
+                `;
+                tbody.innerHTML = filasHTML;
+            }
+        }
+    } catch (error) {
+        console.error('Error cargando comisiones:', error);
+    }
 }
+
+// ============================================
+// LÓGICA PARA LA PESTAÑA DE CONFIGURACIÓN
+// ============================================
+async function cargarConfiguracion() {
+    try {
+        const sesion = obtenerSesionTienda();
+        const info = sesion.info;
+        
+        // Seguridad: verificar si los elementos existen antes de usarlos
+        const elNombre = document.getElementById('conf-nombre');
+        const elComision = document.getElementById('conf-comision');
+        const elDescripcion = document.getElementById('conf-descripcion');
+        const elDireccion = document.getElementById('conf-direccion');
+
+        if (info) {
+            if(elNombre) elNombre.textContent = info.nombre || 'Sin nombre';
+            if(elComision) elComision.textContent = (info.comision || 20) + '%';
+            if(elDescripcion) elDescripcion.value = info.descripcion || '';
+            if(elDireccion) elDireccion.value = info.direccion || '';
+        } else {
+            if(elNombre) elNombre.textContent = 'Error al cargar';
+        }
+    } catch (e) {
+        console.error('Error cargando configuración:', e);
+    }
+}
+
+async function guardarDatosTienda(event) {
+    event.preventDefault();
+    const sesion = obtenerSesionTienda();
+    const elDireccion = document.getElementById('conf-direccion');
+    const elDescripcion = document.getElementById('conf-descripcion');
+    
+    const direccion = elDireccion ? elDireccion.value : '';
+    const descripcion = elDescripcion ? elDescripcion.value : '';
+
+    try {
+        const res = await fetch(`${API_URL}/perfil`, { 
+            method: 'PUT',
+            headers: authHeaders(),
+            body: JSON.stringify({ descripcion, direccion })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+            alert('✅ Datos actualizados correctamente');
+            sesion.info.direccion = direccion;
+            sesion.info.descripcion = descripcion;
+            guardarSesionTienda(sesion.token, sesion.info);
+        } else {
+            alert('❌ Error: ' + (data.error || 'No se pudo actualizar'));
+        }
+    } catch (e) {
+        alert('❌ Error de conexión');
+    }
+}
+
+async function cambiarPasswordTienda(event) {
+    event.preventDefault();
+    const actual = document.getElementById('conf-pass-actual').value;
+    const nueva = document.getElementById('conf-pass-nueva').value;
+    const confirmar = document.getElementById('conf-pass-confirmar').value;
+
+    if (nueva !== confirmar) return alert('❌ Las contraseñas nuevas no coinciden.');
+    if (nueva.length < 4) return alert('❌ La contraseña debe tener al menos 4 caracteres.');
+
+    try {
+        const res = await fetch(`${API_URL}/cambiar-password`, {
+            method: 'POST',
+            headers: authHeaders(),
+            body: JSON.stringify({ passwordActual: actual, passwordNueva: nueva })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+            alert('✅ Contraseña actualizada correctamente');
+            document.getElementById('form-password-tienda').reset();
+        } else {
+            alert('❌ Error: ' + (data.error || 'No se pudo actualizar'));
+        }
+    } catch (e) {
+        alert('❌ Error de conexión');
+    }
+}
+
+// ============================================
+// INICIALIZACIÓN AL CARGAR LA PÁGINA
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Cargar la información de la tienda en el título
+    const sesion = obtenerSesionTienda();
+    const titulo = document.getElementById('titulo-tienda');
+    if (titulo && sesion.info && sesion.info.nombre) {
+        titulo.innerHTML = `<i class="fas fa-store"></i> ${sesion.info.nombre}`;
+    }
+
+    // Cargar los productos por defecto (La pestaña activa)
+    cargarProductos();
+});
