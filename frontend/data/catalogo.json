@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-12T21-43-05",
-  "ultimaActualizacion": "2026-06-12T21:43:05.966Z",
+  "version": "v2026-06-12T21-56-52",
+  "ultimaActualizacion": "2026-06-12T21:56:52.313Z",
   "tiendas": [
     {
       "id": 1,
@@ -49,6 +49,16 @@
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
           "badge": "NUEVO",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 114,
+          "nombre": "bondiola",
+          "descripcion": "es de la mas rica",
+          "precio": 27800,
+          "imagen_url": "https://manualdecocina.com/wp-content/uploads/2024/05/62aee02d-2c75-4b07-b1a0-e85262d6b397.jpg",
+          "badge": "mas vendido",
           "cantidadTipo": "UND",
           "activo": true
         }
