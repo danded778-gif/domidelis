@@ -148,7 +148,7 @@ const suscripciones = new Map();
 // ============================================
 // GOOGLE APPS SCRIPT — URL fija
 // ============================================
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxTFiS-yI38sWf8_0oQuw-bxysVi-JqVeEm57aRHuLw3LaLATabkJw2VUG6Am9eX9JXaw/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx2Mb_2sAvSQGjxP987GEqpILtsS15V2AD1E8usTJl0Yhohnwfggf4wxPUHvXE3yHr8nA/exec';
 
 // ============================================
 // ENDPOINTS DE SUSCRIPCIÓN PUSH
