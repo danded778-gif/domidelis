@@ -1,12 +1,12 @@
 {
-  "version": "v2026-06-12T20-07-58",
-  "ultimaActualizacion": "2026-06-12T20:07:58.024Z",
+  "version": "v2026-06-12T20-08-06",
+  "ultimaActualizacion": "2026-06-12T20:08:06.296Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "🍔 Tienda Hamburgesa",
       "descripcion": "",
-      "direccion": "Cl. 50 #47-149a 47-23",
+      "direccion": "Cl. 50 #47-149a 47-24",
       "horario": "2pm - 9pm",
       "rating": 4.2,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/hamburgesa.png",
