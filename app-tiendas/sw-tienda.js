@@ -4,17 +4,17 @@
 
 const CACHE_NAME = 'tienda-cache-v1';
 
-// Archivos estáticos de la tienda para cachear al instalar
+// Archivos estáticos de la tienda para cachear al instalar (RUTAS ABSOLUTAS)
 const ARCHIVOS_ESTATICOS_TIENDA = [
-  './',
-  './index-tienda.html',
-  './login-tienda.html',
-  './manifest-tienda.json',
-  './assets/css/tiendas.css',
-  './assets/js/config-tienda.js',
-  './assets/js/tiendas.js',
-  './assets/img/icon-192x192.png',
-  './assets/img/icon-512x512.png'
+  '/app-tiendas/',
+  '/app-tiendas/index-tienda.html',
+  '/app-tiendas/login-tienda.html',
+  '/app-tiendas/manifest-tienda.json',
+  '/app-tiendas/assets/css/tiendas.css',
+  '/app-tiendas/assets/js/config-tienda.js',
+  '/app-tiendas/assets/js/tiendas.js',
+  '/app-tiendas/assets/img/icon-192x192.png',
+  '/app-tiendas/assets/img/icon-512x512.png'
 ];
 
 // ============================================
@@ -106,9 +106,9 @@ self.addEventListener('fetch', e => {
           })
           .catch(() => {
             // Fallback final si se cae la red y no está en caché
-            // Si es una página HTML, intentamos mostrar el index de la tienda
+            // Si es una página HTML, intentamos mostrar el index de la tienda (RUTA ABSOLUTA)
             if (e.request.headers.get('accept')?.includes('text/html')) {
-              return caches.match('./index-tienda.html');
+              return caches.match('/app-tiendas/index-tienda.html');
             }
             // Si es una imagen u otro recurso, simplemente fallamos sin crashear
             return new Response('', { status: 408 });
