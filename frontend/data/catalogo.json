@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-12T21-42-03",
-  "ultimaActualizacion": "2026-06-12T21:42:03.948Z",
+  "version": "v2026-06-12T21-43-05",
+  "ultimaActualizacion": "2026-06-12T21:43:05.966Z",
   "tiendas": [
     {
       "id": 1,
@@ -162,7 +162,7 @@
           "id": 105,
           "nombre": "Arepa con Queso",
           "descripcion": "Arepa grande con queso doble",
-          "precio": 7000,
+          "precio": 18073,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/arepa_quesos.jpg",
           "badge": "Mas vendido",
           "cantidadTipo": "UND",
