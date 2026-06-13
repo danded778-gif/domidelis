@@ -633,8 +633,31 @@
                         type="text" id="productoNombre" required placeholder="Ej: Hamburguesa Sencilla"></div>
                 <div class="form-group"><label><i class="fas fa-align-left"></i> Descripción</label><textarea
                         id="productoDescripcion" rows="2" placeholder="Ingredientes, detalles..."></textarea></div>
-                <div class="form-group"><label><i class="fas fa-dollar-sign"></i> Precio *</label><input type="number"
-                        id="productoPrecio" required min="0" placeholder="10000"></div>
+                                <div class="form-group">
+                    <label><i class="fas fa-dollar-sign"></i> Precio en la App *</label>
+                    <input type="number" id="productoPrecio" required min="0" placeholder="10000" oninput="calcularComisionProducto()">
+                    
+                    <!-- ★ CALCULADORA DE COMISIÓN ★ -->
+                    <div id="comision-calculo-box" style="display:none; margin-top:12px; padding:15px; background:#f8fffe; border-radius:12px; border:1px dashed var(--accent); font-size:0.85rem; color:#333;">
+                        <div style="margin-bottom:12px; display:flex; align-items:center; gap:10px;">
+                            <i class="fas fa-store" style="color:var(--accent); font-size:1.3rem;"></i>
+                            <div>
+                                <strong>La tienda recibe:</strong> <span id="tiendaRecibe" style="font-weight:800; color:var(--accent);">$0</span><br>
+                                <small style="color:var(--gray);">App retiene el <span id="comisionPctDisplay">0</span>%</small>
+                            </div>
+                        </div>
+                        <hr style="border:0; border-top:1px solid #e0e0e0; margin:12px 0;">
+                        <div style="font-weight:600; margin-bottom:10px; color:var(--dark); font-size:0.9rem;">
+                            <i class="fas fa-calculator" style="color:var(--primary);"></i> ¿Tienda quiere ganar X? (Calculadora inversa)
+                        </div>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input type="number" id="gananciaDeseadaInput" min="0" placeholder="Ej: 20000" style="flex:1; padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-family:inherit; font-size:0.85rem;">
+                            <button type="button" onclick="calcularPrecioDesdeGanancia()" class="btn btn-primary btn-sm" style="padding:8px 14px; font-size:0.85rem;">
+                                <i class="fas fa-calculator"></i> Poner Precio
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group"><label><i class="fas fa-image"></i> URL Imagen</label><input type="url"
                         id="productoImagen" placeholder="URL de la imagen"><small
                         style="color:var(--gray);font-size:.8rem;">Pega la URL directa</small></div>
