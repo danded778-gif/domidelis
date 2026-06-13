@@ -1,13 +1,13 @@
 {
-  "version": "v2026-06-12T23-33-11",
-  "ultimaActualizacion": "2026-06-12T23:33:11.395Z",
+  "version": "v2026-06-13T00-01-20",
+  "ultimaActualizacion": "2026-06-13T00:01:20.127Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "🍔 Tienda Hamburgesa",
       "descripcion": "hamburgeas de la mejor calida",
       "direccion": "Cl. 50 #47-149a 47-24",
-      "horario": "2pm - 9pm",
+      "horario": "14:00-21:00",
       "rating": 4.2,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/hamburgesa.png",
       "activo": true,
