@@ -110,10 +110,10 @@ async function cargarTiendas() {
         // Añadimos ?v=timestamp para evitar que el navegador cachee el JSON viejo estrictamente
         const res = await fetch(`${CATALOGO_URL}?v=${Date.now()}`);
         const data = await res.json();
-        
+
         // El JSON tiene la estructura { version: "...", tiendas: [...] }
         tiendas = data.tiendas || [];
-        
+
         renderizarTiendas();
     } catch (error) {
         console.error("Error cargando catálogo estático", error);
@@ -130,13 +130,34 @@ async function cargarTiendas() {
 }
 
 // ============================================
-// renderizarTiendas() - Ajustado para rating por defecto
+// renderizarTiendas() - Ajustado para rating y estado (Abierto/Cerrado)
+// ============================================ 
+// ============================================
+// renderizarTiendas() - Ajustado: Abiertas primero, luego por rating
 // ============================================ 
 function renderizarTiendas() {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
-    tiendas.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0));
+    // ★ NUEVA LÓGICA DE ORDENAMIENTO ★
+    tiendas.sort((a, b) => {
+        const statusA = checkStoreStatus(a.horario);
+        const statusB = checkStoreStatus(b.horario);
+
+        // 1 significa abierta, 0 significa cerrada
+        const isOpenA = statusA.isOpen ? 1 : 0;
+        const isOpenB = statusB.isOpen ? 1 : 0;
+
+        // Si una está abierta y la otra cerrada, la abierta (1) va primero
+        if (isOpenB !== isOpenA) {
+            return isOpenB - isOpenA;
+        }
+
+        // Si ambas están abiertas o ambas están cerradas, ordenamos por rating
+        const ratingA = parseFloat(a.rating) || 0;
+        const ratingB = parseFloat(b.rating) || 0;
+        return ratingB - ratingA;
+    });
 
     container.className = 'stores-grid';
 
@@ -148,10 +169,18 @@ function renderizarTiendas() {
     container.innerHTML = tiendas.map(tienda => {
         const tieneImagen = tienda.imagen && tienda.imagen.trim() !== '';
         const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
-        const rating = tienda.rating || 5; // ★ Si no tiene rating, pone 5 por defecto
+        const rating = tienda.rating || 5;
+
+        // ★ LÓGICA DE TIENDA CERRADA ★
+        const status = checkStoreStatus(tienda.horario);
+        const closedClass = !status.isOpen ? 'store-closed' : '';
+        const closedOverlay = !status.isOpen ? '<div class="closed-overlay"></div>' : '';
+        const closedBadge = !status.isOpen ? `<span class="badge-closed"><i class="fas fa-clock"></i> ${status.nextOpening}</span>` : '';
 
         return `
-        <div class="store-card" onclick="verMenuTienda(${tienda.id})">
+        <div class="store-card ${closedClass}" onclick="verMenuTienda(${tienda.id})">
+            ${closedOverlay}
+            ${closedBadge}
             <div class="store-img" style="${tieneImagen ? `background-image: url('${tienda.imagen}');` : ''}">
                 ${!tieneImagen ? '<i class="fas fa-store"></i>' : ''}
                 <span class="store-badge">⭐ ${rating}</span>
@@ -161,7 +190,7 @@ function renderizarTiendas() {
                 <h3>${tienda.nombre}</h3>
                 ${tieneDesc ? `<p class="store-desc">${tienda.descripcion}</p>` : ''}
                 <p><i class="fas fa-map-marker-alt"></i> ${tienda.direccion}</p>
-                <p><i class="fas fa-clock"></i> ${tienda.horario || "11am - 10pm"}</p>
+                <p><i class="fas fa-clock"></i> ${tienda.horario || "11:00-22:00"}</p>
                 <div class="store-rating">${generarEstrellas(rating)}</div>
             </div>
         </div>
@@ -192,7 +221,7 @@ async function verMenuTienda(tiendaId) {
 
     // Los productos ya vienen anidados dentro de la tienda en el JSON
     const productos = tienda.productos || [];
-    
+
     // Filtro: quita objetos vacíos
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
 
@@ -205,6 +234,9 @@ async function verMenuTienda(tiendaId) {
         return;
     }
 
+    // ★ Obtener el estado de la tienda para bloquear el botón si está cerrada ★
+    const status = checkStoreStatus(tienda.horario);
+
     let productosHTML = productosValidos.map(p => {
         // ★ INYECTAR tiendaId y tiendaNombre para el carrito (ya que no vienen en el JSON anidado)
         p.tiendaId = tienda.id;
@@ -212,6 +244,18 @@ async function verMenuTienda(tiendaId) {
 
         const imagenUrl = (p.imagen_url || p.icono || '').trim();
         const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
+
+        // ★ LÓGICA DE BOTÓN SEGÚN ESTADO ★
+        let botonHTML;
+        if (!status.isOpen) {
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada. Horario: ${tienda.horario}', 'error')">
+                <i class="fas fa-clock"></i> Cerrado
+            </button>`;
+        } else {
+            botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)">
+                <i class="fas fa-plus"></i> Agregar
+            </button>`;
+        }
 
         return `
         <div class="product-card">
@@ -225,9 +269,7 @@ async function verMenuTienda(tiendaId) {
                 <p class="product-desc">${p.descripcion || ''}</p>
                 <div class="product-price">${formatearPrecio(p.precio)}</div>
                 <div class="precio-unidad-container">
-                    <button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)">
-                        <i class="fas fa-plus"></i> Agregar
-                    </button>
+                    ${botonHTML}
                 </div>
             </div>
         </div>
@@ -312,6 +354,16 @@ function crearExplosionComida() {
 }
 
 function agregarAlCarrito(producto, cantidadTipo) {
+    // ★ SEGURIDAD: Verificar si la tienda está cerrada antes de agregar ★
+    const tiendaOrigen = tiendas.find(t => t.id == producto.tiendaId);
+    if (tiendaOrigen) {
+        const status = checkStoreStatus(tiendaOrigen.horario);
+        if (!status.isOpen) {
+            mostrarNotificacion(`Esta tienda está cerrada. Horario: ${tiendaOrigen.horario}`, 'error');
+            return; // Bloquea la inserción al carrito
+        }
+    }
+
     const carritoVacio = carrito.length === 0;
 
     const item = {
@@ -343,7 +395,7 @@ function agregarAlCarrito(producto, cantidadTipo) {
 
     const botones = document.querySelectorAll('.btn-agregar-unidad');
     botones.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(`"id":${producto.id}`)) {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`"id":${producto.id}`)) {
             const textoOriginal = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
             btn.style.background = '#28a745';
@@ -482,4 +534,38 @@ function filtrarProductos(texto) {
             ? 'No se encontraron productos'
             : `${visibles} resultado${visibles !== 1 ? 's' : ''} para "${texto}"`;
     }
+}
+
+// ============================================
+// FUNCIÓN DE ESTADO DE TIENDA (ABIERTA/CERRADA)
+// ============================================
+function checkStoreStatus(horario) {
+    if (!horario || !horario.includes('-')) {
+        return { isOpen: true, nextOpening: "" }; // Si no hay horario, asumimos abierta
+    }
+
+    const now = new Date();
+    const colombiaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Bogota" }));
+    const currentHours = colombiaTime.getHours();
+    const currentMinutes = colombiaTime.getMinutes();
+    const currentTimeInMinutes = (currentHours * 60) + currentMinutes;
+
+    const [startStr, endStr] = horario.split('-');
+    const [startH, startM] = startStr.split(':').map(Number);
+    const [endH, endM] = endStr.split(':').map(Number);
+
+    const startTimeInMinutes = (startH * 60) + startM;
+    const endTimeInMinutes = (endH * 60) + endM;
+
+    let isOpen = false;
+
+    if (endTimeInMinutes > startTimeInMinutes) {
+        isOpen = currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes;
+    } else {
+        isOpen = currentTimeInMinutes >= startTimeInMinutes || currentTimeInMinutes < endTimeInMinutes;
+    }
+
+    const nextOpening = isOpen ? "" : `Abre a las ${startStr}`;
+
+    return { isOpen, nextOpening };
 }

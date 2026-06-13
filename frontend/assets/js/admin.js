@@ -259,7 +259,10 @@ function llenarSelectsTiendas(tiendas) {
     const selectProducto = document.getElementById("productoTiendaId");
     const opciones = tiendas.map(t => `<option value="${t.id}">${escapeQuotes(t.nombre)}</option>`).join('');
     if (selectVer) selectVer.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
-    if (selectProducto) selectProducto.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
+    if (selectProducto) {
+        selectProducto.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
+        selectProducto.setAttribute('onchange', 'calcularComisionProducto()'); // ★ Calculadora
+    }
 }
 
 function mostrarModalTienda() {
@@ -399,6 +402,7 @@ function mostrarModalProducto() {
     productoEditando = null;
     document.getElementById("modalProductoTitulo").textContent = "Nuevo Producto";
     document.getElementById("formProducto").reset();
+    document.getElementById("comision-calculo-box").style.display = "none"; // ★ Ocultar calculadora al crear nuevo
     document.getElementById("modalProducto").classList.add("active");
 }
 
@@ -467,6 +471,7 @@ async function editarProducto(id) {
     document.getElementById("productoPrecio").value = producto.precio;
     document.getElementById("productoImagen").value = producto.imagen_url || '';
     document.getElementById("productoBadge").value = producto.badge || '';
+    calcularComisionProducto(); // ★ Activa la calculadora con los datos cargados
     document.getElementById("modalProducto").classList.add("active");
 }
 
@@ -849,9 +854,9 @@ function actualizarCheckboxMaestro() {
     if (!master) return;
     const checkboxes = document.querySelectorAll('.checkbox-pedido');
     const total = checkboxes.length;
-    const seleccionados = Array.from(checkboxes).filter(cb => cb.checked).length;
-    master.checked = total > 0 && seleccionados === total;
-    master.indeterminate = seleccionados > 0 && seleccionados < total;
+    const selecionados = Array.from(checkboxes).filter(cb => cb.checked).length;
+    master.checked = total > 0 && selecionados === total;
+    master.indeterminate = selecionados > 0 && selecionados < total;
 }
 
 function actualizarBotonesAccionMasiva() {
@@ -1024,7 +1029,7 @@ async function editarDomiciliario(id) {
     document.getElementById('domiNombre').value = domi.nombre;
     document.getElementById('domiTelefono').value = domi.telefono || '';
     document.getElementById('domiPassword').value = domi.password || '';
-    document.getElementById('domiComisionApp').value = domi.comisionApp || 0; // <--- AGREGAR ESTO 
+    document.getElementById('domiComisionApp').value = domi.comisionApp || 20; // <--- AGREGAR ESTO 
     document.getElementById('domiPassword').type = 'text';
     document.getElementById('domi-eye-icon').className = 'fas fa-eye-slash';
     document.getElementById('modalDomiciliario').classList.add('active');
@@ -1098,6 +1103,66 @@ async function eliminarDomiciliario(id) {
         mostrarNotificacion('Error de conexión', 'error');
     }
 }
+
+// ============================================
+// ★ CALCULADORA DE COMISIONES PARA PRODUCTOS
+// ============================================
+
+// 1. Se ejecuta al cambiar el precio o la tienda en el modal
+function calcularComisionProducto() {
+    const tiendaId = document.getElementById('productoTiendaId').value;
+    const precioStr = document.getElementById('productoPrecio').value;
+    const box = document.getElementById('comision-calculo-box');
+
+    if (!tiendaId || !precioStr) {
+        box.style.display = 'none';
+        return;
+    }
+
+    const precio = parseFloat(precioStr);
+    if (precio <= 0) {
+        box.style.display = 'none';
+        return;
+    }
+
+    const tienda = tiendasCache.find(t => String(t.id) === String(tiendaId));
+    const comisionPct = tienda ? parseFloat(tienda.comision || 20) : 20;
+
+    // Cálculo: Tienda recibe = Precio - (Precio * (Comisión / 100))
+    const gananciaTienda = precio - (precio * (comisionPct / 100));
+
+    document.getElementById('tiendaRecibe').textContent = formatearPrecio(gananciaTienda);
+    document.getElementById('comisionPctDisplay').textContent = comisionPct;
+    box.style.display = 'block';
+}
+
+// 2. Calculadora inversa: Si la tienda quiere ganar X, cuánto debe costar
+function calcularPrecioDesdeGanancia() {
+    const tiendaId = document.getElementById('productoTiendaId').value;
+    const gananciaStr = document.getElementById('gananciaDeseadaInput').value;
+
+    if (!tiendaId || !gananciaStr) {
+        mostrarNotificacion("Selecciona la tienda y escribe la ganancia deseada", "error");
+        return;
+    }
+
+    const gananciaDeseada = parseFloat(gananciaStr);
+    const tienda = tiendasCache.find(t => String(t.id) === String(tiendaId));
+    const comisionPct = tienda ? parseFloat(tienda.comision || 20) : 20;
+
+    if (comisionPct >= 100) {
+        mostrarNotificacion("La comisión no puede ser 100% o más", "error");
+        return;
+    }
+
+    // Cálculo: Precio = Ganancia Deseada / (1 - (Comisión / 100))
+    const precioSugerido = gananciaDeseada / (1 - (comisionPct / 100));
+
+    document.getElementById('productoPrecio').value = Math.ceil(precioSugerido);
+    calcularComisionProducto(); // Actualizamos la vista de arriba
+    mostrarNotificacion(`Precio sugerido: ${formatearPrecio(precioSugerido)}`, "success");
+}
+
 window.onclick = function (event) {
     if (event.target.classList.contains('modal')) event.target.classList.remove('active');
 };
