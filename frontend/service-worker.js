@@ -6,9 +6,9 @@
 const isDev = false;
 const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
-    : 'soluvencon-v1.7.1'; 
+    : 'domidelis-v1.7.2'; 
 
-const IMAGES_CACHE_NAME = 'soluvencon-img-cache-v1'; 
+const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1'; 
 
 const ARCHIVOS_ESTATICOS = [
   '/',
@@ -212,13 +212,13 @@ self.addEventListener('fetch', (event) => {
 // ============================================
 self.addEventListener('push', (event) => {
   let data = {};
-  try { data = event.data.json(); } catch (e) { data = { title: 'SOLUVENCON', body: 'Nueva notificación' }; }
+  try { data = event.data.json(); } catch (e) { data = { title: 'DOMIDELIS', body: 'Nueva notificación' }; }
   event.waitUntil(
-    self.registration.showNotification(data.title || 'SOLUVENCON', {
+    self.registration.showNotification(data.title || 'DOMIDELIS', {
       body: data.body || 'Nueva notificación',
       icon: data.icon || '/domidelis/assets/img/icon-192x192.png',
       badge: data.badge || '/domidelis/assets/img/icon-192x192.png',
-      tag: data.tag || 'soluvencon-push',
+      tag: data.tag || 'domidelis-push',
       requireInteraction: true,
       vibrate: [200, 100, 200, 100, 200],
       renotify: true,
