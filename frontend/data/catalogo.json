@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-13T01-02-49",
-  "ultimaActualizacion": "2026-06-13T01:02:49.951Z",
+  "version": "v2026-06-13T18-42-51",
+  "ultimaActualizacion": "2026-06-13T18:42:51.497Z",
   "tiendas": [
     {
       "id": 1,
@@ -16,7 +16,7 @@
           "id": 101,
           "nombre": "Hamburguesa Almuerzo",
           "descripcion": "Hamburguesa + papas",
-          "precio": 15000,
+          "precio": 16700,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
           "badge": "Mas vendido",
           "cantidadTipo": "UND",
