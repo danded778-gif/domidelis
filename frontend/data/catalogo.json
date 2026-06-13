@@ -1,11 +1,11 @@
 {
-  "version": "v2026-06-13T00-56-04",
-  "ultimaActualizacion": "2026-06-13T00:56:04.785Z",
+  "version": "v2026-06-13T01-02-49",
+  "ultimaActualizacion": "2026-06-13T01:02:49.951Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "🍔 Tienda Hamburgesa",
-      "descripcion": "hamburgeas de la mejor calida",
+      "descripcion": "hamburgesas con hambre",
       "direccion": "Cl. 50 #47-149a 47-24",
       "horario": "19:30-06:00",
       "rating": 4.2,
