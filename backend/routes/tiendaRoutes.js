@@ -153,7 +153,16 @@ router.post('/cambiar-password', verifyTienda, async (req, res) => {
         const { passwordActual, passwordNueva } = req.body;
         const tiendaId = req.tienda.id;
         
-        const response = await axios.get(`${GAS_URL}?action=actualizarPasswordTienda&id=${tiendaId}&passwordActual=${encodeURIComponent(passwordActual)}&passwordNueva=${encodeURIComponent(passwordNueva)}`);
+        const params = new URLSearchParams({
+            action: 'actualizarPasswordTienda',
+            id: tiendaId,
+            passwordActual: passwordActual,
+            passwordNueva: passwordNueva
+        });
+
+        const response = await axios.post(GAS_URL, params.toString(), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
         const data = response.data;
 
         if (data.success) {
