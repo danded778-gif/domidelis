@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-07-54",
-  "ultimaActualizacion": "2026-06-14T22:07:54.795Z",
+  "version": "v2026-06-14T22-07-57",
+  "ultimaActualizacion": "2026-06-14T22:07:57.144Z",
   "tiendas": [
     {
       "id": 1,
@@ -79,7 +79,7 @@
           "nombre": "Acetaminofén",
           "descripcion": "",
           "precio": 2000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
+          "imagen_url": "",
           "badge": "Promocion",
           "cantidadTipo": "UND",
           "activo": true
@@ -89,7 +89,7 @@
           "nombre": "Ibuprofeno",
           "descripcion": "",
           "precio": 15000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
+          "imagen_url": "",
           "badge": "agotado",
           "cantidadTipo": "UND",
           "activo": true
@@ -99,7 +99,7 @@
           "nombre": "Loratadina",
           "descripcion": "",
           "precio": 5000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
+          "imagen_url": "",
           "badge": "NUEVO",
           "cantidadTipo": "UND",
           "activo": true
