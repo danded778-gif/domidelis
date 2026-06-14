@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-16-04",
-  "ultimaActualizacion": "2026-06-14T19:16:04.130Z",
+  "version": "v2026-06-14T19-20-00",
+  "ultimaActualizacion": "2026-06-14T19:20:00.898Z",
   "tiendas": [
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "productos": [
         {
           "id": 101,
-          "nombre": "Hamburguesa Almuerzo",
+          "nombre": "Acetaminofén",
           "descripcion": "Hamburguesa + papas",
           "precio": 16700,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
@@ -24,7 +24,7 @@
         },
         {
           "id": 102,
-          "nombre": "Hamburguesa Doble",
+          "nombre": "Ibuprofeno",
           "descripcion": "Doble carne, queso",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_doble.jpg",
@@ -34,7 +34,7 @@
         },
         {
           "id": 103,
-          "nombre": "hamburgesa sencilla",
+          "nombre": "Loratadina",
           "descripcion": "hamburgesa con tomate",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%201.png",
@@ -44,7 +44,7 @@
         },
         {
           "id": 104,
-          "nombre": "Hamburguesa doble extreme",
+          "nombre": "Alcohol antiséptico",
           "descripcion": "hamburgesa doble",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
