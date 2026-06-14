@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-10-22",
-  "ultimaActualizacion": "2026-06-14T22:10:22.086Z",
+  "version": "v2026-06-14T22-11-39",
+  "ultimaActualizacion": "2026-06-14T22:11:39.369Z",
   "tiendas": [
     {
       "id": 1,
@@ -78,7 +78,7 @@
           "id": 106,
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "",
-          "precio": 0,
+          "precio": 6500,
           "imagen_url": "",
           "badge": "agotado",
           "cantidadTipo": "UND",
