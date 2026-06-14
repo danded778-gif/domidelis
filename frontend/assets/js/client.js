@@ -107,11 +107,9 @@ async function cargarTiendas() {
     if (!container) return;
 
     try {
-        // Añadimos ?v=timestamp para evitar que el navegador cachee el JSON viejo estrictamente
         const res = await fetch(`${CATALOGO_URL}?v=${Date.now()}`);
         const data = await res.json();
 
-        // El JSON tiene la estructura { version: "...", tiendas: [...] }
         tiendas = data.tiendas || [];
 
         renderizarTiendas();
@@ -130,30 +128,23 @@ async function cargarTiendas() {
 }
 
 // ============================================
-// renderizarTiendas() - Ajustado para rating y estado (Abierto/Cerrado)
-// ============================================ 
-// ============================================
-// renderizarTiendas() - Ajustado: Abiertas primero, luego por rating
+// renderizarTiendas() - Abiertas primero, luego por rating
 // ============================================ 
 function renderizarTiendas() {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
-    // ★ NUEVA LÓGICA DE ORDENAMIENTO ★
     tiendas.sort((a, b) => {
         const statusA = checkStoreStatus(a.horario);
         const statusB = checkStoreStatus(b.horario);
 
-        // 1 significa abierta, 0 significa cerrada
         const isOpenA = statusA.isOpen ? 1 : 0;
         const isOpenB = statusB.isOpen ? 1 : 0;
 
-        // Si una está abierta y la otra cerrada, la abierta (1) va primero
         if (isOpenB !== isOpenA) {
             return isOpenB - isOpenA;
         }
 
-        // Si ambas están abiertas o ambas están cerradas, ordenamos por rating
         const ratingA = parseFloat(a.rating) || 0;
         const ratingB = parseFloat(b.rating) || 0;
         return ratingB - ratingA;
@@ -171,7 +162,6 @@ function renderizarTiendas() {
         const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
         const rating = tienda.rating || 5;
 
-        // ★ LÓGICA DE TIENDA CERRADA ★
         const status = checkStoreStatus(tienda.horario);
         const closedClass = !status.isOpen ? 'store-closed' : '';
         const closedOverlay = !status.isOpen ? '<div class="closed-overlay"></div>' : '';
@@ -210,7 +200,6 @@ async function verMenuTienda(tiendaId) {
         </div>
     `;
 
-    // Buscamos la tienda y sus productos directamente en la variable global (cero peticiones)
     const tienda = tiendas.find(t => t.id == tiendaId);
 
     if (!tienda) {
@@ -219,10 +208,7 @@ async function verMenuTienda(tiendaId) {
         return;
     }
 
-    // Los productos ya vienen anidados dentro de la tienda en el JSON
     const productos = tienda.productos || [];
-
-    // Filtro: quita objetos vacíos
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
 
     if (productosValidos.length === 0) {
@@ -234,18 +220,15 @@ async function verMenuTienda(tiendaId) {
         return;
     }
 
-    // ★ Obtener el estado de la tienda para bloquear el botón si está cerrada ★
     const status = checkStoreStatus(tienda.horario);
 
     let productosHTML = productosValidos.map(p => {
-        // ★ INYECTAR tiendaId y tiendaNombre para el carrito (ya que no vienen en el JSON anidado)
         p.tiendaId = tienda.id;
         p.tiendaNombre = tienda.nombre;
 
         const imagenUrl = (p.imagen_url || p.icono || '').trim();
         const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
 
-        // ★ LÓGICA DE BOTÓN SEGÚN ESTADO ★
         let botonHTML;
         if (!status.isOpen) {
             botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada. Horario: ${tienda.horario}', 'error')">
@@ -354,13 +337,12 @@ function crearExplosionComida() {
 }
 
 function agregarAlCarrito(producto, cantidadTipo) {
-    // ★ SEGURIDAD: Verificar si la tienda está cerrada antes de agregar ★
     const tiendaOrigen = tiendas.find(t => t.id == producto.tiendaId);
     if (tiendaOrigen) {
         const status = checkStoreStatus(tiendaOrigen.horario);
         if (!status.isOpen) {
             mostrarNotificacion(`Esta tienda está cerrada. Horario: ${tiendaOrigen.horario}`, 'error');
-            return; // Bloquea la inserción al carrito
+            return;
         }
     }
 
@@ -541,7 +523,7 @@ function filtrarProductos(texto) {
 // ============================================
 function checkStoreStatus(horario) {
     if (!horario || !horario.includes('-')) {
-        return { isOpen: true, nextOpening: "" }; // Si no hay horario, asumimos abierta
+        return { isOpen: true, nextOpening: "" };
     }
 
     const now = new Date();
@@ -568,4 +550,411 @@ function checkStoreStatus(horario) {
     const nextOpening = isOpen ? "" : `Abre a las ${startStr}`;
 
     return { isOpen, nextOpening };
+}
+
+// ============================================
+// ZONE AUTOCOMPLETE - BUSCADOR DE ZONAS
+// ============================================
+
+// ★★★ ZONAS SE CONSTRUYE DESDE APP_CONFIG.zonas ★★★
+// Solo necesitas agregar zonas en config.js y aparecerán aquí automáticamente
+const ZONAS = Object.entries(APP_CONFIG.zonas).map(([id, data]) => ({
+    id: id,
+    nombre: data.nombre,
+    envio: data.envio
+})).sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+let _zonaSeleccionada = null;
+let _highlightedIndex = -1;
+
+// ★ Función compartida: Resaltar texto coincidente ★
+function _resaltarTexto(texto, termino) {
+    if (!termino) return texto;
+    var terminoEscapado = termino.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var regex = new RegExp('(' + terminoEscapado + ')', 'gi');
+    return texto.replace(regex, '<mark>$1</mark>');
+}
+
+// ============================================
+// AUTOCOMPLETE PARA INDEX (Hero)
+// ============================================
+function initZoneAutocomplete() {
+    const input = document.getElementById('zone-input');
+    const hiddenInput = document.getElementById('zone-select');
+    const dropdown = document.getElementById('zone-dropdown');
+    const clearBtn = document.getElementById('zone-clear-btn');
+
+    if (!input || !hiddenInput || !dropdown) return;
+
+    // ★ Cargar zona guardada al iniciar ★
+    const zonaGuardada = localStorage.getItem('zonaSeleccionada');
+    if (zonaGuardada) {
+        const zona = ZONAS.find(z => z.id === zonaGuardada);
+        if (zona) {
+            _seleccionarZona(zona, false);
+        }
+        if (typeof APP_CONFIG !== 'undefined') {
+            APP_CONFIG.zonaActual = zonaGuardada;
+        }
+    }
+
+    // ★ FOCO: Limpiar texto para buscar ★
+    input.addEventListener('focus', function () {
+        if (_zonaSeleccionada) {
+            input.value = '';
+        }
+        _mostrarDropdown(input.value);
+    });
+
+    // ★ ESCRIBIR: Filtrar resultados ★
+    input.addEventListener('input', function () {
+        _mostrarDropdown(input.value);
+    });
+
+    // ★ PERDER FOCO: Restaurar selección previa ★
+    input.addEventListener('blur', function () {
+        setTimeout(() => {
+            _cerrarDropdown();
+            if (_zonaSeleccionada && !input.value.trim()) {
+                input.value = '📍 ' + _zonaSeleccionada.nombre + ' - Envío $' + _zonaSeleccionada.envio.toLocaleString('es-CO');
+            }
+            if (clearBtn) {
+                clearBtn.classList.toggle('visible', _zonaSeleccionada !== null);
+            }
+        }, 200);
+    });
+
+    // ★ NAVEGACIÓN CON TECLADO ★
+    input.addEventListener('keydown', function (e) {
+        const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            _highlightedIndex = Math.min(_highlightedIndex + 1, options.length - 1);
+            _actualizarHighlight(options);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            _highlightedIndex = Math.max(_highlightedIndex - 1, 0);
+            _actualizarHighlight(options);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (_highlightedIndex >= 0 && options[_highlightedIndex]) {
+                options[_highlightedIndex].click();
+            }
+        } else if (e.key === 'Escape') {
+            _cerrarDropdown();
+            input.blur();
+        }
+    });
+
+    // ★ BOTÓN LIMPIAR (X) ★
+    if (clearBtn) {
+        clearBtn.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            _zonaSeleccionada = null;
+            input.value = '';
+            hiddenInput.value = '';
+            if (typeof APP_CONFIG !== 'undefined') {
+                APP_CONFIG.zonaActual = '';
+            }
+            localStorage.removeItem('zonaSeleccionada');
+            clearBtn.classList.remove('visible');
+            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
+            input.focus();
+        });
+    }
+
+    // ★ CERRAR al hacer click fuera ★
+    document.addEventListener('click', function (e) {
+        const autocomplete = document.getElementById('zone-autocomplete');
+        if (autocomplete && !autocomplete.contains(e.target)) {
+            _cerrarDropdown();
+        }
+    });
+
+    // ★ Listener de cambio en hidden input (compatibilidad) ★
+    hiddenInput.addEventListener('change', function (e) {
+        if (typeof APP_CONFIG !== 'undefined') {
+            APP_CONFIG.zonaActual = e.target.value;
+        }
+        localStorage.setItem('zonaSeleccionada', e.target.value);
+        if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
+    });
+}
+
+// ★ Mostrar dropdown con resultados filtrados (Index) ★
+function _mostrarDropdown(termino) {
+    const dropdown = document.getElementById('zone-dropdown');
+    if (!dropdown) return;
+
+    const terminoLower = termino.toLowerCase().trim();
+    let zonasFiltradas = ZONAS;
+
+    if (terminoLower) {
+        zonasFiltradas = ZONAS.filter(z =>
+            z.nombre.toLowerCase().includes(terminoLower) ||
+            z.id.toLowerCase().includes(terminoLower)
+        );
+    }
+
+    _highlightedIndex = -1;
+
+    if (zonasFiltradas.length === 0) {
+        dropdown.innerHTML =
+            '<div class="zone-no-results">' +
+            '<i class="fas fa-map-marker-alt"></i>' +
+            'No hay zonas que coincidan con "' + termino + '"' +
+            '</div>';
+    } else {
+        dropdown.innerHTML = zonasFiltradas.map(function (zona) {
+            return '<div class="zone-option" data-zone-id="' + zona.id + '" ' +
+                'onclick="_seleccionarZona(ZONAS.find(function(z){return z.id===\'' + zona.id + '\'}), true)">' +
+                '<span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span>' +
+                '<span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span>' +
+                '</div>';
+        }).join('');
+    }
+
+    dropdown.classList.add('active');
+}
+
+// ★ Cerrar dropdown (Index) ★
+function _cerrarDropdown() {
+    const dropdown = document.getElementById('zone-dropdown');
+    if (dropdown) {
+        dropdown.classList.remove('active');
+        _highlightedIndex = -1;
+    }
+}
+
+// ★ Seleccionar una zona (Index) ★
+function _seleccionarZona(zona, actualizar) {
+    const input = document.getElementById('zone-input');
+    const hiddenInput = document.getElementById('zone-select');
+    const clearBtn = document.getElementById('zone-clear-btn');
+
+    _zonaSeleccionada = zona;
+
+    if (input) {
+        input.value = '📍 ' + zona.nombre + ' - Envío $' + zona.envio.toLocaleString('es-CO');
+    }
+    if (hiddenInput) {
+        hiddenInput.value = zona.id;
+    }
+    if (clearBtn) {
+        clearBtn.classList.add('visible');
+    }
+
+    if (typeof APP_CONFIG !== 'undefined') {
+        APP_CONFIG.zonaActual = zona.id;
+    }
+    localStorage.setItem('zonaSeleccionada', zona.id);
+
+    _cerrarDropdown();
+
+    if (actualizar) {
+        if (hiddenInput) {
+            hiddenInput.dispatchEvent(new Event('change'));
+        }
+        if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
+    }
+}
+
+// ★ Highlight de opción con teclado (Index) ★
+function _actualizarHighlight(options) {
+    options.forEach(function (opt, idx) {
+        if (idx === _highlightedIndex) {
+            opt.classList.add('highlighted');
+            opt.scrollIntoView({ block: 'nearest' });
+        } else {
+            opt.classList.remove('highlighted');
+        }
+    });
+}
+
+// ============================================
+// AUTOCOMPLETE PARA CHECKOUT
+// ============================================
+
+let _checkoutZonaSeleccionada = null;
+let _checkoutHighlightedIndex = -1;
+
+function initZoneAutocompleteCheckout() {
+    const input = document.getElementById('zona-checkout-input');
+    const hiddenInput = document.getElementById('zona-checkout');
+    const dropdown = document.getElementById('zone-dropdown-checkout');
+    const clearBtn = document.getElementById('zone-clear-btn-checkout');
+    const errorMsg = document.getElementById('zona-checkout-error');
+
+    if (!input || !hiddenInput || !dropdown) return;
+
+    // ★ Pre-seleccionar la zona que el usuario eligió en el index ★
+    const zonaGuardada = localStorage.getItem('zonaSeleccionada');
+    if (zonaGuardada) {
+        const zona = ZONAS.find(z => z.id === zonaGuardada);
+        if (zona) {
+            _checkoutZonaSeleccionada = zona;
+            input.value = '📍 ' + zona.nombre + ' - Envío $' + zona.envio.toLocaleString('es-CO');
+            hiddenInput.value = zona.id;
+            if (clearBtn) clearBtn.classList.add('visible');
+        }
+        if (typeof APP_CONFIG !== 'undefined') {
+            APP_CONFIG.zonaActual = zonaGuardada;
+        }
+    }
+
+    // ★ FOCO: Limpiar texto para buscar ★
+    input.addEventListener('focus', function () {
+        if (_checkoutZonaSeleccionada) {
+            input.value = '';
+        }
+        if (errorMsg) {
+            errorMsg.style.display = 'none';
+            input.classList.remove('input-error');
+        }
+        _mostrarDropdownCheckout(input.value);
+    });
+
+    // ★ ESCRIBIR: Filtrar resultados ★
+    input.addEventListener('input', function () {
+        _mostrarDropdownCheckout(input.value);
+    });
+
+    // ★ PERDER FOCO: Restaurar si no eligió ★
+    input.addEventListener('blur', function () {
+        setTimeout(function () {
+            dropdown.classList.remove('active');
+            _checkoutHighlightedIndex = -1;
+            if (_checkoutZonaSeleccionada && !input.value.trim()) {
+                input.value = '📍 ' + _checkoutZonaSeleccionada.nombre + ' - Envío $' + _checkoutZonaSeleccionada.envio.toLocaleString('es-CO');
+            }
+            if (clearBtn) {
+                clearBtn.classList.toggle('visible', _checkoutZonaSeleccionada !== null);
+            }
+        }, 200);
+    });
+
+    // ★ NAVEGACIÓN CON TECLADO ★
+    input.addEventListener('keydown', function (e) {
+        const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            _checkoutHighlightedIndex = Math.min(_checkoutHighlightedIndex + 1, options.length - 1);
+            _actualizarHighlightCheckout(options);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            _checkoutHighlightedIndex = Math.max(_checkoutHighlightedIndex - 1, 0);
+            _actualizarHighlightCheckout(options);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (_checkoutHighlightedIndex >= 0 && options[_checkoutHighlightedIndex]) {
+                options[_checkoutHighlightedIndex].click();
+            }
+        } else if (e.key === 'Escape') {
+            dropdown.classList.remove('active');
+            input.blur();
+        }
+    });
+
+    // ★ BOTÓN LIMPIAR (X) ★
+    if (clearBtn) {
+        clearBtn.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            _checkoutZonaSeleccionada = null;
+            input.value = '';
+            hiddenInput.value = '';
+            if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = '';
+            localStorage.removeItem('zonaSeleccionada');
+            clearBtn.classList.remove('visible');
+            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
+            input.focus();
+        });
+    }
+
+    // ★ CERRAR al hacer click fuera ★
+    document.addEventListener('click', function (e) {
+        const container = document.getElementById('zone-autocomplete-checkout');
+        if (container && !container.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+}
+
+// ★ Mostrar dropdown con resultados filtrados (Checkout) ★
+function _mostrarDropdownCheckout(termino) {
+    const dropdown = document.getElementById('zone-dropdown-checkout');
+    if (!dropdown) return;
+
+    const terminoLower = termino.toLowerCase().trim();
+    let zonasFiltradas = ZONAS;
+
+    if (terminoLower) {
+        zonasFiltradas = ZONAS.filter(function (z) {
+            return z.nombre.toLowerCase().includes(terminoLower) || z.id.toLowerCase().includes(terminoLower);
+        });
+    }
+
+    _checkoutHighlightedIndex = -1;
+
+    if (zonasFiltradas.length === 0) {
+        dropdown.innerHTML =
+            '<div class="zone-no-results">' +
+            '<i class="fas fa-map-marker-alt"></i>' +
+            'No hay zonas que coincidan con "' + termino + '"' +
+            '</div>';
+    } else {
+        dropdown.innerHTML = zonasFiltradas.map(function (zona) {
+            return '<div class="zone-option" data-zone-id="' + zona.id + '" ' +
+                'onclick="_seleccionarZonaCheckout(\'' + zona.id + '\')">' +
+                '<span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span>' +
+                '<span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span>' +
+                '</div>';
+        }).join('');
+    }
+
+    dropdown.classList.add('active');
+}
+
+// ★ Highlight de opción con teclado (Checkout) ★
+function _actualizarHighlightCheckout(options) {
+    options.forEach(function (opt, idx) {
+        if (idx === _checkoutHighlightedIndex) {
+            opt.classList.add('highlighted');
+            opt.scrollIntoView({ block: 'nearest' });
+        } else {
+            opt.classList.remove('highlighted');
+        }
+    });
+}
+
+// ★ Seleccionar una zona (Checkout) ★
+function _seleccionarZonaCheckout(zonaId) {
+    const input = document.getElementById('zona-checkout-input');
+    const hiddenInput = document.getElementById('zona-checkout');
+    const dropdown = document.getElementById('zone-dropdown-checkout');
+    const clearBtn = document.getElementById('zone-clear-btn-checkout');
+    const errorMsg = document.getElementById('zona-checkout-error');
+
+    const zona = ZONAS.find(function (z) { return z.id === zonaId; });
+    if (!zona) return;
+
+    _checkoutZonaSeleccionada = zona;
+    input.value = '📍 ' + zona.nombre + ' - Envío $' + zona.envio.toLocaleString('es-CO');
+    hiddenInput.value = zona.id;
+
+    if (clearBtn) clearBtn.classList.add('visible');
+    if (errorMsg) {
+        errorMsg.style.display = 'none';
+        input.classList.remove('input-error');
+    }
+
+    if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = zona.id;
+    localStorage.setItem('zonaSeleccionada', zona.id);
+
+    dropdown.classList.remove('active');
+
+    // Disparar evento change para compatibilidad con checkout.js
+    hiddenInput.dispatchEvent(new Event('change'));
+    if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
 }

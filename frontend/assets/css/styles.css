@@ -9,28 +9,18 @@
 :root {
     /* Colores principales */
     --primary: #E63946;
-    /* Rojo principal - acciones urgentes */
     --secondary: #F4A261;
-    /* Naranja - acentos cálidos */
     --accent: #2A9D8F;
-    /* Verde azulado - éxito/confirmación */
     --dark: #5D4037;
-    /* Marrón oscuro - texto principal */
     --light: #FFF8E7;
-    /* Crema - fondo */
     --white: #FFFFFF;
     --gray: #6c757d;
-    /* Gris medio - texto secundario */
 
     /* Estados funcionales */
     --success: #28a745;
-    /* Verde - entregado/completado */
     --warning: #ffc107;
-    /* Amarillo - pendiente/atención */
     --danger: #dc3545;
-    /* Rojo oscuro - cancelado/error */
     --info: #17a2b8;
-    /* Azul - en camino/información */
 
     /* Sombras y efectos */
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -147,9 +137,9 @@ nav {
     color: var(--white);
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;        /* ← PERMITE QUE EL DROPDOWN SALGA */
+    z-index: 100;             /* ← HERO POR ENCIMA DE TIENDAS */
     margin-top: 0;
-    /* SIN margen — main ya lo empuja */
     padding-top: 4rem;
     padding-bottom: 3rem;
 }
@@ -194,7 +184,6 @@ nav {
     font-size: 0.95rem;
 }
 
-/* Variantes de color */
 .btn-primary {
     background: var(--primary);
     color: var(--white);
@@ -257,14 +246,13 @@ nav {
     transform: translateY(-2px);
 }
 
-/* Tamaños */
 .btn-sm {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
 }
 
 /* ============================================
-   6. SELECTOR DE ZONA
+   6. SELECTOR DE ZONA (AUTOCOMPLETE)
    ============================================ */
 .zone-selector {
     background: var(--white);
@@ -279,23 +267,235 @@ nav {
     z-index: 1000;
 }
 
-.zone-selector i {
+.zone-selector > i {
     color: var(--primary);
     font-size: 1.2rem;
 }
 
-.zone-selector select {
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
+/* ----- Autocomplete Base ----- */
+.zone-autocomplete {
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+#zone-input {
+    width: 100%;
+    padding: 0.6rem 2.5rem 0.6rem 1rem;
     border: 2px solid var(--accent);
+    border-radius: 30px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.95rem;
+    outline: none;
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--dark);
+}
+
+#zone-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+#zone-input::placeholder {
+    color: #999;
+    font-weight: 400;
+    font-size: 0.88rem;
+}
+
+/* Botón X para limpiar selección */
+.zone-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 2;
+}
+
+.zone-clear-btn:hover {
+    background: #fee;
+    color: var(--danger);
+}
+
+.zone-clear-btn.visible {
+    display: flex;
+}
+
+/* Dropdown de resultados */
+.zone-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    max-height: 260px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 4500;
+    display: none;
+    border: 1px solid #eee;
+    animation: zoneDropdownIn 0.2s ease;
+}
+
+.zone-dropdown.active {
+    display: block;
+}
+
+@keyframes zoneDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cada opción del dropdown */
+.zone-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 0.5rem;
+}
+
+.zone-option:last-child {
+    border-bottom: none;
+}
+
+.zone-option:hover,
+.zone-option.highlighted {
+    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+}
+
+.zone-option-name {
+    font-weight: 500;
+    color: var(--dark);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.zone-option-name::before {
+    content: '📍';
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.zone-option-price {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(42, 157, 143, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+/* Resaltar texto coincidente */
+.zone-option-name mark {
+    background: rgba(230, 57, 70, 0.2);
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Mensaje sin resultados */
+.zone-no-results {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.zone-no-results i {
+    display: block;
+    font-size: 1.8rem;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+/* Scrollbar del dropdown */
+.zone-dropdown::-webkit-scrollbar {
+    width: 5px;
+}
+
+.zone-dropdown::-webkit-scrollbar-track {
+    background: #f8f8f8;
+    border-radius: 3px;
+}
+
+.zone-dropdown::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+/* ----- Autocomplete Checkout Variant ----- */
+.zone-autocomplete-checkout #zona-checkout-input {
+    border-radius: var(--border-radius-sm);
+    padding: 0.9rem 2.5rem 0.9rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid #e0e0e0;
     background: var(--white);
     font-family: inherit;
     font-weight: 500;
-    cursor: pointer;
-    font-size: 0.95rem;
-    display: block;
-    width: 100%;
-    pointer-events: auto;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--dark);
+}
+
+.zone-autocomplete-checkout #zona-checkout-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+.zone-autocomplete-checkout #zona-checkout-input::placeholder {
+    color: #999;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.zone-autocomplete-checkout .zone-dropdown {
+    border-radius: var(--border-radius-sm);
+}
+
+/* Estado de error al enviar sin zona */
+#zona-checkout-input.input-error {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+    animation: shakeInput 0.4s ease;
+}
+
+@keyframes shakeInput {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
 }
 
 /* ============================================
@@ -316,6 +516,7 @@ nav {
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: pointer;
+    position: relative;
 }
 
 .store-card:hover {
@@ -361,7 +562,6 @@ nav {
     gap: 0.5rem;
 }
 
-/* ★ NUEVA CLASE PARA LA DESCRIPCIÓN DE TIENDA ★ */
 .store-desc {
     color: var(--gray);
     font-size: 0.85rem;
@@ -369,9 +569,7 @@ nav {
     margin: 0.3rem 0 0.5rem 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* Máximo 2 líneas */
     line-clamp: 2;
-    /* Propiedad estándar para compatibilidad */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -388,6 +586,11 @@ nav {
     height: 50px;
     object-fit: cover;
     border-radius: 8px;
+}
+/* ★ Contenedor de tiendas por debajo del hero ★ */
+main > .container {
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================
@@ -458,7 +661,6 @@ nav {
     border-radius: 18px 18px 0 0;
 }
 
-/* Cuando NO tiene imagen - muestra icono */
 .product-img.sin-imagen {
     background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
 }
@@ -469,7 +671,6 @@ nav {
     opacity: 0.5;
 }
 
-/* Cuando SÍ tiene imagen - muestra la foto */
 .product-img.con-imagen {
     background-size: cover !important;
     background-position: center !important;
@@ -477,12 +678,10 @@ nav {
     background-color: #f5f5f5;
 }
 
-/* Ocultar icono cuando hay imagen */
 .product-img.con-imagen i {
     display: none !important;
 }
 
-/* Sombra degradada para que se lea el badge sobre la imagen */
 .product-img.con-imagen::after {
     content: '';
     position: absolute;
@@ -532,7 +731,6 @@ nav {
     margin-bottom: 0.8rem;
 }
 
-/* Efecto hover en imagen */
 .product-card:hover .product-img.con-imagen {
     transform: scale(1.05);
 }
@@ -590,7 +788,6 @@ nav {
     box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
 }
 
-/* Panel lateral del carrito */
 .cart-panel {
     position: fixed;
     top: 0;
@@ -938,7 +1135,6 @@ footer {
     }
 }
 
-/* Spinner/Loader */
 .spinner {
     width: 50px;
     height: 50px;
@@ -976,7 +1172,6 @@ footer {
     background: var(--danger);
 }
 
-/* Estados vacíos */
 .empty-state {
     text-align: center;
     padding: 3rem;
@@ -996,7 +1191,6 @@ footer {
 main {
     margin-top: 55px;
     padding: 2rem 0;
-    /* RESTAURADO — admin lo necesita */
     flex: 1;
 }
 
@@ -1065,7 +1259,6 @@ tr:hover {
     color: var(--gray);
 }
 
-/* Badges de estado para pedidos */
 .badge {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
@@ -1120,7 +1313,6 @@ tr:hover {
     opacity: 0.8;
 }
 
-/* Estados visuales de pedidos */
 .pedido-card.pendiente {
     border-left-color: var(--warning);
 }
@@ -1143,7 +1335,6 @@ tr:hover {
     gap: 0.5rem;
 }
 
-/* Badges de estado en cards */
 .estado-badge {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
@@ -1194,7 +1385,6 @@ tr:hover {
     color: var(--gray);
 }
 
-/* Botones de cambio de estado */
 .estado-botones {
     display: flex;
     gap: 0.5rem;
@@ -1250,7 +1440,6 @@ tr:hover {
     position: relative;
 }
 
-/* Modal de asignar domiciliario - más ancho */
 #modalAsignarDomiciliario .modal-content {
     max-width: 600px;
 }
@@ -1302,7 +1491,6 @@ tr:hover {
     font-weight: 700;
 }
 
-/* Buscador de domiciliarios */
 #buscarDomiciliario {
     width: 100%;
     padding: 12px 16px;
@@ -1319,14 +1507,12 @@ tr:hover {
     border-color: var(--primary);
 }
 
-/* Lista de domiciliarios */
 #listaDomiciliarios {
     max-height: 350px;
     overflow-y: auto;
     padding-right: 8px;
 }
 
-/* Scrollbar personalizada */
 #listaDomiciliarios::-webkit-scrollbar {
     width: 6px;
 }
@@ -1341,7 +1527,6 @@ tr:hover {
     border-radius: 3px;
 }
 
-/* Item de domiciliario */
 .domiciliario-item {
     display: flex;
     align-items: center;
@@ -1360,7 +1545,6 @@ tr:hover {
     box-shadow: 0 4px 15px rgba(230, 57, 70, 0.15);
 }
 
-/* Avatar del domiciliario */
 .domiciliario-item>div:first-child {
     width: 50px;
     height: 50px;
@@ -1376,7 +1560,6 @@ tr:hover {
     flex-shrink: 0;
 }
 
-/* Información del domiciliario */
 .domiciliario-item>div:nth-child(2) {
     flex: 1;
 }
@@ -1399,14 +1582,12 @@ tr:hover {
     margin-right: 4px;
 }
 
-/* Icono de selección */
 .domiciliario-item>div:last-child {
     color: var(--primary);
     font-size: 1.2rem;
     margin-left: 12px;
 }
 
-/* Mensaje sin resultados */
 #sinResultados {
     text-align: center;
     padding: 3rem 2rem;
@@ -1711,7 +1892,6 @@ tr:hover {
     margin-left: 0.3rem;
 }
 
-/* Contenido de tabs */
 .tab-content {
     display: none;
     animation: fadeIn 0.3s ease;
@@ -1765,7 +1945,6 @@ tr:hover {
     flex-wrap: wrap;
 }
 
-/* Filtros */
 .filtro-grupo {
     display: flex;
     align-items: center;
@@ -1795,7 +1974,6 @@ tr:hover {
     border-color: var(--primary);
 }
 
-/* Botones de acción masiva */
 .acciones-masivas {
     display: flex;
     gap: 0.5rem;
@@ -1846,7 +2024,6 @@ tr:hover {
     margin-left: auto;
 }
 
-/* Tabla de historial */
 .tabla-historial-container {
     background: white;
     border-radius: var(--border-radius);
@@ -1876,7 +2053,6 @@ tr:hover {
     vertical-align: middle;
 }
 
-/* Checkbox personalizado */
 .checkbox-pedido {
     width: 20px;
     height: 20px;
@@ -1891,7 +2067,6 @@ tr:hover {
     accent-color: var(--primary);
 }
 
-/* Fila seleccionada */
 .fila-seleccionada {
     background: #fff5f5 !important;
     transition: background 0.2s ease;
@@ -1901,7 +2076,6 @@ tr:hover {
     border-left: 3px solid var(--primary);
 }
 
-/* Tag de domiciliario */
 .domiciliario-tag {
     display: inline-flex;
     align-items: center;
@@ -1919,7 +2093,6 @@ tr:hover {
     font-size: 0.8rem;
 }
 
-/* Contador de resultados */
 .contador-resultados {
     padding: 1rem 1.5rem;
     color: var(--gray);
@@ -1928,7 +2101,6 @@ tr:hover {
     background: #fafafa;
 }
 
-/* Stats */
 .historial-stats {
     display: flex;
     gap: 1rem;
@@ -1961,7 +2133,6 @@ tr:hover {
     font-size: 0.8rem;
 }
 
-/* Filtros de historial */
 .filtros-historial {
     display: flex;
     gap: 0.5rem;
@@ -1993,7 +2164,6 @@ tr:hover {
     color: white;
 }
 
-/* Cards de historial */
 .historial-card {
     opacity: 0.85;
     border-left-color: var(--success) !important;
@@ -2036,7 +2206,6 @@ tr:hover {
    24. NOTIFICACIONES EN TIEMPO REAL (ADMIN)
    ============================================ */
 
-/* ---------- 24.1 Notificación Base Flotante ---------- */
 .notificacion-flotante {
     position: fixed;
     top: 100px;
@@ -2058,9 +2227,6 @@ tr:hover {
     right: 20px;
 }
 
-/* ---------- 24.2 Variantes de Notificación ---------- */
-
-/* Nuevo domiciliario registrado */
 .notificacion-nuevo-domi {
     border-left-color: var(--accent);
     background: linear-gradient(135deg, #ffffff 0%, #f0fffa 100%);
@@ -2071,7 +2237,6 @@ tr:hover {
     animation: pulse-icon 2s infinite;
 }
 
-/* Nuevo pedido urgente */
 .notificacion-pedido-urgente {
     border-left-color: var(--primary);
     background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
@@ -2086,7 +2251,6 @@ tr:hover {
     animation: pulse-urgente 1s infinite;
 }
 
-/* ---------- 24.3 Icono y Animaciones ---------- */
 .notif-icon {
     width: 50px;
     height: 50px;
@@ -2100,32 +2264,21 @@ tr:hover {
 }
 
 @keyframes pulse-icon {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 @keyframes pulse-urgente {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
     }
-
     50% {
         transform: scale(1.1);
         box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
     }
 }
 
-/* ---------- 24.4 Contenido de Notificación ---------- */
 .notif-content {
     flex: 1;
 }
@@ -2147,7 +2300,6 @@ tr:hover {
     font-size: 0.8rem;
 }
 
-/* ---------- 24.5 Acciones (Botones y Cierre) ---------- */
 .notif-acciones {
     display: flex;
     flex-direction: column;
@@ -2173,7 +2325,6 @@ tr:hover {
     color: var(--danger);
 }
 
-/* Botón Asignar Ahora (en notificación de pedido) */
 .btn-asignar-ahora {
     background: var(--primary);
     color: white;
@@ -2196,7 +2347,6 @@ tr:hover {
     box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
 }
 
-/* ---------- 24.6 Banner Activación de Audio ---------- */
 .notificacion-activacion {
     position: fixed;
     top: 90px;
@@ -2234,7 +2384,6 @@ tr:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------- 24.7 Indicador de Estado en Vivo ---------- */
 .indicador-en-vivo {
     position: fixed;
     bottom: 20px;
@@ -2261,15 +2410,8 @@ tr:hover {
 }
 
 @keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 /* ============================================
@@ -2307,7 +2449,6 @@ tr:hover {
     .hero h1 {
         font-size: 1.6rem;
     }
-
 
     .section-title {
         font-size: 1.3rem;
@@ -2376,7 +2517,6 @@ tr:hover {
         padding: 1.2rem;
     }
 
-    /* Domiciliarios en modal */
     .domiciliario-item {
         padding: 12px;
     }
@@ -2454,7 +2594,6 @@ tr:hover {
         justify-content: center;
     }
 
-    /* Banner de activación en móvil */
     .notificacion-activacion {
         top: 80px;
         left: 10px;
@@ -2471,14 +2610,13 @@ tr:hover {
             transform: translateY(-100px);
             opacity: 0;
         }
-
         to {
             transform: translateY(0);
             opacity: 1;
         }
     }
 
-    /* Responsive para el selector de zona */
+    /* Zone selector responsive */
     .zone-selector {
         flex-direction: column;
         align-items: stretch;
@@ -2488,66 +2626,36 @@ tr:hover {
         box-sizing: border-box;
     }
 
-    .zone-selector select {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.6rem;
-    }
-
-    .zone-selector i {
+    .zone-selector > i {
         display: none;
     }
 
-    /* Historial responsive */
-    .historial-controles {
-        flex-direction: column;
-        width: 100%;
+    #zone-input {
+        font-size: 0.9rem;
+        padding: 0.7rem 2.5rem 0.7rem 1rem;
     }
 
-    .filtro-grupo select,
-    .filtro-grupo input {
-        width: 100%;
+    .zone-dropdown {
+        max-height: 220px;
     }
 
-    .acciones-masivas {
-        flex-direction: column;
-        align-items: stretch;
+    .zone-option {
+        padding: 0.65rem 0.8rem;
     }
 
-    .btn-accion-masiva {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .contador-seleccionados {
-        margin-left: 0;
-        text-align: center;
-        width: 100%;
-    }
-
-    #tablaHistorialPedidos {
+    .zone-option-name {
         font-size: 0.85rem;
     }
 
-    #tablaHistorialPedidos th,
-    #tablaHistorialPedidos td {
-        padding: 0.8rem 0.5rem;
-    }
-
-    .domiciliario-tag {
-        font-size: 0.75rem;
-        padding: 0.2rem 0.5rem;
-    }
-
-    .tienda-tag-historial {
-        max-width: 100px;
+    .zone-option-price {
         font-size: 0.72rem;
-        padding: 0.2rem 0.5rem;
+        padding: 2px 8px;
     }
 
-    #tablaHistorialPedidos th:nth-child(5),
-    #tablaHistorialPedidos td:nth-child(5) {
-        padding: 0.5rem 0.3rem;
+    /* Checkout zone autocomplete responsive */
+    .zone-autocomplete-checkout #zona-checkout-input {
+        font-size: 0.9rem;
+        padding: 0.8rem 2.5rem 0.8rem 1rem;
     }
 }
 
@@ -2600,7 +2708,6 @@ tr:hover {
     flex-shrink: 0;
 }
 
-/* Tag de tienda en el modal de detalle */
 .tienda-tag-detalle {
     display: inline-flex;
     align-items: center;
@@ -2703,7 +2810,7 @@ header .nav-links li a:hover {
     }
 
     header .logo {
-        font-size: 1.rem;
+        font-size: 1rem;
     }
 
     header .nav-links {
@@ -2806,12 +2913,6 @@ header .nav-links li a:hover {
     }
 }
 
-/* ============================================
-   NOTA: Se eliminaron las reglas conflictivas
-   que sobreescribían margin-top y padding-top
-   del .hero. Si necesitas esos estilos en
-   admin/domiciliario, usa la clase .hero-admin
-   ============================================ */
 .hero-admin {
     margin-top: 0;
     padding-top: 2rem;
@@ -2819,10 +2920,8 @@ header .nav-links li a:hover {
 }
 
 /* ============================================
-   30. EXPLOSIÓN DE COMIDA RÁPIDA 🍔🍟🍕
-   Se ejecuta cuando se agrega el primer producto
+   30. EXPLOSIÓN DE COMIDA RÁPIDA
    ============================================ */
-
 .explosion-comida {
     position: fixed;
     pointer-events: none;
@@ -2841,42 +2940,27 @@ header .nav-links li a:hover {
         transform: translate(0, 0) scale(0) rotate(0deg);
         opacity: 1;
     }
-
     20% {
         transform: translate(var(--x1), var(--y1)) scale(1.3) rotate(var(--r1));
         opacity: 1;
     }
-
     100% {
         transform: translate(var(--x2), var(--y2)) scale(0.3) rotate(var(--r2));
         opacity: 0;
     }
 }
 
-/* Animación especial para el carrito cuando aparece por primera vez */
 .cart-float.aparecer-con-fiesta {
     animation: fiestaCarrito 0.7s ease;
 }
 
 @keyframes fiestaCarrito {
-    0% {
-        transform: scale(0) rotate(-180deg);
-    }
-
-    50% {
-        transform: scale(1.3) rotate(10deg);
-    }
-
-    70% {
-        transform: scale(0.9) rotate(-5deg);
-    }
-
-    100% {
-        transform: scale(1) rotate(0deg);
-    }
+    0% { transform: scale(0) rotate(-180deg); }
+    50% { transform: scale(1.3) rotate(10deg); }
+    70% { transform: scale(0.9) rotate(-5deg); }
+    100% { transform: scale(1) rotate(0deg); }
 }
 
-/* Brillo alrededor del carrito en la fiesta */
 .cart-float.aparecer-con-fiesta::after {
     content: '';
     position: absolute;
@@ -2891,22 +2975,13 @@ header .nav-links li a:hover {
 }
 
 @keyframes brilloCarrito {
-    0% {
-        transform: scale(0.5);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
 }
 
 /* ============================================
-   HERO — LANZAMIENTO (nuevos estilos)
+   HERO — LANZAMIENTO
    ============================================ */
-
-/* Badge de lanzamiento */
 .launch-badge {
     display: inline-flex;
     align-items: center;
@@ -2934,30 +3009,15 @@ header .nav-links li a:hover {
 }
 
 @keyframes dot-blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 @keyframes badge-pulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
-    }
-
-    50% {
-        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
 }
 
-/* Descuento destacado — pill blanco sobre el gradiente */
 .hero-discount {
     display: inline-block;
     background: var(--white);
@@ -2978,28 +3038,10 @@ header .nav-links li a:hover {
 }
 
 @keyframes pulse-descuento {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.04);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
 }
 
-/* Ajuste del ::before — ahora incluye licor */
-.hero::before {
-    content: '🍔';
-    position: absolute;
-    font-size: 15rem;
-    opacity: 0.10;
-    bottom: -50px;
-    right: -50px;
-}
-
-/* Nuevo ::after — emoji de licor al lado izquierdo */
 .hero::after {
     content: '🥃';
     position: absolute;
@@ -3009,7 +3051,6 @@ header .nav-links li a:hover {
     left: -30px;
 }
 
-/* Ajuste del h1 para el nuevo copy */
 .hero h1 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
@@ -3023,23 +3064,21 @@ header .nav-links li a:hover {
     z-index: 1;
 }
 
-/* Zone-selector también necesita z-index para estar sobre ::after */
 .zone-selector {
     position: relative;
     z-index: 1000;
 }
+
 /* ============================================
    32. INDICADOR DE SCROLL (FLECHA ABAJO)
    ============================================ */
-
 .scroll-down-indicator {
     position: absolute;
     bottom: 25px;
     left: 50%;
-    /* Centrado perfecto y tamaño grande */
     width: 52px;
     height: 52px;
-    background-color: var(--dark); /* Marrón oscuro - resalta en claros y en rojos */
+    background-color: var(--dark);
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -3049,16 +3088,14 @@ header .nav-links li a:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     z-index: 1001;
-    /* Animación de rebote centrada */
     animation: rebote-flecha 2s ease-in-out infinite;
     transition: opacity 0.4s ease, transform 0.4s ease;
-    transform: translateX(-50%); /* Lo centra al usar left: 50% */
+    transform: translateX(-50%);
 }
 
-/* Clase que se agrega al hacer scroll para que desaparezca */
 .scroll-down-indicator.hide {
     opacity: 0;
-    transform: translateX(-50%) translateY(30px); /* Se desvanece cayendo */
+    transform: translateX(-50%) translateY(30px);
     pointer-events: none;
 }
 
@@ -3074,7 +3111,6 @@ header .nav-links li a:hover {
     }
 }
 
-/* En móviles */
 @media (max-width: 768px) {
     .scroll-down-indicator {
         width: 46px;
@@ -3087,36 +3123,27 @@ header .nav-links li a:hover {
 /* ============================================
    33. TIENDAS CERRADAS (OVERLAY Y BADGES)
    ============================================ */
-
-/* Contenedor relativo para el overlay */
-.store-card {
-    position: relative;
-}
-
-/* Efecto de tarjeta deshabilitada */
 .store-card.store-closed {
     cursor: not-allowed;
 }
 
 .store-card.store-closed:hover {
     transform: none;
-    box-shadow: var(--shadow); /* Quitamos el efecto hover fuerte */
+    box-shadow: var(--shadow);
 }
 
-/* Sombra gris semi-transparente sobre toda la tarjeta */
 .closed-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.65); /* Sombra blanca/gris */
+    background-color: rgba(255, 255, 255, 0.65);
     z-index: 5;
     border-radius: var(--border-radius);
-    pointer-events: none; /* Permite que el clic pase a la tarjeta para ver el menú */
+    pointer-events: none;
 }
 
-/* Etiqueta de "Abre a las..." */
 .badge-closed {
     position: absolute;
     top: 15px;
@@ -3127,16 +3154,15 @@ header .nav-links li a:hover {
     border-radius: 25px;
     font-size: 0.8rem;
     font-weight: 700;
-    z-index: 6; /* Encima del overlay */
+    z-index: 6;
     display: flex;
     align-items: center;
     gap: 6px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Botón de agregar deshabilitado dentro del menú */
 .btn-cerrado-menu {
-    background: #b0b0b0 !important; /* Gris */
+    background: #b0b0b0 !important;
     box-shadow: none !important;
     cursor: not-allowed !important;
 }

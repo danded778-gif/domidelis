@@ -18,6 +18,7 @@ const API_URL = esLocal
 const SOCKET_URL = esLocal
     ? window.location.origin
     : 'https://prueba-production-b9fb.up.railway.app';
+
 console.log(`⚙️ Entorno: ${esLocal ? 'LOCAL/NGROK' : 'PRODUCCIÓN'}`);
 console.log(`⚙️ API:  ${API_URL}`);
 console.log(`⚙️ Socket: ${SOCKET_URL}`);
@@ -31,31 +32,32 @@ const APP_CONFIG = {
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
     zonas: {
-
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
         puente: { nombre: 'B.las pollas', envio: 5000 },
         salida: { nombre: 'B.monseñor', envio: 5000 },
         bomberos: { nombre: 'Bomberos', envio: 5000 },
         calvario: { nombre: 'Calvario', envio: 5000 },
         cdla: { nombre: 'Cdla Chapa', envio: 6000 },
-        Ccaido: { nombre: 'Cp señor caido', envio: 7000 },
-        diamante: { nombre: 'Diamante', envio: 5000 }, // Agregado
+        ccaido: { nombre: 'Cp señor caido', envio: 7000 },       // ★ CORREGIDO: era Ccaido
+        diamante: { nombre: 'Diamante', envio: 5000 },
         nogal: { nombre: 'El Nogal', envio: 5000 },
         hospital: { nombre: 'Hospital', envio: 5000 },
         sur: { nombre: 'La chapa', envio: 6000 },
         norte: { nombre: 'La judea', envio: 5000 },
         centro: { nombre: 'P. principal', envio: 5000 },
-        portachuelo: { nombre: 'Portachuelo', envio: 6000 }, // Agregado
+        portachuelo: { nombre: 'Portachuelo', envio: 6000 },
         bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
         occidente: { nombre: 'Sali marinilla', envio: 5000 },
         señorcaido: { nombre: 'Señor caido', envio: 6000 },
         oriente: { nombre: 'Vargas', envio: 8000 },
-        vista: { nombre: 'Vista hermosa', envio: 6000 }
+        vista: { nombre: 'Vista hermosa', envio: 6000 },
+        aguas: { nombre: 'Aguas vivas', envio: 5000 }
+        // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
+        // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
 };
 
 // ★★★ NUEVA URL DEL CATÁLOGO ESTÁTICO ★★★
-// Usamos raw.githubusercontent.com para que actúe como CDN súper rápido
 const CATALOGO_URL = 'https://www.domidelis.top/data/catalogo.json';
 
 // ============================================

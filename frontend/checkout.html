@@ -25,8 +25,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS
-                    </span></a>
+                <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
                 <ul class="nav-links">
                     <li><a href="index.html"><i class="fas fa-arrow-left"></i> Seguir comprando</a></li>
                 </ul>
@@ -49,60 +48,50 @@
                     <h3><i class="fas fa-user"></i> Tus Datos</h3>
                     <form id="formCheckout">
 
-                        <!-- CAMPO NOMBRE CON LÍMITE -->
+                        <!-- CAMPO NOMBRE -->
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Nombre completo *</label>
                             <input type="text" id="nombre" required placeholder="Ej: Juan Pérez García" maxlength="50">
                         </div>
 
-                        <!-- CAMPO TELÉFONO CON LÍMITE Y VALIDACIÓN DE 10 NÚMEROS -->
+                        <!-- CAMPO TELÉFONO -->
                         <div class="form-group">
                             <label><i class="fas fa-phone"></i> Teléfono *</label>
                             <input type="tel" id="telefono" required placeholder="Ej: 3001234567" maxlength="10"
                                 pattern="[0-9]{10}" title="Ingresa exactamente 10 números">
                         </div>
 
-                        <!-- CAMPO DIRECCIÓN CON LÍMITE -->
+                        <!-- CAMPO DIRECCIÓN -->
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Dirección de entrega *</label>
                             <input type="text" id="direccion" required placeholder="Ej: Calle 123 #45-67"
                                 maxlength="60">
                         </div>
 
-                        <!-- SELECTOR DE ZONA (El que ya habías puesto) -->
+                        <!-- ★ SELECTOR DE ZONA CON AUTOCOMPLETADO ★ -->
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Zona de envío *</label>
-                            <select id="zona-checkout" required>
-                                <option value="barandas">📍 Barandas amarilla- Envío $5,000</option>
-                                <option value="puente">📍 B.las pollas- Envío $5,000</option>
-                                <option value="salida">📍 B.monseñor- Envío $5,000</option>
-                                <option value="bomberos">📍 Bomberos- Envío $5,000</option>
-                                <option value="calvario">📍 Calvario- Envío $5,000</option>
-                                <option value="cdla">📍 Cdla chapa- Envío $6,000</option>
-                                <option value="ccaido">📍 Cp señor caido- Envío $7,000</option>
-                                <option value="diamante">📍 Diamante- Envío $5,000</option>
-                                <option value="nogal">📍 El Nogal- Envío $5,000</option>
-                                <option value="hospital">📍 Hospital- Envío $5,000</option>
-                                <option value="sur">📍 La chapa- Envío $6,000</option>
-                                <option value="norte">📍 La judea- Envío $5,000</option>
-                                <option value="centro">📍 P. principal - Envío $5,000</option>
-                                <option value="portachuelo">📍 Portachuelo- Envío $6,000</option>
-                                <option value="bodegas">📍 Sali Bodegas- Envío $6,000</option>
-                                <option value="occidente">📍 Sali marinilla- Envío $5,000</option>
-                                <option value="señorcaido">📍 Señor caido- Envío $6,000</option>
-                                <option value="oriente">📍 Vargas- Envío $8,000</option>
-                                <option value="vista">📍 Vista hermosa- Envío $6,000</option>
-
-                            </select>
+                            <div class="zone-autocomplete zone-autocomplete-checkout" id="zone-autocomplete-checkout">
+                                <input type="text" id="zona-checkout-input" placeholder="Escribe tu zona o barrio..." autocomplete="off" required>
+                                <input type="hidden" id="zona-checkout" name="zona-checkout" value="">
+                                <button type="button" class="zone-clear-btn" id="zone-clear-btn-checkout" aria-label="Limpiar zona">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="zone-dropdown" id="zone-dropdown-checkout"></div>
+                            </div>
+                            <small id="zona-checkout-error" style="color:var(--danger);font-size:0.8rem;display:none;margin-top:4px;">
+                                <i class="fas fa-exclamation-circle"></i> Selecciona una zona de la lista
+                            </small>
                         </div>
 
-                        <!-- CAMPO REFERENCIAS CON LÍMITE Y NUEVO PLACEHOLDER -->
+                        <!-- CAMPO REFERENCIAS -->
                         <div class="form-group">
                             <label><i class="fas fa-sticky-note"></i> Referencias adicionales</label>
                             <textarea id="referencias" rows="2" placeholder="Ej: con cebolla, puerta cafe, etc."
                                 maxlength="100"></textarea>
                         </div>
-                        <!-- ★ CAMPO DE CÓDIGO PROMO (Solo lectura, aparece si es válido) ★ -->
+
+                        <!-- ★ CÓDIGO PROMO ★ -->
                         <div class="form-group" id="grupo-codigo-promo" style="display: none;">
                             <label><i class="fas fa-tag"></i> Código de Promoción Aplicado</label>
                             <input type="text" id="codigoPromoCheckout" class="form-control" readonly
@@ -172,8 +161,19 @@
         </div>
     </footer>
 
+    <!-- ★ Scripts necesarios para el autocompletado y el carrito ★ -->
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/components/toast.js"></script>
+    <script src="assets/js/client.js"></script>
     <script src="assets/js/checkout.js"></script>
+    
+    <script>
+        // ★ Inicializar autocompletado de zona en checkout ★
+        if (typeof initZoneAutocompleteCheckout === 'function') {
+            initZoneAutocompleteCheckout();
+        }
+    </script>
+
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
