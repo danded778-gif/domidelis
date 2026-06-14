@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-27-03",
-  "ultimaActualizacion": "2026-06-14T19:27:03.752Z",
+  "version": "v2026-06-14T19-53-13",
+  "ultimaActualizacion": "2026-06-14T19:53:13.079Z",
   "tiendas": [
     {
       "id": 1,
@@ -49,6 +49,16 @@
           "precio": 13000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
           "badge": "NUEVO",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 105,
+          "nombre": "Arepa de Queso",
+          "descripcion": "",
+          "precio": 12000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/arepa_quesos.jpg",
+          "badge": "Mas vendido",
           "cantidadTipo": "UND",
           "activo": true
         }
