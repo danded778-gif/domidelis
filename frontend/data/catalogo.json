@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-53-14",
-  "ultimaActualizacion": "2026-06-14T19:53:14.672Z",
+  "version": "v2026-06-14T19-53-37",
+  "ultimaActualizacion": "2026-06-14T19:53:37.583Z",
   "tiendas": [
     {
       "id": 1,
@@ -47,7 +47,7 @@
           "nombre": "pollo",
           "descripcion": "",
           "precio": 13000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
           "badge": "NUEVO",
           "cantidadTipo": "UND",
           "activo": true
