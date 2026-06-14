@@ -1,11 +1,11 @@
 {
-  "version": "v2026-06-14T18-27-11",
-  "ultimaActualizacion": "2026-06-14T18:27:11.347Z",
+  "version": "v2026-06-14T18-29-25",
+  "ultimaActualizacion": "2026-06-14T18:29:25.191Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "DOMI DELIS",
-      "descripcion": "Todo lo relacionado con comida.",
+      "descripcion": "Comidas",
       "direccion": "el santuario",
       "horario": "14:00-23:00",
       "rating": 5,
@@ -49,26 +49,6 @@
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
           "badge": "NUEVO",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 114,
-          "nombre": "bondiola",
-          "descripcion": "es de la mas rica",
-          "precio": 27800,
-          "imagen_url": "https://manualdecocina.com/wp-content/uploads/2024/05/62aee02d-2c75-4b07-b1a0-e85262d6b397.jpg",
-          "badge": "mas vendido",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 115,
-          "nombre": "dona",
-          "descripcion": "el ingrediente es secreto",
-          "precio": 22300,
-          "imagen_url": "https://png.pngtree.com/thumb_back/fw800/background/20240702/pngtree-variety-of-donuts-in-a-wooden-box-image_15846338.jpg",
-          "badge": "menos vendido",
           "cantidadTipo": "UND",
           "activo": true
         }
