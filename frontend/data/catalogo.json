@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-03-24",
-  "ultimaActualizacion": "2026-06-14T22:03:24.582Z",
+  "version": "v2026-06-14T22-03-48",
+  "ultimaActualizacion": "2026-06-14T22:03:48.872Z",
   "tiendas": [
     {
       "id": 1,
@@ -78,7 +78,7 @@
           "id": 106,
           "nombre": "Acetaminofén",
           "descripcion": "",
-          "precio": 30000,
+          "precio": 2000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
           "badge": "Promocion",
           "cantidadTipo": "UND",
