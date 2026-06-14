@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-24-07",
-  "ultimaActualizacion": "2026-06-14T19:24:07.947Z",
+  "version": "v2026-06-14T19-24-42",
+  "ultimaActualizacion": "2026-06-14T19:24:42.183Z",
   "tiendas": [
     {
       "id": 1,
@@ -23,7 +23,7 @@
           "activo": true
         },
         {
-          "id": 110,
+          "id": 102,
           "nombre": "salchipapas",
           "descripcion": "",
           "precio": 25000,
@@ -55,9 +55,9 @@
       "activo": true,
       "productos": [
         {
-          "id": 107,
+          "id": 103,
           "nombre": "Pizza",
-          "descripcion": "pizza sencilla",
+          "descripcion": "",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
           "badge": "Mas vendido",
