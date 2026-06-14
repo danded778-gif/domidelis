@@ -1,13 +1,13 @@
 {
-  "version": "v2026-06-14T18-20-38",
-  "ultimaActualizacion": "2026-06-14T18:20:38.528Z",
+  "version": "v2026-06-14T18-21-07",
+  "ultimaActualizacion": "2026-06-14T18:21:07.081Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "Domicilios Express",
       "descripcion": "Pide lo que nesecites",
-      "direccion": "Cl. 50 #47-149a 47-24",
-      "horario": "06:30-18:00",
+      "direccion": "el santuario",
+      "horario": "14:00-23:00",
       "rating": 4.2,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/hamburgesa.png",
       "activo": true,
