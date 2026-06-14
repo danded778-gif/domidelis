@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-23-40",
-  "ultimaActualizacion": "2026-06-14T19:23:40.358Z",
+  "version": "v2026-06-14T19-24-07",
+  "ultimaActualizacion": "2026-06-14T19:24:07.947Z",
   "tiendas": [
     {
       "id": 1,
@@ -33,19 +33,9 @@
           "activo": true
         },
         {
-          "id": 103,
-          "nombre": "Pizza",
-          "descripcion": "hamburgesa con tomate",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%201.png",
-          "badge": "agotado",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
           "id": 104,
           "nombre": "pollo",
-          "descripcion": "hamburgesa doble",
+          "descripcion": "",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
           "badge": "NUEVO",
