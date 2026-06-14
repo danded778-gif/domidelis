@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-23-17",
-  "ultimaActualizacion": "2026-06-14T19:23:17.200Z",
+  "version": "v2026-06-14T19-23-40",
+  "ultimaActualizacion": "2026-06-14T19:23:40.358Z",
   "tiendas": [
     {
       "id": 1,
@@ -15,9 +15,19 @@
         {
           "id": 101,
           "nombre": "Hamburguesas",
-          "descripcion": "Hamburguesa",
+          "descripcion": "",
           "precio": 16700,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 110,
+          "nombre": "salchipapas",
+          "descripcion": "",
+          "precio": 25000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%206.png",
           "badge": "Mas vendido",
           "cantidadTipo": "UND",
           "activo": true
