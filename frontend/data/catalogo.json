@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-20-13",
-  "ultimaActualizacion": "2026-06-14T22:20:13.149Z",
+  "version": "v2026-06-14T22-20-40",
+  "ultimaActualizacion": "2026-06-14T22:20:40.229Z",
   "tiendas": [
     {
       "id": 1,
@@ -105,7 +105,7 @@
           "activo": true
         },
         {
-          "id": 110,
+          "id": 109,
           "nombre": "💊 Acetaminofén",
           "descripcion": "",
           "precio": 0,
@@ -115,7 +115,7 @@
           "activo": true
         },
         {
-          "id": 111,
+          "id": 110,
           "nombre": "🌹 Flores",
           "descripcion": "",
           "precio": 12000,
@@ -125,7 +125,7 @@
           "activo": true
         },
         {
-          "id": 112,
+          "id": 111,
           "nombre": "🧸 Peluche",
           "descripcion": "",
           "precio": 0,
@@ -135,7 +135,7 @@
           "activo": true
         },
         {
-          "id": 113,
+          "id": 112,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
