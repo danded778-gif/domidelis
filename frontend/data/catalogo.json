@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-12-31",
-  "ultimaActualizacion": "2026-06-14T19:12:31.938Z",
+  "version": "v2026-06-14T19-16-04",
+  "ultimaActualizacion": "2026-06-14T19:16:04.130Z",
   "tiendas": [
     {
       "id": 1,
@@ -61,7 +61,7 @@
       "direccion": "el santuario",
       "horario": "14:00-23:01",
       "rating": 4.5,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelis%20express.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
       "productos": [
         {
