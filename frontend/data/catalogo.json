@@ -1,11 +1,11 @@
 {
-  "version": "v2026-06-14T18-25-45",
-  "ultimaActualizacion": "2026-06-14T18:25:45.188Z",
+  "version": "v2026-06-14T18-25-47",
+  "ultimaActualizacion": "2026-06-14T18:25:47.059Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "DOMI DELIS",
-      "descripcion": "Pide lo que nesecites",
+      "descripcion": "Todo lo relacionado con comida.",
       "direccion": "el santuario",
       "horario": "14:00-23:00",
       "rating": 5,
