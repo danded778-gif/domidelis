@@ -5,9 +5,9 @@
 
 // ¿Estamos en local o ngrok?
 const esLocal = window.location.hostname === 'localhost' ||
-                window.location.hostname === '127.0.0.1' ||
-                window.location.hostname.includes('.ngrok-free.dev') ||
-                window.location.hostname.includes('.ngrok.io');
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname.includes('.ngrok-free.dev') ||
+    window.location.hostname.includes('.ngrok.io');
 
 // En local: misma origen (Express sirve todo por puerto 3000)
 // En producción: frontend en GitHub Pages, API en Railway
@@ -31,23 +31,26 @@ const APP_CONFIG = {
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
     zonas: {
-        centro: { nombre: 'P. principal', envio: 5000 },
-        norte: { nombre: 'La judea', envio: 5000 },
-        sur: { nombre: 'La chapa', envio: 6000 },
-        oriente: { nombre: 'Vargas', envio: 8000 },
-        occidente: { nombre: 'Sali marinilla', envio: 5000 },
-        salida: { nombre: 'B.monseñor', envio: 5000 },
-        puente: { nombre: 'B.las pollas', envio: 5000 },
-        cdla: { nombre: 'Cdla Chapa', envio: 6000 },
-        bomberos: { nombre: 'Bomberos', envio: 5000 },
-        señorcaido: { nombre: 'Señor caido', envio: 6000 },
-        Ccaido: { nombre: 'Cp señor caido', envio: 7000 },
-        bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
-        calvario: { nombre: 'Calvario', envio: 5000 },
+
         barandas: { nombre: 'Barandas amarilla', envio: 5000 },
-        vista: { nombre: 'Vista hermosa', envio: 6000 },
+        puente: { nombre: 'B.las pollas', envio: 5000 },
+        salida: { nombre: 'B.monseñor', envio: 5000 },
+        bomberos: { nombre: 'Bomberos', envio: 5000 },
+        calvario: { nombre: 'Calvario', envio: 5000 },
+        cdla: { nombre: 'Cdla Chapa', envio: 6000 },
+        Ccaido: { nombre: 'Cp señor caido', envio: 7000 },
+        diamante: { nombre: 'Diamante', envio: 5000 }, // Agregado
+        nogal: { nombre: 'El Nogal', envio: 5000 },
         hospital: { nombre: 'Hospital', envio: 5000 },
-        nogal: { nombre: 'El Nogal', envio: 5000 }
+        sur: { nombre: 'La chapa', envio: 6000 },
+        norte: { nombre: 'La judea', envio: 5000 },
+        centro: { nombre: 'P. principal', envio: 5000 },
+        portachuelo: { nombre: 'Portachuelo', envio: 6000 }, // Agregado
+        bodegas: { nombre: 'Sali Bodegas', envio: 6000 },
+        occidente: { nombre: 'Sali marinilla', envio: 5000 },
+        señorcaido: { nombre: 'Señor caido', envio: 6000 },
+        oriente: { nombre: 'Vargas', envio: 8000 },
+        vista: { nombre: 'Vista hermosa', envio: 6000 }
     }
 };
 
