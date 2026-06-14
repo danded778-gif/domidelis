@@ -1,11 +1,11 @@
 {
-  "version": "v2026-06-14T18-20-08",
-  "ultimaActualizacion": "2026-06-14T18:20:08.078Z",
+  "version": "v2026-06-14T18-20-38",
+  "ultimaActualizacion": "2026-06-14T18:20:38.528Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "Domicilios Express",
-      "descripcion": "hamburgesas con hambre",
+      "descripcion": "Pide lo que nesecites",
       "direccion": "Cl. 50 #47-149a 47-24",
       "horario": "06:30-18:00",
       "rating": 4.2,
