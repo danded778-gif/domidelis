@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-07-57",
-  "ultimaActualizacion": "2026-06-14T22:07:57.144Z",
+  "version": "v2026-06-14T22-08-20",
+  "ultimaActualizacion": "2026-06-14T22:08:20.883Z",
   "tiendas": [
     {
       "id": 1,
@@ -76,7 +76,7 @@
       "productos": [
         {
           "id": 106,
-          "nombre": "Acetaminofén",
+          "nombre": "Hamburguesa Especial",
           "descripcion": "",
           "precio": 2000,
           "imagen_url": "",
@@ -86,7 +86,7 @@
         },
         {
           "id": 107,
-          "nombre": "Ibuprofeno",
+          "nombre": "🍟 Salchipapa Especial",
           "descripcion": "",
           "precio": 15000,
           "imagen_url": "",
@@ -96,7 +96,7 @@
         },
         {
           "id": 108,
-          "nombre": "Loratadina",
+          "nombre": "🍗 Cuarto de Pollo",
           "descripcion": "",
           "precio": 5000,
           "imagen_url": "",
