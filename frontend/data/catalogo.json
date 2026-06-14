@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-09-21",
-  "ultimaActualizacion": "2026-06-14T22:09:21.660Z",
+  "version": "v2026-06-14T22-10-20",
+  "ultimaActualizacion": "2026-06-14T22:10:20.404Z",
   "tiendas": [
     {
       "id": 1,
@@ -73,7 +73,88 @@
       "rating": 4.5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 106,
+          "nombre": "🥤 Gaseosa 1.5L",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 107,
+          "nombre": "🥛 Leche",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 108,
+          "nombre": "🥚 Cubeta de Huevos",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 109,
+          "nombre": "🍌 Banano",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 110,
+          "nombre": "💊 Acetaminofén",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 111,
+          "nombre": "🌹 Flores",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 112,
+          "nombre": "🧸 Peluche",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 113,
+          "nombre": "📦 Encargo Express",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
     }
   ]
 }
