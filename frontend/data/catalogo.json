@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T18-25-47",
-  "ultimaActualizacion": "2026-06-14T18:25:47.059Z",
+  "version": "v2026-06-14T18-26-36",
+  "ultimaActualizacion": "2026-06-14T18:26:36.917Z",
   "tiendas": [
     {
       "id": 1,
@@ -69,6 +69,58 @@
           "precio": 22300,
           "imagen_url": "https://png.pngtree.com/thumb_back/fw800/background/20240702/pngtree-variety-of-donuts-in-a-wooden-box-image_15846338.jpg",
           "badge": "menos vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Domi Express",
+      "descripcion": "Mercado, farmacia, encargos y mensajería.",
+      "direccion": "",
+      "horario": "",
+      "rating": 5,
+      "imagen": "",
+      "activo": true,
+      "productos": [
+        {
+          "id": 107,
+          "nombre": "Pizza",
+          "descripcion": "pizza sencilla",
+          "precio": 25000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 108,
+          "nombre": "pizza queso",
+          "descripcion": "pizza queso",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
+          "badge": "Promocion",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 109,
+          "nombre": "Pizza Personal",
+          "descripcion": "Queso y jamón",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
+          "badge": "agotado",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 113,
+          "nombre": "perrito caliente doble",
+          "descripcion": "perrito caliente doble",
+          "precio": 5000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
+          "badge": "NUEVO",
           "cantidadTipo": "UND",
           "activo": true
         }
