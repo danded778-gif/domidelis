@@ -1,14 +1,14 @@
 {
-  "version": "v2026-06-14T18-21-07",
-  "ultimaActualizacion": "2026-06-14T18:21:07.081Z",
+  "version": "v2026-06-14T18-25-45",
+  "ultimaActualizacion": "2026-06-14T18:25:45.188Z",
   "tiendas": [
     {
       "id": 1,
-      "nombre": "Domicilios Express",
+      "nombre": "DOMI DELIS",
       "descripcion": "Pide lo que nesecites",
       "direccion": "el santuario",
       "horario": "14:00-23:00",
-      "rating": 4.2,
+      "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/tiendas%20img/hamburgesa.png",
       "activo": true,
       "productos": [
