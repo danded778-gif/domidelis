@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-21-03",
-  "ultimaActualizacion": "2026-06-14T19:21:03.317Z",
+  "version": "v2026-06-14T19-21-44",
+  "ultimaActualizacion": "2026-06-14T19:21:44.082Z",
   "tiendas": [
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "productos": [
         {
           "id": 101,
-          "nombre": "Acetaminofén",
+          "nombre": "Hamburguesas",
           "descripcion": "Hamburguesa + papas",
           "precio": 16700,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
@@ -24,7 +24,7 @@
         },
         {
           "id": 102,
-          "nombre": "Ibuprofeno",
+          "nombre": "Salchipapas",
           "descripcion": "Doble carne, queso",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_doble.jpg",
@@ -34,7 +34,7 @@
         },
         {
           "id": 103,
-          "nombre": "Loratadina",
+          "nombre": "Pizza",
           "descripcion": "hamburgesa con tomate",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%201.png",
@@ -44,7 +44,7 @@
         },
         {
           "id": 104,
-          "nombre": "Alcohol antiséptico",
+          "nombre": "Pollo",
           "descripcion": "hamburgesa doble",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%204.png",
@@ -66,7 +66,7 @@
       "productos": [
         {
           "id": 107,
-          "nombre": "Acetaminofén",
+          "nombre": "Pizza",
           "descripcion": "pizza sencilla",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
@@ -76,7 +76,7 @@
         },
         {
           "id": 108,
-          "nombre": "Ibuprofeno",
+          "nombre": "pizza queso",
           "descripcion": "pizza queso",
           "precio": 30000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
@@ -86,7 +86,7 @@
         },
         {
           "id": 109,
-          "nombre": "Loratadina",
+          "nombre": "Pizza Personal",
           "descripcion": "Queso y jamón",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
@@ -96,7 +96,7 @@
         },
         {
           "id": 113,
-          "nombre": "Alcohol antiséptico",
+          "nombre": "perrito caliente doble",
           "descripcion": "perrito caliente doble",
           "precio": 5000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
