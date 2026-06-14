@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-53-37",
-  "ultimaActualizacion": "2026-06-14T19:53:37.583Z",
+  "version": "v2026-06-14T19-54-24",
+  "ultimaActualizacion": "2026-06-14T19:54:24.812Z",
   "tiendas": [
     {
       "id": 1,
@@ -48,7 +48,7 @@
           "descripcion": "",
           "precio": 13000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
-          "badge": "NUEVO",
+          "badge": "Mas vendido",
           "cantidadTipo": "UND",
           "activo": true
         },
