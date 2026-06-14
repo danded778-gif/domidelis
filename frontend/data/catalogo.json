@@ -1,10 +1,10 @@
 {
-  "version": "v2026-06-14T18-19-18",
-  "ultimaActualizacion": "2026-06-14T18:19:18.465Z",
+  "version": "v2026-06-14T18-19-40",
+  "ultimaActualizacion": "2026-06-14T18:19:40.839Z",
   "tiendas": [
     {
       "id": 1,
-      "nombre": "🍔 Tienda Hamburgesa",
+      "nombre": "DOMICILIOS ESPREX",
       "descripcion": "hamburgesas con hambre",
       "direccion": "Cl. 50 #47-149a 47-24",
       "horario": "06:30-18:00",
