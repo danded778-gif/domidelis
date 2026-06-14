@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-24-42",
-  "ultimaActualizacion": "2026-06-14T19:24:42.183Z",
+  "version": "v2026-06-14T19-25-12",
+  "ultimaActualizacion": "2026-06-14T19:25:12.923Z",
   "tiendas": [
     {
       "id": 1,
@@ -16,7 +16,7 @@
           "id": 101,
           "nombre": "Hamburguesas",
           "descripcion": "",
-          "precio": 16700,
+          "precio": 21,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
           "badge": "Mas vendido",
           "cantidadTipo": "UND",
