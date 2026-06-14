@@ -1,10 +1,10 @@
 {
-  "version": "v2026-06-14T18-19-40",
-  "ultimaActualizacion": "2026-06-14T18:19:40.839Z",
+  "version": "v2026-06-14T18-20-08",
+  "ultimaActualizacion": "2026-06-14T18:20:08.078Z",
   "tiendas": [
     {
       "id": 1,
-      "nombre": "DOMICILIOS ESPREX",
+      "nombre": "Domicilios Express",
       "descripcion": "hamburgesas con hambre",
       "direccion": "Cl. 50 #47-149a 47-24",
       "horario": "06:30-18:00",
