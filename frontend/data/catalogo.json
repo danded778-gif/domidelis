@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-26-36",
-  "ultimaActualizacion": "2026-06-14T19:26:36.029Z",
+  "version": "v2026-06-14T19-26-37",
+  "ultimaActualizacion": "2026-06-14T19:26:37.838Z",
   "tiendas": [
     {
       "id": 1,
@@ -23,7 +23,7 @@
           "activo": true
         },
         {
-          "id": 101,
+          "id": 102,
           "nombre": "salchipapas",
           "descripcion": "",
           "precio": 16000,
