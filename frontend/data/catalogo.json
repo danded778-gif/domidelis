@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-08-20",
-  "ultimaActualizacion": "2026-06-14T22:08:20.883Z",
+  "version": "v2026-06-14T22-08-56",
+  "ultimaActualizacion": "2026-06-14T22:08:56.562Z",
   "tiendas": [
     {
       "id": 1,
@@ -73,38 +73,7 @@
       "rating": 4.5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
-      "productos": [
-        {
-          "id": 106,
-          "nombre": "Hamburguesa Especial",
-          "descripcion": "",
-          "precio": 2000,
-          "imagen_url": "",
-          "badge": "Promocion",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 107,
-          "nombre": "🍟 Salchipapa Especial",
-          "descripcion": "",
-          "precio": 15000,
-          "imagen_url": "",
-          "badge": "agotado",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 108,
-          "nombre": "🍗 Cuarto de Pollo",
-          "descripcion": "",
-          "precio": 5000,
-          "imagen_url": "",
-          "badge": "NUEVO",
-          "cantidadTipo": "UND",
-          "activo": true
-        }
-      ]
+      "productos": []
     }
   ]
 }
