@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-25-37",
-  "ultimaActualizacion": "2026-06-14T19:25:37.690Z",
+  "version": "v2026-06-14T19-26-09",
+  "ultimaActualizacion": "2026-06-14T19:26:09.476Z",
   "tiendas": [
     {
       "id": 1,
@@ -33,6 +33,16 @@
           "activo": true
         },
         {
+          "id": 103,
+          "nombre": "Pizza",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
+          "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
           "id": 104,
           "nombre": "pollo",
           "descripcion": "",
@@ -54,16 +64,6 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
       "productos": [
-        {
-          "id": 103,
-          "nombre": "Pizza",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
-          "badge": "Mas vendido",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
         {
           "id": 108,
           "nombre": "pizza queso",
