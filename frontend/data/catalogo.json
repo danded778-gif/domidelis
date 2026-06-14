@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T20-01-08",
-  "ultimaActualizacion": "2026-06-14T20:01:08.193Z",
+  "version": "v2026-06-14T22-02-59",
+  "ultimaActualizacion": "2026-06-14T22:02:59.870Z",
   "tiendas": [
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "productos": [
         {
           "id": 101,
-          "nombre": "Hamburguesas",
+          "nombre": "Hamburguesa",
           "descripcion": "",
           "precio": 21000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
@@ -24,7 +24,7 @@
         },
         {
           "id": 102,
-          "nombre": "salchipapas",
+          "nombre": "Salchipapas",
           "descripcion": "",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%206.png",
@@ -76,7 +76,7 @@
       "productos": [
         {
           "id": 108,
-          "nombre": "pizza queso",
+          "nombre": "Acetaminofén",
           "descripcion": "pizza queso",
           "precio": 30000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
@@ -86,7 +86,7 @@
         },
         {
           "id": 109,
-          "nombre": "Pizza Personal",
+          "nombre": "Ibuprofeno",
           "descripcion": "Queso y jamón",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
@@ -96,7 +96,7 @@
         },
         {
           "id": 113,
-          "nombre": "perrito caliente doble",
+          "nombre": "Loratadina",
           "descripcion": "perrito caliente doble",
           "precio": 5000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
