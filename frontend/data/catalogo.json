@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T19-22-49",
-  "ultimaActualizacion": "2026-06-14T19:22:49.800Z",
+  "version": "v2026-06-14T19-23-17",
+  "ultimaActualizacion": "2026-06-14T19:23:17.200Z",
   "tiendas": [
     {
       "id": 1,
@@ -19,16 +19,6 @@
           "precio": 16700,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
           "badge": "Mas vendido",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 102,
-          "nombre": "Salchipapas",
-          "descripcion": "Doble carne, queso",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_doble.jpg",
-          "badge": "Promocion",
           "cantidadTipo": "UND",
           "activo": true
         },
