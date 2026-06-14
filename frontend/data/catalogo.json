@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-14T22-02-59",
-  "ultimaActualizacion": "2026-06-14T22:02:59.870Z",
+  "version": "v2026-06-14T22-03-24",
+  "ultimaActualizacion": "2026-06-14T22:03:24.582Z",
   "tiendas": [
     {
       "id": 1,
@@ -75,9 +75,9 @@
       "activo": true,
       "productos": [
         {
-          "id": 108,
+          "id": 106,
           "nombre": "Acetaminofén",
-          "descripcion": "pizza queso",
+          "descripcion": "",
           "precio": 30000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%205.png",
           "badge": "Promocion",
@@ -85,9 +85,9 @@
           "activo": true
         },
         {
-          "id": 109,
+          "id": 107,
           "nombre": "Ibuprofeno",
-          "descripcion": "Queso y jamón",
+          "descripcion": "",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/pizza_personal.jpg",
           "badge": "agotado",
@@ -95,9 +95,9 @@
           "activo": true
         },
         {
-          "id": 113,
+          "id": 108,
           "nombre": "Loratadina",
-          "descripcion": "perrito caliente doble",
+          "descripcion": "",
           "precio": 5000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%207.png",
           "badge": "NUEVO",
