@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-15T22-42-56",
-  "ultimaActualizacion": "2026-06-15T22:42:56.626Z",
+  "version": "v2026-06-15T22-45-19",
+  "ultimaActualizacion": "2026-06-15T22:45:19.492Z",
   "tiendas": [
     {
       "id": 1,
@@ -120,7 +120,7 @@
           "descripcion": "",
           "precio": 12000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
-          "badge": "agotado",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
