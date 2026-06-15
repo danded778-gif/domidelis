@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-15T21-18-44",
-  "ultimaActualizacion": "2026-06-15T21:18:44.582Z",
+  "version": "v2026-06-15T21-19-32",
+  "ultimaActualizacion": "2026-06-15T21:19:32.750Z",
   "tiendas": [
     {
       "id": 1,
@@ -79,7 +79,7 @@
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "",
           "precio": 6500,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
           "badge": "agotado",
           "cantidadTipo": "UND",
           "activo": true
@@ -89,7 +89,7 @@
           "nombre": "🥛 Leche",
           "descripcion": "",
           "precio": 0,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
           "badge": "agotado",
           "cantidadTipo": "UND",
           "activo": true
