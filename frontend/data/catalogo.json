@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-15T22-40-43",
-  "ultimaActualizacion": "2026-06-15T22:40:43.366Z",
+  "version": "v2026-06-15T22-42-56",
+  "ultimaActualizacion": "2026-06-15T22:42:56.626Z",
   "tiendas": [
     {
       "id": 1,
@@ -80,7 +80,7 @@
           "descripcion": "",
           "precio": 6500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-          "badge": "agotado",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
