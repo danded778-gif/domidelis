@@ -229,12 +229,22 @@ async function verMenuTienda(tiendaId) {
         const imagenUrl = (p.imagen_url || p.icono || '').trim();
         const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
 
+        // ★ Verificamos si el producto tiene el badge de agotado ★
+        const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
+
         let botonHTML;
         if (!status.isOpen) {
+            // 1. La tienda está cerrada
             botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada. Horario: ${tienda.horario}', 'error')">
                 <i class="fas fa-clock"></i> Cerrado
             </button>`;
+        } else if (esAgotado) {
+            // 2. La tienda está abierta PERO el producto está agotado
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')">
+                <i class="fas fa-ban"></i> Agotado
+            </button>`;
         } else {
+            // 3. La tienda está abierta y el producto está disponible
             botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)">
                 <i class="fas fa-plus"></i> Agregar
             </button>`;
