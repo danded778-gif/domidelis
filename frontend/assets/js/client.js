@@ -193,15 +193,19 @@ async function verMenuTienda(tiendaId) {
     if (!container) return;
 
     container.className = '';
-    container.innerHTML = `
-        <div style="text-align:center; padding: 4rem 0; width:100%;">
-            <div class="spinner" style="margin: 0 auto 1rem;"></div>
-            <p style="color: var(--gray);">Cargando el Menú...</p>
-        </div>
-    `;
+    container.innerHTML = `...`;
 
     const tienda = tiendas.find(t => t.id == tiendaId);
 
+    // ★ NUEVO: Registrar evento en Google Analytics ★
+    if (tienda && typeof gtag === 'function') {
+        gtag('event', 'ver_tienda', {
+            'event_category': 'engagement',
+            'event_label': tienda.nombre || 'tienda_sin_nombre',
+            'tienda_id': tienda.id
+        });
+    }
+        
     if (!tienda) {
         mostrarNotificacion("Tienda no encontrada", "error");
         cargarTiendas();
@@ -357,6 +361,20 @@ function agregarAlCarrito(producto, cantidadTipo) {
     }
 
     const carritoVacio = carrito.length === 0;
+
+    // ★★★ EVENTO GOOGLE ANALYTICS: agregar_carrito ★★★
+    // Se dispara cada vez que un usuario hace clic en 'Agregar' un producto.
+    // Registra: nombre del producto, ID, precio y tienda de origen.
+    // Solo se ejecuta si gtag está disponible (evita errores si GA4 está bloqueado).
+    if (typeof gtag === 'function') {
+        gtag('event', 'agregar_carrito', {
+            'event_category': 'ecommerce',
+            'event_label': producto.nombre || 'producto_sin_nombre',
+            'producto_id': producto.id,
+            'precio': producto.precio,
+            'tienda': producto.tiendaNombre || 'sin_tienda'
+        });
+    }
 
     const item = {
         id: producto.id,
