@@ -13,6 +13,14 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Finalizar Pedido - DOMICILIOS</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-K3VYX3H0RD');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -81,14 +89,17 @@
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Zona de envío *</label>
                             <div class="zone-autocomplete zone-autocomplete-checkout" id="zone-autocomplete-checkout">
-                                <input type="text" id="zona-checkout-input" placeholder="Escribe tu zona o barrio..." autocomplete="off" required>
+                                <input type="text" id="zona-checkout-input" placeholder="Escribe tu zona o barrio..."
+                                    autocomplete="off" required>
                                 <input type="hidden" id="zona-checkout" name="zona-checkout" value="">
-                                <button type="button" class="zone-clear-btn" id="zone-clear-btn-checkout" aria-label="Limpiar zona">
+                                <button type="button" class="zone-clear-btn" id="zone-clear-btn-checkout"
+                                    aria-label="Limpiar zona">
                                     <i class="fas fa-times"></i>
                                 </button>
                                 <div class="zone-dropdown" id="zone-dropdown-checkout"></div>
                             </div>
-                            <small id="zona-checkout-error" style="color:var(--danger);font-size:0.8rem;display:none;margin-top:4px;">
+                            <small id="zona-checkout-error"
+                                style="color:var(--danger);font-size:0.8rem;display:none;margin-top:4px;">
                                 <i class="fas fa-exclamation-circle"></i> Selecciona una zona de la lista
                             </small>
                         </div>
@@ -175,7 +186,7 @@
     <script src="assets/js/components/toast.js"></script>
     <script src="assets/js/client.js"></script>
     <script src="assets/js/checkout.js"></script>
-    
+
     <script>
         // ★ Inicializar autocompletado de zona en checkout ★
         if (typeof initZoneAutocompleteCheckout === 'function') {
@@ -189,6 +200,21 @@
                 navigator.serviceWorker.register('service-worker.js').catch(() => { });
             });
         }
+    </script>
+    <!-- ★ EVENTO GOOGLE ANALYTICS: checkout_whatsapp ★ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnConfirmar = document.getElementById('btnConfirmar');
+            if (btnConfirmar) {
+                btnConfirmar.addEventListener('click', function () {
+                    gtag('event', 'checkout_whatsapp', {
+                        'event_category': 'ecommerce',
+                        'event_label': 'confirmar_pedido'
+                    });
+                    console.log('✅ Evento checkout_whatsapp enviado a GA4');
+                });
+            }
+        });
     </script>
 </body>
 

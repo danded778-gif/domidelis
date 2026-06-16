@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ★ PWA -->
+    <!-- ★ PWA -->
     <meta name="theme-color" content="#E63946">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,7 +13,16 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Pedido Confirmado - DOMICILIOS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-K3VYX3H0RD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
@@ -33,9 +43,13 @@
             --white: #FFFFFF;
             --success: #28a745;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
@@ -50,17 +64,24 @@
             background: var(--white);
             border-radius: 20px;
             /* Reducido el padding general para que no sea tan gigante */
-            padding: 35px 25px; 
+            padding: 35px 25px;
             width: 100%;
             max-width: 480px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
             animation: slideUp 0.5s ease;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .icono-exito {
@@ -71,29 +92,39 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem; /* Reducido el margen inferior */
+            margin: 0 auto 1.5rem;
+            /* Reducido el margen inferior */
             animation: scaleIn 0.5s ease 0.2s both;
         }
 
         @keyframes scaleIn {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
 
         .icono-exito i {
-            font-size: 2.5rem; /* Reducido ligeramente */
+            font-size: 2.5rem;
+            /* Reducido ligeramente */
             color: white;
         }
 
         h1 {
             color: var(--dark);
-            margin-bottom: 0.8rem; /* Reducido */
-            font-size: 1.6rem; /* Reducido ligeramente */
+            margin-bottom: 0.8rem;
+            /* Reducido */
+            font-size: 1.6rem;
+            /* Reducido ligeramente */
         }
 
         p {
             color: #666;
-            margin-bottom: 1.5rem; /* Reducido */
+            margin-bottom: 1.5rem;
+            /* Reducido */
             line-height: 1.5;
             font-size: 0.95rem;
         }
@@ -101,14 +132,17 @@
         .info-box {
             background: var(--light);
             border-radius: 12px;
-            padding: 1.2rem; /* Reducido */
-            margin-bottom: 1.5rem; /* Reducido */
+            padding: 1.2rem;
+            /* Reducido */
+            margin-bottom: 1.5rem;
+            /* Reducido */
             text-align: left;
         }
 
         .info-box p {
             margin-bottom: 0.5rem;
-            font-size: 0.85rem; /* Un poco más pequeño para que quepa bien */
+            font-size: 0.85rem;
+            /* Un poco más pequeño para que quepa bien */
         }
 
         .info-box p:last-child {
@@ -124,7 +158,8 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.9rem 1.8rem; /* Reducido */
+            padding: 0.9rem 1.8rem;
+            /* Reducido */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -138,12 +173,12 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(230,57,70,0.4);
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(230,57,70,0.5);
+            box-shadow: 0 6px 25px rgba(230, 57, 70, 0.5);
         }
 
         .btn-whatsapp {
@@ -158,31 +193,38 @@
         }
 
         .logo {
-            font-size: 1.3rem; /* Reducido */
+            font-size: 1.3rem;
+            /* Reducido */
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 1.5rem; /* Reducido */
+            margin-bottom: 1.5rem;
+            /* Reducido */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             text-decoration: none;
         }
-        
-        .logo span { color: var(--primary); }
+
+        .logo span {
+            color: var(--primary);
+        }
 
         /* ======================================================= */
         /* AQUÍ ESTÁ LA MAGIA RESPONSIVE PARA MÓVILES              */
         /* ======================================================= */
         @media (max-width: 480px) {
             body {
-                padding: 15px; /* Menos espacio en los bordes de la pantalla */
-                align-items: flex-start; /* Mejor que empiece desde arriba en pantallas muy altas y pequeñas */
+                padding: 15px;
+                /* Menos espacio en los bordes de la pantalla */
+                align-items: flex-start;
+                /* Mejor que empiece desde arriba en pantallas muy altas y pequeñas */
                 padding-top: 40px;
             }
 
             .confirmacion-box {
-                padding: 30px 20px; /* Aún más compacto en móviles */
+                padding: 30px 20px;
+                /* Aún más compacto en móviles */
                 border-radius: 15px;
             }
 
@@ -205,40 +247,43 @@
             }
 
             .btn {
-                width: 100%; /* Los botones ocupan todo el ancho en móvil, más fácil de tocar */
+                width: 100%;
+                /* Los botones ocupan todo el ancho en móvil, más fácil de tocar */
                 padding: 0.9rem;
                 font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="confirmacion-box">
         <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
-        
+
         <div class="icono-exito">
             <i class="fas fa-check"></i>
         </div>
-        
+
         <h1>¡Pedido Enviado!</h1>
         <p>Tu pedido ha sido recibido y pronto nos pondremos en contacto contigo para confirmarlo.</p>
-        
+
         <div class="info-box">
             <p><strong><i class="fas fa-check-circle"></i> Pedido enviado</strong></p>
             <p><i class="fab fa-whatsapp"></i> Te confirmamos en <strong>10-15 min</strong> por WhatsApp. <em>No
                     llamadas.</em></p>
             <p><strong><i class="fas fa-receipt"></i> Pago:</strong> Envía comprobante por WhatsApp para procesar.</p>
         </div>
-        
+
         <a href="index.html" class="btn btn-primary">
             <i class="fas fa-utensils"></i> Hacer otro pedido
         </a>
-        
+
         <a href="https://wa.me/573005005306" class="btn btn-whatsapp" target="_blank" style="display: inline-flex;">
             <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
         </a>
     </div>
 
 </body>
+
 </html>
