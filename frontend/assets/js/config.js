@@ -51,7 +51,8 @@ const APP_CONFIG = {
         señorcaido: { nombre: 'Señor caido', envio: 6000 },
         oriente: { nombre: 'Vargas', envio: 8000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },
-        aguas: { nombre: 'Aguas vivas', envio: 5000 }
+        aguas: { nombre: 'Aguas vivas', envio: 5000 },
+        ecoelsa: { nombre: 'Ecoelsa', envio: 5000 },
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
