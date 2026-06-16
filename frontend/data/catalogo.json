@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-16T01-30-46",
-  "ultimaActualizacion": "2026-06-16T01:30:46.173Z",
+  "version": "v2026-06-16T02-51-15",
+  "ultimaActualizacion": "2026-06-16T02:51:15.322Z",
   "tiendas": [
     {
       "id": 1,
@@ -88,7 +88,7 @@
           "id": 107,
           "nombre": "🥛 Leche",
           "descripcion": "",
-          "precio": 0,
+          "precio": 4500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
           "badge": "agotado",
           "cantidadTipo": "UND",
