@@ -661,6 +661,11 @@
             btnInstall.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
+                // ★ NUEVO: Registrar evento en Google Analytics ★
+                gtag('event', 'clic_instalar_app', {
+                    'event_category': 'engagement',
+                    'event_label': 'banner_instalar'
+                });
 
                 if (!deferredPrompt) {
                     console.warn('No hay deferredPrompt, mostrando manual');
