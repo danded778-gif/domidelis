@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-16T02-51-15",
-  "ultimaActualizacion": "2026-06-16T02:51:15.322Z",
+  "version": "v2026-06-16T02-54-04",
+  "ultimaActualizacion": "2026-06-16T02:54:04.985Z",
   "tiendas": [
     {
       "id": 1,
@@ -90,7 +90,7 @@
           "descripcion": "",
           "precio": 4500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
-          "badge": "agotado",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
@@ -100,7 +100,7 @@
           "descripcion": "",
           "precio": 14000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/huevos.png",
-          "badge": "agotado",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
