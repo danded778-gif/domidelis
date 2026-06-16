@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-15T23-39-07",
-  "ultimaActualizacion": "2026-06-15T23:39:07.092Z",
+  "version": "v2026-06-16T01-30-46",
+  "ultimaActualizacion": "2026-06-16T01:30:46.173Z",
   "tiendas": [
     {
       "id": 1,
@@ -98,7 +98,7 @@
           "id": 108,
           "nombre": "🥚 Cubeta de Huevos",
           "descripcion": "",
-          "precio": 0,
+          "precio": 14000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/huevos.png",
           "badge": "agotado",
           "cantidadTipo": "UND",
