@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-17T21-15-38",
-  "ultimaActualizacion": "2026-06-17T21:15:38.424Z",
+  "version": "v2026-06-17T21-25-25",
+  "ultimaActualizacion": "2026-06-17T21:25:25.395Z",
   "tiendas": [
     {
       "id": 1,
@@ -149,7 +149,7 @@
     {
       "id": 3,
       "nombre": "Calanchos parrilla",
-      "descripcion": "El sabor de la parrilla en el santuario listo",
+      "descripcion": "El sabor de la parrilla en el santuario",
       "direccion": "Carrera 44 #50a-19",
       "horario": "11:00 - 22:00",
       "rating": 4.5,
@@ -173,7 +173,7 @@
       "nombre": "Candela burger",
       "descripcion": "",
       "direccion": "parque lineal",
-      "horario": "11:00 - 22:01",
+      "horario": "14:00 - 22:00",
       "rating": 4.2,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
