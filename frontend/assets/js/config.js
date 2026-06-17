@@ -53,6 +53,11 @@ const APP_CONFIG = {
         vista: { nombre: 'Vista hermosa', envio: 6000 },
         aguas: { nombre: 'Aguas vivas', envio: 5000 },
         ecoelsa: { nombre: 'Ecoelsa', envio: 5000 },
+        carmelo: { nombre: 'El carmelo', envio: 6000 },
+        calvario: { nombre: 'el calvario', envio: 5000 },
+        esmeralda: { nombre: 'La esmeralda', envio: 5000 },
+        valle: { nombre: 'Valle maria', envio: 12000 },
+        corazon: { nombre: 'C. de jesus', envio: 6000}
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
