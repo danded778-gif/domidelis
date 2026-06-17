@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-17T19-58-53",
-  "ultimaActualizacion": "2026-06-17T19:58:53.450Z",
+  "version": "v2026-06-17T21-11-24",
+  "ultimaActualizacion": "2026-06-17T21:11:24.440Z",
   "tiendas": [
     {
       "id": 1,
@@ -167,6 +167,17 @@
           "activo": true
         }
       ]
+    },
+    {
+      "id": 3,
+      "nombre": "Calanchos parrilla",
+      "descripcion": "El sabor de la parrilla en el santuario listo",
+      "direccion": "Carrera 44 #50a-19",
+      "horario": "11:00 - 22:00",
+      "rating": 4.5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "activo": true,
+      "productos": []
     }
   ]
 }
