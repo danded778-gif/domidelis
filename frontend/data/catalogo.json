@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-17T21-11-24",
-  "ultimaActualizacion": "2026-06-17T21:11:24.440Z",
+  "version": "v2026-06-17T21-12-41",
+  "ultimaActualizacion": "2026-06-17T21:12:41.843Z",
   "tiendas": [
     {
       "id": 1,
@@ -160,24 +160,13 @@
           "id": 113,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz",
-          "precio": 17000,
+          "precio": 18000,
           "imagen_url": "",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         }
       ]
-    },
-    {
-      "id": 3,
-      "nombre": "Calanchos parrilla",
-      "descripcion": "El sabor de la parrilla en el santuario listo",
-      "direccion": "Carrera 44 #50a-19",
-      "horario": "11:00 - 22:00",
-      "rating": 4.5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "activo": true,
-      "productos": []
     }
   ]
 }
