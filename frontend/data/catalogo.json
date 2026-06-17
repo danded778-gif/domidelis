@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-17T19-53-04",
-  "ultimaActualizacion": "2026-06-17T19:53:04.641Z",
+  "version": "v2026-06-17T19-58-53",
+  "ultimaActualizacion": "2026-06-17T19:58:53.450Z",
   "tiendas": [
     {
       "id": 1,
@@ -155,7 +155,18 @@
       "rating": 4.5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 113,
+          "nombre": "Almuerzo",
+          "descripcion": "Frijoles arroz",
+          "precio": 17000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
     }
   ]
 }
