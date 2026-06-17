@@ -112,6 +112,14 @@ async function cargarTiendas() {
 
         tiendas = data.tiendas || [];
 
+        // =============================================
+        // CAMBIO: Restaurar título a "Tiendas"
+        // =============================================
+        const tituloPrincipal = document.getElementById('main-title');
+        if (tituloPrincipal) {
+            tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
+        }
+
         renderizarTiendas();
     } catch (error) {
         console.error("Error cargando catálogo estático", error);
@@ -197,6 +205,14 @@ async function verMenuTienda(tiendaId) {
 
     const tienda = tiendas.find(t => t.id == tiendaId);
 
+    // =============================================
+    // CAMBIO: Actualizar el título principal al nombre de la tienda
+    // =============================================
+    const tituloPrincipal = document.getElementById('main-title');
+    if (tituloPrincipal && tienda) {
+        tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${tienda.nombre}`;
+    }
+
     // ★ NUEVO: Registrar evento en Google Analytics ★
     if (tienda && typeof gtag === 'function') {
         gtag('event', 'ver_tienda', {
@@ -218,7 +234,10 @@ async function verMenuTienda(tiendaId) {
     if (productosValidos.length === 0) {
         container.innerHTML = `
             <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
-            <div class="menu-header"><h2>${tienda.nombre}</h2></div>
+            <div class="menu-header">
+                <!-- ELIMINADO H2 DUPLICADO -->
+                <p>${tienda.descripcion || ""}</p>
+            </div>
             <div class="empty-state"><i class="fas fa-box-open"></i><p>Esta tienda aún no tiene productos</p></div>
         `;
         return;
@@ -276,7 +295,7 @@ async function verMenuTienda(tiendaId) {
     container.innerHTML = `
         <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
         <div class="menu-header">
-            <h2>${tienda.nombre}</h2>
+            <!-- ELIMINADO H2 DUPLICADO AQUÍ -->
             <p>${tienda.descripcion || ""}</p>
             <span style="display:inline-block;margin-top:.5rem;background:var(--light);color:var(--gray);padding:.3rem .9rem;border-radius:20px;font-size:.85rem;">
                 <i class="fas fa-box"></i> ${productosValidos.length} producto${productosValidos.length !== 1 ? 's' : ''} disponible${productosValidos.length !== 1 ? 's' : ''}
@@ -876,8 +895,8 @@ function initZoneAutocompleteCheckout() {
             _actualizarHighlightCheckout(options);
         } else if (e.key === 'Enter') {
             e.preventDefault();
-            if (_checkoutHighlightedIndex >= 0 && options[_checkoutHighlightedIndex]) {
-                options[_checkoutHighlightedIndex].click();
+            if (_highlightedIndex >= 0 && options[_highlightedIndex]) {
+                options[_highlightedIndex].click();
             }
         } else if (e.key === 'Escape') {
             dropdown.classList.remove('active');
