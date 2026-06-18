@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-18T16-28-59",
-  "ultimaActualizacion": "2026-06-18T16:28:59.459Z",
+  "version": "v2026-06-18T16-31-12",
+  "ultimaActualizacion": "2026-06-18T16:31:12.198Z",
   "tiendas": [
     {
       "id": 1,
@@ -170,8 +170,8 @@
     },
     {
       "id": 4,
-      "nombre": "Las Gordas",
-      "descripcion": "",
+      "nombre": "Las gordas",
+      "descripcion": "comidas rapidas",
       "direccion": "calle 11",
       "horario": "11:00 - 22:00",
       "rating": 4.2,
