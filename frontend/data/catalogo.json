@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-17T21-25-54",
-  "ultimaActualizacion": "2026-06-17T21:25:54.223Z",
+  "version": "v2026-06-18T06-09-08",
+  "ultimaActualizacion": "2026-06-18T06:09:08.192Z",
   "tiendas": [
     {
       "id": 1,
@@ -170,6 +170,17 @@
     },
     {
       "id": 4,
+      "nombre": "",
+      "descripcion": "",
+      "direccion": "",
+      "horario": "",
+      "rating": 5,
+      "imagen": "",
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 5,
       "nombre": "Candela burger",
       "descripcion": "",
       "direccion": "parque lineal",
