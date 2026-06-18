@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-18T06-10-11",
-  "ultimaActualizacion": "2026-06-18T06:10:11.226Z",
+  "version": "v2026-06-18T16-28-59",
+  "ultimaActualizacion": "2026-06-18T16:28:59.459Z",
   "tiendas": [
     {
       "id": 1,
@@ -172,10 +172,10 @@
       "id": 4,
       "nombre": "Las Gordas",
       "descripcion": "",
-      "direccion": "",
+      "direccion": "calle 11",
       "horario": "11:00 - 22:00",
       "rating": 4.2,
-      "imagen": "",
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
     },
