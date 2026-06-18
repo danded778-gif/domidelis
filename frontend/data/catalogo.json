@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-18T06-09-10",
-  "ultimaActualizacion": "2026-06-18T06:09:10.500Z",
+  "version": "v2026-06-18T06-09-45",
+  "ultimaActualizacion": "2026-06-18T06:09:45.885Z",
   "tiendas": [
     {
       "id": 1,
@@ -170,11 +170,11 @@
     },
     {
       "id": 4,
-      "nombre": "",
+      "nombre": "Las Gordas",
       "descripcion": "",
       "direccion": "",
-      "horario": "",
-      "rating": 5,
+      "horario": "11:00 - 22:00",
+      "rating": 4.5,
       "imagen": "",
       "activo": true,
       "productos": []
