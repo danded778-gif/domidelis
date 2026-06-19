@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-19T18-05-42",
-  "ultimaActualizacion": "2026-06-19T18:05:42.236Z",
+  "version": "v2026-06-19T18-06-50",
+  "ultimaActualizacion": "2026-06-19T18:06:50.504Z",
   "tiendas": [
     {
       "id": 1,
@@ -173,7 +173,7 @@
       "nombre": "Las gordas",
       "descripcion": "comidas rapidas",
       "direccion": "calle 11",
-      "horario": "11:00 - 22:00",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 4.2,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
