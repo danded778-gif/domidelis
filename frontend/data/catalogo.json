@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-19T18-02-42",
-  "ultimaActualizacion": "2026-06-19T18:02:42.143Z",
+  "version": "v2026-06-19T18-05-42",
+  "ultimaActualizacion": "2026-06-19T18:05:42.236Z",
   "tiendas": [
     {
       "id": 1,
@@ -69,7 +69,7 @@
       "nombre": "Domi Express",
       "descripcion": "Mercado, farmacia, encargos y mensajería.",
       "direccion": "el santuario",
-      "horario": "14:00-23:01",
+      "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"Cerrado\"}",
       "rating": 4.5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
