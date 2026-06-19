@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-19T16-30-12",
-  "ultimaActualizacion": "2026-06-19T16:30:12.156Z",
+  "version": "v2026-06-19T16-46-30",
+  "ultimaActualizacion": "2026-06-19T16:46:30.659Z",
   "tiendas": [
     {
       "id": 1,
@@ -186,6 +186,17 @@
       "direccion": "parque lineal",
       "horario": "14:00 - 22:00",
       "rating": 3.9,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 6,
+      "nombre": "prueba",
+      "descripcion": "prueba admin tienda",
+      "direccion": "calle 11",
+      "horario": "11:00 - 23:00",
+      "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
