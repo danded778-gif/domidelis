@@ -14,6 +14,10 @@ let audioActivado = false;
 let pedidosEntregadosCache = [];
 let pedidosSeleccionados = new Set();
 
+// ★ NUEVAS VARIABLES PARA USUARIOS TIENDA
+let usuariosTiendaCache = [];
+let usuarioTiendaEditando = null;
+
 // ─── NUEVA FUNCIÓN: FETCH SEGURO CON JWT ───
 async function fetchConToken(url, opciones = {}) {
     const token = localStorage.getItem('token');
@@ -141,6 +145,7 @@ async function cargarAdminData() {
     await cargarTiendasAdmin();
     await cargarDomiciliarios();
     await cargarDomiciliariosAdmin();
+    await cargarUsuariosTiendaAdmin(); // ★ AGREGADO
     await cargarPedidosAdmin();
     await cargarHistorialPedidos();
 
@@ -280,15 +285,29 @@ function cerrarModalTienda() {
 
 async function guardarTienda() {
     const btn = document.querySelector("#formTienda button[type='submit']");
-        const datos = {
+    
+    // ★ NUEVO: Empaquetar los 7 inputs en un solo string JSON
+    const horarioJSON = JSON.stringify({
+        mon: document.getElementById("horario-mon").value.trim(),
+        tue: document.getElementById("horario-tue").value.trim(),
+        wed: document.getElementById("horario-wed").value.trim(),
+        thu: document.getElementById("horario-thu").value.trim(),
+        fri: document.getElementById("horario-fri").value.trim(),
+        sat: document.getElementById("horario-sat").value.trim(),
+        sun: document.getElementById("horario-sun").value.trim()
+    });
+
+    const datos = {
         nombre: document.getElementById("tiendaNombre").value.trim(),
         descripcion: document.getElementById("tiendaDescripcion").value.trim(),
         direccion: document.getElementById("tiendaDireccion").value.trim(),
-        horario: document.getElementById("tiendaHorario").value.trim(),
+        horario: horarioJSON, // ★ Aquí enviamos el JSON en vez del texto plano
         imagen: document.getElementById("tiendaImagen").value.trim(),
         rating: document.getElementById("tiendaRating").value || 5,
         comision: document.getElementById("tiendaComision").value || 20
     };
+    
+    // ... (el resto de tu función guardarTienda se queda exactamente igual)
     if (!datos.nombre || !datos.direccion) {
         mostrarNotificacion("Nombre y dirección obligatorios", "error");
         return;
@@ -327,10 +346,32 @@ async function editarTienda(id) {
     document.getElementById("tiendaNombre").value = tienda.nombre;
     document.getElementById("tiendaDescripcion").value = tienda.descripcion || '';
     document.getElementById("tiendaDireccion").value = tienda.direccion;
-    document.getElementById("tiendaHorario").value = tienda.horario || '11am - 10pm';
+
+    // ★ NUEVO: Desempaquetar JSON de horarios
+    let horarioObj = {};
+    try {
+        if (tienda.horario && tienda.horario.startsWith('{')) {
+            horarioObj = JSON.parse(tienda.horario);
+        } else {
+            // Si es texto viejo (ej: "11am - 10pm"), lo asignamos a todos los días por defecto
+            const horarioViejo = tienda.horario || '08:00-22:00';
+            horarioObj = { mon: horarioViejo, tue: horarioViejo, wed: horarioViejo, thu: horarioViejo, fri: horarioViejo, sat: horarioViejo, sun: 'Cerrado' };
+        }
+    } catch (e) {
+        horarioObj = { mon: '08:00-22:00', tue: '08:00-22:00', wed: '08:00-22:00', thu: '08:00-22:00', fri: '08:00-22:00', sat: '08:00-22:00', sun: 'Cerrado' };
+    }
+
+    document.getElementById("horario-mon").value = horarioObj.mon || '08:00-22:00';
+    document.getElementById("horario-tue").value = horarioObj.tue || '08:00-22:00';
+    document.getElementById("horario-wed").value = horarioObj.wed || '08:00-22:00';
+    document.getElementById("horario-thu").value = horarioObj.thu || '08:00-22:00';
+    document.getElementById("horario-fri").value = horarioObj.fri || '08:00-22:00';
+    document.getElementById("horario-sat").value = horarioObj.sat || '08:00-22:00';
+    document.getElementById("horario-sun").value = horarioObj.sun || 'Cerrado';
+
     document.getElementById("tiendaImagen").value = tienda.imagen || '';
     document.getElementById("tiendaRating").value = tienda.rating || 5;
-    document.getElementById("tiendaComision").value = tienda.comision || 20; //comision por defecto 
+    document.getElementById("tiendaComision").value = tienda.comision || 20;
     document.getElementById("modalTienda").classList.add("active");
 }
 
@@ -892,7 +933,7 @@ async function ejecutarEliminacionPedidos(ids) {
             ids.forEach(id => pedidosSeleccionados.delete(id));
             llenarFiltroTiendas();
             aplicarFiltrosHistorial();
-            mostrarNotificacion(`${data.eliminados} pedido${data.eliminados !== 1 ? 's' : ''} eliminado${data.eliminados !== 1 ? 's' : ''}`, 'success');
+            mostrarNotificacion(`${data.eliminados} pedido${data.eliminados !== 1 ? 's' : ''} eliminado${data.eliminados !== 1 ? 's' : ''}`, "success");
         } else {
             mostrarNotificacion("Error al eliminar", "error");
         }
@@ -1029,7 +1070,7 @@ async function editarDomiciliario(id) {
     document.getElementById('domiNombre').value = domi.nombre;
     document.getElementById('domiTelefono').value = domi.telefono || '';
     document.getElementById('domiPassword').value = domi.password || '';
-    document.getElementById('domiComisionApp').value = domi.comisionApp || 20; // <--- AGREGAR ESTO 
+    document.getElementById('domiComisionApp').value = domi.comisionApp || 20;
     document.getElementById('domiPassword').type = 'text';
     document.getElementById('domi-eye-icon').className = 'fas fa-eye-slash';
     document.getElementById('modalDomiciliario').classList.add('active');
@@ -1041,7 +1082,7 @@ async function guardarDomiciliario() {
         nombre: document.getElementById('domiNombre').value.trim(),
         telefono: document.getElementById('domiTelefono').value.trim(),
         password: document.getElementById('domiPassword').value.trim(),
-        comisionApp: document.getElementById('domiComisionApp').value.trim() //<--- AGREGAR porcentaje comisión app
+        comisionApp: document.getElementById('domiComisionApp').value.trim()
     };
 
     if (!datos.nombre || !datos.password) {
@@ -1162,6 +1203,150 @@ function calcularPrecioDesdeGanancia() {
     calcularComisionProducto(); // Actualizamos la vista de arriba
     mostrarNotificacion(`Precio sugerido: ${formatearPrecio(precioSugerido)}`, "success");
 }
+
+
+// ============================================
+// ★ NUEVO: USUARIOS TIENDA — CRUD
+// ============================================
+async function cargarUsuariosTiendaAdmin() {
+    try {
+        const res = await fetchConToken(`${API_URL}?action=getUsuariosTienda`); // ✅ Con token
+        const usuarios = await res.json();
+        usuariosTiendaCache = usuarios;
+
+        const tbody = document.querySelector('#tablaUsuariosTienda tbody');
+        if (!tbody) return;
+
+        if (usuarios.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-center">No hay usuarios de tienda registrados</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = usuarios.map(u => {
+            // Buscar el nombre de la tienda en el cache
+            const tienda = tiendasCache.find(t => t.id == u.id);
+            const nombreTienda = tienda ? tienda.nombre : 'Tienda eliminada';
+            return `
+                <tr>
+                    <td>${u.id}</td>
+                    <td><strong>${escapeQuotes(nombreTienda)}</strong></td>
+                    <td>${escapeQuotes(u.nombre)}</td>
+                    <td><code style="background:var(--light);padding:2px 8px;border-radius:6px;font-size:.85rem;">${u.password ? '••••••' : '—'}</code></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editarUsuarioTienda(${u.id})"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-danger btn-sm" onclick="eliminarUsuarioTienda(${u.id})"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    } catch (error) {
+        console.error(error);
+        mostrarNotificacion('Error cargando usuarios tienda', 'error');
+    }
+}
+
+function mostrarModalUsuarioTienda() {
+    if (tiendasCache.length === 0) {
+        mostrarNotificacion("Crea al menos una tienda primero", "error");
+        return;
+    }
+    usuarioTiendaEditando = null;
+    document.getElementById('modalUsuarioTiendaTitulo').innerHTML = '<i class="fas fa-user-plus"></i> Nuevo Usuario Tienda';
+    document.getElementById('formUsuarioTienda').reset();
+
+    // Llenar select de tiendas
+    const select = document.getElementById('usuarioTiendaId');
+    select.innerHTML = '<option value="">-- Selecciona una tienda --</option>' +
+        tiendasCache.map(t => `<option value="${t.id}">${escapeQuotes(t.nombre)}</option>`).join('');
+    select.disabled = false; // Aseguramos que se pueda elegir al crear
+
+    document.getElementById('modalUsuarioTienda').classList.add('active');
+}
+
+function cerrarModalUsuarioTienda() {
+    document.getElementById('modalUsuarioTienda').classList.remove('active');
+    document.getElementById('formUsuarioTienda').reset();
+    usuarioTiendaEditando = null;
+}
+
+async function editarUsuarioTienda(id) {
+    const usuario = usuariosTiendaCache.find(u => u.id == id);
+    if (!usuario) return;
+
+    usuarioTiendaEditando = id;
+    document.getElementById('modalUsuarioTiendaTitulo').innerHTML = '<i class="fas fa-user-edit"></i> Editar Usuario Tienda';
+
+    // Llenar select y bloquearlo (no se puede cambiar de tienda a un usuario ya creado)
+    const select = document.getElementById('usuarioTiendaId');
+    const tienda = tiendasCache.find(t => t.id == usuario.id);
+    const nombreTienda = tienda ? tienda.nombre : 'Tienda eliminada';
+    select.innerHTML = `<option value="${usuario.id}" selected>${escapeQuotes(nombreTienda)}</option>`;
+    select.disabled = true;
+
+    document.getElementById('usuarioTiendaNombre').value = usuario.nombre;
+    document.getElementById('usuarioTiendaPassword').value = usuario.password;
+    document.getElementById('modalUsuarioTienda').classList.add('active');
+}
+
+async function guardarUsuarioTienda() {
+    const btn = document.querySelector('#formUsuarioTienda button[type="submit"]');
+    const datos = {
+        tiendaId: document.getElementById('usuarioTiendaId').value,
+        nombre: document.getElementById('usuarioTiendaNombre').value.trim(),
+        password: document.getElementById('usuarioTiendaPassword').value.trim()
+    };
+
+    if (!datos.tiendaId || !datos.nombre || !datos.password) {
+        mostrarNotificacion('Todos los campos son obligatorios', 'error');
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+
+    try {
+        const action = usuarioTiendaEditando ? 'actualizarUsuarioTienda' : 'crearUsuarioTienda';
+        if (usuarioTiendaEditando) datos.id = usuarioTiendaEditando;
+
+        const response = await fetchConToken(API_URL, { // ✅ Con token
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ action, ...datos })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mostrarNotificacion(usuarioTiendaEditando ? 'Usuario actualizado' : 'Usuario creado con éxito');
+            cerrarModalUsuarioTienda();
+            cargarUsuariosTiendaAdmin();
+        } else {
+            mostrarNotificacion('Error: ' + (data.error || 'No se pudo guardar'), 'error');
+        }
+    } catch (error) {
+        mostrarNotificacion('Error de conexión', 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-save"></i> Guardar';
+    }
+}
+
+async function eliminarUsuarioTienda(id) {
+    if (!confirm(`¿Eliminar el usuario de esta tienda? La tienda seguirá existiendo pero ya no podrá iniciar sesión.`)) return;
+    try {
+        const response = await fetchConToken(`${API_URL}?action=eliminarUsuarioTienda&id=${id}`); // ✅ Con token
+        const data = await response.json();
+        if (data.success) {
+            mostrarNotificacion('Usuario eliminado');
+            cargarUsuariosTiendaAdmin();
+        } else {
+            mostrarNotificacion('Error: ' + (data.error || 'No se pudo eliminar'), 'error');
+        }
+    } catch (error) {
+        mostrarNotificacion('Error de conexión', 'error');
+    }
+}
+
 
 window.onclick = function (event) {
     if (event.target.classList.contains('modal')) event.target.classList.remove('active');

@@ -1,5 +1,6 @@
 // ============================================
-// client.js - FUSIÓN DOCUMENTADA
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA
+// Incluye: Horario JSON (Día por día), Autocomplete, Carrito, Analíticas
 // ============================================
 
 let tiendas = [];
@@ -112,9 +113,6 @@ async function cargarTiendas() {
 
         tiendas = data.tiendas || [];
 
-        // =============================================
-        // CAMBIO: Restaurar título a "Tiendas"
-        // =============================================
         const tituloPrincipal = document.getElementById('main-title');
         if (tituloPrincipal) {
             tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
@@ -188,7 +186,7 @@ function renderizarTiendas() {
                 <h3>${tienda.nombre}</h3>
                 ${tieneDesc ? `<p class="store-desc">${tienda.descripcion}</p>` : ''}
                 <p><i class="fas fa-map-marker-alt"></i> ${tienda.direccion}</p>
-                <p><i class="fas fa-clock"></i> ${tienda.horario || "11:00-22:00"}</p>
+                <p><i class="fas fa-clock"></i> Hoy: ${getHorarioHoy(tienda.horario)}</p>
                 <div class="store-rating">${generarEstrellas(rating)}</div>
             </div>
         </div>
@@ -205,9 +203,6 @@ async function verMenuTienda(tiendaId) {
 
     const tienda = tiendas.find(t => t.id == tiendaId);
 
-    // =============================================
-    // CAMBIO: Actualizar el título principal al nombre de la tienda
-    // =============================================
     const tituloPrincipal = document.getElementById('main-title');
     if (tituloPrincipal && tienda) {
         tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${tienda.nombre}`;
@@ -221,7 +216,7 @@ async function verMenuTienda(tiendaId) {
             'tienda_id': tienda.id
         });
     }
-        
+
     if (!tienda) {
         mostrarNotificacion("Tienda no encontrada", "error");
         cargarTiendas();
@@ -235,7 +230,6 @@ async function verMenuTienda(tiendaId) {
         container.innerHTML = `
             <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
             <div class="menu-header">
-                <!-- ELIMINADO H2 DUPLICADO -->
                 <p>${tienda.descripcion || ""}</p>
             </div>
             <div class="empty-state"><i class="fas fa-box-open"></i><p>Esta tienda aún no tiene productos</p></div>
@@ -252,13 +246,12 @@ async function verMenuTienda(tiendaId) {
         const imagenUrl = (p.imagen_url || p.icono || '').trim();
         const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
 
-        // ★ Verificamos si el producto tiene el badge de agotado ★
         const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
 
         let botonHTML;
         if (!status.isOpen) {
             // 1. La tienda está cerrada
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada. Horario: ${tienda.horario}', 'error')">
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')">
                 <i class="fas fa-clock"></i> Cerrado
             </button>`;
         } else if (esAgotado) {
@@ -295,7 +288,6 @@ async function verMenuTienda(tiendaId) {
     container.innerHTML = `
         <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
         <div class="menu-header">
-            <!-- ELIMINADO H2 DUPLICADO AQUÍ -->
             <p>${tienda.descripcion || ""}</p>
             <span style="display:inline-block;margin-top:.5rem;background:var(--light);color:var(--gray);padding:.3rem .9rem;border-radius:20px;font-size:.85rem;">
                 <i class="fas fa-box"></i> ${productosValidos.length} producto${productosValidos.length !== 1 ? 's' : ''} disponible${productosValidos.length !== 1 ? 's' : ''}
@@ -374,7 +366,7 @@ function agregarAlCarrito(producto, cantidadTipo) {
     if (tiendaOrigen) {
         const status = checkStoreStatus(tiendaOrigen.horario);
         if (!status.isOpen) {
-            mostrarNotificacion(`Esta tienda está cerrada. Horario: ${tiendaOrigen.horario}`, 'error');
+            mostrarNotificacion(`Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tiendaOrigen.horario)}`, 'error');
             return;
         }
     }
@@ -382,9 +374,6 @@ function agregarAlCarrito(producto, cantidadTipo) {
     const carritoVacio = carrito.length === 0;
 
     // ★★★ EVENTO GOOGLE ANALYTICS: agregar_carrito ★★★
-    // Se dispara cada vez que un usuario hace clic en 'Agregar' un producto.
-    // Registra: nombre del producto, ID, precio y tienda de origen.
-    // Solo se ejecuta si gtag está disponible (evita errores si GA4 está bloqueado).
     if (typeof gtag === 'function') {
         gtag('event', 'agregar_carrito', {
             'event_category': 'ecommerce',
@@ -566,11 +555,46 @@ function filtrarProductos(texto) {
 }
 
 // ============================================
-// FUNCIÓN DE ESTADO DE TIENDA (ABIERTA/CERRADA)
+// ★ NUEVAS FUNCIONES PARA LEER EL HORARIO JSON ★
+// ============================================
+
+// Devuelve la clave del día actual (mon, tue, wed, etc.) basado en hora de Colombia
+function getDayKey() {
+    const now = new Date();
+    const colombiaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Bogota" }));
+    const dayIndex = colombiaTime.getDay(); // 0=Dom, 1=Lun, ...
+    const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    return days[dayIndex];
+}
+
+// Devuelve el horario de hoy en texto legible, interpretando el JSON
+function getHorarioHoy(horario) {
+    if (!horario) return "11:00-22:00"; // Por defecto
+
+    // Si es el formato nuevo (JSON)
+    if (typeof horario === 'string' && horario.trim().startsWith('{')) {
+        try {
+            // Limpiar el JSON por si tiene comillas raras o sin comillas en las claves
+            let cleanHorario = horario.replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":').replace(/'/g, '"');
+            const obj = JSON.parse(cleanHorario);
+            const todayKey = getDayKey();
+            return obj[todayKey] || "Cerrado";
+        } catch (e) {
+            return horario; // Si falla el parseo, mostramos el texto original
+        }
+    }
+    return horario; // Si es formato viejo (ej: "11am - 10pm")
+}
+
+// ============================================
+// FUNCIÓN DE ESTADO DE TIENDA (ACTUALIZADA PARA JSON)
 // ============================================
 function checkStoreStatus(horario) {
-    if (!horario || !horario.includes('-')) {
-        return { isOpen: true, nextOpening: "" };
+    const horarioHoy = getHorarioHoy(horario);
+
+    // Si hoy está cerrado
+    if (!horarioHoy || horarioHoy.toLowerCase() === 'cerrado' || !horarioHoy.includes('-')) {
+        return { isOpen: false, nextOpening: "Cerrado hoy" };
     }
 
     const now = new Date();
@@ -579,7 +603,7 @@ function checkStoreStatus(horario) {
     const currentMinutes = colombiaTime.getMinutes();
     const currentTimeInMinutes = (currentHours * 60) + currentMinutes;
 
-    const [startStr, endStr] = horario.split('-');
+    const [startStr, endStr] = horarioHoy.split('-');
     const [startH, startM] = startStr.split(':').map(Number);
     const [endH, endM] = endStr.split(':').map(Number);
 
@@ -589,13 +613,14 @@ function checkStoreStatus(horario) {
     let isOpen = false;
 
     if (endTimeInMinutes > startTimeInMinutes) {
+        // Horario normal (ej: 08:00 - 22:00)
         isOpen = currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes;
     } else {
+        // Cruza medianoche (ej: 20:00 - 06:00)
         isOpen = currentTimeInMinutes >= startTimeInMinutes || currentTimeInMinutes < endTimeInMinutes;
     }
 
-    const nextOpening = isOpen ? "" : `Abre a las ${startStr}`;
-
+    const nextOpening = isOpen ? "" : `Abre a las ${startStr.trim()}`;
     return { isOpen, nextOpening };
 }
 
@@ -603,8 +628,6 @@ function checkStoreStatus(horario) {
 // ZONE AUTOCOMPLETE - BUSCADOR DE ZONAS
 // ============================================
 
-// ★★★ ZONAS SE CONSTRUYE DESDE APP_CONFIG.zonas ★★★
-// Solo necesitas agregar zonas en config.js y aparecerán aquí automáticamente
 const ZONAS = Object.entries(APP_CONFIG.zonas).map(([id, data]) => ({
     id: id,
     nombre: data.nombre,
@@ -614,7 +637,6 @@ const ZONAS = Object.entries(APP_CONFIG.zonas).map(([id, data]) => ({
 let _zonaSeleccionada = null;
 let _highlightedIndex = -1;
 
-// ★ Función compartida: Resaltar texto coincidente ★
 function _resaltarTexto(texto, termino) {
     if (!termino) return texto;
     var terminoEscapado = termino.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -633,7 +655,6 @@ function initZoneAutocomplete() {
 
     if (!input || !hiddenInput || !dropdown) return;
 
-    // ★ Cargar zona guardada al iniciar ★
     const zonaGuardada = localStorage.getItem('zonaSeleccionada');
     if (zonaGuardada) {
         const zona = ZONAS.find(z => z.id === zonaGuardada);
@@ -645,7 +666,6 @@ function initZoneAutocomplete() {
         }
     }
 
-    // ★ FOCO: Limpiar texto para buscar ★
     input.addEventListener('focus', function () {
         if (_zonaSeleccionada) {
             input.value = '';
@@ -653,12 +673,10 @@ function initZoneAutocomplete() {
         _mostrarDropdown(input.value);
     });
 
-    // ★ ESCRIBIR: Filtrar resultados ★
     input.addEventListener('input', function () {
         _mostrarDropdown(input.value);
     });
 
-    // ★ PERDER FOCO: Restaurar selección previa ★
     input.addEventListener('blur', function () {
         setTimeout(() => {
             _cerrarDropdown();
@@ -671,7 +689,6 @@ function initZoneAutocomplete() {
         }, 200);
     });
 
-    // ★ NAVEGACIÓN CON TECLADO ★
     input.addEventListener('keydown', function (e) {
         const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
 
@@ -694,7 +711,6 @@ function initZoneAutocomplete() {
         }
     });
 
-    // ★ BOTÓN LIMPIAR (X) ★
     if (clearBtn) {
         clearBtn.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -711,7 +727,6 @@ function initZoneAutocomplete() {
         });
     }
 
-    // ★ CERRAR al hacer click fuera ★
     document.addEventListener('click', function (e) {
         const autocomplete = document.getElementById('zone-autocomplete');
         if (autocomplete && !autocomplete.contains(e.target)) {
@@ -719,7 +734,6 @@ function initZoneAutocomplete() {
         }
     });
 
-    // ★ Listener de cambio en hidden input (compatibilidad) ★
     hiddenInput.addEventListener('change', function (e) {
         if (typeof APP_CONFIG !== 'undefined') {
             APP_CONFIG.zonaActual = e.target.value;
@@ -729,7 +743,6 @@ function initZoneAutocomplete() {
     });
 }
 
-// ★ Mostrar dropdown con resultados filtrados (Index) ★
 function _mostrarDropdown(termino) {
     const dropdown = document.getElementById('zone-dropdown');
     if (!dropdown) return;
@@ -765,7 +778,6 @@ function _mostrarDropdown(termino) {
     dropdown.classList.add('active');
 }
 
-// ★ Cerrar dropdown (Index) ★
 function _cerrarDropdown() {
     const dropdown = document.getElementById('zone-dropdown');
     if (dropdown) {
@@ -774,7 +786,6 @@ function _cerrarDropdown() {
     }
 }
 
-// ★ Seleccionar una zona (Index) ★
 function _seleccionarZona(zona, actualizar) {
     const input = document.getElementById('zone-input');
     const hiddenInput = document.getElementById('zone-select');
@@ -807,7 +818,6 @@ function _seleccionarZona(zona, actualizar) {
     }
 }
 
-// ★ Highlight de opción con teclado (Index) ★
 function _actualizarHighlight(options) {
     options.forEach(function (opt, idx) {
         if (idx === _highlightedIndex) {
@@ -835,7 +845,6 @@ function initZoneAutocompleteCheckout() {
 
     if (!input || !hiddenInput || !dropdown) return;
 
-    // ★ Pre-seleccionar la zona que el usuario eligió en el index ★
     const zonaGuardada = localStorage.getItem('zonaSeleccionada');
     if (zonaGuardada) {
         const zona = ZONAS.find(z => z.id === zonaGuardada);
@@ -850,7 +859,6 @@ function initZoneAutocompleteCheckout() {
         }
     }
 
-    // ★ FOCO: Limpiar texto para buscar ★
     input.addEventListener('focus', function () {
         if (_checkoutZonaSeleccionada) {
             input.value = '';
@@ -862,12 +870,10 @@ function initZoneAutocompleteCheckout() {
         _mostrarDropdownCheckout(input.value);
     });
 
-    // ★ ESCRIBIR: Filtrar resultados ★
     input.addEventListener('input', function () {
         _mostrarDropdownCheckout(input.value);
     });
 
-    // ★ PERDER FOCO: Restaurar si no eligió ★
     input.addEventListener('blur', function () {
         setTimeout(function () {
             dropdown.classList.remove('active');
@@ -881,7 +887,6 @@ function initZoneAutocompleteCheckout() {
         }, 200);
     });
 
-    // ★ NAVEGACIÓN CON TECLADO ★
     input.addEventListener('keydown', function (e) {
         const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
 
@@ -904,7 +909,6 @@ function initZoneAutocompleteCheckout() {
         }
     });
 
-    // ★ BOTÓN LIMPIAR (X) ★
     if (clearBtn) {
         clearBtn.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -919,7 +923,6 @@ function initZoneAutocompleteCheckout() {
         });
     }
 
-    // ★ CERRAR al hacer click fuera ★
     document.addEventListener('click', function (e) {
         const container = document.getElementById('zone-autocomplete-checkout');
         if (container && !container.contains(e.target)) {
@@ -928,7 +931,6 @@ function initZoneAutocompleteCheckout() {
     });
 }
 
-// ★ Mostrar dropdown con resultados filtrados (Checkout) ★
 function _mostrarDropdownCheckout(termino) {
     const dropdown = document.getElementById('zone-dropdown-checkout');
     if (!dropdown) return;
@@ -963,7 +965,6 @@ function _mostrarDropdownCheckout(termino) {
     dropdown.classList.add('active');
 }
 
-// ★ Highlight de opción con teclado (Checkout) ★
 function _actualizarHighlightCheckout(options) {
     options.forEach(function (opt, idx) {
         if (idx === _checkoutHighlightedIndex) {
@@ -975,7 +976,6 @@ function _actualizarHighlightCheckout(options) {
     });
 }
 
-// ★ Seleccionar una zona (Checkout) ★
 function _seleccionarZonaCheckout(zonaId) {
     const input = document.getElementById('zona-checkout-input');
     const hiddenInput = document.getElementById('zona-checkout');
@@ -1001,7 +1001,6 @@ function _seleccionarZonaCheckout(zonaId) {
 
     dropdown.classList.remove('active');
 
-    // Disparar evento change para compatibilidad con checkout.js
     hiddenInput.dispatchEvent(new Event('change'));
     if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
 }
