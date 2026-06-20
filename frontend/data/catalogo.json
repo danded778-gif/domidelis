@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T01-40-02",
-  "ultimaActualizacion": "2026-06-20T01:40:02.675Z",
+  "version": "v2026-06-20T17-46-31",
+  "ultimaActualizacion": "2026-06-20T17:46:31.221Z",
   "tiendas": [
     {
       "id": 1,
@@ -189,28 +189,6 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
-    },
-    {
-      "id": 6,
-      "nombre": "Prueba",
-      "descripcion": "Prueba",
-      "direccion": "Calle 23",
-      "horario": "01:00 - 23:00",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "activo": true,
-      "productos": [
-        {
-          "id": 114,
-          "nombre": "Hamburguesa",
-          "descripcion": "Hamburguesa",
-          "precio": 10000,
-          "imagen_url": "",
-          "badge": "",
-          "cantidadTipo": "UND",
-          "activo": true
-        }
-      ]
     }
   ]
 }
