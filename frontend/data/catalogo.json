@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T17-46-31",
-  "ultimaActualizacion": "2026-06-20T17:46:31.221Z",
+  "version": "v2026-06-20T17-53-52",
+  "ultimaActualizacion": "2026-06-20T17:53:52.879Z",
   "tiendas": [
     {
       "id": 1,
@@ -184,7 +184,7 @@
       "nombre": "Candela burger",
       "descripcion": "",
       "direccion": "parque lineal",
-      "horario": "14:00 - 22:00",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
