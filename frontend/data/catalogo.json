@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T21-59-46",
-  "ultimaActualizacion": "2026-06-20T21:59:46.250Z",
+  "version": "v2026-06-20T22-19-08",
+  "ultimaActualizacion": "2026-06-20T22:19:08.939Z",
   "tiendas": [
     {
       "id": 1,
@@ -186,7 +186,7 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguer.png",
       "activo": true,
       "productos": []
     },
