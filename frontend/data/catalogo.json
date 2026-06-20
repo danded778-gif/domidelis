@@ -1,13 +1,13 @@
 {
-  "version": "v2026-06-20T20-09-40",
-  "ultimaActualizacion": "2026-06-20T20:09:40.794Z",
+  "version": "v2026-06-20T20-10-05",
+  "ultimaActualizacion": "2026-06-20T20:10:05.597Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "DOMI DELIS",
       "descripcion": "Comidas",
       "direccion": "el santuario",
-      "horario": "{\"mon\":\"cerrado\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
+      "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
       "activo": true,
