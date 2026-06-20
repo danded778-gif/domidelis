@@ -20,7 +20,6 @@
     <meta name="apple-mobile-web-app-title" content="Mi Tienda">
     <link rel="apple-touch-icon" href="/app-tiendas/assets/img/icon-152x152.png">
     <link rel="manifest" href="../app-tiendas/manifest-tienda.json"> 
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
 
     <title>Mi Tienda - Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -334,18 +333,34 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta para Actualizar Datos -->
+                <!-- Tarjeta para Actualizar Datos y Horarios -->
                 <div class="config-card">
-                    <h3 class="config-title"><i class="fas fa-edit"></i> Actualizar Datos</h3>
+                    <h3 class="config-title"><i class="fas fa-edit"></i> Actualizar Datos y Horarios</h3>
                     <form id="form-datos-tienda" onsubmit="guardarDatosTienda(event)">
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Dirección</label>
                             <input type="text" id="conf-direccion" placeholder="Dirección de tu tienda">
-                            <div class="form-group">
-                            <label><i class="fas fa-map-marker-alt"></i> Descripción</label>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-align-left"></i> Descripción</label>
                             <input type="text" id="conf-descripcion" placeholder="Descripción de tu tienda">
                         </div>
+                        
+                        <!-- ★ NUEVO: HORARIO SEMANAL DE LA TIENDA ★ -->
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Horario Semanal</label>
+                            <small style="display:block; margin-bottom:10px; color:var(--gray); font-size:.8rem;">Formato 24h (Ej: 08:00-22:00). Escribe "Cerrado" si no abre.</small>
+                            <div style="display:grid; grid-template-columns: auto 1fr; gap:8px; align-items:center;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Lunes:</label> <input type="text" id="horario-mon" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Martes:</label> <input type="text" id="horario-tue" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Miércoles:</label> <input type="text" id="horario-wed" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Jueves:</label> <input type="text" id="horario-thu" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Viernes:</label> <input type="text" id="horario-fri" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Sábado:</label> <input type="text" id="horario-sat" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Domingo:</label> <input type="text" id="horario-sun" value="Cerrado" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                            </div>
                         </div>
+
                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar Cambios</button>
                     </form>
                 </div>

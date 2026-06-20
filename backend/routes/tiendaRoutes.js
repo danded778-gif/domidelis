@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx2Mb_2sAvSQGjxP987GEqpILtsS15V2AD1E8usTJl0Yhohnwfggf4wxPUHvXE3yHr8nA/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzGxCV244FFeOK4z0ZHqQ0vyrjKZDjFdVDR7pJmE_-L1K7DI1eLijMpiv361Vby-4MQrg/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // ============================================
@@ -25,7 +25,7 @@ function verifyTienda(req, res, next) {
 }
 
 // ============================================
-// RUTA: Login Tienda (Genera JWT) - ★ ACTUALIZADO
+// RUTA: Login Tienda (Genera JWT) - ★ ACTUALIZADO PARA INCLUIR HORARIO
 // ============================================
 router.post('/login', async (req, res) => {
     const { nombre, password } = req.body;
@@ -36,14 +36,17 @@ router.post('/login', async (req, res) => {
         const data = response.data;
 
         if (data.success && data.rol === 'tienda') {
-            // ★ Incluimos comision, direccion y descripcion en el token y la respuesta
+            // ★ Incluimos comision, direccion, descripcion y horario en la respuesta
             const tiendaData = {
                 id: data.id,
                 nombre: data.nombre,
                 comision: data.comision || 20,
                 direccion: data.direccion || '',
-                descripcion: data.descripcion || ''
+                descripcion: data.descripcion || '',
+                horario: data.horario || '{"mon":"08:00-22:00","tue":"08:00-22:00","wed":"08:00-22:00","thu":"08:00-22:00","fri":"08:00-22:00","sat":"08:00-22:00","sun":"Cerrado"}' // ★ NUEVO
             };
+            
+            // El token puede llevar la info básica, la completa se envía al frontend
             const token = jwt.sign({ id: data.id, nombre: data.nombre, rol: 'tienda', comision: data.comision }, JWT_SECRET, { expiresIn: '8h' });
             res.json({ token, tienda: tiendaData });
         } else {
@@ -109,11 +112,12 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
 });
 
 // ============================================
-// ★ NUEVA RUTA: Actualizar Perfil (Dirección, Descripción)
+// RUTA: Actualizar Perfil (Dirección, Descripción y Horario) - ★ ACTUALIZADO
 // ============================================
 router.put('/perfil', verifyTienda, async (req, res) => {
     try {
-        const { descripcion, direccion } = req.body;
+        // ★ NUEVO: Recibimos 'horario' desde el frontend de la tienda
+        const { descripcion, direccion, horario } = req.body;
         const tiendaId = req.tienda.id;
 
         // Obtenemos datos actuales para no sobrescribir lo que no se cambia
@@ -130,7 +134,8 @@ router.put('/perfil', verifyTienda, async (req, res) => {
             nombre: current.nombre,
             descripcion: descripcion !== undefined ? descripcion : current.descripcion,
             direccion: direccion !== undefined ? direccion : current.direccion,
-            horario: current.horario,
+            // ★ NUEVO: Si horario viene en la petición, lo enviamos; si no, dejamos el actual
+            horario: horario !== undefined ? horario : current.horario, 
             rating: current.rating,
             imagen: current.imagen,
             comision: current.comision
@@ -138,7 +143,16 @@ router.put('/perfil', verifyTienda, async (req, res) => {
 
         await axios.post(`${GAS_URL}`, updateParams.toString());
         
-        res.json({ success: true, tienda: { id: tiendaId, descripcion, direccion } });
+        // ★ NUEVO: Devolvemos el horario actualizado al frontend para actualizar la sesión local
+        res.json({ 
+            success: true, 
+            tienda: { 
+                id: tiendaId, 
+                descripcion, 
+                direccion, 
+                horario 
+            } 
+        });
     } catch (err) {
         console.error('Error actualizando perfil:', err.message);
         res.status(500).json({ error: 'Error actualizando el perfil.' });
@@ -146,7 +160,7 @@ router.put('/perfil', verifyTienda, async (req, res) => {
 });
 
 // ============================================
-// ★ NUEVA RUTA: Cambiar Contraseña
+// RUTA: Cambiar Contraseña
 // ============================================
 router.post('/cambiar-password', verifyTienda, async (req, res) => {
     try {

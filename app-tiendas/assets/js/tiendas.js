@@ -1,5 +1,5 @@
 // ============================================
-// LÓGICA PRINCIPAL - PWA TIENDA (COMPLETO)
+// LÓGICA PRINCIPAL - PWA TIENDA (COMPLETO Y ACTUALIZADO)
 // ============================================
 
 // --- UTILIDADES ---
@@ -181,14 +181,13 @@ async function cargarDatosComision() {
 }
 
 // ============================================
-// LÓGICA PARA LA PESTAÑA DE CONFIGURACIÓN
+// LÓGICA PARA LA PESTAÑA DE CONFIGURACIÓN (ACTUALIZADA CON HORARIOS)
 // ============================================
 async function cargarConfiguracion() {
     try {
         const sesion = obtenerSesionTienda();
         const info = sesion.info;
         
-        // Seguridad: verificar si los elementos existen antes de usarlos
         const elNombre = document.getElementById('conf-nombre');
         const elComision = document.getElementById('conf-comision');
         const elDescripcion = document.getElementById('conf-descripcion');
@@ -199,6 +198,32 @@ async function cargarConfiguracion() {
             if(elComision) elComision.textContent = (info.comision || 20) + '%';
             if(elDescripcion) elDescripcion.value = info.descripcion || '';
             if(elDireccion) elDireccion.value = info.direccion || '';
+
+            // ★ NUEVO: Desempaquetar JSON de horarios para mostrarlo en los inputs
+            let horarioObj = {};
+            try {
+                if (info.horario && typeof info.horario === 'string' && info.horario.trim().startsWith('{')) {
+                    // Limpiar el JSON por si tiene comillas raras o sin comillas en las claves
+                    let cleanHorario = info.horario.replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":').replace(/'/g, '"');
+                    horarioObj = JSON.parse(cleanHorario);
+                } else {
+                    // Si es texto viejo, lo asignamos a todos los días por defecto
+                    const horarioViejo = info.horario || '08:00-22:00';
+                    horarioObj = { mon: horarioViejo, tue: horarioViejo, wed: horarioViejo, thu: horarioViejo, fri: horarioViejo, sat: horarioViejo, sun: 'Cerrado' };
+                }
+            } catch (e) {
+                horarioObj = { mon: '08:00-22:00', tue: '08:00-22:00', wed: '08:00-22:00', thu: '08:00-22:00', fri: '08:00-22:00', sat: '08:00-22:00', sun: 'Cerrado' };
+            }
+
+            const setVal = (id, val) => { const el = document.getElementById(id); if(el) el.value = val || '08:00-22:00'; };
+            setVal('horario-mon', horarioObj.mon);
+            setVal('horario-tue', horarioObj.tue);
+            setVal('horario-wed', horarioObj.wed);
+            setVal('horario-thu', horarioObj.thu);
+            setVal('horario-fri', horarioObj.fri);
+            setVal('horario-sat', horarioObj.sat);
+            setVal('horario-sun', horarioObj.sun);
+
         } else {
             if(elNombre) elNombre.textContent = 'Error al cargar';
         }
@@ -210,24 +235,34 @@ async function cargarConfiguracion() {
 async function guardarDatosTienda(event) {
     event.preventDefault();
     const sesion = obtenerSesionTienda();
-    const elDireccion = document.getElementById('conf-direccion');
-    const elDescripcion = document.getElementById('conf-descripcion');
     
-    const direccion = elDireccion ? elDireccion.value : '';
-    const descripcion = elDescripcion ? elDescripcion.value : '';
+    const direccion = document.getElementById('conf-direccion').value;
+    const descripcion = document.getElementById('conf-descripcion').value;
+
+    // ★ NUEVO: Empaquetar los 7 inputs en un solo string JSON
+    const horarioJSON = JSON.stringify({
+        mon: document.getElementById("horario-mon").value.trim(),
+        tue: document.getElementById("horario-tue").value.trim(),
+        wed: document.getElementById("horario-wed").value.trim(),
+        thu: document.getElementById("horario-thu").value.trim(),
+        fri: document.getElementById("horario-fri").value.trim(),
+        sat: document.getElementById("horario-sat").value.trim(),
+        sun: document.getElementById("horario-sun").value.trim()
+    });
 
     try {
         const res = await fetch(`${API_URL}/perfil`, { 
             method: 'PUT',
             headers: authHeaders(),
-            body: JSON.stringify({ descripcion, direccion })
+            body: JSON.stringify({ descripcion, direccion, horario: horarioJSON }) // ★ Enviamos el horario
         });
         const data = await res.json();
         
         if (data.success) {
-            alert('✅ Datos actualizados correctamente');
+            alert('✅ Datos y horarios actualizados correctamente');
             sesion.info.direccion = direccion;
             sesion.info.descripcion = descripcion;
+            sesion.info.horario = horarioJSON; // ★ Actualizamos la sesión local
             guardarSesionTienda(sesion.token, sesion.info);
         } else {
             alert('❌ Error: ' + (data.error || 'No se pudo actualizar'));
