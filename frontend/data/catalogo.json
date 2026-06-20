@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T21-55-46",
-  "ultimaActualizacion": "2026-06-20T21:55:46.362Z",
+  "version": "v2026-06-20T21-56-14",
+  "ultimaActualizacion": "2026-06-20T21:56:14.861Z",
   "tiendas": [
     {
       "id": 1,
@@ -19,6 +19,16 @@
           "precio": 21000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
           "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 102,
+          "nombre": "Salchipapas",
+          "descripcion": "",
+          "precio": 16000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
@@ -190,16 +200,6 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
       "activo": true,
       "productos": [
-        {
-          "id": 113,
-          "nombre": "Salchipapas",
-          "descripcion": "",
-          "precio": 15000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
-          "badge": "Disponible",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
         {
           "id": 113,
           "nombre": "Salchipapas",
