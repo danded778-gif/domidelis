@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T18-25-26",
-  "ultimaActualizacion": "2026-06-20T18:25:26.121Z",
+  "version": "v2026-06-20T18-26-06",
+  "ultimaActualizacion": "2026-06-20T18:26:06.010Z",
   "tiendas": [
     {
       "id": 1,
@@ -199,7 +199,18 @@
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 113,
+          "nombre": "Salchipapas",
+          "descripcion": "",
+          "precio": 15000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+          "badge": "",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
     }
   ]
 }
