@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T17-55-31",
-  "ultimaActualizacion": "2026-06-20T17:55:31.215Z",
+  "version": "v2026-06-20T18-12-28",
+  "ultimaActualizacion": "2026-06-20T18:12:28.599Z",
   "tiendas": [
     {
       "id": 1,
@@ -153,7 +153,7 @@
       "direccion": "Carrera 44 #50a-19",
       "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 22:00\",\"sun\":\"11:00 - 22:00\"}",
       "rating": 4.5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
       "activo": true,
       "productos": [
         {
