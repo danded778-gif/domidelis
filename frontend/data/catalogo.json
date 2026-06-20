@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T01-36-14",
-  "ultimaActualizacion": "2026-06-20T01:36:14.544Z",
+  "version": "v2026-06-20T01-37-16",
+  "ultimaActualizacion": "2026-06-20T01:37:16.525Z",
   "tiendas": [
     {
       "id": 1,
@@ -199,7 +199,18 @@
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 114,
+          "nombre": "Hamburguesa",
+          "descripcion": "Hamburguesa",
+          "precio": 10000,
+          "imagen_url": "",
+          "badge": "",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
     }
   ]
 }
