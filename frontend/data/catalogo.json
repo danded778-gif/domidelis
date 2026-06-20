@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T17-53-52",
-  "ultimaActualizacion": "2026-06-20T17:53:52.879Z",
+  "version": "v2026-06-20T17-55-31",
+  "ultimaActualizacion": "2026-06-20T17:55:31.215Z",
   "tiendas": [
     {
       "id": 1,
@@ -186,6 +186,17 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 6,
+      "nombre": "Punto del sabor",
+      "descripcion": "",
+      "direccion": "parque lineal",
+      "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
+      "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
