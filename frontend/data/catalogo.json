@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-20T22-22-41",
-  "ultimaActualizacion": "2026-06-20T22:22:41.550Z",
+  "version": "v2026-06-21T05-19-58",
+  "ultimaActualizacion": "2026-06-21T05:19:58.535Z",
   "tiendas": [
     {
       "id": 1,
@@ -174,7 +174,7 @@
       "descripcion": "comidas rapidas",
       "direccion": "calle 11",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 4.2,
+      "rating": 3.8,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
