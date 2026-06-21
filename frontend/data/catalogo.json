@@ -1,10 +1,10 @@
 {
-  "version": "v2026-06-21T05-49-36",
-  "ultimaActualizacion": "2026-06-21T05:49:36.454Z",
+  "version": "v2026-06-21T06-15-59",
+  "ultimaActualizacion": "2026-06-21T06:15:59.472Z",
   "tiendas": [
     {
       "id": 1,
-      "nombre": "DOMI DELIS",
+      "nombre": "Domi Delis",
       "descripcion": "Comidas",
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
