@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T05-43-45",
-  "ultimaActualizacion": "2026-06-21T05:43:45.410Z",
+  "version": "v2026-06-21T05-46-05",
+  "ultimaActualizacion": "2026-06-21T05:46:05.175Z",
   "tiendas": [
     {
       "id": 1,
@@ -182,7 +182,7 @@
     {
       "id": 5,
       "nombre": "CANDELA BURGER",
-      "descripcion": "",
+      "descripcion": "Hamburguesa-perros-picadas y algo mas",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
