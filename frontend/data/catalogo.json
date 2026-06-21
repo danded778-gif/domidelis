@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T05-38-12",
-  "ultimaActualizacion": "2026-06-21T05:38:12.780Z",
+  "version": "v2026-06-21T05-38-43",
+  "ultimaActualizacion": "2026-06-21T05:38:43.177Z",
   "tiendas": [
     {
       "id": 1,
@@ -148,7 +148,7 @@
     },
     {
       "id": 3,
-      "nombre": "Calanchos parrilla",
+      "nombre": "CALANCHOS PARRILLA",
       "descripcion": "El sabor de la parrilla en el santuario",
       "direccion": "Carrera 44 #50a-19",
       "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 22:00\",\"sun\":\"11:00 - 22:00\"}",
@@ -170,7 +170,7 @@
     },
     {
       "id": 4,
-      "nombre": "Las gordas",
+      "nombre": "LAS GORDAS",
       "descripcion": "comidas rapidas",
       "direccion": "calle 11",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
