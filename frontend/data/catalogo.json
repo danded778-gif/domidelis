@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T05-19-58",
-  "ultimaActualizacion": "2026-06-21T05:19:58.535Z",
+  "version": "v2026-06-21T05-38-12",
+  "ultimaActualizacion": "2026-06-21T05:38:12.780Z",
   "tiendas": [
     {
       "id": 1,
@@ -66,7 +66,7 @@
     },
     {
       "id": 2,
-      "nombre": "Domi Express",
+      "nombre": "DOMI EXPRESS",
       "descripcion": "Mercado, farmacia, encargos y mensajería.",
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"Cerrado\"}",
