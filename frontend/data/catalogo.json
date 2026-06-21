@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T05-38-43",
-  "ultimaActualizacion": "2026-06-21T05:38:43.177Z",
+  "version": "v2026-06-21T05-39-53",
+  "ultimaActualizacion": "2026-06-21T05:39:53.007Z",
   "tiendas": [
     {
       "id": 1,
@@ -181,7 +181,7 @@
     },
     {
       "id": 5,
-      "nombre": "Candela burger",
+      "nombre": "CANDELA BURGER",
       "descripcion": "",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
