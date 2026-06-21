@@ -58,6 +58,7 @@ const APP_CONFIG = {
         esmeralda: { nombre: 'La esmeralda', envio: 5000 },
         valle: { nombre: 'Valle maria', envio: 12000 },
         corazon: { nombre: 'C. de jesus', envio: 6000}
+        chorro: { nombre: 'El chorro', envio: 5000}
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
