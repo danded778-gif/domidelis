@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T05-46-05",
-  "ultimaActualizacion": "2026-06-21T05:46:05.175Z",
+  "version": "v2026-06-21T05-49-36",
+  "ultimaActualizacion": "2026-06-21T05:49:36.454Z",
   "tiendas": [
     {
       "id": 1,
@@ -171,7 +171,7 @@
     {
       "id": 4,
       "nombre": "LAS GORDAS",
-      "descripcion": "comidas rapidas",
+      "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.8,
@@ -182,7 +182,7 @@
     {
       "id": 5,
       "nombre": "CANDELA BURGER",
-      "descripcion": "Hamburguesa-perros-picadas y algo mas",
+      "descripcion": "Hamburguesas-perros-picadas y algo mas",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
