@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-21T06-15-59",
-  "ultimaActualizacion": "2026-06-21T06:15:59.472Z",
+  "version": "v2026-06-21T06-16-30",
+  "ultimaActualizacion": "2026-06-21T06:16:30.634Z",
   "tiendas": [
     {
       "id": 1,
@@ -66,7 +66,7 @@
     },
     {
       "id": 2,
-      "nombre": "DOMI EXPRESS",
+      "nombre": "Domi Express",
       "descripcion": "Mercado, farmacia, encargos y mensajería.",
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"Cerrado\"}",
@@ -148,7 +148,7 @@
     },
     {
       "id": 3,
-      "nombre": "CALANCHOS PARRILLA",
+      "nombre": "Calanchos Parrilla",
       "descripcion": "El sabor de la parrilla en el santuario",
       "direccion": "Carrera 44 #50a-19",
       "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 22:00\",\"sun\":\"11:00 - 22:00\"}",
