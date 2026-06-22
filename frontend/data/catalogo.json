@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-22T23-47-30",
-  "ultimaActualizacion": "2026-06-22T23:47:30.861Z",
+  "version": "v2026-06-22T23-47-49",
+  "ultimaActualizacion": "2026-06-22T23:47:49.706Z",
   "tiendas": [
     {
       "id": 1,
@@ -184,7 +184,7 @@
       "nombre": "Candela Burger",
       "descripcion": "Hamburguesas-perros-picadas y algo mas",
       "direccion": "parque lineal",
-      "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 22:30\"}",
+      "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 23:00\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguer1.png",
       "activo": true,
