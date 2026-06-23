@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-07-04",
-  "ultimaActualizacion": "2026-06-23T04:07:04.345Z",
+  "version": "v2026-06-23T04-09-01",
+  "ultimaActualizacion": "2026-06-23T04:09:01.698Z",
   "tiendas": [
     {
       "id": 1,
@@ -192,7 +192,7 @@
         {
           "id": 113,
           "nombre": "Clasica",
-          "descripcion": "",
+          "descripcion": "pan,",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
