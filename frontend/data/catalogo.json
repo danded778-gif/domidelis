@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-38-49",
-  "ultimaActualizacion": "2026-06-23T04:38:49.964Z",
+  "version": "v2026-06-23T04-39-50",
+  "ultimaActualizacion": "2026-06-23T04:39:50.456Z",
   "tiendas": [
     {
       "id": 1,
@@ -222,7 +222,7 @@
         {
           "id": 116,
           "nombre": "Crispy Onion",
-          "descripcion": "",
+          "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa especial.",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
