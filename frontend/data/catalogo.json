@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T06-08-10",
-  "ultimaActualizacion": "2026-06-23T06:08:10.741Z",
+  "version": "v2026-06-23T06-09-01",
+  "ultimaActualizacion": "2026-06-23T06:09:01.674Z",
   "tiendas": [
     {
       "id": 1,
@@ -291,6 +291,26 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
       "activo": true,
       "productos": [
+        {
+          "id": 122,
+          "nombre": "Salchipapas",
+          "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
+          "precio": 15000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 122,
+          "nombre": "Salchipapas",
+          "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
+          "precio": 15000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
         {
           "id": 122,
           "nombre": "Salchipapas",
