@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-22-47",
-  "ultimaActualizacion": "2026-06-23T03:22:47.258Z",
+  "version": "v2026-06-23T03-24-23",
+  "ultimaActualizacion": "2026-06-23T03:24:23.960Z",
   "tiendas": [
     {
       "id": 1,
@@ -191,11 +191,11 @@
       "productos": [
         {
           "id": 113,
-          "nombre": "",
+          "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
-          "badge": "Disponible",
+          "badge": "agotado",
           "cantidadTipo": "UND",
           "activo": true
         }
