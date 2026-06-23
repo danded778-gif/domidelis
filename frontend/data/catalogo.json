@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T06-12-10",
-  "ultimaActualizacion": "2026-06-23T06:12:10.869Z",
+  "version": "v2026-06-23T06-15-27",
+  "ultimaActualizacion": "2026-06-23T06:15:27.784Z",
   "tiendas": [
     {
       "id": 1,
@@ -172,7 +172,7 @@
       "descripcion": "El sabor de la parrilla en el santuario",
       "direccion": "Carrera 44 #50a-19",
       "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 22:00\",\"sun\":\"11:00 - 22:00\"}",
-      "rating": 3.9,
+      "rating": 3.8,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/calalnchos/calancho_149.jpg",
       "activo": true,
       "productos": [
@@ -303,7 +303,7 @@
         },
         {
           "id": 122,
-          "nombre": "Salchipapas mediana",
+          "nombre": "Salchipapas Mediana",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
@@ -313,7 +313,7 @@
         },
         {
           "id": 122,
-          "nombre": "Salchipapas",
+          "nombre": "Salchipapas Grande",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 20000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
