@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-08-56",
-  "ultimaActualizacion": "2026-06-23T05:08:56.899Z",
+  "version": "v2026-06-23T05-09-36",
+  "ultimaActualizacion": "2026-06-23T05:09:36.368Z",
   "tiendas": [
     {
       "id": 1,
@@ -55,7 +55,7 @@
         {
           "id": 105,
           "nombre": "Arepa de Queso",
-          "descripcion": "",
+          "descripcion": "arepa de queso santuariana con mantequilla derretida y lecherita",
           "precio": 12000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/arepadequeso.png",
           "badge": "Mas vendido",
@@ -193,7 +193,7 @@
           "id": 116,
           "nombre": "Crispy Onion",
           "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
-          "precio": 22000,
+          "precio": 23000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
