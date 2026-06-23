@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-43-04",
-  "ultimaActualizacion": "2026-06-23T04:43:04.047Z",
+  "version": "v2026-06-23T04-44-09",
+  "ultimaActualizacion": "2026-06-23T04:44:09.039Z",
   "tiendas": [
     {
       "id": 1,
@@ -235,6 +235,16 @@
           "descripcion": "",
           "precio": 24000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_parcera.jpeg",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 118,
+          "nombre": "La Costeña",
+          "descripcion": "Una hamburguesa poderosa con pan suave, carne jugosa a la plancha, doble queso fundido, huevo frito, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa especial. Acompañada de dip de la casa.",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_coste%C3%B1a.jpeg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
