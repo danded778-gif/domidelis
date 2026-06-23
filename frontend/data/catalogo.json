@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-26-51",
-  "ultimaActualizacion": "2026-06-23T05:26:51.626Z",
+  "version": "v2026-06-23T05-27-19",
+  "ultimaActualizacion": "2026-06-23T05:27:19.208Z",
   "tiendas": [
     {
       "id": 1,
@@ -85,7 +85,7 @@
           "activo": true
         },
         {
-          "id": 107,
+          "id": 108,
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "",
           "precio": 6500,
@@ -95,7 +95,7 @@
           "activo": true
         },
         {
-          "id": 108,
+          "id": 109,
           "nombre": "🥛 Leche",
           "descripcion": "",
           "precio": 4500,
@@ -105,7 +105,7 @@
           "activo": true
         },
         {
-          "id": 109,
+          "id": 110,
           "nombre": "🥚 Cubeta de Huevos",
           "descripcion": "",
           "precio": 14000,
@@ -115,7 +115,7 @@
           "activo": true
         },
         {
-          "id": 110,
+          "id": 111,
           "nombre": "💊 Acetaminofén",
           "descripcion": "",
           "precio": 0,
@@ -125,7 +125,7 @@
           "activo": true
         },
         {
-          "id": 111,
+          "id": 112,
           "nombre": "🌹 Flores",
           "descripcion": "",
           "precio": 12000,
@@ -135,7 +135,7 @@
           "activo": true
         },
         {
-          "id": 112,
+          "id": 113,
           "nombre": "🧸 Peluche",
           "descripcion": "",
           "precio": 0,
@@ -145,7 +145,7 @@
           "activo": true
         },
         {
-          "id": 113,
+          "id": 114,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
@@ -210,7 +210,7 @@
           "activo": true
         },
         {
-          "id": 114,
+          "id": 115,
           "nombre": "Clasica",
           "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
@@ -220,7 +220,7 @@
           "activo": true
         },
         {
-          "id": 115,
+          "id": 116,
           "nombre": "Salchipapa Trifasica Personal",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 22000,
@@ -230,7 +230,7 @@
           "activo": true
         },
         {
-          "id": 116,
+          "id": 117,
           "nombre": "Salchipapa Trifasica G",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 36000,
@@ -240,7 +240,7 @@
           "activo": true
         },
         {
-          "id": 117,
+          "id": 118,
           "nombre": "Crispy Onion",
           "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
           "precio": 22000,
@@ -250,7 +250,7 @@
           "activo": true
         },
         {
-          "id": 118,
+          "id": 119,
           "nombre": "La Parcera",
           "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra salsa. Acompañada de papas fritas.",
           "precio": 24000,
@@ -260,7 +260,7 @@
           "activo": true
         },
         {
-          "id": 119,
+          "id": 120,
           "nombre": "La Costeña",
           "descripcion": "hamburguesa con pan suave, carne jugosa a la plancha, doble queso fundido, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa de la casa.",
           "precio": 24000,
@@ -270,7 +270,7 @@
           "activo": true
         },
         {
-          "id": 120,
+          "id": 121,
           "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
