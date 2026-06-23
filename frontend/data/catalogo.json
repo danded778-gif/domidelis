@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-11-11",
-  "ultimaActualizacion": "2026-06-23T05:11:11.711Z",
+  "version": "v2026-06-23T05-11-51",
+  "ultimaActualizacion": "2026-06-23T05:11:51.332Z",
   "tiendas": [
     {
       "id": 1,
@@ -25,7 +25,7 @@
         {
           "id": 102,
           "nombre": "Salchipapas",
-          "descripcion": "",
+          "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
@@ -190,7 +190,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 116,
+          "id": 102,
           "nombre": "Crispy Onion",
           "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
           "precio": 23000,
