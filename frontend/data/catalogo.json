@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-11-25",
-  "ultimaActualizacion": "2026-06-23T04:11:25.091Z",
+  "version": "v2026-06-23T04-13-34",
+  "ultimaActualizacion": "2026-06-23T04:13:34.528Z",
   "tiendas": [
     {
       "id": 1,
@@ -264,7 +264,7 @@
         {
           "id": 114,
           "nombre": "Salchipapas",
-          "descripcion": "papas,tocineta,salchicha,bultifarra,queso",
+          "descripcion": "papas, tocineta, salchicha, bultifarra, queso",
           "precio": 15000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
