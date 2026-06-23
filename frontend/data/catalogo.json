@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T06-09-01",
-  "ultimaActualizacion": "2026-06-23T06:09:01.674Z",
+  "version": "v2026-06-23T06-10-10",
+  "ultimaActualizacion": "2026-06-23T06:10:10.210Z",
   "tiendas": [
     {
       "id": 1,
@@ -19,6 +19,16 @@
           "precio": 21000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/hamburguesa_almuerzo.jpg",
           "badge": "Mas vendido",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 102,
+          "nombre": "Crispy Onion",
+          "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
+          "precio": 23000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
+          "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
         },
@@ -200,16 +210,6 @@
       "activo": true,
       "productos": [
         {
-          "id": 102,
-          "nombre": "Crispy Onion",
-          "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
-          "precio": 23000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
-          "badge": "Disponible",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
           "id": 115,
           "nombre": "Clasica",
           "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
@@ -305,7 +305,7 @@
           "id": 122,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
-          "precio": 15000,
+          "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
@@ -315,7 +315,7 @@
           "id": 122,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
-          "precio": 15000,
+          "precio": 20000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
