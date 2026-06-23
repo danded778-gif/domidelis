@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-35-06",
-  "ultimaActualizacion": "2026-06-23T03:35:06.302Z",
+  "version": "v2026-06-23T03-36-09",
+  "ultimaActualizacion": "2026-06-23T03:36:09.965Z",
   "tiendas": [
     {
       "id": 1,
@@ -203,7 +203,7 @@
           "id": 114,
           "nombre": "Crispy Onion",
           "descripcion": "",
-          "precio": 0,
+          "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
