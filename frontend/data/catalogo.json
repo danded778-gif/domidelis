@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-27-19",
-  "ultimaActualizacion": "2026-06-23T05:27:19.208Z",
+  "version": "v2026-06-23T05-27-52",
+  "ultimaActualizacion": "2026-06-23T05:27:52.524Z",
   "tiendas": [
     {
       "id": 1,
@@ -77,7 +77,7 @@
         {
           "id": 107,
           "nombre": "🥤 Gaseosa 1.5L",
-          "descripcion": "",
+          "descripcion": "Coca-Cola",
           "precio": 6500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
           "badge": "Disponible",
@@ -167,7 +167,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 122,
+          "id": 123,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
@@ -292,7 +292,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 121,
+          "id": 122,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 15000,
