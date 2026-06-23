@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-35-36",
-  "ultimaActualizacion": "2026-06-23T04:35:36.126Z",
+  "version": "v2026-06-23T04-38-49",
+  "ultimaActualizacion": "2026-06-23T04:38:49.964Z",
   "tiendas": [
     {
       "id": 1,
@@ -157,7 +157,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 113,
+          "id": 121,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
@@ -192,7 +192,7 @@
         {
           "id": 113,
           "nombre": "Clasica",
-          "descripcion": "Pan suave, carne jugosa a la plancha, tomate fresco, pepinillos crujientes y salsas especiales de la casa.",
+          "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos y deliciosas salsas de la casa. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
@@ -262,7 +262,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 114,
+          "id": 120,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 15000,
