@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-22-21",
-  "ultimaActualizacion": "2026-06-23T03:22:21.849Z",
+  "version": "v2026-06-23T03-22-45",
+  "ultimaActualizacion": "2026-06-23T03:22:45.421Z",
   "tiendas": [
     {
       "id": 1,
@@ -188,7 +188,18 @@
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguer1.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 113,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        }
+      ]
     },
     {
       "id": 6,
@@ -201,7 +212,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 113,
+          "id": 114,
           "nombre": "Salchipapas",
           "descripcion": "",
           "precio": 15000,
