@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-13-34",
-  "ultimaActualizacion": "2026-06-23T04:13:34.528Z",
+  "version": "v2026-06-23T04-25-48",
+  "ultimaActualizacion": "2026-06-23T04:25:48.951Z",
   "tiendas": [
     {
       "id": 1,
@@ -192,7 +192,7 @@
         {
           "id": 113,
           "nombre": "Clasica",
-          "descripcion": "pan,carne,tomate,pepinillo",
+          "descripcion": "Pan suave, carne jugosa a la plancha, tomate fresco, pepinillos crujientes y salsas especiales de la casa.",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
