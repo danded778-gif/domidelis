@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-06-54",
-  "ultimaActualizacion": "2026-06-23T05:06:54.697Z",
+  "version": "v2026-06-23T05-08-56",
+  "ultimaActualizacion": "2026-06-23T05:08:56.899Z",
   "tiendas": [
     {
       "id": 1,
@@ -190,6 +190,16 @@
       "activo": true,
       "productos": [
         {
+          "id": 116,
+          "nombre": "Crispy Onion",
+          "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
+          "precio": 22000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
           "id": 113,
           "nombre": "Clasica",
           "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
@@ -212,7 +222,7 @@
         {
           "id": 115,
           "nombre": "Salchipapa Trifasica G",
-          "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas especiales.",
+          "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 36000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
           "badge": "Disponible",
