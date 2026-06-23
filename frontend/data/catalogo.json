@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-53-44",
-  "ultimaActualizacion": "2026-06-23T04:53:44.418Z",
+  "version": "v2026-06-23T04-55-44",
+  "ultimaActualizacion": "2026-06-23T04:55:44.159Z",
   "tiendas": [
     {
       "id": 1,
@@ -232,7 +232,7 @@
         {
           "id": 117,
           "nombre": "La Parcera",
-          "descripcion": "Una burger bien cargada con pan suave, doble carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra irresistible salsa especial. Acompañada de papas fritas y dip de la casa.",
+          "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra irresistible salsa especial. Acompañada de papas fritas.",
           "precio": 24000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_parcera.jpeg",
           "badge": "Disponible",
