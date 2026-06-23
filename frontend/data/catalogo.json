@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T06-05-23",
-  "ultimaActualizacion": "2026-06-23T06:05:23.345Z",
+  "version": "v2026-06-23T06-05-54",
+  "ultimaActualizacion": "2026-06-23T06:05:54.093Z",
   "tiendas": [
     {
       "id": 1,
@@ -167,7 +167,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 123,
+          "id": 124,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
@@ -297,6 +297,16 @@
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 15000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 123,
+          "nombre": "Hamburgesa Doble Carne",
+          "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
