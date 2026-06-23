@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-11-51",
-  "ultimaActualizacion": "2026-06-23T05:11:51.332Z",
+  "version": "v2026-06-23T05-12-14",
+  "ultimaActualizacion": "2026-06-23T05:12:14.484Z",
   "tiendas": [
     {
       "id": 1,
@@ -23,7 +23,7 @@
           "activo": true
         },
         {
-          "id": 102,
+          "id": 103,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 16000,
@@ -33,7 +33,7 @@
           "activo": true
         },
         {
-          "id": 103,
+          "id": 104,
           "nombre": "Pizza",
           "descripcion": "",
           "precio": 0,
@@ -43,7 +43,7 @@
           "activo": true
         },
         {
-          "id": 104,
+          "id": 105,
           "nombre": "Cuarto de pollo",
           "descripcion": "",
           "precio": 13000,
@@ -53,7 +53,7 @@
           "activo": true
         },
         {
-          "id": 105,
+          "id": 106,
           "nombre": "Arepa de Queso",
           "descripcion": "Nuestra tradicional arepa de queso santuariana, recién preparada, con mantequilla derretida y deliciosa lecherita. Suave por dentro, doradita por fuera y con el auténtico sabor que tanto te gusta.",
           "precio": 12000,
@@ -75,7 +75,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 106,
+          "id": 107,
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "",
           "precio": 6500,
@@ -85,7 +85,7 @@
           "activo": true
         },
         {
-          "id": 107,
+          "id": 108,
           "nombre": "🥛 Leche",
           "descripcion": "",
           "precio": 4500,
@@ -95,7 +95,7 @@
           "activo": true
         },
         {
-          "id": 108,
+          "id": 109,
           "nombre": "🥚 Cubeta de Huevos",
           "descripcion": "",
           "precio": 14000,
@@ -105,7 +105,7 @@
           "activo": true
         },
         {
-          "id": 109,
+          "id": 110,
           "nombre": "💊 Acetaminofén",
           "descripcion": "",
           "precio": 0,
@@ -115,7 +115,7 @@
           "activo": true
         },
         {
-          "id": 110,
+          "id": 111,
           "nombre": "🌹 Flores",
           "descripcion": "",
           "precio": 12000,
@@ -125,7 +125,7 @@
           "activo": true
         },
         {
-          "id": 111,
+          "id": 112,
           "nombre": "🧸 Peluche",
           "descripcion": "",
           "precio": 0,
@@ -135,7 +135,7 @@
           "activo": true
         },
         {
-          "id": 112,
+          "id": 113,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
@@ -157,7 +157,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 121,
+          "id": 122,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
@@ -200,7 +200,7 @@
           "activo": true
         },
         {
-          "id": 113,
+          "id": 114,
           "nombre": "Clasica",
           "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
@@ -210,7 +210,7 @@
           "activo": true
         },
         {
-          "id": 114,
+          "id": 115,
           "nombre": "Salchipapa Trifasica Personal",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 22000,
@@ -220,7 +220,7 @@
           "activo": true
         },
         {
-          "id": 115,
+          "id": 116,
           "nombre": "Salchipapa Trifasica G",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 36000,
@@ -230,7 +230,7 @@
           "activo": true
         },
         {
-          "id": 116,
+          "id": 117,
           "nombre": "Crispy Onion",
           "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
           "precio": 22000,
@@ -240,7 +240,7 @@
           "activo": true
         },
         {
-          "id": 117,
+          "id": 118,
           "nombre": "La Parcera",
           "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra salsa. Acompañada de papas fritas.",
           "precio": 24000,
@@ -250,7 +250,7 @@
           "activo": true
         },
         {
-          "id": 118,
+          "id": 119,
           "nombre": "La Costeña",
           "descripcion": "hamburguesa con pan suave, carne jugosa a la plancha, doble queso fundido, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa de la casa.",
           "precio": 24000,
@@ -260,7 +260,7 @@
           "activo": true
         },
         {
-          "id": 119,
+          "id": 120,
           "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
@@ -282,7 +282,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 120,
+          "id": 121,
           "nombre": "Salchipapas",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 15000,
