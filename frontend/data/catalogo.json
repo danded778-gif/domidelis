@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-48-01",
-  "ultimaActualizacion": "2026-06-23T03:48:01.561Z",
+  "version": "v2026-06-23T03-48-33",
+  "ultimaActualizacion": "2026-06-23T03:48:33.912Z",
   "tiendas": [
     {
       "id": 1,
@@ -200,12 +200,22 @@
           "activo": true
         },
         {
-          "id": 115,
+          "id": 116,
           "nombre": "Crispy Onion",
           "descripcion": "",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 118,
+          "nombre": "Carnes",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
+          "badge": "agotado",
           "cantidadTipo": "UND",
           "activo": true
         }
