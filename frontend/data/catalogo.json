@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-51-03",
-  "ultimaActualizacion": "2026-06-23T03:51:03.735Z",
+  "version": "v2026-06-23T03-57-00",
+  "ultimaActualizacion": "2026-06-23T03:57:00.244Z",
   "tiendas": [
     {
       "id": 1,
@@ -185,7 +185,7 @@
       "descripcion": "Hamburguesas-perros-picadas y algo mas",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 23:00\"}",
-      "rating": 3.9,
+      "rating": 4.1,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguer1.png",
       "activo": true,
       "productos": [
@@ -195,6 +195,26 @@
           "descripcion": "",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 114,
+          "nombre": "Salchipapa Trifasica P",
+          "descripcion": "",
+          "precio": 22000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 115,
+          "nombre": "Salchipapa Trifasica G",
+          "descripcion": "",
+          "precio": 36000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
