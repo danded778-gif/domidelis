@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-26-29",
-  "ultimaActualizacion": "2026-06-23T04:26:29.033Z",
+  "version": "v2026-06-23T04-35-36",
+  "ultimaActualizacion": "2026-06-23T04:35:36.126Z",
   "tiendas": [
     {
       "id": 1,
@@ -240,7 +240,7 @@
           "activo": true
         },
         {
-          "id": 118,
+          "id": 119,
           "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
