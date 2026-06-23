@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-12-14",
-  "ultimaActualizacion": "2026-06-23T05:12:14.484Z",
+  "version": "v2026-06-23T05-26-51",
+  "ultimaActualizacion": "2026-06-23T05:26:51.626Z",
   "tiendas": [
     {
       "id": 1,
@@ -74,6 +74,16 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
       "productos": [
+        {
+          "id": 107,
+          "nombre": "🥤 Gaseosa 1.5L",
+          "descripcion": "",
+          "precio": 6500,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
         {
           "id": 107,
           "nombre": "🥤 Gaseosa 1.5L",
