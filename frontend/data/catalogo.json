@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-03-55",
-  "ultimaActualizacion": "2026-06-23T04:03:55.687Z",
+  "version": "v2026-06-23T04-07-04",
+  "ultimaActualizacion": "2026-06-23T04:07:04.345Z",
   "tiendas": [
     {
       "id": 1,
@@ -225,6 +225,16 @@
           "descripcion": "",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 117,
+          "nombre": "La Parcera",
+          "descripcion": "",
+          "precio": 24000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_parcera.jpeg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
