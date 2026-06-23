@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T03-44-10",
-  "ultimaActualizacion": "2026-06-23T03:44:10.012Z",
+  "version": "v2026-06-23T03-45-15",
+  "ultimaActualizacion": "2026-06-23T03:45:15.012Z",
   "tiendas": [
     {
       "id": 1,
@@ -189,6 +189,16 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguer1.png",
       "activo": true,
       "productos": [
+        {
+          "id": 113,
+          "nombre": "Clasica",
+          "descripcion": "",
+          "precio": 16000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
         {
           "id": 115,
           "nombre": "Crispy Onion",
