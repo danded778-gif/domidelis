@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-55-44",
-  "ultimaActualizacion": "2026-06-23T04:55:44.159Z",
+  "version": "v2026-06-23T04-56-59",
+  "ultimaActualizacion": "2026-06-23T04:56:59.448Z",
   "tiendas": [
     {
       "id": 1,
@@ -192,7 +192,7 @@
         {
           "id": 113,
           "nombre": "Clasica",
-          "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos y deliciosas salsas de la casa. Acompañada de papas fritas y salsa de la casa.",
+          "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
