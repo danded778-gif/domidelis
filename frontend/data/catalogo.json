@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T04-10-30",
-  "ultimaActualizacion": "2026-06-23T04:10:30.959Z",
+  "version": "v2026-06-23T04-11-25",
+  "ultimaActualizacion": "2026-06-23T04:11:25.091Z",
   "tiendas": [
     {
       "id": 1,
@@ -192,7 +192,7 @@
         {
           "id": 113,
           "nombre": "Clasica",
-          "descripcion": "pan,",
+          "descripcion": "pan,carne,tomate,pepinillo",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
