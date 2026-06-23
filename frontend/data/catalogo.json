@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T06-22-08",
-  "ultimaActualizacion": "2026-06-23T06:22:08.549Z",
+  "version": "v2026-06-23T06-23-46",
+  "ultimaActualizacion": "2026-06-23T06:23:46.208Z",
   "tiendas": [
     {
       "id": 1,
@@ -12,6 +12,16 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
       "activo": true,
       "productos": [
+        {
+          "id": 101,
+          "nombre": "Hamburgesa Doble Carne",
+          "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
+          "precio": 18000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
         {
           "id": 102,
           "nombre": "Crispy Onion",
@@ -281,16 +291,6 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
       "activo": true,
       "productos": [
-        {
-          "id": 101,
-          "nombre": "Hamburgesa Doble Carne",
-          "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
-          "precio": 17000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
-          "badge": "Disponible",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
         {
           "id": 122,
           "nombre": "Salchipapas Pequeña",
