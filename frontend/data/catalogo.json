@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-23T05-04-59",
-  "ultimaActualizacion": "2026-06-23T05:04:59.166Z",
+  "version": "v2026-06-23T05-06-09",
+  "ultimaActualizacion": "2026-06-23T05:06:09.978Z",
   "tiendas": [
     {
       "id": 1,
@@ -212,7 +212,7 @@
         {
           "id": 115,
           "nombre": "Salchipapa Trifasica G",
-          "descripcion": "",
+          "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas especiales.",
           "precio": 36000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
           "badge": "Disponible",
