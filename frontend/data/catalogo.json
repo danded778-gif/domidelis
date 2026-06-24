@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T03-45-04",
-  "ultimaActualizacion": "2026-06-24T03:45:04.759Z",
+  "version": "v2026-06-24T03-45-39",
+  "ultimaActualizacion": "2026-06-24T03:45:39.313Z",
   "tiendas": [
     {
       "id": 1,
@@ -177,7 +177,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 125,
+          "id": 127,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
@@ -343,9 +343,9 @@
         },
         {
           "id": 125,
-          "nombre": "Combo 5",
+          "nombre": "Combo 7",
           "descripcion": "",
-          "precio": 0,
+          "precio": 42000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/comboi7.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
