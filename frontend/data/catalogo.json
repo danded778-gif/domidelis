@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T03-35-40",
-  "ultimaActualizacion": "2026-06-24T03:35:40.528Z",
+  "version": "v2026-06-24T03-37-04",
+  "ultimaActualizacion": "2026-06-24T03:37:04.188Z",
   "tiendas": [
     {
       "id": 1,
@@ -327,6 +327,16 @@
           "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
           "precio": 17000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 124,
+          "nombre": "Combo 5",
+          "descripcion": "Hamburguesa con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañada de crujientes papas a la francesa y una refrescante gaseosa Pool de 600 ml.",
+          "precio": 17000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/combo5.png",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
