@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T15-55-58",
-  "ultimaActualizacion": "2026-06-24T15:55:58.747Z",
+  "version": "v2026-06-24T18-00-53",
+  "ultimaActualizacion": "2026-06-24T18:00:53.533Z",
   "tiendas": [
     {
       "id": 1,
@@ -288,7 +288,7 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 3.9,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/ountodelsabor.png",
+      "imagen": "",
       "activo": true,
       "productos": [
         {
