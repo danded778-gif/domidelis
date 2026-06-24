@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T15-52-36",
-  "ultimaActualizacion": "2026-06-24T15:52:36.649Z",
+  "version": "v2026-06-24T15-55-58",
+  "ultimaActualizacion": "2026-06-24T15:55:58.747Z",
   "tiendas": [
     {
       "id": 1,
@@ -304,7 +304,7 @@
         {
           "id": 123,
           "nombre": "Salchipapas Mediana",
-          "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
+          "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante,queso y nuestras deliciosas salsas de la casa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
