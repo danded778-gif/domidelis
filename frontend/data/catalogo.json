@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T03-34-20",
-  "ultimaActualizacion": "2026-06-24T03:34:20.243Z",
+  "version": "v2026-06-24T03-34-48",
+  "ultimaActualizacion": "2026-06-24T03:34:48.974Z",
   "tiendas": [
     {
       "id": 1,
@@ -177,7 +177,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 124,
+          "id": 125,
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
