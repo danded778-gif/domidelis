@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-24T03-45-39",
-  "ultimaActualizacion": "2026-06-24T03:45:39.313Z",
+  "version": "v2026-06-24T03-47-43",
+  "ultimaActualizacion": "2026-06-24T03:47:43.038Z",
   "tiendas": [
     {
       "id": 1,
@@ -344,7 +344,7 @@
         {
           "id": 125,
           "nombre": "Combo 7",
-          "descripcion": "",
+          "descripcion": "Incluye 4 deliciosas hamburguesas preparadas con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañadas de una porción de papas a la francesa y una refrescante gaseosa Pool 1/4.",
           "precio": 42000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/comboi7.png",
           "badge": "Disponible",
