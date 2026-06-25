@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-25T18-29-46",
-  "ultimaActualizacion": "2026-06-25T18:29:46.677Z",
+  "version": "v2026-06-25T18-32-22",
+  "ultimaActualizacion": "2026-06-25T18:32:22.033Z",
   "tiendas": [
     {
       "id": 1,
@@ -206,7 +206,7 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 23:00\"}",
       "rating": 4.1,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguertienda.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguertie1.png",
       "activo": true,
       "productos": [
         {
