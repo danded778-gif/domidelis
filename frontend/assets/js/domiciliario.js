@@ -55,22 +55,25 @@ async function fetchConToken(url, opciones = {}) {
 // ============================================
 async function cargarDomiciliarioData() {
     const sesion = obtenerSesion();
-    if (!sesion.id) return;
+    if (!sesion || !sesion.id) return;
     miDomiciliarioId = sesion.id;
 
-    const el = document.getElementById('user-display');
-    if (el && sesion.usuario) el.innerHTML = `<i class="fas fa-user-circle"></i> ${sesion.usuario}`;
+    // ★ SOLUCIÓN: Buscamos el nombre en cualquiera de las variables donde pueda estar guardado
+    const nombreUsuario = sesion.usuario || sesion.nombre || sesion.user || 'Domiciliario';
 
-    // ★ NUEVO: Actualizar nombre arriba y en configuración ★
+    const el = document.getElementById('user-display');
+    if (el) el.innerHTML = `<i class="fas fa-user-circle"></i> ${nombreUsuario}`;
+
+    // Actualizar nombre arriba y en configuración
     const elTop = document.getElementById('nombre-usuario-top');
-    if (elTop) elTop.textContent = sesion.usuario || 'Domiciliario';
+    if (elTop) elTop.textContent = nombreUsuario;
     
     const elConfigNombre = document.getElementById('config-nombre');
-    if (elConfigNombre) elConfigNombre.value = sesion.usuario || '';
+    if (elConfigNombre) elConfigNombre.value = nombreUsuario;
 
     HISTORIAL_KEY = `domiciliario_historial_${miDomiciliarioId}`;
 
-    // ★ PRECARGAR EL SONIDO AQUÍ ★
+    // PRECARGAR EL SONIDO
     if (!audioAlerta) {
         audioAlerta = new Audio('assets/sounds/alerta.aac');
         audioAlerta.volume = 1.0;
@@ -98,7 +101,6 @@ async function cargarDomiciliarioData() {
         cargarPedidosDomiciliario(miDomiciliarioId);
     });
 }
-
 // ============================================
 // NOTIFICACIÓN AL DOMICILIARIO
 // ============================================
