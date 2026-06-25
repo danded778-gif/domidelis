@@ -117,30 +117,75 @@
                     </div>
                     
                     <form id="form-config-domiciliario" onsubmit="guardarPerfilDomiciliario(event)">
+                        
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos de Acceso</h3>
                         <!-- Nombre de usuario -->
                         <div class="form-group">
-                            <label><i class="fas fa-id-badge"></i> Nombre de Usuario</label>
-                            <input type="text" id="config-nombre" placeholder="Tu nombre" required>
+                            <label><i class="fas fa-id-badge"></i> Usuario (Login)</label>
+                            <input type="text" id="config-nombre" placeholder="Tu usuario" required>
                         </div>
 
                         <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
 
-                        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem;">
-                            <i class="fas fa-info-circle"></i>Mínimo 6 caracteres y 1 mayúscula
-                        </p>
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos Personales (Solo 1 vez)</h3>
+                        <div class="config-info-grid">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Nombres Completos</label>
+                                <input type="text" id="config-nombreCompleto" placeholder="Ej: Juan Carlos">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Apellidos</label>
+                                <input type="text" id="config-apellido" placeholder="Ej: Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-id-card"></i> Tipo de Documento</label>
+                                <select id="config-tipoDocumento" class="form-control">
+                                    <option value="">Selecciona...</option>
+                                    <option value="Cédula">Cédula</option>
+                                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                                    <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-id-card"></i> Número de Documento</label>
+                                <input type="text" id="config-numeroDocumento" placeholder="123456789">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-day"></i> Fecha de Nacimiento</label>
+                                <input type="date" id="config-fechaNacimiento">
+                            </div>
+                        </div>
 
+                        <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
+
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos de Contacto (Editable cada 60 días)</h3>
+                        <div class="config-info-grid">
+                            <div class="form-group">
+                                <label><i class="fas fa-phone"></i> Teléfono / Celular</label>
+                                <input type="tel" id="config-telefono" placeholder="3001234567">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
+                                <input type="email" id="config-correo" placeholder="correo@ejemplo.com">
+                            </div>
+                        </div>
+
+                        <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
+
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Cambiar Contraseña</h3>
+                        <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem;">
+                            <i class="fas fa-info-circle"></i> Si no quieres cambiarla, deja estos campos vacíos.
+                        </p>
                         <!-- Contraseña Actual -->
                         <div class="form-group">
                             <label><i class="fas fa-lock"></i> Contraseña Actual</label>
                             <input type="password" id="config-pass-actual" placeholder="Tu contraseña actual">
                         </div>
-
                         <!-- Nueva Contraseña -->
                         <div class="form-group">
                             <label><i class="fas fa-key"></i> Nueva Contraseña</label>
                             <input type="password" id="config-pass-nueva" placeholder="Mínimo 6 caracteres y 1 mayúscula">
                         </div>
-
                         <!-- Confirmar Contraseña -->
                         <div class="form-group">
                             <label><i class="fas fa-check-double"></i> Confirmar Nueva Contraseña</label>
@@ -173,9 +218,9 @@
     <script src="assets/js/domiciliario.js"></script>
 
     <script>
-        // Service Worker
+        // Service Worker (Ruta relativa para evitar error 404 en producción)
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
+            navigator.serviceWorker.register('service-worker.js')
                 .then(reg => console.log('✅ SW registrado'))
                 .catch(err => console.error('❌ SW error:', err));
         }

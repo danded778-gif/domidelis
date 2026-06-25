@@ -101,6 +101,7 @@ async function cargarDomiciliarioData() {
         cargarPedidosDomiciliario(miDomiciliarioId);
     });
 }
+
 // ============================================
 // NOTIFICACIÓN AL DOMICILIARIO
 // ============================================
@@ -351,51 +352,94 @@ function verDetallePedidoDomiciliario(id) {
 }
 
 // ============================================
-// ★ NUEVO: GUARDAR PERFIL Y CONTRASEÑA ★
+// ★ CARGAR PERFIL PARA CONFIGURACIÓN ★
+// ============================================
+async function cargarPerfilConfig() {
+    const sesion = obtenerSesion();
+    if (!sesion || !sesion.id) return;
+
+    try {
+        const res = await fetchConToken(`${API_URL}?action=getPerfilDomiciliario&id=${sesion.id}`);
+        const data = await res.json();
+        
+        if (data.success && data.perfil) {
+            const p = data.perfil;
+            document.getElementById('config-nombre').value = p.usuario || '';
+            document.getElementById('config-nombreCompleto').value = p.nombreCompleto || '';
+            document.getElementById('config-apellido').value = p.apellido || '';
+            document.getElementById('config-tipoDocumento').value = p.tipoDocumento || '';
+            document.getElementById('config-numeroDocumento').value = p.numeroDocumento || '';
+            document.getElementById('config-fechaNacimiento').value = p.fechaNacimiento || '';
+            document.getElementById('config-telefono').value = p.telefono || '';
+            document.getElementById('config-correo').value = p.correo || '';
+
+            // Bloquear campos de identidad si ya están llenos (Regla: Solo 1 vez)
+            const camposIdentidad = ['config-nombreCompleto', 'config-apellido', 'config-tipoDocumento', 'config-numeroDocumento', 'config-fechaNacimiento'];
+            camposIdentidad.forEach(id => {
+                const el = document.getElementById(id);
+                if (el.value.trim() !== '') {
+                    el.setAttribute('readonly', true);
+                    el.style.backgroundColor = '#f5f5f5';
+                    el.style.color = 'var(--gray)';
+                    if (el.tagName === 'SELECT') {
+                        el.setAttribute('disabled', true);
+                    }
+                }
+            });
+        }
+    } catch (e) {
+        console.error('Error cargando perfil:', e);
+    }
+}
+
+// ============================================
+// ★ GUARDAR PERFIL Y CONTRASEÑA ★
 // ============================================
 async function guardarPerfilDomiciliario(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     const sesion = obtenerSesion();
-    if (!sesion.id) return;
+    if (!sesion || !sesion.id) return;
 
-    const nuevoNombre = document.getElementById('config-nombre').value.trim();
+    const nuevoUsuario = document.getElementById('config-nombre').value.trim();
+    const nombreCompleto = document.getElementById('config-nombreCompleto').value.trim();
+    const apellido = document.getElementById('config-apellido').value.trim();
+    const tipoDocumento = document.getElementById('config-tipoDocumento').value;
+    const numeroDocumento = document.getElementById('config-numeroDocumento').value.trim();
+    const fechaNacimiento = document.getElementById('config-fechaNacimiento').value;
+    const telefono = document.getElementById('config-telefono').value.trim();
+    const correo = document.getElementById('config-correo').value.trim();
+    
     const passActual = document.getElementById('config-pass-actual').value;
     const passNueva = document.getElementById('config-pass-nueva').value;
     const passConfirmar = document.getElementById('config-pass-confirmar').value;
 
-    if (!nuevoNombre) {
-        mostrarToast('Error', 'El nombre de usuario no puede estar vacío.', 'error');
-        return;
+    if (!nuevoUsuario) {
+        return mostrarToast('Error', 'El usuario no puede estar vacío.', 'error');
     }
 
     let requiereCambioPass = false;
     if (passNueva || passActual || passConfirmar) {
         requiereCambioPass = true;
-        
-        if (!passActual) {
-            mostrarToast('Error', 'Debes ingresar tu contraseña actual.', 'error');
-            return;
-        }
-        if (passNueva.length < 6) {
-            mostrarToast('Error', 'La nueva contraseña debe tener mínimo 6 caracteres.', 'error');
-            return;
-        }
-        if (!/[A-Z]/.test(passNueva)) {
-            mostrarToast('Error', 'La nueva contraseña debe tener al menos una mayúscula.', 'error');
-            return;
-        }
-        if (passNueva !== passConfirmar) {
-            mostrarToast('Error', 'Las contraseñas nuevas no coinciden.', 'error');
-            return;
-        }
+        if (!passActual) return mostrarToast('Error', 'Debes ingresar tu contraseña actual.', 'error');
+        if (passNueva.length < 6) return mostrarToast('Error', 'La nueva contraseña debe tener mínimo 6 caracteres.', 'error');
+        if (!/[A-Z]/.test(passNueva)) return mostrarToast('Error', 'La nueva contraseña debe tener al menos una mayúscula.', 'error');
+        if (passNueva !== passConfirmar) return mostrarToast('Error', 'Las contraseñas nuevas no coinciden.', 'error');
     }
 
     try {
         const params = new URLSearchParams();
         params.append('action', 'actualizarPerfilDomiciliario');
         params.append('id', sesion.id);
-        params.append('nombre', nuevoNombre);
+        params.append('usuario', nuevoUsuario);
         
+        params.append('nombreCompleto', nombreCompleto);
+        params.append('apellido', apellido);
+        params.append('tipoDocumento', tipoDocumento);
+        params.append('numeroDocumento', numeroDocumento);
+        params.append('fechaNacimiento', fechaNacimiento);
+        params.append('telefono', telefono);
+        params.append('correo', correo);
+
         if (requiereCambioPass) {
             params.append('passwordActual', passActual);
             params.append('passwordNueva', passNueva);
@@ -408,31 +452,24 @@ async function guardarPerfilDomiciliario(event) {
         
         const data = await res.json();
 
-                if (data.success) {
+        if (data.success) {
             mostrarToast('Éxito', data.mensaje || 'Perfil actualizado correctamente', 'success');
             
-            // Actualizar el nombre en la sesión local
-            if (sesion) {
-                sesion.usuario = nuevoNombre;
-                localStorage.setItem('sesion', JSON.stringify(sesion));
-            }
+            // Actualizar sesión local
+            sesion.usuario = nuevoUsuario;
+            localStorage.setItem('sesion', JSON.stringify(sesion));
 
-            // Actualizar la interfaz a la fuerza
+            // Actualizar UI
             const elTop = document.getElementById('nombre-usuario-top');
-            if (elTop) {
-                elTop.textContent = nuevoNombre;
-                console.log("✅ Nombre actualizado en pantalla a:", nuevoNombre);
-            } else {
-                console.warn("⚠️ No se encontró el elemento 'nombre-usuario-top' en el HTML");
-            }
-            
+            if (elTop) elTop.textContent = nuevoUsuario;
             const elUser = document.getElementById('user-display');
-            if (elUser) elUser.innerHTML = `<i class="fas fa-user-circle"></i> ${nuevoNombre}`;
+            if (elUser) elUser.innerHTML = `<i class="fas fa-user-circle"></i> ${nuevoUsuario}`;
             
-            // Limpiar campos de contraseña
+            // Limpiar contraseñas y recargar perfil para aplicar bloqueos
             document.getElementById('config-pass-actual').value = '';
             document.getElementById('config-pass-nueva').value = '';
             document.getElementById('config-pass-confirmar').value = '';
+            cargarPerfilConfig(); 
         } else {
             mostrarToast('Error', data.error || 'No se pudo actualizar el perfil', 'error');
         }
@@ -450,7 +487,9 @@ function cambiarTab(tab) {
     document.getElementById(`tab-${tab}`).classList.add('active');
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     document.getElementById(`seccion-${tab}`).classList.add('active');
+    
     if (tab === 'historial') renderizarHistorial();
+    if (tab === 'configuracion') cargarPerfilConfig(); // ★ AGREGADO
 }
 function actualizarBadges() {
     const b1 = document.getElementById('badge-activos');
