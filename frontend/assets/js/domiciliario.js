@@ -406,16 +406,24 @@ async function guardarPerfilDomiciliario(event) {
         
         const data = await res.json();
 
-        if (data.success) {
+                if (data.success) {
             mostrarToast('Éxito', data.mensaje || 'Perfil actualizado correctamente', 'success');
             
             // Actualizar el nombre en la sesión local
-            sesion.usuario = nuevoNombre;
-            localStorage.setItem('sesion', JSON.stringify(sesion));
-            
-            // Actualizar la interfaz
+            if (sesion) {
+                sesion.usuario = nuevoNombre;
+                localStorage.setItem('sesion', JSON.stringify(sesion));
+            }
+
+            // Actualizar la interfaz a la fuerza
             const elTop = document.getElementById('nombre-usuario-top');
-            if (elTop) elTop.textContent = nuevoNombre;
+            if (elTop) {
+                elTop.textContent = nuevoNombre;
+                console.log("✅ Nombre actualizado en pantalla a:", nuevoNombre);
+            } else {
+                console.warn("⚠️ No se encontró el elemento 'nombre-usuario-top' en el HTML");
+            }
+            
             const elUser = document.getElementById('user-display');
             if (elUser) elUser.innerHTML = `<i class="fas fa-user-circle"></i> ${nuevoNombre}`;
             
