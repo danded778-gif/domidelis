@@ -61,13 +61,19 @@ async function cargarDomiciliarioData() {
     const el = document.getElementById('user-display');
     if (el && sesion.usuario) el.innerHTML = `<i class="fas fa-user-circle"></i> ${sesion.usuario}`;
 
+    // ★ NUEVO: Actualizar nombre arriba y en configuración ★
+    const elTop = document.getElementById('nombre-usuario-top');
+    if (elTop) elTop.textContent = sesion.usuario || 'Domiciliario';
+    
+    const elConfigNombre = document.getElementById('config-nombre');
+    if (elConfigNombre) elConfigNombre.value = sesion.usuario || '';
+
     HISTORIAL_KEY = `domiciliario_historial_${miDomiciliarioId}`;
 
     // ★ PRECARGAR EL SONIDO AQUÍ ★
-    // Esto evita el bloqueo de los navegadores que no permiten reproducir audio sin interacción del usuario
     if (!audioAlerta) {
         audioAlerta = new Audio('assets/sounds/alerta.aac');
-        audioAlerta.volume = 1.0; // Volumen al máximo
+        audioAlerta.volume = 1.0;
     }
 
     cargarHistorialLocal();
@@ -94,58 +100,43 @@ async function cargarDomiciliarioData() {
 }
 
 // ============================================
-// NOTIFICACIÓN AL DOMICILIARIO (SIN SONIDO DEL SISTEMA)
+// NOTIFICACIÓN AL DOMICILIARIO
 // ============================================
 function notificarNuevoPedidoAsignado(data) {
     const pedidoId = data.pedidoId || (data.pedido ? data.pedido.id : '?');
     const mensaje = data.mensaje || `Pedido #${pedidoId} asignado`;
 
-    // 1. ★ REPRODUCIR NUESTRO SONIDO REAL .aac ★
     reproducirSonidoAlerta();
     
-    // 2. ★ INTENTAR VIBRAR (Funciona en Android PWA, no en iOS) ★
     if (navigator.vibrate) {
         navigator.vibrate([300, 100, 300, 100, 500]);
     }
 
-    // 3. Mostrar Toast visual en la pantalla
     mostrarToast('🛵 Nueva Asignación', mensaje, 'pedido', 10000);
 
-    // 4. ★ NOTIFICACIÓN DEL NAVEGADOR SILENCIOSA ★
-    // Se le agrega `silent: true` para que NO reproduzca el sonido predeterminado del celular
-    // y no empalme con nuestro alerta.aac
     enviarNotificacionNavegador('Nuevo pedido asignado', {
         body: mensaje,
         icon: '/assets/img/icon-192x192.png',
         badge: '/assets/img/icon-192x192.png',
         tag: `pedido-${pedidoId}`,
         requireInteraction: true,
-        silent: true, // <--- ESTO APAGA EL SONIDO DEL CELULAR
-        vibrate: [300, 100, 300, 100, 500], // Intento de vibración por si el SO lo permite
+        silent: true,
+        vibrate: [300, 100, 300, 100, 500],
         data: { url: '/domiciliario.html', pedidoId }
     });
 
-    // 5. Recargar la lista de pedidos
     cargarPedidosDomiciliario(miDomiciliarioId);
 }
 
-// ★ FUNCIÓN MEJORADA: REPRODUCIR ARCHIVO DE SONIDO ★
 function reproducirSonidoAlerta() {
     try {
         if (!audioAlerta) {
             audioAlerta = new Audio('assets/sounds/alerta.aac');
             audioAlerta.volume = 1.0;
         }
-        
-        // Reiniciar el audio si ya estaba reproduciéndose (para que suene completo otra vez)
         audioAlerta.currentTime = 0;
-        
-        // Reproducir (las promesas ayudan a capturar si el navegador lo bloquea)
         audioAlerta.play().catch(e => {
-            console.warn('⚠️ Navegador bloqueó el audio automático. Se reproducirá al tocar la pantalla.');
-            
-            // Si el navegador lo bloqueó (común en móviles si no han tocado la pantalla), 
-            // forzamos la reproducción en el primer clic del usuario
+            console.warn('⚠️ Navegador bloqueó el audio automático.');
             const desbloquearAudio = () => {
                 audioAlerta.play().catch(() => {});
                 document.removeEventListener('click', desbloquearAudio);
@@ -168,10 +159,7 @@ async function cargarPedidosDomiciliario(domiciliarioId) {
         const pedidos = await res.json();
         pedidosActivosCache = pedidos.filter(p => p.estado !== 'entregado' && p.estado !== 'cancelado');
         pedidos
-            .filter(p =>
-                p.estado === 'entregado' &&
-                String(p.domiciliarioId) === String(domiciliarioId)
-            )
+            .filter(p => p.estado === 'entregado' && String(p.domiciliarioId) === String(domiciliarioId))
             .forEach(p => agregarAHistorialLocal(p));
         guardarHistorialLocal();
         renderizarPedidosActivos();
@@ -252,10 +240,7 @@ function renderizarHistorial() {
     if (!c) return;
     let filtrados = [...pedidosHistorialCache];
 
-    filtrados.sort((a, b) =>
-        new Date(b.fechaEntregaLocal || b.fecha) -
-        new Date(a.fechaEntregaLocal || a.fecha)
-    );
+    filtrados.sort((a, b) => new Date(b.fechaEntregaLocal || b.fecha) - new Date(a.fechaEntregaLocal || a.fecha));
 
     const ahora = new Date();
 
@@ -281,11 +266,7 @@ function renderizarHistorial() {
     c.innerHTML = filtrados.map(p => {
         let productos = []; try { productos = JSON.parse(p.productosJson); } catch (e) { }
         const fe = new Date(p.fechaEntregaLocal || p.fecha);
-
-        const fechaTexto = fe.toLocaleDateString('es-CO', {
-            timeZone: 'America/Bogota'
-        });
-
+        const fechaTexto = fe.toLocaleDateString('es-CO', { timeZone: 'America/Bogota' });
         const tiendasTexto = obtenerTiendasTextoDomi(p);
         return `<div class="panel-card pedido-card entregado historial-card">
             <div class="pedido-header"><h3>Pedido #${p.id}</h3><span class="fecha-entrega"><i class="fas fa-calendar-check"></i>${fechaTexto}</span></div>
@@ -303,10 +284,9 @@ function actualizarEstadisticas(pedidos) {
     const el1 = document.getElementById('total-entregados');
     const el2 = document.getElementById('total-ganado');
     if (el1) el1.textContent = pedidos.length;
-    if (el2) el2.textContent = formatearPrecio(
-        pedidos.reduce((s, p) => s + parseFloat(p.total || 0), 0)
-    );
+    if (el2) el2.textContent = formatearPrecio(pedidos.reduce((s, p) => s + parseFloat(p.total || 0), 0));
 }
+
 // ============================================
 // ACCIONES
 // ============================================
@@ -351,10 +331,7 @@ function verDetallePedidoDomiciliario(id) {
             });
             return Object.entries(tiendas).map(([tienda, prods]) => `
                 <div style="margin-bottom:0.8rem;">
-                    <div style="font-size:0.8rem;font-weight:600;color:var(--secondary);
-                                padding:0.3rem 0.6rem;background:var(--light);
-                                border-radius:6px;margin-bottom:0.4rem;
-                                display:flex;align-items:center;gap:0.4rem;">
+                    <div style="font-size:0.8rem;font-weight:600;color:var(--secondary);padding:0.3rem 0.6rem;background:var(--light);border-radius:6px;margin-bottom:0.4rem;display:flex;align-items:center;gap:0.4rem;">
                         <i class="fas fa-store"></i> ${tienda}
                     </div>
                     ${prods.map(x => `
@@ -369,6 +346,90 @@ function verDetallePedidoDomiciliario(id) {
     <div style="margin-top:1rem;display:flex;gap:.5rem"><button class="btn btn-success" style="flex:1" onclick="marcarEntregado(${p.id});this.closest('.modal').remove()"><i class="fas fa-check"></i> Entregado</button><button class="btn btn-info" style="flex:1" onclick="verMapa('${escapeQuotes(p.clienteDireccion)}')"><i class="fas fa-map"></i> Mapa</button></div></div></div>`;
     document.body.appendChild(m);
     m.addEventListener('click', e => { if (e.target === m) m.remove(); });
+}
+
+// ============================================
+// ★ NUEVO: GUARDAR PERFIL Y CONTRASEÑA ★
+// ============================================
+async function guardarPerfilDomiciliario(event) {
+    event.preventDefault();
+    const sesion = obtenerSesion();
+    if (!sesion.id) return;
+
+    const nuevoNombre = document.getElementById('config-nombre').value.trim();
+    const passActual = document.getElementById('config-pass-actual').value;
+    const passNueva = document.getElementById('config-pass-nueva').value;
+    const passConfirmar = document.getElementById('config-pass-confirmar').value;
+
+    if (!nuevoNombre) {
+        mostrarToast('Error', 'El nombre de usuario no puede estar vacío.', 'error');
+        return;
+    }
+
+    let requiereCambioPass = false;
+    if (passNueva || passActual || passConfirmar) {
+        requiereCambioPass = true;
+        
+        if (!passActual) {
+            mostrarToast('Error', 'Debes ingresar tu contraseña actual.', 'error');
+            return;
+        }
+        if (passNueva.length < 6) {
+            mostrarToast('Error', 'La nueva contraseña debe tener mínimo 6 caracteres.', 'error');
+            return;
+        }
+        if (!/[A-Z]/.test(passNueva)) {
+            mostrarToast('Error', 'La nueva contraseña debe tener al menos una mayúscula.', 'error');
+            return;
+        }
+        if (passNueva !== passConfirmar) {
+            mostrarToast('Error', 'Las contraseñas nuevas no coinciden.', 'error');
+            return;
+        }
+    }
+
+    try {
+        const params = new URLSearchParams();
+        params.append('action', 'actualizarPerfilDomiciliario');
+        params.append('id', sesion.id);
+        params.append('nombre', nuevoNombre);
+        
+        if (requiereCambioPass) {
+            params.append('passwordActual', passActual);
+            params.append('passwordNueva', passNueva);
+        }
+
+        const res = await fetchConToken(API_URL, {
+            method: 'POST',
+            body: params
+        });
+        
+        const data = await res.json();
+
+        if (data.success) {
+            mostrarToast('Éxito', data.mensaje || 'Perfil actualizado correctamente', 'success');
+            
+            // Actualizar el nombre en la sesión local
+            sesion.usuario = nuevoNombre;
+            localStorage.setItem('sesion', JSON.stringify(sesion));
+            
+            // Actualizar la interfaz
+            const elTop = document.getElementById('nombre-usuario-top');
+            if (elTop) elTop.textContent = nuevoNombre;
+            const elUser = document.getElementById('user-display');
+            if (elUser) elUser.innerHTML = `<i class="fas fa-user-circle"></i> ${nuevoNombre}`;
+            
+            // Limpiar campos de contraseña
+            document.getElementById('config-pass-actual').value = '';
+            document.getElementById('config-pass-nueva').value = '';
+            document.getElementById('config-pass-confirmar').value = '';
+        } else {
+            mostrarToast('Error', data.error || 'No se pudo actualizar el perfil', 'error');
+        }
+    } catch (e) {
+        console.error('Error guardando perfil:', e);
+        mostrarToast('Error', 'Fallo de conexión al guardar', 'error');
+    }
 }
 
 // ============================================
@@ -414,105 +475,13 @@ function verificarEstadoPermisos() {
     b.style.display = ok ? 'none' : 'flex';
 }
 
-async function activarPermisos() {
-    if (typeof initAudio === 'function') initAudio();
-    if (audioCtx?.state === 'suspended') try { await audioCtx.resume(); } catch (e) { }
-
-    let permiso = false;
-    if (typeof solicitarPermisoNotificaciones === 'function') permiso = await solicitarPermisoNotificaciones();
-    else if ('Notification' in window) permiso = (await Notification.requestPermission()) === 'granted';
-
-    const b = document.getElementById('permisos-banner');
-    if (b) b.style.display = 'none';
-
-    if (permiso && typeof pushManager !== 'undefined') {
-        const vapidRes = await fetch(`${API_URL}/vapid-public-key`);
-        const { publicKey } = await vapidRes.json();
-        await pushManager.init(publicKey);
-    }
-
-    if (permiso) { mostrarToast('¡Listo!', 'Notificaciones activadas. Recibirás alertas aunque cierres la pestaña.', 'success', 6000); if (typeof sonidoExito === 'function') sonidoExito(); }
-    else mostrarToast('Audio activado', 'Notificaciones del sistema bloqueadas, pero el audio funciona.', 'warning', 6000);
-}
-
-// Polling de respaldo cada 30s
-setInterval(() => {
-    if (miDomiciliarioId && document.getElementById('seccion-activos')?.classList.contains('active')) cargarPedidosDomiciliario(miDomiciliarioId);
-}, 30000);
-
 // ============================================
-// KEEP ALIVE & RESUME (Mantener sesión viva)
+// HELPERS
 // ============================================
-
-document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) {
-        if (miDomiciliarioId) {
-            cargarPedidosDomiciliario(miDomiciliarioId);
-        }
-    }
-});
-
-window.addEventListener('focus', function () {
-    if (miDomiciliarioId) {
-        cargarPedidosDomiciliario(miDomiciliarioId);
-    }
-});
-
-let wakeLock = null;
-
-async function requestWakeLock() {
-    try {
-        if ('wakeLock' in navigator) {
-            wakeLock = await navigator.wakeLock.request('screen');
-            wakeLock.addEventListener('release', () => {
-                if (!document.hidden) {
-                    setTimeout(requestWakeLock, 1000);
-                }
-            });
-        }
-    } catch (err) { }
+function escapeQuotes(str) {
+    return String(str || "").replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
-document.addEventListener('visibilitychange', async () => {
-    if (!document.hidden && !wakeLock) {
-        await requestWakeLock();
-    }
-});
-
-window.addEventListener('load', () => {
-    setTimeout(requestWakeLock, 2000);
-});
-
-let keepAliveInterval;
-
-function startKeepAlive() {
-    if (typeof audioCtx !== 'undefined' && audioCtx && audioCtx.state === 'running') {
-        keepAliveInterval = setInterval(() => {
-            if (!document.hidden && audioCtx.state === 'running') {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                gain.gain.setValueAtTime(0, audioCtx.currentTime);
-                osc.start(audioCtx.currentTime);
-                osc.stop(audioCtx.currentTime + 0.01);
-            }
-        }, 15000);
-    }
-}
-
-const observerPermisos = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-        if (mutation.target.id === 'permisos-banner' && mutation.target.style.display === 'none') {
-            setTimeout(startKeepAlive, 1000);
-            observerPermisos.disconnect();
-        }
-    });
-});
-
-const permBanner = document.getElementById('permisos-banner');
-if (permBanner) {
-    observerPermisos.observe(permBanner, { attributes: true, attributeFilter: ['style'] });
-} else {
-    setTimeout(startKeepAlive, 5000);
+function formatearPrecio(valor) {
+    return '$' + Number(valor || 0).toLocaleString('es-CO');
 }
