@@ -1,0 +1,95 @@
+/* ============================================
+   Domiciliario - Estilos Exclusivos (Modular)
+   ============================================ */
+
+/* Saludo superior */
+.domiciliario-saludo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.domiciliario-saludo h2 {
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.domiciliario-saludo span {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* === TARJETA DE CONFIGURACIÓN === */
+.config-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: var(--transition);
+}
+
+.config-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.config-title {
+    color: var(--dark);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--light);
+    padding-bottom: 0.8rem;
+}
+
+.config-title i {
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+/* Ajustes de los inputs dentro de configuración */
+.config-card .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.config-card .form-group label {
+    display: flex;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.config-card .form-group label i {
+    color: var(--secondary);
+}
+
+.config-card .form-group input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--light);
+}
+
+.config-card .form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+.config-card .btn-block {
+    margin-top: 1rem;
+}

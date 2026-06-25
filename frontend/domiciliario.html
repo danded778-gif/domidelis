@@ -6,6 +6,7 @@
         <!-- ★ PWA -->
     <meta name="theme-color" content="#E63946">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Domicilios">
     <link rel="apple-touch-icon" href="assets/img/icon-152x152.png">
@@ -15,8 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    
-    
+    <!-- ★ NUEVO CSS MODULAR PARA DOMICILIARIO ★ -->
+    <link rel="stylesheet" href="assets/css/domiciliario.css">
 </head>
 <body>
     <header>
@@ -45,6 +46,11 @@
         </div>
 
         <div class="container">
+            <!-- ★ NUEVO: Nombre del usuario arriba -->
+            <div class="domiciliario-saludo">
+                <h2>Hola, <span id="nombre-usuario-top">Domiciliario</span> 👋</h2>
+            </div>
+
             <div class="tabs-container">
                 <button class="tab-btn active" onclick="cambiarTab('activos')" id="tab-activos">
                     <i class="fas fa-motorcycle"></i> Pedidos Activos
@@ -53,6 +59,10 @@
                 <button class="tab-btn" onclick="cambiarTab('historial')" id="tab-historial">
                     <i class="fas fa-history"></i> Historial
                     <span class="tab-badge" id="badge-historial">0</span>
+                </button>
+                <!-- ★ NUEVA PESTAÑA CONFIGURACIÓN ★ -->
+                <button class="tab-btn" onclick="cambiarTab('configuracion')" id="tab-configuracion">
+                    <i class="fas fa-cog"></i> Configuración
                 </button>
             </div>
 
@@ -96,6 +106,51 @@
                         <h3>No hay pedidos en el historial</h3>
                         <p>Los pedidos entregados aparecerán aquí</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- ★ NUEVA SECCIÓN CONFIGURACIÓN ★ -->
+            <div id="seccion-configuracion" class="tab-content">
+                <div class="config-card">
+                    <div class="config-title">
+                        <i class="fas fa-user-cog"></i> Perfil y Seguridad
+                    </div>
+                    
+                    <form id="form-config-domiciliario" onsubmit="guardarPerfilDomiciliario(event)">
+                        <!-- Nombre de usuario -->
+                        <div class="form-group">
+                            <label><i class="fas fa-id-badge"></i> Nombre de Usuario</label>
+                            <input type="text" id="config-nombre" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
+
+                        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem;">
+                            <i class="fas fa-info-circle"></i>Mínimo 6 caracteres y 1 mayúscula
+                        </p>
+
+                        <!-- Contraseña Actual -->
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Contraseña Actual</label>
+                            <input type="password" id="config-pass-actual" placeholder="Tu contraseña actual">
+                        </div>
+
+                        <!-- Nueva Contraseña -->
+                        <div class="form-group">
+                            <label><i class="fas fa-key"></i> Nueva Contraseña</label>
+                            <input type="password" id="config-pass-nueva" placeholder="Mínimo 6 caracteres y 1 mayúscula">
+                        </div>
+
+                        <!-- Confirmar Contraseña -->
+                        <div class="form-group">
+                            <label><i class="fas fa-check-double"></i> Confirmar Nueva Contraseña</label>
+                            <input type="password" id="config-pass-confirmar" placeholder="Repite la nueva contraseña">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
