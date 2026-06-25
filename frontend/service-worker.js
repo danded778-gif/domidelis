@@ -6,7 +6,7 @@
 const isDev = false;
 const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
-    : 'domidelis-v1.8.6'; 
+    : 'domidelis-v1.8.2'; 
 
 const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1'; 
 
@@ -55,14 +55,17 @@ self.addEventListener('install', (event) => {
           ARCHIVOS_ESTATICOS.map(archivo => {
             return fetch(archivo)
               .then(resp => {
-                if (resp.ok) return cache.put(archivo, resp);
+                // ★ FIX 206: Solo cachear si es 200 exacto
+                if (resp.status === 200) return cache.put(archivo, resp);
                 else console.warn(`[SW] Archivo no encontrado (status ${resp.status}):`, archivo);
               })
               .catch(err => console.warn('[SW] Error al intentar cachear:', archivo, err.message));
           })
         );
         const promExternos = Promise.allSettled(
-          RECURSOS_EXTERNOS.map(url => fetch(url).then(resp => { if (resp.ok) return cache.put(url, resp); }).catch(() => {}))
+          RECURSOS_EXTERNOS.map(url => fetch(url).then(resp => { 
+            if (resp.status === 200) return cache.put(url, resp); 
+          }).catch(() => {}))
         );
         return Promise.all([promLocales, promExternos]);
       })
@@ -107,7 +110,7 @@ self.addEventListener('fetch', (event) => {
   // ★★★ NUEVA VALLA ★★★
   // ─── NO interceptar la app de tiendas (tiene su propio SW) ───
   if (url.pathname.includes('/app-tiendas/')) {
-    return; // Dejamos que la petición vaya a la red directamente sin pasar por este SW
+    return; 
   }
 
   // ─── NO cachear peticiones a nuestra API ───
@@ -115,7 +118,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          if (response.ok && request.method === 'GET') {
+          if (response.status === 200 && request.method === 'GET') {
             const clon = response.clone();
             caches.open(CACHE_NAME).then(cache => cache.put(request, clon));
           }
@@ -160,12 +163,12 @@ self.addEventListener('fetch', (event) => {
         return cache.match(request).then(cachedResponse => {
           if (cachedResponse) {
             fetch(request).then(networkResponse => {
-              if (networkResponse && networkResponse.ok) cache.put(request, networkResponse);
+              if (networkResponse && networkResponse.status === 200) cache.put(request, networkResponse);
             }).catch(() => {});
             return cachedResponse;
           }
           return fetch(request).then(networkResponse => {
-            if (networkResponse && networkResponse.ok) cache.put(request, networkResponse.clone());
+            if (networkResponse && networkResponse.status === 200) cache.put(request, networkResponse.clone());
             return networkResponse;
           });
         });
@@ -181,7 +184,7 @@ self.addEventListener('fetch', (event) => {
         if (cached) {
           const fetchPromise = fetch(request)
             .then((networkResponse) => {
-              if (networkResponse && networkResponse.ok) {
+              if (networkResponse && networkResponse.status === 200) {
                 caches.open(CACHE_NAME).then(cache => cache.put(request, networkResponse));
               }
               return networkResponse;
@@ -191,7 +194,7 @@ self.addEventListener('fetch', (event) => {
         }
         return fetch(request)
           .then((networkResponse) => {
-            if (networkResponse && networkResponse.ok) {
+            if (networkResponse && networkResponse.status === 200) {
               const clon = networkResponse.clone();
               caches.open(CACHE_NAME).then(cache => cache.put(request, clon));
             }
@@ -199,7 +202,7 @@ self.addEventListener('fetch', (event) => {
           })
           .catch(() => {
             if (request.headers.get('accept')?.includes('text/html')) {
-              return caches.match('/domidelis/index.html'); // Este solo aplica si falla el index principal
+              return caches.match('/domidelis/index.html'); 
             }
             return new Response('', { status: 408 });
           });
@@ -208,7 +211,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 // ============================================
-// PUSH Y CLICK (Quedan igual)
+// PUSH Y CLICK
 // ============================================
 self.addEventListener('push', (event) => {
   let data = {};
