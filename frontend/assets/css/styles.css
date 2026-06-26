@@ -990,26 +990,27 @@ main > .container {
     color: var(--gray);
 }
 
-.btn-whatsapp-cart {
+.btn-continuar {
     width: 100%;
     padding: 1rem;
-    background: #25D366;
+    background: var(--primary);
     color: white;
     border: none;
     border-radius: var(--border-radius-lg);
     font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     transition: var(--transition);
+    margin-top: 1.5rem;
     font-family: inherit;
-    font-size: 1rem;
 }
 
-.btn-whatsapp-cart:hover {
-    background: #128C7E;
+.btn-continuar:hover {
+    background: var(--dark);
     transform: translateY(-2px);
 }
 
