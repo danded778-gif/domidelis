@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -59,34 +60,25 @@
 
             <!-- MENÚ HORIZONTAL -->
             <div class="admin-nav">
-                <button class="admin-nav-btn active" onclick="cambiarSeccion('tiendas')">
-                    <i class="fas fa-store"></i> Tiendas
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('pedidos')">
-                    <i class="fas fa-clipboard-list"></i> Pedidos Activos
-                    <span class="nav-badge" id="badge-pedidos-activos" style="display:none;">0</span>
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('domiciliarios')">
-                    <i class="fas fa-motorcycle"></i> Domiciliarios
-                    <span class="nav-badge" id="badge-domiciliarios"
-                        style="display:none;background:var(--accent);">0</span>
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('usuarios-tienda')">
-                    <i class="fas fa-user-shield"></i> Usuarios Tienda
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('historial')">
-                    <i class="fas fa-history"></i> Historial
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('informes')">
-                    <i class="fas fa-chart-bar"></i> Informes
-                </button>
-                <button class="admin-nav-btn" onclick="cambiarSeccion('infodomi')">
-                    <i class="fas fa-motorcycle"></i> Pagos Domis
-                </button>
+                <button class="admin-nav-btn active" onclick="cambiarSeccion('tiendas')"><i class="fas fa-store"></i>
+                    Tiendas</button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('pedidos')"><i class="fas fa-clipboard-list"></i>
+                    Pedidos Activos <span class="nav-badge" id="badge-pedidos-activos"
+                        style="display:none;">0</span></button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('domiciliarios')"><i
+                        class="fas fa-motorcycle"></i> Domiciliarios <span class="nav-badge" id="badge-domiciliarios"
+                        style="display:none;background:var(--accent);">0</span></button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('usuarios-tienda')"><i
+                        class="fas fa-user-shield"></i> Usuarios Tienda</button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('historial')"><i class="fas fa-history"></i>
+                    Historial</button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('informes')"><i class="fas fa-chart-bar"></i>
+                    Informes</button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('infodomi')"><i class="fas fa-motorcycle"></i>
+                    Pagos Domis</button>
                 <!-- ★ NUEVO BOTÓN: ANUNCIOS ★ -->
-                <button class="admin-nav-btn" onclick="cambiarSeccion('anuncios')">
-                    <i class="fas fa-bullhorn"></i> Anuncios
-                </button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('anuncios')"><i class="fas fa-bullhorn"></i>
+                    Anuncios</button>
             </div>
 
             <!-- ══════════ TIENDAS ══════════ -->
@@ -131,8 +123,7 @@
                     </div>
                     <div id="listaProductosTienda" style="display:none;">
                         <h4 style="margin-bottom:1rem;color:var(--dark);"><i class="fas fa-utensils"></i> Productos de:
-                            <span id="nombreTiendaSeleccionada"></span>
-                        </h4>
+                            <span id="nombreTiendaSeleccionada"></span></h4>
                         <div style="overflow-x:auto;">
                             <table id="tablaProductosTienda">
                                 <thead>
@@ -185,13 +176,10 @@
             <div class="admin-section" id="sec-domiciliarios">
                 <div class="section-header">
                     <h2><i class="fas fa-motorcycle"></i> Domiciliarios</h2>
-                    <div class="section-actions">
-                        <button class="btn btn-success btn-sm" onclick="mostrarModalDomiciliario()">
-                            <i class="fas fa-user-plus"></i> Nuevo Domiciliario
-                        </button>
-                    </div>
+                    <div class="section-actions"><button class="btn btn-success btn-sm"
+                            onclick="mostrarModalDomiciliario()"><i class="fas fa-user-plus"></i> Nuevo
+                            Domiciliario</button></div>
                 </div>
-
                 <div class="admin-card">
                     <div style="overflow-x:auto;">
                         <table id="tablaDomiciliarios">
@@ -219,9 +207,9 @@
             <div class="admin-section" id="sec-usuarios-tienda">
                 <div class="section-header">
                     <h2><i class="fas fa-user-shield"></i> Usuarios de Tiendas</h2>
-                    <div class="section-actions">
-                        <button class="btn btn-success btn-sm" onclick="mostrarModalUsuarioTienda()"><i class="fas fa-user-plus"></i> Nuevo Usuario</button>
-                    </div>
+                    <div class="section-actions"><button class="btn btn-success btn-sm"
+                            onclick="mostrarModalUsuarioTienda()"><i class="fas fa-user-plus"></i> Nuevo
+                            Usuario</button></div>
                 </div>
                 <div class="admin-card" style="margin-bottom:1.5rem;">
                     <div style="overflow-x:auto;">
@@ -236,7 +224,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td colspan="5" class="text-center">Cargando usuarios...</td></tr>
+                                <tr>
+                                    <td colspan="5" class="text-center">Cargando usuarios...</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -248,24 +238,17 @@
                 <div class="historial-header">
                     <h3 class="historial-titulo"><i class="fas fa-history"></i> Historial de Entregados</h3>
                     <div class="historial-controles">
-                        <div class="filtro-grupo">
-                            <label><i class="fas fa-store"></i></label>
-                            <select id="filtroTiendaHistorial" onchange="aplicarFiltrosHistorial()">
+                        <div class="filtro-grupo"><label><i class="fas fa-store"></i></label><select
+                                id="filtroTiendaHistorial" onchange="aplicarFiltrosHistorial()">
                                 <option value="">Todas las tiendas</option>
-                            </select>
-                        </div>
-                        <div class="filtro-grupo">
-                            <label><i class="fas fa-motorcycle"></i></label>
-                            <select id="filtroDomiciliarioHistorial" onchange="aplicarFiltrosHistorial()">
+                            </select></div>
+                        <div class="filtro-grupo"><label><i class="fas fa-motorcycle"></i></label><select
+                                id="filtroDomiciliarioHistorial" onchange="aplicarFiltrosHistorial()">
                                 <option value="">Todos los domiciliarios</option>
                                 <option value="sin-asignar">Sin asignar</option>
-                            </select>
-                        </div>
-                        <div class="filtro-grupo">
-                            <label><i class="fas fa-search"></i></label>
-                            <input type="text" id="buscarHistorial" placeholder="Buscar..."
-                                onkeyup="aplicarFiltrosHistorial()">
-                        </div>
+                            </select></div>
+                        <div class="filtro-grupo"><label><i class="fas fa-search"></i></label><input type="text"
+                                id="buscarHistorial" placeholder="Buscar..." onkeyup="aplicarFiltrosHistorial()"></div>
                     </div>
                 </div>
                 <div class="acciones-masivas" id="accionesMasivas" style="display:none;">
@@ -311,56 +294,137 @@
                 <div id="inf-contenido" style="display:none;">
                     <div class="inf-filtros">
                         <div class="inf-filtros-row">
-                            <div class="inf-filtros-grupo"><label>Desde</label><input type="date" id="inf-fecha-desde"></div>
-                            <div class="inf-filtros-grupo"><label>Hasta</label><input type="date" id="inf-fecha-hasta"></div>
-                            <div class="inf-filtros-grupo"><label>Tienda</label><select id="inf-tienda"><option value="">Todas</option></select></div>
-                            <div class="inf-filtros-grupo"><label>Método de pago</label><select id="inf-metodo"><option value="">Todos</option><option value="Efectivo">Efectivo</option><option value="Nequi">Nequi</option><option value="Daviplata">Daviplata</option><option value="Transferencia">Transferencia</option></select></div>
-                            <button class="inf-btn-filtrar" onclick="aplicarFiltrosInforme()"><i class="fas fa-filter"></i> Filtrar</button>
+                            <div class="inf-filtros-grupo"><label>Desde</label><input type="date" id="inf-fecha-desde">
+                            </div>
+                            <div class="inf-filtros-grupo"><label>Hasta</label><input type="date" id="inf-fecha-hasta">
+                            </div>
+                            <div class="inf-filtros-grupo"><label>Tienda</label><select id="inf-tienda">
+                                    <option value="">Todas</option>
+                                </select></div>
+                            <div class="inf-filtros-grupo"><label>Método de pago</label><select id="inf-metodo">
+                                    <option value="">Todos</option>
+                                    <option value="Efectivo">Efectivo</option>
+                                    <option value="Nequi">Nequi</option>
+                                    <option value="Daviplata">Daviplata</option>
+                                    <option value="Transferencia">Transferencia</option>
+                                </select></div>
+                            <button class="inf-btn-filtrar" onclick="aplicarFiltrosInforme()"><i
+                                    class="fas fa-filter"></i> Filtrar</button>
                         </div>
                         <div class="inf-presets">
-                            <button class="inf-preset-btn active" onclick="establecerPeriodo('todos',this)">Todos</button>
+                            <button class="inf-preset-btn active"
+                                onclick="establecerPeriodo('todos',this)">Todos</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodo('hoy',this)">Hoy</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodo('ayer',this)">Ayer</button>
-                            <button class="inf-preset-btn" onclick="establecerPeriodo('semana',this)">Esta semana</button>
+                            <button class="inf-preset-btn" onclick="establecerPeriodo('semana',this)">Esta
+                                semana</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodo('mes',this)">Este mes</button>
                         </div>
                     </div>
                     <div class="inf-kpi-grid">
-                        <div class="inf-kpi ingreso"><i class="fas fa-arrow-down inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-check-circle" style="color:var(--success);"></i> Ingresos App</div><div class="inf-kpi-valor" id="inf-kpi-ingresos">$0</div><div class="inf-kpi-sub">Domicilios + Comisiones</div></div>
-                        <div class="inf-kpi egreso"><i class="fas fa-arrow-up inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-exclamation-circle" style="color:var(--danger);"></i> Egresos</div><div class="inf-kpi-valor" id="inf-kpi-egresos">$0</div><div class="inf-kpi-sub">A pagar a tiendas</div></div>
-                        <div class="inf-kpi balance" id="inf-kpi-balance-card"><i class="fas fa-scale-balanced inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-info-circle" style="color:var(--info);"></i> Balance</div><div class="inf-kpi-valor" id="inf-kpi-balance">$0</div><div class="inf-kpi-sub" id="inf-kpi-balance-sub">Ganancia por comisiones</div></div>
-                        <div class="inf-kpi pedidos"><i class="fas fa-box inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-truck" style="color:var(--secondary);"></i> Pedidos</div><div class="inf-kpi-valor" id="inf-kpi-pedidos">0</div><div class="inf-kpi-sub">Entregados en el período</div></div>
+                        <div class="inf-kpi ingreso"><i class="fas fa-arrow-down inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-check-circle" style="color:var(--success);"></i>
+                                Ingresos App</div>
+                            <div class="inf-kpi-valor" id="inf-kpi-ingresos">$0</div>
+                            <div class="inf-kpi-sub">Domicilios + Comisiones</div>
+                        </div>
+                        <div class="inf-kpi egreso"><i class="fas fa-arrow-up inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-exclamation-circle"
+                                    style="color:var(--danger);"></i> Egresos</div>
+                            <div class="inf-kpi-valor" id="inf-kpi-egresos">$0</div>
+                            <div class="inf-kpi-sub">A pagar a tiendas</div>
+                        </div>
+                        <div class="inf-kpi balance" id="inf-kpi-balance-card"><i
+                                class="fas fa-scale-balanced inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-info-circle" style="color:var(--info);"></i>
+                                Balance</div>
+                            <div class="inf-kpi-valor" id="inf-kpi-balance">$0</div>
+                            <div class="inf-kpi-sub" id="inf-kpi-balance-sub">Ganancia por comisiones</div>
+                        </div>
+                        <div class="inf-kpi pedidos"><i class="fas fa-box inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-truck" style="color:var(--secondary);"></i>
+                                Pedidos</div>
+                            <div class="inf-kpi-valor" id="inf-kpi-pedidos">0</div>
+                            <div class="inf-kpi-sub">Entregados en el período</div>
+                        </div>
                     </div>
                     <div class="inf-flujo">
                         <div class="inf-flujo-titulo"><i class="fas fa-money-bill-transfer"></i> Flujo de Dinero</div>
                         <div class="inf-flujo-diagrama">
-                            <div class="inf-flujo-box cliente"><div class="inf-flujo-box-label"><i class="fas fa-user"></i> CLIENTE PAGA</div><div class="inf-flujo-box-valor" id="inf-flujo-cliente">$0</div><div class="inf-flujo-box-sub">Productos + Domicilio</div></div>
+                            <div class="inf-flujo-box cliente">
+                                <div class="inf-flujo-box-label"><i class="fas fa-user"></i> CLIENTE PAGA</div>
+                                <div class="inf-flujo-box-valor" id="inf-flujo-cliente">$0</div>
+                                <div class="inf-flujo-box-sub">Productos + Domicilio</div>
+                            </div>
                             <div class="inf-flujo-flecha"><i class="fas fa-arrow-right"></i><span>llega a</span></div>
-                            <div class="inf-flujo-box negocio"><div class="inf-flujo-box-label"><i class="fas fa-building"></i> TU NEGOCIO</div><div class="inf-flujo-box-valor" style="font-size:1rem;">Recibe y distribuye</div></div>
+                            <div class="inf-flujo-box negocio">
+                                <div class="inf-flujo-box-label"><i class="fas fa-building"></i> TU NEGOCIO</div>
+                                <div class="inf-flujo-box-valor" style="font-size:1rem;">Recibe y distribuye</div>
+                            </div>
                             <div class="inf-flujo-flecha"><i class="fas fa-arrow-right"></i><span>divide</span></div>
                             <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-                                <div class="inf-flujo-box retencion"><div class="inf-flujo-box-label"><i class="fas fa-hand-holding-dollar"></i> RETIENES</div><div class="inf-flujo-box-valor" id="inf-flujo-retienes" style="color:var(--success);">$0</div><div class="inf-flujo-box-sub">Domicilios (ganancia)</div></div>
-                                <div class="inf-flujo-box devolucion"><div class="inf-flujo-box-label"><i class="fas fa-store"></i> DEVUELVES</div><div class="inf-flujo-box-valor" id="inf-flujo-devuelves" style="color:var(--danger);">$0</div><div class="inf-flujo-box-sub">Productos a tiendas</div></div>
+                                <div class="inf-flujo-box retencion">
+                                    <div class="inf-flujo-box-label"><i class="fas fa-hand-holding-dollar"></i> RETIENES
+                                    </div>
+                                    <div class="inf-flujo-box-valor" id="inf-flujo-retienes"
+                                        style="color:var(--success);">$0</div>
+                                    <div class="inf-flujo-box-sub">Domicilios (ganancia)</div>
+                                </div>
+                                <div class="inf-flujo-box devolucion">
+                                    <div class="inf-flujo-box-label"><i class="fas fa-store"></i> DEVUELVES</div>
+                                    <div class="inf-flujo-box-valor" id="inf-flujo-devuelves"
+                                        style="color:var(--danger);">$0</div>
+                                    <div class="inf-flujo-box-sub">Productos a tiendas</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="inf-destacada" id="inf-destacada" style="display:none;">
                         <div class="inf-destacada-icon"><i class="fas fa-trophy"></i></div>
-                        <div class="inf-destacada-info"><h4>Tienda que más vende</h4><h3 id="inf-destacada-nombre">—</h3><p id="inf-destacada-stats">—</p></div>
+                        <div class="inf-destacada-info">
+                            <h4>Tienda que más vende</h4>
+                            <h3 id="inf-destacada-nombre">—</h3>
+                            <p id="inf-destacada-stats">—</p>
+                        </div>
                     </div>
                     <div class="inf-charts-grid">
-                        <div class="inf-chart-card"><h4><i class="fas fa-chart-bar"></i> Ingresos vs Egresos por Tienda</h4><div class="inf-chart-wrap"><canvas id="chartBarras"></canvas></div></div>
-                        <div class="inf-chart-card"><h4><i class="fas fa-chart-pie"></i> Distribución de Ventas</h4><div class="inf-chart-wrap"><canvas id="chartDonutTiendas"></canvas></div></div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-chart-bar"></i> Ingresos vs Egresos por Tienda</h4>
+                            <div class="inf-chart-wrap"><canvas id="chartBarras"></canvas></div>
+                        </div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-chart-pie"></i> Distribución de Ventas</h4>
+                            <div class="inf-chart-wrap"><canvas id="chartDonutTiendas"></canvas></div>
+                        </div>
                     </div>
                     <div class="inf-metodos-grid">
-                        <div class="inf-chart-card"><h4><i class="fas fa-wallet"></i> Métodos de Pago</h4><div class="inf-chart-wrap" style="height:250px;"><canvas id="chartDonutMetodos"></canvas></div></div>
-                        <div class="inf-chart-card"><h4><i class="fas fa-receipt"></i> Resumen de Pagos por Método</h4><div class="inf-metodo-resumen" id="inf-metodos-resumen"></div></div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-wallet"></i> Métodos de Pago</h4>
+                            <div class="inf-chart-wrap" style="height:250px;"><canvas id="chartDonutMetodos"></canvas>
+                            </div>
+                        </div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-receipt"></i> Resumen de Pagos por Método</h4>
+                            <div class="inf-metodo-resumen" id="inf-metodos-resumen"></div>
+                        </div>
                     </div>
                     <div class="inf-desglose">
                         <h4><i class="fas fa-table"></i> Desglose por Tienda — Cuánto pagar y por qué método</h4>
                         <div style="overflow-x:auto;">
                             <table class="inf-desglose-table" id="inf-tabla-desglose">
-                                <thead><tr><th>Tienda</th><th>Pedidos</th><th>Venta Total</th><th>Tu Comisión</th><th>A Pagar Tienda</th><th>Efectivo</th><th>Nequi</th><th>Daviplata</th><th>Transferencia</th></tr></thead>
+                                <thead>
+                                    <tr>
+                                        <th>Tienda</th>
+                                        <th>Pedidos</th>
+                                        <th>Venta Total</th>
+                                        <th>Tu Comisión</th>
+                                        <th>A Pagar Tienda</th>
+                                        <th>Efectivo</th>
+                                        <th>Nequi</th>
+                                        <th>Daviplata</th>
+                                        <th>Transferencia</th>
+                                    </tr>
+                                </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
@@ -377,51 +441,117 @@
                 <div id="infodomi-contenido" style="display:none;">
                     <div class="inf-filtros">
                         <div class="inf-filtros-row">
-                            <div class="inf-filtros-grupo"><label>Desde</label><input type="date" id="infodomi-fecha-desde"></div>
-                            <div class="inf-filtros-grupo"><label>Hasta</label><input type="date" id="infodomi-fecha-hasta"></div>
-                            <div class="inf-filtros-grupo"><label>Domiciliario</label><select id="infodomi-select"><option value="">Todos</option></select></div>
-                            <button class="inf-btn-filtrar" onclick="aplicarFiltrosDomi()"><i class="fas fa-filter"></i> Filtrar</button>
+                            <div class="inf-filtros-grupo"><label>Desde</label><input type="date"
+                                    id="infodomi-fecha-desde"></div>
+                            <div class="inf-filtros-grupo"><label>Hasta</label><input type="date"
+                                    id="infodomi-fecha-hasta"></div>
+                            <div class="inf-filtros-grupo"><label>Domiciliario</label><select id="infodomi-select">
+                                    <option value="">Todos</option>
+                                </select></div>
+                            <button class="inf-btn-filtrar" onclick="aplicarFiltrosDomi()"><i class="fas fa-filter"></i>
+                                Filtrar</button>
                         </div>
                         <div class="inf-presets">
-                            <button class="inf-preset-btn active" onclick="establecerPeriodoDomi('todos',this)">Todos</button>
+                            <button class="inf-preset-btn active"
+                                onclick="establecerPeriodoDomi('todos',this)">Todos</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodoDomi('hoy',this)">Hoy</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodoDomi('ayer',this)">Ayer</button>
-                            <button class="inf-preset-btn" onclick="establecerPeriodoDomi('semana',this)">Esta semana</button>
+                            <button class="inf-preset-btn" onclick="establecerPeriodoDomi('semana',this)">Esta
+                                semana</button>
                             <button class="inf-preset-btn" onclick="establecerPeriodoDomi('mes',this)">Este mes</button>
                         </div>
                     </div>
                     <div class="inf-kpi-grid">
-                        <div class="inf-kpi ingreso"><i class="fas fa-motorcycle inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-road" style="color:var(--success);"></i> Total Domicilios</div><div class="inf-kpi-valor" id="infodomi-kpi-cobrados">$0</div><div class="inf-kpi-sub">Cobrado a clientes por envíos</div></div>
-                        <div class="inf-kpi ingreso"><i class="fas fa-hand-holding-dollar inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-building" style="color:var(--info);"></i> Retiene App</div><div class="inf-kpi-valor" id="infodomi-kpi-comision">$0</div><div class="inf-kpi-sub">Tu comisión sobre los envíos</div></div>
-                        <div class="inf-kpi egreso"><i class="fas fa-wallet inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-user" style="color:var(--accent);"></i> Pagar Domiciliarios</div><div class="inf-kpi-valor" id="infodomi-kpi-pagar">$0</div><div class="inf-kpi-sub">Lo que ganas tú por el envío</div></div>
-                        <div class="inf-kpi pedidos"><i class="fas fa-box inf-kpi-icon"></i><div class="inf-kpi-label"><i class="fas fa-check" style="color:var(--secondary);"></i> Domicilios</div><div class="inf-kpi-valor" id="infodomi-kpi-pedidos">0</div><div class="inf-kpi-sub">Entregas realizadas</div></div>
+                        <div class="inf-kpi ingreso"><i class="fas fa-motorcycle inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-road" style="color:var(--success);"></i> Total
+                                Domicilios</div>
+                            <div class="inf-kpi-valor" id="infodomi-kpi-cobrados">$0</div>
+                            <div class="inf-kpi-sub">Cobrado a clientes por envíos</div>
+                        </div>
+                        <div class="inf-kpi ingreso"><i class="fas fa-hand-holding-dollar inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-building" style="color:var(--info);"></i>
+                                Retiene App</div>
+                            <div class="inf-kpi-valor" id="infodomi-kpi-comision">$0</div>
+                            <div class="inf-kpi-sub">Tu comisión sobre los envíos</div>
+                        </div>
+                        <div class="inf-kpi egreso"><i class="fas fa-wallet inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-user" style="color:var(--accent);"></i> Pagar
+                                Domiciliarios</div>
+                            <div class="inf-kpi-valor" id="infodomi-kpi-pagar">$0</div>
+                            <div class="inf-kpi-sub">Lo que ganas tú por el envío</div>
+                        </div>
+                        <div class="inf-kpi pedidos"><i class="fas fa-box inf-kpi-icon"></i>
+                            <div class="inf-kpi-label"><i class="fas fa-check" style="color:var(--secondary);"></i>
+                                Domicilios</div>
+                            <div class="inf-kpi-valor" id="infodomi-kpi-pedidos">0</div>
+                            <div class="inf-kpi-sub">Entregas realizadas</div>
+                        </div>
                     </div>
                     <div class="inf-flujo">
-                        <div class="inf-flujo-titulo"><i class="fas fa-money-bill-transfer"></i> Flujo de Caja - Domicilios</div>
+                        <div class="inf-flujo-titulo"><i class="fas fa-money-bill-transfer"></i> Flujo de Caja -
+                            Domicilios</div>
                         <div class="inf-flujo-diagrama">
-                            <div class="inf-flujo-box cliente"><div class="inf-flujo-box-label"><i class="fas fa-user"></i> CLIENTE PAGA</div><div class="inf-flujo-box-valor" id="infodomi-flujo-cobra">$0</div><div class="inf-flujo-box-sub">Solo en domicilios</div></div>
+                            <div class="inf-flujo-box cliente">
+                                <div class="inf-flujo-box-label"><i class="fas fa-user"></i> CLIENTE PAGA</div>
+                                <div class="inf-flujo-box-valor" id="infodomi-flujo-cobra">$0</div>
+                                <div class="inf-flujo-box-sub">Solo en domicilios</div>
+                            </div>
                             <div class="inf-flujo-flecha"><i class="fas fa-arrow-right"></i><span>llega</span></div>
-                            <div class="inf-flujo-box negocio"><div class="inf-flujo-box-label"><i class="fas fa-building"></i> APP</div><div class="inf-flujo-box-valor" style="font-size:1rem;">Descuenta</div></div>
+                            <div class="inf-flujo-box negocio">
+                                <div class="inf-flujo-box-label"><i class="fas fa-building"></i> APP</div>
+                                <div class="inf-flujo-box-valor" style="font-size:1rem;">Descuenta</div>
+                            </div>
                             <div class="inf-flujo-flecha"><i class="fas fa-arrow-right"></i><span>divide</span></div>
                             <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-                                <div class="inf-flujo-box retencion"><div class="inf-flujo-box-label"><i class="fas fa-hand-holding-dollar"></i> RETIENE APP</div><div class="inf-flujo-box-valor" id="infodomi-flujo-retiene" style="color:var(--success);">$0</div><div class="inf-flujo-box-sub">Comisión por uso de app</div></div>
-                                <div class="inf-flujo-box devolucion"><div class="inf-flujo-box-label"><i class="fas fa-motorcycle"></i> PAGAS AL DOMI</div><div class="inf-flujo-box-valor" id="infodomi-flujo-paga" style="color:var(--danger);">$0</div><div class="inf-flujo-box-sub">Su ganancia por entrega</div></div>
+                                <div class="inf-flujo-box retencion">
+                                    <div class="inf-flujo-box-label"><i class="fas fa-hand-holding-dollar"></i> RETIENE
+                                        APP</div>
+                                    <div class="inf-flujo-box-valor" id="infodomi-flujo-retiene"
+                                        style="color:var(--success);">$0</div>
+                                    <div class="inf-flujo-box-sub">Comisión por uso de app</div>
+                                </div>
+                                <div class="inf-flujo-box devolucion">
+                                    <div class="inf-flujo-box-label"><i class="fas fa-motorcycle"></i> PAGAS AL DOMI
+                                    </div>
+                                    <div class="inf-flujo-box-valor" id="infodomi-flujo-paga"
+                                        style="color:var(--danger);">$0</div>
+                                    <div class="inf-flujo-box-sub">Su ganancia por entrega</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="inf-destacada" id="infodomi-destacada" style="display:none; background:linear-gradient(135deg, var(--accent), #c77c1a);">
+                    <div class="inf-destacada" id="infodomi-destacada"
+                        style="display:none; background:linear-gradient(135deg, var(--accent), #c77c1a);">
                         <div class="inf-destacada-icon"><i class="fas fa-trophy"></i></div>
-                        <div class="inf-destacada-info"><h4>Domiciliario que más trabaja</h4><h3 id="infodomi-destacada-nombre">—</h3><p id="infodomi-destacada-stats">—</p></div>
+                        <div class="inf-destakada-info">
+                            <h4>Domiciliario que más trabaja</h4>
+                            <h3 id="infodomi-destacada-nombre">—</h3>
+                            <p id="infodomi-destacada-stats">—</p>
+                        </div>
                     </div>
                     <div class="inf-charts-grid">
-                        <div class="inf-chart-card"><h4><i class="fas fa-chart-bar"></i> Ingresos App vs Pago a Domiciliarios</h4><div class="inf-chart-wrap"><canvas id="chartDomiBarras"></canvas></div></div>
-                        <div class="inf-chart-card"><h4><i class="fas fa-chart-pie"></i> Proporción de Domicilios Realizados</h4><div class="inf-chart-wrap"><canvas id="chartDomiDonut"></canvas></div></div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-chart-bar"></i> Ingresos App vs Pago a Domiciliarios</h4>
+                            <div class="inf-chart-wrap"><canvas id="chartDomiBarras"></canvas></div>
+                        </div>
+                        <div class="inf-chart-card">
+                            <h4><i class="fas fa-chart-pie"></i> Proporción de Domicilios Realizados</h4>
+                            <div class="inf-chart-wrap"><canvas id="chartDomiDonut"></canvas></div>
+                        </div>
                     </div>
                     <div class="inf-desglose">
                         <h4><i class="fas fa-table"></i> Desglose por Domiciliario — Cuánto pagar a cada uno</h4>
                         <div style="overflow-x:auto;">
                             <table class="inf-desglose-table" id="infodomi-tabla">
-                                <thead><tr><th>Domiciliario</th><th>Domicilios</th><th>Total Envíos</th><th>Retiene App</th><th>Pagar Domiciliario</th></tr></thead>
+                                <thead>
+                                    <tr>
+                                        <th>Domiciliario</th>
+                                        <th>Domicilios</th>
+                                        <th>Total Envíos</th>
+                                        <th>Retiene App</th>
+                                        <th>Pagar Domiciliario</th>
+                                    </tr>
+                                </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
@@ -433,17 +563,20 @@
             <div class="admin-section" id="sec-anuncios">
                 <div class="admin-anuncios-header">
                     <h2><i class="fas fa-bullhorn"></i> Gestión de Anuncios</h2>
-                    <button class="btn btn-primary btn-sm" onclick="AdminAnuncios.abrirModalCreacion()"><i class="fas fa-plus"></i> Crear Anuncio</button>
+                    <button class="btn btn-primary btn-sm" onclick="AdminAnuncios.abrirModalCreacion()"><i
+                            class="fas fa-plus"></i> Crear Anuncio</button>
                 </div>
 
                 <!-- Calculadora de Presupuesto -->
                 <div class="calculadora-presupuesto">
                     <h5><i class="fas fa-calculator"></i> Calculadora de Presupuesto</h5>
                     <div class="calc-input-group">
-                        <input type="number" id="calcPresupuestoInput" placeholder="Ej: 30000" oninput="AdminAnuncios.calcularPresupuesto()">
+                        <input type="number" id="calcPresupuestoInput" placeholder="Ej: 30000"
+                            oninput="AdminAnuncios.calcularPresupuesto()">
                         <span style="font-weight:600; color:var(--dark);">COP</span>
                     </div>
-                    <div class="calc-resultado" id="calcPresupuestoResultado">Ingresa un monto para ver la duración estimada.</div>
+                    <div class="calc-resultado" id="calcPresupuestoResultado">Ingresa un monto para ver la duración
+                        estimada.</div>
                 </div>
 
                 <div class="admin-card">
@@ -460,7 +593,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td colspan="6" class="text-center">Cargando anuncios...</td></tr>
+                                <tr>
+                                    <td colspan="6" class="text-center">Cargando anuncios...</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -474,29 +609,52 @@
     <div id="modalTienda" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTiendaTitulo"><i class="fas fa-store"></i> Nueva Tienda</h3>
-                <button class="close-modal" onclick="cerrarModalTienda()"><i class="fas fa-times"></i></button>
+                <h3 id="modalTiendaTitulo"><i class="fas fa-store"></i> Nueva Tienda</h3><button class="close-modal"
+                    onclick="cerrarModalTienda()"><i class="fas fa-times"></i></button>
             </div>
             <form id="formTienda" onsubmit="event.preventDefault(); guardarTienda();">
-                <div class="form-group"><label><i class="fas fa-tag"></i> Nombre *</label><input type="text" id="tiendaNombre" required placeholder="Ej: Hamburguesas El Corral"></div>
-                <div class="form-group"><label><i class="fas fa-align-left"></i> Descripción</label><textarea id="tiendaDescripcion" rows="2" placeholder="Breve descripción"></textarea></div>
-                <div class="form-group"><label><i class="fas fa-map-marker-alt"></i> Dirección *</label><input type="text" id="tiendaDireccion" required placeholder="Ej: Calle 123 #45-67"></div>
+                <div class="form-group"><label><i class="fas fa-tag"></i> Nombre *</label><input type="text"
+                        id="tiendaNombre" required placeholder="Ej: Hamburguesas El Corral"></div>
+                <div class="form-group"><label><i class="fas fa-align-left"></i> Descripción</label><textarea
+                        id="tiendaDescripcion" rows="2" placeholder="Breve descripción"></textarea></div>
+                <div class="form-group"><label><i class="fas fa-map-marker-alt"></i> Dirección *</label><input
+                        type="text" id="tiendaDireccion" required placeholder="Ej: Calle 123 #45-67"></div>
                 <div class="form-group">
                     <label><i class="fas fa-clock"></i> Horario Semanal</label>
-                    <small style="display:block; margin-bottom:10px; color:var(--gray); font-size:.8rem;">Formato 24h (Ej: 08:00-22:00). Escribe "Cerrado" si no abre.</small>
+                    <small style="display:block; margin-bottom:10px; color:var(--gray); font-size:.8rem;">Formato 24h
+                        (Ej: 08:00-22:00). Escribe "Cerrado" si no abre.</small>
                     <div style="display:grid; grid-template-columns: auto 1fr; gap:8px; align-items:center;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Lunes:</label> <input type="text" id="horario-mon" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Martes:</label> <input type="text" id="horario-tue" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Miércoles:</label> <input type="text" id="horario-wed" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Jueves:</label> <input type="text" id="horario-thu" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Viernes:</label> <input type="text" id="horario-fri" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Sábado:</label> <input type="text" id="horario-sat" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Domingo:</label> <input type="text" id="horario-sun" value="Cerrado" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Lunes:</label>
+                        <input type="text" id="horario-mon" value="08:00-22:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Martes:</label>
+                        <input type="text" id="horario-tue" value="08:00-22:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label
+                            style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Miércoles:</label>
+                        <input type="text" id="horario-wed" value="08:00-22:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Jueves:</label>
+                        <input type="text" id="horario-thu" value="08:00-22:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Viernes:</label>
+                        <input type="text" id="horario-fri" value="08:00-23:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Sábado:</label>
+                        <input type="text" id="horario-sat" value="08:00-23:00"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                        <label style="margin:0; font-weight:600; color:var(--dark); font-size:.85rem;">Domingo:</label>
+                        <input type="text" id="horario-sun" value="Cerrado"
+                            style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
                     </div>
                 </div>
-                <div class="form-group"><label><i class="fas fa-star"></i> Rating (1-5)</label><input type="number" id="tiendaRating" min="1" max="5" value="5" step="0.1"></div>
-                <div class="form-group"><label><i class="fas fa-image"></i> URL Imagen</label><input type="url" id="tiendaImagen" placeholder="https://ejemplo.com/imagen.jpg"></div>
-                <div class="form-group"><label><i class="fas fa-percent"></i> Comisión para la app (%)</label><input type="number" id="tiendaComision" min="0" max="100" value="20" step="1" placeholder="Ej: 20"></div>
+                <div class="form-group"><label><i class="fas fa-star"></i> Rating (1-5)</label><input type="number"
+                        id="tiendaRating" min="1" max="5" value="5" step="0.1"></div>
+                <div class="form-group"><label><i class="fas fa-image"></i> URL Imagen</label><input type="url"
+                        id="tiendaImagen" placeholder="https://ejemplo.com/imagen.jpg"></div>
+                <div class="form-group"><label><i class="fas fa-percent"></i> Comisión para la app (%)</label><input
+                        type="number" id="tiendaComision" min="0" max="100" value="20" step="1" placeholder="Ej: 20">
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalTienda()">Cancelar</button>
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
@@ -508,31 +666,49 @@
     <div id="modalProducto" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalProductoTitulo"><i class="fas fa-box"></i> Nuevo Producto</h3>
-                <button class="close-modal" onclick="cerrarModalProducto()"><i class="fas fa-times"></i></button>
+                <h3 id="modalProductoTitulo"><i class="fas fa-box"></i> Nuevo Producto</h3><button class="close-modal"
+                    onclick="cerrarModalProducto()"><i class="fas fa-times"></i></button>
             </div>
             <form id="formProducto" onsubmit="event.preventDefault(); guardarProducto();">
-                <div class="form-group"><label><i class="fas fa-store"></i> Tienda *</label><select id="productoTiendaId" required><option value="">-- Selecciona una tienda --</option></select></div>
-                <div class="form-group"><label><i class="fas fa-tag"></i> Nombre del producto *</label><input type="text" id="productoNombre" required placeholder="Ej: Hamburguesa Sencilla"></div>
-                <div class="form-group"><label><i class="fas fa-align-left"></i> Descripción</label><textarea id="productoDescripcion" rows="2" placeholder="Ingredientes, detalles..."></textarea></div>
+                <div class="form-group"><label><i class="fas fa-store"></i> Tienda *</label><select
+                        id="productoTiendaId" required>
+                        <option value="">-- Selecciona una tienda --</option>
+                    </select></div>
+                <div class="form-group"><label><i class="fas fa-tag"></i> Nombre del producto *</label><input
+                        type="text" id="productoNombre" required placeholder="Ej: Hamburguesa Sencilla"></div>
+                <div class="form-group"><label><i class="fas fa-align-left"></i> Descripción</label><textarea
+                        id="productoDescripcion" rows="2" placeholder="Ingredientes, detalles..."></textarea></div>
                 <div class="form-group">
                     <label><i class="fas fa-dollar-sign"></i> Precio en la App *</label>
-                    <input type="number" id="productoPrecio" required min="0" placeholder="10000" oninput="calcularComisionProducto()">
-                    <div id="comision-calculo-box" style="display:none; margin-top:12px; padding:15px; background:#f8fffe; border-radius:12px; border:1px dashed var(--accent); font-size:0.85rem; color:#333;">
+                    <input type="number" id="productoPrecio" required min="0" placeholder="10000"
+                        oninput="calcularComisionProducto()">
+                    <div id="comision-calculo-box"
+                        style="display:none; margin-top:12px; padding:15px; background:#f8fffe; border-radius:12px; border:1px dashed var(--accent); font-size:0.85rem; color:#333;">
                         <div style="margin-bottom:12px; display:flex; align-items:center; gap:10px;">
                             <i class="fas fa-store" style="color:var(--accent); font-size:1.3rem;"></i>
-                            <div><strong>La tienda recibe:</strong> <span id="tiendaRecibe" style="font-weight:800; color:var(--accent);">$0</span><br><small style="color:var(--gray);">App retiene el <span id="comisionPctDisplay">0</span>%</small></div>
+                            <div><strong>La tienda recibe:</strong> <span id="tiendaRecibe"
+                                    style="font-weight:800; color:var(--accent);">$0</span><br><small
+                                    style="color:var(--gray);">App retiene el <span
+                                        id="comisionPctDisplay">0</span>%</small></div>
                         </div>
                         <hr style="border:0; border-top:1px solid #e0e0e0; margin:12px 0;">
-                        <div style="font-weight:600; margin-bottom:10px; color:var(--dark); font-size:0.9rem;"><i class="fas fa-calculator" style="color:var(--primary);"></i> ¿Tienda quiere ganar X? (Calculadora inversa)</div>
+                        <div style="font-weight:600; margin-bottom:10px; color:var(--dark); font-size:0.9rem;"><i
+                                class="fas fa-calculator" style="color:var(--primary);"></i> ¿Tienda quiere ganar X?
+                            (Calculadora inversa)</div>
                         <div style="display:flex; gap:8px; align-items:center;">
-                            <input type="number" id="gananciaDeseadaInput" min="0" placeholder="Ej: 20000" style="flex:1; padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-family:inherit; font-size:0.85rem;">
-                            <button type="button" onclick="calcularPrecioDesdeGanancia()" class="btn btn-primary btn-sm" style="padding:8px 14px; font-size:0.85rem;"><i class="fas fa-calculator"></i> Poner Precio</button>
+                            <input type="number" id="gananciaDeseadaInput" min="0" placeholder="Ej: 20000"
+                                style="flex:1; padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-family:inherit; font-size:0.85rem;">
+                            <button type="button" onclick="calcularPrecioDesdeGanancia()" class="btn btn-primary btn-sm"
+                                style="padding:8px 14px; font-size:0.85rem;"><i class="fas fa-calculator"></i> Poner
+                                Precio</button>
                         </div>
                     </div>
                 </div>
-                <div class="form-group"><label><i class="fas fa-image"></i> URL Imagen</label><input type="url" id="productoImagen" placeholder="URL de la imagen"><small style="color:var(--gray);font-size:.8rem;">Pega la URL directa</small></div>
-                <div class="form-group"><label><i class="fas fa-award"></i> Badge (etiqueta)</label><input type="text" id="productoBadge" placeholder="Ej: Más pedida, Oferta"></div>
+                <div class="form-group"><label><i class="fas fa-image"></i> URL Imagen</label><input type="url"
+                        id="productoImagen" placeholder="URL de la imagen"><small
+                        style="color:var(--gray);font-size:.8rem;">Pega la URL directa</small></div>
+                <div class="form-group"><label><i class="fas fa-award"></i> Badge (etiqueta)</label><input type="text"
+                        id="productoBadge" placeholder="Ej: Más pedida, Oferta"></div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalProducto()">Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Producto</button>
@@ -544,8 +720,8 @@
     <div id="modalPedido" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-clipboard-list"></i> Detalle del Pedido</h3>
-                <button class="close-modal" onclick="cerrarModalPedido()"><i class="fas fa-times"></i></button>
+                <h3><i class="fas fa-clipboard-list"></i> Detalle del Pedido</h3><button class="close-modal"
+                    onclick="cerrarModalPedido()"><i class="fas fa-times"></i></button>
             </div>
             <div id="detallePedidoContenido"></div>
         </div>
@@ -554,17 +730,23 @@
     <div id="modalAsignarDomiciliario" class="modal">
         <div class="modal-content" style="max-width:500px;">
             <div class="modal-header">
-                <h3><i class="fas fa-user-plus"></i> Asignar Domiciliario</h3>
-                <button class="close-modal" onclick="cerrarModalAsignarDomiciliario()"><i class="fas fa-times"></i></button>
+                <h3><i class="fas fa-user-plus"></i> Asignar Domiciliario</h3><button class="close-modal"
+                    onclick="cerrarModalAsignarDomiciliario()"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom:1rem;color:#666;">Pedido #<strong id="asignarPedidoId" style="color:#0a2a36;"></strong></p>
+                <p style="margin-bottom:1rem;color:#666;">Pedido #<strong id="asignarPedidoId"
+                        style="color:#0a2a36;"></strong></p>
                 <div class="form-group" style="margin-bottom:1rem;">
                     <label><i class="fas fa-search"></i> Buscar domiciliario:</label>
-                    <input type="text" id="buscarDomiciliario" placeholder="Nombre o ID..." onkeyup="filtrarDomiciliarios()" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:8px;">
+                    <input type="text" id="buscarDomiciliario" placeholder="Nombre o ID..."
+                        onkeyup="filtrarDomiciliarios()"
+                        style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:8px;">
                 </div>
                 <div id="listaDomiciliarios" style="max-height:300px;overflow-y:auto;"></div>
-                <div id="sinResultados" style="display:none;text-align:center;padding:2rem;color:#999;"><i class="fas fa-search" style="font-size:2rem;margin-bottom:.5rem;"></i><p>No se encontraron domiciliarios</p></div>
+                <div id="sinResultados" style="display:none;text-align:center;padding:2rem;color:#999;"><i
+                        class="fas fa-search" style="font-size:2rem;margin-bottom:.5rem;"></i>
+                    <p>No se encontraron domiciliarios</p>
+                </div>
             </div>
         </div>
     </div>
@@ -572,16 +754,26 @@
     <div id="modalDomiciliario" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalDomiciliarioTitulo"><i class="fas fa-user-plus"></i> Nuevo Domiciliario</h3>
-                <button class="close-modal" onclick="cerrarModalDomiciliario()"><i class="fas fa-times"></i></button>
+                <h3 id="modalDomiciliarioTitulo"><i class="fas fa-user-plus"></i> Nuevo Domiciliario</h3><button
+                    class="close-modal" onclick="cerrarModalDomiciliario()"><i class="fas fa-times"></i></button>
             </div>
             <form id="formDomiciliario" onsubmit="event.preventDefault(); guardarDomiciliario();">
-                <div class="form-group"><label><i class="fas fa-user"></i> Nombre completo *</label><input type="text" id="domiNombre" required placeholder="Ej: Carlos López"></div>
-                <div class="form-group"><label><i class="fas fa-phone"></i> Teléfono *</label><input type="tel" id="domiTelefono" required placeholder="Ej: 3001234567"></div>
-                <div class="form-group"><label><i class="fas fa-lock"></i> Contraseña *</label><div style="display:flex;gap:.5rem;"><input type="password" id="domiPassword" required placeholder="Mínimo 4 caracteres" style="flex:1;"><button type="button" onclick="togglePasswordDomi()" class="btn btn-secondary btn-sm" style="padding:.6rem 1rem;"><i class="fas fa-eye" id="domi-eye-icon"></i></button></div></div>
-                <div class="form-group"><label><i class="fas fa-percent"></i> Comisión App sobre domicilios (%)</label><input type="number" id="domiComisionApp" min="0" max="100" value="0" step="1" placeholder="Ej: 20. La app se queda con este % del envío"></div>
+                <div class="form-group"><label><i class="fas fa-user"></i> Nombre completo *</label><input type="text"
+                        id="domiNombre" required placeholder="Ej: Carlos López"></div>
+                <div class="form-group"><label><i class="fas fa-phone"></i> Teléfono *</label><input type="tel"
+                        id="domiTelefono" required placeholder="Ej: 3001234567"></div>
+                <div class="form-group"><label><i class="fas fa-lock"></i> Contraseña *</label>
+                    <div style="display:flex;gap:.5rem;"><input type="password" id="domiPassword" required
+                            placeholder="Mínimo 4 caracteres" style="flex:1;"><button type="button"
+                            onclick="togglePasswordDomi()" class="btn btn-secondary btn-sm"
+                            style="padding:.6rem 1rem;"><i class="fas fa-eye" id="domi-eye-icon"></i></button></div>
+                </div>
+                <div class="form-group"><label><i class="fas fa-percent"></i> Comisión App sobre domicilios
+                        (%)</label><input type="number" id="domiComisionApp" min="0" max="100" value="0" step="1"
+                        placeholder="Ej: 20. La app se queda con este % del envío"></div>
                 <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="cerrarModalDomiciliario()">Cancelar</button>
+                    <button type="button" class="btn btn-secondary"
+                        onclick="cerrarModalDomiciliario()">Cancelar</button>
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
                 </div>
             </form>
@@ -591,15 +783,22 @@
     <div id="modalUsuarioTienda" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalUsuarioTiendaTitulo"><i class="fas fa-user-plus"></i> Nuevo Usuario Tienda</h3>
-                <button class="close-modal" onclick="cerrarModalUsuarioTienda()"><i class="fas fa-times"></i></button>
+                <h3 id="modalUsuarioTiendaTitulo"><i class="fas fa-user-plus"></i> Nuevo Usuario Tienda</h3><button
+                    class="close-modal" onclick="cerrarModalUsuarioTienda()"><i class="fas fa-times"></i></button>
             </div>
             <form id="formUsuarioTienda" onsubmit="event.preventDefault(); guardarUsuarioTienda();">
-                <div class="form-group"><label><i class="fas fa-store"></i> Tienda Asignada *</label><select id="usuarioTiendaId" required><option value="">-- Selecciona una tienda --</option></select><small style="color:var(--gray);font-size:.8rem;">El ID de la tienda será su ID de usuario.</small></div>
-                <div class="form-group"><label><i class="fas fa-user"></i> Nombre de Usuario (Login) *</label><input type="text" id="usuarioTiendaNombre" required placeholder="Ej: hamburguesas_corral"></div>
-                <div class="form-group"><label><i class="fas fa-lock"></i> Contraseña *</label><input type="text" id="usuarioTiendaPassword" required placeholder="Mínimo 4 caracteres"></div>
+                <div class="form-group"><label><i class="fas fa-store"></i> Tienda Asignada *</label><select
+                        id="usuarioTiendaId" required>
+                        <option value="">-- Selecciona una tienda --</option>
+                    </select><small style="color:var(--gray);font-size:.8rem;">El ID de la tienda será su ID de
+                        usuario.</small></div>
+                <div class="form-group"><label><i class="fas fa-user"></i> Nombre de Usuario (Login) *</label><input
+                        type="text" id="usuarioTiendaNombre" required placeholder="Ej: hamburguesas_corral"></div>
+                <div class="form-group"><label><i class="fas fa-lock"></i> Contraseña *</label><input type="text"
+                        id="usuarioTiendaPassword" required placeholder="Mínimo 4 caracteres"></div>
                 <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="cerrarModalUsuarioTienda()">Cancelar</button>
+                    <button type="button" class="btn btn-secondary"
+                        onclick="cerrarModalUsuarioTienda()">Cancelar</button>
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
                 </div>
             </form>
@@ -613,7 +812,7 @@
                 <h3 id="modalAnuncioTitulo"><i class="fas fa-bullhorn"></i> Crear Anuncio</h3>
                 <button class="close-modal" onclick="AdminAnuncios.cerrarModal()"><i class="fas fa-times"></i></button>
             </div>
-            
+
             <!-- Selección de Tipo Inicial -->
             <div id="tiposAnuncioContainer" class="tipos-anuncio-grid">
                 <div class="tipo-anuncio-card" onclick="AdminAnuncios.seleccionarTipo('tienda')">
@@ -639,41 +838,61 @@
                     <div class="constructor-form">
                         <input type="hidden" id="anuncioId">
                         <input type="hidden" id="anuncioTipo">
-                        
+
                         <div class="form-group">
                             <label><i class="fas fa-heading"></i> Título *</label>
-                            <input type="text" id="anuncioTitulo" placeholder="Ej: 2x1 en Pizzas" oninput="AdminAnuncios.actualizarPreview()">
+                            <input type="text" id="anuncioTitulo" placeholder="Ej: 2x1 en Pizzas"
+                                oninput="AdminAnuncios.actualizarPreview()">
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-align-left"></i> Subtítulo</label>
-                            <input type="text" id="anuncioSubtitulo" placeholder="Ej: Solo por hoy" oninput="AdminAnuncios.actualizarPreview()">
+                            <input type="text" id="anuncioSubtitulo" placeholder="Ej: Solo por hoy"
+                                oninput="AdminAnuncios.actualizarPreview()">
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-image"></i> URL de Imagen</label>
-                            <input type="url" id="anuncioImagenUrl" placeholder="https://..." oninput="AdminAnuncios.actualizarPreview()">
+                            <input type="url" id="anuncioImagenUrl" placeholder="https://..."
+                                oninput="AdminAnuncios.actualizarPreview()">
+                        </div>
+
+                        <!-- ★ NUEVOS CAMPOS: BADGE Y TÉRMINOS ★ -->
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> Texto del Badge (Etiqueta)</label>
+                            <input type="text" id="anuncioBadgeTexto" placeholder="Ej: Oferta Especial, Promo, Nuevo">
+                            <small style="color:var(--gray); font-size:0.8rem;">Si lo dejas vacío, saldrá el default
+                                (Oferta, Descuento, Promo).</small>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-file-contract"></i> URL de Términos y Condiciones</label>
+                            <input type="url" id="anuncioUrlTerminos"
+                                placeholder="https://domidelis.top/pages/terminos.html">
                         </div>
 
                         <!-- Campos dinámicos según tipo -->
                         <div id="camposTienda" style="display:none;">
                             <div class="form-group">
                                 <label><i class="fas fa-tag"></i> Precio Promocional *</label>
-                                <input type="number" id="anuncioPrecioPromo" placeholder="15000" oninput="AdminAnuncios.actualizarPreview()">
+                                <input type="number" id="anuncioPrecioPromo" placeholder="15000"
+                                    oninput="AdminAnuncios.actualizarPreview()">
                             </div>
                             <div class="form-group">
                                 <label><i class="fas fa-tag"></i> Precio Normal (Tachado)</label>
-                                <input type="number" id="anuncioPrecioNormal" placeholder="30000" oninput="AdminAnuncios.actualizarPreview()">
+                                <input type="number" id="anuncioPrecioNormal" placeholder="30000"
+                                    oninput="AdminAnuncios.actualizarPreview()">
                             </div>
                         </div>
                         <div id="camposDomicilio" style="display:none;">
                             <div class="form-group">
                                 <label><i class="fas fa-percent"></i> % Descuento Domicilio *</label>
-                                <input type="number" id="anuncioDescuento" placeholder="50" oninput="AdminAnuncios.actualizarPreview()">
+                                <input type="number" id="anuncioDescuento" placeholder="50"
+                                    oninput="AdminAnuncios.actualizarPreview()">
                             </div>
                         </div>
                         <div id="camposCodigo" style="display:none;">
                             <div class="form-group">
                                 <label><i class="fas fa-qrcode"></i> Código a Validar *</label>
-                                <input type="text" id="anuncioCodigo" placeholder="DOMIDELIS50" oninput="AdminAnuncios.actualizarPreview()">
+                                <input type="text" id="anuncioCodigo" placeholder="DOMIDELIS50"
+                                    oninput="AdminAnuncios.actualizarPreview()">
                             </div>
                         </div>
 
@@ -691,23 +910,38 @@
                         <div class="form-group">
                             <label><i class="fas fa-sort"></i> Orden Visual (Arrastra)</label>
                             <div class="drag-list" id="dragList">
-                                <div class="drag-item" draggable="true" data-el="imagen"><i class="fas fa-grip-vertical drag-handle"></i><span class="drag-item-text">Imagen</span></div>
-                                <div class="drag-item" draggable="true" data-el="titulo"><i class="fas fa-grip-vertical drag-handle"></i><span class="drag-item-text">Título</span></div>
-                                <div class="drag-item" draggable="true" data-el="subtitulo"><i class="fas fa-grip-vertical drag-handle"></i><span class="drag-item-text">Subtítulo</span></div>
-                                <div class="drag-item" draggable="true" data-el="precio"><i class="fas fa-grip-vertical drag-handle"></i><span class="drag-item-text">Precio</span></div>
-                                <div class="drag-item" draggable="true" data-el="boton"><i class="fas fa-grip-vertical drag-handle"></i><span class="drag-item-text">Botón</span></div>
+                                <div class="drag-item" draggable="true" data-el="imagen"><i
+                                        class="fas fa-grip-vertical drag-handle"></i><span
+                                        class="drag-item-text">Imagen</span></div>
+                                <div class="drag-item" draggable="true" data-el="titulo"><i
+                                        class="fas fa-grip-vertical drag-handle"></i><span
+                                        class="drag-item-text">Título</span></div>
+                                <div class="drag-item" draggable="true" data-el="subtitulo"><i
+                                        class="fas fa-grip-vertical drag-handle"></i><span
+                                        class="drag-item-text">Subtítulo</span></div>
+                                <div class="drag-item" draggable="true" data-el="precio"><i
+                                        class="fas fa-grip-vertical drag-handle"></i><span
+                                        class="drag-item-text">Precio</span></div>
+                                <div class="drag-item" draggable="true" data-el="boton"><i
+                                        class="fas fa-grip-vertical drag-handle"></i><span
+                                        class="drag-item-text">Botón</span></div>
                             </div>
                         </div>
 
                         <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="AdminAnuncios.guardarAnuncio('borrador')"><i class="fas fa-save"></i> Guardar Borrador</button>
-                            <button type="button" class="btn btn-success" onclick="AdminAnuncios.guardarAnuncio('activo')"><i class="fas fa-rocket"></i> Publicar</button>
+                            <button type="button" class="btn btn-secondary"
+                                onclick="AdminAnuncios.guardarAnuncio('borrador')"><i class="fas fa-save"></i> Guardar
+                                Borrador</button>
+                            <button type="button" class="btn btn-success"
+                                onclick="AdminAnuncios.guardarAnuncio('activo')"><i class="fas fa-rocket"></i>
+                                Publicar</button>
                         </div>
                     </div>
 
                     <!-- Live Preview -->
                     <div class="preview-container">
-                        <h5 style="margin-bottom:1rem; color:var(--gray);"><i class="fas fa-mobile-alt"></i> Vista Previa</h5>
+                        <h5 style="margin-bottom:1rem; color:var(--gray);"><i class="fas fa-mobile-alt"></i> Vista
+                            Previa</h5>
                         <div class="preview-device-frame">
                             <div class="preview-content" id="livePreviewContent">
                                 <!-- Se llena con JS -->
@@ -724,7 +958,7 @@
     <footer>
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2025 DOMICILIOS - Panel de Administración</p>
+                <p>&copy; 2025 DOMIDELIS - Panel de Administración</p>
             </div>
         </div>
     </footer>
@@ -756,7 +990,7 @@
             const sec = document.getElementById(`sec-${nombre}`);
             if (btn) btn.classList.add('active');
             if (sec) sec.classList.add('active');
-            
+
             if (nombre === 'informes' && typeof cargarInformes === 'function' && !informeCargado) {
                 cargarInformes();
             }

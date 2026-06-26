@@ -1,5 +1,6 @@
 // ============================================
 // admin-anuncios.js — Panel de Administración de Anuncios
+// ★ ACTUALIZADO: Soporte para Badge personalizado y URL de Términos
 // ============================================
 
 const AdminAnuncios = {
@@ -130,6 +131,14 @@ const AdminAnuncios = {
         document.getElementById('anuncioCodigo').value = '';
         document.getElementById('anuncioFechaInicio').value = '';
         document.getElementById('anuncioFechaFin').value = '';
+        
+        // ★ Limpiar nuevos campos
+        document.getElementById('anuncioBadgeTexto').value = '';
+        document.getElementById('anuncioUrlTerminos').value = '';
+
+        // ★ Limpiar el select de tiendas si existía de una edición anterior
+        const grupoTiendaSelect = document.getElementById('grupoTiendaSelect');
+        if (grupoTiendaSelect) grupoTiendaSelect.remove();
 
         document.getElementById('modalAnuncio').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -303,6 +312,10 @@ const AdminAnuncios = {
         params.append('estado', estado);
         params.append('fechaInicio', fechaInicio);
         params.append('fechaFin', fechaFin);
+        
+        // ★ NUEVOS PARÁMETROS
+        params.append('badgeTexto', document.getElementById('anuncioBadgeTexto').value || '');
+        params.append('urlTerminos', document.getElementById('anuncioUrlTerminos').value || '');
 
         if (tipo === 'tienda') {
             const tiendaSelect = document.getElementById('anuncioTiendaId');
@@ -365,6 +378,10 @@ const AdminAnuncios = {
         document.getElementById('anuncioImagenUrl').value = anuncio.imagenUrl || '';
         document.getElementById('anuncioFechaInicio').value = anuncio.fechaInicio || '';
         document.getElementById('anuncioFechaFin').value = anuncio.fechaFin || '';
+        
+        // ★ ASIGNAR NUEVOS CAMPOS
+        document.getElementById('anuncioBadgeTexto').value = anuncio.badgeTexto || '';
+        document.getElementById('anuncioUrlTerminos').value = anuncio.urlTerminos || '';
 
         if (anuncio.tipo === 'tienda') {
             // Inyectar select y luego asignarle el valor guardado

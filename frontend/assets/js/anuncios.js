@@ -1,13 +1,13 @@
 // ============================================
 // anuncios.js — Framework de Anuncios (App Cliente)
-// ★ ACTUALIZADO: Regla maestra de 6 horas (1 promo por usuario)
+// ★ ACTUALIZADO: Términos y Condiciones + Badge Personalizable
 // ============================================
 
 const Anuncios = {
     activos: [],
     anuncioDestacado: null,
-    SEIS_HORAS_MS: 6 * 60 * 60 * 1000, // 6 horas en milisegundos
-    CLAIM_KEY: 'domidelis_claim_timestamp', // Llave maestra de canje
+    SEIS_HORAS_MS: 6 * 60 * 60 * 1000,
+    CLAIM_KEY: 'domidelis_claim_timestamp',
 
     init: async function() {
         await this.cargarAnuncios();
@@ -17,11 +17,9 @@ const Anuncios = {
         }
     },
 
-    // Función helper: ¿El usuario está bloqueado de canjear?
     estaBloqueado: function() {
         const ultimoCanje = localStorage.getItem(this.CLAIM_KEY);
         if (!ultimoCanje) return false;
-        
         const tiempoPasado = Date.now() - parseInt(ultimoCanje, 10);
         return tiempoPasado < this.SEIS_HORAS_MS;
     },
@@ -30,7 +28,6 @@ const Anuncios = {
         try {
             const res = await fetch(`${API_URL}?action=getAnunciosActivos`);
             const data = await res.json();
-            
             if (data.success && Array.isArray(data.anuncios) && data.anuncios.length > 0) {
                 this.activos = data.anuncios;
                 for (let i = this.activos.length - 1; i > 0; i--) {
@@ -49,7 +46,8 @@ const Anuncios = {
         if (!contenedor || !this.anuncioDestacado) return;
 
         const anuncio = this.anuncioDestacado;
-        const badgeTexto = anuncio.tipo === 'tienda' ? 'Oferta' : (anuncio.tipo === 'domicilio' ? 'Descuento' : 'Promo');
+        // ★ Badge personalizado o default
+        const badgeTexto = anuncio.badgeTexto || (anuncio.tipo === 'tienda' ? 'Oferta' : (anuncio.tipo === 'domicilio' ? 'Descuento' : 'Promo'));
         
         let precioHtml = '';
         if (anuncio.tipo === 'tienda' && anuncio.precioPromo > 0) {
@@ -83,16 +81,11 @@ const Anuncios = {
         `;
     },
 
-    // Pop-up automático con regla de 6 horas
     mostrarPopupAutomatico: function() {
         const POPUP_KEY = 'domidelis_popup_timestamp';
         const AHORA = Date.now();
-
         const ultimaVezVisto = localStorage.getItem(POPUP_KEY);
-        if (ultimaVezVisto && (AHORA - parseInt(ultimaVezVisto, 10) < this.SEIS_HORAS_MS)) {
-            return; 
-        }
-
+        if (ultimaVezVisto && (AHORA - parseInt(ultimaVezVisto, 10) < this.SEIS_HORAS_MS)) return; 
         if (!this.anuncioDestacado) return;
 
         setTimeout(() => {
@@ -112,8 +105,8 @@ const Anuncios = {
         overlay.className = 'anuncio-popup-overlay';
         overlay.id = 'anuncioPopupOverlay';
         
-        // ★ Verificamos el bloqueo maestro
         const bloqueado = this.estaBloqueado();
+        const badgeTexto = anuncio.badgeTexto || (anuncio.tipo === 'domicilio' ? 'Descuento' : 'Promoción');
 
         let htmlInterno = `
             <div class="popup-anuncio">
@@ -122,7 +115,7 @@ const Anuncios = {
                 
                 <div class="popup-imagen-wrap">
                     ${anuncio.imagenUrl ? `<img src="${anuncio.imagenUrl}" alt="${anuncio.titulo}">` : '<div class="popup-emoji-grande">🍔🥃</div>'}
-                    <span class="popup-badge">${anuncio.tipo === 'domicilio' ? 'Descuento' : 'Promoción'}</span>
+                    <span class="popup-badge">${badgeTexto}</span>
                 </div>
                 
                 <div class="popup-contenido">
@@ -130,7 +123,6 @@ const Anuncios = {
                     <h2>${anuncio.titulo || ''}</h2>
         `;
 
-        // Si está bloqueado por haber canjeado CUALQUIER promo en las últimas 6 horas
         if (bloqueado) {
             htmlInterno += `
                 <p>Ya has canjeado una promoción recientemente. ¡Vuelve pronto para más ofertas!</p>
@@ -139,7 +131,6 @@ const Anuncios = {
                 </button>
             `;
         } else {
-            // Lógica normal si NO está bloqueado
             if (anuncio.tipo === 'tienda' && anuncio.precioPromo > 0) {
                 const carritoActual = typeof obtenerCarrito === 'function' ? obtenerCarrito() : [];
                 const enCarrito = carritoActual.some(item => item.id === `promo_${anuncio.id}`);
@@ -181,8 +172,15 @@ const Anuncios = {
             }
         }
 
+        // ★ Lógica de Términos y Condiciones
+        let terminosHtml = '';
+        if (anuncio.urlTerminos) {
+            terminosHtml = `<a href="${anuncio.urlTerminos}" target="_blank" style="display:block; margin-top:10px; font-size:11px; color:var(--gray); text-decoration:underline;">Aplican Términos y Condiciones</a>`;
+        }
+
         htmlInterno += `
                     <p class="popup-nota">El código se aplicará al finalizar tu compra.</p>
+                    ${terminosHtml}
                 </div>
             </div>
         `;
@@ -208,7 +206,6 @@ const Anuncios = {
         const anuncio = this.activos.find(a => a.id === anuncioId) || this.anuncioDestacado;
         if (!anuncio) return;
 
-        // Doble seguridad
         if (this.estaBloqueado()) {
             return mostrarToast && mostrarToast('Lo sentimos', 'Ya canjeaste una promo en las últimas 6 horas', 'error');
         }
@@ -224,10 +221,8 @@ const Anuncios = {
 
         if (typeof agregarAlCarrito === 'function') {
             agregarAlCarrito(productoPromo, 1);
-            // ★ Activamos el bloqueo maestro de 6 horas
             localStorage.setItem(this.CLAIM_KEY, Date.now().toString());
         }
-        
         this.cerrarPopup();
     },
 
@@ -241,13 +236,11 @@ const Anuncios = {
         }
 
         localStorage.setItem('descuento_domicilio', anuncio.descuentoDomicilio);
-        // ★ Activamos el bloqueo maestro de 6 horas
         localStorage.setItem(this.CLAIM_KEY, Date.now().toString());
         
         if (typeof mostrarToast === 'function') {
             mostrarToast('¡Descuento activado!', `${anuncio.descuentoDomicilio}% off en tu domicilio`, 'success');
         }
-
         this.cerrarPopup();
     },
 
@@ -264,7 +257,6 @@ const Anuncios = {
         
         if (codigoIngresado === anuncio.codigoPromo.toUpperCase()) {
             localStorage.setItem('domidelis_codigo_promo', codigoIngresado);
-            // ★ Activamos el bloqueo maestro de 6 horas
             localStorage.setItem(this.CLAIM_KEY, Date.now().toString());
 
             if (typeof mostrarToast === 'function') {
