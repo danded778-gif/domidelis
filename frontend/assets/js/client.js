@@ -31,58 +31,8 @@ function inicializarEventos() {
             mobileMenu.classList.toggle("active");
         };
     }
-    // ★ LÓGICA DEL POPUP - VALIDAR Y GUARDAR CÓDIGO ★
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupAnuncio = document.getElementById('popupAnuncio');
-    const popupCerrarBtn = document.getElementById('popupCerrarBtn');
-    const codigoInput = document.getElementById('popupCodigoInput');
-    const validarBtn = document.getElementById('popupValidarBtn');
-    const codigoContainer = document.getElementById('popupCodigoContainer');
-    const exitoDiv = document.getElementById('popupExito');
-
-    function cerrarPopup() {
-        if (popupOverlay) popupOverlay.classList.remove('mostrar');
-        if (popupAnuncio) popupAnuncio.classList.remove('mostrar');
-        document.body.style.overflow = '';
-    }
-
-    if (popupCerrarBtn) popupCerrarBtn.onclick = cerrarPopup;
-    if (popupOverlay) popupOverlay.onclick = cerrarPopup;
-
-    if (validarBtn && codigoInput) {
-        validarBtn.onclick = function () {
-            const CODIGOS_VALIDOS = ["DOMIDELIS50", "JUDEA50", "CHAPA50", "CENTRO50"];
-            const codigoIngresado = codigoInput.value.trim().toUpperCase();
-
-            if (CODIGOS_VALIDOS.includes(codigoIngresado)) {
-                localStorage.setItem('domidelis_codigo_promo', codigoIngresado);
-                codigoContainer.style.display = 'none';
-                exitoDiv.style.display = 'block';
-                setTimeout(() => cerrarPopup(), 1500);
-            } else if (codigoIngresado !== '') {
-                codigoInput.classList.add('invalid');
-                codigoInput.value = '';
-                codigoInput.placeholder = 'Código inválido';
-                setTimeout(() => {
-                    codigoInput.classList.remove('invalid');
-                    codigoInput.placeholder = 'Escribe tu código';
-                }, 2000);
-            }
-        };
-        codigoInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') { e.preventDefault(); validarBtn.click(); }
-        });
-    }
-
-    const POPUP_KEY = 'domidelis_popup_visto';
-    if (!sessionStorage.getItem(POPUP_KEY) && popupAnuncio) {
-        setTimeout(() => {
-            popupOverlay.classList.add('mostrar');
-            popupAnuncio.classList.add('mostrar');
-            document.body.style.overflow = 'hidden';
-            sessionStorage.setItem(POPUP_KEY, 'true');
-        }, 2500);
-    }
+    // ★ LÓGICA DEL POPUP VIEJO ELIMINADA ★
+    // Ahora el anuncio es controlado por anuncios.js de forma dinámica
 }
 
 
