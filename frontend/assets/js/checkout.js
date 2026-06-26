@@ -2,11 +2,20 @@
 // checkout.js — Compatible con iOS (WhatsApp sincrónico)
 // Blindado contra datos incompletos o erróneos
 // Adaptado para Autocompletado de Zona
+// ★ ACTUALIZADO: Lógica de descuentos de anuncios
 // ============================================
 (function () {
     'use strict';
 
     let metodoPagoSeleccionado = '';
+
+    // ============================================
+    // HELPER: OBTENER DESCUENTO DE DOMICILIO ACTIVO
+    // ============================================
+    function obtenerDescuentoDomicilio() {
+        const desc = localStorage.getItem('descuento_domicilio');
+        return desc ? parseFloat(desc) : 0;
+    }
 
     // ============================================
     // INICIO
@@ -29,27 +38,22 @@
         }
     });
 
-
     // ============================================
     // SINCRONIZAR SELECTOR DE ZONA EN CHECKOUT
-    // Ahora escucha el hidden input que llena el autocompletado
     // ============================================
     function initZonaCheckout() {
         const hiddenInput = document.getElementById('zona-checkout');
         if (!hiddenInput) return;
 
-        // Cuando el cliente seleccione una zona en el autocompletado, actualizar todo
         hiddenInput.addEventListener('change', (e) => {
             APP_CONFIG.zonaActual = e.target.value;
             localStorage.setItem('zonaSeleccionada', e.target.value);
 
-            // Quitar errores si había
             const zonaInput = document.getElementById('zona-checkout-input');
             const zonaError = document.getElementById('zona-checkout-error');
             if (zonaInput) zonaInput.classList.remove('input-error');
             if (zonaError) zonaError.style.display = 'none';
 
-            // Volver a renderizar el resumen para que actualice el precio del envío
             renderResumen();
         });
     }
@@ -133,17 +137,32 @@
 
         container.innerHTML = html;
 
-        const envio = calcularEnvio(carrito);
-        const total = subtotal + envio;
+        // ★ LÓGICA DE ENVÍO Y DESCUENTO ★
+        const envioBase = calcularEnvio(carrito);
+        const descuentoPct = obtenerDescuentoDomicilio();
+        let envioFinal = envioBase;
+        let descuentoValor = 0;
+
+        if (descuentoPct > 0) {
+            descuentoValor = Math.round((envioBase * descuentoPct) / 100);
+            envioFinal = envioBase - descuentoValor;
+        }
+
+        const total = subtotal + envioFinal;
         const recargo = descripcionRecargo(carrito);
 
         document.getElementById('resumenSubtotal').textContent = formatearPrecio(subtotal);
 
         const envioEl = document.getElementById('resumenEnvio');
         if (recargo) {
-            envioEl.innerHTML = `${formatearPrecio(envio)} <span style="background:#fff0f0;color:#c62828;font-size:0.72rem;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:4px;">${recargo}</span>`;
+            envioEl.innerHTML = `${formatearPrecio(envioFinal)} <span style="background:#fff0f0;color:#c62828;font-size:0.72rem;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:4px;">${recargo}</span>`;
         } else {
-            envioEl.textContent = formatearPrecio(envio);
+            envioEl.textContent = formatearPrecio(envioFinal);
+        }
+
+        // ★ Mostrar el badge verde de descuento aplicado
+        if (descuentoPct > 0) {
+            envioEl.innerHTML += ` <span style="color:var(--success); font-weight:700; font-size:0.8rem;">(-${descuentoPct}%)</span>`;
         }
 
         document.getElementById('resumenTotal').textContent = formatearPrecio(total);
@@ -195,7 +214,6 @@
         const metodoPago = metodoPagoSeleccionado;
         const carrito = obtenerCarrito();
 
-        // ★ Variables de zona con autocompletado ★
         const zonaHidden = document.getElementById('zona-checkout');
         const zonaInput = document.getElementById('zona-checkout-input');
         const zonaError = document.getElementById('zona-checkout-error');
@@ -204,15 +222,12 @@
         // ============================================================
         // ★ MURO DE SEGURIDAD ★
         // ============================================================
-
-        // 1. Nombre
         if (!nombre || nombre.length < 3) {
             mostrarNotificacion('Ingresa tu nombre completo', 'error');
             document.getElementById('nombre').focus();
             return;
         }
 
-        // 2. Teléfono
         const telefonoValido = /^[0-9]{10}$/.test(telefono);
         if (!telefonoValido) {
             mostrarNotificacion('El teléfono debe tener exactamente 10 números', 'error');
@@ -220,14 +235,12 @@
             return;
         }
 
-        // 3. Dirección
         if (!direccion) {
             mostrarNotificacion('Ingresa la dirección de entrega', 'error');
             document.getElementById('direccion').focus();
             return;
         }
 
-        // 4. Zona: OBLIGATORIA - Validación visual con el autocompletado
         if (!zonaValue) {
             if (zonaInput) zonaInput.classList.add('input-error');
             if (zonaError) zonaError.style.display = 'block';
@@ -236,13 +249,11 @@
             return;
         }
 
-        // 5. Método de pago
         if (!metodoPago) {
             mostrarNotificacion('Selecciona un método de pago', 'error');
             return;
         }
 
-        // 6. Carrito no vacío
         if (carrito.length === 0) {
             mostrarNotificacion('El carrito está vacío', 'error');
             return;
@@ -252,12 +263,10 @@
         // SI LLEGA HASTA AQUÍ, TODOS LOS DATOS SON CORRECTOS
         // ============================================================
 
-        // ★ Obtener datos de la zona seleccionada desde el array ZONAS ★
         const zonaObj = (typeof ZONAS !== 'undefined') ? ZONAS.find(z => z.id === zonaValue) : null;
         const barrio = zonaObj ? zonaObj.nombre : zonaValue;
         const zonaNombre = barrio;
 
-        // Sincronizar APP_CONFIG por si acaso
         APP_CONFIG.zonaActual = zonaValue;
 
         let subtotal = 0;
@@ -266,8 +275,19 @@
             const cant = parseInt(item.cantidad) || 1;
             subtotal += (item.subtotal) ? parseInt(item.subtotal) : (precio * cant);
         });
-        const envio = calcularEnvio(carrito);
-        const total = subtotal + envio;
+        
+        // ★ Cálculo con descuento para el servidor y WhatsApp ★
+        const envioBase = calcularEnvio(carrito);
+        const descuentoPct = obtenerDescuentoDomicilio();
+        let descuentoValor = 0;
+        let envioFinal = envioBase;
+
+        if (descuentoPct > 0) {
+            descuentoValor = Math.round((envioBase * descuentoPct) / 100);
+            envioFinal = envioBase - descuentoValor;
+        }
+
+        const total = subtotal + envioFinal;
 
         const pedidoId = Date.now().toString(36).toUpperCase() +
             Math.random().toString(36).substring(2, 5).toUpperCase();
@@ -275,7 +295,7 @@
         const mensaje = construirMensaje({
             pedidoId, nombre, telefono, direccion,
             barrio, referencias, metodoPago,
-            zonaNombre, envio, subtotal, total,
+            zonaNombre, envio: envioFinal, envioBase, descuentoPct, descuentoValor, subtotal, total,
             items: carrito
         });
 
@@ -283,19 +303,18 @@
             pedidoId, nombre, total, metodoPago
         }));
 
-        // ============================================================
-        // ★★★ CRITICO PARA iOS ★★★
-        // ============================================================
         abrirWhatsAppiOS(mensaje);
 
         setTimeout(() => {
             guardarPedidoServidor({
                 pedidoId, nombre, telefono, direccion,
                 barrio, referencias, metodoPago,
-                zona: zonaValue, envio,
+                zona: zonaValue, envio: envioFinal,
                 subtotal, total, items: carrito
             });
+            // ★ Limpiar promociones usadas
             localStorage.removeItem('domidelis_codigo_promo');
+            localStorage.removeItem('descuento_domicilio');
         }, 500);
 
         setTimeout(() => {
@@ -359,7 +378,6 @@
             window.open(url, '_blank');
         }
     }
-
 
     function compactarMensaje(mensajeCompleto) {
         const carrito = obtenerCarrito();
@@ -433,7 +451,16 @@
 
         msg += `━━━━━━━━━━━━━━━━━━\n`;
         msg += `💵 *Subtotal:* ${formatearPrecio(data.subtotal)}\n`;
-        msg += `🏍️ *Envío (${data.zonaNombre}):* ${formatearPrecio(data.envio)}\n`;
+        
+        // ★ Lógica de descuento en el mensaje de WhatsApp ★
+        if (data.descuentoPct > 0) {
+            msg += `🏍️ *Envío Base (${data.zonaNombre}):* ${formatearPrecio(data.envioBase)}\n`;
+            msg += `📉 *Descuento Promo (${data.descuentoPct}%):* -${formatearPrecio(data.descuentoValor)}\n`;
+            msg += `🏍️ *Envío Final:* ${formatearPrecio(data.envio)}\n`;
+        } else {
+            msg += `🏍️ *Envío (${data.zonaNombre}):* ${formatearPrecio(data.envio)}\n`;
+        }
+
         msg += `💰 *TOTAL:* ${formatearPrecio(data.total)}\n\n`;
         msg += `💳 *Pago:* ${data.metodoPago}\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n`;
@@ -473,7 +500,7 @@
             clienteDireccion: data.direccion + (data.barrio ? ' - ' + data.barrio : ''),
             clienteTelefono: data.telefono,
             productosJson: productosJson,
-            total: data.total.toString(),
+            total: data.total.toString(), // ★ Ya viene con el descuento aplicado
             metodoPago: data.metodoPago,
             zona: data.zona,
             referencias: data.referencias || '',
