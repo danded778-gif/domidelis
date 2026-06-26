@@ -1,6 +1,7 @@
 // ============================================
 // client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA
 // Incluye: Horario JSON (Día por día), Autocomplete, Carrito, Analíticas
+// ★ ACTUALIZADO: Limpieza de anuncios viejos y control de visualización de anuncios dinámicos.
 // ============================================
 
 let tiendas = [];
@@ -56,6 +57,10 @@ function cerrarCarrito() {
 async function cargarTiendas() {
     const container = document.getElementById("stores-grid");
     if (!container) return;
+
+    // ★ MOSTRAR ANUNCIO AL VOLVER A LA LISTA DE TIENDAS ★
+    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
 
     try {
         const res = await fetch(`${CATALOGO_URL}?v=${Date.now()}`);
@@ -147,6 +152,10 @@ function renderizarTiendas() {
 async function verMenuTienda(tiendaId) {
     const container = document.getElementById("stores-grid");
     if (!container) return;
+
+    // ★ OCULTAR ANUNCIO AL ENTRAR A UNA TIENDA ★
+    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
 
     container.className = '';
     container.innerHTML = `...`;
