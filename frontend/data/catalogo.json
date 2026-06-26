@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-26T00-56-23",
-  "ultimaActualizacion": "2026-06-26T00:56:23.354Z",
+  "version": "v2026-06-26T00-57-30",
+  "ultimaActualizacion": "2026-06-26T00:57:30.466Z",
   "tiendas": [
     {
       "id": 1,
@@ -90,7 +90,7 @@
       "descripcion": "Mercado, farmacia, encargos y mensajería.",
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"Cerrado\"}",
-      "rating": 4,
+      "rating": 3.8,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
       "activo": true,
       "productos": [
