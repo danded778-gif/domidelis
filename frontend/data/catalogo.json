@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-25T22-48-55",
-  "ultimaActualizacion": "2026-06-25T22:48:55.607Z",
+  "version": "v2026-06-26T00-56-23",
+  "ultimaActualizacion": "2026-06-26T00:56:23.354Z",
   "tiendas": [
     {
       "id": 1,
@@ -8,7 +8,7 @@
       "descripcion": "Bebidas y Comidas.",
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
-      "rating": 5,
+      "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
       "activo": true,
       "productos": [
