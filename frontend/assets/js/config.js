@@ -51,7 +51,7 @@ const APP_CONFIG = {
         señorcaido: { nombre: 'Señor caido', envio: 6000 },
         oriente: { nombre: 'Vargas', envio: 8000 },
         vista: { nombre: 'Vista hermosa', envio: 6000 },
-        aguas: { nombre: 'Aguas vivas', envio: 5000 },
+        aguas: { nombre: 'Aguas vivas', envio: 4000 },
         ecoelsa: { nombre: 'Ecoelsa', envio: 4000 },
         carmelo: { nombre: 'El carmelo', envio: 7000 },
         calvario: { nombre: 'el calvario', envio: 5000 },
@@ -60,15 +60,15 @@ const APP_CONFIG = {
         corazon: { nombre: 'C. de jesus', envio: 6000},
         chorro: { nombre: 'El chorro', envio: 5000},
         arcoiris: { nombre: 'Arcoiris', envio: 6000 },
-        copeconsa: { nombre: 'Copeconsa', envio: 5000 },
+        copeconsa: { nombre: 'Copeconsa', envio: 6000 },
         aire: { nombre: 'Aire libre', envio: 5000 },
         pobres: { nombre: 'B.los pobres', envio: 5000},
         teneria: { nombre: 'Teneria', envio: 5000 },
-        plaza1: { nombre: 'plaza mercado nueva', envio: 5000 },
+        plaza1: { nombre: 'plaza mercado nueva', envio: 6000 },
         plaza2: { nombre: 'Plaza mercado vieja', envio: 5000 },
         vicente: { nombre: 'san vicente', envio: 5000 },
         entrecantos: { nombre: 'entrecantos', envio: 5000 },
-        tanque: { nombre: 'El tanque', envio: 5000 }
+        tanque: { nombre: 'El tanque', envio: 4000 }
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
