@@ -60,7 +60,15 @@ const APP_CONFIG = {
         corazon: { nombre: 'C. de jesus', envio: 6000},
         chorro: { nombre: 'El chorro', envio: 5000},
         arcoiris: { nombre: 'Arcoiris', envio: 6000 },
-        copeconsa: { nombre: 'Copeconsa', envio: 5000 }
+        copeconsa: { nombre: 'Copeconsa', envio: 5000 },
+        aire: { nombre: 'Aire libre', envio: 5000 },
+        pobres: { nombre: 'B.los pobres', envio: 5000},
+        teneria: { nombre: 'Teneria', envio: 5000 },
+        plaza1: { nombre: 'plaza mercado nueva', envio: 5000 },
+        plaza2: { nombre: 'Plaza mercado vieja', envio: 5000 },
+        vicente: { nombre: 'san vicente', envio: 5000 },
+        entrecantos: { nombre: 'entrecantos', envio: 5000 },
+        tanque: { nombre: 'El tanque', envio: 5000 }
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
