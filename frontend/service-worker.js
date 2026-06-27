@@ -6,7 +6,7 @@
 const isDev = false;
 const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
-    : 'domidelis-v1.9.0'; 
+    : 'domidelis-v1.9.1'; 
 
 const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1'; 
 
