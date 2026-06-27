@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-height: 100dvh; /* ★ ARREGLO IOS */
     overflow-x: hidden;  /* para que nose vea la hamburgesa*/
 }
 
@@ -176,6 +177,7 @@ nav {
         font-size: 1.8rem; /* Título más pequeño en móvil */
     }
 }
+
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
@@ -812,6 +814,7 @@ main > .container {
     width: 100%;
     max-width: 400px;
     height: 100vh;
+    height: 100dvh; /* ★ ARREGLO IOS */
     background: white;
     z-index: 1001;
     display: flex;
@@ -990,27 +993,26 @@ main > .container {
     color: var(--gray);
 }
 
-.btn-continuar {
+.btn-whatsapp-cart {
     width: 100%;
     padding: 1rem;
-    background: var(--primary);
+    background: #25D366;
     color: white;
     border: none;
     border-radius: var(--border-radius-lg);
     font-weight: 700;
-    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     transition: var(--transition);
-    margin-top: 1.5rem;
     font-family: inherit;
+    font-size: 1rem;
 }
 
-.btn-continuar:hover {
-    background: var(--dark);
+.btn-whatsapp-cart:hover {
+    background: #128C7E;
     transform: translateY(-2px);
 }
 
@@ -1433,7 +1435,8 @@ tr:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    height: 100dvh; /* ★ ARREGLO IOS */
     background: rgba(0, 0, 0, 0.5);
     z-index: 2000;
     justify-content: center;
@@ -1453,6 +1456,7 @@ tr:hover {
     width: 100%;
     max-width: 500px;
     max-height: 90vh;
+    max-height: 90dvh; /* ★ ARREGLO IOS */
     overflow-y: auto;
     animation: slideUp 0.3s ease;
     position: relative;

@@ -1,7 +1,7 @@
 // ============================================
 // client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA
 // Incluye: Horario JSON (Día por día), Autocomplete, Carrito, Analíticas
-// ★ ACTUALIZADO: Limpieza de anuncios viejos y control de visualización de anuncios dinámicos.
+// ★ ACTUALIZADO: Reintento silencioso de JSON, arreglos de scroll y sintaxis.
 // ============================================
 
 let tiendas = [];
@@ -32,10 +32,7 @@ function inicializarEventos() {
             mobileMenu.classList.toggle("active");
         };
     }
-    // ★ LÓGICA DEL POPUP VIEJO ELIMINADA ★
-    // Ahora el anuncio es controlado por anuncios.js de forma dinámica
 }
-
 
 function abrirCarrito() {
     const cartPanel = document.getElementById("cart-panel");
@@ -53,19 +50,28 @@ function cerrarCarrito() {
     document.body.style.overflow = "";
 }
 
-// ★★★ FUNCIÓN MEJORADA: Carga desde GitHub en vez de Google Sheets ★★★
-async function cargarTiendas() {
+// ★★★ FUNCIÓN MEJORADA: Carga con Reintentos Silenciosos ★★★
+async function cargarTiendas(reintentos = 3) {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
-    // ★ MOSTRAR ANUNCIO AL VOLVER A LA LISTA DE TIENDAS ★
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
 
+    if (reintentos === 3) {
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column: 1 / -1;">
+                <div class="spinner" style="margin: 0 auto 1rem;"></div>
+                <p style="color: var(--gray);">Conectando con las tiendas...</p>
+            </div>
+        `;
+    }
+
     try {
         const res = await fetch(`${CATALOGO_URL}?v=${Date.now()}`);
+        if (!res.ok) throw new Error("Error en la red");
+        
         const data = await res.json();
-
         tiendas = data.tiendas || [];
 
         const tituloPrincipal = document.getElementById('main-title');
@@ -76,15 +82,19 @@ async function cargarTiendas() {
         renderizarTiendas();
     } catch (error) {
         console.error("Error cargando catálogo estático", error);
-        container.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-store-slash"></i>
-                <p>No hay tiendas disponibles</p>
-                <button onclick="cargarTiendas()" class="btn-retry">
-                    <i class="fas fa-redo"></i> Reintentar
-                </button>
-            </div>
-        `;
+        if (reintentos > 0) {
+            setTimeout(() => cargarTiendas(reintentos - 1), 1500);
+        } else {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-store-slash"></i>
+                    <p>No hay conexión con el servidor.</p>
+                    <button onclick="cargarTiendas()" class="btn-retry">
+                        <i class="fas fa-redo"></i> Reintentar
+                    </button>
+                </div>
+            `;
+        }
     }
 }
 
@@ -98,14 +108,9 @@ function renderizarTiendas() {
     tiendas.sort((a, b) => {
         const statusA = checkStoreStatus(a.horario);
         const statusB = checkStoreStatus(b.horario);
-
         const isOpenA = statusA.isOpen ? 1 : 0;
         const isOpenB = statusB.isOpen ? 1 : 0;
-
-        if (isOpenB !== isOpenA) {
-            return isOpenB - isOpenA;
-        }
-
+        if (isOpenB !== isOpenA) return isOpenB - isOpenA;
         const ratingA = parseFloat(a.rating) || 0;
         const ratingB = parseFloat(b.rating) || 0;
         return ratingB - ratingA;
@@ -148,17 +153,21 @@ function renderizarTiendas() {
     `}).join('');
 }
 
-// ★★★ FUNCIÓN MEJORADA: Ya no hace fetch, lee los productos de la memoria ★★★
+// ★★★ FUNCIÓN MEJORADA: Carga suave y sin saltos ★★★
 async function verMenuTienda(tiendaId) {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
-    // ★ OCULTAR ANUNCIO AL ENTRAR A UNA TIENDA ★
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
 
     container.className = '';
-    container.innerHTML = `...`;
+    container.innerHTML = `
+        <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 4rem 0;">
+            <div class="spinner" style="margin: 0 auto 1rem;"></div>
+            <p style="color: var(--gray);">Cargando menú...</p>
+        </div>
+    `;
 
     const tienda = tiendas.find(t => t.id == tiendaId);
 
@@ -167,7 +176,6 @@ async function verMenuTienda(tiendaId) {
         tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${tienda.nombre}`;
     }
 
-    // ★ NUEVO: Registrar evento en Google Analytics ★
     if (tienda && typeof gtag === 'function') {
         gtag('event', 'ver_tienda', {
             'event_category': 'engagement',
@@ -188,9 +196,7 @@ async function verMenuTienda(tiendaId) {
     if (productosValidos.length === 0) {
         container.innerHTML = `
             <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
-            <div class="menu-header">
-                <p>${tienda.descripcion || ""}</p>
-            </div>
+            <div class="menu-header"><p>${tienda.descripcion || ""}</p></div>
             <div class="empty-state"><i class="fas fa-box-open"></i><p>Esta tienda aún no tiene productos</p></div>
         `;
         return;
@@ -204,31 +210,20 @@ async function verMenuTienda(tiendaId) {
 
         const imagenUrl = (p.imagen_url || p.icono || '').trim();
         const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
-
         const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
 
         let botonHTML;
         if (!status.isOpen) {
-            // 1. La tienda está cerrada
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')">
-                <i class="fas fa-clock"></i> Cerrado
-            </button>`;
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')"><i class="fas fa-clock"></i> Cerrado</button>`;
         } else if (esAgotado) {
-            // 2. La tienda está abierta PERO el producto está agotado
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')">
-                <i class="fas fa-ban"></i> Agotado
-            </button>`;
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
         } else {
-            // 3. La tienda está abierta y el producto está disponible
-            botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)">
-                <i class="fas fa-plus"></i> Agregar
-            </button>`;
+            botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
         }
 
         return `
         <div class="product-card">
-            <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" 
-                 ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
+            <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
                 ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
                 ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
             </div>
@@ -236,12 +231,9 @@ async function verMenuTienda(tiendaId) {
                 <h4>${p.nombre}</h4>
                 <p class="product-desc">${p.descripcion || ''}</p>
                 <div class="product-price">${formatearPrecio(p.precio)}</div>
-                <div class="precio-unidad-container">
-                    ${botonHTML}
-                </div>
+                <div class="precio-unidad-container">${botonHTML}</div>
             </div>
-        </div>
-        `;
+        </div>`;
     }).join('');
 
     container.innerHTML = `
@@ -255,27 +247,34 @@ async function verMenuTienda(tiendaId) {
         <div style="margin:1rem 0;">
             <div style="position:relative;">
                 <i class="fas fa-search" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--gray);"></i>
-                <input type="text" id="buscador-productos" placeholder="Buscar producto..." 
-                    oninput="filtrarProductos(this.value)"
-                    style="width:100%;padding:.8rem 1rem .8rem 2.8rem;border:2px solid #e0e0e0;border-radius:50px;font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s;"
-                    onfocus="this.style.borderColor='var(--primary)'"
-                    onblur="this.style.borderColor='#e0e0e0'">
+                <input type="text" id="buscador-productos" placeholder="Buscar producto..." oninput="filtrarProductos(this.value)" style="width:100%;padding:.8rem 1rem .8rem 2.8rem;border:2px solid #e0e0e0;border-radius:50px;font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e0e0e0'">
             </div>
             <p id="resultado-busqueda" style="text-align:center;color:var(--gray);font-size:.85rem;margin-top:.5rem;display:none;"></p>
         </div>
         <div class="menu-grid" id="menu-grid-container">${productosHTML}</div>
     `;
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    // ★ ARREGLO DE SCROLL: Sube suavemente y se frena JUSTO en el título de la tienda
+    requestAnimationFrame(() => {
+        const targetElement = document.getElementById('main-title');
+        if (targetElement) {
+            const headerOffset = 85; // Altura del header fijo para que no tape el título
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth' // Cambia a 'auto' si prefieres que sea instantáneo
+            });
+        }
+    });
+} // ★ ESTA LLAVE FALTABA Y CAUSABA EL ERROR
 
 // ============================================
 // EXPLOSIÓN DE COMIDA RÁPIDA 🍔🍟🍕
 // ============================================
 function crearExplosionComida() {
-    if (navigator.vibrate) {
-        navigator.vibrate([50, 100, 50, 100, 100]);
-    }
+    if (navigator.vibrate) navigator.vibrate([50, 100, 50, 100, 100]);
 
     const emojisComida = ['🍔', '🍟', '🍕', '🌭', '🍗', '🥪', '🌮', '🍿', '🥤', '🍩'];
     const cantidad = 14;
@@ -332,7 +331,6 @@ function agregarAlCarrito(producto, cantidadTipo) {
 
     const carritoVacio = carrito.length === 0;
 
-    // ★★★ EVENTO GOOGLE ANALYTICS: agregar_carrito ★★★
     if (typeof gtag === 'function') {
         gtag('event', 'agregar_carrito', {
             'event_category': 'ecommerce',
@@ -366,9 +364,7 @@ function agregarAlCarrito(producto, cantidadTipo) {
     actualizarCarritoUI();
     mostrarNotificacion(`${producto.nombre} agregado al carrito`);
 
-    if (carritoVacio) {
-        crearExplosionComida();
-    }
+    if (carritoVacio) crearExplosionComida();
 
     const botones = document.querySelectorAll('.btn-agregar-unidad');
     botones.forEach(btn => {
@@ -413,12 +409,7 @@ function actualizarCarritoUI() {
     const cartItemsDiv = document.getElementById("cart-items");
     if (cartItemsDiv) {
         if (carrito.length === 0) {
-            cartItemsDiv.innerHTML = `
-                <div class="cart-empty">
-                    <i class="fas fa-shopping-basket"></i>
-                    <p>Tu carrito está vacío</p>
-                </div>
-            `;
+            cartItemsDiv.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-basket"></i><p>Tu carrito está vacío</p></div>`;
         } else {
             cartItemsDiv.innerHTML = carrito.map((item, idx) => `
                 <div class="cart-item">
@@ -449,9 +440,7 @@ function actualizarCarritoUI() {
 
     const totalPriceEl = document.getElementById("cart-total-price");
     if (totalPriceEl) {
-        const recargoHtml = recargo
-            ? ` <span style="color:var(--primary);font-size:0.75rem;font-weight:600;">${recargo}</span>`
-            : '';
+        const recargoHtml = recargo ? ` <span style="color:var(--primary);font-size:0.75rem;font-weight:600;">${recargo}</span>` : '';
         totalPriceEl.innerHTML = `${formatearPrecio(total)} <small>(envío: ${formatearPrecio(envio)})</small>${recargoHtml}`;
     }
 }
@@ -507,51 +496,38 @@ function filtrarProductos(texto) {
         resultado.style.display = 'none';
     } else {
         resultado.style.display = 'block';
-        resultado.textContent = visibles === 0
-            ? 'No se encontraron productos'
-            : `${visibles} resultado${visibles !== 1 ? 's' : ''} para "${texto}"`;
+        resultado.textContent = visibles === 0 ? 'No se encontraron productos' : `${visibles} resultado${visibles !== 1 ? 's' : ''} para "${texto}"`;
     }
 }
 
 // ============================================
-// ★ NUEVAS FUNCIONES PARA LEER EL HORARIO JSON ★
+// HORARIO JSON
 // ============================================
-
-// Devuelve la clave del día actual (mon, tue, wed, etc.) basado en hora de Colombia
 function getDayKey() {
     const now = new Date();
     const colombiaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Bogota" }));
-    const dayIndex = colombiaTime.getDay(); // 0=Dom, 1=Lun, ...
+    const dayIndex = colombiaTime.getDay();
     const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     return days[dayIndex];
 }
 
-// Devuelve el horario de hoy en texto legible, interpretando el JSON
 function getHorarioHoy(horario) {
-    if (!horario) return "11:00-22:00"; // Por defecto
-
-    // Si es el formato nuevo (JSON)
+    if (!horario) return "11:00-22:00";
     if (typeof horario === 'string' && horario.trim().startsWith('{')) {
         try {
-            // Limpiar el JSON por si tiene comillas raras o sin comillas en las claves
             let cleanHorario = horario.replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":').replace(/'/g, '"');
             const obj = JSON.parse(cleanHorario);
             const todayKey = getDayKey();
             return obj[todayKey] || "Cerrado";
         } catch (e) {
-            return horario; // Si falla el parseo, mostramos el texto original
+            return horario;
         }
     }
-    return horario; // Si es formato viejo (ej: "11am - 10pm")
+    return horario;
 }
 
-// ============================================
-// FUNCIÓN DE ESTADO DE TIENDA (ACTUALIZADA PARA JSON)
-// ============================================
 function checkStoreStatus(horario) {
     const horarioHoy = getHorarioHoy(horario);
-
-    // Si hoy está cerrado
     if (!horarioHoy || horarioHoy.toLowerCase() === 'cerrado' || !horarioHoy.includes('-')) {
         return { isOpen: false, nextOpening: "Cerrado hoy" };
     }
@@ -570,12 +546,9 @@ function checkStoreStatus(horario) {
     const endTimeInMinutes = (endH * 60) + endM;
 
     let isOpen = false;
-
     if (endTimeInMinutes > startTimeInMinutes) {
-        // Horario normal (ej: 08:00 - 22:00)
         isOpen = currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes;
     } else {
-        // Cruza medianoche (ej: 20:00 - 06:00)
         isOpen = currentTimeInMinutes >= startTimeInMinutes || currentTimeInMinutes < endTimeInMinutes;
     }
 
@@ -586,7 +559,6 @@ function checkStoreStatus(horario) {
 // ============================================
 // ZONE AUTOCOMPLETE - BUSCADOR DE ZONAS
 // ============================================
-
 const ZONAS = Object.entries(APP_CONFIG.zonas).map(([id, data]) => ({
     id: id,
     nombre: data.nombre,
@@ -603,9 +575,6 @@ function _resaltarTexto(texto, termino) {
     return texto.replace(regex, '<mark>$1</mark>');
 }
 
-// ============================================
-// AUTOCOMPLETE PARA INDEX (Hero)
-// ============================================
 function initZoneAutocomplete() {
     const input = document.getElementById('zone-input');
     const hiddenInput = document.getElementById('zone-select');
@@ -617,24 +586,16 @@ function initZoneAutocomplete() {
     const zonaGuardada = localStorage.getItem('zonaSeleccionada');
     if (zonaGuardada) {
         const zona = ZONAS.find(z => z.id === zonaGuardada);
-        if (zona) {
-            _seleccionarZona(zona, false);
-        }
-        if (typeof APP_CONFIG !== 'undefined') {
-            APP_CONFIG.zonaActual = zonaGuardada;
-        }
+        if (zona) _seleccionarZona(zona, false);
+        if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = zonaGuardada;
     }
 
     input.addEventListener('focus', function () {
-        if (_zonaSeleccionada) {
-            input.value = '';
-        }
+        if (_zonaSeleccionada) input.value = '';
         _mostrarDropdown(input.value);
     });
 
-    input.addEventListener('input', function () {
-        _mostrarDropdown(input.value);
-    });
+    input.addEventListener('input', function () { _mostrarDropdown(input.value); });
 
     input.addEventListener('blur', function () {
         setTimeout(() => {
@@ -642,61 +603,34 @@ function initZoneAutocomplete() {
             if (_zonaSeleccionada && !input.value.trim()) {
                 input.value = '📍 ' + _zonaSeleccionada.nombre + ' - Envío $' + _zonaSeleccionada.envio.toLocaleString('es-CO');
             }
-            if (clearBtn) {
-                clearBtn.classList.toggle('visible', _zonaSeleccionada !== null);
-            }
+            if (clearBtn) clearBtn.classList.toggle('visible', _zonaSeleccionada !== null);
         }, 200);
     });
 
     input.addEventListener('keydown', function (e) {
         const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
-
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            _highlightedIndex = Math.min(_highlightedIndex + 1, options.length - 1);
-            _actualizarHighlight(options);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            _highlightedIndex = Math.max(_highlightedIndex - 1, 0);
-            _actualizarHighlight(options);
-        } else if (e.key === 'Enter') {
-            e.preventDefault();
-            if (_highlightedIndex >= 0 && options[_highlightedIndex]) {
-                options[_highlightedIndex].click();
-            }
-        } else if (e.key === 'Escape') {
-            _cerrarDropdown();
-            input.blur();
-        }
+        if (e.key === 'ArrowDown') { e.preventDefault(); _highlightedIndex = Math.min(_highlightedIndex + 1, options.length - 1); _actualizarHighlight(options); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); _highlightedIndex = Math.max(_highlightedIndex - 1, 0); _actualizarHighlight(options); }
+        else if (e.key === 'Enter') { e.preventDefault(); if (_highlightedIndex >= 0 && options[_highlightedIndex]) options[_highlightedIndex].click(); }
+        else if (e.key === 'Escape') { _cerrarDropdown(); input.blur(); }
     });
 
     if (clearBtn) {
         clearBtn.addEventListener('mousedown', function (e) {
-            e.preventDefault();
-            _zonaSeleccionada = null;
-            input.value = '';
-            hiddenInput.value = '';
-            if (typeof APP_CONFIG !== 'undefined') {
-                APP_CONFIG.zonaActual = '';
-            }
-            localStorage.removeItem('zonaSeleccionada');
-            clearBtn.classList.remove('visible');
-            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
-            input.focus();
+            e.preventDefault(); _zonaSeleccionada = null; input.value = ''; hiddenInput.value = '';
+            if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = '';
+            localStorage.removeItem('zonaSeleccionada'); clearBtn.classList.remove('visible');
+            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI(); input.focus();
         });
     }
 
     document.addEventListener('click', function (e) {
         const autocomplete = document.getElementById('zone-autocomplete');
-        if (autocomplete && !autocomplete.contains(e.target)) {
-            _cerrarDropdown();
-        }
+        if (autocomplete && !autocomplete.contains(e.target)) _cerrarDropdown();
     });
 
     hiddenInput.addEventListener('change', function (e) {
-        if (typeof APP_CONFIG !== 'undefined') {
-            APP_CONFIG.zonaActual = e.target.value;
-        }
+        if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = e.target.value;
         localStorage.setItem('zonaSeleccionada', e.target.value);
         if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
     });
@@ -705,93 +639,54 @@ function initZoneAutocomplete() {
 function _mostrarDropdown(termino) {
     const dropdown = document.getElementById('zone-dropdown');
     if (!dropdown) return;
-
     const terminoLower = termino.toLowerCase().trim();
     let zonasFiltradas = ZONAS;
-
     if (terminoLower) {
-        zonasFiltradas = ZONAS.filter(z =>
-            z.nombre.toLowerCase().includes(terminoLower) ||
-            z.id.toLowerCase().includes(terminoLower)
-        );
+        zonasFiltradas = ZONAS.filter(z => z.nombre.toLowerCase().includes(terminoLower) || z.id.toLowerCase().includes(terminoLower));
     }
-
     _highlightedIndex = -1;
-
     if (zonasFiltradas.length === 0) {
-        dropdown.innerHTML =
-            '<div class="zone-no-results">' +
-            '<i class="fas fa-map-marker-alt"></i>' +
-            'No hay zonas que coincidan con "' + termino + '"' +
-            '</div>';
+        dropdown.innerHTML = '<div class="zone-no-results"><i class="fas fa-map-marker-alt"></i>No hay zonas que coincidan con "' + termino + '"</div>';
     } else {
         dropdown.innerHTML = zonasFiltradas.map(function (zona) {
-            return '<div class="zone-option" data-zone-id="' + zona.id + '" ' +
-                'onclick="_seleccionarZona(ZONAS.find(function(z){return z.id===\'' + zona.id + '\'}), true)">' +
-                '<span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span>' +
-                '<span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span>' +
-                '</div>';
+            return '<div class="zone-option" data-zone-id="' + zona.id + '" onclick="_seleccionarZona(ZONAS.find(function(z){return z.id===\'' + zona.id + '\'}), true)"><span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span><span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span></div>';
         }).join('');
     }
-
     dropdown.classList.add('active');
 }
 
 function _cerrarDropdown() {
     const dropdown = document.getElementById('zone-dropdown');
-    if (dropdown) {
-        dropdown.classList.remove('active');
-        _highlightedIndex = -1;
-    }
+    if (dropdown) { dropdown.classList.remove('active'); _highlightedIndex = -1; }
 }
 
 function _seleccionarZona(zona, actualizar) {
     const input = document.getElementById('zone-input');
     const hiddenInput = document.getElementById('zone-select');
     const clearBtn = document.getElementById('zone-clear-btn');
-
     _zonaSeleccionada = zona;
-
-    if (input) {
-        input.value = '📍 ' + zona.nombre + ' - Envío $' + zona.envio.toLocaleString('es-CO');
-    }
-    if (hiddenInput) {
-        hiddenInput.value = zona.id;
-    }
-    if (clearBtn) {
-        clearBtn.classList.add('visible');
-    }
-
-    if (typeof APP_CONFIG !== 'undefined') {
-        APP_CONFIG.zonaActual = zona.id;
-    }
+    if (input) input.value = '📍 ' + zona.nombre + ' - Envío $' + zona.envio.toLocaleString('es-CO');
+    if (hiddenInput) hiddenInput.value = zona.id;
+    if (clearBtn) clearBtn.classList.add('visible');
+    if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = zona.id;
     localStorage.setItem('zonaSeleccionada', zona.id);
-
     _cerrarDropdown();
-
     if (actualizar) {
-        if (hiddenInput) {
-            hiddenInput.dispatchEvent(new Event('change'));
-        }
+        if (hiddenInput) hiddenInput.dispatchEvent(new Event('change'));
         if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
     }
 }
 
 function _actualizarHighlight(options) {
     options.forEach(function (opt, idx) {
-        if (idx === _highlightedIndex) {
-            opt.classList.add('highlighted');
-            opt.scrollIntoView({ block: 'nearest' });
-        } else {
-            opt.classList.remove('highlighted');
-        }
+        if (idx === _highlightedIndex) { opt.classList.add('highlighted'); opt.scrollIntoView({ block: 'nearest' }); }
+        else { opt.classList.remove('highlighted'); }
     });
 }
 
 // ============================================
 // AUTOCOMPLETE PARA CHECKOUT
 // ============================================
-
 let _checkoutZonaSeleccionada = null;
 let _checkoutHighlightedIndex = -1;
 
@@ -813,125 +708,73 @@ function initZoneAutocompleteCheckout() {
             hiddenInput.value = zona.id;
             if (clearBtn) clearBtn.classList.add('visible');
         }
-        if (typeof APP_CONFIG !== 'undefined') {
-            APP_CONFIG.zonaActual = zonaGuardada;
-        }
+        if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = zonaGuardada;
     }
 
     input.addEventListener('focus', function () {
-        if (_checkoutZonaSeleccionada) {
-            input.value = '';
-        }
-        if (errorMsg) {
-            errorMsg.style.display = 'none';
-            input.classList.remove('input-error');
-        }
+        if (_checkoutZonaSeleccionada) input.value = '';
+        if (errorMsg) { errorMsg.style.display = 'none'; input.classList.remove('input-error'); }
         _mostrarDropdownCheckout(input.value);
     });
 
-    input.addEventListener('input', function () {
-        _mostrarDropdownCheckout(input.value);
-    });
+    input.addEventListener('input', function () { _mostrarDropdownCheckout(input.value); });
 
     input.addEventListener('blur', function () {
         setTimeout(function () {
-            dropdown.classList.remove('active');
-            _checkoutHighlightedIndex = -1;
-            if (_checkoutZonaSeleccionada && !input.value.trim()) {
-                input.value = '📍 ' + _checkoutZonaSeleccionada.nombre + ' - Envío $' + _checkoutZonaSeleccionada.envio.toLocaleString('es-CO');
-            }
-            if (clearBtn) {
-                clearBtn.classList.toggle('visible', _checkoutZonaSeleccionada !== null);
-            }
+            dropdown.classList.remove('active'); _checkoutHighlightedIndex = -1;
+            if (_checkoutZonaSeleccionada && !input.value.trim()) input.value = '📍 ' + _checkoutZonaSeleccionada.nombre + ' - Envío $' + _checkoutZonaSeleccionada.envio.toLocaleString('es-CO');
+            if (clearBtn) clearBtn.classList.toggle('visible', _checkoutZonaSeleccionada !== null);
         }, 200);
     });
 
     input.addEventListener('keydown', function (e) {
         const options = dropdown.querySelectorAll('.zone-option:not(.zone-no-results)');
-
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            _checkoutHighlightedIndex = Math.min(_checkoutHighlightedIndex + 1, options.length - 1);
-            _actualizarHighlightCheckout(options);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            _checkoutHighlightedIndex = Math.max(_checkoutHighlightedIndex - 1, 0);
-            _actualizarHighlightCheckout(options);
-        } else if (e.key === 'Enter') {
-            e.preventDefault();
-            if (_highlightedIndex >= 0 && options[_highlightedIndex]) {
-                options[_highlightedIndex].click();
-            }
-        } else if (e.key === 'Escape') {
-            dropdown.classList.remove('active');
-            input.blur();
-        }
+        if (e.key === 'ArrowDown') { e.preventDefault(); _checkoutHighlightedIndex = Math.min(_checkoutHighlightedIndex + 1, options.length - 1); _actualizarHighlightCheckout(options); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); _checkoutHighlightedIndex = Math.max(_checkoutHighlightedIndex - 1, 0); _actualizarHighlightCheckout(options); }
+        else if (e.key === 'Enter') { e.preventDefault(); if (_highlightedIndex >= 0 && options[_highlightedIndex]) options[_highlightedIndex].click(); }
+        else if (e.key === 'Escape') { dropdown.classList.remove('active'); input.blur(); }
     });
 
     if (clearBtn) {
         clearBtn.addEventListener('mousedown', function (e) {
-            e.preventDefault();
-            _checkoutZonaSeleccionada = null;
-            input.value = '';
-            hiddenInput.value = '';
+            e.preventDefault(); _checkoutZonaSeleccionada = null; input.value = ''; hiddenInput.value = '';
             if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = '';
-            localStorage.removeItem('zonaSeleccionada');
-            clearBtn.classList.remove('visible');
-            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
-            input.focus();
+            localStorage.removeItem('zonaSeleccionada'); clearBtn.classList.remove('visible');
+            if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI(); input.focus();
         });
     }
 
     document.addEventListener('click', function (e) {
         const container = document.getElementById('zone-autocomplete-checkout');
-        if (container && !container.contains(e.target)) {
-            dropdown.classList.remove('active');
-        }
+        if (container && !container.contains(e.target)) dropdown.classList.remove('active');
     });
 }
 
 function _mostrarDropdownCheckout(termino) {
     const dropdown = document.getElementById('zone-dropdown-checkout');
     if (!dropdown) return;
-
     const terminoLower = termino.toLowerCase().trim();
     let zonasFiltradas = ZONAS;
-
     if (terminoLower) {
         zonasFiltradas = ZONAS.filter(function (z) {
             return z.nombre.toLowerCase().includes(terminoLower) || z.id.toLowerCase().includes(terminoLower);
         });
     }
-
     _checkoutHighlightedIndex = -1;
-
     if (zonasFiltradas.length === 0) {
-        dropdown.innerHTML =
-            '<div class="zone-no-results">' +
-            '<i class="fas fa-map-marker-alt"></i>' +
-            'No hay zonas que coincidan con "' + termino + '"' +
-            '</div>';
+        dropdown.innerHTML = '<div class="zone-no-results"><i class="fas fa-map-marker-alt"></i>No hay zonas que coincidan con "' + termino + '"</div>';
     } else {
         dropdown.innerHTML = zonasFiltradas.map(function (zona) {
-            return '<div class="zone-option" data-zone-id="' + zona.id + '" ' +
-                'onclick="_seleccionarZonaCheckout(\'' + zona.id + '\')">' +
-                '<span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span>' +
-                '<span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span>' +
-                '</div>';
+            return '<div class="zone-option" data-zone-id="' + zona.id + '" onclick="_seleccionarZonaCheckout(\'' + zona.id + '\')"><span class="zone-option-name">' + _resaltarTexto(zona.nombre, terminoLower) + '</span><span class="zone-option-price">Envío $' + zona.envio.toLocaleString('es-CO') + '</span></div>';
         }).join('');
     }
-
     dropdown.classList.add('active');
 }
 
 function _actualizarHighlightCheckout(options) {
     options.forEach(function (opt, idx) {
-        if (idx === _checkoutHighlightedIndex) {
-            opt.classList.add('highlighted');
-            opt.scrollIntoView({ block: 'nearest' });
-        } else {
-            opt.classList.remove('highlighted');
-        }
+        if (idx === _checkoutHighlightedIndex) { opt.classList.add('highlighted'); opt.scrollIntoView({ block: 'nearest' }); }
+        else { opt.classList.remove('highlighted'); }
     });
 }
 
@@ -950,16 +793,12 @@ function _seleccionarZonaCheckout(zonaId) {
     hiddenInput.value = zona.id;
 
     if (clearBtn) clearBtn.classList.add('visible');
-    if (errorMsg) {
-        errorMsg.style.display = 'none';
-        input.classList.remove('input-error');
-    }
+    if (errorMsg) { errorMsg.style.display = 'none'; input.classList.remove('input-error'); }
 
     if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.zonaActual = zona.id;
     localStorage.setItem('zonaSeleccionada', zona.id);
 
     dropdown.classList.remove('active');
-
     hiddenInput.dispatchEvent(new Event('change'));
     if (typeof actualizarCarritoUI === 'function') actualizarCarritoUI();
 }
