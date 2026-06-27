@@ -996,7 +996,7 @@ main > .container {
 .btn-whatsapp-cart {
     width: 100%;
     padding: 1rem;
-    background: #25D366;
+    background: var(--primary); /* Rojo */
     color: white;
     border: none;
     border-radius: var(--border-radius-lg);
@@ -1009,13 +1009,14 @@ main > .container {
     transition: var(--transition);
     font-family: inherit;
     font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4); /* Sombra roja */
 }
 
 .btn-whatsapp-cart:hover {
-    background: #128C7E;
+    background: #d32f3f; /* Rojo oscuro al pasar el dedo */
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
 }
-
 /* ============================================
    10. WHATSAPP FLOTANTE
    ============================================ */
