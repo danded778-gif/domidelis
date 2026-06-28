@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-28T07-23-52",
-  "ultimaActualizacion": "2026-06-28T07:23:52.578Z",
+  "version": "v2026-06-28T07-30-54",
+  "ultimaActualizacion": "2026-06-28T07:30:54.991Z",
   "tiendas": [
     {
       "id": 1,
@@ -67,7 +67,7 @@
           "nombre": "Arepa de Queso",
           "descripcion": "Nuestra tradicional arepa de queso santuariana, recién preparada, con mantequilla derretida y deliciosa lecherita. Suave por dentro, doradita por fuera y con el auténtico sabor que tanto te gusta.",
           "precio": 12000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/arepadequeso.png",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/arepadequeso_150kb.jpg",
           "badge": "Mas vendido",
           "cantidadTipo": "UND",
           "activo": true
