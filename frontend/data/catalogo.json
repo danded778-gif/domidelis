@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-28T05-12-01",
-  "ultimaActualizacion": "2026-06-28T05:12:01.987Z",
+  "version": "v2026-06-28T07-23-52",
+  "ultimaActualizacion": "2026-06-28T07:23:52.578Z",
   "tiendas": [
     {
       "id": 1,
@@ -193,7 +193,7 @@
       "nombre": "Las Gordas",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
-      "horario": "{\"mon\":\"abierto\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"abierto\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.7,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
@@ -288,7 +288,7 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 4,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor_150kb.jpg",
       "activo": true,
       "productos": [
         {
