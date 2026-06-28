@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-26T18-12-04",
-  "ultimaActualizacion": "2026-06-26T18:12:04.758Z",
+  "version": "v2026-06-28T05-12-01",
+  "ultimaActualizacion": "2026-06-28T05:12:01.987Z",
   "tiendas": [
     {
       "id": 1,
@@ -193,7 +193,7 @@
       "nombre": "Las Gordas",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"abierto\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"abierto\"}",
       "rating": 3.7,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
@@ -206,7 +206,7 @@
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 23:00\"}",
       "rating": 4.1,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela%20burguertie1.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela_burger_150kb.jpg",
       "activo": true,
       "productos": [
         {
