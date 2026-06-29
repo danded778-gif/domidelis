@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T21-54-10",
-  "ultimaActualizacion": "2026-06-29T21:54:10.772Z",
+  "version": "v2026-06-29T21-54-12",
+  "ultimaActualizacion": "2026-06-29T21:54:12.584Z",
   "tiendas": [
     {
       "id": 1,
@@ -388,7 +388,7 @@
       "nombre": "Alitas maria pendeja",
       "descripcion": "",
       "direccion": "la judea",
-      "horario": "",
+      "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 5,
       "imagen": "",
       "activo": true,
