@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T21-21-58",
-  "ultimaActualizacion": "2026-06-29T21:21:58.610Z",
+  "version": "v2026-06-29T21-52-38",
+  "ultimaActualizacion": "2026-06-29T21:52:38.070Z",
   "tiendas": [
     {
       "id": 1,
@@ -382,6 +382,17 @@
           "activo": true
         }
       ]
+    },
+    {
+      "id": 7,
+      "nombre": "",
+      "descripcion": "",
+      "direccion": "",
+      "horario": "",
+      "rating": 5,
+      "imagen": "",
+      "activo": true,
+      "productos": []
     }
   ]
 }
