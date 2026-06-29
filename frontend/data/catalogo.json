@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T19-44-53",
-  "ultimaActualizacion": "2026-06-29T19:44:53.679Z",
+  "version": "v2026-06-29T19-51-14",
+  "ultimaActualizacion": "2026-06-29T19:51:14.705Z",
   "tiendas": [
     {
       "id": 1,
@@ -189,7 +189,7 @@
         {
           "id": 129,
           "nombre": "Almuerzo",
-          "descripcion": "Arroz blanco: Base principal del plato.Carne en salsa: Filete de res cocinado en su jugo con guiso casero.Arepa: Torta de maíz tradicional asada.Papa criolla: Dos unidades sazonadas con hierbas.Ensalada fresca: Mezcla de lechuga, zanahoria rallada y tomate.Aguacate: Una rebanada fresca como acompañamiento.",
+          "descripcion": "Un plato completo y casero con arroz blanco como base, acompañado de jugoso filete de res cocinado en su jugo con guiso casero, arepa asada tradicional, dos papas criollas sazonadas con hierbas, fresca ensalada de lechuga, zanahoria rallada y tomate, más una rebanada de aguacate.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
           "badge": "Disponible",
