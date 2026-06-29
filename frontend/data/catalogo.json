@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T18-36-23",
-  "ultimaActualizacion": "2026-06-29T18:36:23.547Z",
+  "version": "v2026-06-29T18-57-28",
+  "ultimaActualizacion": "2026-06-29T18:57:28.588Z",
   "tiendas": [
     {
       "id": 1,
@@ -181,7 +181,7 @@
           "nombre": "Almuerzo",
           "descripcion": "Frijoles arroz ensalada carne molida",
           "precio": 18000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/almuerzo_01_1305x1471_150kb.jpg",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
