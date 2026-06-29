@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T20-46-31",
-  "ultimaActualizacion": "2026-06-29T20:46:31.944Z",
+  "version": "v2026-06-29T20-46-57",
+  "ultimaActualizacion": "2026-06-29T20:46:57.848Z",
   "tiendas": [
     {
       "id": 1,
@@ -193,16 +193,6 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
           "badge": "Disponible",
-          "cantidadTipo": "UND",
-          "activo": true
-        },
-        {
-          "id": 130,
-          "nombre": "Almuerzos",
-          "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
-          "precio": 18000,
-          "imagen_url": "",
-          "badge": "",
           "cantidadTipo": "UND",
           "activo": true
         }
