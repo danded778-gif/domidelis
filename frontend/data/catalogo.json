@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T19-51-14",
-  "ultimaActualizacion": "2026-06-29T19:51:14.705Z",
+  "version": "v2026-06-29T19-52-34",
+  "ultimaActualizacion": "2026-06-29T19:52:34.454Z",
   "tiendas": [
     {
       "id": 1,
@@ -179,7 +179,7 @@
         {
           "id": 128,
           "nombre": "Almuerzo",
-          "descripcion": "Chicharrón carnudo crujienteArroz blancoArepa blanca asada  Ensalada fresca (con aguacate, tomate y zanahoria rallada)",
+          "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
           "badge": "Disponible",
