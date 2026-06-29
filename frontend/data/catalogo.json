@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T21-54-12",
-  "ultimaActualizacion": "2026-06-29T21:54:12.584Z",
+  "version": "v2026-06-29T21-54-34",
+  "ultimaActualizacion": "2026-06-29T21:54:34.612Z",
   "tiendas": [
     {
       "id": 1,
@@ -317,7 +317,7 @@
       "descripcion": "",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
-      "rating": 4,
+      "rating": 9.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor_150kb.jpg",
       "activo": true,
       "productos": [
@@ -389,7 +389,7 @@
       "descripcion": "",
       "direccion": "la judea",
       "horario": "{\"mon\":\"14:00-23:00\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
-      "rating": 5,
+      "rating": 3.9,
       "imagen": "",
       "activo": true,
       "productos": []
