@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T18-57-28",
-  "ultimaActualizacion": "2026-06-29T18:57:28.588Z",
+  "version": "v2026-06-29T19-32-11",
+  "ultimaActualizacion": "2026-06-29T19:32:11.872Z",
   "tiendas": [
     {
       "id": 1,
@@ -179,7 +179,7 @@
         {
           "id": 128,
           "nombre": "Almuerzo",
-          "descripcion": "Frijoles arroz ensalada carne molida",
+          "descripcion": "Chicharrón carnudo crujienteArroz blancoArepa blanca asada  Ensalada fresca (con aguacate, tomate y zanahoria rallada)",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
           "badge": "Disponible",
