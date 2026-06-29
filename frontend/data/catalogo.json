@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T21-11-16",
-  "ultimaActualizacion": "2026-06-29T21:11:16.787Z",
+  "version": "v2026-06-29T21-12-10",
+  "ultimaActualizacion": "2026-06-29T21:12:10.378Z",
   "tiendas": [
     {
       "id": 1,
@@ -202,6 +202,16 @@
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 131,
+          "nombre": "Almuerzo",
+          "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
+          "precio": 18000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
