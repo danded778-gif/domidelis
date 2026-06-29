@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T20-46-57",
-  "ultimaActualizacion": "2026-06-29T20:46:57.848Z",
+  "version": "v2026-06-29T20-47-26",
+  "ultimaActualizacion": "2026-06-29T20:47:26.460Z",
   "tiendas": [
     {
       "id": 1,
@@ -192,6 +192,16 @@
           "descripcion": "Un plato completo y casero con arroz blanco como base, acompañado de jugoso filete de res cocinado en su jugo con guiso casero, arepa asada tradicional, dos papas criollas sazonadas con hierbas, fresca ensalada de lechuga, zanahoria rallada y tomate, más una rebanada de aguacate.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 130,
+          "nombre": "Almuerzos",
+          "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
+          "precio": 18000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
