@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-29T19-32-11",
-  "ultimaActualizacion": "2026-06-29T19:32:11.872Z",
+  "version": "v2026-06-29T19-33-17",
+  "ultimaActualizacion": "2026-06-29T19:33:17.443Z",
   "tiendas": [
     {
       "id": 1,
@@ -182,6 +182,16 @@
           "descripcion": "Chicharrón carnudo crujienteArroz blancoArepa blanca asada  Ensalada fresca (con aguacate, tomate y zanahoria rallada)",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 129,
+          "nombre": "Almuerzo",
+          "descripcion": "Arroz blanco: Base principal del plato.Carne en salsa: Filete de res cocinado en su jugo con guiso casero.Arepa: Torta de maíz tradicional asada.Papa criolla: Dos unidades sazonadas con hierbas.Ensalada fresca: Mezcla de lechuga, zanahoria rallada y tomate.Aguacate: Una rebanada fresca como acompañamiento.",
+          "precio": 18000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
           "badge": "Disponible",
           "cantidadTipo": "UND",
           "activo": true
