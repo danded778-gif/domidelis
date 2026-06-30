@@ -66,7 +66,10 @@ const APP_CONFIG = {
         teneria: { nombre: 'Teneria', envio: 5000 },
         valle: { nombre: 'Valle Maria', envio: 12000 },
         oriente: { nombre: 'Vargas', envio: 8000 },
-        vista: { nombre: 'Vista Hermosa', envio: 6000 }
+        vista: { nombre: 'Vista Hermosa', envio: 6000 },
+        calera: { nombre: 'La calera', envio: 12000 },
+        undido: { nombre: 'B. hundido', envio: 5000 }
+
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
