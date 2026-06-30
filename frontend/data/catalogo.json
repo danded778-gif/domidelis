@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-30T04-06-10",
-  "ultimaActualizacion": "2026-06-30T04:06:10.401Z",
+  "version": "v2026-06-30T04-10-28",
+  "ultimaActualizacion": "2026-06-30T04:10:28.859Z",
   "tiendas": [
     {
       "id": 1,
@@ -391,6 +391,17 @@
       "horario": "{\"mon\":\"14:00-23:59\",\"tue\":\"14:00-23:00\",\"wed\":\"14:00-23:00\",\"thu\":\"14:00-23:00\",\"fri\":\"14:00-23:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/maria_pendeja/maria_145kb.jpg",
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 4,
+      "nombre": "Las Gordas",
+      "descripcion": "Comidas rapidas",
+      "direccion": "calle 11",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 3.7,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
     }
