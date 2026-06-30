@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-30T04-17-18",
-  "ultimaActualizacion": "2026-06-30T04:17:18.866Z",
+  "version": "v2026-06-30T04-17-45",
+  "ultimaActualizacion": "2026-06-30T04:17:45.156Z",
   "tiendas": [
     {
       "id": 1,
@@ -232,7 +232,7 @@
           "id": 132,
           "nombre": "Pendeja 1",
           "descripcion": "8 Alitas más acompañante",
-          "precio": 0,
+          "precio": 25000,
           "imagen_url": "",
           "badge": "Disponible",
           "cantidadTipo": "UND",
