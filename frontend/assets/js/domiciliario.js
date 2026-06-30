@@ -224,6 +224,7 @@ function renderCards(pedidos) {
                 <p><strong>Dirección:</strong> ${p.clienteDireccion}</p>
                 <p><strong>Teléfono:</strong> ${p.clienteTelefono}</p>
                 <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
+                ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
                 <p><strong>Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
                 <div class="productos-resumen"><strong>Productos:</strong><ul>${productos.slice(0, 3).map(x => `<li>${x.cantidad}x ${x.nombre}</li>`).join('')}${productos.length > 3 ? `<li>... y ${productos.length - 3} más</li>` : ''}</ul></div>
             </div>
@@ -277,6 +278,7 @@ function renderizarHistorial() {
                 ${tiendasTexto ? `<p><strong><i class="fas fa-store" style="color:var(--secondary);margin-right:4px"></i>Tienda:</strong> ${tiendasTexto}</p>` : ''}
                 <p><strong>Cliente:</strong> ${p.clienteNombre}</p>
                 <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
+                ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
                 <div class="productos-resumen"><strong>Entregados:</strong><ul>${productos.map(x => `<li>${x.cantidad}x ${x.nombre}</li>`).join('')}</ul></div>
             </div>
             <div class="historial-acciones"><span class="tiempo-entrega"><i class="fas fa-clock"></i> ${formatearTiempo(fe)}</span></div></div>`;
@@ -322,6 +324,7 @@ function verDetallePedidoDomiciliario(id) {
         <p><strong>Teléfono:</strong> <a href="tel:${p.clienteTelefono}">${p.clienteTelefono}</a></p>
         <p><strong>Dirección:</strong> ${p.clienteDireccion}</p>
         <p><strong>Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
+        <p><strong>Propina:</strong> ${parseFloat(p.propina) > 0 ? `<span style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Sí — ${formatearPrecio(p.propina)}</span>` : 'No'}</p>
         <p><strong>Ref:</strong> ${p.referencias || 'Ninguna'}</p>
     <h4 style="margin-top:1rem">Productos:</h4>
         <div class="productos-lista">

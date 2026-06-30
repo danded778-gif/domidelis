@@ -28,7 +28,7 @@ self.addEventListener('install', e => {
         console.log('[SW Tienda] Cacheando archivos estáticos');
         // Usamos Promise.allSettled por si algún archivo falla, no rompa toda la instalación
         return Promise.allSettled(
-          ARCHIVOS_ESTATICOS_TIENDA.map(url => 
+          ARCHIVOS_ESTATICOS_TIENDA.map(url =>
             cache.add(url).catch(err => console.warn('[SW Tienda] Error cacheando:', url, err))
           )
         );
@@ -115,4 +115,38 @@ self.addEventListener('fetch', e => {
           });
       })
   );
+
+  // ============================================
+  // PUSH Y CLICK — Notificaciones Push (Tienda)
+  // ============================================
+  self.addEventListener('push', (event) => {
+    let data = {};
+    try { data = event.data.json(); } catch (e) { data = { title: 'Mi Tienda', body: 'Nueva notificación' }; }
+    event.waitUntil(
+      self.registration.showNotification(data.title || 'Mi Tienda', {
+        body: data.body || 'Nueva notificación',
+        icon: data.icon || '/app-tiendas/assets/img/icon-192x192.png',
+        badge: data.badge || '/app-tiendas/assets/img/icon-192x192.png',
+        tag: data.tag || 'tienda-push',
+        requireInteraction: true,
+        vibrate: [200, 100, 200, 100, 200],
+        renotify: true,
+        data: { url: data.url || '/app-tiendas/index-tienda.html', pedidoId: data.pedidoId || null, tipo: data.tipo || 'general' }
+      })
+    );
+  });
+
+  self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    const urlToOpen = event.notification.data?.url || '/app-tiendas/index-tienda.html';
+    event.waitUntil(
+      clients.matchAll({ type: 'window', includeUncontrolled: true })
+        .then((clientList) => {
+          for (const client of clientList) {
+            if (client.url.includes(urlToOpen) && 'focus' in client) return client.focus();
+          }
+          if (clients.openWindow) return clients.openWindow(urlToOpen);
+        })
+    );
+  });
 });

@@ -46,7 +46,11 @@ const io = socketIo(server, {
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Permitir peticiones sin origen (como Postman o curl) o si están en la lista
+        // ★ En desarrollo local, permitir cualquier origen sin restricción
+        if (isDev) {
+            return callback(null, true);
+        }
+        // En producción, mantener la lista blanca
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
@@ -148,7 +152,7 @@ const suscripciones = new Map();
 // ============================================
 // GOOGLE APPS SCRIPT — URL fija
 // ============================================
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx5nHHZ7YvOq2WkOI4qftBsr2rOqHUZkowh-ETw-L3q09ABMad8mwnsBETzVKbgijPa/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbw4w3ypgMvQ2CwE7I3DPdCZ5lZIVSQRiVpy48XU91lJ_5VBM_49L1z6c1qVn1J8g9U1/exec';
 
 // ============================================
 // ENDPOINTS DE SUSCRIPCIÓN PUSH
@@ -209,12 +213,36 @@ app.post('/api/enviar-push', async (req, res) => {
 // ============================================
 // FUNCIÓN INTERNA: Enviar push a UN domiciliario
 // ============================================
+// ============================================
+// FUNCIÓN GENÉRICA: Enviar push a un usuario por id+rol
+// ★ Reutilizada tanto por domiciliarios como por tiendas
+// ============================================
+async function enviarPushAUsuario(usuarioId, rol, payloadObj) {
+    const payload = JSON.stringify(payloadObj);
+    for (const [endpoint, subData] of suscripciones) {
+        if (String(subData.usuarioId) !== String(usuarioId)) continue;
+        if (subData.rol !== rol) continue;
+        try {
+            await webpush.sendNotification(subData.subscription, payload);
+            console.log(`📱 Push enviado → ${rol} ${usuarioId}`);
+        } catch (error) {
+            console.error(`❌ Push falló → ${rol} ${usuarioId}: ${error.message}`);
+            if (error.statusCode === 410 || error.statusCode === 404) {
+                suscripciones.delete(endpoint);
+            }
+        }
+    }
+}
+
+// ============================================
+// FUNCIÓN INTERNA: Enviar push a UN domiciliario
+// ============================================
 async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) {
     const cuerpo = pedidoDetalle
         ? `Pedido #${pedidoId} - ${pedidoDetalle.clienteNombre || ''} - $${parseInt(pedidoDetalle.total || 0).toLocaleString('es-CO')}`
         : `Pedido #${pedidoId} asignado`;
 
-    const payload = JSON.stringify({
+    await enviarPushAUsuario(domiciliarioId, 'domiciliario', {
         title: '🛵 Nuevo pedido asignado',
         body: cuerpo,
         url: '/domiciliario.html',
@@ -227,20 +255,29 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
         vibrate: [200, 100, 200, 100, 200],
         data: { url: '/domiciliario.html', pedidoId: String(pedidoId), tipo: 'asignacion' }
     });
+}
 
-    for (const [endpoint, subData] of suscripciones) {
-        if (String(subData.usuarioId) !== String(domiciliarioId)) continue;
-        if (subData.rol !== 'domiciliario') continue;
-        try {
-            await webpush.sendNotification(subData.subscription, payload);
-            console.log(`📱 Push enviado → domiciliario ${domiciliarioId}`);
-        } catch (error) {
-            console.error(`❌ Push falló → domiciliario ${domiciliarioId}: ${error.message}`);
-            if (error.statusCode === 410 || error.statusCode === 404) {
-                suscripciones.delete(endpoint);
-            }
-        }
-    }
+// ============================================
+// ★ NUEVA: Enviar push a UNA tienda (mismo motor de arriba)
+// ============================================
+async function enviarPushATienda(tiendaId, pedidoId, pedidoDetalle) {
+    const cuerpo = pedidoDetalle
+        ? `Pedido #${pedidoId} - ${pedidoDetalle.clienteNombre || ''} - $${parseInt(pedidoDetalle.total || 0).toLocaleString('es-CO')}`
+        : `Nuevo pedido #${pedidoId}`;
+
+    await enviarPushAUsuario(tiendaId, 'tienda', {
+        title: '🛍️ Nuevo pedido recibido',
+        body: cuerpo,
+        url: '/app-tiendas/index-tienda.html',
+        tipo: 'nuevo-pedido-tienda',
+        pedidoId: String(pedidoId),
+        icon: '/app-tiendas/assets/img/icon-192x192.png',
+        badge: '/app-tiendas/assets/img/icon-192x192.png',
+        tag: `pedido-tienda-${pedidoId}-${tiendaId}-${Date.now()}`,
+        requireInteraction: true,
+        vibrate: [200, 100, 200, 100, 200],
+        data: { url: '/app-tiendas/index-tienda.html', pedidoId: String(pedidoId), tipo: 'nuevo-pedido-tienda' }
+    });
 }
 
 // ============================================
@@ -341,6 +378,24 @@ app.all('/api', verificarToken, async (req, res) => {
                         mensaje: `Nuevo pedido #${data.id}`
                     });
                     console.log(`📦 Emitido nuevoPedido #${data.id}`);
+
+                    try {
+                        let productos = [];
+                        try { productos = JSON.parse((pedido && pedido.productosJson) || '[]'); } catch (e) { productos = []; }
+                        const tiendaIds = [...new Set(productos.map(p => String(p.tiendaId)).filter(Boolean))];
+
+                        for (const tiendaId of tiendaIds) {
+                            io.to(`tienda_${tiendaId}`).emit('nuevoPedidoTienda', {
+                                pedido: pedido || { id: data.id },
+                                mensaje: `Nuevo pedido #${data.id}`
+                            });
+                            console.log(`📦 Emitido nuevoPedidoTienda → tienda_${tiendaId}`);
+                            await enviarPushATienda(tiendaId, data.id, pedido);
+                        }
+                    } catch (errTienda) {
+                        console.error('❌ Error notificando a tiendas:', errTienda.message);
+                    }
+
                     break;
                 }
 
@@ -437,6 +492,9 @@ io.on('connection', (socket) => {
         } else if (rol === 'admin') {
             socket.join('admin_room');
             console.log(`✅ ${socket.id} → room admin_room`);
+        } else if (rol === 'tienda' && id) {
+            socket.join(`tienda_${id}`);
+            console.log(`✅ ${socket.id} → room tienda_${id}`);
         }
     });
 

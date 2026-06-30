@@ -1,0 +1,196 @@
+.propina-toggle-label {
+    display: flex; align-items: center; gap: 0.6rem;
+    cursor: pointer; font-weight: 600; color: var(--dark); font-size: 1rem;
+}
+.propina-toggle-label input[type="checkbox"] {
+    width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0;
+}
+.hidden-propina { display: none !important; }
+
+.propina-panel {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px dashed #e0d5c5;
+    animation: propinaFadeIn 0.3s ease;
+}
+
+@keyframes propinaFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== DROPDOWN CUSTOM DE PROPINA ===== */
+.propina-dropdown {
+    position: relative;
+}
+
+.propina-dropdown-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.95rem 1.1rem;
+    background: var(--white);
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.propina-dropdown-trigger:hover {
+    border-color: var(--accent);
+}
+
+.propina-dropdown.active .propina-dropdown-trigger {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.15);
+}
+
+.propina-dropdown-trigger span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.propina-chevron {
+    color: var(--gray);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.propina-dropdown.active .propina-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+.propina-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    overflow: hidden;
+    z-index: 50;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.propina-dropdown.active .propina-dropdown-menu {
+    max-height: 400px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.propina-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.85rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.propina-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.propina-dropdown-item:hover,
+.propina-dropdown-item.selected {
+    background: linear-gradient(135deg, #f0fdfa, #e6f7f4);
+}
+
+.propina-dropdown-item.selected {
+    border-left: 4px solid var(--accent);
+    padding-left: calc(1.1rem - 4px);
+}
+
+.propina-item-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+}
+
+.propina-item-texto {
+    flex: 1;
+    font-size: 0.92rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.propina-item-monto {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(42, 157, 143, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.propina-item-otro {
+    background: #fffaf2;
+}
+
+.propina-item-otro .propina-item-texto {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* ===== RESUMEN MINI (debajo del dropdown) ===== */
+.propina-resumen-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(135deg, #f0fdfa, #e6f7f4);
+    border: 1px solid #b9e6dd;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.propina-resumen-mini i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.propina-resumen-mini strong {
+    color: var(--accent);
+}
+
+.propina-nota {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    line-height: 1.4;
+}
+
+.propina-nota i {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+#propinaOtroGroup input {
+    font-weight: 600;
+}

@@ -7,6 +7,10 @@ const esLocal = window.location.hostname === 'localhost' ||
 const API_URL = esLocal
     ? window.location.origin + '/api/tienda'
     : 'https://prueba-production-b9fb.up.railway.app/api/tienda';
+const BASE_API_URL = esLocal
+    ? window.location.origin
+    : 'https://prueba-production-b9fb.up.railway.app';
+const SOCKET_URL = BASE_API_URL;
 
 // Sesión exclusiva para la tienda (Guarda el JWT y la Info) - ★ ACTUALIZADO
 function guardarSesionTienda(token, tienda) {

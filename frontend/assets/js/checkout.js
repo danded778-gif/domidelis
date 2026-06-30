@@ -8,6 +8,7 @@
     'use strict';
 
     let metodoPagoSeleccionado = '';
+    let propinaSeleccionada = 0;
 
     // ============================================
     // HELPER: OBTENER DESCUENTO DE DOMICILIO ACTIVO
@@ -26,7 +27,8 @@
         initPagoSeleccion();
         initFormSubmit();
         limpiarErroresAlEscribir();
-        
+        initPropina();
+
         // ★ MOSTRAR CÓDIGO PROMO SI EXISTE EN LA MEMORIA ★
         const codigoGuardado = localStorage.getItem('domidelis_codigo_promo');
         const grupoCodigo = document.getElementById('grupo-codigo-promo');
@@ -64,7 +66,7 @@
     function limpiarErroresAlEscribir() {
         const zonaInput = document.getElementById('zona-checkout-input');
         if (zonaInput) {
-            zonaInput.addEventListener('input', function() {
+            zonaInput.addEventListener('input', function () {
                 this.classList.remove('input-error');
                 const zonaError = document.getElementById('zona-checkout-error');
                 if (zonaError) zonaError.style.display = 'none';
@@ -275,8 +277,6 @@
             const cant = parseInt(item.cantidad) || 1;
             subtotal += (item.subtotal) ? parseInt(item.subtotal) : (precio * cant);
         });
-        
-        // ★ Cálculo con descuento para el servidor y WhatsApp ★
         const envioBase = calcularEnvio(carrito);
         const descuentoPct = obtenerDescuentoDomicilio();
         let descuentoValor = 0;
@@ -288,6 +288,7 @@
         }
 
         const total = subtotal + envioFinal;
+        const propina = propinaSeleccionada > 0 ? propinaSeleccionada : 0;
 
         const pedidoId = Date.now().toString(36).toUpperCase() +
             Math.random().toString(36).substring(2, 5).toUpperCase();
@@ -310,7 +311,7 @@
                 pedidoId, nombre, telefono, direccion,
                 barrio, referencias, metodoPago,
                 zona: zonaValue, envio: envioFinal,
-                subtotal, total, items: carrito
+                subtotal, total, propina, items: carrito
             });
             // ★ Limpiar promociones usadas
             localStorage.removeItem('domidelis_codigo_promo');
@@ -451,7 +452,7 @@
 
         msg += `━━━━━━━━━━━━━━━━━━\n`;
         msg += `💵 *Subtotal:* ${formatearPrecio(data.subtotal)}\n`;
-        
+
         // ★ Lógica de descuento en el mensaje de WhatsApp ★
         if (data.descuentoPct > 0) {
             msg += `🏍️ *Envío Base (${data.zonaNombre}):* ${formatearPrecio(data.envioBase)}\n`;
@@ -464,7 +465,7 @@
         msg += `💰 *TOTAL:* ${formatearPrecio(data.total)}\n\n`;
         msg += `💳 *Pago:* ${data.metodoPago}\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n`;
-        
+
         const codigoPromo = localStorage.getItem('domidelis_codigo_promo');
         if (codigoPromo) {
             msg += `\n🎟️ *CÓDIGO DE PROMOCIÓN:* ${codigoPromo}\n`;
@@ -504,6 +505,7 @@
             metodoPago: data.metodoPago,
             zona: data.zona,
             referencias: data.referencias || '',
+            propina: (data.propina || 0).toString(),
             fecha: fechaColombia
         });
 
@@ -521,6 +523,118 @@
                 console.warn('No se guardo en servidor, pedido llego por WhatsApp:', err.message);
                 limpiarCarrito();
             });
+    }
+
+    // ============================================
+    // PROPINA PARA EL DOMICILIARIO (Dropdown bonito)
+    // ============================================
+    function initPropina() {
+        const checkbox = document.getElementById('propinaCheckbox');
+        const panel = document.getElementById('propinaPanel');
+        const dropdown = document.getElementById('propinaDropdown');
+        const trigger = document.getElementById('propinaDropdownTrigger');
+        const menu = document.getElementById('propinaDropdownMenu');
+        const textoTrigger = document.getElementById('propinaDropdownTexto');
+        const items = document.querySelectorAll('.propina-dropdown-item');
+        const otroGroup = document.getElementById('propinaOtroGroup');
+        const otroInput = document.getElementById('propinaOtroInput');
+        const resumenMini = document.getElementById('propinaResumenMini');
+        const resumenMiniValor = document.getElementById('propinaResumenMiniValor');
+
+        if (!checkbox) return;
+
+        // ── Mostrar/ocultar TODO el panel según el checkbox ──
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                panel.classList.remove('hidden-propina');
+            } else {
+                panel.classList.add('hidden-propina');
+                resetearPropina();
+            }
+        });
+
+        function resetearPropina() {
+            propinaSeleccionada = 0;
+            dropdown.classList.remove('active');
+            items.forEach(i => i.classList.remove('selected'));
+            otroGroup.classList.add('hidden-propina');
+            resumenMini.classList.add('hidden-propina');
+            if (otroInput) otroInput.value = '';
+            textoTrigger.innerHTML = '<i class="fas fa-hand-holding-heart" style="color:var(--gray);"></i> Selecciona un motivo';
+            actualizarResumenPropina();
+        }
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+
+                const valor = item.dataset.valor;
+                const label = item.dataset.label;
+                const icono = item.querySelector('.propina-item-icon').textContent;
+
+                if (valor === 'otro') {
+                    textoTrigger.innerHTML = `<span>${icono}</span> ${label}`;
+                    otroGroup.classList.remove('hidden-propina');
+                    resumenMini.classList.add('hidden-propina');
+                    propinaSeleccionada = parseInt(otroInput.value) || 0;
+                    setTimeout(() => otroInput.focus(), 150);
+                } else {
+                    textoTrigger.innerHTML = `<span>${icono}</span> ${label} — ${formatearPrecio(valor)}`;
+                    otroGroup.classList.add('hidden-propina');
+                    propinaSeleccionada = parseInt(valor) || 0;
+                    mostrarResumenMini();
+                }
+
+                dropdown.classList.remove('active');
+                actualizarResumenPropina();
+            });
+        });
+
+        if (otroInput) {
+            otroInput.addEventListener('input', () => {
+                propinaSeleccionada = parseInt(otroInput.value) || 0;
+                if (propinaSeleccionada > 0) {
+                    mostrarResumenMini();
+                } else {
+                    resumenMini.classList.add('hidden-propina');
+                }
+                actualizarResumenPropina();
+            });
+        }
+
+        function mostrarResumenMini() {
+            resumenMini.classList.remove('hidden-propina');
+            resumenMiniValor.textContent = formatearPrecio(propinaSeleccionada);
+        }
+    }
+
+    function actualizarResumenPropina() {
+        const row = document.getElementById('resumenPropinaRow');
+        const valorEl = document.getElementById('resumenPropinaValor');
+        if (!row || !valorEl) return;
+        if (propinaSeleccionada > 0) {
+            row.style.display = 'flex';
+            valorEl.textContent = formatearPrecio(propinaSeleccionada);
+        } else {
+            row.style.display = 'none';
+        }
+
+        const resumenMiniValor = document.getElementById('propinaResumenMiniValor');
+        if (resumenMiniValor && propinaSeleccionada > 0) {
+            resumenMiniValor.textContent = formatearPrecio(propinaSeleccionada);
+        }
     }
 
 })();

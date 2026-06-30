@@ -19,7 +19,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Mi Tienda">
     <link rel="apple-touch-icon" href="/app-tiendas/assets/img/icon-152x152.png">
-    <link rel="manifest" href="../app-tiendas/manifest-tienda.json"> 
+    <link rel="manifest" href="../app-tiendas/manifest-tienda.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
 
     <title>Mi Tienda - Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -244,12 +245,28 @@
 </head>
 
 <body>
+
+    <div id="permisos-banner-tienda"
+        style="position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid #E63946;border-radius:12px;padding:16px 24px;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:9999;display:flex;align-items:center;gap:12px;font-family:inherit;max-width:90%;">
+        <i class="fas fa-bell-slash" style="color:#E63946;font-size:1.5rem;"></i>
+        <div>
+            <strong>Activa las notificaciones</strong>
+            <div style="font-size:0.85rem;color:#666;">Para recibir alertas de nuevos pedidos aunque cierres la
+                página</div>
+        </div>
+        <button onclick="activarPermisosTienda()"
+            style="background:#E63946;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;white-space:nowrap;">
+            <i class="fas fa-bell"></i> Activar
+        </button>
+    </div>
+
     <header>
         <div class="container">
             <nav>
                 <a href="index-tienda.html" class="logo"><i class="fas fa-store"></i> MI <span>TIENDA</span></a>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#" onclick="cerrarSesionTienda()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                    <li><a href="#" onclick="cerrarSesionTienda()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    </li>
                 </ul>
                 <div class="mobile-menu" onclick="document.getElementById('nav-links').classList.toggle('active')"><i
                         class="fas fa-bars"></i></div>
@@ -261,15 +278,20 @@
         <div class="container">
             <h2 class="section-title" id="titulo-tienda"><i class="fas fa-store"></i> Cargando...</h2>
             <div class="tabs-container">
-                <button class="tab-btn active" onclick="cambiarTab('productos')"><i class="fas fa-box"></i> Productos</button>
-                <button class="tab-btn" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i> Pedidos</button>
-                <button class="tab-btn" onclick="cambiarTab('comision')"><i class="fas fa-percent"></i> Comisión</button>
-                <button class="tab-btn" onclick="cambiarTab('configuracion')"><i class="fas fa-cog"></i> Config</button>
+                <button class="tab-btn active" onclick="cambiarTab('productos')"><i class="fas fa-box"></i>
+                    Productos</button>
+                <button class="tab-btn" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i>
+                    Pedidos</button>
+                <button class="tab-btn" onclick="cambiarTab('comision')"><i class="fas fa-percent"></i>
+                    Comisión</button>
+                <button class="tab-btn" onclick="cambiarTab('configuracion')"><i class="fas fa-cog"></i>
+                    Config</button>
             </div>
-            
+
             <!-- TAB PRODUCTOS -->
             <div id="tab-productos" class="tab-content active">
-                <div class="aviso-premium"><i class="fas fa-crown"></i> <span>La edición de productos está disponible en el plan Premium.</span></div>
+                <div class="aviso-premium"><i class="fas fa-crown"></i> <span>La edición de productos está
+                        disponible en el plan Premium.</span></div>
                 <div class="products-admin-grid" id="lista-productos"></div>
             </div>
 
@@ -286,7 +308,8 @@
                         <p id="comision-ventas-total">$0</p>
                     </div>
                     <div class="comision-card alerta">
-                        <h3><i class="fas fa-hand-holding-usd"></i> Comisión (<span id="comision-pct-text">0</span>%)</h3>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Comisión (<span id="comision-pct-text">0</span>%)
+                        </h3>
                         <p id="comision-descontada">$0</p>
                     </div>
                     <div class="comision-card exito">
@@ -294,7 +317,8 @@
                         <p id="comision-ganancia-neta">$0</p>
                     </div>
                 </div>
-                <h2 class="section-title" style="font-size: 1.2rem; margin-top: 25px;"><i class="fas fa-list-ul"></i> Detalle de Pedidos Entregados</h2>
+                <h2 class="section-title" style="font-size: 1.2rem; margin-top: 25px;"><i class="fas fa-list-ul"></i>
+                    Detalle de Pedidos Entregados</h2>
                 <div class="tabla-contenedor" style="overflow-x: auto;">
                     <table class="tabla-pedidos" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
                         <thead>
@@ -316,7 +340,7 @@
 
             <!-- TAB CONFIGURACIÓN -->
             <div id="tab-configuracion" class="tab-content">
-                
+
                 <!-- Tarjeta de Información de la Tienda -->
                 <div class="config-card">
                     <h3 class="config-title"><i class="fas fa-store"></i> Mi Información</h3>
@@ -328,7 +352,8 @@
                         <div class="config-item highlight">
                             <span class="config-label">Comisión por Ventas</span>
                             <span class="config-value comision-pct" id="conf-comision">0%</span>
-                            <small class="config-hint">Este porcentaje se descuenta de cada venta realizada</small>
+                            <small class="config-hint">Este porcentaje se descuenta de cada venta
+                                realizada</small>
                         </div>
                     </div>
                 </div>
@@ -345,23 +370,40 @@
                             <label><i class="fas fa-align-left"></i> Descripción</label>
                             <input type="text" id="conf-descripcion" placeholder="Descripción de tu tienda">
                         </div>
-                        
+
                         <!-- ★ NUEVO: HORARIO SEMANAL DE LA TIENDA ★ -->
                         <div class="form-group">
                             <label><i class="fas fa-clock"></i> Horario Semanal</label>
-                            <small style="display:block; margin-bottom:10px; color:var(--gray); font-size:.8rem;">Formato 24h (Ej: 08:00-22:00). Escribe "Cerrado" si no abre.</small>
+                            <small
+                                style="display:block; margin-bottom:10px; color:var(--gray); font-size:.8rem;">Formato
+                                24h (Ej: 08:00-22:00). Escribe "Cerrado" si no abre.</small>
                             <div style="display:grid; grid-template-columns: auto 1fr; gap:8px; align-items:center;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Lunes:</label> <input type="text" id="horario-mon" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Martes:</label> <input type="text" id="horario-tue" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Miércoles:</label> <input type="text" id="horario-wed" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Jueves:</label> <input type="text" id="horario-thu" value="08:00-22:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Viernes:</label> <input type="text" id="horario-fri" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Sábado:</label> <input type="text" id="horario-sat" value="08:00-23:00" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
-                                <label style="margin:0; font-weight:600; font-size:.85rem;">Domingo:</label> <input type="text" id="horario-sun" value="Cerrado" style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Lunes:</label> <input
+                                    type="text" id="horario-mon" value="08:00-22:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Martes:</label> <input
+                                    type="text" id="horario-tue" value="08:00-22:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Miércoles:</label> <input
+                                    type="text" id="horario-wed" value="08:00-22:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Jueves:</label> <input
+                                    type="text" id="horario-thu" value="08:00-22:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Viernes:</label> <input
+                                    type="text" id="horario-fri" value="08:00-23:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Sábado:</label> <input
+                                    type="text" id="horario-sat" value="08:00-23:00"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
+                                <label style="margin:0; font-weight:600; font-size:.85rem;">Domingo:</label> <input
+                                    type="text" id="horario-sun" value="Cerrado"
+                                    style="padding:.6rem; border:1px solid #ccc; border-radius:8px;">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar Cambios</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar
+                            Cambios</button>
                     </form>
                 </div>
 
@@ -379,9 +421,11 @@
                         </div>
                         <div class="form-group">
                             <label>Confirmar Nueva Contraseña</label>
-                            <input type="password" id="conf-pass-confirmar" required placeholder="Repetir nueva contraseña">
+                            <input type="password" id="conf-pass-confirmar" required
+                                placeholder="Repetir nueva contraseña">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-key"></i> Actualizar Contraseña</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-key"></i>
+                            Actualizar Contraseña</button>
                     </form>
                 </div>
 
@@ -390,8 +434,10 @@
     </main>
 
     <div class="install-banner" id="install-banner" role="dialog" aria-label="Instalar aplicación">
-        <div class="install-banner-icon"><img src="/app-tiendas/assets/img/icon-192x192.png" alt="Mi Tienda"></div>
-        <div class="install-banner-text"><strong>Instalar Mi Tienda</strong><span>Acceso rápido desde tu pantalla de
+        <div class="install-banner-icon"><img src="/app-tiendas/assets/img/icon-192x192.png" alt="Mi Tienda">
+        </div>
+        <div class="install-banner-text"><strong>Instalar Mi Tienda</strong><span>Acceso rápido desde tu
+                pantalla de
                 inicio</span></div>
         <button class="install-banner-btn" id="btn-install-app" type="button"><i class="fas fa-download"></i>
             Instalar</button>
@@ -409,7 +455,10 @@
         <div class="install-manual-steps" id="install-steps-container"></div>
     </div>
 
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="/app-tiendas/assets/js/config-tienda.js"></script>
+    <script src="/app-tiendas/assets/js/notificaciones-tienda.js"></script>
+    <script src="/app-tiendas/assets/js/push-manager-tienda.js"></script>
     <script src="/app-tiendas/assets/js/tiendas.js"></script>
 
     <script>
@@ -448,6 +497,85 @@
             function guardarCierre() { try { localStorage.setItem('install_tienda_cerrado', Date.now().toString()); } catch (e) { } }
             function cerradoRecientemente() { try { var t = localStorage.getItem('install_tienda_cerrado'); if (!t) return false; return (Date.now() - parseInt(t, 10)) < (1 * 24 * 60 * 60 * 1000); } catch (e) { return false; } }
         })();
+        // ============================================
+        // NOTIFICACIONES PUSH + SOCKET — PANEL TIENDA
+        // ============================================
+        (function () {
+            const sesion = obtenerSesionTienda();
+            if (!sesion.info || !sesion.info.id) return;
+
+            function actualizarBannerPermisosTienda() {
+                const banner = document.getElementById('permisos-banner-tienda');
+                if (!banner) return;
+                if (!('Notification' in window) || Notification.permission !== 'default') {
+                    banner.style.display = 'none';
+                } else {
+                    banner.style.display = 'flex';
+                }
+            }
+            actualizarBannerPermisosTienda();
+
+            const socket = io(SOCKET_URL, {
+                transports: ['websocket', 'polling'],
+                reconnection: true,
+                reconnectionAttempts: 20,
+                reconnectionDelay: 1000
+            });
+
+            socket.on('connect', () => {
+                socket.emit('identificar', { rol: 'tienda', id: sesion.info.id });
+                console.log('✅ [Tienda] Socket conectado:', socket.id);
+            });
+
+            socket.on('nuevoPedidoTienda', (data) => {
+                console.log('🛎️ [Tienda] nuevoPedidoTienda:', data);
+                initAudioTienda();
+                if (audioCtxTienda && audioCtxTienda.state === 'running') sonidoNuevoPedidoTienda();
+                mostrarToastTienda(
+                    '¡Nuevo pedido!',
+                    `#${data.pedido.id} - ${data.pedido.clienteNombre || ''} - ${formatearPrecio(data.pedido.total || 0)}`,
+                    'pedido',
+                    10000
+                );
+                if (typeof cargarPedidos === 'function') cargarPedidos();
+            });
+        })();
+
+        async function activarPermisosTienda() {
+            initAudioTienda();
+            if (audioCtxTienda?.state === 'suspended') {
+                try { await audioCtxTienda.resume(); } catch (e) { }
+            }
+
+            let permiso = false;
+            if ('Notification' in window) {
+                permiso = (await Notification.requestPermission()) === 'granted';
+            }
+
+            const banner = document.getElementById('permisos-banner-tienda');
+            if (banner) banner.style.display = 'none';
+
+            if (permiso) {
+                try {
+                    const vapidRes = await fetch(`${BASE_API_URL}/api/vapid-public-key`);
+                    const { publicKey } = await vapidRes.json();
+                    await pushManagerTienda.init(publicKey);
+                } catch (e) { console.warn('No se pudo suscribir a push:', e); }
+
+                mostrarToastTienda('¡Listo!', 'Notificaciones de pedidos activadas correctamente.', 'success', 6000);
+            } else {
+                mostrarToastTienda('Atención', 'Notificaciones del sistema bloqueadas.', 'warning', 6000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                fetch(`${BASE_API_URL}/api/vapid-public-key`)
+                    .then(r => r.json())
+                    .then(({ publicKey }) => pushManagerTienda.init(publicKey))
+                    .catch(() => { });
+            }
+        });
     </script>
 </body>
 

@@ -7,7 +7,7 @@ let infodomiCargado = false;
 let chartsDomiInstancias = {};
 
 const PALETA_DOMI = [
-    '#2A9D8F', '#E76F51', '#457B9D', '#F4A261', '#264653', 
+    '#2A9D8F', '#E76F51', '#457B9D', '#F4A261', '#264653',
     '#8338EC', '#606C38', '#BC6C25', '#06D6A0', '#E63946'
 ];
 
@@ -137,7 +137,8 @@ function calcularDatosDomi(pedidos) {
     let totalComisionApp = 0;       // Lo que se queda la app de esos envíos
     let totalPagarDomiciliarios = 0;// Lo que se le paga al domiciliario
     let totalPedidos = 0;
-    
+    let totalPropinas = 0;
+
     let domisMap = new Map();
 
     pedidos.forEach(pedido => {
@@ -148,6 +149,7 @@ function calcularDatosDomi(pedidos) {
         const envio = Math.max(0, parseFloat(pedido.total) - subtotalProductos);
         const domiId = String(pedido.domiciliarioId);
         const comisionPct = obtenerComisionAppDomi(domiId);
+        const propina = parseFloat(pedido.propina) || 0;
 
         const gananciaApp = envio * (comisionPct / 100);
         const pagoDomi = envio - gananciaApp;
@@ -163,7 +165,8 @@ function calcularDatosDomi(pedidos) {
                 totalEnvios: 0,
                 gananciaApp: 0,
                 pagoDomi: 0,
-                pedidos: 0
+                pedidos: 0,
+                propinas: 0
             });
         }
         const d = domisMap.get(domiId);
@@ -171,6 +174,7 @@ function calcularDatosDomi(pedidos) {
         d.gananciaApp += gananciaApp;
         d.pagoDomi += pagoDomi;
         d.pedidos++;
+        d.propinas += propina;
     });
 
     return {
@@ -178,6 +182,7 @@ function calcularDatosDomi(pedidos) {
         totalComisionApp,
         totalPagarDomiciliarios,
         totalPedidos,
+        totalPropinas,
         domiciliarios: domisMap
     };
 }
@@ -340,9 +345,8 @@ function renderTablaDesgloseDomi(datos) {
     }
 
     let html = '';
-    let totalEnviosG = 0, totalAppG = 0, totalPagarG = 0, totalPedidosG = 0;
+    let totalEnviosG = 0, totalAppG = 0, totalPagarG = 0, totalPedidosG = 0, totalPropinasG = 0; // NUEVO
 
-    // Ordenar de mayor a menor ganancia
     const ordenados = Array.from(datos.domiciliarios.values()).sort((a, b) => b.pagoDomi - a.pagoDomi);
 
     ordenados.forEach(d => {
@@ -350,6 +354,7 @@ function renderTablaDesgloseDomi(datos) {
         totalAppG += d.gananciaApp;
         totalPagarG += d.pagoDomi;
         totalPedidosG += d.pedidos;
+        totalPropinasG += d.propinas;
 
         const comisionPct = obtenerComisionAppDomi(Object.keys(datos.domiciliarios).find(id => datos.domiciliarios.get(id).nombre === d.nombre) || '');
 
@@ -360,6 +365,7 @@ function renderTablaDesgloseDomi(datos) {
                 <td>${formatearPesos(d.totalEnvios)}</td>
                 <td style="color:var(--success);"><strong>${formatearPesos(d.gananciaApp)}</strong> <small style="color:var(--gray);">(${comisionPct}%)</small></td>
                 <td style="color:var(--accent);"><strong>${formatearPesos(d.pagoDomi)}</strong></td>
+                <td style="color:#E63946;font-weight:700;">${d.propinas > 0 ? formatearPesos(d.propinas) : '—'}</td>
             </tr>
         `;
     });
@@ -371,6 +377,7 @@ function renderTablaDesgloseDomi(datos) {
             <td><strong>${formatearPesos(totalEnviosG)}</strong></td>
             <td style="color:var(--success);"><strong>${formatearPesos(totalAppG)}</strong></td>
             <td style="color:var(--accent);"><strong>${formatearPesos(totalPagarG)}</strong></td>
+            <td style="color:#E63946;"><strong>${totalPropinasG > 0 ? formatearPesos(totalPropinasG) : '—'}</strong></td>
         </tr>
     `;
 

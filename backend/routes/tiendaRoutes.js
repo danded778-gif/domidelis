@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx5nHHZ7YvOq2WkOI4qftBsr2rOqHUZkowh-ETw-L3q09ABMad8mwnsBETzVKbgijPa/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbw4w3ypgMvQ2CwE7I3DPdCZ5lZIVSQRiVpy48XU91lJ_5VBM_49L1z6c1qVn1J8g9U1/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // ============================================
@@ -98,11 +98,15 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
                 subtotalTienda = 0;
             }
 
-            return {
+            const pedidoFinal = {
                 ...pedido,
                 productosJson: JSON.stringify(productosDeTienda),
                 total: subtotalTienda
             };
+            
+            delete pedidoFinal.propina;
+
+            return pedidoFinal;
         });
 
         res.json(pedidosProcesados);

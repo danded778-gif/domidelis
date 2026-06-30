@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/resumen-tienda.css">
+    <link rel="stylesheet" href="assets/css/propina.css">
     <script src="assets/js/components/toast.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
@@ -137,9 +138,75 @@
                             <span>Envío:</span>
                             <span id="resumenEnvio">$0</span>
                         </div>
+                        <div class="resumen-item" id="resumenPropinaRow" style="display:none;">
+                            <span>🩵 Propina (aparte, para el domiciliario):</span>
+                            <span id="resumenPropinaValor">$0</span>
+                        </div>
                         <div class="resumen-total">
                             <span>TOTAL:</span>
                             <span id="resumenTotal">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="checkout-card" id="propinaCard" style="margin-bottom: 1.5rem;">
+                        <label class="propina-toggle-label">
+                            <input type="checkbox" id="propinaCheckbox">
+                            <span>¿Deseas dejar una propina para tu domiciliario? 🩵</span>
+                        </label>
+
+                        <div id="propinaPanel" class="propina-panel hidden-propina">
+
+                            <div class="propina-dropdown" id="propinaDropdown">
+                                <button type="button" class="propina-dropdown-trigger" id="propinaDropdownTrigger">
+                                    <span id="propinaDropdownTexto"><i class="fas fa-hand-holding-heart"
+                                            style="color:var(--gray);"></i> Selecciona un motivo</span>
+                                    <i class="fas fa-chevron-down propina-chevron"></i>
+                                </button>
+
+                                <div class="propina-dropdown-menu" id="propinaDropdownMenu">
+                                    <div class="propina-dropdown-item" data-valor="2000" data-label="Por lluvia">
+                                        <span class="propina-item-icon">🌧️</span>
+                                        <span class="propina-item-texto">Por lluvia</span>
+                                        <span class="propina-item-monto">$2.000</span>
+                                    </div>
+                                    <div class="propina-dropdown-item" data-valor="3000"
+                                        data-label="Por tráfico pesado">
+                                        <span class="propina-item-icon">🚦</span>
+                                        <span class="propina-item-texto">Por tráfico pesado</span>
+                                        <span class="propina-item-monto">$3.000</span>
+                                    </div>
+                                    <div class="propina-dropdown-item" data-valor="4000"
+                                        data-label="Por entrega nocturna">
+                                        <span class="propina-item-icon">🌙</span>
+                                        <span class="propina-item-texto">Por entrega nocturna</span>
+                                        <span class="propina-item-monto">$4.000</span>
+                                    </div>
+                                    <div class="propina-dropdown-item" data-valor="5000"
+                                        data-label="Por excelente servicio">
+                                        <span class="propina-item-icon">⭐</span>
+                                        <span class="propina-item-texto">Por excelente servicio</span>
+                                        <span class="propina-item-monto">$5.000</span>
+                                    </div>
+                                    <div class="propina-dropdown-item propina-item-otro" data-valor="otro"
+                                        data-label="Otro monto">
+                                        <span class="propina-item-icon">✏️</span>
+                                        <span class="propina-item-texto">Otro monto</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group hidden-propina" id="propinaOtroGroup" style="margin-top:1rem;">
+                                <label><i class="fas fa-coins"></i> ¿Cuánto deseas dar?</label>
+                                <input type="number" id="propinaOtroInput" min="500" step="500" placeholder="Ej: 4000">
+                            </div>
+
+                            <div class="propina-resumen-mini hidden-propina" id="propinaResumenMini">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>Propina seleccionada: <strong id="propinaResumenMiniValor">$0</strong></span>
+                            </div>
+
+                            <p class="propina-nota"><i class="fas fa-info-circle"></i> El 100% de la propina es para tu
+                                domiciliario. No se suma al total de tu pedido.</p>
                         </div>
                     </div>
 

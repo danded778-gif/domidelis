@@ -57,6 +57,13 @@ function formatearFecha(fechaStr) {
         hour: '2-digit', minute: '2-digit'
     });
 }
+function renderPropinaBadge(p) {
+    const propina = parseFloat(p.propina) || 0;
+    if (propina > 0) {
+        return `<span class="badge" style="background:#2A9D8F;color:#fff;"><i class="fas fa-hand-holding-heart"></i> Sí — ${formatearPrecio(propina)}</span>`;
+    }
+    return `<span class="badge" style="background:#e0e0e0;color:#666;">No</span>`;
+}
 
 // ─── AUDIO ───
 function initAudio() {
@@ -564,7 +571,7 @@ async function cargarPedidosAdmin() {
         }
 
         if (activos.length === 0) {
-            tbody.innerHTML = "<tr><td colspan='8' class='text-center'>No hay pedidos activos</td></tr>";
+            tbody.innerHTML = "<tr><td colspan='9' class='text-center'>No hay pedidos activos</td></tr>";
             return;
         }
         tbody.innerHTML = activos.map(p => {
@@ -576,6 +583,7 @@ async function cargarPedidosAdmin() {
                     <td><strong>${p.clienteNombre}</strong><br><small><i class="fas fa-phone"></i> ${p.clienteTelefono}</small></td>
                     <td><span class="tienda-tag-historial"><i class="fas fa-store"></i> ${escapeQuotes(tiendasTexto)}</span></td>
                     <td>${formatearPrecio(p.total)}</td>
+                    <td>${renderPropinaBadge(p)}</td>
                     <td><span class="badge badge-${p.estado.replace(/\s/g, '-')}">${p.estado}</span></td>
                     <td>${domi ? `<i class="fas fa-user"></i> ${domi.nombre}` : "— Sin asignar —"}</td>
                     <td>${formatearFecha(p.fecha)}</td>
@@ -704,6 +712,7 @@ async function verDetallePedido(pedidoId) {
                 <p><strong>Dirección:</strong> ${pedido.clienteDireccion}</p>
                 <p><strong>Teléfono:</strong> ${pedido.clienteTelefono}</p>
                 <p><strong>Tienda:</strong> <span class="tienda-tag-detalle"><i class="fas fa-store"></i> ${tiendasTexto}</span></p>
+                <p><strong>Propina:</strong> ${renderPropinaBadge(pedido)}</p>
                 <p><strong>Fecha:</strong> ${formatearFecha(pedido.fecha)}</p>
                 <p><strong>Estado:</strong> <span class="badge badge-${pedido.estado.replace(/\s/g, '-')}">${pedido.estado}</span></p>
                 <h4>Productos:</h4>
@@ -840,7 +849,7 @@ function renderizarHistorialPedidos(pedidosFiltrados = null) {
     const pedidos = pedidosFiltrados || pedidosEntregadosCache;
     if (contador) contador.textContent = `${pedidos.length} pedido${pedidos.length !== 1 ? 's' : ''}`;
     if (pedidos.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" class="text-center">No hay pedidos entregados</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="10" class="text-center">No hay pedidos entregados</td></tr>`;
         return;
     }
     tbody.innerHTML = pedidos.map(p => {
@@ -853,6 +862,7 @@ function renderizarHistorialPedidos(pedidosFiltrados = null) {
                 <td>#${p.id}</td>
                 <td><strong>${p.clienteNombre}</strong><br><small>${p.clienteTelefono}</small></td>
                 <td>${formatearPrecio(p.total)}</td>
+                <td>${renderPropinaBadge(p)}</td>
                 <td><span class="tienda-tag-historial"><i class="fas fa-store"></i> ${escapeQuotes(tiendasTexto)}</span></td>
                 <td>${domi ? `<span class="domiciliario-tag"><i class="fas fa-user"></i> ${domi.nombre}</span>` : 'Sin asignar'}</td>
                 <td>${formatearFecha(p.fecha)}</td>
