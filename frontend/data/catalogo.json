@@ -1,6 +1,6 @@
 {
-  "version": "v2026-06-30T04-17-45",
-  "ultimaActualizacion": "2026-06-30T04:17:45.156Z",
+  "version": "v2026-06-30T04-18-07",
+  "ultimaActualizacion": "2026-06-30T04:18:07.504Z",
   "tiendas": [
     {
       "id": 1,
@@ -233,6 +233,56 @@
           "nombre": "Pendeja 1",
           "descripcion": "8 Alitas más acompañante",
           "precio": 25000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 133,
+          "nombre": "Pendeja 2",
+          "descripcion": "14 Alitas más acompañante",
+          "precio": 40000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 134,
+          "nombre": "Pendeja 3",
+          "descripcion": "20 Alitas más acompañante",
+          "precio": 50000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 135,
+          "nombre": "Pendeja 4",
+          "descripcion": "34 Alitas más acompañante",
+          "precio": 66000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 136,
+          "nombre": "Pendeja 5",
+          "descripcion": "50 Alitas más acompañante",
+          "precio": 88000,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "cantidadTipo": "UND",
+          "activo": true
+        },
+        {
+          "id": 137,
+          "nombre": "Pendeja 6",
+          "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
+          "precio": 130000,
           "imagen_url": "",
           "badge": "Disponible",
           "cantidadTipo": "UND",
