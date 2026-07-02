@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-01T22-56-21",
-  "ultimaActualizacion": "2026-07-01T22:56:21.255Z",
+  "version": "v2026-07-02T03-18-32",
+  "ultimaActualizacion": "2026-07-02T03:18:32.384Z",
   "tiendas": [
     {
       "id": 1,
@@ -19,8 +19,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
           "badge": "Disponible",
+          "categoria": "comida",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 102,
@@ -29,8 +32,11 @@
           "precio": 23000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 103,
@@ -39,8 +45,11 @@
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 104,
@@ -49,8 +58,11 @@
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
           "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 105,
@@ -59,8 +71,11 @@
           "precio": 13000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
           "badge": "Mas vendido",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 106,
@@ -69,8 +84,11 @@
           "precio": 12000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/arepadequeso_150kb.jpg",
           "badge": "Mas vendido",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         },
         {
           "id": 107,
@@ -79,8 +97,11 @@
           "precio": 6500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
         }
       ]
     },
@@ -101,8 +122,11 @@
           "precio": 6500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 109,
@@ -111,8 +135,11 @@
           "precio": 4500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 110,
@@ -121,8 +148,11 @@
           "precio": 14000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/huevos.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 111,
@@ -131,8 +161,11 @@
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/acetaminofen.png",
           "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 112,
@@ -141,8 +174,11 @@
           "precio": 12000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 113,
@@ -151,8 +187,11 @@
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/peluche.png",
           "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         },
         {
           "id": 114,
@@ -161,8 +200,11 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
         }
       ]
     },
@@ -183,8 +225,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "3",
+          "tiendaNombre": "Calanchos Parrilla"
         },
         {
           "id": 129,
@@ -193,8 +238,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
           "badge": "Disponible",
+          "categoria": "almuerzo",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "3",
+          "tiendaNombre": "Calanchos Parrilla"
         },
         {
           "id": 130,
@@ -203,8 +251,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "3",
+          "tiendaNombre": "Calanchos Parrilla"
         },
         {
           "id": 131,
@@ -213,8 +264,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "3",
+          "tiendaNombre": "Calanchos Parrilla"
         }
       ]
     },
@@ -235,8 +289,11 @@
           "precio": 25000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         },
         {
           "id": 133,
@@ -245,8 +302,11 @@
           "precio": 40000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         },
         {
           "id": 134,
@@ -255,8 +315,11 @@
           "precio": 50000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         },
         {
           "id": 135,
@@ -265,8 +328,11 @@
           "precio": 66000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         },
         {
           "id": 136,
@@ -275,8 +341,11 @@
           "precio": 88000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         },
         {
           "id": 137,
@@ -285,8 +354,11 @@
           "precio": 130000,
           "imagen_url": "",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "4",
+          "tiendaNombre": "Alitas maria pendeja"
         }
       ]
     },
@@ -307,8 +379,11 @@
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 116,
@@ -317,8 +392,11 @@
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 117,
@@ -327,8 +405,11 @@
           "precio": 36000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 118,
@@ -337,8 +418,11 @@
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 119,
@@ -347,8 +431,11 @@
           "precio": 24000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_parcera.jpeg",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 120,
@@ -357,8 +444,11 @@
           "precio": 24000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_coste%C3%B1a3.jpeg",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         },
         {
           "id": 121,
@@ -367,8 +457,11 @@
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
           "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
         }
       ]
     },
@@ -389,8 +482,11 @@
           "precio": 15000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         },
         {
           "id": 123,
@@ -399,8 +495,11 @@
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         },
         {
           "id": 124,
@@ -409,8 +508,11 @@
           "precio": 20000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         },
         {
           "id": 125,
@@ -419,8 +521,11 @@
           "precio": 17000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         },
         {
           "id": 126,
@@ -429,8 +534,11 @@
           "precio": 17000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/combo5.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         },
         {
           "id": 127,
@@ -439,8 +547,11 @@
           "precio": 42000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/comboi7.png",
           "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
-          "activo": true
+          "activo": true,
+          "tiendaId": "6",
+          "tiendaNombre": "Punto Del Sabor"
         }
       ]
     },
@@ -454,6 +565,489 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": []
+    }
+  ],
+  "productosGlobal": [
+    {
+      "id": 101,
+      "nombre": "Hamburgesa Doble Carne",
+      "descripcion": "Hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+      "badge": "Disponible",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 102,
+      "nombre": "Crispy Onion",
+      "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
+      "precio": 23000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 103,
+      "nombre": "Salchipapas",
+      "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
+      "precio": 16000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 104,
+      "nombre": "Pizza",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 105,
+      "nombre": "Cuarto de pollo",
+      "descripcion": "",
+      "precio": 13000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
+      "badge": "Mas vendido",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 106,
+      "nombre": "Arepa de Queso",
+      "descripcion": "Nuestra tradicional arepa de queso santuariana, recién preparada, con mantequilla derretida y deliciosa lecherita. Suave por dentro, doradita por fuera y con el auténtico sabor que tanto te gusta.",
+      "precio": 12000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/arepadequeso_150kb.jpg",
+      "badge": "Mas vendido",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 107,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 108,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 109,
+      "nombre": "🥛 Leche",
+      "descripcion": "",
+      "precio": 4500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 110,
+      "nombre": "🥚 Cubeta de Huevos",
+      "descripcion": "",
+      "precio": 14000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/huevos.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 111,
+      "nombre": "💊 Acetaminofén",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/acetaminofen.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 112,
+      "nombre": "🌹 Flores",
+      "descripcion": "",
+      "precio": 12000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 113,
+      "nombre": "🧸 Peluche",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/peluche.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 114,
+      "nombre": "📦 Encargo Express",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 115,
+      "nombre": "Clasica",
+      "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
+      "precio": 16000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 116,
+      "nombre": "Salchipapa Trifasica Personal",
+      "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
+      "precio": 22000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 117,
+      "nombre": "Salchipapa Trifasica G",
+      "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
+      "precio": 36000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/salchipapa.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 118,
+      "nombre": "Crispy Onion",
+      "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
+      "precio": 22000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/crispyonions.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 119,
+      "nombre": "La Parcera",
+      "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra salsa. Acompañada de papas fritas.",
+      "precio": 24000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_parcera.jpeg",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 120,
+      "nombre": "La Costeña",
+      "descripcion": "hamburguesa con pan suave, carne jugosa a la plancha, doble queso fundido, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa de la casa.",
+      "precio": 24000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/la_coste%C3%B1a3.jpeg",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 121,
+      "nombre": "Carnes",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 122,
+      "nombre": "Salchipapas Pequeña",
+      "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
+      "precio": 15000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 123,
+      "nombre": "Salchipapas Mediana",
+      "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante,queso y nuestras deliciosas salsas de la casa.",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 124,
+      "nombre": "Salchipapas Grande",
+      "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras  salsas de la casa.",
+      "precio": 20000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 125,
+      "nombre": "Hamburgesa Doble Carne",
+      "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
+      "precio": 17000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 126,
+      "nombre": "Combo 5",
+      "descripcion": "Hamburguesa con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañada de crujientes papas a la francesa y una refrescante gaseosa Pool de 600 ml.",
+      "precio": 17000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/combo5.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 127,
+      "nombre": "Combo 7",
+      "descripcion": "Incluye 4 deliciosas hamburguesas preparadas con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañadas de una porción de papas a la francesa y una refrescante gaseosa Pool 1/4.",
+      "precio": 42000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/comboi7.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "6",
+      "tiendaNombre": "Punto Del Sabor"
+    },
+    {
+      "id": 128,
+      "nombre": "Almuerzo",
+      "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "3",
+      "tiendaNombre": "Calanchos Parrilla"
+    },
+    {
+      "id": 129,
+      "nombre": "Almuerzo",
+      "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
+      "badge": "Disponible",
+      "categoria": "almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "3",
+      "tiendaNombre": "Calanchos Parrilla"
+    },
+    {
+      "id": 130,
+      "nombre": "Almuerzos",
+      "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "3",
+      "tiendaNombre": "Calanchos Parrilla"
+    },
+    {
+      "id": 131,
+      "nombre": "Almuerzo",
+      "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
+      "precio": 18000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "3",
+      "tiendaNombre": "Calanchos Parrilla"
+    },
+    {
+      "id": 132,
+      "nombre": "Pendeja 1",
+      "descripcion": "8 Alitas más acompañante",
+      "precio": 25000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 133,
+      "nombre": "Pendeja 2",
+      "descripcion": "14 Alitas más acompañante",
+      "precio": 40000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 134,
+      "nombre": "Pendeja 3",
+      "descripcion": "20 Alitas más acompañante",
+      "precio": 50000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 135,
+      "nombre": "Pendeja 4",
+      "descripcion": "34 Alitas más acompañante",
+      "precio": 66000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 136,
+      "nombre": "Pendeja 5",
+      "descripcion": "50 Alitas más acompañante",
+      "precio": 88000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 137,
+      "nombre": "Pendeja 6",
+      "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
+      "precio": 130000,
+      "imagen_url": "",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "4",
+      "tiendaNombre": "Alitas maria pendeja"
     }
   ]
 }
