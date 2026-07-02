@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-02T03-50-01",
-  "ultimaActualizacion": "2026-07-02T03:50:01.349Z",
+  "version": "v2026-07-02T03-50-03",
+  "ultimaActualizacion": "2026-07-02T03:50:03.077Z",
   "tiendas": [
     {
       "id": 1,
@@ -225,7 +225,7 @@
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
-          "badge": "",
+          "badge": "agotado",
           "categoria": "licores",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1120,7 +1120,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "",
+      "badge": "agotado",
       "categoria": "licores",
       "cantidadTipo": "UND",
       "activo": true,
