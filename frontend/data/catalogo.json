@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-02T03-49-30",
-  "ultimaActualizacion": "2026-07-02T03:49:30.030Z",
+  "version": "v2026-07-02T03-50-01",
+  "ultimaActualizacion": "2026-07-02T03:50:01.349Z",
   "tiendas": [
     {
       "id": 1,
@@ -201,6 +201,58 @@
           "imagen_url": "",
           "badge": "agotado",
           "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 138,
+          "nombre": "Aguardiente antioqueño",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 139,
+          "nombre": "Aguardiente antioqueño",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 140,
+          "nombre": "Aguardiente antioqueño",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 141,
+          "nombre": "Aguardiente antioqueño",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "licores",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1048,6 +1100,58 @@
       "activo": true,
       "tiendaId": "4",
       "tiendaNombre": "Alitas maria pendeja"
+    },
+    {
+      "id": 138,
+      "nombre": "Aguardiente antioqueño",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "agotado",
+      "categoria": "licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 139,
+      "nombre": "Aguardiente antioqueño",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 140,
+      "nombre": "Aguardiente antioqueño",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 141,
+      "nombre": "Aguardiente antioqueño",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     }
   ]
 }
