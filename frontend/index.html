@@ -378,7 +378,8 @@
 
             <!-- ★★★ 5. NUEVO: GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
             <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
-                <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
+                <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
+                    tiendas</button>
                 <div class="menu-grid" id="productos-por-categoria-container" style="margin-top: 1rem;"></div>
             </div>
         </div>
@@ -425,8 +426,8 @@
         <div class="cart-footer">
             <div class="cart-total"><span>Total:</span><span id="cart-total-price">$0</span></div>
             <button class="btn-whatsapp-cart" id="checkout-whatsapp">
-             Continuar con el pedido
-</button>
+                Continuar con el pedido
+            </button>
         </div>
     </div>
 
@@ -589,12 +590,52 @@
     <script>OfflineGame.init();</script>
 
     <script>
+        /* ===== ELEMENTOS ===== */
         const btnArriba = document.getElementById('btn-volver-arriba');
-        window.addEventListener('scroll', () => {
-            btnArriba.style.display = window.scrollY > 600 ? 'flex' : 'none';
-            btnArriba.style.alignItems = 'center'; btnArriba.style.justifyContent = 'center';
-            const scrollIndicator = document.getElementById('scroll-indicator');
-            if (scrollIndicator) { if (window.scrollY > 50) { scrollIndicator.classList.add('hide'); } else { scrollIndicator.classList.remove('hide'); } }
+        const headerEl = document.querySelector('header');
+        const scrollIndicator = document.getElementById('scroll-indicator');
+
+        /* ===== CLIC EN LA FLECHITA DEL HERO → BAJA ===== */
+        scrollIndicator.addEventListener('click', function () {
+            var objetivo = document.getElementById('categories-wrapper')
+                || document.getElementById('main-title')
+                || document.querySelector('main > .container');
+            if (objetivo) {
+                var offsetTop = objetivo.getBoundingClientRect().top + window.pageYOffset - 70;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+        });
+
+        /* ===== AL HACER SCROLL (MANUAL O POR EL BOTÓN) ===== */
+        window.addEventListener('scroll', function () {
+            var scrollY = window.scrollY || window.pageYOffset;
+
+            /* Botón volver arriba (este es OTRO botón, no el del hero) */
+            if (scrollY > 600) {
+                btnArriba.style.display = 'flex';
+                btnArriba.style.alignItems = 'center';
+                btnArriba.style.justifyContent = 'center';
+            } else {
+                btnArriba.style.display = 'none';
+            }
+
+            /* Ocultar la flechita del hero cuando ya bajaste */
+            if (scrollIndicator) {
+                if (scrollY > 50) {
+                    scrollIndicator.classList.add('hide');
+                } else {
+                    scrollIndicator.classList.remove('hide');
+                }
+            }
+
+            /* PONER OSCURO EL HEADER cuando bajas */
+            if (headerEl) {
+                if (scrollY > 50) {
+                    headerEl.classList.add('header-scrolled');
+                } else {
+                    headerEl.classList.remove('header-scrolled');
+                }
+            }
         });
     </script>
 </body>
