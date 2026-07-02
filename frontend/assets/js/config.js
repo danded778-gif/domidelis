@@ -139,7 +139,21 @@ function generarEstrellas(rating) {
     }
     return s;
 }
+// ============================================
+// SEGURIDAD ANTI-XSS (Escapar HTML)
+// ============================================
+function esc(str) {
+    if (!str) return '';
+    // Si no es string, lo convertimos (por si llega un número)
+    if (typeof str !== 'string') str = String(str);
+    // Creamos un elemento temporal, inyectamos el texto y sacamos el HTML seguro
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+}
 
+// Mantenemos la antigua por si acaso la usas en algún lado para comillas específicas, 
+// pero NO la uses para pintar en pantalla.
 function escapeQuotes(str) {
     if (!str) return '';
     return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');

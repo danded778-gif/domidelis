@@ -114,7 +114,7 @@
             const tienda = tiendas[key];
             html += `<div class="resumen-tienda-bloque">
             <div class="resumen-tienda-header">
-                <i class="fas fa-store"></i> ${tienda.nombre}
+                <i class="fas fa-store"></i> ${esc(tienda.nombre)}
             </div>
             <div class="resumen-tienda-productos">`;
 
@@ -397,7 +397,7 @@
         carrito.forEach(item => {
             const key = item.tiendaNombre || 'Sin tienda';
             if (!tiendas[key]) tiendas[key] = [];
-            tiendas[key].push(`${item.cantidad}x ${item.nombre}`);
+            tiendas[key].push(`${item.cantidad}x ${esc(item.nombre)}`);
         });
 
         let msg = `*PEDIDO #${pedidoData.pedidoId || ''}*\n`;
@@ -432,20 +432,20 @@
 
         let msg = `🛒 *NUEVO PEDIDO #${data.pedidoId}*\n`;
         msg += `━━━━━━━━━━━━━━━━━━\n\n`;
-        msg += `👤 *Cliente:* ${data.nombre}\n`;
+        msg += `👤 *Cliente:* ${esc(data.nombre)}\n`;
         msg += `📱 *Teléfono:* ${data.telefono}\n`;
-        msg += `📍 *Dirección:* ${data.direccion}`;
+        msg += `📍 *Dirección:* ${esc(data.direccion)}`;
         if (data.barrio) msg += ` - ${data.barrio}`;
         msg += `\n`;
         if (data.referencias) msg += `📝 *Ref:* ${data.referencias}\n`;
         msg += `\n`;
 
         Object.values(tiendas).forEach(tienda => {
-            msg += `🏪 *${tienda.nombre}*\n`;
+            msg += `🏪 *${esc(tienda.nombre)}*\n`;
             msg += `─────────────────\n`;
             tienda.items.forEach(item => {
                 const cantTipo = item.cantidadTipo || 'UND';
-                msg += `• ${item.cant}x ${item.nombre} (${cantTipo}) — ${formatearPrecio(item.sub)}\n`;
+                msg += `• ${item.cant}x ${esc(item.nombre)} (${cantTipo}) — ${formatearPrecio(item.sub)}\n`;
             });
             msg += `   Subtotal tienda: ${formatearPrecio(tienda.subtotal)}\n\n`;
         });

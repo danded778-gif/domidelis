@@ -1,16 +1,29 @@
 // ============================================
 // client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA
-// Incluye: Horario JSON (Día por día), Autocomplete, Carrito, Analíticas
-// ★ ACTUALIZADO: Reintento silencioso de JSON, arreglos de scroll y sintaxis.
+// Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
+// ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
+// ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
+// ★ MEJORADO: Categorías con orden prioritario y "Otras" al final
 // ============================================
 
 let tiendas = [];
 let carrito = [];
 
+// ★ VARIABLES GLOBALES DE CATEGORÍAS Y PRODUCTOS ★
+let categoriaActiva = 'Todas';
+let productosGlobal = []; // Lista plana de todos los productos (viene del JSON)
+
 document.addEventListener("DOMContentLoaded", () => {
     carrito = obtenerCarrito();
     inicializarEventos();
     if (document.getElementById("stores-grid")) cargarTiendas();
+
+    // ★ Inicializar flechas del menú de categorías ★
+    const scrollLeft = document.getElementById('scroll-left');
+    const scrollRight = document.getElementById('scroll-right');
+    const scrollContainer = document.getElementById('categories-scroll');
+    if(scrollLeft) scrollLeft.addEventListener('click', () => scrollContainer.scrollBy({ left: -200, behavior: 'smooth' }));
+    if(scrollRight) scrollRight.addEventListener('click', () => scrollContainer.scrollBy({ left: 200, behavior: 'smooth' }));
 });
 
 function inicializarEventos() {
@@ -50,13 +63,10 @@ function cerrarCarrito() {
     document.body.style.overflow = "";
 }
 
-// ★★★ FUNCIÓN MEJORADA: Carga con Reintentos Silenciosos ★★★
+// ★★★ FUNCIÓN MEJORADA: Carga con Reintentos Silenciosos y Categorías ★★★
 async function cargarTiendas(reintentos = 3) {
     const container = document.getElementById("stores-grid");
     if (!container) return;
-
-    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
 
     if (reintentos === 3) {
         container.innerHTML = `
@@ -73,11 +83,14 @@ async function cargarTiendas(reintentos = 3) {
         
         const data = await res.json();
         tiendas = data.tiendas || [];
+        
+        // ★ NUEVO: Cargar productos globales y categorías ★
+        productosGlobal = data.productosGlobal || [];
+        const catsEnJSON = [...new Set(productosGlobal.map(p => p.categoria).filter(c => c && c.trim() !== ''))];
+        renderizarCategorias(catsEnJSON);
 
-        const tituloPrincipal = document.getElementById('main-title');
-        if (tituloPrincipal) {
-            tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
-        }
+        // ★ Restablecer la vista principal ★
+        resetMainViewUI();
 
         renderizarTiendas();
     } catch (error) {
@@ -96,6 +109,201 @@ async function cargarTiendas(reintentos = 3) {
             `;
         }
     }
+}
+
+// ★ NUEVO: Restablecer la interfaz a la vista de tiendas ★
+function resetMainViewUI() {
+    const categoriesWrapper = document.getElementById('categories-wrapper');
+    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+    const storesGrid = document.getElementById('stores-grid');
+    const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const tituloPrincipal = document.getElementById('main-title');
+
+    if (categoriesWrapper) categoriesWrapper.style.display = 'flex';
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
+    if (storesGrid) storesGrid.style.display = '';
+    if (catProductosGrid) catProductosGrid.style.display = 'none';
+    if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
+}
+
+// ============================================
+// SISTEMA DE CATEGORÍAS (CON ORDEN PRIORITARIO Y "OTRAS" AL FINAL)
+// ============================================
+function renderizarCategorias(categoriasDesdeJSON) {
+    const contenedor = document.getElementById('categories-scroll');
+    if (!contenedor) return;
+
+    // 1. DEFINIR EL ORDEN DE PRIORIDAD (Puedes modificar este orden a tu gusto)
+    const prioridad = [
+        'Comida', 
+        'Almuerzo', 
+        'Bebidas', 
+        'Licores', 
+        'Cervezas', 
+        'Farmacia'
+    ];
+
+    // 2. SEPARAR "Otras" de las demás
+    let categoriaOtras = null;
+    let categoriasRestantes = [];
+
+    categoriasDesdeJSON.forEach(cat => {
+        if (cat.toLowerCase().trim() === 'otras') {
+            categoriaOtras = cat; // La guardamos aparte
+        } else {
+            categoriasRestantes.push(cat);
+        }
+    });
+
+    // 3. ORDENAR: Agregamos las prioritarias que existan, luego las que no están en la lista
+    let categoriasOrdenadas = [];
+
+    // Añadir las prioritarias (si vienen del JSON)
+    prioridad.forEach(prio => {
+        const encontrada = categoriasRestantes.find(cat => cat.toLowerCase() === prio.toLowerCase());
+        if (encontrada) {
+            categoriasOrdenadas.push(encontrada);
+        }
+    });
+
+    // Añadir las categorías del JSON que no estaban en la lista de prioridad
+    categoriasRestantes.forEach(cat => {
+        if (!categoriasOrdenadas.includes(cat)) {
+            categoriasOrdenadas.push(cat);
+        }
+    });
+
+    // 4. PONER "Otras" AL FINAL (si existió)
+    if (categoriaOtras) {
+        categoriasOrdenadas.push(categoriaOtras);
+    }
+
+    // 5. AGREGAR "TODAS" AL INICIO y construir el HTML
+    let listaFinal = ['Todas', ...categoriasOrdenadas];
+
+    contenedor.innerHTML = listaFinal.map(cat => {
+        // Lógica para el nombre del ícono (minúsculas, sin espacios ni tildes)
+        let nombreArchivo = cat.toLowerCase()
+                               .normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
+                               .replace(/\s+/g, ''); 
+        
+        let iconoUrl = `assets/img/categorias/${nombreArchivo}.png`; 
+
+        const claseActiva = cat === categoriaActiva ? 'active' : '';
+        
+        return `
+        <div class="category-item ${claseActiva}" onclick="filtrarPorCategoria('${cat}', this)">
+            <div class="category-icon">
+                <img src="${iconoUrl}" alt="${cat}" onerror="this.onerror=null; this.src='assets/img/tienda-error.png';">
+            </div>
+            <span>${cat}</span>
+        </div>`;
+    }).join('');
+}
+
+function filtrarPorCategoria(nombreCategoria, elemento) {
+    categoriaActiva = nombreCategoria;
+    
+    // Actualizar clase activa visual
+    document.querySelectorAll('.category-item').forEach(item => item.classList.remove('active'));
+    if (elemento) elemento.classList.add('active');
+
+    if (categoriaActiva === 'Todas') {
+        volverATiendas();
+    } else {
+        mostrarProductosPorCategoria();
+    }
+}
+
+function mostrarProductosPorCategoria() {
+    const storesGrid = document.getElementById('stores-grid');
+    const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const tituloPrincipal = document.getElementById('main-title');
+    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+
+    // Ocultar tiendas y anuncios, mostrar productos
+    if(storesGrid) storesGrid.style.display = 'none';
+    if(contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    if(catProductosGrid) catProductosGrid.style.display = 'block';
+    
+    // Cambiar título
+    if(tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${categoriaActiva}`;
+
+    // Filtrar productos de todas las tiendas
+    const productosFiltrados = productosGlobal.filter(p => p.categoria === categoriaActiva);
+
+    const container = document.getElementById('productos-por-categoria-container');
+    if (!container) return;
+
+    if (productosFiltrados.length === 0) {
+        container.innerHTML = `<div class="empty-state"><i class="fas fa-box-open"></i><p>No hay productos en esta categoría</p></div>`;
+        return;
+    }
+
+    container.innerHTML = productosFiltrados.map(p => {
+        const imagenUrl = (p.imagen_url || '').trim();
+        const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
+        const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
+
+        let botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
+        if (esAgotado) {
+            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
+        }
+
+        return `
+        <div class="product-card">
+            <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
+                ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
+                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+            </div>
+            <div class="product-info">
+                <h4> ${esc(p.nombre)}</h4>
+                <p class="product-desc" style="color: var(--accent); font-weight: 600; font-size: 0.8rem; margin-bottom: 0.3rem;">
+                    <i class="fas fa-store" style="font-size: 0.7rem;"></i> ${p.tiendaNombre || 'Sin tienda'}
+                </p>
+                <p class="product-desc">${p.descripcion || ''}</p>
+                <div class="product-price">${formatearPrecio(p.precio)}</div>
+                <div class="precio-unidad-container">${botonHTML}</div>
+            </div>
+        </div>`;
+    }).join('');
+
+        // ★ ARREGLO DE SCROLL: Sube justo hasta el menú de categorías, no hasta el logo
+    requestAnimationFrame(() => {
+        const targetElement = document.getElementById('categories-wrapper') || document.getElementById('main-title');
+        if (targetElement) {
+            const headerOffset = 85; // Altura del header fijo para que no lo tape
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+function volverATiendas() {
+    const storesGrid = document.getElementById('stores-grid');
+    const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const tituloPrincipal = document.getElementById('main-title');
+    const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+
+    // Mostrar tiendas y anuncios, ocultar productos
+    if(storesGrid) storesGrid.style.display = '';
+    if(contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
+    if(catProductosGrid) catProductosGrid.style.display = 'none';
+
+    // Restablecer título
+    if(tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
+
+    // Restablecer categoría a Todas en el menú
+    categoriaActiva = 'Todas';
+    document.querySelectorAll('.category-item').forEach(item => {
+        if(item.querySelector('span').innerText === 'Todas') item.classList.add('active');
+        else item.classList.remove('active');
+    });
 }
 
 // ============================================
@@ -143,9 +351,9 @@ function renderizarTiendas() {
                 <div class="store-img-overlay"></div>
             </div>
             <div class="store-info">
-                <h3>${tienda.nombre}</h3>
-                ${tieneDesc ? `<p class="store-desc">${tienda.descripcion}</p>` : ''}
-                <p><i class="fas fa-map-marker-alt"></i> ${tienda.direccion}</p>
+                <h3> ${esc(tienda.nombre)}</h3>
+                ${tieneDesc ? `<p class="store-desc"> ${esc(tienda.descripcion)}</p>` : ''}
+                <p><i class="fas fa-map-marker-alt"></i>  ${esc(tienda.direccion)}</p>
                 <p><i class="fas fa-clock"></i> Hoy: ${getHorarioHoy(tienda.horario)}</p>
                 <div class="store-rating">${generarEstrellas(rating)}</div>
             </div>
@@ -158,8 +366,14 @@ async function verMenuTienda(tiendaId) {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
+    // ★ Ocultar Categorías y Anuncios al ver el menú de la tienda ★
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+    const categoriesWrapper = document.getElementById('categories-wrapper');
+    const catProductosGrid = document.getElementById('categoria-productos-grid');
+    
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    if (categoriesWrapper) categoriesWrapper.style.display = 'none';
+    if (catProductosGrid) catProductosGrid.style.display = 'none';
 
     container.className = '';
     container.innerHTML = `
@@ -173,7 +387,7 @@ async function verMenuTienda(tiendaId) {
 
     const tituloPrincipal = document.getElementById('main-title');
     if (tituloPrincipal && tienda) {
-        tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${tienda.nombre}`;
+        tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i>  ${esc(tienda.nombre)}`;
     }
 
     if (tienda && typeof gtag === 'function') {
@@ -228,7 +442,7 @@ async function verMenuTienda(tiendaId) {
                 ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
             </div>
             <div class="product-info">
-                <h4>${p.nombre}</h4>
+                <h4> ${esc(p.nombre)}</h4>
                 <p class="product-desc">${p.descripcion || ''}</p>
                 <div class="product-price">${formatearPrecio(p.precio)}</div>
                 <div class="precio-unidad-container">${botonHTML}</div>
@@ -254,21 +468,21 @@ async function verMenuTienda(tiendaId) {
         <div class="menu-grid" id="menu-grid-container">${productosHTML}</div>
     `;
 
-    // ★ ARREGLO DE SCROLL: Sube suavemente y se frena JUSTO en el título de la tienda
+    // ★ ARREGLO DE SCROLL
     requestAnimationFrame(() => {
         const targetElement = document.getElementById('main-title');
         if (targetElement) {
-            const headerOffset = 85; // Altura del header fijo para que no tape el título
+            const headerOffset = 85;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
             window.scrollTo({
                 top: offsetPosition,
-                behavior: 'smooth' // Cambia a 'auto' si prefieres que sea instantáneo
+                behavior: 'smooth'
             });
         }
     });
-} // ★ ESTA LLAVE FALTABA Y CAUSABA EL ERROR
+}
 
 // ============================================
 // EXPLOSIÓN DE COMIDA RÁPIDA 🍔🍟🍕
@@ -362,7 +576,7 @@ function agregarAlCarrito(producto, cantidadTipo) {
 
     guardarCarrito(carrito);
     actualizarCarritoUI();
-    mostrarNotificacion(`${producto.nombre} agregado al carrito`);
+    mostrarNotificacion(` ${esc(producto.nombre)} agregado al carrito`);
 
     if (carritoVacio) crearExplosionComida();
 
@@ -414,7 +628,7 @@ function actualizarCarritoUI() {
             cartItemsDiv.innerHTML = carrito.map((item, idx) => `
                 <div class="cart-item">
                     <div class="cart-item-info">
-                        <div class="cart-item-name">${item.nombre}</div>
+                        <div class="cart-item-name"> ${esc(item.nombre)}</div>
                         ${item.tiendaNombre ? `<div class="cart-item-detail"><i class="fas fa-store" style="color:var(--secondary);margin-right:4px;font-size:.7rem"></i>${item.tiendaNombre}</div>` : ''}
                         <div class="cart-item-detail">${item.cantidad} unidad${item.cantidad > 1 ? 'es' : ''}</div>
                         <div class="cart-item-detail">${formatearPrecio(item.precioUnitario)} c/u</div>

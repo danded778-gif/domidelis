@@ -72,7 +72,7 @@ function protegerRuta(rolRequerido) {
     // Mostrar nombre de usuario en el header (obtenido del token de forma segura)
     const userDisplay = document.getElementById("user-display");
     if (userDisplay && sesion.nombre) {
-        userDisplay.innerHTML = `<i class="fas fa-user-circle"></i> ${sesion.nombre}`;
+        userDisplay.innerHTML = `<i class="fas fa-user-circle"></i> ${esc(sesion.nombre)}`;
     }
     
     return true;

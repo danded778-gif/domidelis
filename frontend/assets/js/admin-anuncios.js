@@ -178,7 +178,7 @@ const AdminAnuncios = {
 
         let optionsHtml = '<option value="0">-- Tienda no específica --</option>';
         this.tiendas.forEach(t => {
-            optionsHtml += `<option value="${t.id}">${t.nombre} (ID: ${t.id})</option>`;
+            optionsHtml += `<option value="${t.id}">${esc(t.nombre)} (ID: ${t.id})</option>`;
         });
 
         const selectHtml = `

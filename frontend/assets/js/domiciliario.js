@@ -226,7 +226,7 @@ function renderCards(pedidos) {
                 <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
                 ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
                 <p><strong>Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
-                <div class="productos-resumen"><strong>Productos:</strong><ul>${productos.slice(0, 3).map(x => `<li>${x.cantidad}x ${x.nombre}</li>`).join('')}${productos.length > 3 ? `<li>... y ${productos.length - 3} más</li>` : ''}</ul></div>
+                <div class="productos-resumen"><strong>Productos:</strong><ul>${productos.slice(0, 3).map(x => `<li>${x.cantidad}x ${esc(x.nombre)}</li>`).join('')}${productos.length > 3 ? `<li>... y ${productos.length - 3} más</li>` : ''}</ul></div>
             </div>
             <div class="estado-botones">
                 ${esPendiente ? `<button class="btn btn-warning btn-sm" onclick="cambiarEstadoPedido(${p.id},'en camino')"><i class="fas fa-motorcycle"></i> En camino</button>` : `<button class="btn btn-success btn-sm" onclick="marcarEntregado(${p.id})"><i class="fas fa-check"></i> Entregado</button>`}
@@ -279,7 +279,7 @@ function renderizarHistorial() {
                 <p><strong>Cliente:</strong> ${p.clienteNombre}</p>
                 <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
                 ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
-                <div class="productos-resumen"><strong>Entregados:</strong><ul>${productos.map(x => `<li>${x.cantidad}x ${x.nombre}</li>`).join('')}</ul></div>
+                <div class="productos-resumen"><strong>Entregados:</strong><ul>${productos.map(x => `<li>${x.cantidad}x ${esc(x.nombre)}</li>`).join('')}</ul></div>
             </div>
             <div class="historial-acciones"><span class="tiempo-entrega"><i class="fas fa-clock"></i> ${formatearTiempo(fe)}</span></div></div>`;
     }).join('');
@@ -342,7 +342,7 @@ function verDetallePedidoDomiciliario(id) {
                     </div>
                     ${prods.map(x => `
                         <div class="producto-item">
-                            <span>${x.cantidad}x ${x.nombre}</span>
+                            <span>${x.cantidad}x ${esc(x.nombre)}</span>
                             <span>${formatearPrecio(x.subtotal)}</span>
                         </div>`).join('')}
                 </div>`).join('');

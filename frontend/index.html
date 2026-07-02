@@ -351,15 +351,35 @@
         </section>
 
         <div class="container">
+            <!-- ★★★ 1. MENÚ DE CATEGORÍAS DESLIZABLE ★★★ -->
+            <div class="categories-wrapper" id="categories-wrapper">
+                <button class="cat-scroll-btn left" id="scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="categories-container">
+                    <div class="categories-scroll" id="categories-scroll">
+                        <!-- Las categorías se inyectarán aquí dinámicamente desde el JS -->
+                    </div>
+                </div>
+                <button class="cat-scroll-btn right" id="scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- ★★★ 2. TÍTULO DE TIENDAS ★★★ -->
             <h2 id="main-title" class="stores-section-title"><i class="fas fa-store"></i> Tiendas</h2>
-            <!-- ★ CONTENEDOR DINÁMICO DE ANUNCIOS ★ -->
+
+            <!-- ★★★ 3. CONTENEDOR DINÁMICO DE ANUNCIOS ★★★ -->
             <div id="contenedor-anuncios"></div>
 
+            <!-- ★★★ 4. GRID DE TIENDAS ★★★ -->
             <div id="stores-grid">
                 <div style="text-align:center; padding: 4rem 0;">
                     <div class="spinner" style="margin: 0 auto 1rem;"></div>
                     <p style="color: var(--gray);">Conectando con las Tiendas ...</p>
                 </div>
+            </div>
+
+            <!-- ★★★ 5. NUEVO: GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
+            <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
+                <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
+                <div class="menu-grid" id="productos-por-categoria-container" style="margin-top: 1rem;"></div>
             </div>
         </div>
     </main>

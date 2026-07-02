@@ -250,8 +250,8 @@ async function cargarTiendasAdmin() {
             <tr>
                 <td>${t.id}</td>
                 <td><img src="${t.imagen || 'https://via.placeholder.com/50'}" class="store-img-thumb" alt="${escapeQuotes(t.nombre)}"></td>
-                <td><strong>${t.nombre}</strong><br><small>${t.descripcion || ''}</small></td>
-                <td>${t.direccion}</td>
+                <td><strong>${esc(t.nombre)}</strong><br><small>${t.descripcion || ''}</small></td>
+                <td>${esc(t.direccion)}</td>
                 <td>
                     <button class="btn btn-info btn-sm" onclick="verProductosTienda(${t.id})"><i class="fas fa-box"></i></button>
                     <button class="btn btn-primary btn-sm" onclick="editarTienda(${t.id})"><i class="fas fa-edit"></i></button>
@@ -421,7 +421,7 @@ async function cargarProductosPorTienda(tiendaId) {
         tbody.innerHTML = productos.map(p => `
             <tr>
                 <td>${p.id}</td>
-                <td><i class="fas ${p.icono || 'fa-utensils'}"></i> ${p.nombre}</td>
+                <td><i class="fas ${p.icono || 'fa-utensils'}"></i> ${esc(p.nombre)}</td>
                 <td>${p.descripcion || '-'}</td>
                 <td>${formatearPrecio(p.precio)}</td>
                 <td>
@@ -585,7 +585,7 @@ async function cargarPedidosAdmin() {
                     <td>${formatearPrecio(p.total)}</td>
                     <td>${renderPropinaBadge(p)}</td>
                     <td><span class="badge badge-${p.estado.replace(/\s/g, '-')}">${p.estado}</span></td>
-                    <td>${domi ? `<i class="fas fa-user"></i> ${domi.nombre}` : "— Sin asignar —"}</td>
+                    <td>${domi ? `<i class="fas fa-user"></i> ${esc(domi.nombre)}` : "— Sin asignar —"}</td>
                     <td>${formatearFecha(p.fecha)}</td>
                     <td>
                         <button class="btn btn-info btn-sm" onclick="verDetallePedido(${p.id})"><i class="fas fa-eye"></i></button>
@@ -638,7 +638,7 @@ function renderizarDomiciliarios(domiciliarios) {
                 ${d.nombre.charAt(0).toUpperCase()}
             </div>
             <div style="flex: 1;">
-                <div style="font-weight: 600;">${d.nombre}</div>
+                <div style="font-weight: 600;">${esc(d.nombre)}</div>
                 <div style="font-size: 0.85rem; color: var(--gray);"><i class="fas fa-phone"></i> ${d.telefono || 'Sin teléfono'} | ID: ${d.id}</div>
             </div>
             <div style="color: var(--primary);"><i class="fas fa-chevron-right"></i></div>
@@ -717,7 +717,7 @@ async function verDetallePedido(pedidoId) {
                 <p><strong>Estado:</strong> <span class="badge badge-${pedido.estado.replace(/\s/g, '-')}">${pedido.estado}</span></p>
                 <h4>Productos:</h4>
                 <div class="productos-lista">
-                    ${productos.map(prod => `<div class="producto-item"><span>${prod.cantidad}x ${prod.nombre} (${prod.cantidadTipo} UND)</span><span>${formatearPrecio(prod.subtotal)}</span></div>`).join('')}
+                    ${productos.map(prod => `<div class="producto-item"><span>${prod.cantidad}x ${esc(prod.nombre)} (${prod.cantidadTipo} UND)</span><span>${formatearPrecio(prod.subtotal)}</span></div>`).join('')}
                 </div>
                 <div class="total-pedido"><strong>Total: ${formatearPrecio(pedido.total)}</strong></div>
             </div>
@@ -864,7 +864,7 @@ function renderizarHistorialPedidos(pedidosFiltrados = null) {
                 <td>${formatearPrecio(p.total)}</td>
                 <td>${renderPropinaBadge(p)}</td>
                 <td><span class="tienda-tag-historial"><i class="fas fa-store"></i> ${escapeQuotes(tiendasTexto)}</span></td>
-                <td>${domi ? `<span class="domiciliario-tag"><i class="fas fa-user"></i> ${domi.nombre}</span>` : 'Sin asignar'}</td>
+                <td>${domi ? `<span class="domiciliario-tag"><i class="fas fa-user"></i> ${esc(domi.nombre)}</span>` : 'Sin asignar'}</td>
                 <td>${formatearFecha(p.fecha)}</td>
                 <td><span class="badge badge-entregado">Entregado</span></td>
                 <td>
@@ -1138,7 +1138,7 @@ async function eliminarDomiciliario(id) {
     const domi = domiciliariosCache.find(d => d.id == id);
     if (!domi) return;
 
-    if (!confirm(`¿Eliminar a "${domi.nombre}"?\n\nEsta acción no se puede deshacer.`)) return;
+    if (!confirm(`¿Eliminar a "${esc(domi.nombre)}"?\n\nEsta acción no se puede deshacer.`)) return;
 
     try {
         const response = await fetchConToken(`${API_URL}?action=eliminarDomiciliario&id=${id}`); // ✅ Con token

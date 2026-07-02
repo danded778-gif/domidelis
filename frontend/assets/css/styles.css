@@ -196,7 +196,7 @@ nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.6rem; 
     border: none;
     cursor: pointer;
     font-family: inherit;
@@ -3193,4 +3193,139 @@ header .nav-links li a:hover {
 .btn-cerrado-menu:hover {
     background: #999 !important;
     transform: none !important;
+}
+/* ============================================
+   34. MENU DE CATEGORIAS (DESLIZABLE PWA)
+   ============================================ */
+.categories-wrapper {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.categories-container {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 35px; /* Espacio para que las flechas no tapen los íconos en PC */
+}
+
+.categories-scroll {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    -webkit-overflow-scrolling: touch; /* Fluidez nativa en iOS */
+    scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* ★ Efecto de "encaje" nativo al deslizar con el dedo ★ */
+}
+
+.categories-scroll::-webkit-scrollbar {
+    display: none; /* Ocultar scrollbar en Chrome/Safari */
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    min-width: 75px;
+    flex-shrink: 0;
+    scroll-snap-align: start; /* ★ Encaja la categoría al soltar el dedo ★ */
+}
+
+.category-item:active {
+    transform: scale(0.93); /* Efecto de presión al tocar en móvil */
+}
+
+.category-icon {
+    width: 65px;
+    height: 65px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 2.5px solid transparent;
+    overflow: hidden;
+}
+
+.category-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.category-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gray);
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+}
+
+/* Estado Activo (Cuando la categoría está seleccionada) */
+.category-item.active .category-icon {
+    border-color: var(--primary);
+    box-shadow: 0 6px 15px rgba(230, 57, 70, 0.25);
+}
+
+.category-item.active span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Flechas de desplazamiento (Solo visibles en PC) */
+.cat-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 10;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cat-scroll-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.cat-scroll-btn.left { left: 0; }
+.cat-scroll-btn.right { right: 0; }
+
+/* Responsive para Móviles */
+@media (max-width: 768px) {
+    .cat-scroll-btn {
+        display: none; /* En móvil ocultamos flechas, el dedo hace el scroll natural */
+    }
+    .categories-container {
+        padding: 0 0.5rem; /* Menos padding en pantallas pequeñas */
+    }
+    .category-icon {
+        width: 58px;
+        height: 58px;
+    }
+    .category-item span {
+        font-size: 0.75rem;
+    }
+    .categories-wrapper {
+        padding: 1rem 0 0.5rem 0;
+    }
 }
