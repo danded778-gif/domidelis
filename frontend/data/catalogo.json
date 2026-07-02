@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-02T03-51-59",
-  "ultimaActualizacion": "2026-07-02T03:51:59.658Z",
+  "version": "v2026-07-02T03-53-14",
+  "ultimaActualizacion": "2026-07-02T03:53:14.705Z",
   "tiendas": [
     {
       "id": 1,
@@ -234,7 +234,7 @@
         },
         {
           "id": 140,
-          "nombre": "Aguardiente antioqueño",
+          "nombre": "aguila en lata",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -252,7 +252,7 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "agotado",
-          "categoria": "cerveza",
+          "categoria": "cervezas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1129,7 +1129,7 @@
     },
     {
       "id": 140,
-      "nombre": "Aguardiente antioqueño",
+      "nombre": "aguila en lata",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -1147,7 +1147,7 @@
       "precio": 0,
       "imagen_url": "",
       "badge": "agotado",
-      "categoria": "cerveza",
+      "categoria": "cervezas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
