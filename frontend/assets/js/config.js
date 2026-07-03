@@ -68,8 +68,9 @@ const APP_CONFIG = {
         oriente: { nombre: 'Vargas', envio: 8000 },
         vista: { nombre: 'Vista Hermosa', envio: 6000 },
         calera: { nombre: 'La calera', envio: 12000 },
-        undido: { nombre: 'B. hundido', envio: 5000 }
-
+        undido: { nombre: 'B. hundido', envio: 5000 },
+        calera: { nombre: 'La calera', envio: 9000 },
+        lourdes: { nombre: 'V.lourdes', envio: 9000 }
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
