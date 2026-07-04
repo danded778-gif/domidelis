@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-44-10",
-  "ultimaActualizacion": "2026-07-04T22:44:10.734Z",
+  "version": "v2026-07-04T22-44-35",
+  "ultimaActualizacion": "2026-07-04T22:44:35.226Z",
   "tiendas": [
     {
       "id": 1,
@@ -1262,7 +1262,7 @@
       "nombre": "Aguardiente Antioqueño litro azul",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20AZUL%20SIN%20AZUCAR%20TETRA%201050%20ML.jpg",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
@@ -1285,7 +1285,7 @@
     },
     {
       "id": 151,
-      "nombre": "aguardiente antioqueño litro azul",
+      "nombre": "aguardiente antioqueño litro verde",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
