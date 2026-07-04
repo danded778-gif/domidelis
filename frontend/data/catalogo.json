@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-44-35",
-  "ultimaActualizacion": "2026-07-04T22:44:35.226Z",
+  "version": "v2026-07-04T22-45-57",
+  "ultimaActualizacion": "2026-07-04T22:45:57.362Z",
   "tiendas": [
     {
       "id": 1,
@@ -1275,7 +1275,7 @@
       "nombre": "Aguardiente Antioqueño litro roja",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20rojp.jpg",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
