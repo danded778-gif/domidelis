@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-37-07",
-  "ultimaActualizacion": "2026-07-04T22:37:07.991Z",
+  "version": "v2026-07-04T22-37-34",
+  "ultimaActualizacion": "2026-07-04T22:37:34.234Z",
   "tiendas": [
     {
       "id": 1,
@@ -247,7 +247,7 @@
         },
         {
           "id": 148,
-          "nombre": "aguila lite en lata",
+          "nombre": "Cerveza aguila en lata",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
@@ -265,7 +265,7 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "agotado",
-          "categoria": "cervezas",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1246,7 +1246,7 @@
     },
     {
       "id": 148,
-      "nombre": "aguila lite en lata",
+      "nombre": "Cerveza aguila en lata",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
@@ -1264,7 +1264,7 @@
       "precio": 0,
       "imagen_url": "",
       "badge": "agotado",
-      "categoria": "cervezas",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
