@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-29-05",
-  "ultimaActualizacion": "2026-07-04T22:29:05.485Z",
+  "version": "v2026-07-04T22-29-07",
+  "ultimaActualizacion": "2026-07-04T22:29:07.484Z",
   "tiendas": [
     {
       "id": 1,
@@ -237,7 +237,7 @@
           "nombre": "aguila en lata",
           "descripcion": "",
           "precio": 0,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/pilsen330.jpg",
           "badge": "agotado",
           "categoria": "cervezas",
           "cantidadTipo": "UND",
@@ -1236,7 +1236,7 @@
       "nombre": "aguila en lata",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/pilsen330.jpg",
       "badge": "agotado",
       "categoria": "cervezas",
       "cantidadTipo": "UND",
