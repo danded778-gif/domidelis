@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-34-32",
-  "ultimaActualizacion": "2026-07-04T22:34:32.874Z",
+  "version": "v2026-07-04T22-37-07",
+  "ultimaActualizacion": "2026-07-04T22:37:07.991Z",
   "tiendas": [
     {
       "id": 1,
@@ -265,7 +265,7 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "agotado",
-          "categoria": "Otras",
+          "categoria": "cervezas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1264,7 +1264,7 @@
       "precio": 0,
       "imagen_url": "",
       "badge": "agotado",
-      "categoria": "Otras",
+      "categoria": "cervezas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
