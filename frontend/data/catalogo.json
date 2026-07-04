@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-16-54",
-  "ultimaActualizacion": "2026-07-04T22:16:54.793Z",
+  "version": "v2026-07-04T22-17-20",
+  "ultimaActualizacion": "2026-07-04T22:17:20.991Z",
   "tiendas": [
     {
       "id": 1,
@@ -221,7 +221,20 @@
         },
         {
           "id": 139,
-          "nombre": "Aguardiente antioqueño",
+          "nombre": "Aguardiente antioqueño rojo",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
+          "badge": "agotado",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 139,
+          "nombre": "Aguardiente antioqueño rojo",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
@@ -1116,7 +1129,20 @@
     },
     {
       "id": 139,
-      "nombre": "Aguardiente antioqueño",
+      "nombre": "Aguardiente antioqueño rojo",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
+      "badge": "agotado",
+      "categoria": "licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 139,
+      "nombre": "Aguardiente antioqueño rojo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
