@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-38-43",
-  "ultimaActualizacion": "2026-07-04T22:38:43.001Z",
+  "version": "v2026-07-04T22-43-23",
+  "ultimaActualizacion": "2026-07-04T22:43:23.107Z",
   "tiendas": [
     {
       "id": 1,
@@ -208,7 +208,7 @@
         },
         {
           "id": 145,
-          "nombre": "Media Aguardiente antioqueño rojo",
+          "nombre": "Media Aguardiente Antioqueño rojo",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
@@ -221,7 +221,7 @@
         },
         {
           "id": 146,
-          "nombre": "Media Aguardiente antioqueño azul",
+          "nombre": "Media Aguardiente Antioqueño azul",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
@@ -247,7 +247,7 @@
         },
         {
           "id": 148,
-          "nombre": "Cerveza aguila en lata",
+          "nombre": "Cerveza Aguila en lata",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
@@ -259,7 +259,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 149,
+          "id": 152,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
@@ -1207,7 +1207,7 @@
     },
     {
       "id": 145,
-      "nombre": "Media Aguardiente antioqueño rojo",
+      "nombre": "Media Aguardiente Antioqueño rojo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
@@ -1220,7 +1220,7 @@
     },
     {
       "id": 146,
-      "nombre": "Media Aguardiente antioqueño azul",
+      "nombre": "Media Aguardiente Antioqueño azul",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
@@ -1246,7 +1246,7 @@
     },
     {
       "id": 148,
-      "nombre": "Cerveza aguila en lata",
+      "nombre": "Cerveza Aguila en lata",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
@@ -1259,16 +1259,16 @@
     },
     {
       "id": 149,
-      "nombre": "📦 Encargo Express",
+      "nombre": "",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "agotado",
+      "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 150,
@@ -1298,6 +1298,19 @@
     },
     {
       "id": 152,
+      "nombre": "📦 Encargo Express",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 153,
       "nombre": "",
       "descripcion": "",
       "precio": 0,
@@ -1310,7 +1323,33 @@
       "tiendaNombre": "Sin tienda"
     },
     {
-      "id": 153,
+      "id": 154,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 155,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 156,
       "nombre": "",
       "descripcion": "",
       "precio": 0,
