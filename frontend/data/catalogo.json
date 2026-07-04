@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-19-04",
-  "ultimaActualizacion": "2026-07-04T22:19:04.767Z",
+  "version": "v2026-07-04T22-20-25",
+  "ultimaActualizacion": "2026-07-04T22:20:25.020Z",
   "tiendas": [
     {
       "id": 1,
@@ -208,7 +208,7 @@
         },
         {
           "id": 138,
-          "nombre": "media Aguardiente antioqueño verde",
+          "nombre": "Media Aguardiente antioqueño verde",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_verde.jpg",
@@ -233,7 +233,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 139,
+          "id": 140,
           "nombre": "Media Aguardiente antioqueño azul",
           "descripcion": "",
           "precio": 0,
@@ -246,7 +246,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 140,
+          "id": 141,
           "nombre": "aguila en lata",
           "descripcion": "",
           "precio": 0,
@@ -259,7 +259,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 141,
+          "id": 142,
           "nombre": "aguila lite en lata",
           "descripcion": "",
           "precio": 0,
@@ -1116,7 +1116,7 @@
     },
     {
       "id": 138,
-      "nombre": "media Aguardiente antioqueño verde",
+      "nombre": "Media Aguardiente antioqueño verde",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_verde.jpg",
@@ -1141,7 +1141,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 139,
+      "id": 140,
       "nombre": "Media Aguardiente antioqueño azul",
       "descripcion": "",
       "precio": 0,
@@ -1154,7 +1154,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 140,
+      "id": 141,
       "nombre": "aguila en lata",
       "descripcion": "",
       "precio": 0,
@@ -1167,7 +1167,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 141,
+      "id": 142,
       "nombre": "aguila lite en lata",
       "descripcion": "",
       "precio": 0,
