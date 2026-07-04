@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-45-57",
-  "ultimaActualizacion": "2026-07-04T22:45:57.362Z",
+  "version": "v2026-07-04T22-47-11",
+  "ultimaActualizacion": "2026-07-04T22:47:11.906Z",
   "tiendas": [
     {
       "id": 1,
@@ -1288,7 +1288,7 @@
       "nombre": "aguardiente antioqueño litro verde",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
