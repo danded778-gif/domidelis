@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-29-07",
-  "ultimaActualizacion": "2026-07-04T22:29:07.484Z",
+  "version": "v2026-07-04T22-29-36",
+  "ultimaActualizacion": "2026-07-04T22:29:36.116Z",
   "tiendas": [
     {
       "id": 1,
@@ -234,7 +234,7 @@
         },
         {
           "id": 147,
-          "nombre": "aguila en lata",
+          "nombre": "Cerveza Pilsen lata",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/pilsen330.jpg",
@@ -1233,7 +1233,7 @@
     },
     {
       "id": 147,
-      "nombre": "aguila en lata",
+      "nombre": "Cerveza Pilsen lata",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/pilsen330.jpg",
