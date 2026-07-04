@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-16-25",
-  "ultimaActualizacion": "2026-07-04T22:16:25.658Z",
+  "version": "v2026-07-04T22-16-54",
+  "ultimaActualizacion": "2026-07-04T22:16:54.793Z",
   "tiendas": [
     {
       "id": 1,
@@ -208,7 +208,7 @@
         },
         {
           "id": 138,
-          "nombre": "Aguardiente antioqueño",
+          "nombre": "Aguardiente antioqueño verde",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_verde.jpg",
@@ -224,7 +224,7 @@
           "nombre": "Aguardiente antioqueño",
           "descripcion": "",
           "precio": 0,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
           "badge": "agotado",
           "categoria": "licores",
           "cantidadTipo": "UND",
@@ -1103,7 +1103,7 @@
     },
     {
       "id": 138,
-      "nombre": "Aguardiente antioqueño",
+      "nombre": "Aguardiente antioqueño verde",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_verde.jpg",
@@ -1119,7 +1119,7 @@
       "nombre": "Aguardiente antioqueño",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
       "badge": "agotado",
       "categoria": "licores",
       "cantidadTipo": "UND",
