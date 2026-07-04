@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-29-36",
-  "ultimaActualizacion": "2026-07-04T22:29:36.116Z",
+  "version": "v2026-07-04T22-34-32",
+  "ultimaActualizacion": "2026-07-04T22:34:32.874Z",
   "tiendas": [
     {
       "id": 1,
@@ -250,7 +250,7 @@
           "nombre": "aguila lite en lata",
           "descripcion": "",
           "precio": 0,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
           "badge": "agotado",
           "categoria": "cervezas",
           "cantidadTipo": "UND",
@@ -1249,7 +1249,7 @@
       "nombre": "aguila lite en lata",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/CERVEZAAGUILALATA_355%20ML.jpg",
       "badge": "agotado",
       "categoria": "cervezas",
       "cantidadTipo": "UND",
