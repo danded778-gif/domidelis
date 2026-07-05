@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T18-35-56",
-  "ultimaActualizacion": "2026-07-05T18:35:56.640Z",
+  "version": "v2026-07-05T18-36-34",
+  "ultimaActualizacion": "2026-07-05T18:36:34.780Z",
   "tiendas": [
     {
       "id": 1,
@@ -671,7 +671,7 @@
       "productos": [
         {
           "id": 154,
-          "nombre": "",
+          "nombre": "personal",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -684,7 +684,7 @@
         },
         {
           "id": 155,
-          "nombre": "",
+          "nombre": "mediana",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -1440,7 +1440,7 @@
     },
     {
       "id": 154,
-      "nombre": "",
+      "nombre": "personal",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -1453,7 +1453,7 @@
     },
     {
       "id": 155,
-      "nombre": "",
+      "nombre": "mediana",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
