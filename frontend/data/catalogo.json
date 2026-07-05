@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-04T22-49-50",
-  "ultimaActualizacion": "2026-07-04T22:49:50.990Z",
+  "version": "v2026-07-05T17-41-28",
+  "ultimaActualizacion": "2026-07-05T17:41:28.211Z",
   "tiendas": [
     {
       "id": 1,
@@ -661,6 +661,17 @@
     },
     {
       "id": 7,
+      "nombre": "",
+      "descripcion": "",
+      "direccion": "",
+      "horario": "",
+      "rating": 5,
+      "imagen": "",
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 8,
       "nombre": "Las Gordas",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
@@ -1334,58 +1345,6 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 160,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
-      "id": 161,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
-      "id": 162,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
-      "id": 163,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     }
   ]
 }
