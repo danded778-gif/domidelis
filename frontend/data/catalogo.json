@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T19-14-13",
-  "ultimaActualizacion": "2026-07-05T19:14:13.508Z",
+  "version": "v2026-07-05T22-33-56",
+  "ultimaActualizacion": "2026-07-05T22:33:56.421Z",
   "tiendas": [
     {
       "id": 1,
@@ -1502,6 +1502,57 @@
       "activo": true,
       "tiendaId": "7",
       "tiendaNombre": "La Basilica"
+    }
+  ],
+  "complementosGlobal": [
+    {
+      "id_producto": 137,
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max_salsas": 2
+    },
+    {
+      "id_producto": 137,
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max_salsas": 2
+    },
+    {
+      "id_producto": 137,
+      "nombre": "Salsa Especial",
+      "precio": 1500,
+      "tipo": "salsa",
+      "max_salsas": 2
+    },
+    {
+      "id_producto": 137,
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max_salsas": null
+    },
+    {
+      "id_producto": 137,
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max_salsas": null
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max_salsas": 3
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa Picante",
+      "precio": 0,
+      "tipo": "salsa",
+      "max_salsas": 3
     }
   ]
 }
