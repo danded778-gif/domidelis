@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T18-35-24",
-  "ultimaActualizacion": "2026-07-05T18:35:24.908Z",
+  "version": "v2026-07-05T18-35-56",
+  "ultimaActualizacion": "2026-07-05T18:35:56.640Z",
   "tiendas": [
     {
       "id": 1,
@@ -298,7 +298,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 159,
+          "id": 152,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
@@ -668,7 +668,73 @@
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/basilica/basilica%202.jpg",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 154,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 155,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 156,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 157,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 158,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        }
+      ]
     },
     {
       "id": 8,
@@ -1334,7 +1400,20 @@
       "tiendaNombre": "Sin tienda"
     },
     {
-      "id": 159,
+      "id": 151,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 152,
       "nombre": "📦 Encargo Express",
       "descripcion": "",
       "precio": 0,
@@ -1345,6 +1424,84 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 153,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 154,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 155,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 156,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 157,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 158,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
     }
   ]
 }
