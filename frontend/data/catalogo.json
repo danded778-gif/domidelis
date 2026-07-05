@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T22-39-48",
-  "ultimaActualizacion": "2026-07-05T22:39:48.529Z",
+  "version": "v2026-07-05T22-40-20",
+  "ultimaActualizacion": "2026-07-05T22:40:20.940Z",
   "tiendas": [
     {
       "id": 1,
@@ -711,19 +711,6 @@
         {
           "id": 157,
           "nombre": "extra familiar",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "",
-          "badge": "",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "7",
-          "tiendaNombre": "La Basilica"
-        },
-        {
-          "id": 158,
-          "nombre": "",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -1480,19 +1467,6 @@
     {
       "id": 157,
       "nombre": "extra familiar",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "comida",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "7",
-      "tiendaNombre": "La Basilica"
-    },
-    {
-      "id": 158,
-      "nombre": "",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
