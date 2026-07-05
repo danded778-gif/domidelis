@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T17-41-28",
-  "ultimaActualizacion": "2026-07-05T17:41:28.211Z",
+  "version": "v2026-07-05T17-41-50",
+  "ultimaActualizacion": "2026-07-05T17:41:50.764Z",
   "tiendas": [
     {
       "id": 1,
@@ -661,9 +661,9 @@
     },
     {
       "id": 7,
-      "nombre": "",
+      "nombre": "La Basilica",
       "descripcion": "",
-      "direccion": "",
+      "direccion": "parque lineal",
       "horario": "",
       "rating": 5,
       "imagen": "",
