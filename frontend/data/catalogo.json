@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T22-01-02",
-  "ultimaActualizacion": "2026-07-06T22:01:02.855Z",
+  "version": "v2026-07-06T22-01-11",
+  "ultimaActualizacion": "2026-07-06T22:01:11.418Z",
   "tiendas": [
     {
       "id": 1,
@@ -1585,7 +1585,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
-      "min": 1
+      "min": 2
     },
     {
       "id_producto": 139,
