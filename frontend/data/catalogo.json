@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-58-40",
-  "ultimaActualizacion": "2026-07-06T23:58:40.049Z",
+  "version": "v2026-07-06T23-59-23",
+  "ultimaActualizacion": "2026-07-06T23:59:23.325Z",
   "tiendas": [
     {
       "id": 1,
@@ -1534,7 +1534,7 @@
       "min": 0
     },
     {
-      "id_producto": 149,
+      "id_producto": 144,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -1543,7 +1543,7 @@
       "min": 0
     },
     {
-      "id_producto": 149,
+      "id_producto": 144,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
@@ -1552,7 +1552,7 @@
       "min": 0
     },
     {
-      "id_producto": 149,
+      "id_producto": 144,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
@@ -1628,6 +1628,15 @@
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
       "tipo": "extra",
       "max": null,
       "min": 0
