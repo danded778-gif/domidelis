@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-19-47",
-  "ultimaActualizacion": "2026-07-06T21:19:47.454Z",
+  "version": "v2026-07-06T21-20-42",
+  "ultimaActualizacion": "2026-07-06T21:20:42.079Z",
   "tiendas": [
     {
       "id": 1,
@@ -1528,6 +1528,15 @@
       "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Pechuga",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
