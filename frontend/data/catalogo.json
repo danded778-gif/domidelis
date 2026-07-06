@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-00-29",
-  "ultimaActualizacion": "2026-07-06T23:00:29.226Z",
+  "version": "v2026-07-06T23-01-00",
+  "ultimaActualizacion": "2026-07-06T23:01:00.535Z",
   "tiendas": [
     {
       "id": 1,
@@ -1492,6 +1492,15 @@
       "id_producto": 144,
       "grupo": "Acompañamiento",
       "nombre": "papa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 144,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
