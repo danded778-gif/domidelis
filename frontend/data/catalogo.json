@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-12-33",
-  "ultimaActualizacion": "2026-07-06T21:12:33.772Z",
+  "version": "v2026-07-06T21-18-25",
+  "ultimaActualizacion": "2026-07-06T21:18:25.590Z",
   "tiendas": [
     {
       "id": 1,
@@ -1548,7 +1548,7 @@
       "nombre": "Sopa",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
@@ -1557,7 +1557,7 @@
       "nombre": "Frijoles",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
