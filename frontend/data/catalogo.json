@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-09-49",
-  "ultimaActualizacion": "2026-07-06T21:09:49.636Z",
+  "version": "v2026-07-06T21-12-33",
+  "ultimaActualizacion": "2026-07-06T21:12:33.772Z",
   "tiendas": [
     {
       "id": 1,
@@ -1480,34 +1480,169 @@
   ],
   "complementosGlobal": [
     {
-      "id_producto": 137,
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Pollo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Pechuga",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Lentejas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Ensalada",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Salsa",
+      "nombre": "Ají",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 139,
+      "grupo": "",
+      "nombre": "Huevo extra",
+      "precio": 1500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 139,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 137,
+      "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Rosa",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 137,
+      "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Especial",
       "precio": 1500,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 137,
+      "id_producto": 132,
       "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
@@ -1516,73 +1651,10 @@
       "min": 0
     },
     {
-      "id_producto": 137,
+      "id_producto": 132,
       "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa de la casa",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa BBQ",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa miel mostasa",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "alitas",
-      "precio": 0,
-      "tipo": "ingredientes",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa BBQ",
-      "precio": 1000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa de la casa",
-      "precio": 1000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 144,
-      "grupo": "",
-      "nombre": "Salsa miel mostasa",
-      "precio": 1000,
       "tipo": "extra",
       "max": null,
       "min": 0
