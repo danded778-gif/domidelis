@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-48-52",
-  "ultimaActualizacion": "2026-07-06T23:48:52.910Z",
+  "version": "v2026-07-06T23-49-45",
+  "ultimaActualizacion": "2026-07-06T23:49:45.229Z",
   "tiendas": [
     {
       "id": 1,
@@ -1923,8 +1923,8 @@
     {
       "id_producto": 149,
       "grupo": "",
-      "nombre": "Yuquitas",
-      "precio": 5000,
+      "nombre": "salsa",
+      "precio": 1000,
       "tipo": "extra",
       "max": null,
       "min": 0
