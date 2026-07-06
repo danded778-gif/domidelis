@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T19-48-00",
-  "ultimaActualizacion": "2026-07-06T19:48:00.660Z",
+  "version": "v2026-07-06T21-09-49",
+  "ultimaActualizacion": "2026-07-06T21:09:49.636Z",
   "tiendas": [
     {
       "id": 1,
@@ -1481,87 +1481,111 @@
   "complementosGlobal": [
     {
       "id_producto": 137,
+      "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 2
+      "max": 2,
+      "min": 0
     },
     {
       "id_producto": 137,
+      "grupo": "",
       "nombre": "Salsa Rosa",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 2
+      "max": 2,
+      "min": 0
     },
     {
       "id_producto": 137,
+      "grupo": "",
       "nombre": "Salsa Especial",
       "precio": 1500,
       "tipo": "salsa",
-      "max_salsas": 2
+      "max": 2,
+      "min": 0
     },
     {
       "id_producto": 137,
+      "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
       "tipo": "extra",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     },
     {
       "id_producto": 137,
+      "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
       "tipo": "extra",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 1
+      "max": 1,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 1
+      "max": 1,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa miel mostasa",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 1
+      "max": 1,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "alitas",
       "precio": 0,
       "tipo": "ingredientes",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 1000,
       "tipo": "extra",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa de la casa",
       "precio": 1000,
       "tipo": "extra",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     },
     {
       "id_producto": 144,
+      "grupo": "",
       "nombre": "Salsa miel mostasa",
       "precio": 1000,
       "tipo": "extra",
-      "max_salsas": null
+      "max": null,
+      "min": 0
     }
   ]
 }
