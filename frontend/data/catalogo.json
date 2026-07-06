@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T19-33-54",
-  "ultimaActualizacion": "2026-07-06T19:33:54.024Z",
+  "version": "v2026-07-06T19-41-18",
+  "ultimaActualizacion": "2026-07-06T19:41:18.068Z",
   "tiendas": [
     {
       "id": 1,
@@ -1538,8 +1538,8 @@
     {
       "id_producto": 144,
       "nombre": "alitas",
-      "precio": 2000,
-      "tipo": "extra",
+      "precio": 0,
+      "tipo": "ingredientes",
       "max_salsas": null
     },
     {
