@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-18-29",
-  "ultimaActualizacion": "2026-07-06T21:18:29.068Z",
+  "version": "v2026-07-06T21-19-47",
+  "ultimaActualizacion": "2026-07-06T21:19:47.454Z",
   "tiendas": [
     {
       "id": 1,
@@ -1577,24 +1577,6 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
-    },
-    {
-      "id_producto": 139,
-      "grupo": "Salsa",
-      "nombre": "Salsa de la casa",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id_producto": 139,
-      "grupo": "Salsa",
-      "nombre": "Ají",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
     },
     {
       "id_producto": 139,
