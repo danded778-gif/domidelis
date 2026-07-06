@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-30-09",
-  "ultimaActualizacion": "2026-07-06T23:30:09.704Z",
+  "version": "v2026-07-06T23-40-57",
+  "ultimaActualizacion": "2026-07-06T23:40:57.543Z",
   "tiendas": [
     {
       "id": 1,
@@ -1868,7 +1868,7 @@
     },
     {
       "id_producto": 149,
-      "grupo": "Acompañamiento",
+      "grupo": "Gasesosa",
       "nombre": "gaseosa 1.5L",
       "precio": 0,
       "tipo": "opcion",
