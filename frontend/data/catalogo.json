@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-21-15",
-  "ultimaActualizacion": "2026-07-06T21:21:15.928Z",
+  "version": "v2026-07-06T21-21-59",
+  "ultimaActualizacion": "2026-07-06T21:21:59.273Z",
   "tiendas": [
     {
       "id": 1,
@@ -1554,7 +1554,7 @@
     {
       "id_producto": 139,
       "grupo": "Proteína",
-      "nombre": "Cerdo",
+      "nombre": "res",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -1581,15 +1581,6 @@
     {
       "id_producto": 139,
       "grupo": "Acompañamiento",
-      "nombre": "Lentejas",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 139,
-      "grupo": "Acompañamiento",
       "nombre": "Ensalada",
       "precio": 0,
       "tipo": "opcion",
@@ -1599,7 +1590,7 @@
     {
       "id_producto": 139,
       "grupo": "",
-      "nombre": "Huevo extra",
+      "nombre": "porcion arroz",
       "precio": 1500,
       "tipo": "extra",
       "max": null,
