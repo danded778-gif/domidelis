@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-05T22-40-20",
-  "ultimaActualizacion": "2026-07-05T22:40:20.940Z",
+  "version": "v2026-07-06T19-19-25",
+  "ultimaActualizacion": "2026-07-06T19:19:25.695Z",
   "tiendas": [
     {
       "id": 1,
@@ -1523,10 +1523,45 @@
     },
     {
       "id_producto": 144,
-      "nombre": "Salsa Picante",
+      "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
       "max_salsas": 3
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa miel mostasa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max_salsas": 3
+    },
+    {
+      "id_producto": 144,
+      "nombre": "alitas",
+      "precio": 2000,
+      "tipo": "extra",
+      "max_salsas": null
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa BBQ",
+      "precio": 1000,
+      "tipo": "extra",
+      "max_salsas": null
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa de la casa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max_salsas": null
+    },
+    {
+      "id_producto": 144,
+      "nombre": "Salsa miel mostasa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max_salsas": null
     }
   ]
 }
