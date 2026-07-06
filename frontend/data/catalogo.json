@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T22-06-07",
-  "ultimaActualizacion": "2026-07-06T22:06:07.009Z",
+  "version": "v2026-07-06T22-07-05",
+  "ultimaActualizacion": "2026-07-06T22:07:05.293Z",
   "tiendas": [
     {
       "id": 1,
@@ -1590,9 +1590,9 @@
     {
       "id_producto": 139,
       "grupo": "Verdura",
-      "nombre": "Ensalada",
+      "nombre": "Papa",
       "precio": 0,
-      "tipo": "opcion",
+      "tipo": "verdura",
       "max": 2,
       "min": 2
     },
