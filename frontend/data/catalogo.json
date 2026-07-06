@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T22-55-56",
-  "ultimaActualizacion": "2026-07-06T22:55:56.263Z",
+  "version": "v2026-07-06T22-57-48",
+  "ultimaActualizacion": "2026-07-06T22:57:48.824Z",
   "tiendas": [
     {
       "id": 1,
@@ -1481,21 +1481,21 @@
   "complementosGlobal": [
     {
       "id_producto": 144,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 144,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
       "min": 0
-    },
-    {
-      "id_producto": 139,
-      "grupo": "Proteína",
-      "nombre": "Pollo",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
     },
     {
       "id_producto": 144,
