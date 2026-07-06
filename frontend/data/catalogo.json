@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-44-00",
-  "ultimaActualizacion": "2026-07-06T23:44:00.055Z",
+  "version": "v2026-07-06T23-45-13",
+  "ultimaActualizacion": "2026-07-06T23:45:13.810Z",
   "tiendas": [
     {
       "id": 1,
@@ -1854,7 +1854,7 @@
       "nombre": "papa",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
@@ -1863,7 +1863,7 @@
       "nombre": "Yuquitas",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
