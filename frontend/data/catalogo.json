@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T22-55-06",
-  "ultimaActualizacion": "2026-07-06T22:55:06.230Z",
+  "version": "v2026-07-06T22-55-56",
+  "ultimaActualizacion": "2026-07-06T22:55:56.263Z",
   "tiendas": [
     {
       "id": 1,
@@ -1487,6 +1487,15 @@
       "tipo": "salsa",
       "max": 1,
       "min": 0
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Pollo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id_producto": 144,
