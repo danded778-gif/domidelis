@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-55-46",
-  "ultimaActualizacion": "2026-07-06T23:55:46.660Z",
+  "version": "v2026-07-06T23-56-10",
+  "ultimaActualizacion": "2026-07-06T23:56:10.324Z",
   "tiendas": [
     {
       "id": 1,
@@ -1584,7 +1584,7 @@
       "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -1593,7 +1593,7 @@
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -1602,7 +1602,7 @@
       "nombre": "Salsa miel mostaza",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -1638,7 +1638,7 @@
       "nombre": "papa",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
@@ -1647,7 +1647,7 @@
       "nombre": "Yuquitas",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
