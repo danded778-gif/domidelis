@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-54-17",
-  "ultimaActualizacion": "2026-07-06T23:54:17.828Z",
+  "version": "v2026-07-06T23-55-21",
+  "ultimaActualizacion": "2026-07-06T23:55:21.380Z",
   "tiendas": [
     {
       "id": 1,
@@ -1494,7 +1494,7 @@
       "nombre": "papa",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
