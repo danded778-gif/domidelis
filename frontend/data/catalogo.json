@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T22-05-42",
-  "ultimaActualizacion": "2026-07-06T22:05:42.983Z",
+  "version": "v2026-07-06T22-06-07",
+  "ultimaActualizacion": "2026-07-06T22:06:07.009Z",
   "tiendas": [
     {
       "id": 1,
@@ -1583,7 +1583,7 @@
       "grupo": "Verdura",
       "nombre": "Ensalada",
       "precio": 0,
-      "tipo": "opcion",
+      "tipo": "verdura",
       "max": 2,
       "min": 2
     },
