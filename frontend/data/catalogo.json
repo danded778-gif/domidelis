@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-29-15",
-  "ultimaActualizacion": "2026-07-06T23:29:15.127Z",
+  "version": "v2026-07-06T23-29-54",
+  "ultimaActualizacion": "2026-07-06T23:29:54.585Z",
   "tiendas": [
     {
       "id": 1,
@@ -1840,7 +1840,7 @@
       "min": 0
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
@@ -1849,7 +1849,7 @@
       "min": 1
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -1858,7 +1858,7 @@
       "min": 1
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -1867,7 +1867,16 @@
       "min": 1
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
+      "grupo": "Acompañamiento",
+      "nombre": "gaseosa 1.5L",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id_producto": 149,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -1876,7 +1885,7 @@
       "min": 0
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -1885,7 +1894,7 @@
       "min": 0
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -1894,7 +1903,7 @@
       "min": 0
     },
     {
-      "id_producto": 147,
+      "id_producto": 149,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -1903,7 +1912,7 @@
       "min": 0
     },
     {
-      "id_producto": 148,
+      "id_producto": 149,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
