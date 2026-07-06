@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-59-49",
-  "ultimaActualizacion": "2026-07-06T21:59:49.310Z",
+  "version": "v2026-07-06T22-01-02",
+  "ultimaActualizacion": "2026-07-06T22:01:02.855Z",
   "tiendas": [
     {
       "id": 1,
@@ -1584,7 +1584,7 @@
       "nombre": "Ensalada",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 2,
       "min": 1
     },
     {
