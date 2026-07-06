@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-21-59",
-  "ultimaActualizacion": "2026-07-06T21:21:59.273Z",
+  "version": "v2026-07-06T21-22-22",
+  "ultimaActualizacion": "2026-07-06T21:22:22.920Z",
   "tiendas": [
     {
       "id": 1,
@@ -1591,7 +1591,7 @@
       "id_producto": 139,
       "grupo": "",
       "nombre": "porcion arroz",
-      "precio": 1500,
+      "precio": 0,
       "tipo": "extra",
       "max": null,
       "min": 0
