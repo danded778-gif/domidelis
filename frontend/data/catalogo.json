@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-47-07",
-  "ultimaActualizacion": "2026-07-06T23:47:07.703Z",
+  "version": "v2026-07-06T23-48-52",
+  "ultimaActualizacion": "2026-07-06T23:48:52.910Z",
   "tiendas": [
     {
       "id": 1,
@@ -1907,6 +1907,15 @@
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 149,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
       "tipo": "extra",
       "max": null,
       "min": 0
