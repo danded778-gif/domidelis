@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T19-41-18",
-  "ultimaActualizacion": "2026-07-06T19:41:18.068Z",
+  "version": "v2026-07-06T19-48-00",
+  "ultimaActualizacion": "2026-07-06T19:48:00.660Z",
   "tiendas": [
     {
       "id": 1,
@@ -1519,21 +1519,21 @@
       "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 3
+      "max_salsas": 1
     },
     {
       "id_producto": 144,
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 3
+      "max_salsas": 1
     },
     {
       "id_producto": 144,
       "nombre": "Salsa miel mostasa",
       "precio": 0,
       "tipo": "salsa",
-      "max_salsas": 3
+      "max_salsas": 1
     },
     {
       "id_producto": 144,
