@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-40-57",
-  "ultimaActualizacion": "2026-07-06T23:40:57.543Z",
+  "version": "v2026-07-06T23-42-07",
+  "ultimaActualizacion": "2026-07-06T23:42:07.143Z",
   "tiendas": [
     {
       "id": 1,
@@ -1863,7 +1863,7 @@
       "nombre": "Yuquitas",
       "precio": 0,
       "tipo": "opcion",
-      "max": 3,
+      "max": 2,
       "min": 1
     },
     {
@@ -1872,7 +1872,7 @@
       "nombre": "gaseosa 1.5L",
       "precio": 0,
       "tipo": "opcion",
-      "max": 3,
+      "max": 1,
       "min": 1
     },
     {
