@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T23-59-23",
-  "ultimaActualizacion": "2026-07-06T23:59:23.325Z",
+  "version": "v2026-07-06T23-59-46",
+  "ultimaActualizacion": "2026-07-06T23:59:46.276Z",
   "tiendas": [
     {
       "id": 1,
@@ -1714,6 +1714,15 @@
       "min": 0
     },
     {
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
       "id_producto": 147,
       "grupo": "Proteína",
       "nombre": "Alitas",
@@ -1786,6 +1795,15 @@
       "min": 0
     },
     {
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
       "id_producto": 148,
       "grupo": "Proteína",
       "nombre": "Alitas",
@@ -1853,6 +1871,15 @@
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 148,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
       "tipo": "extra",
       "max": null,
       "min": 0
