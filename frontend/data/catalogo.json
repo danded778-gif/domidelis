@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-20-42",
-  "ultimaActualizacion": "2026-07-06T21:20:42.079Z",
+  "version": "v2026-07-06T21-21-15",
+  "ultimaActualizacion": "2026-07-06T21:21:15.928Z",
   "tiendas": [
     {
       "id": 1,
@@ -1537,6 +1537,15 @@
       "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "pescado",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
