@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-06T21-22-22",
-  "ultimaActualizacion": "2026-07-06T21:22:22.920Z",
+  "version": "v2026-07-06T21-59-49",
+  "ultimaActualizacion": "2026-07-06T21:59:49.310Z",
   "tiendas": [
     {
       "id": 1,
@@ -1580,7 +1580,7 @@
     },
     {
       "id_producto": 139,
-      "grupo": "Acompañamiento",
+      "grupo": "Acompañamientos",
       "nombre": "Ensalada",
       "precio": 0,
       "tipo": "opcion",
@@ -1591,7 +1591,7 @@
       "id_producto": 139,
       "grupo": "",
       "nombre": "porcion arroz",
-      "precio": 0,
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -1600,7 +1600,7 @@
       "id_producto": 139,
       "grupo": "",
       "nombre": "Carne extra",
-      "precio": 3000,
+      "precio": 7000,
       "tipo": "extra",
       "max": null,
       "min": 0
