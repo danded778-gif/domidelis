@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-16-09",
-  "ultimaActualizacion": "2026-07-07T03:16:09.449Z",
+  "version": "v2026-07-07T03-16-35",
+  "ultimaActualizacion": "2026-07-07T03:16:35.191Z",
   "tiendas": [
     {
       "id": 1,
@@ -2730,13 +2730,203 @@
       "min": 0
     },
     {
-      "id": 129,
+      "id": 130,
       "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Rosa",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
+      "min": 0
+    },
+    {
+      "id": 131,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 132,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 133,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 134,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 135,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 137,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 138,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 139,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 140,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 141,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 142,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 143,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 145,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 146,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 147,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 148,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 149,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 150,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 151,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
       "min": 0
     }
   ]
