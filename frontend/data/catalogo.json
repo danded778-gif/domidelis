@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-16-04",
-  "ultimaActualizacion": "2026-07-07T03:16:04.546Z",
+  "version": "v2026-07-07T03-16-09",
+  "ultimaActualizacion": "2026-07-07T03:16:09.449Z",
   "tiendas": [
     {
       "id": 1,
@@ -2730,7 +2730,7 @@
       "min": 0
     },
     {
-      "id": 130,
+      "id": 129,
       "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Rosa",
