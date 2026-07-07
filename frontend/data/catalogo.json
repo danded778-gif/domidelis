@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T05-52-21",
-  "ultimaActualizacion": "2026-07-07T05:52:21.933Z",
+  "version": "v2026-07-07T05-53-16",
+  "ultimaActualizacion": "2026-07-07T05:53:16.389Z",
   "tiendas": [
     {
       "id": 1,
@@ -2968,7 +2968,7 @@
     },
     {
       "id": 153,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "proteina",
       "nombre": "carne",
       "precio": 0,
