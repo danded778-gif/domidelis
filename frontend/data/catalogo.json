@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-23-18",
-  "ultimaActualizacion": "2026-07-07T00:23:18.286Z",
+  "version": "v2026-07-07T00-23-48",
+  "ultimaActualizacion": "2026-07-07T00:23:48.643Z",
   "tiendas": [
     {
       "id": 1,
@@ -2320,6 +2320,24 @@
       "id_producto": 142,
       "grupo": "Proteína",
       "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
