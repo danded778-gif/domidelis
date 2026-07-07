@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-04-50",
-  "ultimaActualizacion": "2026-07-07T01:04:50.221Z",
+  "version": "v2026-07-07T01-05-14",
+  "ultimaActualizacion": "2026-07-07T01:05:14.920Z",
   "tiendas": [
     {
       "id": 1,
@@ -2580,7 +2580,16 @@
     {
       "id_producto": 132,
       "grupo": "",
-      "nombre": "",
+      "nombre": "Salsa Ajo",
+      "precio": 1500,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
       "precio": 1500,
       "tipo": "salsa",
       "max": 3,
