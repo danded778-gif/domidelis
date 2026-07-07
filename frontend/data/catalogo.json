@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-17-20",
-  "ultimaActualizacion": "2026-07-07T00:17:20.378Z",
+  "version": "v2026-07-07T00-17-45",
+  "ultimaActualizacion": "2026-07-07T00:17:45.613Z",
   "tiendas": [
     {
       "id": 1,
@@ -2350,6 +2350,24 @@
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
