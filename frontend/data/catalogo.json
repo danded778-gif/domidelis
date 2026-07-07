@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T02-11-39",
-  "ultimaActualizacion": "2026-07-07T02:11:39.691Z",
+  "version": "v2026-07-07T02-24-15",
+  "ultimaActualizacion": "2026-07-07T02:24:15.476Z",
   "tiendas": [
     {
       "id": 1,
@@ -479,11 +479,11 @@
         {
           "id": 124,
           "nombre": "Clasica",
-          "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
+          "descripcion": "Pan, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
           "badge": "Disponible",
-          "categoria": "comida",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "5",
@@ -1038,11 +1038,11 @@
     {
       "id": 124,
       "nombre": "Clasica",
-      "descripcion": "Pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
+      "descripcion": "Pan, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
       "precio": 16000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/clasica.png",
       "badge": "Disponible",
-      "categoria": "comida",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "5",
