@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-04-14",
-  "ultimaActualizacion": "2026-07-07T01:04:14.526Z",
+  "version": "v2026-07-07T01-04-48",
+  "ultimaActualizacion": "2026-07-07T01:04:48.465Z",
   "tiendas": [
     {
       "id": 1,
@@ -2572,6 +2572,15 @@
       "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "",
       "precio": 1500,
       "tipo": "salsa",
       "max": 3,
