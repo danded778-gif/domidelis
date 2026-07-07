@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-10-05",
-  "ultimaActualizacion": "2026-07-07T00:10:05.746Z",
+  "version": "v2026-07-07T00-15-14",
+  "ultimaActualizacion": "2026-07-07T00:15:14.144Z",
   "tiendas": [
     {
       "id": 1,
@@ -2319,7 +2319,7 @@
     {
       "id_producto": 142,
       "grupo": "Acompañamiento",
-      "nombre": "Sopa",
+      "nombre": "Sopa mazorxa",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
