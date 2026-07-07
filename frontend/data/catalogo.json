@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-22-29",
-  "ultimaActualizacion": "2026-07-07T03:22:29.207Z",
+  "version": "v2026-07-07T03-23-52",
+  "ultimaActualizacion": "2026-07-07T03:23:52.794Z",
   "tiendas": [
     {
       "id": 1,
@@ -732,7 +732,21 @@
       "rating": 3.7,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 158,
+          "nombre": "prueba_productos adiciones",
+          "descripcion": "prueba",
+          "precio": 10000,
+          "imagen_url": "",
+          "badge": "nuevo",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "8",
+          "tiendaNombre": "Las Gordas"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -1476,6 +1490,19 @@
       "activo": true,
       "tiendaId": "7",
       "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 158,
+      "nombre": "prueba_productos adiciones",
+      "descripcion": "prueba",
+      "precio": 10000,
+      "imagen_url": "",
+      "badge": "nuevo",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "8",
+      "tiendaNombre": "Las Gordas"
     }
   ],
   "complementosGlobal": [
