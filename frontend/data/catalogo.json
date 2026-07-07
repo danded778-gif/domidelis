@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-21-17",
-  "ultimaActualizacion": "2026-07-07T00:21:17.122Z",
+  "version": "v2026-07-07T00-21-44",
+  "ultimaActualizacion": "2026-07-07T00:21:44.947Z",
   "tiendas": [
     {
       "id": 1,
@@ -2274,7 +2274,7 @@
     {
       "id_producto": 142,
       "grupo": "Proteína",
-      "nombre": "Pollo",
+      "nombre": "Hígado Encebollado",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
