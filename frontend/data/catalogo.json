@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-18-15",
-  "ultimaActualizacion": "2026-07-07T00:18:15.518Z",
+  "version": "v2026-07-07T00-18-29",
+  "ultimaActualizacion": "2026-07-07T00:18:29.802Z",
   "tiendas": [
     {
       "id": 1,
@@ -2358,8 +2358,8 @@
       "nombre": "Guandolo",
       "precio": 0,
       "tipo": "tomar",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id_producto": 142,
@@ -2367,8 +2367,8 @@
       "nombre": "Guandolo",
       "precio": 0,
       "tipo": "tomar",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id_producto": 142,
