@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-15-27",
-  "ultimaActualizacion": "2026-07-07T03:15:27.627Z",
+  "version": "v2026-07-07T03-15-30",
+  "ultimaActualizacion": "2026-07-07T03:15:30.066Z",
   "tiendas": [
     {
       "id": 1,
@@ -2084,6 +2084,16 @@
       "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 62,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
