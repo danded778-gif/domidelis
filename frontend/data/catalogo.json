@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-02-23",
-  "ultimaActualizacion": "2026-07-07T01:02:23.120Z",
+  "version": "v2026-07-07T01-04-14",
+  "ultimaActualizacion": "2026-07-07T01:04:14.526Z",
   "tiendas": [
     {
       "id": 1,
@@ -2571,7 +2571,7 @@
     {
       "id_producto": 132,
       "grupo": "",
-      "nombre": "Salsa Especial",
+      "nombre": "Salsa Tocineta",
       "precio": 1500,
       "tipo": "salsa",
       "max": 3,
