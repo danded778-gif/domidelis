@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-35-28",
-  "ultimaActualizacion": "2026-07-07T00:35:28.124Z",
+  "version": "v2026-07-07T00-35-31",
+  "ultimaActualizacion": "2026-07-07T00:35:31.048Z",
   "tiendas": [
     {
       "id": 1,
@@ -350,7 +350,7 @@
         },
         {
           "id": 141,
-          "nombre": "Menu Jueves",
+          "nombre": "Almuerzo",
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
@@ -1258,7 +1258,7 @@
     },
     {
       "id": 141,
-      "nombre": "Menu Jueves",
+      "nombre": "Almuerzo",
       "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
