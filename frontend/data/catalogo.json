@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-01-23",
-  "ultimaActualizacion": "2026-07-07T01:01:23.721Z",
+  "version": "v2026-07-07T01-02-23",
+  "ultimaActualizacion": "2026-07-07T01:02:23.120Z",
   "tiendas": [
     {
       "id": 1,
@@ -417,7 +417,7 @@
           "nombre": "Pendeja 3",
           "descripcion": "20 Alitas más acompañante",
           "precio": 50000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/maria_pendeja/alitas_maria_pendeja_combo_uno_100kb.jpg",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/maria_pendeja/alitas_combo2_comprimida_100kb.jpg",
           "badge": "Disponible",
           "categoria": "comida",
           "cantidadTipo": "UND",
@@ -1326,7 +1326,7 @@
       "nombre": "Pendeja 3",
       "descripcion": "20 Alitas más acompañante",
       "precio": 50000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/maria_pendeja/alitas_maria_pendeja_combo_uno_100kb.jpg",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/maria_pendeja/alitas_combo2_comprimida_100kb.jpg",
       "badge": "Disponible",
       "categoria": "comida",
       "cantidadTipo": "UND",
