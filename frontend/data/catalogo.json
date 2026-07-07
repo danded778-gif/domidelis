@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-15-56",
-  "ultimaActualizacion": "2026-07-07T00:15:56.698Z",
+  "version": "v2026-07-07T00-16-31",
+  "ultimaActualizacion": "2026-07-07T00:16:31.617Z",
   "tiendas": [
     {
       "id": 1,
@@ -2346,7 +2346,7 @@
     {
       "id_producto": 142,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "chips de papa",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
