@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-15-14",
-  "ultimaActualizacion": "2026-07-07T00:15:14.144Z",
+  "version": "v2026-07-07T00-15-56",
+  "ultimaActualizacion": "2026-07-07T00:15:56.698Z",
   "tiendas": [
     {
       "id": 1,
@@ -2337,7 +2337,7 @@
     {
       "id_producto": 142,
       "grupo": "Verdura",
-      "nombre": "Ensalada",
+      "nombre": "Ensalada,chips de papa",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
@@ -2346,7 +2346,7 @@
     {
       "id_producto": 142,
       "grupo": "Verdura",
-      "nombre": "Papa",
+      "nombre": "",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
