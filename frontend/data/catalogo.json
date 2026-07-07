@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T05-58-47",
-  "ultimaActualizacion": "2026-07-07T05:58:47.148Z",
+  "version": "v2026-07-07T15-11-58",
+  "ultimaActualizacion": "2026-07-07T15:11:58.962Z",
   "tiendas": [
     {
       "id": 1,
@@ -725,11 +725,11 @@
     },
     {
       "id": 8,
-      "nombre": "Las Gordas",
+      "nombre": "prueba_1",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
-      "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"00:00 - 08:59\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
-      "rating": 3.7,
+      "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"08:00 - 21:00\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
+      "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "activo": true,
       "productos": [
@@ -744,7 +744,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "8",
-          "tiendaNombre": "Las Gordas"
+          "tiendaNombre": "prueba_1"
         }
       ]
     }
@@ -1502,7 +1502,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "Las Gordas"
+      "tiendaNombre": "prueba_1"
     }
   ],
   "complementosGlobal": [
