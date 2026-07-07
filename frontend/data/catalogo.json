@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-34-15",
-  "ultimaActualizacion": "2026-07-07T00:34:15.443Z",
+  "version": "v2026-07-07T00-35-28",
+  "ultimaActualizacion": "2026-07-07T00:35:28.124Z",
   "tiendas": [
     {
       "id": 1,
@@ -337,7 +337,7 @@
         },
         {
           "id": 140,
-          "nombre": "Almuerzo",
+          "nombre": "Menu Jueves",
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
@@ -1245,7 +1245,7 @@
     },
     {
       "id": 140,
-      "nombre": "Almuerzo",
+      "nombre": "Menu Jueves",
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
