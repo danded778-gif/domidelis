@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T15-52-37",
-  "ultimaActualizacion": "2026-07-07T15:52:37.854Z",
+  "version": "v2026-07-07T15-55-03",
+  "ultimaActualizacion": "2026-07-07T15:55:03.440Z",
   "tiendas": [
     {
       "id": 1,
@@ -2969,7 +2969,7 @@
     {
       "id": 153,
       "id_producto": 158,
-      "grupo": "proteina",
+      "grupo": "Proteina",
       "nombre": "carne",
       "precio": 0,
       "tipo": "salsa",
