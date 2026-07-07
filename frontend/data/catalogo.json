@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-13-06",
-  "ultimaActualizacion": "2026-07-07T03:13:06.559Z",
+  "version": "v2026-07-07T03-15-27",
+  "ultimaActualizacion": "2026-07-07T03:15:27.627Z",
   "tiendas": [
     {
       "id": 1,
@@ -2078,6 +2078,16 @@
       "tipo": "extra",
       "max": null,
       "min": 0
+    },
+    {
+      "id": 61,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     }
   ]
 }
