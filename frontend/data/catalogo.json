@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-17-48",
-  "ultimaActualizacion": "2026-07-07T00:17:48.097Z",
+  "version": "v2026-07-07T00-18-13",
+  "ultimaActualizacion": "2026-07-07T00:18:13.662Z",
   "tiendas": [
     {
       "id": 1,
@@ -2357,7 +2357,7 @@
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "tomar",
       "max": null,
       "min": 0
     },
@@ -2366,7 +2366,7 @@
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "tomar",
       "max": null,
       "min": 0
     },
