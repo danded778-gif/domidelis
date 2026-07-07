@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T03-38-45",
-  "ultimaActualizacion": "2026-07-07T03:38:45.228Z",
+  "version": "v2026-07-07T04-15-07",
+  "ultimaActualizacion": "2026-07-07T04:15:07.417Z",
   "tiendas": [
     {
       "id": 1,
@@ -1507,88 +1507,98 @@
   ],
   "complementosGlobal": [
     {
-      "id_producto": 1,
-      "grupo": "144",
-      "nombre": "Proteína",
+      "id": 1,
+      "id_producto": 144,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "opcion",
+      "max": 1,
       "min": 1
     },
     {
-      "id_producto": 2,
-      "grupo": "144",
-      "nombre": "Acompañamiento",
+      "id": 2,
+      "id_producto": 144,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "opcion",
+      "max": 1,
       "min": 1
     },
     {
-      "id_producto": 3,
-      "grupo": "144",
-      "nombre": "Acompañamiento",
+      "id": 3,
+      "id_producto": 144,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "opcion",
+      "max": 1,
       "min": 1
     },
     {
-      "id_producto": 4,
-      "grupo": "144",
-      "nombre": "Salsa",
+      "id": 4,
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
     },
     {
-      "id_producto": 5,
-      "grupo": "144",
-      "nombre": "Salsa",
+      "id": 5,
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
     },
     {
-      "id_producto": 6,
-      "grupo": "144",
-      "nombre": "Salsa",
+      "id": 6,
+      "id_producto": 144,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
     },
     {
-      "id_producto": 7,
-      "grupo": "144",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
+      "id": 7,
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id_producto": 8,
-      "grupo": "144",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
+      "id": 8,
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id_producto": 9,
-      "grupo": "144",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
+      "id": 9,
+      "id_producto": 144,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id_producto": 10,
+      "id": 10,
+      "id_producto": "",
       "grupo": "",
       "nombre": "",
       "precio": 0,
@@ -1597,1217 +1607,1362 @@
       "min": 0
     },
     {
-      "id_producto": 11,
-      "grupo": "145",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 12,
-      "grupo": "145",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 13,
-      "grupo": "145",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 14,
-      "grupo": "145",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 15,
-      "grupo": "145",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 16,
-      "grupo": "145",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 17,
-      "grupo": "145",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 18,
-      "grupo": "145",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 19,
-      "grupo": "145",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 20,
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 21,
-      "grupo": "146",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 22,
-      "grupo": "146",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 23,
-      "grupo": "146",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 24,
-      "grupo": "146",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 25,
-      "grupo": "146",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 26,
-      "grupo": "146",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 27,
-      "grupo": "146",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 28,
-      "grupo": "146",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 29,
-      "grupo": "146",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 30,
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 31,
-      "grupo": "147",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 32,
-      "grupo": "147",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 33,
-      "grupo": "147",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 34,
-      "grupo": "147",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 35,
-      "grupo": "147",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 36,
-      "grupo": "147",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 37,
-      "grupo": "147",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 38,
-      "grupo": "147",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 39,
-      "grupo": "147",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 40,
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 41,
-      "grupo": "148",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 42,
-      "grupo": "148",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 43,
-      "grupo": "148",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 44,
-      "grupo": "148",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 45,
-      "grupo": "148",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 46,
-      "grupo": "148",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 47,
-      "grupo": "148",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 48,
-      "grupo": "148",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 49,
-      "grupo": "148",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 50,
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 51,
-      "grupo": "149",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 52,
-      "grupo": "149",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 53,
-      "grupo": "149",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 54,
-      "grupo": "149",
-      "nombre": "Gasesosa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 55,
-      "grupo": "149",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 56,
-      "grupo": "149",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 57,
-      "grupo": "149",
-      "nombre": "Salsa",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
-    },
-    {
-      "id_producto": 58,
-      "grupo": "149",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 59,
-      "grupo": "149",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "5000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 60,
-      "grupo": "149",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "1000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 61,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 62,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 63,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 64,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 65,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 66,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 67,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 68,
-      "grupo": "139",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 69,
-      "grupo": "139",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 70,
-      "grupo": "139",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 71,
-      "grupo": "139",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 72,
-      "grupo": "139",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 73,
-      "grupo": "139",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 74,
-      "grupo": "139",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 75,
-      "grupo": "139",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "6000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 76,
-      "grupo": "139",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "7000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 78,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 79,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 80,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 81,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 82,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 83,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 84,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 85,
-      "grupo": "140",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 86,
-      "grupo": "140",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 87,
-      "grupo": "140",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 88,
-      "grupo": "140",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 89,
-      "grupo": "140",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 90,
-      "grupo": "140",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 91,
-      "grupo": "140",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 92,
-      "grupo": "140",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "6000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 93,
-      "grupo": "140",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "7000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 96,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 97,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 98,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 99,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 100,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 101,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 102,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 103,
-      "grupo": "141",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 104,
-      "grupo": "141",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 105,
-      "grupo": "141",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 106,
-      "grupo": "141",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 107,
-      "grupo": "141",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 108,
-      "grupo": "141",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 109,
-      "grupo": "141",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 110,
-      "grupo": "141",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "6000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 111,
-      "grupo": "141",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "7000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 113,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 114,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 115,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 116,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 117,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 118,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 119,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 120,
-      "grupo": "142",
-      "nombre": "Proteína",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 121,
-      "grupo": "142",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 122,
-      "grupo": "142",
-      "nombre": "Acompañamiento",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 123,
-      "grupo": "142",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 124,
-      "grupo": "142",
-      "nombre": "Verdura",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 125,
-      "grupo": "142",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 126,
-      "grupo": "142",
-      "nombre": "Tomar",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 127,
-      "grupo": "142",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "6000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 128,
-      "grupo": "142",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "7000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 129,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 130,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 131,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 132,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 133,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 1
-    },
-    {
-      "id_producto": 134,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 135,
-      "grupo": "132",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "3000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 137,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 138,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 139,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 140,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 141,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 2
-    },
-    {
-      "id_producto": 142,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "2000",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 143,
-      "grupo": "133",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "3000",
-      "max": null,
-      "min": 0
-    },
-    {
+      "id": 11,
       "id_producto": 145,
-      "grupo": "134",
-      "nombre": "",
+      "grupo": "Proteína",
+      "nombre": "Alitas",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
-      "id_producto": 146,
-      "grupo": "134",
-      "nombre": "",
+      "id": 12,
+      "id_producto": 145,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
-      "id_producto": 147,
-      "grupo": "134",
-      "nombre": "",
+      "id": 13,
+      "id_producto": 145,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
-      "id_producto": 148,
-      "grupo": "134",
-      "nombre": "",
+      "id": 14,
+      "id_producto": 145,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
     },
     {
-      "id_producto": 149,
-      "grupo": "134",
-      "nombre": "",
+      "id": 15,
+      "id_producto": 145,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 3
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
     },
     {
-      "id_producto": 150,
-      "grupo": "134",
-      "nombre": "",
+      "id": 16,
+      "id_producto": 145,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
       "precio": 0,
-      "tipo": "2000",
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 17,
+      "id_producto": 145,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id_producto": 151,
-      "grupo": "134",
+      "id": 18,
+      "id_producto": 145,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 19,
+      "id_producto": 145,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 20,
+      "id_producto": "",
+      "grupo": "",
       "nombre": "",
       "precio": 0,
-      "tipo": "3000",
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 21,
+      "id_producto": 146,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 22,
+      "id_producto": 146,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 23,
+      "id_producto": 146,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 24,
+      "id_producto": 146,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 25,
+      "id_producto": 146,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 26,
+      "id_producto": 146,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 27,
+      "id_producto": 146,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 28,
+      "id_producto": 146,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 29,
+      "id_producto": 146,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 30,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 31,
+      "id_producto": 147,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 32,
+      "id_producto": 147,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id": 33,
+      "id_producto": 147,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "id": 34,
+      "id_producto": 147,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 35,
+      "id_producto": 147,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 36,
+      "id_producto": 147,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 37,
+      "id_producto": 147,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 38,
+      "id_producto": 147,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 39,
+      "id_producto": 147,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 40,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 41,
+      "id_producto": 148,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 42,
+      "id_producto": 148,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 43,
+      "id_producto": 148,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 44,
+      "id_producto": 148,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 45,
+      "id_producto": 148,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 46,
+      "id_producto": 148,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 47,
+      "id_producto": 148,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 48,
+      "id_producto": 148,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 49,
+      "id_producto": 148,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 50,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 51,
+      "id_producto": 149,
+      "grupo": "Proteína",
+      "nombre": "Alitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 52,
+      "id_producto": 149,
+      "grupo": "Acompañamiento",
+      "nombre": "papa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 53,
+      "id_producto": 149,
+      "grupo": "Acompañamiento",
+      "nombre": "Yuquitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 54,
+      "id_producto": 149,
+      "grupo": "Gasesosa",
+      "nombre": "gaseosa 1.5L",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 55,
+      "id_producto": 149,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 56,
+      "id_producto": 149,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 57,
+      "id_producto": 149,
+      "grupo": "Salsa",
+      "nombre": "Salsa miel mostaza",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 58,
+      "id_producto": 149,
+      "grupo": "",
+      "nombre": "Alitas extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 59,
+      "id_producto": 149,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 60,
+      "id_producto": 149,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 61,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 62,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 63,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 64,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 65,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 66,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 67,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 68,
+      "id_producto": 139,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 69,
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa mazorca",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 70,
+      "id_producto": 139,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 71,
+      "id_producto": 139,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 72,
+      "id_producto": 139,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 73,
+      "id_producto": 139,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 74,
+      "id_producto": 139,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 75,
+      "id_producto": 139,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 76,
+      "id_producto": 139,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 78,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 79,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 80,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 81,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 82,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 83,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 84,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 85,
+      "id_producto": 140,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 86,
+      "id_producto": 140,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa de Verdura",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 87,
+      "id_producto": 140,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 88,
+      "id_producto": 140,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 89,
+      "id_producto": 140,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 90,
+      "id_producto": 140,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 91,
+      "id_producto": 140,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 92,
+      "id_producto": 140,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 93,
+      "id_producto": 140,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 96,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 97,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 98,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 99,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 100,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 101,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 102,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 103,
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 104,
+      "id_producto": 141,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa mazorca",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 105,
+      "id_producto": 141,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 106,
+      "id_producto": 141,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 107,
+      "id_producto": 141,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 108,
+      "id_producto": 141,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 109,
+      "id_producto": 141,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 110,
+      "id_producto": 141,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 111,
+      "id_producto": 141,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 113,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 114,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 115,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 116,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 117,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 118,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 119,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 120,
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 121,
+      "id_producto": 142,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa mazorca",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 122,
+      "id_producto": 142,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 123,
+      "id_producto": 142,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 124,
+      "id_producto": 142,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 125,
+      "id_producto": 142,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 126,
+      "id_producto": 142,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 127,
+      "id_producto": 142,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 128,
+      "id_producto": 142,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 129,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 130,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 131,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 132,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 133,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 134,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 135,
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 137,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 138,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 139,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 140,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 141,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 142,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 143,
+      "id_producto": 133,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 145,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 146,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 147,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 148,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 149,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 150,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 151,
+      "id_producto": 134,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 158,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     }
