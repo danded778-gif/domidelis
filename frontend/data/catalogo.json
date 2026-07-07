@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-10-54",
-  "ultimaActualizacion": "2026-07-07T01:10:54.368Z",
+  "version": "v2026-07-07T01-10-56",
+  "ultimaActualizacion": "2026-07-07T01:10:56.647Z",
   "tiendas": [
     {
       "id": 1,
@@ -2644,7 +2644,7 @@
       "id_producto": 133,
       "grupo": "",
       "nombre": "Salsa Ajo",
-      "precio": 1500,
+      "precio": 0,
       "tipo": "salsa",
       "max": 2,
       "min": 0
@@ -2653,7 +2653,7 @@
       "id_producto": 133,
       "grupo": "",
       "nombre": "Salsa piña",
-      "precio": 1500,
+      "precio": 0,
       "tipo": "salsa",
       "max": 2,
       "min": 0
