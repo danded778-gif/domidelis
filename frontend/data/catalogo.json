@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-05-14",
-  "ultimaActualizacion": "2026-07-07T01:05:14.920Z",
+  "version": "v2026-07-07T01-06-04",
+  "ultimaActualizacion": "2026-07-07T01:06:04.695Z",
   "tiendas": [
     {
       "id": 1,
@@ -2556,7 +2556,7 @@
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": 3,
+      "max": 1,
       "min": 0
     },
     {
@@ -2565,7 +2565,7 @@
       "nombre": "Salsa Rosa",
       "precio": 0,
       "tipo": "salsa",
-      "max": 3,
+      "max": 1,
       "min": 0
     },
     {
@@ -2574,7 +2574,7 @@
       "nombre": "Salsa Tocineta",
       "precio": 0,
       "tipo": "salsa",
-      "max": 3,
+      "max": 1,
       "min": 0
     },
     {
@@ -2583,16 +2583,79 @@
       "nombre": "Salsa Ajo",
       "precio": 1500,
       "tipo": "salsa",
-      "max": 3,
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 1500,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Queso extra",
+      "precio": 2000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Tocineta extra",
+      "precio": 3000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Rosa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
       "min": 0
     },
     {
       "id_producto": 132,
       "grupo": "",
       "nombre": "Salsa Tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa Ajo",
       "precio": 1500,
       "tipo": "salsa",
-      "max": 3,
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id_producto": 132,
+      "grupo": "",
+      "nombre": "Salsa piña",
+      "precio": 1500,
+      "tipo": "salsa",
+      "max": 1,
       "min": 0
     },
     {
