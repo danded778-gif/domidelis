@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-30-17",
-  "ultimaActualizacion": "2026-07-07T00:30:17.558Z",
+  "version": "v2026-07-07T00-31-25",
+  "ultimaActualizacion": "2026-07-07T00:31:25.145Z",
   "tiendas": [
     {
       "id": 1,
@@ -2074,105 +2074,6 @@
       "min": 0
     },
     {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Pollo",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Pechuga",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Cerdo",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "pescado",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "res",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Acompañamiento",
-      "nombre": "Sopa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Acompañamiento",
-      "nombre": "Frijoles",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Verdura",
-      "nombre": "Ensalada",
-      "precio": 0,
-      "tipo": "verdura",
-      "max": 2,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Verdura",
-      "nombre": "Papa",
-      "precio": 0,
-      "tipo": "verdura",
-      "max": 2,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "",
-      "nombre": "porcion arroz",
-      "precio": 6000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "",
-      "nombre": "Carne extra",
-      "precio": 7000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
       "id_producto": 142,
       "grupo": "Proteína",
       "nombre": "Hígado Encebollado",
@@ -2312,6 +2213,141 @@
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Hígado Encebollado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Rollos de cerdo en salsa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa mazorca",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 141,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
