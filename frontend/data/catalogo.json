@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-23-48",
-  "ultimaActualizacion": "2026-07-07T00:23:48.643Z",
+  "version": "v2026-07-07T00-24-25",
+  "ultimaActualizacion": "2026-07-07T00:24:25.924Z",
   "tiendas": [
     {
       "id": 1,
@@ -2337,7 +2337,7 @@
     {
       "id_producto": 142,
       "grupo": "Proteína",
-      "nombre": "Pechuga a la plancha",
+      "nombre": "Chorizo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
