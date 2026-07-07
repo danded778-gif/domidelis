@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T15-48-46",
-  "ultimaActualizacion": "2026-07-07T15:48:46.125Z",
+  "version": "v2026-07-07T15-50-32",
+  "ultimaActualizacion": "2026-07-07T15:50:32.028Z",
   "tiendas": [
     {
       "id": 1,
@@ -2988,7 +2988,7 @@
     },
     {
       "id": 155,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "Proteina",
       "nombre": "pollo",
       "precio": 0,
