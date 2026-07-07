@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-16-31",
-  "ultimaActualizacion": "2026-07-07T00:16:31.617Z",
+  "version": "v2026-07-07T00-17-20",
+  "ultimaActualizacion": "2026-07-07T00:17:20.378Z",
   "tiendas": [
     {
       "id": 1,
@@ -2337,7 +2337,7 @@
     {
       "id_producto": 142,
       "grupo": "Verdura",
-      "nombre": "Ensalada,chips de papa",
+      "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
