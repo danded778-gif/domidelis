@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-22-26",
-  "ultimaActualizacion": "2026-07-07T00:22:26.210Z",
+  "version": "v2026-07-07T00-22-53",
+  "ultimaActualizacion": "2026-07-07T00:22:53.499Z",
   "tiendas": [
     {
       "id": 1,
@@ -2301,7 +2301,7 @@
     {
       "id_producto": 142,
       "grupo": "Proteína",
-      "nombre": "",
+      "nombre": "Pechuga a la plancha",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -2310,7 +2310,7 @@
     {
       "id_producto": 142,
       "grupo": "Proteína",
-      "nombre": "res",
+      "nombre": "Bistec",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
