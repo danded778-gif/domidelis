@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T05-55-39",
-  "ultimaActualizacion": "2026-07-07T05:55:39.778Z",
+  "version": "v2026-07-07T05-58-47",
+  "ultimaActualizacion": "2026-07-07T05:58:47.148Z",
   "tiendas": [
     {
       "id": 1,
@@ -2978,7 +2978,7 @@
     },
     {
       "id": 154,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "verdura",
       "nombre": "lechuga",
       "precio": 0,
