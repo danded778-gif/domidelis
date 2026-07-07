@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T15-51-35",
-  "ultimaActualizacion": "2026-07-07T15:51:35.841Z",
+  "version": "v2026-07-07T15-52-37",
+  "ultimaActualizacion": "2026-07-07T15:52:37.854Z",
   "tiendas": [
     {
       "id": 1,
@@ -2973,17 +2973,7 @@
       "nombre": "carne",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 154,
-      "id_producto": 158,
-      "grupo": "verdura",
-      "nombre": "lechuga",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
+      "max": 2,
       "min": 1
     },
     {
@@ -2993,7 +2983,7 @@
       "nombre": "pollo",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 1
     },
     {
