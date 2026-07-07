@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T21-30-03",
-  "ultimaActualizacion": "2026-07-07T21:30:03.345Z",
+  "version": "v2026-07-07T21-37-05",
+  "ultimaActualizacion": "2026-07-07T21:37:05.360Z",
   "tiendas": [
     {
       "id": 1,
@@ -2995,6 +2995,16 @@
       "tipo": "salsa",
       "max": 3,
       "min": 1
+    },
+    {
+      "id": 156,
+      "id_producto": "#NUM!",
+      "grupo": "pan",
+      "nombre": "pan",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
     }
   ]
 }
