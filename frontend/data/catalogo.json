@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-09-40",
-  "ultimaActualizacion": "2026-07-07T00:09:40.870Z",
+  "version": "v2026-07-07T00-10-05",
+  "ultimaActualizacion": "2026-07-07T00:10:05.746Z",
   "tiendas": [
     {
       "id": 1,
@@ -2173,105 +2173,6 @@
       "min": 0
     },
     {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Pollo",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Pechuga",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "Cerdo",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "pescado",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Proteína",
-      "nombre": "res",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Acompañamiento",
-      "nombre": "Sopa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Acompañamiento",
-      "nombre": "Frijoles",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Verdura",
-      "nombre": "Ensalada",
-      "precio": 0,
-      "tipo": "verdura",
-      "max": 2,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "Verdura",
-      "nombre": "Papa",
-      "precio": 0,
-      "tipo": "verdura",
-      "max": 2,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "",
-      "nombre": "porcion arroz",
-      "precio": 6000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id_producto": 140,
-      "grupo": "",
-      "nombre": "Carne extra",
-      "precio": 7000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
       "id_producto": 141,
       "grupo": "Proteína",
       "nombre": "Pollo",
@@ -2281,7 +2182,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Proteína",
       "nombre": "Pechuga",
       "precio": 0,
@@ -2290,7 +2191,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Proteína",
       "nombre": "Cerdo",
       "precio": 0,
@@ -2299,7 +2200,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Proteína",
       "nombre": "pescado",
       "precio": 0,
@@ -2308,7 +2209,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Proteína",
       "nombre": "res",
       "precio": 0,
@@ -2317,7 +2218,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Acompañamiento",
       "nombre": "Sopa",
       "precio": 0,
@@ -2326,7 +2227,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Acompañamiento",
       "nombre": "Frijoles",
       "precio": 0,
@@ -2335,7 +2236,7 @@
       "min": 1
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Verdura",
       "nombre": "Ensalada",
       "precio": 0,
@@ -2344,7 +2245,7 @@
       "min": 0
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "Verdura",
       "nombre": "Papa",
       "precio": 0,
@@ -2353,7 +2254,7 @@
       "min": 0
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
       "grupo": "",
       "nombre": "porcion arroz",
       "precio": 6000,
@@ -2362,7 +2263,106 @@
       "min": 0
     },
     {
-      "id_producto": 140,
+      "id_producto": 141,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Pollo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Pechuga",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "pescado",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "res",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Verdura",
+      "nombre": "Ensalada",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Verdura",
+      "nombre": "Papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 142,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
