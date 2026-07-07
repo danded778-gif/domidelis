@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T02-44-54",
-  "ultimaActualizacion": "2026-07-07T02:44:54.731Z",
+  "version": "v2026-07-07T02-45-24",
+  "ultimaActualizacion": "2026-07-07T02:45:24.726Z",
   "tiendas": [
     {
       "id": 1,
@@ -1496,6 +1496,528 @@
       "tipo": "",
       "max": null,
       "min": 1
+    },
+    {
+      "id_producto": 3,
+      "grupo": "144",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 4,
+      "grupo": "144",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 5,
+      "grupo": "144",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 6,
+      "grupo": "144",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 7,
+      "grupo": "144",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 8,
+      "grupo": "144",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 9,
+      "grupo": "144",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 10,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 11,
+      "grupo": "145",
+      "nombre": "Proteína",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 12,
+      "grupo": "145",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 13,
+      "grupo": "145",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 14,
+      "grupo": "145",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 2
+    },
+    {
+      "id_producto": 15,
+      "grupo": "145",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 2
+    },
+    {
+      "id_producto": 16,
+      "grupo": "145",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 2
+    },
+    {
+      "id_producto": 17,
+      "grupo": "145",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 18,
+      "grupo": "145",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 19,
+      "grupo": "145",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 20,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 21,
+      "grupo": "146",
+      "nombre": "Proteína",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 22,
+      "grupo": "146",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 23,
+      "grupo": "146",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 24,
+      "grupo": "146",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 25,
+      "grupo": "146",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 26,
+      "grupo": "146",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 27,
+      "grupo": "146",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 28,
+      "grupo": "146",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 29,
+      "grupo": "146",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 30,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 31,
+      "grupo": "147",
+      "nombre": "Proteína",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 32,
+      "grupo": "147",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 2
+    },
+    {
+      "id_producto": 33,
+      "grupo": "147",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 2
+    },
+    {
+      "id_producto": 34,
+      "grupo": "147",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 35,
+      "grupo": "147",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 36,
+      "grupo": "147",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 37,
+      "grupo": "147",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 38,
+      "grupo": "147",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 39,
+      "grupo": "147",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 40,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 41,
+      "grupo": "148",
+      "nombre": "Proteína",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 42,
+      "grupo": "148",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 43,
+      "grupo": "148",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 44,
+      "grupo": "148",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 45,
+      "grupo": "148",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 46,
+      "grupo": "148",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 47,
+      "grupo": "148",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 48,
+      "grupo": "148",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 49,
+      "grupo": "148",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 50,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 51,
+      "grupo": "149",
+      "nombre": "Proteína",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 52,
+      "grupo": "149",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 53,
+      "grupo": "149",
+      "nombre": "Acompañamiento",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 54,
+      "grupo": "149",
+      "nombre": "Gasesosa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 1
+    },
+    {
+      "id_producto": 55,
+      "grupo": "149",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 56,
+      "grupo": "149",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 57,
+      "grupo": "149",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 3
+    },
+    {
+      "id_producto": 58,
+      "grupo": "149",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "2000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 59,
+      "grupo": "149",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "5000",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id_producto": 60,
+      "grupo": "149",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "1000",
+      "max": null,
+      "min": 0
     }
   ]
 }
