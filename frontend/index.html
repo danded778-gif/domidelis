@@ -323,7 +323,7 @@
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="login.html"><i class="fas fa-user"></i> Iniciar sesión</a></li>
+                    <li><a href="#" id="btn-como-pedir"><i class="fas fa-circle-info"></i> Cómo pedir</a></li>
                 </ul>
             </nav>
         </div>
@@ -333,15 +333,18 @@
         <section class="hero">
             <div class="container">
                 <div class="launch-badge"><span class="badge-dot"></span></div>
+
                 <h1 class="titulo-emoji-box">
                     <span class="emoji-lado">🍔</span>
                     <span class="texto-central">Domidelis</span>
                     <span class="emoji-lado">🍺</span>
                 </h1>
-                <p></span> Comida y licores a domicilio</p>
+
+                <p>Comida y licores a domicilio</p>
                 <div class="hero-discount"><span class="discount-number">50% OFF</span> DE DESCUENTO en el costo del
                     domicilio</div>
-                <br>Los mejores locales de El Santuario en un solo lugar</p>
+                <p>Los mejores locales de El Santuario en un solo lugar</p>
+
                 <div class="zone-selector">
                     <i class="fas fa-map-marker-alt"></i>
                     <div class="zone-autocomplete" id="zone-autocomplete">
@@ -436,6 +439,115 @@
         </div>
     </div>
 
+    <!-- ★ NUEVO MODAL: CÓMO PEDIR (4 PASOS CON MÉTODO DE PAGO) ★ -->
+    <div class="modal" id="modal-como-pedir">
+        <div class="modal-content" style="max-width: 420px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-utensils"></i> ¿Cómo pedir?</h3>
+                <button class="close-modal" id="close-como-pedir"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 1rem 0;">
+                <p style="text-align:center; color:var(--gray); margin-bottom:1.5rem; font-size: 0.9rem;">Es rápido y
+                    fácil, sin registro previo</p>
+
+                <!-- PASO 1 -->
+                <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
+                    <div
+                        style="width:36px; height:36px; background:var(--primary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
+                        1</div>
+                    <div style="flex:1;">
+                        <strong style="color:var(--dark); font-size:0.95rem;">Busca tu zona</strong>
+                        <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Escribe tu
+                            barrio en el buscador de arriba. Si tu zona está disponible, ¡selecciónala!</p>
+                        <!-- Simulación visual del buscador -->
+                        <div
+                            style="background:white; border:2px solid var(--accent); border-radius:30px; padding:6px 12px; display:flex; align-items:center; gap:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:0.9rem;"></i>
+                            <span style="color:#999; font-size:0.8rem;">Escribe tu zona...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
+                    <div
+                        style="width:36px; height:36px; background:var(--secondary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
+                        2</div>
+                    <div style="flex:1;">
+                        <strong style="color:var(--dark); font-size:0.95rem;">Elige y agrega al carrito</strong>
+                        <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Explora
+                            las categorías o tiendas. Agrega lo que quieras pedir.</p>
+                        <!-- Simulación visual de agregar al carrito -->
+                        <div
+                            style="display:flex; justify-content:space-between; align-items:center; background:white; border:1px solid #eee; border-radius:12px; padding:8px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="font-size:1.3rem;">🍔</span>
+                                <span style="font-size:0.85rem; font-weight:600; color:var(--dark);">Hamburguesa</span>
+                            </div>
+                            <div
+                                style="background:var(--primary); color:white; border-radius:20px; padding:4px 12px; font-size:0.75rem; font-weight:700;">
+                                Agregar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 3 (MÉTODO DE PAGO) -->
+                <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
+                    <div
+                        style="width:36px; height:36px; background:var(--info); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
+                        3</div>
+                    <div style="flex:1;">
+                        <strong style="color:var(--dark); font-size:0.95rem;">Elige cómo vas a pagar</strong>
+                        <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Al final,
+                            seleccionas si pagas en efectivo o con Tranferencia </p>
+                        <!-- Simulación visual de métodos de pago -->
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                            <div
+                                style="background:white; border:1px solid #eee; border-radius:8px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                                <i class="fas fa-money-bill-wave" style="color:var(--success); font-size:1rem;"></i>
+                                <span style="font-size:0.7rem; font-weight:600; color:var(--dark);">Efectivo</span>
+                            </div>
+                            <div
+                                style="background:white; border:1px solid #eee; border-radius:8px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                                <i class="fas fa-mobile-alt" style="color:#A020F0; font-size:1rem;"></i>
+                                <span style="font-size:0.7rem; font-weight:600; color:var(--dark);">Nequi</span>
+                            </div>
+                            <div
+                                style="background:white; border:1px solid #eee; border-radius:8px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                                <i class="fas fa-wallet" style="color:var(--danger); font-size:1rem;"></i>
+                                <span style="font-size:0.7rem; font-weight:600; color:var(--dark);">Daviplata</span>
+                            </div>
+                            <div
+                                style="background:white; border:1px solid #eee; border-radius:8px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                                <i class="fas fa-university" style="color:var(--accent); font-size:1rem;"></i>
+                                <span style="font-size:0.7rem; font-weight:600; color:var(--dark);">Transferencia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 4 (WHATSAPP) -->
+                <div style="display:flex; gap:1rem; align-items:flex-start;">
+                    <div
+                        style="width:36px; height:36px; background:var(--dark); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
+                        4</div>
+                    <div style="flex:1;">
+                        <strong style="color:var(--dark); font-size:0.95rem;">Confirma por WhatsApp</strong>
+                        <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Envía tu
+                            pedido directo por WhatsApp y prepárate para disfrutar en casa.</p>
+                        <!-- Simulación visual de WhatsApp -->
+                        <div
+                            style="background:#25D366; color:white; border-radius:30px; padding:8px 14px; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:700; font-size:0.85rem; box-shadow: 0 4px 12px rgba(37,211,102,0.3);">
+                            <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> Enviar pedido
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -445,8 +557,8 @@
                         recibe tus pedidos de manera rápida y segura, todo desde una sola aplicación.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Mi Cuenta</h3>
-                    <p><a href="login.html">Iniciar sesión</a></p>
+                    <h3>Acceso Equipo</h3>
+                    <p><a href="login.html"><i class="fas fa-lock"></i> Iniciar sesión</a></p>
                     <p><a href="../app-tiendas/login-tienda.html" target="_blank" class="btn-tienda-header"><i
                                 class="fas fa-store"></i> Soy Tienda</a></p>
                 </div>
@@ -617,7 +729,7 @@
         window.addEventListener('scroll', function () {
             var scrollY = window.scrollY || window.pageYOffset;
 
-            /* Botón volver arriba (este es OTRO botón, no el del hero) */
+            /* Botón volver arriba */
             if (scrollY > 600) {
                 btnArriba.style.display = 'flex';
                 btnArriba.style.alignItems = 'center';
@@ -644,6 +756,36 @@
                 }
             }
         });
+
+        /* ===== MODAL CÓMO PEDIR ===== */
+        const modalComoPedir = document.getElementById('modal-como-pedir');
+        const btnComoPedir = document.getElementById('btn-como-pedir');
+        const closeComoPedir = document.getElementById('close-como-pedir');
+
+        if (btnComoPedir && modalComoPedir) {
+            btnComoPedir.addEventListener('click', function (e) {
+                e.preventDefault();
+                modalComoPedir.classList.add('active');
+                // Cerrar menú hamburguesa si estaba abierto en móvil
+                document.getElementById('nav-links').classList.remove('active');
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        }
+
+        if (closeComoPedir && modalComoPedir) {
+            closeComoPedir.addEventListener('click', function () {
+                modalComoPedir.classList.remove('active');
+            });
+        }
+
+        // Cerrar modal si tocan fuera
+        if (modalComoPedir) {
+            modalComoPedir.addEventListener('click', function (e) {
+                if (e.target === modalComoPedir) {
+                    modalComoPedir.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 
