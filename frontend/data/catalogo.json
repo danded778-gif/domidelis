@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-18-29",
-  "ultimaActualizacion": "2026-07-07T00:18:29.802Z",
+  "version": "v2026-07-07T00-19-47",
+  "ultimaActualizacion": "2026-07-07T00:19:47.325Z",
   "tiendas": [
     {
       "id": 1,
@@ -2364,7 +2364,7 @@
     {
       "id_producto": 142,
       "grupo": "Tomar",
-      "nombre": "Guandolo",
+      "nombre": "Jugo Natural",
       "precio": 0,
       "tipo": "tomar",
       "max": 1,
