@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-22-53",
-  "ultimaActualizacion": "2026-07-07T00:22:53.499Z",
+  "version": "v2026-07-07T00-23-18",
+  "ultimaActualizacion": "2026-07-07T00:23:18.286Z",
   "tiendas": [
     {
       "id": 1,
@@ -2311,6 +2311,15 @@
       "id_producto": 142,
       "grupo": "Proteína",
       "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id_producto": 142,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
