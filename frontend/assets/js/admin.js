@@ -18,6 +18,9 @@ let pedidosSeleccionados = new Set();
 let usuariosTiendaCache = [];
 let usuarioTiendaEditando = null;
 
+// ★ NUEVAS VARIABLES PARA COMPLEMENTOS
+let complementosCache = [];
+
 // ─── NUEVA FUNCIÓN: FETCH SEGURO CON JWT ───
 async function fetchConToken(url, opciones = {}) {
     const token = localStorage.getItem('token');
@@ -152,7 +155,7 @@ async function cargarAdminData() {
     await cargarTiendasAdmin();
     await cargarDomiciliarios();
     await cargarDomiciliariosAdmin();
-    await cargarUsuariosTiendaAdmin(); // ★ AGREGADO
+    await cargarUsuariosTiendaAdmin(); 
     await cargarPedidosAdmin();
     await cargarHistorialPedidos();
 
@@ -216,7 +219,7 @@ async function activarPermisos() {
     if (banner) banner.style.display = 'none';
 
     if (permiso && typeof pushManager !== 'undefined') {
-        const vapidRes = await fetchConToken(`${API_URL}/api/vapid-public-key`); // ✅ Con token
+        const vapidRes = await fetchConToken(`${API_URL}/api/vapid-public-key`); 
         const { publicKey } = await vapidRes.json();
         await pushManager.init(publicKey);
     }
@@ -237,7 +240,7 @@ async function activarPermisos() {
 // ============================================
 async function cargarTiendasAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getTiendas`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getTiendas`); 
         const tiendas = await res.json();
         tiendasCache = tiendas;
         const tbody = document.querySelector("#tablaTiendas tbody");
@@ -273,7 +276,7 @@ function llenarSelectsTiendas(tiendas) {
     if (selectVer) selectVer.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
     if (selectProducto) {
         selectProducto.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
-        selectProducto.setAttribute('onchange', 'calcularComisionProducto()'); // ★ Calculadora
+        selectProducto.setAttribute('onchange', 'calcularComisionProducto()'); 
     }
 }
 
@@ -293,7 +296,6 @@ function cerrarModalTienda() {
 async function guardarTienda() {
     const btn = document.querySelector("#formTienda button[type='submit']");
     
-    // ★ NUEVO: Empaquetar los 7 inputs en un solo string JSON
     const horarioJSON = JSON.stringify({
         mon: document.getElementById("horario-mon").value.trim(),
         tue: document.getElementById("horario-tue").value.trim(),
@@ -308,13 +310,12 @@ async function guardarTienda() {
         nombre: document.getElementById("tiendaNombre").value.trim(),
         descripcion: document.getElementById("tiendaDescripcion").value.trim(),
         direccion: document.getElementById("tiendaDireccion").value.trim(),
-        horario: horarioJSON, // ★ Aquí enviamos el JSON en vez del texto plano
+        horario: horarioJSON, 
         imagen: document.getElementById("tiendaImagen").value.trim(),
         rating: document.getElementById("tiendaRating").value || 5,
         comision: document.getElementById("tiendaComision").value || 20
     };
     
-    // ... (el resto de tu función guardarTienda se queda exactamente igual)
     if (!datos.nombre || !datos.direccion) {
         mostrarNotificacion("Nombre y dirección obligatorios", "error");
         return;
@@ -324,7 +325,7 @@ async function guardarTienda() {
     try {
         const action = tiendaEditando ? "actualizarTienda" : "crearTienda";
         if (tiendaEditando) datos.id = tiendaEditando;
-        const response = await fetchConToken(API_URL, { // ✅ Con token
+        const response = await fetchConToken(API_URL, { 
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ action, ...datos })
@@ -354,13 +355,11 @@ async function editarTienda(id) {
     document.getElementById("tiendaDescripcion").value = tienda.descripcion || '';
     document.getElementById("tiendaDireccion").value = tienda.direccion;
 
-    // ★ NUEVO: Desempaquetar JSON de horarios
     let horarioObj = {};
     try {
         if (tienda.horario && tienda.horario.startsWith('{')) {
             horarioObj = JSON.parse(tienda.horario);
         } else {
-            // Si es texto viejo (ej: "11am - 10pm"), lo asignamos a todos los días por defecto
             const horarioViejo = tienda.horario || '08:00-22:00';
             horarioObj = { mon: horarioViejo, tue: horarioViejo, wed: horarioViejo, thu: horarioViejo, fri: horarioViejo, sat: horarioViejo, sun: 'Cerrado' };
         }
@@ -385,7 +384,7 @@ async function editarTienda(id) {
 async function eliminarTienda(id) {
     if (!confirm("¿Eliminar tienda? También se eliminarán sus productos.")) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarTienda&id=${id}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=eliminarTienda&id=${id}`); 
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Tienda eliminada");
@@ -410,7 +409,7 @@ async function cargarProductosPorTienda(tiendaId) {
     document.getElementById("nombreTiendaSeleccionada").textContent = tienda ? tienda.nombre : '';
     document.getElementById("listaProductosTienda").style.display = "block";
     try {
-        const res = await fetchConToken(`${API_URL}?action=getProductos&tiendaId=${tiendaId}`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getProductos&tiendaId=${tiendaId}`); 
         const productos = await res.json();
         productosCache = productos;
         const tbody = document.querySelector("#tablaProductosTienda tbody");
@@ -425,6 +424,7 @@ async function cargarProductosPorTienda(tiendaId) {
                 <td>${p.descripcion || '-'}</td>
                 <td>${formatearPrecio(p.precio)}</td>
                 <td>
+                    <button class="btn btn-secondary btn-sm" onclick="abrirModalComplementos(${p.id})" title="Gestionar Complementos"><i class="fas fa-sliders-h"></i></button>
                     <button class="btn btn-primary btn-sm" onclick="editarProducto(${p.id})"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${p.id})"><i class="fas fa-trash"></i></button>
                 </td>
@@ -450,7 +450,7 @@ function mostrarModalProducto() {
     productoEditando = null;
     document.getElementById("modalProductoTitulo").textContent = "Nuevo Producto";
     document.getElementById("formProducto").reset();
-    document.getElementById("comision-calculo-box").style.display = "none"; // ★ Ocultar calculadora al crear nuevo
+    document.getElementById("comision-calculo-box").style.display = "none"; 
     document.getElementById("modalProducto").classList.add("active");
 }
 
@@ -486,7 +486,7 @@ async function guardarProducto() {
     try {
         const action = productoEditando ? "actualizarProducto" : "crearProducto";
         if (productoEditando) datos.id = productoEditando;
-        const response = await fetchConToken(API_URL, { // ✅ Con token
+        const response = await fetchConToken(API_URL, { 
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ action, ...datos })
@@ -519,14 +519,14 @@ async function editarProducto(id) {
     document.getElementById("productoPrecio").value = producto.precio;
     document.getElementById("productoImagen").value = producto.imagen_url || '';
     document.getElementById("productoBadge").value = producto.badge || '';
-    calcularComisionProducto(); // ★ Activa la calculadora con los datos cargados
+    calcularComisionProducto(); 
     document.getElementById("modalProducto").classList.add("active");
 }
 
 async function eliminarProducto(id) {
     if (!confirm("¿Eliminar producto?")) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarProducto&id=${id}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=eliminarProducto&id=${id}`); 
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Producto eliminado");
@@ -541,11 +541,126 @@ async function eliminarProducto(id) {
 }
 
 // ============================================
+// ★ NUEVO: COMPLEMENTOS Y EXTRAS
+// ============================================
+async function abrirModalComplementos(productoId) {
+    const producto = productosCache.find(p => p.id == productoId);
+    if (!producto) return;
+    
+    document.getElementById('complementoProductoId').value = productoId;
+    document.getElementById('complementoProductoNombre').textContent = producto.nombre;
+    document.getElementById('formComplemento').reset();
+    
+    document.getElementById('modalComplementos').classList.add('active');
+    await cargarComplementos(productoId);
+}
+
+function cerrarModalComplementos() {
+    document.getElementById('modalComplementos').classList.remove('active');
+}
+
+async function cargarComplementos(productoId) {
+    const container = document.getElementById('listaComplementosContainer');
+    container.innerHTML = '<p style="text-align:center; color:#999;">Cargando...</p>';
+    
+    try {
+        const res = await fetchConToken(`${API_URL}?action=getComplementos&productoId=${productoId}`);
+        const data = await res.json();
+        
+        if (data.success && data.complementos) {
+            complementosCache = data.complementos;
+            if (data.complementos.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#999;">Este producto no tiene complementos aún.</p>';
+                return;
+            }
+            
+            container.innerHTML = data.complementos.map(c => `
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; border:1px solid #eee; border-radius:8px; margin-bottom:8px;">
+                    <div>
+                        <strong>${esc(c.nombre)}</strong> <small>(${esc(c.grupo || c.tipo)})</small><br>
+                        <small>Precio: ${formatearPrecio(c.precio)} | ${c.min > 0 ? 'Obligatorio' : 'Opcional'} | Max: ${c.max || '∞'}</small>
+                    </div>
+                    <button class="btn btn-danger btn-sm" onclick="eliminarComplemento(${c.id})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<p style="text-align:center; color:#999;">No hay complementos.</p>';
+        }
+    } catch (error) {
+        container.innerHTML = '<p style="text-align:center; color:red;">Error al cargar.</p>';
+    }
+}
+
+async function guardarComplemento() {
+    const btn = document.querySelector("#formComplemento button[type='submit']");
+    const productoId = document.getElementById('complementoProductoId').value;
+    
+    const datos = {
+        action: 'crearComplemento',
+        productoId: productoId,
+        grupo: document.getElementById('complementoGrupo').value.trim(),
+        tipo: document.getElementById('complementoTipo').value,
+        nombre: document.getElementById('complementoNombre').value.trim(),
+        precio: document.getElementById('complementoPrecio').value || 0,
+        min: document.getElementById('complementoObligatorio').value,
+        max: document.getElementById('complementoMaximo').value
+    };
+
+    if (!datos.nombre) {
+        mostrarNotificacion('El nombre es obligatorio', 'error');
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+    
+    try {
+        const response = await fetchConToken(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(datos)
+        });
+        const data = await response.json();
+        
+        if (data.success) {
+            mostrarNotificacion('Complemento agregado');
+            document.getElementById('formComplemento').reset();
+            await cargarComplementos(productoId);
+        } else {
+            mostrarNotificacion('Error: ' + (data.error || 'No se pudo guardar'), 'error');
+        }
+    } catch (error) {
+        mostrarNotificacion('Error de conexión', 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-plus"></i> Agregar Complemento';
+    }
+}
+
+async function eliminarComplemento(id) {
+    if (!confirm('¿Eliminar este complemento?')) return;
+    const productoId = document.getElementById('complementoProductoId').value;
+    
+    try {
+        const response = await fetchConToken(`${API_URL}?action=eliminarComplemento&id=${id}`);
+        const data = await response.json();
+        if (data.success) {
+            mostrarNotificacion('Complemento eliminado');
+            await cargarComplementos(productoId);
+        } else {
+            mostrarNotificacion('Error al eliminar', 'error');
+        }
+    } catch (error) {
+        mostrarNotificacion('Error de conexión', 'error');
+    }
+}
+
+// ============================================
 // DOMICILIARIOS
 // ============================================
 async function cargarDomiciliarios() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); 
         const domiciliarios = await res.json();
         domiciliariosCache = domiciliarios;
     } catch (error) {
@@ -558,7 +673,7 @@ async function cargarDomiciliarios() {
 // ============================================
 async function cargarPedidosAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
         const pedidos = await res.json();
         const tbody = document.querySelector("#tablaPedidos tbody");
         if (!tbody) return;
@@ -660,7 +775,7 @@ async function confirmarAsignacion(domiciliarioId, domiciliarioNombre) {
     if (!pedidoIdAsignar) return;
     if (!confirm(`¿Asignar pedido #${pedidoIdAsignar} a ${domiciliarioNombre}?`)) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=asignarDomiciliario&pedidoId=${pedidoIdAsignar}&domiciliarioId=${domiciliarioId}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=asignarDomiciliario&pedidoId=${pedidoIdAsignar}&domiciliarioId=${domiciliarioId}`); 
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion(`✅ Pedido #${pedidoIdAsignar} asignado a ${domiciliarioNombre}`);
@@ -682,7 +797,7 @@ async function cambiarEstadoPedidoAdmin(pedidoId) {
         return;
     }
     try {
-        const response = await fetchConToken(`${API_URL}?action=actualizarEstado&pedidoId=${pedidoId}&estado=${encodeURIComponent(nuevoEstado)}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=actualizarEstado&pedidoId=${pedidoId}&estado=${encodeURIComponent(nuevoEstado)}`); 
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Estado actualizado");
@@ -698,7 +813,7 @@ async function cambiarEstadoPedidoAdmin(pedidoId) {
 
 async function verDetallePedido(pedidoId) {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
         const pedidos = await res.json();
         const pedido = pedidos.find(p => p.id == pedidoId);
         if (!pedido) return;
@@ -767,7 +882,7 @@ function obtenerTextoTiendas(pedido) {
 
 async function cargarHistorialPedidos() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
         const todos = await res.json();
         pedidosEntregadosCache = todos.filter(p => p.estado === 'entregado').sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
         llenarFiltroDomiciliarios();
@@ -932,7 +1047,7 @@ async function eliminarPedidosSeleccionados() {
 
 async function ejecutarEliminacionPedidos(ids) {
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarPedidos`, { // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=eliminarPedidos`, { 
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ ids: JSON.stringify(ids) })
@@ -992,7 +1107,7 @@ let domiciliarioEditando = null;
 
 async function cargarDomiciliariosAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); 
         const domiciliarios = await res.json();
         domiciliariosCache = domiciliarios;
 
@@ -1111,7 +1226,7 @@ async function guardarDomiciliario() {
         const action = domiciliarioEditando ? 'actualizarDomiciliario' : 'crearDomiciliario';
         if (domiciliarioEditando) datos.id = domiciliarioEditando;
 
-        const response = await fetchConToken(API_URL, { // ✅ Con token
+        const response = await fetchConToken(API_URL, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ action, ...datos })
@@ -1141,7 +1256,7 @@ async function eliminarDomiciliario(id) {
     if (!confirm(`¿Eliminar a "${esc(domi.nombre)}"?\n\nEsta acción no se puede deshacer.`)) return;
 
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarDomiciliario&id=${id}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=eliminarDomiciliario&id=${id}`); 
         const data = await response.json();
 
         if (data.success) {
@@ -1159,7 +1274,6 @@ async function eliminarDomiciliario(id) {
 // ★ CALCULADORA DE COMISIONES PARA PRODUCTOS
 // ============================================
 
-// 1. Se ejecuta al cambiar el precio o la tienda en el modal
 function calcularComisionProducto() {
     const tiendaId = document.getElementById('productoTiendaId').value;
     const precioStr = document.getElementById('productoPrecio').value;
@@ -1179,7 +1293,6 @@ function calcularComisionProducto() {
     const tienda = tiendasCache.find(t => String(t.id) === String(tiendaId));
     const comisionPct = tienda ? parseFloat(tienda.comision || 20) : 20;
 
-    // Cálculo: Tienda recibe = Precio - (Precio * (Comisión / 100))
     const gananciaTienda = precio - (precio * (comisionPct / 100));
 
     document.getElementById('tiendaRecibe').textContent = formatearPrecio(gananciaTienda);
@@ -1187,7 +1300,6 @@ function calcularComisionProducto() {
     box.style.display = 'block';
 }
 
-// 2. Calculadora inversa: Si la tienda quiere ganar X, cuánto debe costar
 function calcularPrecioDesdeGanancia() {
     const tiendaId = document.getElementById('productoTiendaId').value;
     const gananciaStr = document.getElementById('gananciaDeseadaInput').value;
@@ -1206,21 +1318,20 @@ function calcularPrecioDesdeGanancia() {
         return;
     }
 
-    // Cálculo: Precio = Ganancia Deseada / (1 - (Comisión / 100))
     const precioSugerido = gananciaDeseada / (1 - (comisionPct / 100));
 
     document.getElementById('productoPrecio').value = Math.ceil(precioSugerido);
-    calcularComisionProducto(); // Actualizamos la vista de arriba
+    calcularComisionProducto(); 
     mostrarNotificacion(`Precio sugerido: ${formatearPrecio(precioSugerido)}`, "success");
 }
 
 
 // ============================================
-// ★ NUEVO: USUARIOS TIENDA — CRUD
+// ★ USUARIOS TIENDA — CRUD
 // ============================================
 async function cargarUsuariosTiendaAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getUsuariosTienda`); // ✅ Con token
+        const res = await fetchConToken(`${API_URL}?action=getUsuariosTienda`); 
         const usuarios = await res.json();
         usuariosTiendaCache = usuarios;
 
@@ -1233,7 +1344,6 @@ async function cargarUsuariosTiendaAdmin() {
         }
 
         tbody.innerHTML = usuarios.map(u => {
-            // Buscar el nombre de la tienda en el cache
             const tienda = tiendasCache.find(t => t.id == u.id);
             const nombreTienda = tienda ? tienda.nombre : 'Tienda eliminada';
             return `
@@ -1264,11 +1374,10 @@ function mostrarModalUsuarioTienda() {
     document.getElementById('modalUsuarioTiendaTitulo').innerHTML = '<i class="fas fa-user-plus"></i> Nuevo Usuario Tienda';
     document.getElementById('formUsuarioTienda').reset();
 
-    // Llenar select de tiendas
     const select = document.getElementById('usuarioTiendaId');
     select.innerHTML = '<option value="">-- Selecciona una tienda --</option>' +
         tiendasCache.map(t => `<option value="${t.id}">${escapeQuotes(t.nombre)}</option>`).join('');
-    select.disabled = false; // Aseguramos que se pueda elegir al crear
+    select.disabled = false; 
 
     document.getElementById('modalUsuarioTienda').classList.add('active');
 }
@@ -1286,7 +1395,6 @@ async function editarUsuarioTienda(id) {
     usuarioTiendaEditando = id;
     document.getElementById('modalUsuarioTiendaTitulo').innerHTML = '<i class="fas fa-user-edit"></i> Editar Usuario Tienda';
 
-    // Llenar select y bloquearlo (no se puede cambiar de tienda a un usuario ya creado)
     const select = document.getElementById('usuarioTiendaId');
     const tienda = tiendasCache.find(t => t.id == usuario.id);
     const nombreTienda = tienda ? tienda.nombre : 'Tienda eliminada';
@@ -1318,7 +1426,7 @@ async function guardarUsuarioTienda() {
         const action = usuarioTiendaEditando ? 'actualizarUsuarioTienda' : 'crearUsuarioTienda';
         if (usuarioTiendaEditando) datos.id = usuarioTiendaEditando;
 
-        const response = await fetchConToken(API_URL, { // ✅ Con token
+        const response = await fetchConToken(API_URL, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ action, ...datos })
@@ -1344,7 +1452,7 @@ async function guardarUsuarioTienda() {
 async function eliminarUsuarioTienda(id) {
     if (!confirm(`¿Eliminar el usuario de esta tienda? La tienda seguirá existiendo pero ya no podrá iniciar sesión.`)) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarUsuarioTienda&id=${id}`); // ✅ Con token
+        const response = await fetchConToken(`${API_URL}?action=eliminarUsuarioTienda&id=${id}`); 
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion('Usuario eliminado');
@@ -1356,7 +1464,6 @@ async function eliminarUsuarioTienda(id) {
         mostrarNotificacion('Error de conexión', 'error');
     }
 }
-
 
 window.onclick = function (event) {
     if (event.target.classList.contains('modal')) event.target.classList.remove('active');

@@ -33,7 +33,8 @@ const allowedOrigins = [
     'https://domidelis.top',
     'http://localhost:5500',   // Por si sigues probando en local
     'http://127.0.0.1:5500',  // Por si sigues probando en local
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://hertz-debunk-popcorn.ngrok-free.dev/'
 ];
 
 const io = socketIo(server, {

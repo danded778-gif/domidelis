@@ -1,0 +1,609 @@
+/* ============================================
+   DOMIDELIS - Modal de Personalización v2
+   Archivo: modal-personalizacion.css
+   --------------------------------------------
+   Reutiliza las variables CSS de styles.css:
+   --primary (#E63946), --secondary (#F4A261),
+   --dark (#5D4037), --light (#FFF8E7),
+   --gray, --border-radius, --transition
+   --------------------------------------------
+   Cero dependencias externas.
+   ============================================ */
+
+/* ====== Overlay (fondo oscuro con blur) ====== */
+.domi-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(93, 64, 55, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.domi-modal-overlay.domi-is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ====== Bottom sheet ====== */
+.domi-modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 480px;
+    max-height: 92vh;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.domi-modal-overlay.domi-is-open .domi-modal {
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    .domi-modal-overlay {
+        align-items: center;
+        padding: 20px;
+    }
+    .domi-modal {
+        border-radius: 25px;
+        transform: scale(0.92);
+        max-height: 88vh;
+    }
+    .domi-modal-overlay.domi-is-open .domi-modal {
+        transform: scale(1);
+    }
+}
+
+/* ====== Manija ====== */
+.domi-modal__handle {
+    width: 44px;
+    height: 5px;
+    background: #DEE2E6;
+    border-radius: 5px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+    cursor: grab;
+    transition: background 0.2s ease;
+}
+.domi-modal__handle:active {
+    background: var(--gray);
+    cursor: grabbing;
+}
+
+/* ====== Header fijo ====== */
+.domi-modal__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px 14px;
+    background: var(--light);
+    border-bottom: 1px solid rgba(230, 57, 70, 0.08);
+    flex-shrink: 0;
+}
+
+.domi-modal__img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.domi-modal__img.domi-no-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.domi-modal__title-wrap {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.domi-modal__title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.domi-modal__price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.domi-modal__close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.domi-modal__close:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+.domi-modal__close:active { transform: scale(0.92); }
+
+/* ====== Body ====== */
+.domi-modal__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 18px 18px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.domi-modal__body::-webkit-scrollbar { width: 5px; }
+.domi-modal__body::-webkit-scrollbar-track { background: transparent; }
+.domi-modal__body::-webkit-scrollbar-thumb {
+    background: rgba(230, 57, 70, 0.20);
+    border-radius: 5px;
+}
+
+/* ====== Sección ====== */
+.domi-modal__section {
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(230, 57, 70, 0.12);
+}
+.domi-modal__section:last-child { border-bottom: none; }
+
+.domi-modal__section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.domi-modal__section-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+}
+.domi-modal__section-title i {
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.domi-modal__limit-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(230, 57, 70, 0.10);
+    padding: 3px 10px;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+/* ★ NUEVO v2: Badge obligatorio */
+.domi-modal__limit-badge.domi-is-required {
+    color: var(--white);
+    background: var(--primary);
+    box-shadow: 0 2px 6px rgba(230, 57, 70, 0.30);
+}
+
+/* ====== Opción SALSA / OPCIÓN (radio button circular) ====== */
+.domi-sauce-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 50px;
+    padding: 8px 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.domi-sauce-row:last-child { border-bottom: none; }
+
+.domi-sauce-row:active {
+    transform: scale(0.99);
+}
+
+.domi-sauce-row.domi-is-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.domi-sauce-row__circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #CED4DA;
+    background: var(--white);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.domi-sauce-row__circle::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    transform: scale(0);
+    transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.domi-sauce-row.domi-is-selected .domi-sauce-row__circle {
+    border-color: var(--primary);
+}
+.domi-sauce-row.domi-is-selected .domi-sauce-row__circle::after {
+    transform: scale(1);
+}
+
+.domi-sauce-row__label {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.domi-sauce-row.domi-is-none .domi-sauce-row__label {
+    color: var(--gray);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.domi-sauce-row__price {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary);
+    flex-shrink: 0;
+}
+
+/* ====== Opción EXTRA (checkbox cuadrado) ====== */
+.domi-extra-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 50px;
+    padding: 8px 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+}
+.domi-extra-row:last-child { border-bottom: none; }
+.domi-extra-row:active { transform: scale(0.99); }
+.domi-extra-row:hover { background: rgba(244, 162, 97, 0.05); }
+
+.domi-extra-row__box {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #CED4DA;
+    background: var(--white);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--white);
+    font-size: 0.75rem;
+}
+
+.domi-extra-row__box::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome';
+    font-weight: 900;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.domi-extra-row.domi-is-selected .domi-extra-row__box {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+.domi-extra-row.domi-is-selected .domi-extra-row__box::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.domi-extra-row__label {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.domi-extra-row__price {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary);
+    flex-shrink: 0;
+}
+
+/* ====== Footer ====== */
+.domi-modal__footer {
+    padding: 14px 18px;
+    background: var(--white);
+    border-top: 1px solid rgba(230, 57, 70, 0.08);
+    flex-shrink: 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.domi-modal__btn-add {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+}
+
+.domi-modal__btn-add:hover {
+    background: #d32f3f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+}
+
+.domi-modal__btn-add:active {
+    transform: translateY(0);
+}
+
+/* ★ NUEVO v2: Estado deshabilitado (faltan obligatorios) */
+.domi-modal__btn-add.domi-disabled,
+.domi-modal__btn-add:disabled {
+    background: var(--gray);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.domi-modal__btn-add.domi-disabled:hover {
+    background: var(--gray);
+    transform: none;
+    box-shadow: none;
+}
+
+.domi-modal__btn-add.domi-pulse {
+    animation: domiPulse 0.4s ease;
+}
+
+@keyframes domiPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.6); }
+    100% { transform: scale(1); }
+}
+
+.domi-modal__btn-add .domi-btn-price {
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-left: 4px;
+}
+
+/* ====== Loading ====== */
+.domi-modal__loading {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.domi-modal__loading .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(230, 57, 70, 0.15);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: domiSpin 0.7s linear infinite;
+}
+
+@keyframes domiSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ====== Toast ====== */
+.domi-toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--dark);
+    color: var(--white);
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    max-width: 90vw;
+    pointer-events: none;
+}
+.domi-toast.domi-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.domi-toast i { color: var(--secondary); }
+
+/* ====== Responsive ====== */
+@media (max-width: 480px) {
+    .domi-modal__header { padding: 12px 14px; }
+    .domi-modal__body { padding: 6px 14px 14px; }
+    .domi-modal__footer { padding: 12px 14px; }
+    .domi-modal__title { font-size: 1rem; }
+    .domi-modal__img { width: 44px; height: 44px; }
+}
+
+
+
+/* ====== NUEVO: Texto Instructivo Superior ====== */
+.domi-modal__instruction {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin: 0 0 1.2rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed rgba(230, 57, 70, 0.12);
+    font-weight: 500;
+}
+.domi-modal__instruction i {
+    margin-right: 5px;
+    color: var(--primary);
+}
+
+/* ====== NUEVO: Badge Opcional ====== */
+.domi-modal__limit-badge.domi-is-optional {
+    color: var(--secondary);
+    background: rgba(244, 162, 97, 0.12);
+}
+
+/* ====== Stepper (Botones + y -) ====== */
+.domi-stepper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(230, 57, 70, 0.08);
+    border-radius: 50px;
+    padding: 2px;
+}
+.domi-stepper__btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    color: var(--primary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.domi-stepper__btn:active { transform: scale(0.9); }
+.domi-stepper__qty {
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 0.95rem;
+    min-width: 16px;
+    text-align: center;
+}
+.domi-stepper__add {
+    background: var(--primary);
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+}
+
+
+/* ====== Casilla de Verificación (Chulito) ====== */
+.domi-check-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 50px;
+    padding: 8px 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.domi-check-row:last-child { border-bottom: none; }
+.domi-check-row:active { transform: scale(0.99); }
+
+.domi-check-row__box {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #CED4DA;
+    background: var(--white);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--white);
+    font-size: 0.75rem;
+}
+.domi-check-row__box::after {
+    content: '\f00c'; /* Icono de check de FontAwesome */
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome';
+    font-weight: 900;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.domi-check-row.domi-is-selected .domi-check-row__box {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+.domi-check-row.domi-is-selected .domi-check-row__box::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.domi-check-row__label {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 500;
+}

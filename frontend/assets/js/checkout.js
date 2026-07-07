@@ -3,6 +3,7 @@
 // Blindado contra datos incompletos o erróneos
 // Adaptado para Autocompletado de Zona
 // ★ ACTUALIZADO: Lógica de descuentos de anuncios
+// ★ ACTUALIZADO v2: Soporte para Extras y Complementos dinámicos
 // ============================================
 (function () {
     'use strict';
@@ -16,6 +17,45 @@
     function obtenerDescuentoDomicilio() {
         const desc = localStorage.getItem('descuento_domicilio');
         return desc ? parseFloat(desc) : 0;
+    }
+
+    // ============================================
+    // HELPER v2: FORMATEAR EXTRAS PARA PANTALLA (HTML)
+    // ============================================
+    function getExtrasHtml(selecciones) {
+        if (!selecciones || Object.keys(selecciones).length === 0) return '';
+        let html = '<div class="resumen-prod-extras" style="font-size: 0.8rem; color: var(--gray); margin-top: 4px; padding-left: 15px; border-left: 2px solid #eee;">';
+        Object.keys(selecciones).forEach(grupo => {
+            const itemsGrupo = selecciones[grupo];
+            if (itemsGrupo && itemsGrupo.length > 0) {
+                const nombres = itemsGrupo.map(s => {
+                    const c = s.cantidad || 1;
+                    return c > 1 ? `${c}x ${s.nombre}` : s.nombre;
+                }).join(', ');
+                html += `<div style="margin-bottom: 2px;"><i class="fas fa-check" style="color: var(--success); margin-right: 5px; font-size: 0.7rem;"></i><strong>${esc(grupo)}:</strong> ${esc(nombres)}</div>`;
+            }
+        });
+        html += '</div>';
+        return html;
+    }
+
+    // ============================================
+    // HELPER v2: FORMATEAR EXTRAS PARA WHATSAPP/SERVIDOR (TEXTO)
+    // ============================================
+    function getExtrasTexto(selecciones) {
+        if (!selecciones || Object.keys(selecciones).length === 0) return '';
+        let texto = '\n';
+        Object.keys(selecciones).forEach(grupo => {
+            const itemsGrupo = selecciones[grupo];
+            if (itemsGrupo && itemsGrupo.length > 0) {
+                const nombres = itemsGrupo.map(s => {
+                    const c = s.cantidad || 1;
+                    return c > 1 ? `${c}x ${s.nombre}` : s.nombre;
+                }).join(', ');
+                texto += `   ✦ ${esc(grupo)}: ${esc(nombres)}\n`;
+            }
+        });
+        return texto;
     }
 
     // ============================================
@@ -119,15 +159,19 @@
             <div class="resumen-tienda-productos">`;
 
             tienda.items.forEach(item => {
+                // ★ NUEVO v2: Agregar HTML de los extras seleccionados
+                const extrasHtml = getExtrasHtml(item.selecciones);
+                
                 html += `<div class="resumen-producto">
-                <div class="resumen-prod-info">
-                    <span class="resumen-prod-nombre">${escapeQuotes(item.nombre)}</span>
-                    <span class="resumen-prod-detalle">
-                        ${item.cantidad}x — ${formatearPrecio(item.precioUnitario)} c/u
-                    </span>
-                </div>
-                <span class="resumen-prod-precio">${formatearPrecio(item.subtotalItem)}</span>
-            </div>`;
+                    <div class="resumen-prod-info">
+                        <span class="resumen-prod-nombre">${escapeQuotes(item.nombre)}</span>
+                        <span class="resumen-prod-detalle">
+                            ${item.cantidad}x — ${formatearPrecio(item.precioUnitario)} c/u
+                        </span>
+                        ${extrasHtml}
+                    </div>
+                    <span class="resumen-prod-precio">${formatearPrecio(item.subtotalItem)}</span>
+                </div>`;
             });
 
             html += `</div></div>`;
@@ -162,7 +206,6 @@
             envioEl.textContent = formatearPrecio(envioFinal);
         }
 
-        // ★ Mostrar el badge verde de descuento aplicado
         if (descuentoPct > 0) {
             envioEl.innerHTML += ` <span style="color:var(--success); font-weight:700; font-size:0.8rem;">(-${descuentoPct}%)</span>`;
         }
@@ -380,6 +423,9 @@
         }
     }
 
+    // ============================================
+    // COMPACTAR MENSAJE (Si se pasa de largo)
+    // ============================================
     function compactarMensaje(mensajeCompleto) {
         const carrito = obtenerCarrito();
         const pedidoData = (() => {
@@ -397,7 +443,13 @@
         carrito.forEach(item => {
             const key = item.tiendaNombre || 'Sin tienda';
             if (!tiendas[key]) tiendas[key] = [];
-            tiendas[key].push(`${item.cantidad}x ${esc(item.nombre)}`);
+            let line = `${item.cantidad}x ${esc(item.nombre)}`;
+            // ★ Incluir extras en el mensaje compactado
+            if (item.selecciones) {
+                const ext = getExtrasTexto(item.selecciones).replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+                if (ext) line += ` (${ext})`;
+            }
+            tiendas[key].push(line);
         });
 
         let msg = `*PEDIDO #${pedidoData.pedidoId || ''}*\n`;
@@ -445,7 +497,13 @@
             msg += `─────────────────\n`;
             tienda.items.forEach(item => {
                 const cantTipo = item.cantidadTipo || 'UND';
-                msg += `• ${item.cant}x ${esc(item.nombre)} (${cantTipo}) — ${formatearPrecio(item.sub)}\n`;
+                const extrasTxt = getExtrasTexto(item.selecciones); // ★ NUEVO v2
+                // Si tiene extras, los pega debajo del nombre del producto
+                if (extrasTxt) {
+                    msg += `• ${item.cant}x ${esc(item.nombre)} (${cantTipo}) — ${formatearPrecio(item.sub)}\n${extrasTxt}`;
+                } else {
+                    msg += `• ${item.cant}x ${esc(item.nombre)} (${cantTipo}) — ${formatearPrecio(item.sub)}\n`;
+                }
             });
             msg += `   Subtotal tienda: ${formatearPrecio(tienda.subtotal)}\n\n`;
         });
@@ -453,7 +511,6 @@
         msg += `━━━━━━━━━━━━━━━━━━\n`;
         msg += `💵 *Subtotal:* ${formatearPrecio(data.subtotal)}\n`;
 
-        // ★ Lógica de descuento en el mensaje de WhatsApp ★
         if (data.descuentoPct > 0) {
             msg += `🏍️ *Envío Base (${data.zonaNombre}):* ${formatearPrecio(data.envioBase)}\n`;
             msg += `📉 *Descuento Promo (${data.descuentoPct}%):* -${formatearPrecio(data.descuentoValor)}\n`;
@@ -489,6 +546,8 @@
             subtotal: parseInt(item.subtotal) || 0,
             tiendaId: item.tiendaId || '',
             tiendaNombre: item.tiendaNombre || '',
+            // ★ NUEVO v2: Enviar complementos como texto al servidor
+            complementos: getExtrasTexto(item.selecciones).trim().replace(/\n/g, ' | ') 
         })));
 
         const fechaColombia = new Date().toLocaleString('sv-SE', {
@@ -501,7 +560,7 @@
             clienteDireccion: data.direccion + (data.barrio ? ' - ' + data.barrio : ''),
             clienteTelefono: data.telefono,
             productosJson: productosJson,
-            total: data.total.toString(), // ★ Ya viene con el descuento aplicado
+            total: data.total.toString(),
             metodoPago: data.metodoPago,
             zona: data.zona,
             referencias: data.referencias || '',
@@ -543,7 +602,6 @@
 
         if (!checkbox) return;
 
-        // ── Mostrar/ocultar TODO el panel según el checkbox ──
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 panel.classList.remove('hidden-propina');

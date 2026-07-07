@@ -720,6 +720,68 @@
         </div>
     </div>
 
+    <!-- ★ NUEVO MODAL: COMPLEMENTOS ★ -->
+    <div id="modalComplementos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-sliders-h"></i> Gestionar Complementos</h3>
+                <button class="close-modal" onclick="cerrarModalComplementos()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom:1rem;color:#666;">Producto: <strong id="complementoProductoNombre" style="color:#0a2a36;"></strong></p>
+                
+                <div id="listaComplementosContainer" style="margin-bottom: 2rem; max-height: 200px; overflow-y: auto;">
+                    <!-- Lista de complementos existentes -->
+                </div>
+
+                <h4 style="margin-bottom:1rem;"><i class="fas fa-plus-circle"></i> Agregar Nuevo Complemento</h4>
+                <form id="formComplemento" onsubmit="event.preventDefault(); guardarComplemento();">
+                    <input type="hidden" id="complementoProductoId">
+                    <div class="form-group">
+                        <label><i class="fas fa-folder"></i> Grupo (Ej: Salsas, Proteína)</label>
+                        <input type="text" id="complementoGrupo" placeholder="Salsas">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tag"></i> Tipo</label>
+                        <select id="complementoTipo">
+                            <option value="salsa">Salsa (Círculo)</option>
+                            <option value="extra">Extra (Botones +/-)</option>
+                            <option value="opcion">Opción (Checkboxes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-utensils"></i> Nombre *</label>
+                        <input type="text" id="complementoNombre" placeholder="Mayonesa, Tocineta..." required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-dollar-sign"></i> Precio (0 si no suma)</label>
+                        <input type="number" id="complementoPrecio" min="0" value="0">
+                    </div>
+                    <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+                        <div>
+                            <label><i class="fas fa-exclamation-circle"></i> ¿Es Obligatorio?</label>
+                            <select id="complementoObligatorio">
+                                <option value="0">No (Opcional)</option>
+                                <option value="1">Sí (Obligatorio)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label><i class="fas fa-list-ol"></i> Cantidad Máxima</label>
+                            <select id="complementoMaximo">
+                                <option value="1">1 (Elección única)</option>
+                                <option value="3">3 (Hasta 3 opciones)</option>
+                                <option value="">Sin límite (Extras)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar Complemento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div id="modalPedido" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -780,15 +842,11 @@
                         </button>
                     </div>
                 </div>
-                <!-- AGREGA ESTO AQUÍ: -->
                 <div class="form-group">
                     <label><i class="fas fa-percent"></i> Comisión App sobre domicilios (%)</label>
                     <input type="number" id="domiComisionApp" min="0" max="100" value="0" step="1"
                         placeholder="Ej: 20. La app se queda con este % del envío">
                 </div>
-                <div class="form-group"><label><i class="fas fa-percent"></i> Comisión App sobre domicilios
-                        (%)</label><input type="number" id="domiComisionApp" min="0" max="100" value="0" step="1"
-                        placeholder="Ej: 20. La app se queda con este % del envío"></div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary"
                         onclick="cerrarModalDomiciliario()">Cancelar</button>

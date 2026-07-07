@@ -160,9 +160,9 @@ nav {
 }
 
 .hero h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 0.9rem;
+    font-weight: 500;
 }
 
 /* Emojis más pequeños y alineados */
@@ -173,14 +173,14 @@ nav {
 }
 
 /* En celular, emojis aún más pequeños */
-@media (max-width: 800px) {
+@media (max-width: 500px) {
     .emoji-small {
         font-size: 0.9em;
         /*esta es la de los emojis*/
     }
 
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         /* Título más pequeño en móvil */
     }
 }
