@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T01-06-28",
-  "ultimaActualizacion": "2026-07-07T01:06:28.499Z",
+  "version": "v2026-07-07T01-07-10",
+  "ultimaActualizacion": "2026-07-07T01:07:10.730Z",
   "tiendas": [
     {
       "id": 1,
@@ -2677,52 +2677,52 @@
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": null,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Salsa Rosa",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Salsa Tocineta",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Salsa Ajo",
       "precio": 1500,
       "tipo": "salsa",
-      "max": 1,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Salsa piña",
       "precio": 1500,
       "tipo": "salsa",
-      "max": 1,
+      "max": 3,
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
@@ -2731,7 +2731,7 @@
       "min": 0
     },
     {
-      "id_producto": 132,
+      "id_producto": 134,
       "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
