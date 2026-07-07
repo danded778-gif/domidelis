@@ -134,7 +134,7 @@ nav {
 }
 
 /* ============================================
-   4. HERO SECTION
+   4. HERO SECTION (Tamaño Grande Ajustado)
    ============================================ */
 .hero {
     background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
@@ -160,29 +160,11 @@ nav {
 }
 
 .hero h1 {
-    font-size: 1.2rem;
-    margin-bottom: 0.9rem;
-    font-weight: 500;
-}
-
-/* Emojis más pequeños y alineados */
-.emoji-small {
-    font-size: 1.0em;
-    vertical-align: middle;
-    line-height: 1;
-}
-
-/* En celular, emojis aún más pequeños */
-@media (max-width: 500px) {
-    .emoji-small {
-        font-size: 0.9em;
-        /*esta es la de los emojis*/
-    }
-
-    .hero h1 {
-        font-size: 1.4rem;
-        /* Título más pequeño en móvil */
-    }
+    font-size: 3.2rem; /* ★ TÍTULO GRANDE EN PC ★ */
+    margin-bottom: 1rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
 }
 
 .hero p {
@@ -2519,7 +2501,7 @@ tr:hover {
     }
 
     .hero h1 {
-        font-size: 1.6rem;
+        font-size: 2.4rem; /* ★ Reducido para tablets */
     }
 
     .section-title {
@@ -2734,7 +2716,7 @@ tr:hover {
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem; /* ★ Reducido para móviles pequeños */
     }
 
     .zone-selector {
@@ -3073,7 +3055,7 @@ header .nav-links li a:hover {
 }
 
 /* ============================================
-   HERO — LANZAMIENTO
+   31. HERO — LANZAMIENTO
    ============================================ */
 .launch-badge {
     display: inline-flex;
@@ -3165,12 +3147,42 @@ header .nav-links li a:hover {
     left: -30px;
 }
 
-.hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    position: relative;
-    z-index: 1;
+/* ============================================
+   31.5 CAJA DE TÍTULOS CON EMOJIS (REUTILIZABLE Y FIX ANDROID)
+   ============================================ */
+.titulo-emoji-box {
+    display: flex;
+    align-items: center;       /* Alinea verticalmente perfecto (el fix para Android) */
+    justify-content: center;   /* Centra todo el grupo */
+    gap: 12px;                 /* Espacio inteligente entre emoji y texto, se adapta solo */
+    width: 100%;
+}
+
+.titulo-emoji-box .emoji-lado {
+    font-size: 2.8rem;        /* ★ Tamaño grande fijo para el emoji en PC */
+    flex-shrink: 0;           /* ESTO ES CLAVE: Evita que Android aplaste el emoji si la pantalla es pequeña */
+    line-height: 1;           /* Elimina espacios fantasmas arriba y abajo del emoji */
+}
+
+.titulo-emoji-box .texto-central {
+    text-align: center;
+    white-space: nowrap;      /* Evita que el título se parta en dos líneas en pantallas muy pequeñas */
+}
+
+/* --- Ajustes Responsive para la Caja de Emojis --- */
+@media (max-width: 768px) {
+    .titulo-emoji-box {
+        gap: 10px;             /* Menos espacio entre emoji y texto en móvil */
+    }
+    .titulo-emoji-box .emoji-lado {
+        font-size: 2.2rem;    /* Emojis más pequeños en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-emoji-box .emoji-lado {
+        font-size: 1.8rem;    /* Emojis aún más pequeños en pantallas muy reducidas */
+    }
 }
 
 .hero p {
