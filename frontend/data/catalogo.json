@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T00-31-54",
-  "ultimaActualizacion": "2026-07-07T00:31:54.185Z",
+  "version": "v2026-07-07T00-32-01",
+  "ultimaActualizacion": "2026-07-07T00:32:01.325Z",
   "tiendas": [
     {
       "id": 1,
@@ -1984,7 +1984,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Rollos de cerdo en salsa",
       "precio": 0,
@@ -1993,7 +1993,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Cerdo",
       "precio": 0,
@@ -2002,7 +2002,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Pechuga a la plancha",
       "precio": 0,
@@ -2011,7 +2011,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Bistec",
       "precio": 0,
@@ -2020,7 +2020,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Carné molida",
       "precio": 0,
@@ -2029,7 +2029,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
       "precio": 0,
@@ -2038,7 +2038,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Proteína",
       "nombre": "Chorizo",
       "precio": 0,
@@ -2047,7 +2047,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Acompañamiento",
       "nombre": "Sopa mazorca",
       "precio": 0,
@@ -2056,7 +2056,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Acompañamiento",
       "nombre": "Frijoles",
       "precio": 0,
@@ -2065,7 +2065,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
@@ -2074,7 +2074,7 @@
       "min": 0
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
@@ -2083,7 +2083,7 @@
       "min": 0
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
@@ -2092,7 +2092,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
       "precio": 0,
@@ -2101,7 +2101,7 @@
       "min": 1
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "",
       "nombre": "porcion arroz",
       "precio": 6000,
@@ -2110,7 +2110,7 @@
       "min": 0
     },
     {
-      "id_producto": 142,
+      "id_producto": 139,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
