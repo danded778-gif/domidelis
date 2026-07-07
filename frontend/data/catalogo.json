@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-07T15-50-32",
-  "ultimaActualizacion": "2026-07-07T15:50:32.028Z",
+  "version": "v2026-07-07T15-51-35",
+  "ultimaActualizacion": "2026-07-07T15:51:35.841Z",
   "tiendas": [
     {
       "id": 1,
@@ -2994,6 +2994,16 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
+      "min": 1
+    },
+    {
+      "id": 154,
+      "id_producto": 158,
+      "grupo": "verdura",
+      "nombre": "lechuga",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
       "min": 1
     }
   ]
