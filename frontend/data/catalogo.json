@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-08T11-45-17",
-  "ultimaActualizacion": "2026-07-08T11:45:17.216Z",
+  "version": "v2026-07-08T12-02-26",
+  "ultimaActualizacion": "2026-07-08T12:02:26.226Z",
   "tiendas": [
     {
       "id": 1,
@@ -738,7 +738,7 @@
           "nombre": "prueba_productos adiciones",
           "descripcion": "prueba",
           "precio": 10000,
-          "imagen_url": "",
+          "imagen_url": "https://www.flexclip.com/es/share/16021157LFDVQBl0V357mcSWkaDlpSaFZ7FP0flt.html",
           "badge": "nuevo",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1496,7 +1496,7 @@
       "nombre": "prueba_productos adiciones",
       "descripcion": "prueba",
       "precio": 10000,
-      "imagen_url": "",
+      "imagen_url": "https://www.flexclip.com/es/share/16021157LFDVQBl0V357mcSWkaDlpSaFZ7FP0flt.html",
       "badge": "nuevo",
       "categoria": "Otras",
       "cantidadTipo": "UND",
@@ -2964,7 +2964,7 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 153,
