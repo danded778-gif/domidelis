@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-08T11-43-37",
-  "ultimaActualizacion": "2026-07-08T11:43:37.249Z",
+  "version": "v2026-07-08T11-44-28",
+  "ultimaActualizacion": "2026-07-08T11:44:28.162Z",
   "tiendas": [
     {
       "id": 1,
@@ -2998,7 +2998,7 @@
     },
     {
       "id": 156,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "pan",
       "nombre": "pan",
       "precio": 0,
