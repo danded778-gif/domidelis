@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-08T11-44-28",
-  "ultimaActualizacion": "2026-07-08T11:44:28.162Z",
+  "version": "v2026-07-08T11-45-17",
+  "ultimaActualizacion": "2026-07-08T11:45:17.216Z",
   "tiendas": [
     {
       "id": 1,
@@ -2973,7 +2973,7 @@
       "nombre": "carne",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 1,
       "min": 1
     },
     {
