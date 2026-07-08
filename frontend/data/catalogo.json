@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-08T12-02-26",
-  "ultimaActualizacion": "2026-07-08T12:02:26.226Z",
+  "version": "v2026-07-08T12-32-18",
+  "ultimaActualizacion": "2026-07-08T12:32:18.225Z",
   "tiendas": [
     {
       "id": 1,
@@ -738,7 +738,7 @@
           "nombre": "prueba_productos adiciones",
           "descripcion": "prueba",
           "precio": 10000,
-          "imagen_url": "https://www.flexclip.com/es/share/16021157LFDVQBl0V357mcSWkaDlpSaFZ7FP0flt.html",
+          "imagen_url": "https://youtube.com/shorts/6W1oGOfunK0?feature=share",
           "badge": "nuevo",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1496,7 +1496,7 @@
       "nombre": "prueba_productos adiciones",
       "descripcion": "prueba",
       "precio": 10000,
-      "imagen_url": "https://www.flexclip.com/es/share/16021157LFDVQBl0V357mcSWkaDlpSaFZ7FP0flt.html",
+      "imagen_url": "https://youtube.com/shorts/6W1oGOfunK0?feature=share",
       "badge": "nuevo",
       "categoria": "Otras",
       "cantidadTipo": "UND",
