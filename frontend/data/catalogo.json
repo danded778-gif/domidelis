@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T02-17-37",
-  "ultimaActualizacion": "2026-07-09T02:17:37.030Z",
+  "version": "v2026-07-09T02-21-05",
+  "ultimaActualizacion": "2026-07-09T02:21:05.924Z",
   "tiendas": [
     {
       "id": 1,
@@ -302,7 +302,7 @@
           "nombre": "Aguardiente Antioqueño 260 azul",
           "descripcion": "",
           "precio": 16500,
-          "imagen_url": "aguardiente_azul_260ml_40kb.jpg (1254×1254)",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul_260ml_40kb.jpg",
           "badge": "Disponible",
           "categoria": "licores",
           "cantidadTipo": "UND",
@@ -1080,7 +1080,7 @@
       "nombre": "Aguardiente Antioqueño 260 azul",
       "descripcion": "",
       "precio": 16500,
-      "imagen_url": "aguardiente_azul_260ml_40kb.jpg (1254×1254)",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul_260ml_40kb.jpg",
       "badge": "Disponible",
       "categoria": "licores",
       "cantidadTipo": "UND",
