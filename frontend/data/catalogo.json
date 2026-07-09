@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-52-25",
-  "ultimaActualizacion": "2026-07-09T01:52:25.199Z",
+  "version": "v2026-07-09T01-52-57",
+  "ultimaActualizacion": "2026-07-09T01:52:57.770Z",
   "tiendas": [
     {
       "id": 1,
@@ -290,6 +290,45 @@
           "descripcion": "",
           "precio": 50000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
+          "badge": "Disponible",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 123,
+          "nombre": "Aguardiente Antioqueño 260 azul",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 159,
+          "nombre": "Aguardiente Antioqueño 260 roja",
+          "descripcion": "",
+          "precio": 17300,
+          "imagen_url": "",
+          "badge": "Disponible",
+          "categoria": "licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 160,
+          "nombre": "aguardiente antioqueño 260 verde",
+          "descripcion": "",
+          "precio": 16500,
+          "imagen_url": "",
           "badge": "Disponible",
           "categoria": "licores",
           "cantidadTipo": "UND",
@@ -1043,37 +1082,37 @@
       "precio": 0,
       "imagen_url": "",
       "badge": "Disponible",
-      "categoria": "Otras",
+      "categoria": "licores",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 159,
       "nombre": "Aguardiente Antioqueño 260 roja",
       "descripcion": "",
-      "precio": 0,
+      "precio": 17300,
       "imagen_url": "",
       "badge": "Disponible",
-      "categoria": "Otras",
+      "categoria": "licores",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 160,
       "nombre": "aguardiente antioqueño 260 verde",
       "descripcion": "",
-      "precio": 0,
+      "precio": 16500,
       "imagen_url": "",
       "badge": "Disponible",
-      "categoria": "Otras",
+      "categoria": "licores",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 124,
