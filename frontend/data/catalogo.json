@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-40-50",
-  "ultimaActualizacion": "2026-07-09T01:40:50.647Z",
+  "version": "v2026-07-09T01-41-20",
+  "ultimaActualizacion": "2026-07-09T01:41:20.883Z",
   "tiendas": [
     {
       "id": 1,
@@ -223,7 +223,7 @@
           "id": 117,
           "nombre": "Media Aguardiente Antioqueño azul",
           "descripcion": "",
-          "precio": 0,
+          "precio": 27500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
           "badge": "agotado",
           "categoria": "licores",
@@ -962,7 +962,7 @@
       "id": 117,
       "nombre": "Media Aguardiente Antioqueño azul",
       "descripcion": "",
-      "precio": 0,
+      "precio": 27500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
       "badge": "agotado",
       "categoria": "licores",
