@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T02-15-15",
-  "ultimaActualizacion": "2026-07-09T02:15:15.002Z",
+  "version": "v2026-07-09T02-17-37",
+  "ultimaActualizacion": "2026-07-09T02:17:37.030Z",
   "tiendas": [
     {
       "id": 1,
@@ -302,7 +302,7 @@
           "nombre": "Aguardiente Antioqueño 260 azul",
           "descripcion": "",
           "precio": 16500,
-          "imagen_url": "",
+          "imagen_url": "aguardiente_azul_260ml_40kb.jpg (1254×1254)",
           "badge": "Disponible",
           "categoria": "licores",
           "cantidadTipo": "UND",
@@ -1080,7 +1080,7 @@
       "nombre": "Aguardiente Antioqueño 260 azul",
       "descripcion": "",
       "precio": 16500,
-      "imagen_url": "",
+      "imagen_url": "aguardiente_azul_260ml_40kb.jpg (1254×1254)",
       "badge": "Disponible",
       "categoria": "licores",
       "cantidadTipo": "UND",
