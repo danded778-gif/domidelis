@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-41-20",
-  "ultimaActualizacion": "2026-07-09T01:41:20.883Z",
+  "version": "v2026-07-09T01-42-25",
+  "ultimaActualizacion": "2026-07-09T01:42:25.258Z",
   "tiendas": [
     {
       "id": 1,
@@ -288,7 +288,7 @@
           "id": 122,
           "nombre": "aguardiente antioqueño litro verde",
           "descripcion": "",
-          "precio": 0,
+          "precio": 50000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
           "badge": "agotado",
           "categoria": "licores",
@@ -1027,7 +1027,7 @@
       "id": 122,
       "nombre": "aguardiente antioqueño litro verde",
       "descripcion": "",
-      "precio": 0,
+      "precio": 50000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
       "badge": "agotado",
       "categoria": "licores",
