@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-56-19",
-  "ultimaActualizacion": "2026-07-09T01:56:19.957Z",
+  "version": "v2026-07-09T02-11-40",
+  "ultimaActualizacion": "2026-07-09T02:11:40.269Z",
   "tiendas": [
     {
       "id": 1,
@@ -315,7 +315,7 @@
           "nombre": "Aguardiente Antioqueño 260 roja",
           "descripcion": "",
           "precio": 17300,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUEÑO%20TETRA%20VERDE%20260%20ML.jpg?raw=true",
           "badge": "Disponible",
           "categoria": "licores",
           "cantidadTipo": "UND",
@@ -1093,7 +1093,7 @@
       "nombre": "Aguardiente Antioqueño 260 roja",
       "descripcion": "",
       "precio": 17300,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUEÑO%20TETRA%20VERDE%20260%20ML.jpg?raw=true",
       "badge": "Disponible",
       "categoria": "licores",
       "cantidadTipo": "UND",
