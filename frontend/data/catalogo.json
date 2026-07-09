@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-45-50",
-  "ultimaActualizacion": "2026-07-09T01:45:50.670Z",
+  "version": "v2026-07-09T01-52-25",
+  "ultimaActualizacion": "2026-07-09T01:52:25.199Z",
   "tiendas": [
     {
       "id": 1,
@@ -1042,7 +1042,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "",
+      "badge": "Disponible",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
@@ -1051,11 +1051,11 @@
     },
     {
       "id": 159,
-      "nombre": "Aguardiente Antioqueño 200 roja",
+      "nombre": "Aguardiente Antioqueño 260 roja",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "",
+      "badge": "Disponible",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
@@ -1064,11 +1064,11 @@
     },
     {
       "id": 160,
-      "nombre": "aguardiente antioqueño 200 verde",
+      "nombre": "aguardiente antioqueño 260 verde",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "",
+      "badge": "Disponible",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
