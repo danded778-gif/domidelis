@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-09T01-44-38",
-  "ultimaActualizacion": "2026-07-09T01:44:38.952Z",
+  "version": "v2026-07-09T01-45-03",
+  "ultimaActualizacion": "2026-07-09T01:45:03.871Z",
   "tiendas": [
     {
       "id": 1,
@@ -1038,7 +1038,7 @@
     },
     {
       "id": 123,
-      "nombre": "Aguardiente Antioqueño litro azul",
+      "nombre": "Aguardiente Antioqueño 200 azul",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -1051,7 +1051,7 @@
     },
     {
       "id": 159,
-      "nombre": "Aguardiente Antioqueño litro roja",
+      "nombre": "Aguardiente Antioqueño 200 roja",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
