@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-10T23-11-40",
-  "ultimaActualizacion": "2026-07-10T23:11:40.185Z",
+  "version": "v2026-07-10T23-13-50",
+  "ultimaActualizacion": "2026-07-10T23:13:50.941Z",
   "tiendas": [
     {
       "id": 1,
@@ -3081,7 +3081,7 @@
     },
     {
       "id": 157,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "salsa",
       "nombre": "mayoneza",
       "precio": 0,
