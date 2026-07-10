@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-10T23-15-02",
-  "ultimaActualizacion": "2026-07-10T23:15:02.063Z",
+  "version": "v2026-07-10T23-15-46",
+  "ultimaActualizacion": "2026-07-10T23:15:46.027Z",
   "tiendas": [
     {
       "id": 1,
@@ -3077,7 +3077,7 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 157,
@@ -3087,7 +3087,7 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
-      "min": 0
+      "min": 1
     }
   ]
 }
