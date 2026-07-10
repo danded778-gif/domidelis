@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-10T23-08-02",
-  "ultimaActualizacion": "2026-07-10T23:08:02.885Z",
+  "version": "v2026-07-10T23-09-09",
+  "ultimaActualizacion": "2026-07-10T23:09:09.929Z",
   "tiendas": [
     {
       "id": 1,
@@ -774,7 +774,7 @@
       "nombre": "prueba_1",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
-      "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"Cerrado\",\"wed\":\"06:00 - 10:40\",\"thu\":\"Cerrado\",\"fri\":\"01:00 - 06:00\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
+      "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"Cerrado\",\"wed\":\"06:00 - 10:40\",\"thu\":\"Cerrado\",\"fri\":\"06:00 - 10:40\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
       "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
