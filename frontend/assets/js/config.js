@@ -72,7 +72,8 @@ const APP_CONFIG = {
         calera: { nombre: 'La calera', envio: 9000 },
         lourdes: { nombre: 'V.lourdes', envio: 8000 },
         pantanillo: { nombre: 'Pantanillo', envio: 6000 },
-        potrerio: { nombre: 'Potrerito', envio: 9000 }
+        potrerio: { nombre: 'Potrerito', envio: 9000 },
+        villas: { nombre: 'Villas del poli', envio: 5000 }
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
