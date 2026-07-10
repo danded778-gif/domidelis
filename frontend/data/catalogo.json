@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-10T21-53-57",
-  "ultimaActualizacion": "2026-07-10T21:53:57.712Z",
+  "version": "v2026-07-10T22-03-36",
+  "ultimaActualizacion": "2026-07-10T22:03:37.001Z",
   "tiendas": [
     {
       "id": 1,
@@ -10,6 +10,7 @@
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
       "rating": 3.8,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
+      "promovida": 1,
       "activo": true,
       "productos": [
         {
@@ -113,6 +114,7 @@
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
       "rating": 3.8,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domidelisexpresss.png",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -359,6 +361,7 @@
       "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 23:00\",\"sun\":\"11:00 - 22:00\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/calalnchos/calancho_149.jpg",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -423,6 +426,7 @@
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/maria_pendeja/maria_145kb.jpg",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -513,6 +517,7 @@
       "horario": "{\"mon\":\"16:30 - 22:30\",\"tue\":\"16:30 - 22:30\",\"wed\":\"16:30 - 22:30\",\"thu\":\"16:30 - 22:30\",\"fri\":\"16:30 - 22:30\",\"sat\":\"16:30 - 23:00\",\"sun\":\"16:30 - 23:00\"}",
       "rating": 4,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/candela%20burger/candela_burger_150kb.jpg",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -616,6 +621,7 @@
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor_150kb.jpg",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -706,6 +712,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/basilica/basilica%202.jpg",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -770,6 +777,7 @@
       "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"Cerrado\",\"wed\":\"06:00 - 10:40\",\"thu\":\"Cerrado\",\"fri\":\"01:00 - 06:00\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
       "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
