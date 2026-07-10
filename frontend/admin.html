@@ -123,7 +123,8 @@
                     </div>
                     <div id="listaProductosTienda" style="display:none;">
                         <h4 style="margin-bottom:1rem;color:var(--dark);"><i class="fas fa-utensils"></i> Productos de:
-                            <span id="nombreTiendaSeleccionada"></span></h4>
+                            <span id="nombreTiendaSeleccionada"></span>
+                        </h4>
                         <div style="overflow-x:auto;">
                             <table id="tablaProductosTienda">
                                 <thead>
@@ -658,6 +659,30 @@
                 <div class="form-group"><label><i class="fas fa-percent"></i> Comisión para la app (%)</label><input
                         type="number" id="tiendaComision" min="0" max="100" value="20" step="1" placeholder="Ej: 20">
                 </div>
+                <div class="form-group">
+                    <label
+                        style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:600;color:var(--dark);">
+                        <i class="fas fa-rocket" style="color:#F4A261;font-size:1.15rem;"></i>
+                        Promover tienda
+                    </label>
+                    <div onclick="togglePromovidaTienda()"
+                        style="display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;width:fit-content;">
+                        <div id="promovida-toggle"
+                            style="width:54px;height:30px;background:#e9ecef;border-radius:999px;position:relative;transition:all .3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,.08);">
+                            <div id="promovida-knob"
+                                style="position:absolute;top:3px;left:3px;width:24px;height:24px;background:white;border-radius:50%;box-shadow:0 3px 8px rgba(0,0,0,.2);transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);">
+                            </div>
+                        </div>
+
+                        <div>
+                            <span id="promovida-label"
+                                style="font-weight:700;font-size:0.95rem;color:#6c757d;display:block;line-height:1;">No
+                                promovida</span>
+                            <small style="color:#888;font-size:0.75rem;">Aparecerá primero en la página
+                                principal</small>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalTienda()">Cancelar</button>
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
@@ -728,8 +753,9 @@
                 <button class="close-modal" onclick="cerrarModalComplementos()"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom:1rem;color:#666;">Producto: <strong id="complementoProductoNombre" style="color:#0a2a36;"></strong></p>
-                
+                <p style="margin-bottom:1rem;color:#666;">Producto: <strong id="complementoProductoNombre"
+                        style="color:#0a2a36;"></strong></p>
+
                 <div id="listaComplementosContainer" style="margin-bottom: 2rem; max-height: 200px; overflow-y: auto;">
                     <!-- Lista de complementos existentes -->
                 </div>
@@ -775,7 +801,8 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar Complemento</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
+                            Complemento</button>
                     </div>
                 </form>
             </div>

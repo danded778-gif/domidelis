@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxbzoLadNhnmlh0m96CgiVNRw0I4LLqbcJKK_MnqYUpU2rrox0P9RZ9E-lYkoM_tJis/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_GKvxUEJLDLSZ6qcWnfaZdKoVw_RUGwdVSwPr3DkEyawnn4KdZOxACPGcUjkKw1I/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // ============================================

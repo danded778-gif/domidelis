@@ -155,7 +155,7 @@ async function cargarAdminData() {
     await cargarTiendasAdmin();
     await cargarDomiciliarios();
     await cargarDomiciliariosAdmin();
-    await cargarUsuariosTiendaAdmin(); 
+    await cargarUsuariosTiendaAdmin();
     await cargarPedidosAdmin();
     await cargarHistorialPedidos();
 
@@ -219,7 +219,7 @@ async function activarPermisos() {
     if (banner) banner.style.display = 'none';
 
     if (permiso && typeof pushManager !== 'undefined') {
-        const vapidRes = await fetchConToken(`${API_URL}/api/vapid-public-key`); 
+        const vapidRes = await fetchConToken(`${API_URL}/api/vapid-public-key`);
         const { publicKey } = await vapidRes.json();
         await pushManager.init(publicKey);
     }
@@ -240,7 +240,7 @@ async function activarPermisos() {
 // ============================================
 async function cargarTiendasAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getTiendas`); 
+        const res = await fetchConToken(`${API_URL}?action=getTiendas`);
         const tiendas = await res.json();
         tiendasCache = tiendas;
         const tbody = document.querySelector("#tablaTiendas tbody");
@@ -276,7 +276,7 @@ function llenarSelectsTiendas(tiendas) {
     if (selectVer) selectVer.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
     if (selectProducto) {
         selectProducto.innerHTML = '<option value="">-- Selecciona una tienda --</option>' + opciones;
-        selectProducto.setAttribute('onchange', 'calcularComisionProducto()'); 
+        selectProducto.setAttribute('onchange', 'calcularComisionProducto()');
     }
 }
 
@@ -284,6 +284,21 @@ function mostrarModalTienda() {
     tiendaEditando = null;
     document.getElementById("modalTiendaTitulo").textContent = "Nueva Tienda";
     document.getElementById("formTienda").reset();
+    const toggle = document.getElementById('promovida-toggle');
+    const knob = document.getElementById('promovida-knob');
+    const label = document.getElementById('promovida-label');
+    if (toggle) toggle.style.background = '#e9ecef';
+    if (knob) knob.style.left = '3px';
+    if (label) { label.textContent = 'No promovida'; label.style.color = '#6c757d'; }
+    let hidden = document.getElementById('tiendaPromovida');
+    if (!hidden) {
+        hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.id = 'tiendaPromovida';
+        hidden.value = '0';
+        document.getElementById('formTienda').appendChild(hidden);
+    }
+    hidden.value = '0';
     document.getElementById("modalTienda").classList.add("active");
 }
 
@@ -295,7 +310,7 @@ function cerrarModalTienda() {
 
 async function guardarTienda() {
     const btn = document.querySelector("#formTienda button[type='submit']");
-    
+
     const horarioJSON = JSON.stringify({
         mon: document.getElementById("horario-mon").value.trim(),
         tue: document.getElementById("horario-tue").value.trim(),
@@ -310,12 +325,13 @@ async function guardarTienda() {
         nombre: document.getElementById("tiendaNombre").value.trim(),
         descripcion: document.getElementById("tiendaDescripcion").value.trim(),
         direccion: document.getElementById("tiendaDireccion").value.trim(),
-        horario: horarioJSON, 
+        horario: horarioJSON,
         imagen: document.getElementById("tiendaImagen").value.trim(),
         rating: document.getElementById("tiendaRating").value || 5,
-        comision: document.getElementById("tiendaComision").value || 20
+        comision: document.getElementById("tiendaComision").value || 20,
+        promovida: document.getElementById('tiendaPromovida') ? document.getElementById('tiendaPromovida').value : '0',
     };
-    
+
     if (!datos.nombre || !datos.direccion) {
         mostrarNotificacion("Nombre y dirección obligatorios", "error");
         return;
@@ -325,7 +341,7 @@ async function guardarTienda() {
     try {
         const action = tiendaEditando ? "actualizarTienda" : "crearTienda";
         if (tiendaEditando) datos.id = tiendaEditando;
-        const response = await fetchConToken(API_URL, { 
+        const response = await fetchConToken(API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ action, ...datos })
@@ -346,6 +362,40 @@ async function guardarTienda() {
     }
 }
 
+function togglePromovidaTienda() {
+    const toggle = document.getElementById('promovida-toggle');
+    const knob = document.getElementById('promovida-knob');
+    const label = document.getElementById('promovida-label');
+    const checkbox = document.getElementById('tiendaPromovida') || { checked: false };
+
+    let hiddenInput = document.getElementById('tiendaPromovida');
+    if (!hiddenInput) {
+        hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.id = 'tiendaPromovida';
+        hiddenInput.value = '0';
+        document.getElementById('formTienda').appendChild(hiddenInput);
+    }
+
+    const isPromoted = hiddenInput.value === '1';
+
+    if (!isPromoted) {
+        toggle.style.background = 'linear-gradient(135deg, #F4A261, #E63946)';
+        knob.style.left = '27px';
+        knob.style.boxShadow = '0 3px 10px rgba(230,57,70,.4)';
+        label.textContent = '¡Promovida!';
+        label.style.color = '#E63946';
+        hiddenInput.value = '1';
+    } else {
+        toggle.style.background = '#e9ecef';
+        knob.style.left = '3px';
+        knob.style.boxShadow = '0 3px 8px rgba(0,0,0,.2)';
+        label.textContent = 'No promovida';
+        label.style.color = '#6c757d';
+        hiddenInput.value = '0';
+    }
+}
+
 async function editarTienda(id) {
     const tienda = tiendasCache.find(t => t.id == id);
     if (!tienda) return;
@@ -354,6 +404,33 @@ async function editarTienda(id) {
     document.getElementById("tiendaNombre").value = tienda.nombre;
     document.getElementById("tiendaDescripcion").value = tienda.descripcion || '';
     document.getElementById("tiendaDireccion").value = tienda.direccion;
+    const promovida = tienda.promovida == 1 || tienda.promovida === true;
+    const toggle = document.getElementById('promovida-toggle');
+    const knob = document.getElementById('promovida-knob');
+    const label = document.getElementById('promovida-label');
+
+    let hidden = document.getElementById('tiendaPromovida');
+    if (!hidden) {
+        hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.id = 'tiendaPromovida';
+        document.getElementById('formTienda').appendChild(hidden);
+    }
+
+    hidden.value = promovida ? '1' : '0';
+
+    if (promovida && toggle && knob && label) {
+        toggle.style.background = 'linear-gradient(135deg, #F4A261, #E63946)';
+        knob.style.left = '27px';
+        knob.style.boxShadow = '0 3px 10px rgba(230,57,70,.4)';
+        label.textContent = '¡Promovida!';
+        label.style.color = '#E63946';
+    } else if (toggle && knob && label) {
+        toggle.style.background = '#e9ecef';
+        knob.style.left = '3px';
+        label.textContent = 'No promovida';
+        label.style.color = '#6c757d';
+    }
 
     let horarioObj = {};
     try {
@@ -384,7 +461,7 @@ async function editarTienda(id) {
 async function eliminarTienda(id) {
     if (!confirm("¿Eliminar tienda? También se eliminarán sus productos.")) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarTienda&id=${id}`); 
+        const response = await fetchConToken(`${API_URL}?action=eliminarTienda&id=${id}`);
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Tienda eliminada");
@@ -409,7 +486,7 @@ async function cargarProductosPorTienda(tiendaId) {
     document.getElementById("nombreTiendaSeleccionada").textContent = tienda ? tienda.nombre : '';
     document.getElementById("listaProductosTienda").style.display = "block";
     try {
-        const res = await fetchConToken(`${API_URL}?action=getProductos&tiendaId=${tiendaId}`); 
+        const res = await fetchConToken(`${API_URL}?action=getProductos&tiendaId=${tiendaId}`);
         const productos = await res.json();
         productosCache = productos;
         const tbody = document.querySelector("#tablaProductosTienda tbody");
@@ -450,7 +527,7 @@ function mostrarModalProducto() {
     productoEditando = null;
     document.getElementById("modalProductoTitulo").textContent = "Nuevo Producto";
     document.getElementById("formProducto").reset();
-    document.getElementById("comision-calculo-box").style.display = "none"; 
+    document.getElementById("comision-calculo-box").style.display = "none";
     document.getElementById("modalProducto").classList.add("active");
 }
 
@@ -486,7 +563,7 @@ async function guardarProducto() {
     try {
         const action = productoEditando ? "actualizarProducto" : "crearProducto";
         if (productoEditando) datos.id = productoEditando;
-        const response = await fetchConToken(API_URL, { 
+        const response = await fetchConToken(API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ action, ...datos })
@@ -519,14 +596,14 @@ async function editarProducto(id) {
     document.getElementById("productoPrecio").value = producto.precio;
     document.getElementById("productoImagen").value = producto.imagen_url || '';
     document.getElementById("productoBadge").value = producto.badge || '';
-    calcularComisionProducto(); 
+    calcularComisionProducto();
     document.getElementById("modalProducto").classList.add("active");
 }
 
 async function eliminarProducto(id) {
     if (!confirm("¿Eliminar producto?")) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarProducto&id=${id}`); 
+        const response = await fetchConToken(`${API_URL}?action=eliminarProducto&id=${id}`);
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Producto eliminado");
@@ -546,11 +623,11 @@ async function eliminarProducto(id) {
 async function abrirModalComplementos(productoId) {
     const producto = productosCache.find(p => p.id == productoId);
     if (!producto) return;
-    
+
     document.getElementById('complementoProductoId').value = productoId;
     document.getElementById('complementoProductoNombre').textContent = producto.nombre;
     document.getElementById('formComplemento').reset();
-    
+
     document.getElementById('modalComplementos').classList.add('active');
     await cargarComplementos(productoId);
 }
@@ -562,18 +639,18 @@ function cerrarModalComplementos() {
 async function cargarComplementos(productoId) {
     const container = document.getElementById('listaComplementosContainer');
     container.innerHTML = '<p style="text-align:center; color:#999;">Cargando...</p>';
-    
+
     try {
         const res = await fetchConToken(`${API_URL}?action=getComplementos&productoId=${productoId}`);
         const data = await res.json();
-        
+
         if (data.success && data.complementos) {
             complementosCache = data.complementos;
             if (data.complementos.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#999;">Este producto no tiene complementos aún.</p>';
                 return;
             }
-            
+
             container.innerHTML = data.complementos.map(c => `
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; border:1px solid #eee; border-radius:8px; margin-bottom:8px;">
                     <div>
@@ -594,7 +671,7 @@ async function cargarComplementos(productoId) {
 async function guardarComplemento() {
     const btn = document.querySelector("#formComplemento button[type='submit']");
     const productoId = document.getElementById('complementoProductoId').value;
-    
+
     const datos = {
         action: 'crearComplemento',
         productoId: productoId,
@@ -613,7 +690,7 @@ async function guardarComplemento() {
 
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
-    
+
     try {
         const response = await fetchConToken(API_URL, {
             method: "POST",
@@ -621,7 +698,7 @@ async function guardarComplemento() {
             body: new URLSearchParams(datos)
         });
         const data = await response.json();
-        
+
         if (data.success) {
             mostrarNotificacion('Complemento agregado');
             document.getElementById('formComplemento').reset();
@@ -640,7 +717,7 @@ async function guardarComplemento() {
 async function eliminarComplemento(id) {
     if (!confirm('¿Eliminar este complemento?')) return;
     const productoId = document.getElementById('complementoProductoId').value;
-    
+
     try {
         const response = await fetchConToken(`${API_URL}?action=eliminarComplemento&id=${id}`);
         const data = await response.json();
@@ -660,7 +737,7 @@ async function eliminarComplemento(id) {
 // ============================================
 async function cargarDomiciliarios() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); 
+        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`);
         const domiciliarios = await res.json();
         domiciliariosCache = domiciliarios;
     } catch (error) {
@@ -673,7 +750,7 @@ async function cargarDomiciliarios() {
 // ============================================
 async function cargarPedidosAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`);
         const pedidos = await res.json();
         const tbody = document.querySelector("#tablaPedidos tbody");
         if (!tbody) return;
@@ -775,7 +852,7 @@ async function confirmarAsignacion(domiciliarioId, domiciliarioNombre) {
     if (!pedidoIdAsignar) return;
     if (!confirm(`¿Asignar pedido #${pedidoIdAsignar} a ${domiciliarioNombre}?`)) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=asignarDomiciliario&pedidoId=${pedidoIdAsignar}&domiciliarioId=${domiciliarioId}`); 
+        const response = await fetchConToken(`${API_URL}?action=asignarDomiciliario&pedidoId=${pedidoIdAsignar}&domiciliarioId=${domiciliarioId}`);
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion(`✅ Pedido #${pedidoIdAsignar} asignado a ${domiciliarioNombre}`);
@@ -797,7 +874,7 @@ async function cambiarEstadoPedidoAdmin(pedidoId) {
         return;
     }
     try {
-        const response = await fetchConToken(`${API_URL}?action=actualizarEstado&pedidoId=${pedidoId}&estado=${encodeURIComponent(nuevoEstado)}`); 
+        const response = await fetchConToken(`${API_URL}?action=actualizarEstado&pedidoId=${pedidoId}&estado=${encodeURIComponent(nuevoEstado)}`);
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion("Estado actualizado");
@@ -813,7 +890,7 @@ async function cambiarEstadoPedidoAdmin(pedidoId) {
 
 async function verDetallePedido(pedidoId) {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`);
         const pedidos = await res.json();
         const pedido = pedidos.find(p => p.id == pedidoId);
         if (!pedido) return;
@@ -882,7 +959,7 @@ function obtenerTextoTiendas(pedido) {
 
 async function cargarHistorialPedidos() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getPedidos`); 
+        const res = await fetchConToken(`${API_URL}?action=getPedidos`);
         const todos = await res.json();
         pedidosEntregadosCache = todos.filter(p => p.estado === 'entregado').sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
         llenarFiltroDomiciliarios();
@@ -1047,7 +1124,7 @@ async function eliminarPedidosSeleccionados() {
 
 async function ejecutarEliminacionPedidos(ids) {
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarPedidos`, { 
+        const response = await fetchConToken(`${API_URL}?action=eliminarPedidos`, {
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ ids: JSON.stringify(ids) })
@@ -1107,7 +1184,7 @@ let domiciliarioEditando = null;
 
 async function cargarDomiciliariosAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`); 
+        const res = await fetchConToken(`${API_URL}?action=getDomiciliarios`);
         const domiciliarios = await res.json();
         domiciliariosCache = domiciliarios;
 
@@ -1226,7 +1303,7 @@ async function guardarDomiciliario() {
         const action = domiciliarioEditando ? 'actualizarDomiciliario' : 'crearDomiciliario';
         if (domiciliarioEditando) datos.id = domiciliarioEditando;
 
-        const response = await fetchConToken(API_URL, { 
+        const response = await fetchConToken(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ action, ...datos })
@@ -1256,7 +1333,7 @@ async function eliminarDomiciliario(id) {
     if (!confirm(`¿Eliminar a "${esc(domi.nombre)}"?\n\nEsta acción no se puede deshacer.`)) return;
 
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarDomiciliario&id=${id}`); 
+        const response = await fetchConToken(`${API_URL}?action=eliminarDomiciliario&id=${id}`);
         const data = await response.json();
 
         if (data.success) {
@@ -1321,7 +1398,7 @@ function calcularPrecioDesdeGanancia() {
     const precioSugerido = gananciaDeseada / (1 - (comisionPct / 100));
 
     document.getElementById('productoPrecio').value = Math.ceil(precioSugerido);
-    calcularComisionProducto(); 
+    calcularComisionProducto();
     mostrarNotificacion(`Precio sugerido: ${formatearPrecio(precioSugerido)}`, "success");
 }
 
@@ -1331,7 +1408,7 @@ function calcularPrecioDesdeGanancia() {
 // ============================================
 async function cargarUsuariosTiendaAdmin() {
     try {
-        const res = await fetchConToken(`${API_URL}?action=getUsuariosTienda`); 
+        const res = await fetchConToken(`${API_URL}?action=getUsuariosTienda`);
         const usuarios = await res.json();
         usuariosTiendaCache = usuarios;
 
@@ -1377,7 +1454,7 @@ function mostrarModalUsuarioTienda() {
     const select = document.getElementById('usuarioTiendaId');
     select.innerHTML = '<option value="">-- Selecciona una tienda --</option>' +
         tiendasCache.map(t => `<option value="${t.id}">${escapeQuotes(t.nombre)}</option>`).join('');
-    select.disabled = false; 
+    select.disabled = false;
 
     document.getElementById('modalUsuarioTienda').classList.add('active');
 }
@@ -1426,7 +1503,7 @@ async function guardarUsuarioTienda() {
         const action = usuarioTiendaEditando ? 'actualizarUsuarioTienda' : 'crearUsuarioTienda';
         if (usuarioTiendaEditando) datos.id = usuarioTiendaEditando;
 
-        const response = await fetchConToken(API_URL, { 
+        const response = await fetchConToken(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ action, ...datos })
@@ -1452,7 +1529,7 @@ async function guardarUsuarioTienda() {
 async function eliminarUsuarioTienda(id) {
     if (!confirm(`¿Eliminar el usuario de esta tienda? La tienda seguirá existiendo pero ya no podrá iniciar sesión.`)) return;
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarUsuarioTienda&id=${id}`); 
+        const response = await fetchConToken(`${API_URL}?action=eliminarUsuarioTienda&id=${id}`);
         const data = await response.json();
         if (data.success) {
             mostrarNotificacion('Usuario eliminado');

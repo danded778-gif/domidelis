@@ -105,7 +105,7 @@ async function cargarTiendas(reintentos = 3) {
         // Cargar productos globales, complementos y categorías
         productosGlobal = data.productosGlobal || [];
         complementosGlobal = data.complementosGlobal || []; // ★ NUEVO v2
-        
+
         const catsEnJSON = [...new Set(productosGlobal.map(p => p.categoria).filter(c => c && c.trim() !== ''))];
         renderizarCategorias(catsEnJSON);
 
@@ -302,11 +302,24 @@ function renderizarTiendas() {
     if (!container) return;
 
     tiendas.sort((a, b) => {
+        const promoA = (a.promovida == 1 || a.promovida === true) ? 1 : 0;
+        const promoB = (b.promovida == 1 || b.promovida === true) ? 1 : 0;
+
         const statusA = checkStoreStatus(a.horario);
         const statusB = checkStoreStatus(b.horario);
-        const isOpenA = statusA.isOpen ? 1 : 0;
-        const isOpenB = statusB.isOpen ? 1 : 0;
-        if (isOpenB !== isOpenA) return isOpenB - isOpenA;
+        const openA = statusA.isOpen ? 1 : 0;
+        const openB = statusB.isOpen ? 1 : 0;
+
+        if (openA !== openB) return openB - openA;
+
+        if (openA === 1 && openB === 1) {
+            if (promoA !== promoB) return promoB - promoA;
+        }
+
+        if (openA === 0 && openB === 0) {
+            if (promoA !== promoB) return promoB - promoA;
+        }
+
         const ratingA = parseFloat(a.rating) || 0;
         const ratingB = parseFloat(b.rating) || 0;
         return ratingB - ratingA;
@@ -568,14 +581,14 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
 
     const precioBase = parseFloat(producto.precio) || 0;
     let complementosTotal = 0;
-    
+
     // ★ SUMAR EXTRAS CON CANTIDADES
     Object.values(selecciones).forEach(items => {
         items.forEach(item => {
             complementosTotal += (parseFloat(item.precio) || 0) * (item.cantidad || 1);
         });
     });
-    
+
     const precioUnitario = precioBase + complementosTotal;
 
     const item = {
@@ -627,7 +640,7 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
     guardarCarrito(carrito);
     actualizarCarritoUI();
 
-        let msg = ` ${esc(producto.nombre)} agregado al carrito`;
+    let msg = ` ${esc(producto.nombre)} agregado al carrito`;
     mostrarNotificacion(msg);
 
     if (carritoVacio) crearExplosionComida();
