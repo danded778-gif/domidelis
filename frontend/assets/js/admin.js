@@ -674,7 +674,7 @@ async function guardarComplemento() {
 
     const datos = {
         action: 'crearComplemento',
-        productoId: productoId,
+        id_producto: productoId,
         grupo: document.getElementById('complementoGrupo').value.trim(),
         tipo: document.getElementById('complementoTipo').value,
         nombre: document.getElementById('complementoNombre').value.trim(),
