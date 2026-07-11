@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T01-36-03",
-  "ultimaActualizacion": "2026-07-11T01:36:03.768Z",
+  "version": "v2026-07-11T01-37-47",
+  "ultimaActualizacion": "2026-07-11T01:37:47.570Z",
   "tiendas": [
     {
       "id": 1,
@@ -3086,6 +3086,16 @@
       "id_producto": "#NUM!",
       "grupo": "salsa",
       "nombre": "roja",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 159,
+      "id_producto": "#NUM!",
+      "grupo": "salsa",
+      "nombre": "rosada",
       "precio": 0,
       "tipo": "salsa",
       "max": 3,
