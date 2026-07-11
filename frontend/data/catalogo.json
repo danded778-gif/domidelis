@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T03-40-18",
-  "ultimaActualizacion": "2026-07-11T03:40:18.136Z",
+  "version": "v2026-07-11T03-40-59",
+  "ultimaActualizacion": "2026-07-11T03:40:59.015Z",
   "tiendas": [
     {
       "id": 1,
@@ -3147,36 +3147,6 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
-      "min": 0
-    },
-    {
-      "id": 164,
-      "id_producto": "#NUM!",
-      "grupo": "Salsa",
-      "nombre": "naranja",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 1
-    },
-    {
-      "id": 165,
-      "id_producto": "#NUM!",
-      "grupo": "Salsas",
-      "nombre": "Salsa BBQ2343213",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id": 166,
-      "id_producto": "#NUM!",
-      "grupo": "salsas",
-      "nombre": "Azul",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
       "min": 0
     },
     {
