@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T02-29-06",
-  "ultimaActualizacion": "2026-07-11T02:29:06.108Z",
+  "version": "v2026-07-11T02-31-42",
+  "ultimaActualizacion": "2026-07-11T02:31:42.697Z",
   "tiendas": [
     {
       "id": 1,
@@ -3174,6 +3174,16 @@
       "id_producto": "#NUM!",
       "grupo": "salsas",
       "nombre": "Azul",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 167,
+      "id_producto": 158,
+      "grupo": "Salsas",
+      "nombre": "BBQ1212",
       "precio": 0,
       "tipo": "salsa",
       "max": 3,
