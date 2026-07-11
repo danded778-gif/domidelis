@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T02-31-42",
-  "ultimaActualizacion": "2026-07-11T02:31:42.697Z",
+  "version": "v2026-07-11T03-31-33",
+  "ultimaActualizacion": "2026-07-11T03:31:33.504Z",
   "tiendas": [
     {
       "id": 1,
@@ -771,7 +771,7 @@
     },
     {
       "id": 8,
-      "nombre": "prueba_1",
+      "nombre": "Mantenimineto",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
       "horario": "{\"mon\":\"18:00 - 23:59\",\"tue\":\"Cerrado\",\"wed\":\"06:00 - 10:40\",\"thu\":\"Cerrado\",\"fri\":\"18:00 - 10:40\",\"sat\":\"Cerrado\",\"sun\":\"18:00 - 23:59\"}",
@@ -791,7 +791,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "8",
-          "tiendaNombre": "prueba_1"
+          "tiendaNombre": "Mantenimineto"
         }
       ]
     }
@@ -1575,7 +1575,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "prueba_1"
+      "tiendaNombre": "Mantenimineto"
     }
   ],
   "complementosGlobal": [
