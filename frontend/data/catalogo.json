@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T03-40-59",
-  "ultimaActualizacion": "2026-07-11T03:40:59.015Z",
+  "version": "v2026-07-11T03-41-40",
+  "ultimaActualizacion": "2026-07-11T03:41:40.327Z",
   "tiendas": [
     {
       "id": 1,
@@ -3090,46 +3090,6 @@
       "min": 1
     },
     {
-      "id": 158,
-      "id_producto": "#NUM!",
-      "grupo": "salsa",
-      "nombre": "roja",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 159,
-      "id_producto": "#NUM!",
-      "grupo": "salsa",
-      "nombre": "rosada",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 160,
-      "id_producto": "#NUM!",
-      "grupo": "salsa",
-      "nombre": "amarilla",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id": 161,
-      "id_producto": "#NUM!",
-      "grupo": "salsa",
-      "nombre": "amarilla",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
       "id": 162,
       "id_producto": 158,
       "grupo": "Salsas",
@@ -3161,7 +3121,7 @@
     },
     {
       "id": 168,
-      "id_producto": "#NUM!",
+      "id_producto": 158,
       "grupo": "Proteina",
       "nombre": "cerdo",
       "precio": 0,
