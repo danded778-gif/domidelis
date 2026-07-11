@@ -65,7 +65,7 @@ const APP_CONFIG = {
         señorcaido: { nombre: 'Señor Caido', envio: 6000 },
         teneria: { nombre: 'Teneria', envio: 5000 },
         valle: { nombre: 'Valle Maria', envio: 12000 },
-        oriente: { nombre: 'Vargas', envio: 8000 },
+        oriente: { nombre: 'Vargas', envio: 7000 },
         vista: { nombre: 'Vista Hermosa', envio: 6000 },
         calera: { nombre: 'La calera', envio: 12000 },
         undido: { nombre: 'B. hundido', envio: 5000 },
@@ -73,7 +73,8 @@ const APP_CONFIG = {
         lourdes: { nombre: 'V.lourdes', envio: 8000 },
         pantanillo: { nombre: 'Pantanillo', envio: 6000 },
         potrerio: { nombre: 'Potrerito', envio: 9000 },
-        villas: { nombre: 'Villas del poli', envio: 5000 }
+        villas: { nombre: 'Villas del poli', envio: 5000 },
+        saladito: { nombre: 'V. Saladito', envio: 6000 },
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }

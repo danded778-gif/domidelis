@@ -9,11 +9,10 @@ const Anuncios = {
     SEIS_HORAS_MS: 6 * 60 * 60 * 1000,
     CLAIM_KEY: 'domidelis_claim_timestamp',
 
-    init: async function() {
+        init: async function() {
         await this.cargarAnuncios();
         if (this.anuncioDestacado) {
-            this.renderizarCard();
-            this.mostrarPopupAutomatico();
+            this.renderizarCard(); // ★ ESTA LÍNEA FALTA EN TU CÓDIGO, ES VITAL
         }
     },
 

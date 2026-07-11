@@ -12,28 +12,30 @@ let carrito = [];
 
 // ★ VARIABLES GLOBALES DE CATEGORÍAS Y PRODUCTOS ★
 let categoriaActiva = 'Todas';
-let productosGlobal = []; // Lista plana de todos los productos (viene del JSON)
-let complementosGlobal = []; // ★ NUEVO v2: salsas, extras y grupos por producto
+let productosGlobal = []; 
+let complementosGlobal = []; 
+
+// ★ VARIABLES GLOBALES PARA EL PAGINADOR ★
+let currentPaginator = null;
+let currentStoreProducts = [];
+
+// Variable para el intervalo de scroll automático
+let autoScrollTiendasInterval;
 
 // ============================================
 // 1. INICIALIZACIÓN PRINCIPAL Y ORDEN DE CARGA
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
-    // 1.1 Cargar carrito guardado y pintarlo inmediatamente
     carrito = obtenerCarrito();
     actualizarCarritoUI();
-
-    // 1.2 Vincular eventos estáticos de la interfaz
     inicializarEventos();
 
-    // 1.3 Inicializar flechas del menú de categorías
     const scrollLeft = document.getElementById('scroll-left');
     const scrollRight = document.getElementById('scroll-right');
     const scrollContainer = document.getElementById('categories-scroll');
     if (scrollLeft) scrollLeft.addEventListener('click', () => scrollContainer.scrollBy({ left: -200, behavior: 'smooth' }));
     if (scrollRight) scrollRight.addEventListener('click', () => scrollContainer.scrollBy({ left: 200, behavior: 'smooth' }));
 
-    // 1.4 Cargar datos de tiendas (Solo si estamos en la página principal)
     if (document.getElementById("stores-grid")) {
         cargarTiendas();
     }
@@ -102,16 +104,15 @@ async function cargarTiendas(reintentos = 3) {
         const data = await res.json();
         tiendas = data.tiendas || [];
 
-        // Cargar productos globales, complementos y categorías
         productosGlobal = data.productosGlobal || [];
-        complementosGlobal = data.complementosGlobal || []; // ★ NUEVO v2
-
+        complementosGlobal = data.complementosGlobal || []; 
+        
         const catsEnJSON = [...new Set(productosGlobal.map(p => p.categoria).filter(c => c && c.trim() !== ''))];
         renderizarCategorias(catsEnJSON);
 
-        // Restablecer la vista principal
         resetMainViewUI();
         renderizarTiendas();
+        renderizarProductosDestacados();
     } catch (error) {
         console.error("Error cargando catálogo estático", error);
         if (reintentos > 0) {
@@ -134,14 +135,22 @@ function resetMainViewUI() {
     const categoriesWrapper = document.getElementById('categories-wrapper');
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
     const storesGrid = document.getElementById('stores-grid');
+    const storesGridCerradas = document.getElementById('stores-grid-cerradas');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     const tituloPrincipal = document.getElementById('main-title');
 
     if (categoriesWrapper) categoriesWrapper.style.display = 'flex';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
-    if (storesGrid) storesGrid.style.display = '';
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    if (storesGrid) {
+        storesGrid.className = 'stores-grid-horizontal'; 
+        storesGrid.style.display = 'flex';
+        storesGrid.style.overflow = 'auto';
+    }
+    if (storesGridCerradas) storesGridCerradas.style.display = 'block';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
-    if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
+    if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid'; 
+    if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
 }
 
 // ============================================
@@ -187,7 +196,7 @@ function renderizarCategorias(categoriasDesdeJSON) {
         const claseActiva = cat === categoriaActiva ? 'active' : '';
 
         return `
-        <div class="category-item ${claseActiva}" onclick="filtrarPorCategoria('${cat}', this)">
+        <div class="category-item ${claseActiva}" onclick="filtrarPorCategoria('${cat}', event)">
             <div class="category-icon">
                 <img src="${iconoUrl}" alt="${cat}" onerror="this.onerror=null; this.src='assets/img/tienda-error.png';">
             </div>
@@ -196,8 +205,10 @@ function renderizarCategorias(categoriasDesdeJSON) {
     }).join('');
 }
 
-function filtrarPorCategoria(nombreCategoria, elemento) {
+function filtrarPorCategoria(nombreCategoria, e) {
+    const elemento = e.currentTarget; 
     categoriaActiva = nombreCategoria;
+
     document.querySelectorAll('.category-item').forEach(item => item.classList.remove('active'));
     if (elemento) elemento.classList.add('active');
 
@@ -210,11 +221,18 @@ function filtrarPorCategoria(nombreCategoria, elemento) {
 
 function mostrarProductosPorCategoria() {
     const storesGrid = document.getElementById('stores-grid');
+    const storesGridCerradas = document.getElementById('stores-grid-cerradas');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     const tituloPrincipal = document.getElementById('main-title');
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
 
-    if (storesGrid) storesGrid.style.display = 'none';
+    if (storesGrid) {
+        storesGrid.style.display = 'none';
+        storesGrid.className = '';
+    }
+    if (storesGridCerradas) storesGridCerradas.style.display = 'none';
+    if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none'; 
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'block';
 
@@ -247,7 +265,7 @@ function mostrarProductosPorCategoria() {
         }
 
         return `
-        <div class="product-card">
+        <div class="product-card" id="prod-${p.id}">
             <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
                 ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
                 ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
@@ -277,93 +295,255 @@ function mostrarProductosPorCategoria() {
 
 function volverATiendas() {
     const storesGrid = document.getElementById('stores-grid');
+    const storesGridCerradas = document.getElementById('stores-grid-cerradas');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
+    const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     const tituloPrincipal = document.getElementById('main-title');
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
 
-    if (storesGrid) storesGrid.style.display = '';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'grid';
+    if (storesGrid) {
+        storesGrid.className = 'stores-grid-horizontal';
+        storesGrid.style.display = 'flex';
+        storesGrid.style.overflow = 'auto';
+    }
+    if (storesGridCerradas) storesGridCerradas.style.display = 'block';
+    if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid'; 
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
 
-    if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-store"></i> Tiendas`;
+    if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
 
     categoriaActiva = 'Todas';
     document.querySelectorAll('.category-item').forEach(item => {
         if (item.querySelector('span').innerText === 'Todas') item.classList.add('active');
         else item.classList.remove('active');
     });
+    
+    if (autoScrollTiendasInterval) clearInterval(autoScrollTiendasInterval);
+    if (storesGrid) {
+        storesGrid.scrollLeft = 0;
+        iniciarAutoScrollTiendas();
+    }
 }
 
 // ============================================
-// 5. RENDERIZADO DE TIENDAS Y MENÚ
+// 5. RENDERIZADO DE TIENDAS Y MENÚ 
 // ============================================
 function renderizarTiendas() {
     const container = document.getElementById("stores-grid");
     if (!container) return;
 
     tiendas.sort((a, b) => {
-        const promoA = (a.promovida == 1 || a.promovida === true) ? 1 : 0;
-        const promoB = (b.promovida == 1 || b.promovida === true) ? 1 : 0;
-
         const statusA = checkStoreStatus(a.horario);
         const statusB = checkStoreStatus(b.horario);
-        const openA = statusA.isOpen ? 1 : 0;
-        const openB = statusB.isOpen ? 1 : 0;
-
-        if (openA !== openB) return openB - openA;
-
-        if (openA === 1 && openB === 1) {
-            if (promoA !== promoB) return promoB - promoA;
-        }
-
-        if (openA === 0 && openB === 0) {
-            if (promoA !== promoB) return promoB - promoA;
-        }
-
+        const isOpenA = statusA.isOpen ? 1 : 0;
+        const isOpenB = statusB.isOpen ? 1 : 0;
+        if (isOpenB !== isOpenA) return isOpenB - isOpenA;
         const ratingA = parseFloat(a.rating) || 0;
         const ratingB = parseFloat(b.rating) || 0;
         return ratingB - ratingA;
     });
 
-    container.className = 'stores-grid';
+    const tiendasAbiertas = tiendas.filter(t => checkStoreStatus(t.horario).isOpen);
+    const tiendasCerradas = tiendas.filter(t => !checkStoreStatus(t.horario).isOpen);
 
-    if (tiendas.length === 0) {
-        container.innerHTML = `<div class="empty-state"><i class="fas fa-store-slash"></i><p>No hay tiendas</p></div>`;
+    container.className = 'stores-grid-horizontal';
+    container.style.display = 'flex';
+    container.style.overflow = 'auto';
+
+    if (tiendasAbiertas.length === 0) {
+        container.innerHTML = `
+            <div class="store-card" style="flex: 0 0 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 1.5rem; background: var(--white); border-radius: var(--border-radius);">
+                <i class="fas fa-bed" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--dark); margin-bottom: 0.5rem;">¡Estamos descansando!</h3>
+                <p style="color: var(--gray); font-size: 0.9rem;">Por el momento todas nuestras tiendas están cerradas. ¡Vuelve pronto!</p>
+            </div>
+        `;
+    } else {
+        container.innerHTML = tiendasAbiertas.map(tienda => {
+            const tieneImagen = tienda.imagen && tienda.imagen.trim() !== '';
+            const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
+            const rating = tienda.rating || 5;
+
+            return `
+            <div class="store-card" onclick="verMenuTienda(${tienda.id})">
+                <div class="store-img" style="${tieneImagen ? `background-image: url('${tienda.imagen}');` : ''}">
+                    ${!tieneImagen ? '<i class="fas fa-store"></i>' : ''}
+                    <span class="store-badge">⭐ ${rating}</span>
+                    <div class="store-img-overlay"></div>
+                </div>
+                <div class="store-info">
+                    <h3> ${esc(tienda.nombre)}</h3>
+                    ${tieneDesc ? `<p class="store-desc"> ${esc(tienda.descripcion)}</p>` : ''}
+                    <p><i class="fas fa-map-marker-alt"></i>  ${esc(tienda.direccion)}</p>
+                    <p><i class="fas fa-clock"></i> Hoy: ${getHorarioHoy(tienda.horario)}</p>
+                    <div class="store-rating">${generarEstrellas(rating)}</div>
+                    <button class="btn-ver-menu-tienda" style="margin-top: 12px; width: 100%; background: rgba(230,57,70,0.1); color: var(--primary); border: none; padding: 10px; border-radius: 8px; font-family: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: 0.2s;">
+                        Ver menú <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>`;
+        }).join('');
+        iniciarAutoScrollTiendas();
+    }
+
+    const closedContainer = document.getElementById('stores-grid-cerradas');
+    if (!closedContainer) return;
+
+    if (tiendasCerradas.length > 0) {
+        closedContainer.style.display = 'block';
+        closedContainer.innerHTML = `
+            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--gray); text-align: center; font-size: 1.2rem;">
+                <i class="fas fa-clock"></i> Otras Tiendas (Cerradas ahora)
+            </h3>
+            <div class="stores-grid" style="display: grid;">
+                ${tiendasCerradas.map(tienda => {
+            const tieneImagen = tienda.imagen && tienda.imagen.trim() !== '';
+            const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
+            const rating = tienda.rating || 5;
+            const status = checkStoreStatus(tienda.horario);
+
+            return `
+                    <div class="store-card" onclick="verMenuTienda(${tienda.id})" style="cursor: pointer;">
+                        <span class="badge-closed"><i class="fas fa-clock"></i> ${status.nextOpening}</span>
+                        <div class="store-img" style="${tieneImagen ? `background-image: url('${tienda.imagen}');` : ''}">
+                            ${!tieneImagen ? '<i class="fas fa-store"></i>' : ''}
+                            <span class="store-badge">⭐ ${rating}</span>
+                            <div class="store-img-overlay"></div>
+                        </div>
+                        <div class="store-info">
+                            <h3> ${esc(tienda.nombre)}</h3>
+                            ${tieneDesc ? `<p class="store-desc"> ${esc(tienda.descripcion)}</p>` : ''}
+                            <p><i class="fas fa-map-marker-alt"></i>  ${esc(tienda.direccion)}</p>
+                            <p><i class="fas fa-clock"></i> Hoy: ${getHorarioHoy(tienda.horario)}</p>
+                            <div class="store-rating">${generarEstrellas(rating)}</div>
+                            <button class="btn-ver-menu-tienda" style="margin-top: 12px; width: 100%; background: rgba(230,57,70,0.1); color: var(--primary); border: none; padding: 10px; border-radius: 8px; font-family: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: 0.2s;">
+                                Ver menú <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>`;
+        }).join('')}
+            </div>
+        `;
+    } else {
+        closedContainer.innerHTML = '';
+        closedContainer.style.display = 'none';
+    }
+}
+
+function renderizarProductosDestacados() {
+    const contenedor = document.getElementById('productos-destacados-grid');
+    if (!contenedor) return;
+
+    let productosConImagen = productosGlobal.filter(p =>
+        p.imagen_url && p.imagen_url.trim() !== '' &&
+        p.imagen_url !== 'null' && p.imagen_url !== 'undefined' &&
+        !(p.badge && p.badge.toLowerCase() === 'agotado')
+    );
+
+    if (productosConImagen.length === 0) {
+        contenedor.style.display = 'none';
         return;
     }
 
-    container.innerHTML = tiendas.map(tienda => {
-        const tieneImagen = tienda.imagen && tienda.imagen.trim() !== '';
-        const tieneDesc = tienda.descripcion && String(tienda.descripcion).trim() !== '';
-        const rating = tienda.rating || 5;
+    let productosDestacados = [];
+    while (productosDestacados.length < 3 && productosConImagen.length > 0) {
+        const randomIndex = Math.floor(Math.random() * productosConImagen.length);
+        productosDestacados.push(productosConImagen.splice(randomIndex, 1)[0]);
+    }
 
-        const status = checkStoreStatus(tienda.horario);
-        const closedClass = !status.isOpen ? 'store-closed' : '';
-        const closedOverlay = !status.isOpen ? '<div class="closed-overlay"></div>' : '';
-        const closedBadge = !status.isOpen ? `<span class="badge-closed"><i class="fas fa-clock"></i> ${status.nextOpening}</span>` : '';
+    contenedor.innerHTML = productosDestacados.map(p => {
+        const tienda = tiendas.find(t => t.id == p.tiendaId);
+        const tiendaNombre = tienda ? tienda.nombre : '';
+        p.tiendaNombre = tiendaNombre;
 
         return `
-        <div class="store-card ${closedClass}" onclick="verMenuTienda(${tienda.id})">
-            ${closedOverlay}
-            ${closedBadge}
-            <div class="store-img" style="${tieneImagen ? `background-image: url('${tienda.imagen}');` : ''}">
-                ${!tieneImagen ? '<i class="fas fa-store"></i>' : ''}
-                <span class="store-badge">⭐ ${rating}</span>
-                <div class="store-img-overlay"></div>
+        <div class="destacado-card" onclick="verProductoDestacado('${p.id}')">
+            <div class="destacado-card-img" style="background-image: url('${p.imagen_url}')"></div>
+            <div class="destacado-card-overlay">
+                <h4>${esc(p.nombre)}</h4>
+                <div class="destacado-precio">${formatearPrecio(p.precio)}</div>
+                <span class="destacado-tienda">${esc(tiendaNombre)}</span>
             </div>
-            <div class="store-info">
-                <h3> ${esc(tienda.nombre)}</h3>
-                ${tieneDesc ? `<p class="store-desc"> ${esc(tienda.descripcion)}</p>` : ''}
-                <p><i class="fas fa-map-marker-alt"></i>  ${esc(tienda.direccion)}</p>
-                <p><i class="fas fa-clock"></i> Hoy: ${getHorarioHoy(tienda.horario)}</p>
-                <div class="store-rating">${generarEstrellas(rating)}</div>
-            </div>
-        </div>
-    `}).join('');
+        </div>`;
+    }).join('');
 }
 
+async function verProductoDestacado(productoId) {
+    const prod = productosGlobal.find(p => String(p.id) === String(productoId));
+    if (!prod) {
+        mostrarNotificacion("Producto no encontrado", "error");
+        return;
+    }
+
+    if (!prod.tiendaId) {
+        const tiendaConProducto = tiendas.find(t => t.productos && t.productos.some(p => String(p.id) === String(productoId)));
+        if (tiendaConProducto) {
+            prod.tiendaId = tiendaConProducto.id;
+            prod.tiendaNombre = tiendaConProducto.nombre;
+        }
+    }
+
+    if (!prod.tiendaId) {
+        mostrarNotificacion("No se encontró la tienda de este producto", "error");
+        return;
+    }
+
+    const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(prod.id));
+    
+    if (tieneComplementos) {
+        DomiModal.abrir(prod);
+    } else {
+        await verMenuTienda(prod.tiendaId);
+        
+        setTimeout(() => {
+            const productCard = document.getElementById(`prod-${productoId}`);
+            if (productCard) {
+                const headerOffset = 85;
+                const elementPosition = productCard.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                
+                productCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
+                productCard.style.boxShadow = '0 0 0 3px var(--primary), 0 10px 30px rgba(230,57,70,0.3)';
+                productCard.style.transform = 'scale(1.02)';
+                
+                setTimeout(() => {
+                    productCard.style.boxShadow = '';
+                    productCard.style.transform = '';
+                }, 2500);
+            }
+        }, 600);
+    }
+}
+
+function iniciarAutoScrollTiendas() {
+    const container = document.getElementById("stores-grid");
+    if (!container || container.className !== 'stores-grid-horizontal') return;
+
+    if (autoScrollTiendasInterval) clearInterval(autoScrollTiendasInterval);
+
+    autoScrollTiendasInterval = setInterval(() => {
+        if (container.matches(':hover')) return;
+
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+        
+        if (container.scrollLeft >= maxScrollLeft - 5) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            const cardWidth = container.querySelector('.store-card')?.offsetWidth || 250;
+            container.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
+        }
+    }, 3000);
+}
+
+// ============================================
+// 5.1 MENÚ DE TIENDA CON PAGINADOR
+// ============================================
 async function verMenuTienda(tiendaId) {
     const container = document.getElementById("stores-grid");
+    const storesGridCerradas = document.getElementById('stores-grid-cerradas');
+    const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     if (!container) return;
 
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
@@ -373,8 +553,15 @@ async function verMenuTienda(tiendaId) {
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (categoriesWrapper) categoriesWrapper.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
+    if (storesGridCerradas) storesGridCerradas.style.display = 'none'; 
+    if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none'; 
 
-    container.className = '';
+    if (autoScrollTiendasInterval) clearInterval(autoScrollTiendasInterval);
+    
+    container.className = ''; 
+    container.style.display = 'block';
+    container.style.overflow = 'visible';
+    
     container.innerHTML = `
         <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 4rem 0;">
             <div class="spinner" style="margin: 0 auto 1rem;"></div>
@@ -389,14 +576,6 @@ async function verMenuTienda(tiendaId) {
         tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i>  ${esc(tienda.nombre)}`;
     }
 
-    if (tienda && typeof gtag === 'function') {
-        gtag('event', 'ver_tienda', {
-            'event_category': 'engagement',
-            'event_label': tienda.nombre || 'tienda_sin_nombre',
-            'tienda_id': tienda.id
-        });
-    }
-
     if (!tienda) {
         mostrarNotificacion("Tienda no encontrada", "error");
         cargarTiendas();
@@ -406,53 +585,14 @@ async function verMenuTienda(tiendaId) {
     const productos = tienda.productos || [];
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
 
-    if (productosValidos.length === 0) {
-        container.innerHTML = `
-            <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
-            <div class="menu-header"><p>${tienda.descripcion || ""}</p></div>
-            <div class="empty-state"><i class="fas fa-box-open"></i><p>Esta tienda aún no tiene productos</p></div>
-        `;
-        return;
-    }
-
-    const status = checkStoreStatus(tienda.horario);
-
-    let productosHTML = productosValidos.map(p => {
+    // Guardar estado para el paginador y el buscador
+    currentStoreProducts = productosValidos.map(p => {
         p.tiendaId = tienda.id;
         p.tiendaNombre = tienda.nombre;
+        return p;
+    });
 
-        const imagenUrl = (p.imagen_url || p.icono || '').trim();
-        const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
-        const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
-
-        let botonHTML;
-        if (!status.isOpen) {
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')"><i class="fas fa-clock"></i> Cerrado</button>`;
-        } else if (esAgotado) {
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
-        } else {
-            const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(p.id));
-            if (tieneComplementos) {
-                botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); DomiModal.abrir(${JSON.stringify(p).replace(/"/g, '&quot;')})"><i class="fas fa-plus"></i> Agregar</button>`;
-            } else {
-                botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
-            }
-        }
-
-        return `
-        <div class="product-card">
-            <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
-                ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
-                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
-            </div>
-            <div class="product-info">
-                <h4> ${esc(p.nombre)}</h4>
-                <p class="product-desc">${p.descripcion || ''}</p>
-                <div class="product-price">${formatearPrecio(p.precio)}</div>
-                <div class="precio-unidad-container">${botonHTML}</div>
-            </div>
-        </div>`;
-    }).join('');
+    const status = checkStoreStatus(tienda.horario);
 
     container.innerHTML = `
         <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
@@ -467,10 +607,84 @@ async function verMenuTienda(tiendaId) {
                 <i class="fas fa-search" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--gray);"></i>
                 <input type="text" id="buscador-productos" placeholder="Buscar producto..." oninput="filtrarProductos(this.value)" style="width:100%;padding:.8rem 1rem .8rem 2.8rem;border:2px solid #e0e0e0;border-radius:50px;font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e0e0e0'">
             </div>
-            <p id="resultado-busqueda" style="text-align:center;color:var(--gray);font-size:.85rem;margin-top:.5rem;display:none;"></p>
         </div>
-        <div class="menu-grid" id="menu-grid-container">${productosHTML}</div>
+        <div class="menu-grid" id="menu-grid-container"></div>
+        <div id="menu-paginator-container" style="margin-top: 2rem;"></div>
     `;
+
+    // Función de renderizado para el Paginador
+    const renderMenuProducts = (productsToRender) => {
+        const gridContainer = document.getElementById('menu-grid-container');
+        if (!gridContainer) return;
+
+        if (productsToRender.length === 0) {
+            gridContainer.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><i class="fas fa-box-open"></i><p>No se encontraron productos</p></div>`;
+            return;
+        }
+
+        gridContainer.innerHTML = productsToRender.map(p => {
+            const imagenUrl = (p.imagen_url || p.icono || '').trim();
+            const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
+            const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
+
+            let botonHTML;
+            if (!status.isOpen) {
+                botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')"><i class="fas fa-clock"></i> Cerrado</button>`;
+            } else if (esAgotado) {
+                botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
+            } else {
+                const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(p.id));
+                if (tieneComplementos) {
+                    botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); DomiModal.abrir(${JSON.stringify(p).replace(/"/g, '&quot;')})"><i class="fas fa-plus"></i> Agregar</button>`;
+                } else {
+                    botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
+                }
+            }
+
+            return `
+            <div class="product-card" id="prod-${p.id}">
+                <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
+                    ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
+                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+                </div>
+                <div class="product-info">
+                    <h4> ${esc(p.nombre)}</h4>
+                    <p class="product-desc">${p.descripcion || ''}</p>
+                    <div class="product-price">${formatearPrecio(p.precio)}</div>
+                    <div class="precio-unidad-container">${botonHTML}</div>
+                </div>
+            </div>`;
+        }).join('');
+    };
+
+    // Destruir paginador anterior si existe
+    if (currentPaginator) {
+        currentPaginator.destroy();
+    }
+
+    // Inicializar el paginador con 3 items por página aca se cambia la cantidad de vistas 
+        // Destruir paginador anterior si existe
+    if (currentPaginator) {
+        currentPaginator.destroy();
+    }
+
+    // Inicializar el paginador con 3 items por página
+    currentPaginator = new Paginator({
+        items: currentStoreProducts,
+        itemsPerPage: 3,
+        containerId: 'menu-paginator-container',
+        renderCallback: renderMenuProducts,
+        // ★ NUEVO: Función para subir al título de la tienda al cambiar de página
+        onPageChange: function() {
+            const titleElement = document.getElementById('main-title');
+            if (titleElement) {
+                const headerOffset = 85; // Altura del header fijo
+                const elementPosition = titleElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+    });
 
     requestAnimationFrame(() => {
         const targetElement = document.getElementById('main-title');
@@ -483,26 +697,23 @@ async function verMenuTienda(tiendaId) {
     });
 }
 
+// ★ FIX: El buscador ahora actualiza el paginador dinámicamente
 function filtrarProductos(texto) {
+    if (!currentPaginator) return;
+    
     const termino = texto.toLowerCase().trim();
-    const cards = document.querySelectorAll('#menu-grid-container .product-card');
-    const resultado = document.getElementById('resultado-busqueda');
-    let visibles = 0;
+    let filtered = currentStoreProducts;
 
-    cards.forEach(card => {
-        const nombre = card.querySelector('h4')?.textContent.toLowerCase() || '';
-        const desc = card.querySelector('.product-desc')?.textContent.toLowerCase() || '';
-        const coincide = nombre.includes(termino) || desc.includes(termino);
-        card.style.display = coincide ? '' : 'none';
-        if (coincide) visibles++;
-    });
-
-    if (termino === '') {
-        resultado.style.display = 'none';
-    } else {
-        resultado.style.display = 'block';
-        resultado.textContent = visibles === 0 ? 'No se encontraron productos' : `${visibles} resultado${visibles !== 1 ? 's' : ''} para "${texto}"`;
+    if (termino !== '') {
+        filtered = currentStoreProducts.filter(p => {
+            const nombre = (p.nombre || '').toLowerCase();
+            const desc = (p.descripcion || '').toLowerCase();
+            return nombre.includes(termino) || desc.includes(termino);
+        });
     }
+
+    // Actualiza los items del paginador y lo reinicia a la página 1
+    currentPaginator.updateItems(filtered);
 }
 
 // ============================================
@@ -581,14 +792,13 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
 
     const precioBase = parseFloat(producto.precio) || 0;
     let complementosTotal = 0;
-
-    // ★ SUMAR EXTRAS CON CANTIDADES
+    
     Object.values(selecciones).forEach(items => {
         items.forEach(item => {
             complementosTotal += (parseFloat(item.precio) || 0) * (item.cantidad || 1);
         });
     });
-
+    
     const precioUnitario = precioBase + complementosTotal;
 
     const item = {
@@ -682,7 +892,6 @@ function actualizarCarritoUI() {
                     Object.keys(item.selecciones).forEach(grupo => {
                         const itemsGrupo = item.selecciones[grupo];
                         if (itemsGrupo && itemsGrupo.length > 0) {
-                            // ★ Mostrar la cantidad si es mayor a 1
                             const nombres = itemsGrupo.map(s => {
                                 const p = parseFloat(s.precio) || 0;
                                 const c = s.cantidad || 1;

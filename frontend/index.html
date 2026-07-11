@@ -46,9 +46,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/modal-personalizacion.css">
-    <!-- ★ CSS ANUNCIOS (NUEVO) ★ -->
+    <!-- ★ CSS ANUNCIOS ★ -->
     <link rel="stylesheet" href="assets/css/anuncios.css">
-
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
@@ -324,6 +323,7 @@
                 </div>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#" id="btn-como-pedir"><i class="fas fa-circle-info"></i> Cómo pedir</a></li>
+                    <li><a href="#" id="btn-promo"><i class="fas fa-tag"></i> Promociones</a></li>
                 </ul>
             </nav>
         </div>
@@ -340,21 +340,9 @@
                     <span class="emoji-lado">🍺</span>
                 </h1>
 
-                <p>Comida y licores a domicilio</p>
+                <!-- Textos largos eliminados para optimizar Above the fold -->
                 <div class="hero-discount"><span class="discount-number">50% OFF</span> DE DESCUENTO en el costo del
                     domicilio</div>
-                <p>Los mejores locales de El Santuario en un solo lugar</p>
-
-                <div class="zone-selector">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="zone-autocomplete" id="zone-autocomplete">
-                        <input type="text" id="zone-input" placeholder="Escribe tu zona o barrio..." autocomplete="off">
-                        <input type="hidden" id="zone-select" value="">
-                        <button type="button" class="zone-clear-btn" id="zone-clear-btn" aria-label="Limpiar zona"><i
-                                class="fas fa-times"></i></button>
-                        <div class="zone-dropdown" id="zone-dropdown"></div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -371,12 +359,12 @@
             </div>
 
             <!-- ★★★ 2. TÍTULO DE TIENDAS ★★★ -->
-            <h2 id="main-title" class="stores-section-title"><i class="fas fa-store"></i> Tiendas</h2>
+            <h2 id="main-title" class="stores-section-title"> 🔥 Populares en El Santuario</h2>
 
-            <!-- ★★★ 3. CONTENEDOR DINÁMICO DE ANUNCIOS ★★★ -->
-            <div id="contenedor-anuncios"></div>
+            <!-- ★★★ 3. CONTENEDOR DINÁMICO DE ANUNCIOS (OCULTO POR DEFECTO) ★★★ -->
+            <div id="contenedor-anuncios" style="display: none;"></div>
 
-            <!-- ★★★ 4. GRID DE TIENDAS ★★★ -->
+            <!-- ★★★ 4. GRID DE TIENDAS (CARRUSEL) ★★★ -->
             <div id="stores-grid">
                 <div style="text-align:center; padding: 4rem 0;">
                     <div class="spinner" style="margin: 0 auto 1rem;"></div>
@@ -384,7 +372,13 @@
                 </div>
             </div>
 
-            <!-- ★★★ 5. NUEVO: GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
+            <!-- ★★★ NUEVO: VITRINA DE PRODUCTOS ESTRELLA (COMIDA GIGANTE) ★★★ -->
+            <div id="productos-destacados-grid" class="destacados-container"></div>
+
+            <!-- ★★★ CONTENEDOR DE TIENDAS CERRADAS (Se llena desde JS) ★★★ -->
+            <div id="stores-grid-cerradas"></div>
+
+            <!-- ★★★ 5. GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
             <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
                 <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
                     tiendas</button>
@@ -439,7 +433,7 @@
         </div>
     </div>
 
-    <!-- ★ NUEVO MODAL: CÓMO PEDIR (4 PASOS CON MÉTODO DE PAGO) ★ -->
+    <!-- ★ MODAL: CÓMO PEDIR (3 PASOS) ★ -->
     <div class="modal" id="modal-como-pedir">
         <div class="modal-content" style="max-width: 420px;">
             <div class="modal-header">
@@ -453,26 +447,8 @@
                 <!-- PASO 1 -->
                 <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
                     <div
-                        style="width:36px; height:36px; background:var(--primary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
-                        1</div>
-                    <div style="flex:1;">
-                        <strong style="color:var(--dark); font-size:0.95rem;">Busca tu zona</strong>
-                        <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Escribe tu
-                            barrio en el buscador de arriba. Si tu zona está disponible, ¡selecciónala!</p>
-                        <!-- Simulación visual del buscador -->
-                        <div
-                            style="background:white; border:2px solid var(--accent); border-radius:30px; padding:6px 12px; display:flex; align-items:center; gap:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                            <i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:0.9rem;"></i>
-                            <span style="color:#999; font-size:0.8rem;">Escribe tu zona...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PASO 2 -->
-                <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
-                    <div
                         style="width:36px; height:36px; background:var(--secondary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
-                        2</div>
+                        1</div>
                     <div style="flex:1;">
                         <strong style="color:var(--dark); font-size:0.95rem;">Elige y agrega al carrito</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Explora
@@ -491,11 +467,11 @@
                     </div>
                 </div>
 
-                <!-- PASO 3 (MÉTODO DE PAGO) -->
+                <!-- PASO 2 (MÉTODO DE PAGO) -->
                 <div style="display:flex; gap:1rem; margin-bottom:1.2rem; align-items:flex-start;">
                     <div
                         style="width:36px; height:36px; background:var(--info); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
-                        3</div>
+                        2</div>
                     <div style="flex:1;">
                         <strong style="color:var(--dark); font-size:0.95rem;">Elige cómo vas a pagar</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Al final,
@@ -526,11 +502,11 @@
                     </div>
                 </div>
 
-                <!-- PASO 4 (WHATSAPP) -->
+                <!-- PASO 3 (WHATSAPP) -->
                 <div style="display:flex; gap:1rem; align-items:flex-start;">
                     <div
                         style="width:36px; height:36px; background:var(--dark); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0;">
-                        4</div>
+                        3</div>
                     <div style="flex:1;">
                         <strong style="color:var(--dark); font-size:0.95rem;">Confirma por WhatsApp</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Envía tu
@@ -597,6 +573,7 @@
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/components/toast.js"></script>
+    <script src="assets/js/paginator.js"></script>
     <script src="assets/js/client.js"></script>
     <!-- ★ NUEVO JS DE ANUNCIOS ★ -->
     <script src="assets/js/anuncios.js"></script>
@@ -699,7 +676,6 @@
     </script>
 
     <script>
-        initZoneAutocomplete();
         carrito = obtenerCarrito();
         actualizarCarritoUI();
     </script>
@@ -786,6 +762,123 @@
                 }
             });
         }
+
+        /* ===== LÓGICA PARA ABRIR EL ANUNCIO DESDE EL BOTÓN PROMO ===== */
+        const btnPromo = document.getElementById('btn-promo');
+        const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+        
+        if (btnPromo && contenedorAnuncios) {
+            btnPromo.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Cerrar el menú hamburguesa si estaba abierto en móvil
+                document.getElementById('nav-links').classList.remove('active');
+                document.getElementById('mobile-menu').classList.remove('active');
+                
+                // 1. Mostrar el contenedor de la tarjeta del anuncio (en caso de que le den X al popup)
+                contenedorAnuncios.style.display = 'grid';
+                
+                // 2. Hacer scroll suave hacia el anuncio
+                contenedorAnuncios.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // 3. Abrir el popup automáticamente (si hay un anuncio destacado cargado)
+                if (window.Anuncios && Anuncios.anuncioDestacado) {
+                    setTimeout(() => {
+                        Anuncios.abrirPopup(Anuncios.anuncioDestacado.id);
+                    }, 400); // Pequeña espera para que el scroll termine primero
+                }
+            });
+        }
+    </script>
+
+    <!-- ★ MODAL PREVENIR SALIDA ACCIDENTAL ★ -->
+    <div id="exit-modal" class="exit-modal">
+        <div class="exit-modal-content">
+            <div class="exit-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+
+            <h3>¿Salir de Domidelis?</h3>
+
+            <p>Si cierras la app, podrías perder tu carrito actual. ¿Seguro que deseas salir?</p>
+
+            <!-- Mensaje especial solo para PWA -->
+            <p id="pwa-message" class="pwa-message">
+                Para salir completamente, debes presionar el botón de <strong>atrás</strong> de tu celular <strong>dos
+                    veces</strong>.
+            </p>
+
+            <div class="exit-buttons">
+                <button id="btn-quedarse">Quedarme</button>
+                <button id="btn-salir">Salir</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const rol = localStorage.getItem('rol');
+
+            if (!rol || rol === 'cliente') {
+
+                const esPWA = window.matchMedia('(display-mode: standalone)').matches ||
+                    window.navigator.standalone === true;
+
+                const exitModal = document.getElementById('exit-modal');
+                const btnSalir = document.getElementById('btn-salir');
+                const btnQuedarse = document.getElementById('btn-quedarse');
+                const pwaMessage = document.getElementById('pwa-message');
+
+                function preventExit(event) {
+                    window.history.pushState({ noBackExitsApp: true }, '');
+                    exitModal.style.display = 'flex';
+
+                    if (esPWA) {
+                        if (btnSalir) btnSalir.style.display = 'none';
+                        if (pwaMessage) pwaMessage.style.display = 'block';
+                    } else {
+                        if (btnSalir) btnSalir.style.display = 'block';
+                        if (pwaMessage) pwaMessage.style.display = 'none';
+                    }
+                }
+
+                window.history.pushState({ noBackExitsApp: true }, '');
+                window.addEventListener('popstate', preventExit);
+
+                if (btnQuedarse) {
+                    btnQuedarse.addEventListener('click', function () {
+                        exitModal.style.display = 'none';
+                        if (pwaMessage) pwaMessage.style.display = 'none';
+                    });
+                }
+
+                if (btnSalir) {
+                    btnSalir.addEventListener('click', function () {
+                        exitModal.style.display = 'none';
+                        window.removeEventListener('popstate', preventExit);
+
+                        window.history.back();
+
+                        setTimeout(function () {
+                            if (document.visibilityState === 'visible' && !esPWA) {
+                                window.history.back();
+
+                                setTimeout(function () {
+                                    if (document.visibilityState === 'visible') {
+                                        window.close();
+
+                                        setTimeout(function () {
+                                            if (document.visibilityState === 'visible') {
+                                                window.location.replace('https://www.google.com');
+                                            }
+                                        }, 200);
+                                    }
+                                }, 150);
+                            }
+                        }, 80);
+                    });
+                }
+            }
+        });
     </script>
 </body>
 
