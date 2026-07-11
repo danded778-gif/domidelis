@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T03-35-02",
-  "ultimaActualizacion": "2026-07-11T03:35:02.850Z",
+  "version": "v2026-07-11T03-40-18",
+  "ultimaActualizacion": "2026-07-11T03:40:18.136Z",
   "tiendas": [
     {
       "id": 1,
@@ -3188,6 +3188,16 @@
       "tipo": "salsa",
       "max": 3,
       "min": 0
+    },
+    {
+      "id": 168,
+      "id_producto": "#NUM!",
+      "grupo": "Proteina",
+      "nombre": "cerdo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 1
     }
   ]
 }
