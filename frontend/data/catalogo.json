@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T01-37-47",
-  "ultimaActualizacion": "2026-07-11T01:37:47.570Z",
+  "version": "v2026-07-11T01-38-18",
+  "ultimaActualizacion": "2026-07-11T01:38:18.437Z",
   "tiendas": [
     {
       "id": 1,
@@ -3099,6 +3099,16 @@
       "precio": 0,
       "tipo": "salsa",
       "max": 3,
+      "min": 0
+    },
+    {
+      "id": 160,
+      "id_producto": "#NUM!",
+      "grupo": "salsa",
+      "nombre": "amarilla",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
       "min": 0
     }
   ]
