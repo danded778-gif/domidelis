@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-11T01-46-19",
-  "ultimaActualizacion": "2026-07-11T01:46:19.118Z",
+  "version": "v2026-07-11T01-48-26",
+  "ultimaActualizacion": "2026-07-11T01:48:26.644Z",
   "tiendas": [
     {
       "id": 1,
@@ -3134,6 +3134,16 @@
       "id_producto": 158,
       "grupo": "Salsas",
       "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 163,
+      "id_producto": 158,
+      "grupo": "Salsas",
+      "nombre": "Salsa BBQ2",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
