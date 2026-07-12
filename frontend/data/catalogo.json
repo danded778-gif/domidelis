@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T08-26-43",
-  "ultimaActualizacion": "2026-07-12T08:26:43.622Z",
+  "version": "v2026-07-12T08-27-11",
+  "ultimaActualizacion": "2026-07-12T08:27:11.672Z",
   "tiendas": [
     {
       "id": 1,
@@ -781,39 +781,13 @@
       "activo": true,
       "productos": [
         {
-          "id": 160,
-          "nombre": "Chorizo Grande",
-          "descripcion": "",
-          "precio": 13000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo__picado_100kb.jpg",
-          "badge": "Disponible",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Mantenimineto"
-        },
-        {
-          "id": 161,
-          "nombre": "Carne Res",
-          "descripcion": "",
-          "precio": 0,
+          "id": 167,
+          "nombre": "prueba_productos adiciones",
+          "descripcion": "prueba",
+          "precio": 10000,
           "imagen_url": "",
-          "badge": "agotado",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Mantenimineto"
-        },
-        {
-          "id": 162,
-          "nombre": "Cerdo",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "",
-          "badge": "agotado",
-          "categoria": "comida",
+          "badge": "nuevo",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "8",
@@ -846,13 +820,39 @@
           "tiendaNombre": "Chorizos Santuarianos"
         },
         {
-          "id": 167,
-          "nombre": "prueba_productos adiciones",
-          "descripcion": "prueba",
-          "precio": 10000,
+          "id": 160,
+          "nombre": "Chorizo Grande",
+          "descripcion": "",
+          "precio": 13000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo__picado_100kb.jpg",
+          "badge": "Disponible",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "9",
+          "tiendaNombre": "Chorizos Santuarianos"
+        },
+        {
+          "id": 161,
+          "nombre": "Carne Res",
+          "descripcion": "",
+          "precio": 0,
           "imagen_url": "",
-          "badge": "nuevo",
-          "categoria": "Otras",
+          "badge": "agotado",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "9",
+          "tiendaNombre": "Chorizos Santuarianos"
+        },
+        {
+          "id": 162,
+          "nombre": "Cerdo",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "comida",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "9",
@@ -1561,8 +1561,8 @@
       "categoria": "comida",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
+      "tiendaId": "9",
+      "tiendaNombre": "Chorizos Santuarianos"
     },
     {
       "id": 161,
@@ -1574,8 +1574,8 @@
       "categoria": "comida",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
+      "tiendaId": "9",
+      "tiendaNombre": "Chorizos Santuarianos"
     },
     {
       "id": 162,
@@ -1587,8 +1587,8 @@
       "categoria": "comida",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
+      "tiendaId": "9",
+      "tiendaNombre": "Chorizos Santuarianos"
     },
     {
       "id": 167,
@@ -1600,8 +1600,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "9",
-      "tiendaNombre": "Chorizos Santuarianos"
+      "tiendaId": "8",
+      "tiendaNombre": "Mantenimineto"
     }
   ],
   "complementosGlobal": [
