@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-35-23",
-  "ultimaActualizacion": "2026-07-12T07:35:23.546Z",
+  "version": "v2026-07-12T07-35-49",
+  "ultimaActualizacion": "2026-07-12T07:35:49.195Z",
   "tiendas": [
     {
       "id": 1,
@@ -1500,7 +1500,7 @@
     },
     {
       "id": 160,
-      "nombre": "",
+      "nombre": "Chorizo Grande",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -1513,7 +1513,7 @@
     },
     {
       "id": 161,
-      "nombre": "",
+      "nombre": "Carne",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -1526,7 +1526,7 @@
     },
     {
       "id": 162,
-      "nombre": "",
+      "nombre": "Cerdo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
