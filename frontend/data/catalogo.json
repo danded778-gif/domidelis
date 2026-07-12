@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T08-22-52",
-  "ultimaActualizacion": "2026-07-12T08:22:52.084Z",
+  "version": "v2026-07-12T08-26-15",
+  "ultimaActualizacion": "2026-07-12T08:26:15.851Z",
   "tiendas": [
     {
       "id": 1,
@@ -835,7 +835,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 10,
       "nombre": "Mantenimineto",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
@@ -844,21 +844,7 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": [
-        {
-          "id": 167,
-          "nombre": "prueba_productos adiciones",
-          "descripcion": "prueba",
-          "precio": 10000,
-          "imagen_url": "",
-          "badge": "nuevo",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "9",
-          "tiendaNombre": "Mantenimineto"
-        }
-      ]
+      "productos": []
     }
   ],
   "productosGlobal": [
@@ -1601,7 +1587,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "9",
-      "tiendaNombre": "Mantenimineto"
+      "tiendaNombre": "Sin tienda"
     }
   ],
   "complementosGlobal": [
