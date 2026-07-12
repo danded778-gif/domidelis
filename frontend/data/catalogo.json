@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-34-22",
-  "ultimaActualizacion": "2026-07-12T07:34:22.744Z",
+  "version": "v2026-07-12T07-34-45",
+  "ultimaActualizacion": "2026-07-12T07:34:45.812Z",
   "tiendas": [
     {
       "id": 1,
@@ -766,6 +766,19 @@
           "activo": true,
           "tiendaId": "7",
           "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 158,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
         }
       ]
     },
@@ -791,7 +804,21 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 167,
+          "nombre": "prueba_productos adiciones",
+          "descripcion": "prueba",
+          "precio": 10000,
+          "imagen_url": "",
+          "badge": "nuevo",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "9",
+          "tiendaNombre": "Mantenimineto"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -885,19 +912,6 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 108,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 109,
@@ -1212,19 +1226,6 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 131,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 132,
       "nombre": "Salchipapas Pequeña",
       "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
@@ -1303,19 +1304,6 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 138,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 139,
       "nombre": "Almuerzo",
       "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
@@ -1366,19 +1354,6 @@
       "activo": true,
       "tiendaId": "3",
       "tiendaNombre": "Calanchos Parrilla"
-    },
-    {
-      "id": 143,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 144,
@@ -1457,19 +1432,6 @@
       "activo": true,
       "tiendaId": "4",
       "tiendaNombre": "Alitas maria pendeja"
-    },
-    {
-      "id": 150,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 151,
@@ -1561,6 +1523,136 @@
       "activo": true,
       "tiendaId": "7",
       "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 158,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "comida",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
+    },
+    {
+      "id": 159,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 160,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 161,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 162,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 163,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 164,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 165,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 166,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 167,
+      "nombre": "prueba_productos adiciones",
+      "descripcion": "prueba",
+      "precio": 10000,
+      "imagen_url": "",
+      "badge": "nuevo",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "9",
+      "tiendaNombre": "Mantenimineto"
     }
   ],
   "complementosGlobal": [
