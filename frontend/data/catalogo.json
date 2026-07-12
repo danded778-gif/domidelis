@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-54-09",
-  "ultimaActualizacion": "2026-07-12T07:54:09.357Z",
+  "version": "v2026-07-12T07-58-45",
+  "ultimaActualizacion": "2026-07-12T07:58:45.189Z",
   "tiendas": [
     {
       "id": 1,
@@ -774,8 +774,8 @@
       "nombre": "Chorizos Santuarianos",
       "descripcion": "Comidas rapidas",
       "direccion": "med-bog",
-      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
-      "rating": 3.8,
+      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"01:00-23:00\"}",
+      "rating": 3.9,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/chorizosantuariano/chorizosantuarianocopia_100kb.jpg",
       "promovida": 0,
       "activo": true,
