@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-21-07",
-  "ultimaActualizacion": "2026-07-12T07:21:07.359Z",
+  "version": "v2026-07-12T07-32-46",
+  "ultimaActualizacion": "2026-07-12T07:32:46.209Z",
   "tiendas": [
     {
       "id": 1,
@@ -776,7 +776,7 @@
       "direccion": "med-bog",
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 3.8,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/chorizosantuariano/chorizosantuarianocopia_100kb.jpg",
       "promovida": 0,
       "activo": true,
       "productos": [
