@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-37-35",
-  "ultimaActualizacion": "2026-07-12T07:37:35.867Z",
+  "version": "v2026-07-12T07-45-08",
+  "ultimaActualizacion": "2026-07-12T07:45:08.583Z",
   "tiendas": [
     {
       "id": 1,
@@ -785,7 +785,7 @@
           "nombre": "Chorizo pequeño",
           "descripcion": "",
           "precio": 10000,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo_picado1copia_100kb.jpg",
           "badge": "Disponible",
           "categoria": "comida",
           "cantidadTipo": "UND",
@@ -1543,7 +1543,7 @@
       "nombre": "Chorizo pequeño",
       "descripcion": "",
       "precio": 10000,
-      "imagen_url": "",
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo_picado1copia_100kb.jpg",
       "badge": "Disponible",
       "categoria": "comida",
       "cantidadTipo": "UND",
