@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-34-47",
-  "ultimaActualizacion": "2026-07-12T07:34:47.941Z",
+  "version": "v2026-07-12T07-35-23",
+  "ultimaActualizacion": "2026-07-12T07:35:23.546Z",
   "tiendas": [
     {
       "id": 1,
@@ -766,19 +766,6 @@
           "activo": true,
           "tiendaId": "7",
           "tiendaNombre": "La Basilica"
-        },
-        {
-          "id": 158,
-          "nombre": "",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "",
-          "badge": "",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "7",
-          "tiendaNombre": "La Basilica"
         }
       ]
     },
@@ -1447,19 +1434,6 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 153,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 154,
       "nombre": "personal",
       "descripcion": "",
@@ -1512,21 +1486,8 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 158,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "comida",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "7",
-      "tiendaNombre": "La Basilica"
-    },
-    {
       "id": 159,
-      "nombre": "",
+      "nombre": "Chorizo pequeño",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
