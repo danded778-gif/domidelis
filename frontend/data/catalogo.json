@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-20-32",
-  "ultimaActualizacion": "2026-07-12T07:20:32.449Z",
+  "version": "v2026-07-12T07-21-07",
+  "ultimaActualizacion": "2026-07-12T07:21:07.359Z",
   "tiendas": [
     {
       "id": 1,
@@ -10,7 +10,7 @@
       "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
       "rating": 3.8,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -774,8 +774,8 @@
       "nombre": "Chorizos Santuarianos",
       "descripcion": "Comidas rapidas",
       "direccion": "med-bog",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 1,
+      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
+      "rating": 3.8,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
