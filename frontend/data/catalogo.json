@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T08-26-15",
-  "ultimaActualizacion": "2026-07-12T08:26:15.851Z",
+  "version": "v2026-07-12T08-26-43",
+  "ultimaActualizacion": "2026-07-12T08:26:43.622Z",
   "tiendas": [
     {
       "id": 1,
@@ -771,6 +771,58 @@
     },
     {
       "id": 8,
+      "nombre": "Mantenimineto",
+      "descripcion": "Comidas rapidas",
+      "direccion": "calle 11",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 1,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 0,
+      "activo": true,
+      "productos": [
+        {
+          "id": 160,
+          "nombre": "Chorizo Grande",
+          "descripcion": "",
+          "precio": 13000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo__picado_100kb.jpg",
+          "badge": "Disponible",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "8",
+          "tiendaNombre": "Mantenimineto"
+        },
+        {
+          "id": 161,
+          "nombre": "Carne Res",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "8",
+          "tiendaNombre": "Mantenimineto"
+        },
+        {
+          "id": 162,
+          "nombre": "Cerdo",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "comida",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "8",
+          "tiendaNombre": "Mantenimineto"
+        }
+      ]
+    },
+    {
+      "id": 9,
       "nombre": "Chorizos Santuarianos",
       "descripcion": "Comidas rapidas",
       "direccion": "med-bog",
@@ -790,61 +842,23 @@
           "categoria": "comida",
           "cantidadTipo": "UND",
           "activo": true,
-          "tiendaId": "8",
+          "tiendaId": "9",
           "tiendaNombre": "Chorizos Santuarianos"
         },
         {
-          "id": 160,
-          "nombre": "Chorizo Grande",
-          "descripcion": "",
-          "precio": 13000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo__picado_100kb.jpg",
-          "badge": "Disponible",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Chorizos Santuarianos"
-        },
-        {
-          "id": 161,
-          "nombre": "Carne Res",
-          "descripcion": "",
-          "precio": 0,
+          "id": 167,
+          "nombre": "prueba_productos adiciones",
+          "descripcion": "prueba",
+          "precio": 10000,
           "imagen_url": "",
-          "badge": "agotado",
-          "categoria": "comida",
+          "badge": "nuevo",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Chorizos Santuarianos"
-        },
-        {
-          "id": 162,
-          "nombre": "Cerdo",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "",
-          "badge": "agotado",
-          "categoria": "comida",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
+          "tiendaId": "9",
           "tiendaNombre": "Chorizos Santuarianos"
         }
       ]
-    },
-    {
-      "id": 10,
-      "nombre": "Mantenimineto",
-      "descripcion": "Comidas rapidas",
-      "direccion": "calle 11",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 1,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 0,
-      "activo": true,
-      "productos": []
     }
   ],
   "productosGlobal": [
@@ -1534,7 +1548,7 @@
       "categoria": "comida",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "8",
+      "tiendaId": "9",
       "tiendaNombre": "Chorizos Santuarianos"
     },
     {
@@ -1548,7 +1562,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "Chorizos Santuarianos"
+      "tiendaNombre": "Mantenimineto"
     },
     {
       "id": 161,
@@ -1561,7 +1575,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "Chorizos Santuarianos"
+      "tiendaNombre": "Mantenimineto"
     },
     {
       "id": 162,
@@ -1574,7 +1588,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "Chorizos Santuarianos"
+      "tiendaNombre": "Mantenimineto"
     },
     {
       "id": 167,
@@ -1587,7 +1601,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "9",
-      "tiendaNombre": "Sin tienda"
+      "tiendaNombre": "Chorizos Santuarianos"
     }
   ],
   "complementosGlobal": [
