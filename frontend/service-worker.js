@@ -8,7 +8,7 @@ const CACHE_NAME = isDev
     ? 'dev-' + Date.now() 
     : 'domidelis-v2.6'; 
 
-const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1'; 
+const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2'; 
 
 const ARCHIVOS_ESTATICOS = [
   '/',
