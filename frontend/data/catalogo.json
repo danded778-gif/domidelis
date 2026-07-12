@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-19-52",
-  "ultimaActualizacion": "2026-07-12T07:19:52.355Z",
+  "version": "v2026-07-12T07-20-32",
+  "ultimaActualizacion": "2026-07-12T07:20:32.449Z",
   "tiendas": [
     {
       "id": 1,
@@ -771,9 +771,9 @@
     },
     {
       "id": 8,
-      "nombre": "Mantenimineto",
+      "nombre": "Chorizos Santuarianos",
       "descripcion": "Comidas rapidas",
-      "direccion": "calle 11",
+      "direccion": "med-bog",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
@@ -791,12 +791,12 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "8",
-          "tiendaNombre": "Mantenimineto"
+          "tiendaNombre": "Chorizos Santuarianos"
         }
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "nombre": "Mantenimineto",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
@@ -1587,7 +1587,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
+      "tiendaNombre": "Chorizos Santuarianos"
     }
   ],
   "complementosGlobal": [
