@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T07-32-58",
-  "ultimaActualizacion": "2026-07-12T07:32:58.513Z",
+  "version": "v2026-07-12T07-34-22",
+  "ultimaActualizacion": "2026-07-12T07:34:22.744Z",
   "tiendas": [
     {
       "id": 1,
@@ -779,21 +779,7 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/chorizosantuariano/chorizosantuarianocopia_100kb.jpg",
       "promovida": 0,
       "activo": true,
-      "productos": [
-        {
-          "id": 158,
-          "nombre": "prueba_productos adiciones",
-          "descripcion": "prueba",
-          "precio": 10000,
-          "imagen_url": "",
-          "badge": "nuevo",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Chorizos Santuarianos"
-        }
-      ]
+      "productos": []
     },
     {
       "id": 9,
@@ -1575,19 +1561,6 @@
       "activo": true,
       "tiendaId": "7",
       "tiendaNombre": "La Basilica"
-    },
-    {
-      "id": 158,
-      "nombre": "prueba_productos adiciones",
-      "descripcion": "prueba",
-      "precio": 10000,
-      "imagen_url": "",
-      "badge": "nuevo",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Chorizos Santuarianos"
     }
   ],
   "complementosGlobal": [
