@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-35-02",
-  "ultimaActualizacion": "2026-07-13T20:35:02.091Z",
+  "version": "v2026-07-13T20-40-35",
+  "ultimaActualizacion": "2026-07-13T20:40:35.540Z",
   "tiendas": [
     {
       "id": 1,
@@ -954,19 +954,6 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 108,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 109,
       "nombre": "🥤 Gaseosa 1.5L",
       "descripcion": "Coca-Cola",
@@ -1188,32 +1175,6 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 126,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
-      "id": 127,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 128,
       "nombre": "Clasica",
       "descripcion": "Pan, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
@@ -1303,19 +1264,6 @@
       "activo": true,
       "tiendaId": "5",
       "tiendaNombre": "Candela Burger"
-    },
-    {
-      "id": 135,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 136,
@@ -1461,19 +1409,6 @@
       "tiendaNombre": "Calanchos Parrilla"
     },
     {
-      "id": 147,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 148,
       "nombre": "Pendeja 1",
       "descripcion": "8 Alitas más acompañante",
@@ -1552,32 +1487,6 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 154,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
-      "id": 155,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 156,
       "nombre": "📦 Encargo Express",
       "descripcion": "",
@@ -1589,19 +1498,6 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 157,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 158,
@@ -1656,19 +1552,6 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 162,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 163,
       "nombre": "Chorizo pequeño",
       "descripcion": "",
@@ -1721,19 +1604,6 @@
       "tiendaNombre": "Chorizos Santuarianos"
     },
     {
-      "id": 167,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 168,
       "nombre": "prueba_productos adiciones",
       "descripcion": "prueba",
@@ -1750,7 +1620,7 @@
   "complementosGlobal": [
     {
       "id": 1,
-      "id_producto": 144,
+      "id_producto": 148,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
