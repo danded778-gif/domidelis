@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-42-10",
-  "ultimaActualizacion": "2026-07-13T20:42:10.672Z",
+  "version": "v2026-07-13T20-42-51",
+  "ultimaActualizacion": "2026-07-13T20:42:51.142Z",
   "tiendas": [
     {
       "id": 1,
@@ -1344,19 +1344,6 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 142,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
-    },
-    {
       "id": 143,
       "nombre": "Almuerzo",
       "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
@@ -2030,7 +2017,7 @@
     },
     {
       "id": 42,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -2040,7 +2027,7 @@
     },
     {
       "id": 43,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -2050,7 +2037,7 @@
     },
     {
       "id": 44,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -2060,7 +2047,7 @@
     },
     {
       "id": 45,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -2070,7 +2057,7 @@
     },
     {
       "id": 46,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -2080,7 +2067,7 @@
     },
     {
       "id": 47,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -2090,7 +2077,7 @@
     },
     {
       "id": 48,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
@@ -2100,7 +2087,7 @@
     },
     {
       "id": 49,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
@@ -2120,7 +2107,7 @@
     },
     {
       "id": 51,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
@@ -2130,7 +2117,7 @@
     },
     {
       "id": 52,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -2140,7 +2127,7 @@
     },
     {
       "id": 53,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -2150,7 +2137,7 @@
     },
     {
       "id": 54,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Gasesosa",
       "nombre": "gaseosa 1.5L",
       "precio": 0,
@@ -2160,7 +2147,7 @@
     },
     {
       "id": 55,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -2170,7 +2157,7 @@
     },
     {
       "id": 56,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -2180,7 +2167,7 @@
     },
     {
       "id": 57,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -2190,7 +2177,7 @@
     },
     {
       "id": 58,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -2200,7 +2187,7 @@
     },
     {
       "id": 59,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
@@ -2210,7 +2197,7 @@
     },
     {
       "id": 60,
-      "id_producto": 149,
+      "id_producto": 153,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
