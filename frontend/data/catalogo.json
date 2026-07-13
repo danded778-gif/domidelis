@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-41-44",
-  "ultimaActualizacion": "2026-07-13T20:41:44.699Z",
+  "version": "v2026-07-13T20-42-10",
+  "ultimaActualizacion": "2026-07-13T20:42:10.672Z",
   "tiendas": [
     {
       "id": 1,
@@ -2020,7 +2020,7 @@
     },
     {
       "id": 41,
-      "id_producto": 148,
+      "id_producto": 152,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
