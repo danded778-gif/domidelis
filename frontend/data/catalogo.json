@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-41-42",
-  "ultimaActualizacion": "2026-07-13T20:41:42.661Z",
+  "version": "v2026-07-13T20-41-44",
+  "ultimaActualizacion": "2026-07-13T20:41:44.699Z",
   "tiendas": [
     {
       "id": 1,
@@ -1930,7 +1930,7 @@
     },
     {
       "id": 32,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -1940,7 +1940,7 @@
     },
     {
       "id": 33,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -1950,7 +1950,7 @@
     },
     {
       "id": 34,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -1960,7 +1960,7 @@
     },
     {
       "id": 35,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -1970,7 +1970,7 @@
     },
     {
       "id": 36,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -1980,7 +1980,7 @@
     },
     {
       "id": 37,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -1990,7 +1990,7 @@
     },
     {
       "id": 38,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
@@ -2000,7 +2000,7 @@
     },
     {
       "id": 39,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
