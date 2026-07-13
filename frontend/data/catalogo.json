@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-43-45",
-  "ultimaActualizacion": "2026-07-13T20:43:45.857Z",
+  "version": "v2026-07-13T20-44-17",
+  "ultimaActualizacion": "2026-07-13T20:44:17.905Z",
   "tiendas": [
     {
       "id": 1,
@@ -2367,7 +2367,7 @@
     },
     {
       "id": 78,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Hígado Encebollado",
       "precio": 0,
@@ -2377,7 +2377,7 @@
     },
     {
       "id": 79,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Rollos de cerdo en salsa",
       "precio": 0,
@@ -2387,7 +2387,7 @@
     },
     {
       "id": 80,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Cerdo",
       "precio": 0,
@@ -2397,7 +2397,7 @@
     },
     {
       "id": 81,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Pechuga a la plancha",
       "precio": 0,
@@ -2407,7 +2407,7 @@
     },
     {
       "id": 82,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Bistec",
       "precio": 0,
@@ -2417,7 +2417,7 @@
     },
     {
       "id": 83,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Carné molida",
       "precio": 0,
@@ -2427,7 +2427,7 @@
     },
     {
       "id": 84,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
       "precio": 0,
@@ -2437,7 +2437,7 @@
     },
     {
       "id": 85,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Chorizo",
       "precio": 0,
@@ -2447,7 +2447,7 @@
     },
     {
       "id": 86,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Acompañamiento",
       "nombre": "Sopa de Verdura",
       "precio": 0,
@@ -2457,7 +2457,7 @@
     },
     {
       "id": 87,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Acompañamiento",
       "nombre": "Frijoles",
       "precio": 0,
@@ -2467,7 +2467,7 @@
     },
     {
       "id": 88,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
@@ -2477,7 +2477,7 @@
     },
     {
       "id": 89,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
@@ -2487,7 +2487,7 @@
     },
     {
       "id": 90,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
@@ -2497,7 +2497,7 @@
     },
     {
       "id": 91,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
       "precio": 0,
@@ -2507,7 +2507,7 @@
     },
     {
       "id": 92,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "",
       "nombre": "porcion arroz",
       "precio": 6000,
@@ -2517,7 +2517,7 @@
     },
     {
       "id": 93,
-      "id_producto": 140,
+      "id_producto": 144,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
@@ -2527,7 +2527,7 @@
     },
     {
       "id": 96,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Hígado Encebollado",
       "precio": 0,
@@ -2537,7 +2537,7 @@
     },
     {
       "id": 97,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Rollos de cerdo en salsa",
       "precio": 0,
@@ -2547,7 +2547,7 @@
     },
     {
       "id": 98,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Cerdo",
       "precio": 0,
@@ -2557,7 +2557,7 @@
     },
     {
       "id": 99,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Pechuga a la plancha",
       "precio": 0,
@@ -2567,7 +2567,7 @@
     },
     {
       "id": 100,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Bistec",
       "precio": 0,
@@ -2577,7 +2577,7 @@
     },
     {
       "id": 101,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Carné molida",
       "precio": 0,
@@ -2587,7 +2587,7 @@
     },
     {
       "id": 102,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
       "precio": 0,
@@ -2597,7 +2597,7 @@
     },
     {
       "id": 103,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Chorizo",
       "precio": 0,
@@ -2607,7 +2607,7 @@
     },
     {
       "id": 104,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Acompañamiento",
       "nombre": "Sopa mazorca",
       "precio": 0,
@@ -2617,7 +2617,7 @@
     },
     {
       "id": 105,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Acompañamiento",
       "nombre": "Frijoles",
       "precio": 0,
@@ -2627,7 +2627,7 @@
     },
     {
       "id": 106,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
@@ -2637,7 +2637,7 @@
     },
     {
       "id": 107,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
@@ -2647,7 +2647,7 @@
     },
     {
       "id": 108,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
@@ -2657,7 +2657,7 @@
     },
     {
       "id": 109,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
       "precio": 0,
@@ -2667,7 +2667,7 @@
     },
     {
       "id": 110,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "",
       "nombre": "porcion arroz",
       "precio": 6000,
@@ -2677,7 +2677,7 @@
     },
     {
       "id": 111,
-      "id_producto": 141,
+      "id_producto": 145,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
@@ -2687,7 +2687,7 @@
     },
     {
       "id": 113,
-      "id_producto": 142,
+      "id_producto": 146,
       "grupo": "Proteína",
       "nombre": "Hígado Encebollado",
       "precio": 0,
