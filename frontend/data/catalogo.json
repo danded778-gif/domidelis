@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-41-01",
-  "ultimaActualizacion": "2026-07-13T20:41:01.909Z",
+  "version": "v2026-07-13T20-41-42",
+  "ultimaActualizacion": "2026-07-13T20:41:42.661Z",
   "tiendas": [
     {
       "id": 1,
@@ -1820,7 +1820,7 @@
     },
     {
       "id": 21,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
@@ -1830,7 +1830,7 @@
     },
     {
       "id": 22,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -1840,7 +1840,7 @@
     },
     {
       "id": 23,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -1850,7 +1850,7 @@
     },
     {
       "id": 24,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -1860,7 +1860,7 @@
     },
     {
       "id": 25,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -1870,7 +1870,7 @@
     },
     {
       "id": 26,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -1880,7 +1880,7 @@
     },
     {
       "id": 27,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -1890,7 +1890,7 @@
     },
     {
       "id": 28,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 5000,
@@ -1900,7 +1900,7 @@
     },
     {
       "id": 29,
-      "id_producto": 146,
+      "id_producto": 150,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
@@ -1920,7 +1920,7 @@
     },
     {
       "id": 31,
-      "id_producto": 147,
+      "id_producto": 151,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
