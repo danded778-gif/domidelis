@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-12T22-51-19",
-  "ultimaActualizacion": "2026-07-12T22:51:19.955Z",
+  "version": "v2026-07-13T20-35-02",
+  "ultimaActualizacion": "2026-07-13T20:35:02.091Z",
   "tiendas": [
     {
       "id": 1,
@@ -313,7 +313,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 159,
+          "id": 124,
           "nombre": "Aguardiente Antioqueño 260 roja",
           "descripcion": "",
           "precio": 17300,
@@ -326,7 +326,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 160,
+          "id": 125,
           "nombre": "aguardiente antioqueño 260 verde",
           "descripcion": "",
           "precio": 16500,
@@ -339,7 +339,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 152,
+          "id": 156,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
           "precio": 0,
@@ -365,7 +365,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 139,
+          "id": 143,
           "nombre": "Almuerzo",
           "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
           "precio": 18000,
@@ -378,7 +378,7 @@
           "tiendaNombre": "Calanchos Parrilla"
         },
         {
-          "id": 140,
+          "id": 144,
           "nombre": "Menu Jueves",
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
@@ -391,7 +391,7 @@
           "tiendaNombre": "Calanchos Parrilla"
         },
         {
-          "id": 141,
+          "id": 145,
           "nombre": "Almuerzo",
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 18000,
@@ -404,7 +404,7 @@
           "tiendaNombre": "Calanchos Parrilla"
         },
         {
-          "id": 142,
+          "id": 146,
           "nombre": "Menu Miercoles",
           "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
           "precio": 18000,
@@ -430,7 +430,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 144,
+          "id": 148,
           "nombre": "Pendeja 1",
           "descripcion": "8 Alitas más acompañante",
           "precio": 25000,
@@ -443,7 +443,7 @@
           "tiendaNombre": "Alitas maria pendeja"
         },
         {
-          "id": 145,
+          "id": 149,
           "nombre": "Pendeja 2",
           "descripcion": "14 Alitas más acompañante",
           "precio": 40000,
@@ -456,7 +456,7 @@
           "tiendaNombre": "Alitas maria pendeja"
         },
         {
-          "id": 146,
+          "id": 150,
           "nombre": "Pendeja 3",
           "descripcion": "20 Alitas más acompañante",
           "precio": 50000,
@@ -469,7 +469,7 @@
           "tiendaNombre": "Alitas maria pendeja"
         },
         {
-          "id": 147,
+          "id": 151,
           "nombre": "Pendeja 4",
           "descripcion": "34 Alitas más acompañante",
           "precio": 66000,
@@ -482,7 +482,7 @@
           "tiendaNombre": "Alitas maria pendeja"
         },
         {
-          "id": 148,
+          "id": 152,
           "nombre": "Pendeja 5",
           "descripcion": "50 Alitas más acompañante",
           "precio": 88000,
@@ -495,7 +495,7 @@
           "tiendaNombre": "Alitas maria pendeja"
         },
         {
-          "id": 149,
+          "id": 153,
           "nombre": "Pendeja 6",
           "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
           "precio": 130000,
@@ -521,7 +521,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 124,
+          "id": 128,
           "nombre": "Clasica",
           "descripcion": "Pan, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
           "precio": 16000,
@@ -534,7 +534,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 125,
+          "id": 129,
           "nombre": "Salchipapa Trifasica Personal",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 22000,
@@ -547,7 +547,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 126,
+          "id": 130,
           "nombre": "Salchipapa Trifasica G",
           "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
           "precio": 36000,
@@ -560,7 +560,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 127,
+          "id": 131,
           "nombre": "Crispy Onion",
           "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
           "precio": 22000,
@@ -573,7 +573,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 128,
+          "id": 132,
           "nombre": "La Parcera",
           "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra salsa. Acompañada de papas fritas.",
           "precio": 24000,
@@ -586,7 +586,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 129,
+          "id": 133,
           "nombre": "La Costeña",
           "descripcion": "hamburguesa con pan suave, carne jugosa a la plancha, doble queso fundido, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa de la casa.",
           "precio": 24000,
@@ -599,7 +599,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 130,
+          "id": 134,
           "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
@@ -625,7 +625,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 132,
+          "id": 136,
           "nombre": "Salchipapas Pequeña",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
           "precio": 15000,
@@ -638,7 +638,7 @@
           "tiendaNombre": "Punto Del Sabor"
         },
         {
-          "id": 133,
+          "id": 137,
           "nombre": "Salchipapas Mediana",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante,queso y nuestras deliciosas salsas de la casa.",
           "precio": 18000,
@@ -651,7 +651,7 @@
           "tiendaNombre": "Punto Del Sabor"
         },
         {
-          "id": 134,
+          "id": 138,
           "nombre": "Salchipapas Grande",
           "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras  salsas de la casa.",
           "precio": 20000,
@@ -664,7 +664,7 @@
           "tiendaNombre": "Punto Del Sabor"
         },
         {
-          "id": 135,
+          "id": 139,
           "nombre": "Hamburgesa Doble Carne",
           "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
           "precio": 17000,
@@ -677,7 +677,7 @@
           "tiendaNombre": "Punto Del Sabor"
         },
         {
-          "id": 136,
+          "id": 140,
           "nombre": "Combo 5",
           "descripcion": "Hamburguesa con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañada de crujientes papas a la francesa y una refrescante gaseosa Pool de 600 ml.",
           "precio": 17000,
@@ -690,7 +690,7 @@
           "tiendaNombre": "Punto Del Sabor"
         },
         {
-          "id": 137,
+          "id": 141,
           "nombre": "Combo 7",
           "descripcion": "Incluye 4 deliciosas hamburguesas preparadas con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañadas de una porción de papas a la francesa y una refrescante gaseosa Pool 1/4.",
           "precio": 42000,
@@ -716,7 +716,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 154,
+          "id": 158,
           "nombre": "personal",
           "descripcion": "",
           "precio": 0,
@@ -729,7 +729,7 @@
           "tiendaNombre": "La Basilica"
         },
         {
-          "id": 155,
+          "id": 159,
           "nombre": "mediana",
           "descripcion": "",
           "precio": 0,
@@ -742,7 +742,7 @@
           "tiendaNombre": "La Basilica"
         },
         {
-          "id": 156,
+          "id": 160,
           "nombre": "grande",
           "descripcion": "",
           "precio": 0,
@@ -755,7 +755,7 @@
           "tiendaNombre": "La Basilica"
         },
         {
-          "id": 157,
+          "id": 161,
           "nombre": "extra familiar",
           "descripcion": "",
           "precio": 0,
@@ -781,7 +781,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 167,
+          "id": 168,
           "nombre": "prueba_productos adiciones",
           "descripcion": "prueba",
           "precio": 10000,
@@ -807,7 +807,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 159,
+          "id": 163,
           "nombre": "Chorizo pequeño",
           "descripcion": "",
           "precio": 10000,
@@ -820,7 +820,7 @@
           "tiendaNombre": "Chorizos Santuarianos"
         },
         {
-          "id": 160,
+          "id": 164,
           "nombre": "Chorizo Grande",
           "descripcion": "",
           "precio": 13000,
@@ -833,7 +833,7 @@
           "tiendaNombre": "Chorizos Santuarianos"
         },
         {
-          "id": 161,
+          "id": 165,
           "nombre": "Carne Res",
           "descripcion": "",
           "precio": 0,
@@ -846,7 +846,7 @@
           "tiendaNombre": "Chorizos Santuarianos"
         },
         {
-          "id": 162,
+          "id": 166,
           "nombre": "Cerdo",
           "descripcion": "",
           "precio": 0,
@@ -952,6 +952,19 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 108,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 109,
@@ -1149,7 +1162,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 159,
+      "id": 124,
       "nombre": "Aguardiente Antioqueño 260 roja",
       "descripcion": "",
       "precio": 17300,
@@ -1162,7 +1175,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 160,
+      "id": 125,
       "nombre": "aguardiente antioqueño 260 verde",
       "descripcion": "",
       "precio": 16500,
@@ -1175,7 +1188,33 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 124,
+      "id": 126,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 127,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 128,
       "nombre": "Clasica",
       "descripcion": "Pan, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, tomate, pepinillos. Acompañada de papas fritas y salsa de la casa.",
       "precio": 16000,
@@ -1188,7 +1227,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 125,
+      "id": 129,
       "nombre": "Salchipapa Trifasica Personal",
       "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
       "precio": 22000,
@@ -1201,7 +1240,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 126,
+      "id": 130,
       "nombre": "Salchipapa Trifasica G",
       "descripcion": "Base de papas a la francesa crujientes acompañadas de salchicha, pollo y carne, bañadas en abundante queso mozzarella fundido, queso rallado y nuestras deliciosas salsas.",
       "precio": 36000,
@@ -1214,7 +1253,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 127,
+      "id": 131,
       "nombre": "Crispy Onion",
       "descripcion": "Delicioso pan suave con carne jugosa a la plancha, queso fundido, lechuga fresca y crujientes aros de cebolla apanados, acompañada de papas fritas y nuestra salsa.",
       "precio": 22000,
@@ -1227,7 +1266,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 128,
+      "id": 132,
       "nombre": "La Parcera",
       "descripcion": "Burger con pan suave, carne jugosa a la plancha, queso fundido, tocineta crocante, lechuga fresca, crujiente aro de cebolla y nuestra salsa. Acompañada de papas fritas.",
       "precio": 24000,
@@ -1240,7 +1279,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 129,
+      "id": 133,
       "nombre": "La Costeña",
       "descripcion": "hamburguesa con pan suave, carne jugosa a la plancha, doble queso fundido, tocineta crocante, tomate fresco, lechuga, pepinillos, crujientes aros de cebolla y nuestra deliciosa salsa de la casa.",
       "precio": 24000,
@@ -1253,7 +1292,7 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 130,
+      "id": 134,
       "nombre": "Carnes",
       "descripcion": "",
       "precio": 0,
@@ -1266,7 +1305,20 @@
       "tiendaNombre": "Candela Burger"
     },
     {
-      "id": 132,
+      "id": 135,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 136,
       "nombre": "Salchipapas Pequeña",
       "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
       "precio": 15000,
@@ -1279,7 +1331,7 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 133,
+      "id": 137,
       "nombre": "Salchipapas Mediana",
       "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante,queso y nuestras deliciosas salsas de la casa.",
       "precio": 18000,
@@ -1292,7 +1344,7 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 134,
+      "id": 138,
       "nombre": "Salchipapas Grande",
       "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras  salsas de la casa.",
       "precio": 20000,
@@ -1305,7 +1357,7 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 135,
+      "id": 139,
       "nombre": "Hamburgesa Doble Carne",
       "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
       "precio": 17000,
@@ -1318,7 +1370,7 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 136,
+      "id": 140,
       "nombre": "Combo 5",
       "descripcion": "Hamburguesa con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañada de crujientes papas a la francesa y una refrescante gaseosa Pool de 600 ml.",
       "precio": 17000,
@@ -1331,7 +1383,7 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 137,
+      "id": 141,
       "nombre": "Combo 7",
       "descripcion": "Incluye 4 deliciosas hamburguesas preparadas con carne de res, queso derretido, lechuga, tomate y cebolla en pan artesanal con ajonjolí. Acompañadas de una porción de papas a la francesa y una refrescante gaseosa Pool 1/4.",
       "precio": 42000,
@@ -1344,7 +1396,20 @@
       "tiendaNombre": "Punto Del Sabor"
     },
     {
-      "id": 139,
+      "id": 142,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 143,
       "nombre": "Almuerzo",
       "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
       "precio": 18000,
@@ -1357,7 +1422,7 @@
       "tiendaNombre": "Calanchos Parrilla"
     },
     {
-      "id": 140,
+      "id": 144,
       "nombre": "Menu Jueves",
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
@@ -1370,7 +1435,7 @@
       "tiendaNombre": "Calanchos Parrilla"
     },
     {
-      "id": 141,
+      "id": 145,
       "nombre": "Almuerzo",
       "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
       "precio": 18000,
@@ -1383,7 +1448,7 @@
       "tiendaNombre": "Calanchos Parrilla"
     },
     {
-      "id": 142,
+      "id": 146,
       "nombre": "Menu Miercoles",
       "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
       "precio": 18000,
@@ -1396,7 +1461,20 @@
       "tiendaNombre": "Calanchos Parrilla"
     },
     {
-      "id": 144,
+      "id": 147,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 148,
       "nombre": "Pendeja 1",
       "descripcion": "8 Alitas más acompañante",
       "precio": 25000,
@@ -1409,7 +1487,7 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 145,
+      "id": 149,
       "nombre": "Pendeja 2",
       "descripcion": "14 Alitas más acompañante",
       "precio": 40000,
@@ -1422,7 +1500,7 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 146,
+      "id": 150,
       "nombre": "Pendeja 3",
       "descripcion": "20 Alitas más acompañante",
       "precio": 50000,
@@ -1435,7 +1513,7 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 147,
+      "id": 151,
       "nombre": "Pendeja 4",
       "descripcion": "34 Alitas más acompañante",
       "precio": 66000,
@@ -1448,7 +1526,7 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 148,
+      "id": 152,
       "nombre": "Pendeja 5",
       "descripcion": "50 Alitas más acompañante",
       "precio": 88000,
@@ -1461,7 +1539,7 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 149,
+      "id": 153,
       "nombre": "Pendeja 6",
       "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
       "precio": 130000,
@@ -1474,7 +1552,33 @@
       "tiendaNombre": "Alitas maria pendeja"
     },
     {
-      "id": 152,
+      "id": 154,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 155,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 156,
       "nombre": "📦 Encargo Express",
       "descripcion": "",
       "precio": 0,
@@ -1487,7 +1591,20 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 154,
+      "id": 157,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 158,
       "nombre": "personal",
       "descripcion": "",
       "precio": 0,
@@ -1500,7 +1617,7 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 155,
+      "id": 159,
       "nombre": "mediana",
       "descripcion": "",
       "precio": 0,
@@ -1513,7 +1630,7 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 156,
+      "id": 160,
       "nombre": "grande",
       "descripcion": "",
       "precio": 0,
@@ -1526,7 +1643,7 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 157,
+      "id": 161,
       "nombre": "extra familiar",
       "descripcion": "",
       "precio": 0,
@@ -1539,7 +1656,20 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 159,
+      "id": 162,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 163,
       "nombre": "Chorizo pequeño",
       "descripcion": "",
       "precio": 10000,
@@ -1552,7 +1682,7 @@
       "tiendaNombre": "Chorizos Santuarianos"
     },
     {
-      "id": 160,
+      "id": 164,
       "nombre": "Chorizo Grande",
       "descripcion": "",
       "precio": 13000,
@@ -1565,7 +1695,7 @@
       "tiendaNombre": "Chorizos Santuarianos"
     },
     {
-      "id": 161,
+      "id": 165,
       "nombre": "Carne Res",
       "descripcion": "",
       "precio": 0,
@@ -1578,7 +1708,7 @@
       "tiendaNombre": "Chorizos Santuarianos"
     },
     {
-      "id": 162,
+      "id": 166,
       "nombre": "Cerdo",
       "descripcion": "",
       "precio": 0,
@@ -1592,6 +1722,19 @@
     },
     {
       "id": 167,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 168,
       "nombre": "prueba_productos adiciones",
       "descripcion": "prueba",
       "precio": 10000,
