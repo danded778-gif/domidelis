@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-45-14",
-  "ultimaActualizacion": "2026-07-13T20:45:14.434Z",
+  "version": "v2026-07-13T20-45-58",
+  "ultimaActualizacion": "2026-07-13T20:45:58.770Z",
   "tiendas": [
     {
       "id": 1,
@@ -2987,7 +2987,7 @@
     },
     {
       "id": 145,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -2997,7 +2997,7 @@
     },
     {
       "id": 146,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Salsa Rosa",
       "precio": 0,
@@ -3007,7 +3007,7 @@
     },
     {
       "id": 147,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Salsa Tocineta",
       "precio": 0,
@@ -3017,7 +3017,7 @@
     },
     {
       "id": 148,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Salsa Ajo",
       "precio": 0,
@@ -3027,7 +3027,7 @@
     },
     {
       "id": 149,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Salsa piña",
       "precio": 0,
@@ -3037,7 +3037,7 @@
     },
     {
       "id": 150,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
@@ -3047,7 +3047,7 @@
     },
     {
       "id": 151,
-      "id_producto": 134,
+      "id_producto": 138,
       "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
@@ -3057,7 +3057,7 @@
     },
     {
       "id": 152,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "salsa",
       "nombre": "mostaza",
       "precio": 0,
@@ -3067,7 +3067,7 @@
     },
     {
       "id": 153,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Proteina",
       "nombre": "carne",
       "precio": 0,
@@ -3077,7 +3077,7 @@
     },
     {
       "id": 155,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Proteina",
       "nombre": "pollo",
       "precio": 0,
@@ -3087,7 +3087,7 @@
     },
     {
       "id": 154,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "verdura",
       "nombre": "lechuga",
       "precio": 0,
@@ -3097,7 +3097,7 @@
     },
     {
       "id": 156,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "pan",
       "nombre": "pan",
       "precio": 0,
@@ -3107,7 +3107,7 @@
     },
     {
       "id": 157,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "salsa",
       "nombre": "mayoneza",
       "precio": 0,
@@ -3117,7 +3117,7 @@
     },
     {
       "id": 162,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Salsas",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -3127,7 +3127,7 @@
     },
     {
       "id": 163,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Salsas",
       "nombre": "Salsa BBQ2",
       "precio": 0,
@@ -3137,7 +3137,7 @@
     },
     {
       "id": 167,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Salsas",
       "nombre": "BBQ1212",
       "precio": 0,
@@ -3147,7 +3147,7 @@
     },
     {
       "id": 168,
-      "id_producto": 158,
+      "id_producto": 163,
       "grupo": "Proteina",
       "nombre": "cerdo",
       "precio": 0,
