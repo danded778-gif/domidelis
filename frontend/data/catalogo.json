@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-13T20-46-40",
-  "ultimaActualizacion": "2026-07-13T20:46:40.663Z",
+  "version": "v2026-07-13T20-50-40",
+  "ultimaActualizacion": "2026-07-13T20:50:40.747Z",
   "tiendas": [
     {
       "id": 1,
@@ -3057,7 +3057,7 @@
     },
     {
       "id": 152,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "salsa",
       "nombre": "mostaza",
       "precio": 0,
@@ -3067,7 +3067,7 @@
     },
     {
       "id": 153,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Proteina",
       "nombre": "carne",
       "precio": 0,
@@ -3077,7 +3077,7 @@
     },
     {
       "id": 155,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Proteina",
       "nombre": "pollo",
       "precio": 0,
@@ -3087,7 +3087,7 @@
     },
     {
       "id": 154,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "verdura",
       "nombre": "lechuga",
       "precio": 0,
@@ -3097,7 +3097,7 @@
     },
     {
       "id": 156,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "pan",
       "nombre": "pan",
       "precio": 0,
@@ -3107,7 +3107,7 @@
     },
     {
       "id": 157,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "salsa",
       "nombre": "mayoneza",
       "precio": 0,
@@ -3117,7 +3117,7 @@
     },
     {
       "id": 162,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Salsas",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -3127,7 +3127,7 @@
     },
     {
       "id": 163,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Salsas",
       "nombre": "Salsa BBQ2",
       "precio": 0,
@@ -3137,7 +3137,7 @@
     },
     {
       "id": 167,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Salsas",
       "nombre": "BBQ1212",
       "precio": 0,
@@ -3147,7 +3147,7 @@
     },
     {
       "id": 168,
-      "id_producto": 163,
+      "id_producto": 168,
       "grupo": "Proteina",
       "nombre": "cerdo",
       "precio": 0,
