@@ -1,4 +1,4 @@
-// ============================================
+// ============================================ 
 // client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v2
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
