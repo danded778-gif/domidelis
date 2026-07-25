@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T02-16-34",
-  "ultimaActualizacion": "2026-07-25T02:16:34.322Z",
+  "version": "v2026-07-25T02-16-58",
+  "ultimaActualizacion": "2026-07-25T02:16:58.129Z",
   "tiendas": [
     {
       "id": 1,
@@ -3054,6 +3054,36 @@
       "tipo": "extra",
       "max": null,
       "min": 0
+    },
+    {
+      "id": 163,
+      "id_producto": 167,
+      "grupo": "Salsas",
+      "nombre": "Salsa BBQ2",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 167,
+      "id_producto": 167,
+      "grupo": "Salsas",
+      "nombre": "BBQ1212",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 168,
+      "id_producto": 167,
+      "grupo": "Proteina",
+      "nombre": "cerdo",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 1
     }
   ]
 }
