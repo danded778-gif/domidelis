@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T02-12-44",
-  "ultimaActualizacion": "2026-07-25T02:12:44.026Z",
+  "version": "v2026-07-25T02-13-24",
+  "ultimaActualizacion": "2026-07-25T02:13:24.366Z",
   "tiendas": [
     {
       "id": 1,
@@ -779,21 +779,7 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": [
-        {
-          "id": 168,
-          "nombre": "prueba_productos adiciones",
-          "descripcion": "prueba",
-          "precio": 10000,
-          "imagen_url": "",
-          "badge": "nuevo",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Mantenimineto"
-        }
-      ]
+      "productos": []
     },
     {
       "id": 9,
@@ -1589,19 +1575,6 @@
       "activo": true,
       "tiendaId": "9",
       "tiendaNombre": "Chorizos Santuarianos"
-    },
-    {
-      "id": 168,
-      "nombre": "prueba_productos adiciones",
-      "descripcion": "prueba",
-      "precio": 10000,
-      "imagen_url": "",
-      "badge": "nuevo",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
     }
   ],
   "complementosGlobal": [
@@ -3054,106 +3027,6 @@
       "tipo": "extra",
       "max": null,
       "min": 0
-    },
-    {
-      "id": 152,
-      "id_producto": 168,
-      "grupo": "salsa",
-      "nombre": "mostaza",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 153,
-      "id_producto": 168,
-      "grupo": "Proteina",
-      "nombre": "carne",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 155,
-      "id_producto": 168,
-      "grupo": "Proteina",
-      "nombre": "pollo",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 2,
-      "min": 1
-    },
-    {
-      "id": 154,
-      "id_producto": 168,
-      "grupo": "verdura",
-      "nombre": "lechuga",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 1
-    },
-    {
-      "id": 156,
-      "id_producto": 168,
-      "grupo": "pan",
-      "nombre": "pan",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 157,
-      "id_producto": 168,
-      "grupo": "salsa",
-      "nombre": "mayoneza",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 162,
-      "id_producto": 168,
-      "grupo": "Salsas",
-      "nombre": "Salsa BBQ",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id": 163,
-      "id_producto": 168,
-      "grupo": "Salsas",
-      "nombre": "Salsa BBQ2",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id": 167,
-      "id_producto": 168,
-      "grupo": "Salsas",
-      "nombre": "BBQ1212",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 168,
-      "id_producto": 168,
-      "grupo": "Proteina",
-      "nombre": "cerdo",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
     }
   ]
 }
