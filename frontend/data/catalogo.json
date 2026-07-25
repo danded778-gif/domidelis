@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T21-36-37",
-  "ultimaActualizacion": "2026-07-25T21:36:37.426Z",
+  "version": "v2026-07-25T22-22-03",
+  "ultimaActualizacion": "2026-07-25T22:22:03.796Z",
   "tiendas": [
     {
       "id": 1,
@@ -3023,16 +3023,6 @@
       "precio": 0,
       "tipo": "extra",
       "max": null,
-      "min": 1
-    },
-    {
-      "id": 154,
-      "id_producto": 167,
-      "grupo": "",
-      "nombre": "prueba de salsa 2",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
       "min": 1
     }
   ]
