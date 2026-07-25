@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T21-34-07",
-  "ultimaActualizacion": "2026-07-25T21:34:07.454Z",
+  "version": "v2026-07-25T21-35-07",
+  "ultimaActualizacion": "2026-07-25T21:35:07.176Z",
   "tiendas": [
     {
       "id": 1,
@@ -844,7 +844,21 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 167,
+          "nombre": "prueba local",
+          "descripcion": "ejecucion de prubva",
+          "precio": 20000,
+          "imagen_url": "",
+          "badge": "si",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "10",
+          "tiendaNombre": "mantenimiento"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -1575,6 +1589,19 @@
       "activo": true,
       "tiendaId": "9",
       "tiendaNombre": "Chorizos Santuarianos"
+    },
+    {
+      "id": 167,
+      "nombre": "prueba local",
+      "descripcion": "ejecucion de prubva",
+      "precio": 20000,
+      "imagen_url": "",
+      "badge": "si",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "10",
+      "tiendaNombre": "mantenimiento"
     }
   ],
   "complementosGlobal": [
