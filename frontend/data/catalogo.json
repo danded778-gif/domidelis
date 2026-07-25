@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T19-47-09",
-  "ultimaActualizacion": "2026-07-25T19:47:09.350Z",
+  "version": "v2026-07-25T21-33-19",
+  "ultimaActualizacion": "2026-07-25T21:33:19.108Z",
   "tiendas": [
     {
       "id": 1,
@@ -766,32 +766,6 @@
           "activo": true,
           "tiendaId": "7",
           "tiendaNombre": "La Basilica"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "nombre": "Mantenimineto",
-      "descripcion": "Comidas rapidas",
-      "direccion": "calle 11",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-23:50\",\"sat\":\"11:00 - 21:00\",\"sun\":\"Cerrado\"}",
-      "rating": 1,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 0,
-      "activo": true,
-      "productos": [
-        {
-          "id": 167,
-          "nombre": "prueba _1",
-          "descripcion": "haciendo pruebnas",
-          "precio": 2000,
-          "imagen_url": "",
-          "badge": "hola",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "8",
-          "tiendaNombre": "Mantenimineto"
         }
       ]
     },
@@ -1589,19 +1563,6 @@
       "activo": true,
       "tiendaId": "9",
       "tiendaNombre": "Chorizos Santuarianos"
-    },
-    {
-      "id": 167,
-      "nombre": "prueba _1",
-      "descripcion": "haciendo pruebnas",
-      "precio": 2000,
-      "imagen_url": "",
-      "badge": "hola",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "8",
-      "tiendaNombre": "Mantenimineto"
     }
   ],
   "complementosGlobal": [
@@ -1696,16 +1657,6 @@
       "min": 0
     },
     {
-      "id": 10,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 11,
       "id_producto": 149,
       "grupo": "Proteína",
@@ -1792,16 +1743,6 @@
       "nombre": "salsa",
       "precio": 1000,
       "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 20,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
       "max": null,
       "min": 0
     },
@@ -1896,16 +1837,6 @@
       "min": 0
     },
     {
-      "id": 30,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 31,
       "id_producto": 151,
       "grupo": "Proteína",
@@ -1996,16 +1927,6 @@
       "min": 0
     },
     {
-      "id": 40,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 41,
       "id_producto": 152,
       "grupo": "Proteína",
@@ -2092,16 +2013,6 @@
       "nombre": "salsa",
       "precio": 1000,
       "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 50,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
       "max": null,
       "min": 0
     },
@@ -3054,36 +2965,6 @@
       "tipo": "extra",
       "max": null,
       "min": 0
-    },
-    {
-      "id": 163,
-      "id_producto": 167,
-      "grupo": "Salsas",
-      "nombre": "BBQ2",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 0
-    },
-    {
-      "id": 167,
-      "id_producto": 167,
-      "grupo": "Salsas",
-      "nombre": "BBQ",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 168,
-      "id_producto": 167,
-      "grupo": "Proteina",
-      "nombre": "cerdo",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 1,
-      "min": 1
     }
   ]
 }
