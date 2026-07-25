@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T02-33-49",
-  "ultimaActualizacion": "2026-07-25T02:33:49.539Z",
+  "version": "v2026-07-25T02-37-02",
+  "ultimaActualizacion": "2026-07-25T02:37:02.266Z",
   "tiendas": [
     {
       "id": 1,
@@ -774,7 +774,7 @@
       "nombre": "Mantenimineto",
       "descripcion": "Comidas rapidas",
       "direccion": "calle 11",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-23:50\",\"sat\":\"18:00 - 21:35\",\"sun\":\"00:00 - 05:00\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-21:35\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
