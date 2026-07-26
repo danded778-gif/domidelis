@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-25T22-29-52",
-  "ultimaActualizacion": "2026-07-25T22:29:52.816Z",
+  "version": "v2026-07-26T04-38-48",
+  "ultimaActualizacion": "2026-07-26T04:38:48.147Z",
   "tiendas": [
     {
       "id": 1,
@@ -839,7 +839,7 @@
       "nombre": "mantenimiento",
       "descripcion": "peuqña",
       "direccion": "calle 41numero 5232",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"18:00 - 23:59\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
