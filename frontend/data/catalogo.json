@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-26T04-39-42",
-  "ultimaActualizacion": "2026-07-26T04:39:42.928Z",
+  "version": "v2026-07-26T17-59-20",
+  "ultimaActualizacion": "2026-07-26T17:59:20.117Z",
   "tiendas": [
     {
       "id": 1,
@@ -840,7 +840,7 @@
       "descripcion": "peuqña",
       "direccion": "calle 41numero 5232",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"18:00 - 23:59\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
+      "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
