@@ -1,10 +1,10 @@
 // ============================================ 
-// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v2
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v3
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
 // ★ MEJORADO: Categorías con orden prioritario y "Otras" al final
-// ★ NUEVO v2: Modal de personalización con grupos dinámicos y Stepper (Cantidades)
+// ★ NUEVO v3: Modal de personalización con grupos dinámicos y Stepper (Cantidades)
 // ============================================
 
 let tiendas = [];
@@ -908,6 +908,15 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
             setTimeout(() => cartFloat.classList.remove("aparecer-con-fiesta"), 1000);
         }
         setTimeout(() => cartFloat.classList.remove("pulse"), 500);
+    }
+
+    // ★★★ NUEVO: Disparar Soft Prompt de Notificaciones (Cero Fricción) ★★★
+    if (window.debeMostrarPromptFCM && window.debeMostrarPromptFCM()) {
+        const prompt = document.getElementById('fcm-soft-prompt');
+        if (prompt) {
+            // Mostrar 1.5 segundos después de agregar al carrito
+            setTimeout(() => { prompt.style.display = 'block'; }, 1500);
+        }
     }
 }
 

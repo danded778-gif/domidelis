@@ -58,6 +58,19 @@ async function cargarDomiciliarioData() {
     if (!sesion || !sesion.id) return;
     miDomiciliarioId = sesion.id;
 
+    // ★★★ NUEVO: Esperar de forma segura a que fcm-manager.js se inicialice ★★★
+    const fcmInterval = setInterval(() => {
+        if (typeof window.solicitarPermisoFCM === 'function') {
+            clearInterval(fcmInterval);
+            console.log(`⚙️ Registrando token FCM de Domiciliario ID: ${sesion.id}...`);
+            window.solicitarPermisoFCM('domiciliario', null, sesion.id) // Guardará rol 'domiciliario' y usuarioId
+                .then(token => {
+                    if (token) console.log("✅ Token de domiciliario registrado con éxito:", token);
+                })
+                .catch(err => console.error("❌ Error al registrar token del domiciliario:", err));
+        }
+    }, 150);
+
     // ★ SOLUCIÓN: Buscamos el nombre en cualquiera de las variables donde pueda estar guardado
     const nombreUsuario = sesion.usuario || sesion.nombre || sesion.user || 'Domiciliario';
 
@@ -111,6 +124,7 @@ function notificarNuevoPedidoAsignado(data) {
 
     reproducirSonidoAlerta();
     
+    // El teléfono del domiciliario seguirá vibrando perfectamente gracias a esta línea:
     if (navigator.vibrate) {
         navigator.vibrate([300, 100, 300, 100, 500]);
     }
@@ -123,8 +137,11 @@ function notificarNuevoPedidoAsignado(data) {
         badge: '/assets/img/icon-192x192.png',
         tag: `pedido-${pedidoId}`,
         requireInteraction: true,
-        silent: true,
-        vibrate: [300, 100, 300, 100, 500],
+        silent: true, // Mantenemos silent en true para que no suene el timbre del sistema operativo
+        
+        // ★★★ ELIMINADA la línea 'vibrate' PARA EVITAR EL ERROR EN CONSOLA ★★★
+        // (No se puede usar vibrate junto con silent: true en el estándar de notificaciones web)
+        
         data: { url: '/domiciliario.html', pedidoId }
     });
 
@@ -537,3 +554,35 @@ function escapeQuotes(str) {
 function formatearPrecio(valor) {
     return '$' + Number(valor || 0).toLocaleString('es-CO');
 }
+
+// ============================================
+// ACTIVAR PERMISOS (Para el botón del banner)
+// ============================================
+async function activarPermisos() {
+    let permiso = false;
+    if ('Notification' in window) {
+        permiso = (await Notification.requestPermission()) === 'granted';
+    }
+
+    const banner = document.getElementById('permisos-banner');
+    if (banner) banner.style.display = 'none';
+
+    if (permiso) {
+        const sesion = obtenerSesion();
+        if (sesion && sesion.id) {
+            // ★ CORREGIDO: Esperar de forma segura a que fcm-manager.js termine de cargar en segundo plano
+            const fcmInterval = setInterval(async () => {
+                if (typeof window.solicitarPermisoFCM === 'function') {
+                    clearInterval(fcmInterval);
+                    await window.solicitarPermisoFCM('domiciliario', null, sesion.id);
+                }
+            }, 100);
+        }
+        mostrarToast('¡Listo!', 'Notificaciones de asignación activadas.', 'success', 6000);
+    } else {
+        mostrarToast('Atención', 'Notificaciones del sistema bloqueadas.', 'warning', 6000);
+    }
+}
+
+// Hacerla accesible globalmente para el onclick del HTML
+window.activarPermisos = activarPermisos;

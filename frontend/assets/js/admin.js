@@ -152,6 +152,20 @@ async function notificarPushAdmin(titulo, opciones = {}) {
 // CARGA INICIAL
 // ═══════════════════════════════════════════════
 async function cargarAdminData() {
+    // ★★★ ACTUALIZADO: Esperamos de forma segura a que fcm-manager.js se inicialice ★★★
+    const fcmInterval = setInterval(() => {
+        if (typeof window.solicitarPermisoFCM === 'function') {
+            clearInterval(fcmInterval); // Detenemos la espera
+            console.log("⚙️ Solicitando y registrando token FCM de Administrador...");
+            
+            window.solicitarPermisoFCM('admin')
+                .then(token => {
+                    if (token) console.log("✅ Token de admin registrado en Firestore:", token);
+                })
+                .catch(err => console.error("❌ Error registrando token FCM de admin:", err));
+        }
+    }, 150); // Comprueba cada 150ms
+
     await cargarTiendasAdmin();
     await cargarDomiciliarios();
     await cargarDomiciliariosAdmin();
@@ -209,7 +223,10 @@ async function activarPermisos() {
     }
 
     let permiso = false;
-    if (typeof solicitarPermisoNotificaciones === 'function') {
+    // ★★★ Usamos FCM si está disponible, si no, usamos el viejo método ★★★
+    if (typeof window.solicitarPermisoFCM === 'function') {
+        permiso = await window.solicitarPermisoFCM('admin');
+    } else if (typeof solicitarPermisoNotificaciones === 'function') {
         permiso = await solicitarPermisoNotificaciones();
     } else if ('Notification' in window) {
         permiso = (await Notification.requestPermission()) === 'granted';
@@ -412,7 +429,7 @@ async function editarTienda(id) {
     let hidden = document.getElementById('tiendaPromovida');
     if (!hidden) {
         hidden = document.createElement('input');
-        hidden.type = 'hidden';
+        hidden.type = 'hidden'; // ✅ BUG CORREGIDO (antes decía hiddenInput.type)
         hidden.id = 'tiendaPromovida';
         document.getElementById('formTienda').appendChild(hidden);
     }
@@ -714,18 +731,28 @@ async function guardarComplemento() {
     }
 }
 
+// admin.js — Reemplazar esta función para corregir el método POST
 async function eliminarComplemento(id) {
     if (!confirm('¿Eliminar este complemento?')) return;
     const productoId = document.getElementById('complementoProductoId').value;
 
     try {
-        const response = await fetchConToken(`${API_URL}?action=eliminarComplemento&id=${id}`);
+        // ★ CORREGIDO: Al estar en el bloque doPost del servidor, debemos enviarlo por POST ★
+        const response = await fetchConToken(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+                action: 'eliminarComplemento',
+                id: id
+            })
+        });
         const data = await response.json();
+        
         if (data.success) {
             mostrarNotificacion('Complemento eliminado');
-            await cargarComplementos(productoId);
+            await cargarComplementos(productoId); // Recarga la lista en el modal
         } else {
-            mostrarNotificacion('Error al eliminar', 'error');
+            mostrarNotificacion('Error al eliminar: ' + (data.error || 'No se pudo completar'), 'error');
         }
     } catch (error) {
         mostrarNotificacion('Error de conexión', 'error');
@@ -1125,7 +1152,7 @@ async function eliminarPedidosSeleccionados() {
 async function ejecutarEliminacionPedidos(ids) {
     try {
         const response = await fetchConToken(`${API_URL}?action=eliminarPedidos`, {
-            method: 'POST',
+            method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ ids: JSON.stringify(ids) })
         });

@@ -7,7 +7,7 @@
 (function() {
   'use strict';
 
-  const SW_PATH = '/service-worker.js';
+  const SW_PATH = '/firebase-messaging-sw.js';
   
   // ============================================
   // REGISTRAR SERVICE WORKER

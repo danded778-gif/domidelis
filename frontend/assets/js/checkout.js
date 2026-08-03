@@ -161,7 +161,7 @@
             tienda.items.forEach(item => {
                 // ★ NUEVO v2: Agregar HTML de los extras seleccionados
                 const extrasHtml = getExtrasHtml(item.selecciones);
-                
+
                 html += `<div class="resumen-producto">
                     <div class="resumen-prod-info">
                         <span class="resumen-prod-nombre">${escapeQuotes(item.nombre)}</span>
@@ -354,13 +354,15 @@
                 pedidoId, nombre, telefono, direccion,
                 barrio, referencias, metodoPago,
                 zona: zonaValue, envio: envioFinal,
-                subtotal, total, propina, items: carrito
+                subtotal, total, propina, items: carrito,
+
+                // ★★★ CORREGIDO: Blindado leyendo de fcm-manager o directamente de LocalStorage ★★★
+                fcmToken: (window.obtenerTokenFCMGuardado && window.obtenerTokenFCMGuardado()) || localStorage.getItem('domidelis_fcm_token') || ''
             });
             // ★ Limpiar promociones usadas
             localStorage.removeItem('domidelis_codigo_promo');
             localStorage.removeItem('descuento_domicilio');
         }, 500);
-
         setTimeout(() => {
             window.location.href = 'confirmacion.html';
         }, 800);
@@ -547,7 +549,7 @@
             tiendaId: item.tiendaId || '',
             tiendaNombre: item.tiendaNombre || '',
             // ★ NUEVO v2: Enviar complementos como texto al servidor
-            complementos: getExtrasTexto(item.selecciones).trim().replace(/\n/g, ' | ') 
+            complementos: getExtrasTexto(item.selecciones).trim().replace(/\n/g, ' | ')
         })));
 
         const fechaColombia = new Date().toLocaleString('sv-SE', {
@@ -565,7 +567,9 @@
             zona: data.zona,
             referencias: data.referencias || '',
             propina: (data.propina || 0).toString(),
-            fecha: fechaColombia
+            fecha: fechaColombia,
+            // ★★★ CORREGIDO: Enviamos el token blindado a la API ★★★
+            fcmToken: data.fcmToken || ''
         });
 
         fetch(API_URL, {
