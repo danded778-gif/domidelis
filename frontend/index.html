@@ -589,7 +589,7 @@
                 refreshing = true; window.location.reload();
             });
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('service-worker.js')
+                navigator.serviceWorker.register('firebase-messaging-sw.js')
                     .then(function (reg) { console.log('✅ SW registrado:', reg.scope); })
                     .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
             });
@@ -879,6 +879,49 @@
                 }
             }
         });
+    </script>
+
+    <!-- ★★★ NUEVO: Scripts de Firebase ★★★ -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <script type="module" src="assets/js/fcm-manager.js"></script>
+
+    <!-- ★ Ventana Soft Prompt de Notificaciones para el Cliente ★ -->
+    <div id="fcm-soft-prompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; border: 2px solid #E63946; border-radius: 12px; padding: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10000; width: 90%; max-width: 400px; font-family: 'Poppins', sans-serif;">
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+            <i class="fas fa-bell" style="color: #E63946; font-size: 1.5rem;"></i>
+            <div>
+                <strong style="color: #333; font-size: 0.95rem; display: block;">¿Quieres seguir el estado de tu pedido? 🛵</strong>
+                <span style="color: #666; font-size: 0.8rem;">Activa las notificaciones para avisarte cuando tu pedido esté en camino.</span>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: flex-end;">
+            <button onclick="cerrarSoftPrompt()" style="background: none; border: none; color: #999; cursor: pointer; padding: 8px 12px; font-size: 0.85rem; font-weight: 500;">Ahora no</button>
+            <button onclick="aceptarSoftPrompt()" style="background: #E63946; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-bell"></i> Activar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function cerrarSoftPrompt() {
+            const prompt = document.getElementById('fcm-soft-prompt');
+            if (prompt) prompt.style.display = 'none';
+            localStorage.setItem('domidelis_fcm_prompt_shown', 'true');
+        }
+
+        async function aceptarSoftPrompt() {
+            cerrarSoftPrompt();
+            if (typeof window.solicitarPermisoFCM === 'function') {
+                console.log("⚙️ Solicitando token FCM para el cliente...");
+                const token = await window.solicitarPermisoFCM('cliente');
+                if (token) {
+                    console.log("✅ Token de cliente registrado con éxito en Firestore:", token);
+                }
+            }
+        }
+
+        window.cerrarSoftPrompt = cerrarSoftPrompt;
+        window.aceptarSoftPrompt = aceptarSoftPrompt;
     </script>
 </body>
 
