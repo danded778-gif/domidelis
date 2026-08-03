@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#E63946">
+    <title>Ingresar - DOMIDELIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #F4A261;
+            --accent: #2A9D8F;
+            --dark: #5D4037;
+            --light: #FFF8E7;
+            --white: #FFFFFF;
+            --gray: #6c757d;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo span { color: var(--primary); }
+        
+        .subtitle { 
+            color: var(--gray); 
+            margin-bottom: 30px; 
+            font-size: 0.95rem;
+        }
+
+        /* PASO 1: Número de celular */
+        .paso { display: none; }
+        .paso.activo { display: block; }
+
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .prefix {
+            background: var(--light);
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--dark);
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        button:hover:not(:disabled) { 
+            background: #d32f3f; 
+            transform: translateY(-2px);
+        }
+        
+        button:disabled { 
+            background: #ccc; 
+            cursor: not-allowed; 
+        }
+
+        button.secundario {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        button.secundario:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .info-box {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-align: left;
+        }
+
+        .info-box i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        /* PASO 2: Código SMS */
+        .codigo-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .codigo-inputs input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0;
+        }
+
+        .reenviar {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: auto;
+            padding: 0;
+            display: inline;
+        }
+
+        .reenviar:hover {
+            text-decoration: underline;
+            transform: none;
+            background: none;
+            color: var(--primary);
+        }
+
+        .reenviar:disabled {
+            color: var(--gray);
+            cursor: not-allowed;
+        }
+
+        .timer {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Separador */
+        .separador {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .separador::before,
+        .separador::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .btn-admin {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .btn-admin:hover {
+            background: var(--light);
+            border-color: var(--dark);
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
+        <p class="subtitle">Tu comida y tu trago a domicilio</p>
+
+        <!-- PASO 1: Número de celular -->
+        <div class="paso activo" id="paso1">
+            <div class="info-box">
+                <i class="fas fa-shield-alt"></i>
+                Te enviaremos un código de verificación por SMS
+            </div>
+
+            <div class="error" id="error1"></div>
+
+            <div class="phone-input-group">
+                <div class="prefix">
+                    <i class="fas fa-flag"></i> +57
+                </div>
+                <input 
+                    type="tel" 
+                    id="telefono" 
+                    placeholder="300 123 4567" 
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    autocomplete="tel"
+                >
+            </div>
+
+            <button type="button" id="btnEnviar" onclick="enviarCodigo()">
+                <i class="fas fa-paper-plane"></i> Enviar código
+            </button>
+
+            <div class="separador">o</div>
+
+            <button type="button" class="btn-admin" onclick="window.location.href='login-admin.html'">
+                <i class="fas fa-user-shield"></i> Soy admin o domiciliario
+            </button>
+        </div>
+
+        <!-- PASO 2: Código SMS -->
+        <div class="paso" id="paso2">
+            <div class="info-box">
+                <i class="fas fa-comment-dots"></i>
+                Escribe el código de 6 dígitos que enviamos al <strong id="numeroMascara">+57 *** *** **90</strong>
+            </div>
+
+            <div class="error" id="error2"></div>
+
+            <div class="codigo-inputs">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="0">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="1">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="2">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="3">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="4">
+                <input type="tel" maxlength="1" class="codigo-digit" data-index="5">
+            </div>
+
+            <button type="button" id="btnVerificar" onclick="verificarCodigo()">
+                <i class="fas fa-check"></i> Verificar
+            </button>
+
+            <div class="timer" id="timer">Reenviar código en <span id="segundos">59</span>s</div>
+            <button type="button" class="reenviar" id="btnReenviar" onclick="reenviarCodigo()" disabled>
+                <i class="fas fa-redo"></i> Reenviar código
+            </button>
+
+            <br><br>
+            <button type="button" class="secundario" onclick="volverPaso1()">
+                <i class="fas fa-arrow-left"></i> Cambiar número
+            </button>
+        </div>
+
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+
+    <script>
+        // Tu configuración de Firebase (la pones cuando crees el proyecto)
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY",
+            authDomain: "domidelis.firebaseapp.com",
+            projectId: "domidelis",
+            storageBucket: "domidelis.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        let confirmationResult = null;
+        let telefonoCompleto = '';
+
+        // Auto-salto entre inputs del código
+        document.querySelectorAll('.codigo-digit').forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < 5) {
+                    document.querySelectorAll('.codigo-digit')[index + 1].focus();
+                }
+            });
+            
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    document.querySelectorAll('.codigo-digit')[index - 1].focus();
+                }
+            });
+        });
+
+        function mostrarPaso(numero) {
+            document.querySelectorAll('.paso').forEach(p => p.classList.remove('activo'));
+            document.getElementById('paso' + numero).classList.add('activo');
+        }
+
+        function mostrarError(id, mensaje) {
+            const div = document.getElementById(id);
+            div.textContent = mensaje;
+            div.style.display = 'block';
+        }
+
+        function ocultarError(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        async function enviarCodigo() {
+            const telefono = document.getElementById('telefono').value.trim();
+            const btn = document.getElementById('btnEnviar');
+            
+            ocultarError('error1');
+
+            // Validar
+            if (!telefono || telefono.length !== 10 || !/^\d+$/.test(telefono)) {
+                mostrarError('error1', 'Ingresa un número de celular válido de 10 dígitos');
+                return;
+            }
+
+            telefonoCompleto = '+57' + telefono;
+            
+            // Mostrar máscara
+            const mascara = '+57 *** *** **' + telefono.slice(-2);
+            document.getElementById('numeroMascara').textContent = mascara;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            try {
+                const appVerifier = new firebase.auth.RecaptchaVerifier('btnEnviar', {
+                    size: 'invisible'
+                });
+
+                confirmationResult = await firebase.auth().signInWithPhoneNumber(telefonoCompleto, appVerifier);
+                
+                // Ir al paso 2
+                mostrarPaso(2);
+                iniciarTimer();
+                
+            } catch (error) {
+                console.error(error);
+                mostrarError('error1', 'Error al enviar SMS. Intenta de nuevo.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar código';
+            }
+        }
+
+        async function verificarCodigo() {
+            const digitos = document.querySelectorAll('.codigo-digit');
+            let codigo = '';
+            digitos.forEach(d => codigo += d.value);
+            
+            const btn = document.getElementById('btnVerificar');
+            ocultarError('error2');
+
+            if (codigo.length !== 6) {
+                mostrarError('error2', 'Escribe los 6 dígitos del código');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
+
+            try {
+                const result = await confirmationResult.confirm(codigo);
+                const user = result.user;
+                
+                // Guardar en localStorage
+                localStorage.setItem('domidelis_uid', user.uid);
+                localStorage.setItem('domidelis_telefono', user.phoneNumber);
+                localStorage.setItem('domidelis_rol', 'cliente');
+
+                // Redirigir
+                window.location.href = 'index.html';
+
+            } catch (error) {
+                mostrarError('error2', 'Código incorrecto. Intenta de nuevo.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-check"></i> Verificar';
+            }
+        }
+
+        function iniciarTimer() {
+            let segundos = 59;
+            const span = document.getElementById('segundos');
+            const btnReenviar = document.getElementById('btnReenviar');
+            const divTimer = document.getElementById('timer');
+            
+            btnReenviar.disabled = true;
+            divTimer.style.display = 'block';
+            
+            const interval = setInterval(() => {
+                segundos--;
+                span.textContent = segundos;
+                
+                if (segundos <= 0) {
+                    clearInterval(interval);
+                    divTimer.style.display = 'none';
+                    btnReenviar.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function reenviarCodigo() {
+            volverPaso1();
+            setTimeout(() => enviarCodigo(), 100);
+        }
+
+        function volverPaso1() {
+            document.getElementById('telefono').value = '';
+            document.querySelectorAll('.codigo-digit').forEach(d => d.value = '');
+            document.getElementById('btnEnviar').disabled = false;
+            document.getElementById('btnEnviar').innerHTML = '<i class="fas fa-paper-plane"></i> Enviar código';
+            document.getElementById('btnVerificar').disabled = false;
+            document.getElementById('btnVerificar').innerHTML = '<i class="fas fa-check"></i> Verificar';
+            mostrarPaso(1);
+        }
+
+        // PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('firebase-messaging-sw.js').catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>

@@ -13,7 +13,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Finalizar Pedido - DOMICILIOS</title>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — solo una vez -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,16 +27,6 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/resumen-tienda.css">
     <link rel="stylesheet" href="assets/css/propina.css">
-    <script src="assets/js/components/toast.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-K3VYX3H0RD');
-    </script>
 </head>
 
 <body>
@@ -254,6 +244,9 @@
     <script src="assets/js/client.js"></script>
     <script src="assets/js/checkout.js"></script>
 
+    <!-- ★★★ CORREGIDO: Importar como module, sin scripts compat ★★★ -->
+    <script type="module" src="assets/js/fcm-manager.js"></script>
+
     <script>
         // ★ Inicializar autocompletado de zona en checkout ★
         if (typeof initZoneAutocompleteCheckout === 'function') {
@@ -264,7 +257,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js').catch(() => { });
+                navigator.serviceWorker.register('firebase-messaging-sw.js').catch(() => { });
             });
         }
     </script>

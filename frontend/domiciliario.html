@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ★ PWA -->
+    <!-- ★ PWA -->
     <meta name="theme-color" content="#E63946">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -13,28 +14,31 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Panel Domiciliario - DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <!-- ★ NUEVO CSS MODULAR PARA DOMICILIARIO ★ -->
     <link rel="stylesheet" href="assets/css/domiciliario.css">
 </head>
+
 <body>
     <header>
         <div class="container">
-           <nav>
-    <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
-    <div class="mobile-menu" id="mobile-menu" onclick="document.getElementById('nav-links').classList.toggle('active');this.classList.toggle('active')">
-        <i class="fas fa-bars"></i>
-    </div>
-    <ul class="nav-links" id="nav-links">
-        <li><span id="user-display" style="color: var(--secondary); font-weight: 500;"></span></li>
-        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
-    </ul>
-</nav>
+            <nav>
+                <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
+                <div class="mobile-menu" id="mobile-menu"
+                    onclick="document.getElementById('nav-links').classList.toggle('active');this.classList.toggle('active')">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><span id="user-display" style="color: var(--secondary); font-weight: 500;"></span></li>
+                    <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    
+
     <main>
         <!-- Banner de permisos -->
         <div id="permisos-banner" class="notificacion-activacion" style="display: none;">
@@ -92,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="filtros-historial">
                     <button class="filtro-btn active" onclick="filtrarHistorial('todos')">Todos</button>
                     <button class="filtro-btn" onclick="filtrarHistorial('hoy')">Hoy</button>
@@ -115,9 +119,9 @@
                     <div class="config-title">
                         <i class="fas fa-user-cog"></i> Perfil y Seguridad
                     </div>
-                    
+
                     <form id="form-config-domiciliario" onsubmit="guardarPerfilDomiciliario(event)">
-                        
+
                         <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos de Acceso</h3>
                         <!-- Nombre de usuario -->
                         <div class="form-group">
@@ -127,7 +131,8 @@
 
                         <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
 
-                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos Personales (Solo 1 vez)</h3>
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos Personales
+                            (Solo 1 vez)</h3>
                         <div class="config-info-grid">
                             <div class="form-group">
                                 <label><i class="fas fa-user"></i> Nombres Completos</label>
@@ -158,7 +163,8 @@
 
                         <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
 
-                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos de Contacto (Editable cada 60 días)</h3>
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Datos de Contacto
+                            (Editable cada 60 días)</h3>
                         <div class="config-info-grid">
                             <div class="form-group">
                                 <label><i class="fas fa-phone"></i> Teléfono / Celular</label>
@@ -172,7 +178,8 @@
 
                         <div style="height: 1px; background: var(--light); margin: 1.5rem 0;"></div>
 
-                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Cambiar Contraseña</h3>
+                        <h3 style="font-size: 1rem; color: var(--secondary); margin-bottom: 1rem;">Cambiar Contraseña
+                        </h3>
                         <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem;">
                             <i class="fas fa-info-circle"></i> Si no quieres cambiarla, deja estos campos vacíos.
                         </p>
@@ -184,7 +191,8 @@
                         <!-- Nueva Contraseña -->
                         <div class="form-group">
                             <label><i class="fas fa-key"></i> Nueva Contraseña</label>
-                            <input type="password" id="config-pass-nueva" placeholder="Mínimo 6 caracteres y 1 mayúscula">
+                            <input type="password" id="config-pass-nueva"
+                                placeholder="Mínimo 6 caracteres y 1 mayúscula">
                         </div>
                         <!-- Confirmar Contraseña -->
                         <div class="form-group">
@@ -213,14 +221,17 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/notificaciones.js"></script>
     <script src="assets/js/components/toast.js"></script>
-    <script src="assets/js/push-manager.js"></script>
+    
+    <!-- ★★★ NUEVO: Importar fcm-manager unificado de Firebase como módulo ★★★ -->
+    <script type="module" src="assets/js/fcm-manager.js"></script>
+    
     <script src="assets/js/auth-guard.js"></script>
     <script src="assets/js/domiciliario.js"></script>
 
     <script>
         // Service Worker (Ruta relativa para evitar error 404 en producción)
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
                 .then(reg => console.log('✅ SW registrado'))
                 .catch(err => console.error('❌ SW error:', err));
         }
@@ -238,6 +249,14 @@
     <script>
         OfflineGame.init();
     </script>
-
+        <script>
+        // Service Worker unificado (FCM + PWA)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js') // <-- Cambiar a firebase-messaging-sw.js
+                .then(reg => console.log('✅ SW registrado'))
+                .catch(err => console.error('❌ SW error:', err));
+        }
+    </script>
 </body>
+
 </html>

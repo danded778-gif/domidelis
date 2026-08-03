@@ -1072,16 +1072,19 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/components/toast.js"></script>
     <script src="assets/js/notificaciones.js"></script>
-    <script src="assets/js/push-manager.js"></script>
+    
     <script src="assets/js/auth-guard.js"></script>
     <script src="assets/js/admin.js"></script>
     <script src="assets/js/informe-financiero.js"></script>
     <script src="assets/js/info-domi.js"></script>
     <!-- ★ NUEVO JS DE ANUNCIOS ★ -->
     <script src="assets/js/admin-anuncios.js"></script>
+    <!-- ★★★ AGREGAR ESTA LÍNEA AQUÍ (Importante: type="module") ★★★ -->
+    <script type="module" src="assets/js/fcm-manager.js"></script>
+
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
                 .then(reg => console.log('✅ SW registrado'))
                 .catch(err => console.error('❌ SW error:', err));
         }

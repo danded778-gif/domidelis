@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ★ PWA -->
+    <!-- ★ PWA -->
     <meta name="theme-color" content="#E63946">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,7 +13,8 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Iniciar Sesión - DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -24,9 +26,13 @@
             --white: #FFFFFF;
             --gray: #6c757d;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
@@ -43,7 +49,7 @@
             padding: 40px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
@@ -58,9 +64,15 @@
             gap: 10px;
             text-decoration: none;
         }
-        
-        .logo span { color: var(--primary); }
-        .subtitle { color: var(--gray); margin-bottom: 30px; }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
 
         .form-group {
             margin-bottom: 20px;
@@ -109,14 +121,14 @@
             gap: 0.5rem;
         }
 
-        button:hover:not(:disabled) { 
-            background: #d32f3f; 
+        button:hover:not(:disabled) {
+            background: #d32f3f;
             transform: translateY(-2px);
         }
-        
-        button:disabled { 
-            background: #ccc; 
-            cursor: not-allowed; 
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
 
         .error {
@@ -159,35 +171,37 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="login-box">
         <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
         <p class="subtitle">Ingresa tus credenciales para continuar</p>
-        
+
         <div class="rol-info">
             <i class="fas fa-info-circle"></i>
             Acceso para administradores y domiciliarios
         </div>
-        
+
         <div class="error" id="error"></div>
-        
+
         <form id="formLogin">
             <div class="form-group">
                 <label><i class="fas fa-user"></i> Usuario</label>
                 <input type="text" id="usuario" placeholder="Ej: Juan Pérez" required autocomplete="username">
             </div>
-            
+
             <div class="form-group">
                 <label><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" placeholder="Tu contraseña" required autocomplete="current-password">
+                <input type="password" id="password" placeholder="Tu contraseña" required
+                    autocomplete="current-password">
             </div>
-            
+
             <button type="submit" id="btnLogin">
                 <i class="fas fa-sign-in-alt"></i> Ingresar
             </button>
         </form>
-        
+
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
     </div>
 
@@ -203,14 +217,14 @@
         }
 
         // ─── LÓGICA DE LOGIN ───
-        document.getElementById("formLogin").addEventListener("submit", async function(e) {
+        document.getElementById("formLogin").addEventListener("submit", async function (e) {
             e.preventDefault();
-            
+
             const usuario = document.getElementById("usuario").value.trim();
             const password = document.getElementById("password").value.trim();
             const errorDiv = document.getElementById("error");
             const btn = document.getElementById("btnLogin");
-            
+
             // Limpiar y preparar UI
             errorDiv.style.display = "none";
             btn.disabled = true;
@@ -230,7 +244,7 @@
                 if (data.success && data.token) {
                     // Guardar SOLO el token (auth-guard.js se encarga de leer los datos de aquí)
                     localStorage.setItem('token', data.token);
-                    
+
                     // Redirigir según el rol devuelto por el backend
                     if (data.rol === "admin") {
                         window.location.href = "admin.html";
@@ -255,12 +269,14 @@
             }
         });
 
-        // ─── PWA Service Worker ───
+        // ─── PWA Service Worker (Corregido a firebase-messaging-sw.js) ───
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js').catch(() => {});
+                navigator.serviceWorker.register('firebase-messaging-sw.js').catch(() => { });
             });
         }
+
     </script>
 </body>
+
 </html>
