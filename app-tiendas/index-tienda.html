@@ -458,8 +458,11 @@
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="/app-tiendas/assets/js/config-tienda.js"></script>
     <script src="/app-tiendas/assets/js/notificaciones-tienda.js"></script>
+    <!-- ★★★ NUEVO: Importar fcm-manager unificado de la raíz ★★★ -->
+    <script type="module" src="/assets/js/fcm-manager.js"></script>
     <script src="/app-tiendas/assets/js/push-manager-tienda.js"></script>
     <script src="/app-tiendas/assets/js/tiendas.js"></script>
+
 
     <script>
         if ('serviceWorker' in navigator) {
@@ -497,6 +500,8 @@
             function guardarCierre() { try { localStorage.setItem('install_tienda_cerrado', Date.now().toString()); } catch (e) { } }
             function cerradoRecientemente() { try { var t = localStorage.getItem('install_tienda_cerrado'); if (!t) return false; return (Date.now() - parseInt(t, 10)) < (1 * 24 * 60 * 60 * 1000); } catch (e) { return false; } }
         })();
+        
+        
         // ============================================
         // NOTIFICACIONES PUSH + SOCKET — PANEL TIENDA
         // ============================================
@@ -504,16 +509,18 @@
             const sesion = obtenerSesionTienda();
             if (!sesion.info || !sesion.info.id) return;
 
-            function actualizarBannerPermisosTienda() {
-                const banner = document.getElementById('permisos-banner-tienda');
-                if (!banner) return;
-                if (!('Notification' in window) || Notification.permission !== 'default') {
-                    banner.style.display = 'none';
-                } else {
-                    banner.style.display = 'flex';
+            // ★ Esperar a que fcm-manager.js cargue y registrar token ★
+            const fcmInterval = setInterval(() => {
+                if (typeof window.solicitarPermisoFCM === 'function') {
+                    clearInterval(fcmInterval);
+                    console.log(`⚙️ Registrando token FCM de Tienda ID: ${sesion.info.id}...`);
+                    window.solicitarPermisoFCM('tienda', sesion.info.id)
+                        .then(token => {
+                            if (token) console.log("✅ Token de tienda registrado correctamente.");
+                        })
+                        .catch(err => console.error("❌ Error token tienda:", err));
                 }
-            }
-            actualizarBannerPermisosTienda();
+            }, 150);
 
             const socket = io(SOCKET_URL, {
                 transports: ['websocket', 'polling'],
@@ -556,26 +563,16 @@
             if (banner) banner.style.display = 'none';
 
             if (permiso) {
-                try {
-                    const vapidRes = await fetch(`${BASE_API_URL}/api/vapid-public-key`);
-                    const { publicKey } = await vapidRes.json();
-                    await pushManagerTienda.init(publicKey);
-                } catch (e) { console.warn('No se pudo suscribir a push:', e); }
-
+                const sesion = obtenerSesionTienda();
+                if (sesion.info && sesion.info.id && typeof window.solicitarPermisoFCM === 'function') {
+                    await window.solicitarPermisoFCM('tienda', sesion.info.id);
+                }
                 mostrarToastTienda('¡Listo!', 'Notificaciones de pedidos activadas correctamente.', 'success', 6000);
             } else {
                 mostrarToastTienda('Atención', 'Notificaciones del sistema bloqueadas.', 'warning', 6000);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if ('Notification' in window && Notification.permission === 'granted') {
-                fetch(`${BASE_API_URL}/api/vapid-public-key`)
-                    .then(r => r.json())
-                    .then(({ publicKey }) => pushManagerTienda.init(publicKey))
-                    .catch(() => { });
-            }
-        });
     </script>
 </body>
 
