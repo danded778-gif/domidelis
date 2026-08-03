@@ -1,4 +1,4 @@
-// Detectar si estamos en local, ngrok o producción
+//config-tienda.js - Detectar si estamos en local, ngrok o producción
 const esLocal = window.location.hostname === 'localhost' ||
     window.location.hostname === '127.0.0.1' ||
     window.location.hostname.includes('.ngrok-free.dev');
