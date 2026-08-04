@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-04T16-27-20",
-  "ultimaActualizacion": "2026-08-04T16:27:20.102Z",
+  "version": "v2026-08-04T16-27-44",
+  "ultimaActualizacion": "2026-08-04T16:27:44.637Z",
   "tiendas": [
     {
       "id": 1,
@@ -824,7 +824,7 @@
           "nombre": "Cerdo",
           "descripcion": "",
           "precio": 15000,
-          "imagen_url": "",
+          "imagen_url": "solicitando",
           "badge": "agotado",
           "categoria": "comida",
           "cantidadTipo": "UND",
@@ -1582,7 +1582,7 @@
       "nombre": "Cerdo",
       "descripcion": "",
       "precio": 15000,
-      "imagen_url": "",
+      "imagen_url": "solicitando",
       "badge": "agotado",
       "categoria": "comida",
       "cantidadTipo": "UND",
