@@ -1,6 +1,6 @@
 {
-  "version": "v2026-07-27T05-13-12",
-  "ultimaActualizacion": "2026-07-27T05:13:12.830Z",
+  "version": "v2026-08-04T16-13-12",
+  "ultimaActualizacion": "2026-08-04T16:13:12.679Z",
   "tiendas": [
     {
       "id": 1,
@@ -499,7 +499,7 @@
           "nombre": "Pendeja 6",
           "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
           "precio": 130000,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/maria_pendeja/combo6.png",
           "badge": "Disponible",
           "categoria": "comida",
           "cantidadTipo": "UND",
@@ -1465,7 +1465,7 @@
       "nombre": "Pendeja 6",
       "descripcion": "70 Alitas más acompañante + Gaseosa 1,5 L",
       "precio": 130000,
-      "imagen_url": "",
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/maria_pendeja/combo6.png",
       "badge": "Disponible",
       "categoria": "comida",
       "cantidadTipo": "UND",
