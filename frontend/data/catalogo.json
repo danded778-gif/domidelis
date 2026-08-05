@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-05T05-32-16",
-  "ultimaActualizacion": "2026-08-05T05:32:16.245Z",
+  "version": "v2026-08-05T17-21-42",
+  "ultimaActualizacion": "2026-08-05T17:21:42.888Z",
   "tiendas": [
     {
       "id": 1,
@@ -811,7 +811,7 @@
           "nombre": "Carne Res",
           "descripcion": "",
           "precio": 17000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/carnessantuariana.jpg",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/carnessantuarioant.png",
           "badge": "Disponible",
           "categoria": "comida",
           "cantidadTipo": "UND",
@@ -1569,7 +1569,7 @@
       "nombre": "Carne Res",
       "descripcion": "",
       "precio": 17000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/carnessantuariana.jpg",
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/carnessantuarioant.png",
       "badge": "Disponible",
       "categoria": "comida",
       "cantidadTipo": "UND",
