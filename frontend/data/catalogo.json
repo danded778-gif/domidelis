@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-10T17-39-34",
-  "ultimaActualizacion": "2026-08-10T17:39:34.113Z",
+  "version": "v2026-08-10T17-40-09",
+  "ultimaActualizacion": "2026-08-10T17:40:09.533Z",
   "tiendas": [
     {
       "id": 1,
@@ -424,7 +424,7 @@
       "descripcion": "Alitas - Burguer",
       "direccion": "la judea",
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
-      "rating": 3.9,
+      "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/maria_pendeja/maria_145kb.jpg",
       "promovida": 0,
       "activo": true,
