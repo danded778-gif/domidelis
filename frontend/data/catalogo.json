@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-14T23-28-47",
-  "ultimaActualizacion": "2026-08-14T23:28:47.204Z",
+  "version": "v2026-08-14T23-29-21",
+  "ultimaActualizacion": "2026-08-14T23:29:21.466Z",
   "tiendas": [
     {
       "id": 1,
@@ -621,7 +621,7 @@
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor_150kb.jpg",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": [
         {
