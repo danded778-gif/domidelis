@@ -553,7 +553,10 @@ header .nav-links li a:hover {
     }
 }
 
-.main-nav {
+/* ============================================
+   HEADER CART — solo página principal
+   ============================================ */
+body.page-home .main-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -561,7 +564,7 @@ header .nav-links li a:hover {
     width: 100%;
 }
 
-.header-cart {
+body.page-home .header-cart {
     position: relative;
     width: 44px;
     height: 44px;
@@ -578,13 +581,13 @@ header .nav-links li a:hover {
     flex-shrink: 0;
 }
 
-.header-cart:hover {
+body.page-home .header-cart:hover {
     background: rgba(255, 255, 255, 0.25);
     color: white;
     transform: scale(1.05);
 }
 
-.header-cart-count {
+body.page-home .header-cart-count {
     position: absolute;
     top: -4px;
     right: -4px;
@@ -601,100 +604,105 @@ header .nav-links li a:hover {
     transition: all 0.25s ease;
 }
 
-.header-cart.empty .header-cart-count {
+/* Vacío */
+body.page-home .header-cart.empty .header-cart-count {
     background: rgba(255, 255, 255, 0.35);
     color: rgba(255, 255, 255, 0.9);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-.header-cart.has-items {
+/* Con productos — rojo vivo */
+body.page-home .header-cart.has-items {
     background: var(--primary);
     color: white;
     box-shadow: 0 4px 12px rgba(230, 57, 70, 0.45);
 }
 
-.header-cart.has-items:hover {
+body.page-home .header-cart.has-items:hover {
     background: #d32f3f;
     transform: scale(1.06);
 }
 
-.header-cart.has-items .header-cart-count {
+body.page-home .header-cart.has-items .header-cart-count {
     background: white;
     color: var(--primary);
     border-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.header-cart.pulse {
+body.page-home .header-cart.pulse {
     transform: scale(1.12);
 }
 
-header .nav-links li a {
+/* Cómo pedir — solo en home */
+body.page-home header .nav-links li a {
     background: rgba(255, 255, 255, 0.12) !important;
     color: white !important;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-header .nav-links li a:hover {
+body.page-home header .nav-links li a:hover {
     background: rgba(230, 57, 70, 0.85) !important;
     color: white !important;
     border-color: transparent;
 }
 
+/* Layout móvil solo en home */
 @media (max-width: 768px) {
-    .main-nav {
+    body.page-home .main-nav {
         display: grid;
         grid-template-columns: 44px 1fr 44px;
         align-items: center;
     }
 
-    .mobile-menu {
+    body.page-home .mobile-menu {
         display: flex !important;
         order: 1;
     }
 
-    .logo {
+    body.page-home .logo {
         order: 2;
         justify-self: center;
         font-size: 1.15rem;
     }
 
-    .header-cart {
+    body.page-home .header-cart {
         order: 3;
         justify-self: end;
     }
 
-    .nav-links {
+    body.page-home .nav-links {
         order: 4;
         grid-column: 1 / -1;
     }
 }
 
 @media (min-width: 769px) {
-    .mobile-menu {
+    body.page-home .mobile-menu {
         display: none !important;
     }
 
-    .main-nav {
+    body.page-home .main-nav {
         display: flex;
         justify-content: space-between;
     }
 
-    .logo {
+    body.page-home .logo {
         margin-right: auto;
     }
 
-    .nav-links {
+    body.page-home .nav-links {
         display: flex;
         margin-right: 1rem;
     }
 
-    .header-cart {
+    body.page-home .header-cart {
         margin-left: 0.5rem;
     }
 }
 
-.cart-float {
+/* Ocultar carrito flotante solo en home */
+body.page-home .cart-float {
     display: none !important;
 }
 
