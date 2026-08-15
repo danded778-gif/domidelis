@@ -233,10 +233,10 @@ function mostrarProductosPorCategoria() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'none';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none';
-    
+
     // ★ ARREGLO CARRUSEL: Se oculta al cambiar de categoría para no confundir
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none'; 
-    
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+
     if (catProductosGrid) catProductosGrid.style.display = 'block';
 
     if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${categoriaActiva}`;
@@ -311,10 +311,10 @@ function volverATiendas() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'block';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid';
-    
+
     // ★ ARREGLO CARRUSEL: Vuelve a aparecer al presionar "Todas"
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex';
-    
+
     if (catProductosGrid) catProductosGrid.style.display = 'none';
 
     if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
@@ -344,7 +344,12 @@ function renderizarTiendas() {
         const statusB = checkStoreStatus(b.horario);
         const isOpenA = statusA.isOpen ? 1 : 0;
         const isOpenB = statusB.isOpen ? 1 : 0;
+
         if (isOpenB !== isOpenA) return isOpenB - isOpenA;
+        const promovidaA = (a.promovida == 1 || a.promovida === true) ? 1 : 0;
+        const promovidaB = (b.promovida == 1 || b.promovida === true) ? 1 : 0;
+        if (promovidaB !== promovidaA) return promovidaB - promovidaA;
+
         const ratingA = parseFloat(a.rating) || 0;
         const ratingB = parseFloat(b.rating) || 0;
         return ratingB - ratingA;
@@ -666,7 +671,7 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         currentPaginator.destroy();
     }
 
-    const ITEMS_PER_PAGE = 3; 
+    const ITEMS_PER_PAGE = 3;
     let skipInitialTitleScroll = !!productoIdDestacado;
 
     currentPaginator = new Paginator({
@@ -676,7 +681,7 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         renderCallback: renderMenuProducts,
         onPageChange: function () {
             if (skipInitialTitleScroll) {
-                skipInitialTitleScroll = false; 
+                skipInitialTitleScroll = false;
                 return;
             }
 
