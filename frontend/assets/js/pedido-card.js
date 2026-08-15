@@ -93,15 +93,21 @@
         ? productos.map(pr => `${pr.cantidad || 1}x ${_esc(pr.nombre || 'Producto')}`).join(', ')
         : 'Sin detalles';
 
+      const nombreDomi = pedido.domiciliarioNombre || pedido.nombreDomiciliario || null;
+
       bodyHtml = `
                 <div class="pedido-detalles">
-                    <p><strong>Cliente:</strong> ${_esc(pedido.clienteNombre)}</p>
-                    <p><strong>Método Pago:</strong> ${_esc(pedido.metodoPago || 'Efectivo')}</p>
-                </div>
-                <div class="pedido-productos">${productosStr}</div>
-                <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">
-                    Total: ${_fmt(pedido.total)}
-                </div>`;
+            <p><strong>Cliente:</strong> ${_esc(pedido.clienteNombre)}</p>
+            <p><strong>Método Pago:</strong> ${_esc(pedido.metodoPago || 'Efectivo')}</p>
+            ${nombreDomi
+          ? `<p><strong><i class="fas fa-motorcycle" style="color:var(--secondary);margin-right:4px"></i>Domiciliario:</strong> ${_esc(nombreDomi)}</p>`
+          : `<p style="color:var(--gray);"><i class="fas fa-motorcycle" style="margin-right:4px"></i>Domiciliario: Sin asignar</p>`
+        }
+        </div>
+        <div class="pedido-productos">${productosStr}</div>
+        <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">
+            Total: ${_fmt(pedido.total)}
+        </div>`;
     } else {
       let info = '';
 

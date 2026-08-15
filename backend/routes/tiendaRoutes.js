@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
                 descripcion: data.descripcion || '',
                 horario: data.horario || '{"mon":"08:00-22:00","tue":"08:00-22:00","wed":"08:00-22:00","thu":"08:00-22:00","fri":"08:00-22:00","sat":"08:00-22:00","sun":"Cerrado"}' // ★ NUEVO
             };
-            
+
             // El token puede llevar la info básica, la completa se envía al frontend
             const token = jwt.sign({ id: data.id, nombre: data.nombre, rol: 'tienda', comision: data.comision }, JWT_SECRET, { expiresIn: '8h' });
             res.json({ token, tienda: tiendaData });
@@ -70,20 +70,29 @@ router.get('/productos', verifyTienda, async (req, res) => {
 });
 
 // ============================================
-// RUTA: Obtener Pedidos de la Tienda (Calculando Subtotal)
+// RUTA: Obtener Pedidos de la Tienda (Calculando Subtotal + Nombre Domiciliario)
 // ============================================
 router.get('/pedidos', verifyTienda, async (req, res) => {
     try {
         const response = await axios.get(`${GAS_URL}?action=getPedidosTienda&tiendaId=${req.tienda.id}`);
         const pedidos = response.data;
 
+        let domiciliarios = [];
+        try {
+            const domiRes = await axios.get(`${GAS_URL}?action=getDomiciliarios`);
+            domiciliarios = Array.isArray(domiRes.data) ? domiRes.data : [];
+        } catch (e) {
+            console.warn('No se pudieron cargar domiciliarios para enriquecer pedidos');
+        }
+
         const pedidosProcesados = pedidos.map(pedido => {
             let productosDeTienda = [];
             let subtotalTienda = 0;
 
             try {
-                const todosLosProductos = JSON.parse(pedido.productosJson);
+                const todosLosProductos = JSON.parse(pedido.productosJson || '[]');
                 productosDeTienda = todosLosProductos.filter(p => String(p.tiendaId) === String(req.tienda.id));
+
                 subtotalTienda = productosDeTienda.reduce((suma, p) => {
                     if (p.subtotal !== undefined && p.subtotal !== null) {
                         return suma + parseFloat(p.subtotal);
@@ -98,19 +107,25 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
                 subtotalTienda = 0;
             }
 
-            const pedidoFinal = {
+            let domiciliarioNombre = null;
+            if (pedido.domiciliarioId) {
+                const domi = domiciliarios.find(d => String(d.id) === String(pedido.domiciliarioId));
+                if (domi) {
+                    domiciliarioNombre = domi.nombre;
+                }
+            }
+
+            return {
                 ...pedido,
                 productosJson: JSON.stringify(productosDeTienda),
-                total: subtotalTienda
+                total: subtotalTienda,
+                domiciliarioNombre
             };
-            
-            delete pedidoFinal.propina;
-
-            return pedidoFinal;
         });
 
         res.json(pedidosProcesados);
     } catch (err) {
+        console.error('Error obteniendo pedidos de tienda:', err.message);
         res.status(500).json({ error: 'Error obteniendo pedidos.' });
     }
 });
@@ -128,7 +143,7 @@ router.put('/perfil', verifyTienda, async (req, res) => {
         const currentRes = await axios.get(`${GAS_URL}?action=getTiendas`);
         const tiendas = currentRes.data;
         const current = tiendas.find(t => String(t.id) === String(tiendaId));
-        
+
         if (!current) return res.status(404).json({ error: 'Tienda no encontrada en la base de datos.' });
 
         // Mandamos a actualizar a Google Sheets
@@ -139,23 +154,23 @@ router.put('/perfil', verifyTienda, async (req, res) => {
             descripcion: descripcion !== undefined ? descripcion : current.descripcion,
             direccion: direccion !== undefined ? direccion : current.direccion,
             // ★ NUEVO: Si horario viene en la petición, lo enviamos; si no, dejamos el actual
-            horario: horario !== undefined ? horario : current.horario, 
+            horario: horario !== undefined ? horario : current.horario,
             rating: current.rating,
             imagen: current.imagen,
             comision: current.comision
         });
 
         await axios.post(`${GAS_URL}`, updateParams.toString());
-        
+
         // ★ NUEVO: Devolvemos el horario actualizado al frontend para actualizar la sesión local
-        res.json({ 
-            success: true, 
-            tienda: { 
-                id: tiendaId, 
-                descripcion, 
-                direccion, 
-                horario 
-            } 
+        res.json({
+            success: true,
+            tienda: {
+                id: tiendaId,
+                descripcion,
+                direccion,
+                horario
+            }
         });
     } catch (err) {
         console.error('Error actualizando perfil:', err.message);
@@ -170,7 +185,7 @@ router.post('/cambiar-password', verifyTienda, async (req, res) => {
     try {
         const { passwordActual, passwordNueva } = req.body;
         const tiendaId = req.tienda.id;
-        
+
         const params = new URLSearchParams({
             action: 'actualizarPasswordTienda',
             id: tiendaId,
