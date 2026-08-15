@@ -228,29 +228,7 @@ function renderizarPedidosActivos() {
 }
 
 function renderCards(pedidos) {
-    return pedidos.map(p => {
-        let productos = [];
-        try { productos = JSON.parse(p.productosJson); } catch (e) { }
-        const esPendiente = p.estado === 'pendiente';
-        const tiendasTexto = obtenerTiendasTextoDomi(p);
-        return `<div class="panel-card pedido-card ${p.estado.replace(/\s/g, '-')}">
-            <div class="pedido-header"><h3>Pedido #${p.id}</h3><span class="estado-badge estado-${p.estado.replace(/\s/g, '-')}">${p.estado}</span></div>
-            <div class="pedido-info">
-                ${tiendasTexto ? `<p><strong><i class="fas fa-store" style="color:var(--secondary);margin-right:4px"></i>Tienda:</strong> ${tiendasTexto}</p>` : ''}
-                <p><strong>Cliente:</strong> ${p.clienteNombre}</p>
-                <p><strong>Dirección:</strong> ${p.clienteDireccion}</p>
-                <p><strong>Teléfono:</strong> ${p.clienteTelefono}</p>
-                <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
-                ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
-                <p><strong>Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
-                <div class="productos-resumen"><strong>Productos:</strong><ul>${productos.slice(0, 3).map(x => `<li>${x.cantidad}x ${esc(x.nombre)}</li>`).join('')}${productos.length > 3 ? `<li>... y ${productos.length - 3} más</li>` : ''}</ul></div>
-            </div>
-            <div class="estado-botones">
-                ${esPendiente ? `<button class="btn btn-warning btn-sm" onclick="cambiarEstadoPedido(${p.id},'en camino')"><i class="fas fa-motorcycle"></i> En camino</button>` : `<button class="btn btn-success btn-sm" onclick="marcarEntregado(${p.id})"><i class="fas fa-check"></i> Entregado</button>`}
-                <button class="btn btn-info btn-sm" onclick="verMapa('${escapeQuotes(p.clienteDireccion)}')"><i class="fas fa-map"></i> Mapa</button>
-                <button class="btn btn-secondary btn-sm" onclick="verDetallePedidoDomiciliario(${p.id})"><i class="fas fa-eye"></i> Detalle</button>
-            </div></div>`;
-    }).join('');
+    return pedidos.map(p => crearTarjetaPedido(p, { modo: 'domiciliario' })).join('');
 }
 
 // ============================================
@@ -284,22 +262,7 @@ function renderizarHistorial() {
         c.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><h3>Sin pedidos en este período</h3></div>`;
         return;
     }
-    c.innerHTML = filtrados.map(p => {
-        let productos = []; try { productos = JSON.parse(p.productosJson); } catch (e) { }
-        const fe = new Date(p.fechaEntregaLocal || p.fecha);
-        const fechaTexto = fe.toLocaleDateString('es-CO', { timeZone: 'America/Bogota' });
-        const tiendasTexto = obtenerTiendasTextoDomi(p);
-        return `<div class="panel-card pedido-card entregado historial-card">
-            <div class="pedido-header"><h3>Pedido #${p.id}</h3><span class="fecha-entrega"><i class="fas fa-calendar-check"></i>${fechaTexto}</span></div>
-            <div class="pedido-info">
-                ${tiendasTexto ? `<p><strong><i class="fas fa-store" style="color:var(--secondary);margin-right:4px"></i>Tienda:</strong> ${tiendasTexto}</p>` : ''}
-                <p><strong>Cliente:</strong> ${p.clienteNombre}</p>
-                <p><strong>Total:</strong> ${formatearPrecio(p.total)}</p>
-                ${parseFloat(p.propina) > 0 ? `<p style="color:#2A9D8F;font-weight:700;"><i class="fas fa-hand-holding-heart"></i> Propina: ${formatearPrecio(p.propina)}</p>` : `<p style="color:var(--gray);"><i class="fas fa-hand-holding-heart"></i> Propina: No</p>`}
-                <div class="productos-resumen"><strong>Entregados:</strong><ul>${productos.map(x => `<li>${x.cantidad}x ${esc(x.nombre)}</li>`).join('')}</ul></div>
-            </div>
-            <div class="historial-acciones"><span class="tiempo-entrega"><i class="fas fa-clock"></i> ${formatearTiempo(fe)}</span></div></div>`;
-    }).join('');
+    c.innerHTML = filtrados.map(p => crearTarjetaPedido(p, { modo: 'historial' })).join('');
 }
 
 function actualizarEstadisticas(pedidos) {

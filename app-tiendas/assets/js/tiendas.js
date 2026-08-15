@@ -78,31 +78,7 @@ async function cargarPedidos() {
             return;
         }
 
-        grid.innerHTML = pedidos.map(p => {
-            let estadoClass = p.estado === 'pendiente' ? 'pendiente' : p.estado === 'en-camino' ? 'en-camino' : 'entregado';
-            let productosHtml = '';
-            try {
-                const prods = JSON.parse(p.productosJson);
-                productosHtml = prods.map(pr => `${pr.cantidad || 1}x ${pr.nombre || 'Producto'}`).join(', ');
-            } catch(e) { productosHtml = 'Sin detalles'; }
-
-            return `
-                <div class="pedido-card-tienda ${estadoClass}">
-                    <div class="pedido-header">
-                        <span class="pedido-id">#${p.id}</span>
-                        <span class="estado-badge estado-${estadoClass}">${p.estado.toUpperCase()}</span>
-                    </div>
-                    <div class="pedido-detalles">
-                        <p><strong>Cliente:</strong> ${escapeQuotes(p.clienteNombre)}</p>
-                        <p><strong>Método Pago:</strong> ${p.metodoPago || 'Efectivo'}</p>
-                    </div>
-                    <div class="pedido-productos">${productosHtml}</div>
-                    <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">
-                        Total: ${formatearPrecio(p.total)}
-                    </div>
-                </div>
-            `;
-        }).join('');
+        grid.innerHTML = pedidos.map(p => crearTarjetaPedido(p, { modo: 'tienda' })).join('');
     } catch (err) {
         console.error('Error cargando pedidos:', err);
     }
