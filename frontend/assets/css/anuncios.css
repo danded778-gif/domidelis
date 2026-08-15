@@ -1,121 +1,193 @@
 /* ============================================
    FRAMEWORK DE ANUNCIOS - DOMIDELIS
-   1. App del Cliente (Tarjetas y Pop-up)
+   1. App del Cliente (Carrusel y Pop-up)
    2. Panel de Administración
    3. Constructor Visual (Drag & Drop y Preview)
    ============================================ */
 
 /* ============================================
-   1. APP DEL CLIENTE (TARJETAS Y POP-UP)
+   1. APP DEL CLIENTE - CARRUSEL DE PROMOCIONES (TIPO EL CORRAL)
    ============================================ */
 
-/* Contenedor de tarjetas en index.html */
+/* Contenedor Principal del Carrusel */
 #contenedor-anuncios {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-/* Tarjeta de Anuncio (Category Card) */
-.anuncio-card {
-    background: var(--white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    transition: var(--transition);
     display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.05);
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 0; /* Sin gap para que los slides peguen al borde */
+    margin: 2.5rem 0 0.5rem 0;
+    padding: 0;
+    border-radius: 0; /* Full width en móviles */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+#contenedor-anuncios::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Ocultar el contenedor si no hay anuncios */
+#contenedor-anuncios:empty {
+    display: none;
+}
+
+/* ===== ESTADO DE CARGA DEL CARRUSEL (HAMBURGUESA) ===== */
+.loader-carrusel {
+    width: 100%;
+    height: 180px; /* Misma altura que el slide para evitar saltos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 20px;
+    margin: 0.5rem 0 0.2rem 0;
+}
+
+.loader-carrusel span {
+    font-size: 4rem;
+    filter: drop-shadow(0 8px 12px rgba(230, 57, 70, 0.3)); /* Sombra de color */
+    animation: respirarBurger 1.2s infinite ease-in-out;
+}
+
+@keyframes respirarBurger {
+    0%, 100% { 
+        transform: scale(1); 
+        filter: drop-shadow(0 8px 12px rgba(230, 57, 70, 0.3)); 
+    }
+    50% { 
+        transform: scale(1.1); 
+        filter: drop-shadow(0 12px 18px rgba(230, 57, 70, 0.5)); 
+    }
+}
+
+/* Cada Slide del Carrusel */
+.promo-slide {
+    flex: 0 0 92%; /* Ocupa casi todo el ancho, dejando ver un pedazo del siguiente */
+    scroll-snap-align: center;
+    position: relative;
+    height: 180px; /* Altura banner móvil */
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 4px; /* Pequeño margen para que no pegue al borde de la pantalla */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.anuncio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
+.promo-slide:active {
+    transform: scale(0.98); /* Efecto de presión en móvil */
 }
 
-.anuncio-card-img {
-    height: 180px;
+/* Imagen de Fondo del Slide */
+.promo-slide-img {
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
-    background-color: var(--light);
-    position: relative;
+    transition: transform 0.5s ease;
 }
 
-.anuncio-badge-card {
+.promo-slide:hover .promo-slide-img {
+    transform: scale(1.05); /* Zoom sutil al pasar el ratón */
+}
+
+/* Overlay Oscuro para que el texto sea legible */
+.promo-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Badge del Slide (Ej: "Oferta", "Cupón") */
+.promo-slide-badge {
     position: absolute;
     top: 12px;
     right: 12px;
     background: var(--primary);
     color: white;
-    padding: 0.4rem 0.8rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+    z-index: 2;
 }
 
-.anuncio-card-content {
-    padding: 1.2rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.anuncio-card-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 0.3rem;
-}
-
-.anuncio-card-subtitle {
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin-bottom: 1rem;
-}
-
-.anuncio-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
-}
-
-.anuncio-card-price {
-    font-size: 1.4rem;
+/* Textos del Slide */
+.promo-slide-title {
+    font-size: 1.3rem;
     font-weight: 800;
-    color: var(--primary);
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
 }
 
-.anuncio-card-price small {
-    text-decoration: line-through;
-    color: var(--gray);
+.promo-slide-subtitle {
+    font-size: 0.85rem;
     font-weight: 400;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
+    opacity: 0.9;
+    margin-bottom: 0.6rem;
 }
 
-.anuncio-card-btn {
-    background: var(--dark);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: var(--border-radius-sm);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
+/* ★ BOTÓN CTA DINÁMICO DEL SLIDE (RETOQUE PREMIUM INVERTIDO) ★ */
+.promo-slide-cta {
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 6px;
+    background: var(--primary); /* Fondo Rojo por defecto */
+    color: var(--white); /* Letra Blanca por defecto */
+    padding: 8px 18px; /* Un poco más de padding para que se vea "chubby" */
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 800; /* Letra más gruesa */
+    width: fit-content;
+    border: 2px solid var(--primary); /* Borde rojo por defecto */
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4); /* Sombra rojiza */
+    transition: all 0.3s ease; /* Transición suave */
 }
 
-.anuncio-card-btn:hover {
-    background: var(--primary);
+/* Efecto Hover/Selección: El botón se invierte (Blanco con letra roja) y sube un poquito */
+.promo-slide:hover .promo-slide-cta,
+.promo-slide:active .promo-slide-cta {
+    background: var(--white); 
+    color: var(--primary); 
+    border-color: var(--white);
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6); /* Sombra blanca */
 }
+
+/* Responsive para Tablets/Desktop */
+@media (min-width: 768px) {
+    .promo-slide {
+        flex: 0 0 80%; /* En desktop muestra el actual y asoma un poco el siguiente */
+        height: 260px;
+        margin: 0 8px;
+        border-radius: 20px;
+    }
+    .promo-slide-title {
+        font-size: 1.8rem;
+    }
+    .promo-slide-subtitle {
+        font-size: 1rem;
+    }
+    .promo-slide-cta {
+        font-size: 0.95rem;
+        padding: 10px 22px;
+    }
+}
+
+/* ============================================
+   2. POP-UP MODAL DE ANUNCIO
+   ============================================ */
 
 /* Pop-up Modal (Elegante y bloqueado) */
 .anuncio-popup-overlay {
@@ -322,9 +394,8 @@
     color: #aaa;
 }
 
-
 /* ============================================
-   2. PANEL DE ADMINISTRACIÓN
+   3. PANEL DE ADMINISTRACIÓN
    ============================================ */
 
 .admin-anuncios-header {
@@ -420,7 +491,7 @@
 }
 
 /* ============================================
-   3. CONSTRUCTOR VISUAL (DRAG & DROP Y PREVIEW)
+   4. CONSTRUCTOR VISUAL (DRAG & DROP Y PREVIEW)
    ============================================ */
 
 .constructor-layout {
@@ -570,3 +641,6 @@
 .badge-borrador { background: var(--gray); color: white; }
 .badge-vencido { background: var(--danger); color: white; }
 .badge-programado { background: var(--info); color: white; }
+
+
+

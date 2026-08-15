@@ -1,6 +1,8 @@
 // ============================================
 // anuncios.js — Framework de Anuncios (App Cliente)
-// ★ ACTUALIZADO: Términos y Condiciones + Badge Personalizable
+// ★ ACTUALIZADO: Carrusel Promocional + AutoPlay + Botón CTA Dinámico
+// ★ MEJORA UX: Popup automático desactivado (Cero fricción)
+// ★ BLINDAJE: Protección contra errores 404 de la API
 // ============================================
 
 const Anuncios = {
@@ -8,11 +10,13 @@ const Anuncios = {
     anuncioDestacado: null,
     SEIS_HORAS_MS: 6 * 60 * 60 * 1000,
     CLAIM_KEY: 'domidelis_claim_timestamp',
+    autoScrollInterval: null, 
 
-        init: async function() {
+    init: async function() {
         await this.cargarAnuncios();
         if (this.anuncioDestacado) {
-            this.renderizarCard(); // ★ ESTA LÍNEA FALTA EN TU CÓDIGO, ES VITAL
+            this.renderizarCard();
+            this.mostrarPopupAutomatico(); 
         }
     },
 
@@ -24,9 +28,26 @@ const Anuncios = {
     },
 
     cargarAnuncios: async function() {
+        const contenedor = document.getElementById('contenedor-anuncios');
+        
+        // ★ INYECTAR ESTADO DE CARGA (HAMBURGUESA) ★
+        if (contenedor) {
+            contenedor.style.display = 'flex';
+            contenedor.innerHTML = `<div class="loader-carrusel"><span>🍔</span></div>`;
+        }
+
         try {
             const res = await fetch(`${API_URL}?action=getAnunciosActivos`);
+            
+            // ★ BLINDAJE: Si la respuesta no es OK (ej. 404), detenemos todo
+            if (!res.ok) {
+                console.error(`Error ${res.status}: No se pudieron cargar los anuncios desde la API.`);
+                if (contenedor) contenedor.style.display = 'none';
+                return;
+            }
+
             const data = await res.json();
+            
             if (data.success && Array.isArray(data.anuncios) && data.anuncios.length > 0) {
                 this.activos = data.anuncios;
                 for (let i = this.activos.length - 1; i > 0; i--) {
@@ -34,63 +55,82 @@ const Anuncios = {
                     [this.activos[i], this.activos[j]] = [this.activos[j], this.activos[i]];
                 }
                 this.anuncioDestacado = this.activos[0];
+            } else {
+                if (contenedor) contenedor.style.display = 'none';
             }
         } catch (error) {
-            console.error('Error cargando anuncios:', error);
+            console.error('Error procesando anuncios:', error);
+            if (contenedor) {
+                contenedor.style.display = 'none';
+                contenedor.innerHTML = '';
+            }
         }
     },
 
     renderizarCard: function() {
         const contenedor = document.getElementById('contenedor-anuncios');
-        if (!contenedor || !this.anuncioDestacado) return;
+        if (!contenedor) return;
 
-        const anuncio = this.anuncioDestacado;
-        // ★ Badge personalizado o default
-        const badgeTexto = anuncio.badgeTexto || (anuncio.tipo === 'tienda' ? 'Oferta' : (anuncio.tipo === 'domicilio' ? 'Descuento' : 'Promo'));
-        
-        let precioHtml = '';
-        if (anuncio.tipo === 'tienda' && anuncio.precioPromo > 0) {
-            precioHtml = `<div class="anuncio-card-price">$${Number(anuncio.precioPromo).toLocaleString('es-CO')} 
-                ${anuncio.precioNormal ? `<small>$${Number(anuncio.precioNormal).toLocaleString('es-CO')}</small>` : ''}
-            </div>`;
-        } else if (anuncio.tipo === 'domicilio') {
-            precioHtml = `<div class="anuncio-card-price" style="font-size: 1rem; color: var(--accent);">${anuncio.descuentoDomicilio}% OFF Envío</div>`;
-        } else if (anuncio.tipo === 'codigo') {
-            precioHtml = `<div class="anuncio-card-price" style="font-size: 1rem; color: var(--secondary);">¡Ingresa y Gana!</div>`;
+        if (!this.activos || this.activos.length === 0) {
+            contenedor.style.display = 'none';
+            return;
         }
 
-        contenedor.innerHTML = `
-            <div class="anuncio-card" onclick="Anuncios.abrirPopup(${anuncio.id})">
-                <div class="anuncio-card-img" style="background-image: url('${anuncio.imagenUrl || ''}')">
-                    <span class="anuncio-badge-card">${badgeTexto}</span>
-                </div>
-                <div class="anuncio-card-content">
-                    <div>
-                        <h3 class="anuncio-card-title">${anuncio.titulo || ''}</h3>
-                        <p class="anuncio-card-subtitle">${anuncio.subtitulo || ''}</p>
+        contenedor.style.display = 'flex'; 
+
+        // Iteramos TODOS los anuncios activos
+        contenedor.innerHTML = this.activos.map(anuncio => {
+            const badgeTexto = anuncio.badgeTexto || (anuncio.tipo === 'tienda' ? 'Oferta' : (anuncio.tipo === 'domicilio' ? 'Envío' : 'Promo'));
+            const tieneImagen = anuncio.imagenUrl && anuncio.imagenUrl.trim() !== '';
+
+            // ★ NUEVA LÓGICA: Botón (CTA) dinámico según el tipo de anuncio
+            let ctaHTML = '';
+            if (anuncio.tipo === 'tienda') {
+                ctaHTML = `<div class="promo-slide-cta"><i class="fas fa-cart-plus"></i> ¡Pídelo ya!</div>`;
+            } else if (anuncio.tipo === 'domicilio') {
+                ctaHTML = `<div class="promo-slide-cta"><i class="fas fa-percentage"></i> Activar ${anuncio.descuentoDomicilio || 0}% Off</div>`;
+            } else if (anuncio.tipo === 'codigo') {
+                ctaHTML = `<div class="promo-slide-cta"><i class="fas fa-ticket-alt"></i> Ingresar Código</div>`;
+            } else {
+                ctaHTML = `<div class="promo-slide-cta"><i class="fas fa-eye"></i> Ver oferta</div>`;
+            }
+
+            return `
+                <div class="promo-slide" onclick="Anuncios.abrirPopup(${anuncio.id})">
+                    <div class="promo-slide-img" style="background-image: url('${tieneImagen ? anuncio.imagenUrl : ''}')"></div>
+                    <span class="promo-slide-badge">${badgeTexto}</span>
+                    <div class="promo-slide-overlay">
+                        <div class="promo-slide-title">${anuncio.titulo || 'Promoción'}</div>
+                        <div class="promo-slide-subtitle">${anuncio.subtitulo || ''}</div>
+                        ${ctaHTML}
                     </div>
-                    <div class="anuncio-card-footer">
-                        ${precioHtml}
-                        <button class="anuncio-card-btn" onclick="event.stopPropagation(); Anuncios.abrirPopup(${anuncio.id})">
-                            <i class="fas fa-eye"></i> Ver
-                        </button>
-                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }).join('');
+
+        this.iniciarCarruselPromos(contenedor);
+    },
+
+    iniciarCarruselPromos: function(contenedor) {
+        if (this.autoScrollInterval) clearInterval(this.autoScrollInterval);
+        if (this.activos.length <= 1) return;
+
+        this.autoScrollInterval = setInterval(() => {
+            if (contenedor.matches(':hover')) return;
+
+            const maxScrollLeft = contenedor.scrollWidth - contenedor.clientWidth;
+            
+            if (contenedor.scrollLeft >= maxScrollLeft - 10) {
+                contenedor.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                const slideWidth = contenedor.querySelector('.promo-slide')?.offsetWidth || 300;
+                contenedor.scrollBy({ left: slideWidth, behavior: 'smooth' });
+            }
+        }, 4000); 
     },
 
     mostrarPopupAutomatico: function() {
-        const POPUP_KEY = 'domidelis_popup_timestamp';
-        const AHORA = Date.now();
-        const ultimaVezVisto = localStorage.getItem(POPUP_KEY);
-        if (ultimaVezVisto && (AHORA - parseInt(ultimaVezVisto, 10) < this.SEIS_HORAS_MS)) return; 
-        if (!this.anuncioDestacado) return;
-
-        setTimeout(() => {
-            this.abrirPopup(this.anuncioDestacado.id);
-            localStorage.setItem(POPUP_KEY, AHORA.toString());
-        }, 2500);
+        return; // ★ DESACTIVADO: Evitar fricción al abrir la app.
     },
 
     abrirPopup: function(anuncioId) {
@@ -171,7 +211,6 @@ const Anuncios = {
             }
         }
 
-        // ★ Lógica de Términos y Condiciones
         let terminosHtml = '';
         if (anuncio.urlTerminos) {
             terminosHtml = `<a href="${anuncio.urlTerminos}" target="_blank" style="display:block; margin-top:10px; font-size:11px; color:var(--gray); text-decoration:underline;">Aplican Términos y Condiciones</a>`;

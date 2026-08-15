@@ -141,7 +141,7 @@ function resetMainViewUI() {
     const tituloPrincipal = document.getElementById('main-title');
 
     if (categoriesWrapper) categoriesWrapper.style.display = 'flex';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex'; // Aseguramos que el carrusel esté visible al inicio
     if (storesGrid) {
         storesGrid.className = 'stores-grid-horizontal';
         storesGrid.style.display = 'flex';
@@ -233,7 +233,10 @@ function mostrarProductosPorCategoria() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'none';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    
+    // ★ ARREGLO CARRUSEL: Se oculta al cambiar de categoría para no confundir
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none'; 
+    
     if (catProductosGrid) catProductosGrid.style.display = 'block';
 
     if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${categoriaActiva}`;
@@ -308,7 +311,10 @@ function volverATiendas() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'block';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
+    
+    // ★ ARREGLO CARRUSEL: Vuelve a aparecer al presionar "Todas"
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex';
+    
     if (catProductosGrid) catProductosGrid.style.display = 'none';
 
     if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
@@ -494,9 +500,7 @@ async function verProductoDestacado(productoId) {
     if (tieneComplementos) {
         DomiModal.abrir(prod);
     } else {
-        // ★ CAMBIO: Pasamos el productoId para que verMenuTienda sepa a dónde saltar
         await verMenuTienda(prod.tiendaId, productoId);
-
 
         setTimeout(() => {
             const productCard = document.getElementById(`prod-${productoId}`);
@@ -552,6 +556,7 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const categoriesWrapper = document.getElementById('categories-wrapper');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
 
+    // Al entrar al menú de una tienda específica, ocultamos todo lo demás
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (categoriesWrapper) categoriesWrapper.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
@@ -587,7 +592,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const productos = tienda.productos || [];
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
 
-    // Guardar estado para el paginador y el buscador
     currentStoreProducts = productosValidos.map(p => {
         p.tiendaId = tienda.id;
         p.tiendaNombre = tienda.nombre;
@@ -614,7 +618,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         <div id="menu-paginator-container" style="margin-top: 2rem;"></div>
     `;
 
-    // Función de renderizado para el Paginador
     const renderMenuProducts = (productsToRender) => {
         const gridContainer = document.getElementById('menu-grid-container');
         if (!gridContainer) return;
@@ -659,26 +662,21 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         }).join('');
     };
 
-    // Destruir paginador anterior si existe (limpié el duplicado que estaba aquí)
     if (currentPaginator) {
         currentPaginator.destroy();
     }
 
-    const ITEMS_PER_PAGE = 3; // ★ Cantidad de productos por página
-
-    // Bandera para evitar que el paginador haga scroll al título cuando estamos saltando a un destacado
+    const ITEMS_PER_PAGE = 3; 
     let skipInitialTitleScroll = !!productoIdDestacado;
 
-    // Inicializar el paginador
     currentPaginator = new Paginator({
         items: currentStoreProducts,
         itemsPerPage: ITEMS_PER_PAGE,
         containerId: 'menu-paginator-container',
         renderCallback: renderMenuProducts,
         onPageChange: function () {
-            // Si venimos de un producto destacado, la primera vez saltamos este scroll para no "pelear" con el scroll al producto
             if (skipInitialTitleScroll) {
-                skipInitialTitleScroll = false; // Solo lo saltamos una vez
+                skipInitialTitleScroll = false; 
                 return;
             }
 
@@ -692,21 +690,16 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         }
     });
 
-    // ★★★ NUEVA LÓGICA: SALTAR A LA PÁGINA DEL PRODUCTO DESTACADO ★★★
     if (productoIdDestacado) {
-        // 1. Buscar la posición (índice) del producto en el array de la tienda
         const index = currentStoreProducts.findIndex(p => String(p.id) === String(productoIdDestacado));
 
         if (index !== -1) {
-            // 2. Calcular en qué página está (Ej: índice 4 con 3 items/página = Página 2)
             const targetPage = Math.floor(index / ITEMS_PER_PAGE) + 1;
 
-            // 3. Si no es la página 1, obligar al paginador a saltar a esa página
             if (targetPage > 1) {
                 currentPaginator.goToPage(targetPage);
             }
 
-            // 4. Esperar un milisegundo a que se pinten los productos en pantalla, y hacer scroll al producto
             setTimeout(() => {
                 const productCard = document.getElementById(`prod-${productoIdDestacado}`);
                 if (productCard) {
@@ -715,7 +708,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 
-                    // Efecto visual de resplandor
                     productCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
                     productCard.style.boxShadow = '0 0 0 3px var(--primary), 0 10px 30px rgba(230,57,70,0.3)';
                     productCard.style.transform = 'scale(1.02)';
@@ -728,7 +720,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
             }, 150);
         }
     } else {
-        // Si se entró normalmente (no por destacado), hacer scroll al título como siempre
         requestAnimationFrame(() => {
             const targetElement = document.getElementById('main-title');
             if (targetElement) {
@@ -741,8 +732,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     }
 }
 
-
-// ★ FIX: El buscador ahora actualiza el paginador dinámicamente
 function filtrarProductos(texto) {
     if (!currentPaginator) return;
 
@@ -757,7 +746,6 @@ function filtrarProductos(texto) {
         });
     }
 
-    // Actualiza los items del paginador y lo reinicia a la página 1
     currentPaginator.updateItems(filtered);
 }
 
@@ -910,11 +898,9 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
         setTimeout(() => cartFloat.classList.remove("pulse"), 500);
     }
 
-    // ★★★ NUEVO: Disparar Soft Prompt de Notificaciones (Cero Fricción) ★★★
     if (window.debeMostrarPromptFCM && window.debeMostrarPromptFCM()) {
         const prompt = document.getElementById('fcm-soft-prompt');
         if (prompt) {
-            // Mostrar 1.5 segundos después de agregar al carrito
             setTimeout(() => { prompt.style.display = 'block'; }, 1500);
         }
     }

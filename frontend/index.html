@@ -323,31 +323,19 @@
                 </div>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#" id="btn-como-pedir"><i class="fas fa-circle-info"></i> Cómo pedir</a></li>
-                    <li><a href="#" id="btn-promo"><i class="fas fa-tag"></i> Promociones</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <div class="launch-badge"><span class="badge-dot"></span></div>
-
-                <h1 class="titulo-emoji-box">
-                    <span class="emoji-lado">🍔</span>
-                    <span class="texto-central">Domidelis</span>
-                    <span class="emoji-lado">🍺</span>
-                </h1>
-
-                <!-- Textos largos eliminados para optimizar Above the fold -->
-                <div class="hero-discount"><span class="discount-number">50% OFF</span> DE DESCUENTO en el costo del
-                    domicilio</div>
-            </div>
-        </section>
-
+        <!-- ★ HERO ELIMINADO: El carrusel de promociones ahora es el protagonista visual ★ -->
         <div class="container">
-            <!-- ★★★ 1. MENÚ DE CATEGORÍAS DESLIZABLE ★★★ -->
+            
+            <!-- ★★★ 1. CARRUSEL DE PROMOCIONES (ARRIBA DE TODO - Tipo El Corral) ★★★ -->
+            <div id="contenedor-anuncios"></div>
+
+            <!-- ★★★ 2. MENÚ DE CATEGORÍAS DESLIZABLE ★★★ -->
             <div class="categories-wrapper" id="categories-wrapper">
                 <button class="cat-scroll-btn left" id="scroll-left"><i class="fas fa-chevron-left"></i></button>
                 <div class="categories-container">
@@ -358,14 +346,11 @@
                 <button class="cat-scroll-btn right" id="scroll-right"><i class="fas fa-chevron-right"></i></button>
             </div>
 
-            <!-- ★★★ 2. VITRINA DE PRODUCTOS ESTRELLA (SUBIDA ARRIBA) ★★★ -->
+            <!-- ★★★ 3. VITRINA DE PRODUCTOS ESTRELLA ★★★ -->
             <div id="productos-destacados-grid" class="destacados-container"></div>
 
-            <!-- ★★★ 3. TÍTULO DE TIENDAS ★★★ -->
+            <!-- ★★★ 4. TÍTULO DE TIENDAS ★★★ -->
             <h2 id="main-title" class="stores-section-title"> 🔥 Populares en El Santuario</h2>
-
-            <!-- ★★★ 4. CONTENEDOR DINÁMICO DE ANUNCIOS (OCULTO POR DEFECTO) ★★★ -->
-            <div id="contenedor-anuncios" style="display: none;"></div>
 
             <!-- ★★★ 5. GRID DE TIENDAS (CARRUSEL) ★★★ -->
             <div id="stores-grid">
@@ -387,7 +372,7 @@
         </div>
     </main>
 
-    <div class="scroll-down-indicator" id="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    <!-- ★ FLECHA DE SCROLL ELIMINADA ★ -->
 
     <div class="install-banner" id="install-banner" role="dialog" aria-label="Instalar aplicación">
         <div class="install-banner-icon"><img src="assets/img/icon-192x192.png" alt="Domicilios"></div>
@@ -453,7 +438,6 @@
                         <strong style="color:var(--dark); font-size:0.95rem;">Elige y agrega al carrito</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Explora
                             las categorías o tiendas. Agrega lo que quieras pedir.</p>
-                        <!-- Simulación visual de agregar al carrito -->
                         <div
                             style="display:flex; justify-content:space-between; align-items:center; background:white; border:1px solid #eee; border-radius:12px; padding:8px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
                             <div style="display:flex; align-items:center; gap:8px;">
@@ -476,7 +460,6 @@
                         <strong style="color:var(--dark); font-size:0.95rem;">Elige cómo vas a pagar</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Al final,
                             seleccionas si pagas en efectivo o con Tranferencia </p>
-                        <!-- Simulación visual de métodos de pago -->
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
                             <div
                                 style="background:white; border:1px solid #eee; border-radius:8px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
@@ -511,7 +494,6 @@
                         <strong style="color:var(--dark); font-size:0.95rem;">Confirma por WhatsApp</strong>
                         <p style="font-size:0.82rem; color:var(--gray); margin:4px 0 8px 0; line-height:1.4;">Envía tu
                             pedido directo por WhatsApp y prepárate para disfrutar en casa.</p>
-                        <!-- Simulación visual de WhatsApp -->
                         <div
                             style="background:#25D366; color:white; border-radius:30px; padding:8px 14px; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:700; font-size:0.85rem; box-shadow: 0 4px 12px rgba(37,211,102,0.3);">
                             <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> Enviar pedido
@@ -581,19 +563,42 @@
     <script src="assets/js/modal-personalizacion.js"></script>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            let refreshing = false;
-            navigator.serviceWorker.addEventListener('controllerchange', function () {
-                if (refreshing) return;
-                console.log('🔄 Nuevo SW activo. Recargando página para actualizar...');
-                refreshing = true; window.location.reload();
-            });
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('firebase-messaging-sw.js')
-                    .then(function (reg) { console.log('✅ SW registrado:', reg.scope); })
-                    .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
-            });
+    if ('serviceWorker' in navigator) {
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+            if (refreshing) return;
+            // ★ Blindaje iOS: Solo recargar si la página ya terminó de cargar
+            if (document.readyState === 'complete') {
+                console.log('🔄 Nuevo SW activo. Recargando página...');
+                refreshing = true; 
+                window.location.reload();
+            }
+        });
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
+                .then(function (reg) { 
+                    // ★ Si no hay un SW activo aún, lo instalamos sin recargar la página de golpe
+                    if (!navigator.serviceWorker.controller) {
+                        console.log('✅ SW instalado por primera vez:', reg.scope);
+                    } else {
+                        console.log('✅ SW registrado y controlando:', reg.scope);
+                    }
+                })
+                .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
+        });
+    }
+</script>
+    <script>
+        // ★ FORZAR SCROLL HACIA ARRIBA AL RECARGAR LA PÁGINA ★
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
         }
+        window.addEventListener('load', function() {
+            // Pequeño retraso para asegurar que todo pintó bien
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
     </script>
 
     <script>
@@ -690,16 +695,18 @@
         const headerEl = document.querySelector('header');
         const scrollIndicator = document.getElementById('scroll-indicator');
 
-        /* ===== CLIC EN LA FLECHITA DEL HERO → BAJA ===== */
-        scrollIndicator.addEventListener('click', function () {
-            var objetivo = document.getElementById('categories-wrapper')
-                || document.getElementById('main-title')
-                || document.querySelector('main > .container');
-            if (objetivo) {
-                var offsetTop = objetivo.getBoundingClientRect().top + window.pageYOffset - 70;
-                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-            }
-        });
+        /* ===== CLIC EN LA FLECHITA DEL HERO → BAJA (Protegido porque el elemento fue eliminado) ===== */
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', function () {
+                var objetivo = document.getElementById('categories-wrapper')
+                    || document.getElementById('main-title')
+                    || document.querySelector('main > .container');
+                if (objetivo) {
+                    var offsetTop = objetivo.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        }
 
         /* ===== AL HACER SCROLL (MANUAL O POR EL BOTÓN) ===== */
         window.addEventListener('scroll', function () {
@@ -714,7 +721,7 @@
                 btnArriba.style.display = 'none';
             }
 
-            /* Ocultar la flechita del hero cuando ya bajaste */
+            /* Ocultar la flechita del hero cuando ya bajaste (Protegido) */
             if (scrollIndicator) {
                 if (scrollY > 50) {
                     scrollIndicator.classList.add('hide');
@@ -742,7 +749,6 @@
             btnComoPedir.addEventListener('click', function (e) {
                 e.preventDefault();
                 modalComoPedir.classList.add('active');
-                // Cerrar menú hamburguesa si estaba abierto en móvil
                 document.getElementById('nav-links').classList.remove('active');
                 document.getElementById('mobile-menu').classList.remove('active');
             });
@@ -754,37 +760,10 @@
             });
         }
 
-        // Cerrar modal si tocan fuera
         if (modalComoPedir) {
             modalComoPedir.addEventListener('click', function (e) {
                 if (e.target === modalComoPedir) {
                     modalComoPedir.classList.remove('active');
-                }
-            });
-        }
-
-        /* ===== LÓGICA PARA ABRIR EL ANUNCIO DESDE EL BOTÓN PROMO ===== */
-        const btnPromo = document.getElementById('btn-promo');
-        const contenedorAnuncios = document.getElementById('contenedor-anuncios');
-        
-        if (btnPromo && contenedorAnuncios) {
-            btnPromo.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Cerrar el menú hamburguesa si estaba abierto en móvil
-                document.getElementById('nav-links').classList.remove('active');
-                document.getElementById('mobile-menu').classList.remove('active');
-                
-                // 1. Mostrar el contenedor de la tarjeta del anuncio (en caso de que le den X al popup)
-                contenedorAnuncios.style.display = 'grid';
-                
-                // 2. Hacer scroll suave hacia el anuncio
-                contenedorAnuncios.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // 3. Abrir el popup automáticamente (si hay un anuncio destacado cargado)
-                if (window.Anuncios && Anuncios.anuncioDestacado) {
-                    setTimeout(() => {
-                        Anuncios.abrirPopup(Anuncios.anuncioDestacado.id);
-                    }, 400); // Pequeña espera para que el scroll termine primero
                 }
             });
         }
@@ -801,7 +780,6 @@
 
             <p>Si cierras la app, podrías perder tu carrito actual. ¿Seguro que deseas salir?</p>
 
-            <!-- Mensaje especial solo para PWA -->
             <p id="pwa-message" class="pwa-message">
                 Para salir completamente, debes presionar el botón de <strong>atrás</strong> de tu celular <strong>dos
                     veces</strong>.
@@ -886,17 +864,23 @@
     <script type="module" src="assets/js/fcm-manager.js"></script>
 
     <!-- ★ Ventana Soft Prompt de Notificaciones para el Cliente ★ -->
-    <div id="fcm-soft-prompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; border: 2px solid #E63946; border-radius: 12px; padding: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10000; width: 90%; max-width: 400px; font-family: 'Poppins', sans-serif;">
+    <div id="fcm-soft-prompt"
+        style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; border: 2px solid #E63946; border-radius: 12px; padding: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10000; width: 90%; max-width: 400px; font-family: 'Poppins', sans-serif;">
         <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
             <i class="fas fa-bell" style="color: #E63946; font-size: 1.5rem;"></i>
             <div>
-                <strong style="color: #333; font-size: 0.95rem; display: block;">¿Quieres seguir el estado de tu pedido? 🛵</strong>
-                <span style="color: #666; font-size: 0.8rem;">Activa las notificaciones para avisarte cuando tu pedido esté en camino.</span>
+                <strong style="color: #333; font-size: 0.95rem; display: block;">¿Quieres seguir el estado de tu pedido?
+                    🛵</strong>
+                <span style="color: #666; font-size: 0.8rem;">Activa las notificaciones para avisarte cuando tu pedido
+                    esté en camino.</span>
             </div>
         </div>
         <div style="display: flex; gap: 8px; justify-content: flex-end;">
-            <button onclick="cerrarSoftPrompt()" style="background: none; border: none; color: #999; cursor: pointer; padding: 8px 12px; font-size: 0.85rem; font-weight: 500;">Ahora no</button>
-            <button onclick="aceptarSoftPrompt()" style="background: #E63946; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <button onclick="cerrarSoftPrompt()"
+                style="background: none; border: none; color: #999; cursor: pointer; padding: 8px 12px; font-size: 0.85rem; font-weight: 500;">Ahora
+                no</button>
+            <button onclick="aceptarSoftPrompt()"
+                style="background: #E63946; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
                 <i class="fas fa-bell"></i> Activar
             </button>
         </div>

@@ -35,8 +35,8 @@ messaging.onBackgroundMessage((payload) => {
 
 // 2. Estrategia PWA: Cache First + Network Fallback
 const isDev = false;
-const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v1.1'; 
-const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1.1'; 
+const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v1.2'; 
+const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1.2'; 
 
 const ARCHIVOS_ESTATICOS = [
   '/',
@@ -59,8 +59,11 @@ const ARCHIVOS_ESTATICOS = [
   '/assets/img/icon-192x192.png',
   '/assets/img/icon-512x512.png',
   '/assets/css/offline-game.css',  
-  '/assets/js/offline-game.js'
+  '/assets/js/offline-game.js',
+  '/assets/css/anuncios.css',
+  '/assets/js/anuncios.js'
 ];
+
 
 const RECURSOS_EXTERNOS = [
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap',
