@@ -315,15 +315,28 @@
 <body>
     <header>
         <div class="container">
-            <nav>
-                <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
+            <nav class="main-nav">
                 <div class="mobile-menu" id="mobile-menu"
                     onclick="document.getElementById('nav-links').classList.toggle('active');this.classList.toggle('active')">
                     <i class="fas fa-bars"></i>
                 </div>
+
+                <a href="index.html" class="logo">
+                    <i class="fas fa-utensils"></i> DOMI<span>DELIS</span>
+                </a>
+
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#" id="btn-como-pedir"><i class="fas fa-circle-info"></i> Cómo pedir</a></li>
+                    <li>
+                        <a href="#" id="btn-como-pedir">
+                            <i class="fas fa-circle-info"></i> Cómo pedir
+                        </a>
+                    </li>
                 </ul>
+
+                <button class="header-cart" id="header-cart" type="button" aria-label="Ver carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="header-cart-count" id="cart-counter">0</span>
+                </button>
             </nav>
         </div>
     </header>
@@ -331,7 +344,7 @@
     <main>
         <!-- ★ HERO ELIMINADO: El carrusel de promociones ahora es el protagonista visual ★ -->
         <div class="container">
-            
+
             <!-- ★★★ 1. CARRUSEL DE PROMOCIONES (ARRIBA DE TODO - Tipo El Corral) ★★★ -->
             <div id="contenedor-anuncios"></div>
 
@@ -563,39 +576,39 @@
     <script src="assets/js/modal-personalizacion.js"></script>
 
     <script>
-    if ('serviceWorker' in navigator) {
-        let refreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', function () {
-            if (refreshing) return;
-            // ★ Blindaje iOS: Solo recargar si la página ya terminó de cargar
-            if (document.readyState === 'complete') {
-                console.log('🔄 Nuevo SW activo. Recargando página...');
-                refreshing = true; 
-                window.location.reload();
-            }
-        });
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('firebase-messaging-sw.js')
-                .then(function (reg) { 
-                    // ★ Si no hay un SW activo aún, lo instalamos sin recargar la página de golpe
-                    if (!navigator.serviceWorker.controller) {
-                        console.log('✅ SW instalado por primera vez:', reg.scope);
-                    } else {
-                        console.log('✅ SW registrado y controlando:', reg.scope);
-                    }
-                })
-                .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
-        });
-    }
-</script>
+        if ('serviceWorker' in navigator) {
+            let refreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+                if (refreshing) return;
+                // ★ Blindaje iOS: Solo recargar si la página ya terminó de cargar
+                if (document.readyState === 'complete') {
+                    console.log('🔄 Nuevo SW activo. Recargando página...');
+                    refreshing = true;
+                    window.location.reload();
+                }
+            });
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('firebase-messaging-sw.js')
+                    .then(function (reg) {
+                        // ★ Si no hay un SW activo aún, lo instalamos sin recargar la página de golpe
+                        if (!navigator.serviceWorker.controller) {
+                            console.log('✅ SW instalado por primera vez:', reg.scope);
+                        } else {
+                            console.log('✅ SW registrado y controlando:', reg.scope);
+                        }
+                    })
+                    .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
+            });
+        }
+    </script>
     <script>
         // ★ FORZAR SCROLL HACIA ARRIBA AL RECARGAR LA PÁGINA ★
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Pequeño retraso para asegurar que todo pintó bien
-            setTimeout(function() {
+            setTimeout(function () {
                 window.scrollTo(0, 0);
             }, 100);
         });

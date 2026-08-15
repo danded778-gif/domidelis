@@ -553,6 +553,151 @@ header .nav-links li a:hover {
     }
 }
 
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.header-cart {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.header-cart:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+}
+
+.header-cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    transition: all 0.25s ease;
+}
+
+.header-cart.empty .header-cart-count {
+    background: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.header-cart.has-items {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.45);
+}
+
+.header-cart.has-items:hover {
+    background: #d32f3f;
+    transform: scale(1.06);
+}
+
+.header-cart.has-items .header-cart-count {
+    background: white;
+    color: var(--primary);
+    border-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header-cart.pulse {
+    transform: scale(1.12);
+}
+
+header .nav-links li a {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header .nav-links li a:hover {
+    background: rgba(230, 57, 70, 0.85) !important;
+    color: white !important;
+    border-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: grid;
+        grid-template-columns: 44px 1fr 44px;
+        align-items: center;
+    }
+
+    .mobile-menu {
+        display: flex !important;
+        order: 1;
+    }
+
+    .logo {
+        order: 2;
+        justify-self: center;
+        font-size: 1.15rem;
+    }
+
+    .header-cart {
+        order: 3;
+        justify-self: end;
+    }
+
+    .nav-links {
+        order: 4;
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        margin-right: 1rem;
+    }
+
+    .header-cart {
+        margin-left: 0.5rem;
+    }
+}
+
+.cart-float {
+    display: none !important;
+}
+
 /* ============================================
    7. LAYOUT: HERO SECTION (Con Auditoría UX aplicada)
    ============================================ */

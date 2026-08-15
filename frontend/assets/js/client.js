@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // ============================================
 function inicializarEventos() {
     const closeCart = document.getElementById("close-cart");
-    const cartFloat = document.getElementById("cart-float");
+    const headerCart = document.getElementById("header-cart");
     const cartOverlay = document.getElementById("cart-overlay");
     const checkoutBtn = document.getElementById("checkout-whatsapp");
     const mobileMenu = document.getElementById("mobile-menu");
     const navLinks = document.getElementById("nav-links");
 
     if (closeCart) closeCart.onclick = cerrarCarrito;
-    if (cartFloat) cartFloat.onclick = abrirCarrito;
+    if (headerCart) headerCart.onclick = abrirCarrito;
     if (cartOverlay) cartOverlay.onclick = cerrarCarrito;
     if (checkoutBtn) checkoutBtn.onclick = irACheckout;
 
@@ -893,14 +893,10 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
 
     if (carritoVacio) crearExplosionComida();
 
-    const cartFloat = document.getElementById("cart-float");
-    if (cartFloat) {
-        cartFloat.classList.add("pulse");
-        if (carritoVacio) {
-            cartFloat.classList.add("aparecer-con-fiesta");
-            setTimeout(() => cartFloat.classList.remove("aparecer-con-fiesta"), 1000);
-        }
-        setTimeout(() => cartFloat.classList.remove("pulse"), 500);
+    const headerCart = document.getElementById("header-cart");
+    if (headerCart) {
+        headerCart.classList.add("pulse");
+        setTimeout(() => headerCart.classList.remove("pulse"), 500);
     }
 
     if (window.debeMostrarPromptFCM && window.debeMostrarPromptFCM()) {
@@ -915,14 +911,22 @@ function actualizarCarritoUI() {
     const totalItems = carrito.reduce((s, i) => s + i.cantidad, 0);
     const btnVaciar = document.getElementById('btn-vaciar');
     if (btnVaciar) btnVaciar.style.display = totalItems > 0 ? 'block' : 'none';
-    const cartFloat = document.getElementById("cart-float");
-    const cartCounter = document.getElementById("cart-counter");
 
-    if (totalItems > 0) {
-        cartFloat?.classList.add("visible");
-        if (cartCounter) cartCounter.innerText = totalItems;
-    } else {
-        cartFloat?.classList.remove("visible");
+    const cartCounter = document.getElementById("cart-counter");
+    if (cartCounter) {
+        cartCounter.innerText = totalItems;
+        cartCounter.style.display = 'flex';
+    }
+
+    const headerCart = document.getElementById("header-cart");
+    if (headerCart) {
+        if (totalItems > 0) {
+            headerCart.classList.add("has-items");
+            headerCart.classList.remove("empty");
+        } else {
+            headerCart.classList.add("empty");
+            headerCart.classList.remove("has-items");
+        }
     }
 
     const cartItemsDiv = document.getElementById("cart-items");
