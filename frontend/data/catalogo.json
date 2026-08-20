@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-20T08-00-33",
-  "ultimaActualizacion": "2026-08-20T08:00:33.692Z",
+  "version": "v2026-08-20T18-05-54",
+  "ultimaActualizacion": "2026-08-20T18:05:54.411Z",
   "tiendas": [
     {
       "id": 1,
@@ -720,7 +720,7 @@
           "nombre": "papas costeñas",
           "descripcion": "",
           "precio": 22000,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
           "badge": "",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1491,7 +1491,7 @@
       "nombre": "papas costeñas",
       "descripcion": "",
       "precio": 22000,
-      "imagen_url": "",
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
