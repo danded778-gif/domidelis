@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-20T18-13-45",
-  "ultimaActualizacion": "2026-08-20T18:13:45.332Z",
+  "version": "v2026-08-20T18-14-24",
+  "ultimaActualizacion": "2026-08-20T18:14:24.206Z",
   "tiendas": [
     {
       "id": 1,
@@ -707,7 +707,7 @@
     {
       "id": 7,
       "nombre": "La Basilica",
-      "descripcion": "",
+      "descripcion": "Somos la mejor opción Para toda ocasión.",
       "direccion": "parque lineal",
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-22:00\",\"sun\":\"14:00-22:00\"}",
       "rating": 5,
