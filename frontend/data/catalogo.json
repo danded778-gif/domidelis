@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-19T08-23-28",
-  "ultimaActualizacion": "2026-08-19T08:23:28.433Z",
+  "version": "v2026-08-20T02-21-56",
+  "ultimaActualizacion": "2026-08-20T02:21:56.704Z",
   "tiendas": [
     {
       "id": 1,
@@ -848,7 +848,7 @@
         {
           "id": 167,
           "nombre": "prueba local",
-          "descripcion": "ejecucion de prubva",
+          "descripcion": "ejecución de prueba",
           "precio": 20000,
           "imagen_url": "",
           "badge": "si",
@@ -1593,7 +1593,7 @@
     {
       "id": 167,
       "nombre": "prueba local",
-      "descripcion": "ejecucion de prubva",
+      "descripcion": "ejecución de prueba",
       "precio": 20000,
       "imagen_url": "",
       "badge": "si",
