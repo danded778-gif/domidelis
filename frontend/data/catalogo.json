@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-20T04-28-44",
-  "ultimaActualizacion": "2026-08-20T04:28:44.390Z",
+  "version": "v2026-08-20T06-12-38",
+  "ultimaActualizacion": "2026-08-20T06:12:38.500Z",
   "tiendas": [
     {
       "id": 1,
@@ -717,12 +717,12 @@
       "productos": [
         {
           "id": 158,
-          "nombre": "personal",
+          "nombre": "papa costeñas",
           "descripcion": "",
-          "precio": 0,
+          "precio": 22000,
           "imagen_url": "",
           "badge": "",
-          "categoria": "comida",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "7",
@@ -1488,12 +1488,12 @@
     },
     {
       "id": 158,
-      "nombre": "personal",
+      "nombre": "papa costeñas",
       "descripcion": "",
-      "precio": 0,
+      "precio": 22000,
       "imagen_url": "",
       "badge": "",
-      "categoria": "comida",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "7",
