@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-20T18-07-21",
-  "ultimaActualizacion": "2026-08-20T18:07:21.519Z",
+  "version": "v2026-08-20T18-11-26",
+  "ultimaActualizacion": "2026-08-20T18:11:26.454Z",
   "tiendas": [
     {
       "id": 1,
@@ -709,10 +709,10 @@
       "nombre": "La Basilica",
       "descripcion": "",
       "direccion": "parque lineal",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 3.9,
+      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-22:00\",\"sun\":\"14:00-22:00\"}",
+      "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/basilica/basilica%202.jpg",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": [
         {
