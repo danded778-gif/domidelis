@@ -1,0 +1,761 @@
+/* ============================================
+   DOMIDELIS - CHECKOUT (Wizard de 4 pasos)
+   Versión compacta: paso 3 con resumen fijo y referencias en una línea
+   Corregido: botón "Volver a tiendas" más arriba en móviles
+   ============================================ */
+
+/* ============================================
+   1. LAYOUT DEL CHECKOUT
+   ============================================ */
+.checkout-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2rem;
+}
+
+.checkout-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.checkout-header h1 {
+    color: var(--dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.checkout-header p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* ★ Tarjeta base */
+.checkout-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+/* ★ Tarjeta compacta (para pasos 1, 2, 3 y 4) */
+.checkout-card.compacto {
+    padding: 1rem 1.25rem;
+}
+
+.checkout-card.compacto h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.checkout-card.compacto .form-group {
+    margin-bottom: 0.75rem;
+}
+
+.checkout-card.compacto .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+}
+
+.checkout-card.compacto input,
+.checkout-card.compacto textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+.checkout-card h3 {
+    margin-bottom: 1.25rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ★ WIZARD: solo el paso activo se muestra */
+.checkout-step {
+    display: none;
+}
+
+.checkout-step.activo {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* ★ INDICADOR DE PROGRESO (4 pasos) */
+.checkout-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--gray);
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.progress-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.progress-step.activo {
+    color: var(--dark);
+}
+
+.progress-step.activo .progress-num {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Pasos ya superados → check verde */
+.progress-step.completado .progress-num {
+    background: var(--success);
+    color: #fff;
+}
+
+.progress-line {
+    width: 20px;
+    height: 2px;
+    background: #e0e0e0;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   2. BOTONES Y ACCIONES
+   ============================================ */
+.checkout-acciones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-siguiente {
+    flex: 2;
+    width: 100%;
+}
+
+.btn-atras {
+    flex: 1;
+}
+
+/* Botón final WhatsApp */
+.btn-confirmar {
+    flex: 2;
+    width: 100%;
+    padding: 1rem;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-confirmar:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+}
+
+/* Link superior "Volver a tiendas" */
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.btn-volver:hover {
+    color: var(--primary);
+}
+
+/* ============================================
+   3. RESUMEN FIJO (paso 3) — SIN TOGGLE
+   ============================================ */
+.resumen-fijo {
+    background: var(--light);
+    border-radius: var(--border-radius-sm);
+    padding: 0.8rem;
+}
+
+.resumen-fijo .resumen-pedido {
+    margin-bottom: 0.5rem;
+}
+
+.resumen-fijo .resumen-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.85rem;
+}
+
+.resumen-fijo .resumen-item:last-child {
+    border-bottom: none;
+}
+
+.resumen-fijo .resumen-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+    border-top: 2px solid var(--dark);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ============================================
+   4. REFERENCIAS COMPACTAS (paso 3)
+   ============================================ */
+.referencias-input {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.85rem !important;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    background: white;
+    font-family: inherit;
+}
+
+.referencias-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+/* ============================================
+   5. MÉTODO DE PAGO COMPACTO (paso 4)
+   ============================================ */
+.checkout-card.compacto-pago {
+    padding: 1rem 1.25rem;
+}
+
+.checkout-card.compacto-pago h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.metodo-pago-compacto {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.opcion-pago-compacta {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.6rem 0.4rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.opcion-pago-compacta i {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary);
+}
+
+.opcion-pago-compacta span {
+    display: block;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.opcion-pago-compacta:hover,
+.opcion-pago-compacta.selected {
+    border-color: var(--primary);
+    background: var(--light);
+}
+
+/* ============================================
+   6. SELECTOR DE ZONA (autocompletado)
+   ============================================ */
+.zone-autocomplete {
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+.zone-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 2;
+}
+
+.zone-clear-btn:hover {
+    background: #fee;
+    color: var(--danger);
+}
+
+.zone-clear-btn.visible {
+    display: flex;
+}
+
+.zone-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    max-height: 260px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 4500;
+    display: none;
+    border: 1px solid #eee;
+    animation: zoneDropdownIn 0.2s ease;
+}
+
+.zone-dropdown.active {
+    display: block;
+}
+
+.zone-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 0.5rem;
+}
+
+.zone-option:last-child {
+    border-bottom: none;
+}
+
+.zone-option:hover,
+.zone-option.highlighted {
+    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+}
+
+.zone-option-name {
+    font-weight: 500;
+    color: var(--dark);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.zone-option-name::before {
+    content: '📍';
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.zone-option-price {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(42, 157, 143, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.zone-option-name mark {
+    background: rgba(230, 57, 70, 0.2);
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.zone-no-results {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.zone-no-results i {
+    display: block;
+    font-size: 1.8rem;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.zone-dropdown::-webkit-scrollbar {
+    width: 5px;
+}
+
+.zone-dropdown::-webkit-scrollbar-track {
+    background: #f8f8f8;
+    border-radius: 3px;
+}
+
+.zone-dropdown::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+/* Variante checkout */
+.zone-autocomplete-checkout #zona-checkout-input {
+    border-radius: var(--border-radius-sm);
+    padding: 0.9rem 2.5rem 0.9rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    background: var(--white);
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--dark);
+}
+
+.zone-autocomplete-checkout #zona-checkout-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+.zone-autocomplete-checkout #zona-checkout-input::placeholder {
+    color: #999;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.zone-autocomplete-checkout .zone-dropdown {
+    border-radius: var(--border-radius-sm);
+}
+
+#zona-checkout-input.input-error {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+    animation: shakeInput 0.4s ease;
+}
+
+/* ============================================
+   7. PROPINA (complemento de propina.css)
+   ============================================ */
+.propina-panel {
+    margin-top: 0.8rem;
+}
+
+.propina-panel.hidden-propina {
+    display: none;
+}
+
+.propina-dropdown {
+    position: relative;
+}
+
+.propina-dropdown-trigger {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: var(--light);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.propina-dropdown-trigger:hover {
+    border-color: var(--primary);
+}
+
+.propina-chevron {
+    transition: transform 0.3s;
+}
+
+.propina-dropdown.active .propina-chevron {
+    transform: rotate(180deg);
+}
+
+.propina-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    z-index: 5000;
+    display: none;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.propina-dropdown.active .propina-dropdown-menu {
+    display: block;
+}
+
+.propina-dropdown-item {
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.propina-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.propina-dropdown-item:hover {
+    background: #f8f8f8;
+}
+
+.propina-dropdown-item.selected {
+    background: #fff0f0;
+}
+
+.propina-item-icon {
+    font-size: 1.2rem;
+}
+
+.propina-item-texto {
+    flex: 1;
+    font-weight: 500;
+}
+
+.propina-item-monto {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.propina-resumen-mini {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #e8f5e9;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.propina-nota {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   8. RESPONSIVE — AQUÍ ESTÁ LA CORRECCIÓN
+   ============================================ */
+@media (max-width: 768px) {
+
+    .checkout-container {
+        padding: 0.5rem 0.75rem 1.5rem; /* ← se redujo el padding-top */
+    }
+
+    .btn-volver {
+        margin-bottom: 0.5rem;  /* ← se redujo el margen inferior */
+        font-size: 0.9rem;
+    }
+
+    .checkout-card {
+        padding: 1.25rem;
+    }
+
+    .checkout-card.compacto {
+        padding: 0.9rem 1rem;
+    }
+
+    .checkout-card.compacto-pago {
+        padding: 0.9rem 1rem;
+    }
+
+    /* Progreso más compacto */
+    .progress-step {
+        font-size: 0.65rem;
+    }
+
+    .progress-num {
+        width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+    }
+
+    .progress-line {
+        width: 16px;
+    }
+
+    /* Acciones apiladas */
+    .checkout-acciones {
+        flex-direction: column-reverse;
+        gap: 0.6rem;
+    }
+
+    .btn-atras,
+    .btn-siguiente,
+    .btn-confirmar {
+        flex: none;
+        width: 100%;
+        min-height: 48px;
+    }
+
+    /* Método de pago compacto en móvil */
+    .opcion-pago-compacta {
+        min-width: 70px;
+        padding: 0.5rem 0.2rem;
+    }
+
+    .opcion-pago-compacta i {
+        font-size: 1.2rem;
+    }
+
+    .opcion-pago-compacta span {
+        font-size: 0.7rem;
+    }
+
+    /* Zona */
+    .zone-dropdown {
+        max-height: 220px;
+    }
+
+    .zone-option {
+        padding: 0.65rem 0.8rem;
+    }
+
+    .zone-option-name {
+        font-size: 0.85rem;
+    }
+
+    .zone-option-price {
+        font-size: 0.72rem;
+        padding: 2px 8px;
+    }
+
+    .zone-autocomplete-checkout #zona-checkout-input {
+        font-size: 0.9rem;
+        padding: 0.8rem 2.5rem 0.8rem 1rem;
+    }
+
+    /* Resumen fijo */
+    .resumen-fijo {
+        padding: 0.8rem;
+    }
+
+    .resumen-fijo .resumen-item {
+        font-size: 0.85rem;
+    }
+
+    .resumen-fijo .resumen-total {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-header h1 {
+        font-size: 1.3rem;
+    }
+    .progress-step {
+        font-size: 0.6rem;
+        gap: 0.2rem;
+    }
+    .progress-num {
+        width: 20px;
+        height: 20px;
+        font-size: 0.6rem;
+    }
+    .progress-line {
+        width: 12px;
+    }
+    .btn-volver {
+        margin-bottom: 0.3rem;
+        font-size: 0.8rem;
+    }
+    .checkout-container {
+        padding: 0.3rem 0.6rem 1rem;
+    }
+}
+
+/* ============================================
+   9. ANIMACIONES Y UTILIDADES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shakeInput {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-6px);
+    }
+    40% {
+        transform: translateX(6px);
+    }
+    60% {
+        transform: translateX(-4px);
+    }
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+@keyframes zoneDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

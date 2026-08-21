@@ -1,0 +1,483 @@
+/* ============================================
+   DOMIDELIS - CARRITO
+   Páginas: index.html (única consumidora actual)
+
+   DEPENDENCIAS (cargar ANTES este archivo):
+   - styles.css → variables, reset, header base,
+     y los KEYFRAMES que este archivo usa:
+     popIn (cart-float.visible), fiestaCarrito
+     ★ NO borrar esos keyframes de styles.css
+
+   ORDEN DE CARGA en index.html:
+   styles.css → home.css → cart.css
+   → modal-personalizacion.css → anuncios.css
+   (cart.css debe ir ANTES de modal-personalizacion
+    y anuncios, como estaba §11 en el original.
+    El orden entre home.css y cart.css es libre:
+    no comparten selectores.)
+
+   Migrado desde styles.css:
+   - Bloque "HEADER CART — solo página principal" (§6)
+     ★ Incluye .main-nav y links "Cómo pedir": es un
+       bloque continuo, se migra entero. En una futura
+       fase de limpieza podría partirse.
+   - §11 Carrito flotante y panel (completo)
+
+   NOTA: el orden interno replica EXACTO el documento
+   original para no alterar la cascada.
+
+   BUG CONOCIDO (HTML, no CSS): id="cart-counter"
+   duplicado en index.html (header y cart-float).
+   El CSS usa clases (.header-cart-count /
+   .cart-counter) así que no afecta esta migración.
+   Corregir en fase de limpieza junto al JS.
+   ============================================ */
+
+/* ============================================
+   1. HEADER CART — solo página principal
+   ============================================ */
+body.page-home .main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+body.page-home .header-cart {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+body.page-home .header-cart:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+}
+
+body.page-home .header-cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    transition: all 0.25s ease;
+}
+
+/* Vacío */
+body.page-home .header-cart.empty .header-cart-count {
+    background: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Con productos — rojo vivo */
+body.page-home .header-cart.has-items {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.45);
+}
+
+body.page-home .header-cart.has-items:hover {
+    background: #d32f3f;
+    transform: scale(1.06);
+}
+
+body.page-home .header-cart.has-items .header-cart-count {
+    background: white;
+    color: var(--primary);
+    border-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.page-home .header-cart.pulse {
+    transform: scale(1.12);
+}
+
+/* Cómo pedir — solo en home */
+body.page-home header .nav-links li a {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.page-home header .nav-links li a:hover {
+    background: rgba(230, 57, 70, 0.85) !important;
+    color: white !important;
+    border-color: transparent;
+}
+
+/* Layout móvil solo en home */
+@media (max-width: 768px) {
+    body.page-home .main-nav {
+        display: grid;
+        grid-template-columns: 44px 1fr 44px;
+        align-items: center;
+    }
+
+    body.page-home .mobile-menu {
+        display: flex !important;
+        order: 1;
+    }
+
+    body.page-home .logo {
+        order: 2;
+        justify-self: center;
+        font-size: 1.15rem;
+    }
+
+    body.page-home .header-cart {
+        order: 3;
+        justify-self: end;
+    }
+
+    body.page-home .nav-links {
+        order: 4;
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 769px) {
+    body.page-home .mobile-menu {
+        display: none !important;
+    }
+
+    body.page-home .main-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    body.page-home .logo {
+        margin-right: auto;
+    }
+
+    body.page-home .nav-links {
+        display: flex;
+        margin-right: 1rem;
+    }
+
+    body.page-home .header-cart {
+        margin-left: 0.5rem;
+    }
+}
+
+/* Ocultar carrito flotante solo en home
+   (el acceso al carrito en home es por el header) */
+body.page-home .cart-float {
+    display: none !important;
+}
+
+/* ============================================
+   2. CARRITO FLOTANTE
+   ============================================ */
+.cart-float {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 72px;
+    height: 72px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 998;
+    border: 4px solid white;
+    box-shadow: 0 6px 25px rgba(230, 57, 70, 0.6);
+    transition: var(--transition);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cart-float.visible {
+    display: flex;
+    animation: popIn 0.4s ease;
+}
+
+.cart-float:hover {
+    transform: scale(1.12);
+    background: var(--accent);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.7);
+}
+
+.cart-float.aparecer-con-fiesta {
+    animation: fiestaCarrito 0.7s ease;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--danger);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
+}
+
+/* ============================================
+   3. OVERLAY Y PANEL LATERAL
+   ============================================ */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(93, 64, 55, 0.6);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    height: 100dvh;
+    background: white;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+}
+
+.cart-panel.active {
+    transform: translateX(0);
+}
+
+.cart-header {
+    background: linear-gradient(135deg, var(--secondary), var(--dark));
+    color: white;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-close:hover {
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   4. LISTA DE ITEMS
+   ============================================ */
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background: var(--light);
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
+}
+
+.cart-item {
+    display: flex;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 0.8rem;
+    border-left: 4px solid var(--primary);
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.cart-item-detail {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.cart-item-actions {
+    text-align: right;
+}
+
+.cart-item-price {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.btn-cantidad {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--light);
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-cantidad:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-eliminar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #ffebee;
+    color: var(--danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-eliminar:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* ============================================
+   5. FOOTER DEL PANEL Y BOTÓN WHATSAPP
+   ============================================ */
+.cart-footer {
+    padding: 1rem;
+    background: white;
+    border-top: 2px solid var(--light);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+#cart-total-price {
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+#cart-total-price small {
+    font-size: 0.75rem;
+    color: var(--gray);
+}
+
+.btn-whatsapp-cart {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    font-family: inherit;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+}
+
+.btn-whatsapp-cart:hover {
+    background: #d32f3f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+}
+
+/* ============================================
+   6. RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .cart-panel {
+        max-width: 100%;
+    }
+
+    .cart-float {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+        bottom: 25px;
+        right: 25px;
+        border-width: 3px;
+    }
+}

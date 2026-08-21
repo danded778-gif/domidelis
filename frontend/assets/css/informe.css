@@ -1,645 +1,669 @@
-       /* ===== MENÚ HORIZONTAL ===== */
-        .admin-nav {
-            display: flex;
-            gap: 0;
-            background: #fff;
-            border-bottom: 3px solid var(--light);
-            padding: 0;
-            margin: 0 auto 2rem;
-            border-radius: 0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .05)
-        }
-
-        .admin-nav-btn {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            padding: 1rem 1.5rem;
-            background: none;
-            border: none;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -3px;
-            font-family: inherit;
-            font-size: .95rem;
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all .25s ease;
-            white-space: nowrap;
-            position: relative
-        }
-
-        .admin-nav-btn:hover {
-            color: var(--dark);
-            background: var(--light)
-        }
-
-        .admin-nav-btn.active {
-            color: var(--primary);
-            font-weight: 600;
-            border-bottom-color: var(--primary);
-            background: #fff
-        }
-
-        .nav-badge {
-            background: var(--primary);
-            color: #fff;
-            font-size: .7rem;
-            font-weight: 700;
-            min-width: 20px;
-            height: 20px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 6px
-        }
-
-        .admin-section {
-            display: none;
-            animation: fadeIn .3s ease
-        }
-
-        .admin-section.active {
-            display: block
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem
-        }
-
-        .section-header h2 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            margin: 0
-        }
-
-        .section-actions {
-            display: flex;
-            gap: .6rem;
-            flex-wrap: wrap
-        }
-
-        /* ===== INFORMES ===== */
-        .inf-filtros {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 1.5rem
-        }
-
-        .inf-filtros-row {
-            display: flex;
-            gap: .8rem;
-            align-items: end;
-            flex-wrap: wrap
-        }
-
-        .inf-filtros-grupo {
-            display: flex;
-            flex-direction: column;
-            gap: .3rem
-        }
-
-        .inf-filtros-grupo label {
-            font-size: .8rem;
-            font-weight: 500;
-            color: var(--gray)
-        }
-
-        .inf-filtros-grupo input,
-        .inf-filtros-grupo select {
-            padding: .6rem .8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: .85rem;
-            transition: all .2s
-        }
-
-        .inf-filtros-grupo input:focus,
-        .inf-filtros-grupo select:focus {
-            outline: none;
-            border-color: var(--primary)
-        }
-
-        .inf-presets {
-            display: flex;
-            gap: .4rem;
-            flex-wrap: wrap;
-            margin-top: .8rem
-        }
-
-        .inf-preset-btn {
-            padding: .4rem .9rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 20px;
-            background: none;
-            font-family: inherit;
-            font-size: .8rem;
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all .2s
-        }
-
-        .inf-preset-btn:hover,
-        .inf-preset-btn.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: #fff
-        }
-
-        .inf-btn-filtrar {
-            padding: .6rem 1.4rem;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: .9rem;
-            cursor: pointer;
-            transition: all .2s;
-            display: flex;
-            align-items: center;
-            gap: .4rem
-        }
-
-        .inf-btn-filtrar:hover {
-            background: #d32f3f;
-            transform: translateY(-1px)
-        }
-
-        /* KPI Cards */
-        .inf-kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem
-        }
-
-        .inf-kpi {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            transition: transform .2s
-        }
-
-        .inf-kpi:hover {
-            transform: translateY(-3px)
-        }
-
-        .inf-kpi-icon {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            font-size: 5rem;
-            opacity: .06
-        }
-
-        .inf-kpi-label {
-            font-size: .8rem;
-            font-weight: 500;
-            color: var(--gray);
-            margin-bottom: .3rem;
-            display: flex;
-            align-items: center;
-            gap: .4rem
-        }
-
-        .inf-kpi-valor {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: .2rem
-        }
-
-        .inf-kpi-sub {
-            font-size: .75rem;
-            color: var(--gray)
-        }
-
-        .inf-kpi.ingreso .inf-kpi-valor {
-            color: var(--success)
-        }
-
-        .inf-kpi.ingreso .inf-kpi-icon {
-            color: var(--success)
-        }
-
-        .inf-kpi.egreso .inf-kpi-valor {
-            color: var(--danger)
-        }
-
-        .inf-kpi.egreso .inf-kpi-icon {
-            color: var(--danger)
-        }
-
-        .inf-kpi.balance .inf-kpi-valor {
-            color: var(--info)
-        }
-
-        .inf-kpi.balance .inf-kpi-icon {
-            color: var(--info)
-        }
-
-        .inf-kpi.balance.negativo .inf-kpi-valor {
-            color: var(--danger)
-        }
-
-        .inf-kpi.pedidos .inf-kpi-valor {
-            color: var(--secondary)
-        }
-
-        .inf-kpi.pedidos .inf-kpi-icon {
-            color: var(--secondary)
-        }
-
-        /* Flujo de dinero */
-        .inf-flujo {
-            background: #fff;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 1.5rem
-        }
-
-        .inf-flujo-titulo {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem
-        }
-
-        .inf-flujo-diagrama {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap
-        }
-
-        .inf-flujo-box {
-            padding: 1.2rem 1.8rem;
-            border-radius: 14px;
-            text-align: center;
-            min-width: 180px;
-            flex: 1;
-            max-width: 260px
-        }
-
-        .inf-flujo-box.cliente {
-            background: linear-gradient(135deg, #f0f4ff, #dbeafe);
-            border: 2px solid #93c5fd
-        }
-
-        .inf-flujo-box.negocio {
-            background: linear-gradient(135deg, #fefce8, #fef3c7);
-            border: 2px solid #fcd34d
-        }
-
-        .inf-flujo-box.retencion {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 2px solid #86efac
-        }
-
-        .inf-flujo-box.devolucion {
-            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
-            border: 2px solid #fca5a5
-        }
-
-        .inf-flujo-box-label {
-            font-size: .75rem;
-            font-weight: 500;
-            color: var(--gray);
-            margin-bottom: .3rem
-        }
-
-        .inf-flujo-box-valor {
-            font-size: 1.2rem;
-            font-weight: 700
-        }
-
-        .inf-flujo-box-sub {
-            font-size: .7rem;
-            color: var(--gray);
-            margin-top: .2rem
-        }
-
-        .inf-flujo-flecha {
-            font-size: 1.5rem;
-            color: #ccc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: .2rem
-        }
-
-        .inf-flujo-flecha span {
-            font-size: .65rem;
-            color: var(--gray)
-        }
-
-        /* Charts */
-        .inf-charts-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem
-        }
-
-        .inf-chart-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow)
-        }
-
-        .inf-chart-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem
-        }
-
-        .inf-chart-wrap {
-            position: relative;
-            height: 300px
-        }
-
-        /* Métodos de pago */
-        .inf-metodos-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem
-        }
-
-        .inf-metodo-resumen {
-            display: flex;
-            flex-direction: column;
-            gap: .8rem
-        }
-
-        .inf-metodo-item {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            padding: .8rem 1rem;
-            background: var(--light);
-            border-radius: 12px
-        }
-
-        .inf-metodo-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            flex-shrink: 0
-        }
-
-        .inf-metodo-nombre {
-            flex: 1;
-            font-size: .9rem;
-            color: var(--dark)
-        }
-
-        .inf-metodo-valor {
-            font-weight: 700;
-            font-size: .95rem
-        }
-
-        .inf-metodo-pct {
-            font-size: .75rem;
-            color: var(--gray);
-            min-width: 40px;
-            text-align: right
-        }
-
-        /* Desglose tabla */
-        .inf-desglose {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            overflow: hidden
-        }
-
-        .inf-desglose h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem
-        }
-
-        .inf-desglose-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: .85rem
-        }
-
-        .inf-desglose-table th {
-            background: var(--dark);
-            color: #fff;
-            padding: .7rem .8rem;
-            text-align: left;
-            font-size: .75rem;
-            text-transform: uppercase;
-            letter-spacing: .5px
-        }
-
-        .inf-desglose-table td {
-            padding: .7rem .8rem;
-            border-bottom: 1px solid #f0f0f0;
-            vertical-align: middle
-        }
-
-        .inf-desglose-table tr:hover {
-            background: #fafafa
-        }
-
-        .inf-desglose-table .total-row {
-            background: var(--light);
-            font-weight: 700
-        }
-
-        .inf-metodo-tag {
-            display: inline-block;
-            padding: .2rem .6rem;
-            border-radius: 6px;
-            font-size: .75rem;
-            font-weight: 600;
-            margin: .1rem
-        }
-
-        .inf-metodo-tag.efectivo {
-            background: #dcfce7;
-            color: #166534
-        }
-
-        .inf-metodo-tag.nequi {
-            background: #f3e8ff;
-            color: #6b21a8
-        }
-
-        .inf-metodo-tag.daviplata {
-            background: #ffe4e6;
-            color: #9f1239
-        }
-
-        .inf-metodo-tag.transferencia {
-            background: #dbeafe;
-            color: #1e40af
-        }
-
-        /* Tienda destacada */
-        .inf-destacada {
-            background: linear-gradient(135deg, var(--secondary), #e8952e);
-            border-radius: 16px;
-            padding: 1.5rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 0 8px 30px rgba(244, 162, 97, .3)
-        }
-
-        .inf-destacada-icon {
-            font-size: 3rem;
-            opacity: .8
-        }
-
-        .inf-destacada-info h4 {
-            font-size: .85rem;
-            opacity: .9;
-            font-weight: 400;
-            margin-bottom: .2rem
-        }
-
-        .inf-destacada-info h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: .3rem
-        }
-
-        .inf-destacada-info p {
-            font-size: .8rem;
-            opacity: .85
-        }
-
-        /* Loading */
-        .inf-loading {
-            text-align: center;
-            padding: 4rem 2rem
-        }
-
-        .inf-vacio {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--gray)
-        }
-
-        .inf-vacio i {
-            font-size: 4rem;
-            color: #e0e0e0;
-            margin-bottom: 1rem
-        }
-
-        /* Mobile */
-        @media(max-width:768px) {
-            .admin-nav {
-                margin: 0 -24px 1.5rem
-            }
-
-            .admin-nav-btn {
-                padding: .8rem 1rem;
-                font-size: .85rem
-            }
-
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start
-            }
-
-            .section-actions {
-                width: 100%
-            }
-
-            .section-actions .btn {
-                flex: 1;
-                justify-content: center;
-                font-size: .85rem
-            }
-
-            .inf-kpi-grid {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .inf-charts-grid {
-                grid-template-columns: 1fr
-            }
-
-            .inf-metodos-grid {
-                grid-template-columns: 1fr
-            }
-
-            .inf-flujo-diagrama {
-                flex-direction: column
-            }
-
-            .inf-flujo-flecha {
-                transform: rotate(90deg)
-            }
-
-            .inf-filtros-grupo {
-                width: 100%
-            }
-
-            .inf-filtros-grupo input,
-            .inf-filtros-grupo select {
-                width: 100%
-            }
-
-            .inf-desglose-table {
-                font-size: .75rem
-            }
-
-            .inf-desglose-table th,
-            .inf-desglose-table td {
-                padding: .5rem
-            }
-        }
-
-        @media(max-width:480px) {
-            .inf-kpi-grid {
-                grid-template-columns: 1fr
-            }
-
-            .inf-kpi-valor {
-                font-size: 1.3rem
-            }
-        }
-    
+/* ============================================
+   informe.css — Panel Admin: navegación + informes
+   DEPENDENCIA: cargar DESPUÉS de panel.css y styles.css
+   (necesita --header-height, --primary, etc. del core)
+
+   ★ FIX APLICADO: .admin-nav ahora es sticky bajo el
+   header fijo y con scroll-x contenido (no arrastra
+   la página en móvil). Variables de styles.css.
+   ============================================ */
+
+/* ===== MENÚ HORIZONTAL ===== */
+.admin-nav {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border-bottom: 3px solid var(--light);
+    padding: 0;
+    margin: 0 auto 2rem;
+    border-radius: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+    /* ★ FIX: se pega bajo el header fijo al scrollear */
+    position: sticky;
+    top: var(--header-height, 92px);
+    z-index: 900;
+    /* ★ FIX: al llegar al borde del nav, NO arrastra toda la página */
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+
+.admin-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    font-family: inherit;
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all .25s ease;
+    white-space: nowrap;
+    position: relative;
+    /* ★ FIX: los botones no se aplastan ni encogen el nav */
+    flex-shrink: 0;
+    /* ★ FIX: deslizamiento con "imán" suave en móvil */
+    scroll-snap-align: start;
+}
+
+.admin-nav-btn:hover {
+    color: var(--dark);
+    background: var(--light)
+}
+
+.admin-nav-btn.active {
+    color: var(--primary);
+    font-weight: 600;
+    border-bottom-color: var(--primary);
+    background: #fff
+}
+
+.nav-badge {
+    background: var(--primary);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px
+}
+
+.admin-section {
+    display: none;
+    animation: fadeIn .3s ease
+}
+
+.admin-section.active {
+    display: block
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0
+}
+
+.section-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap
+}
+
+/* ===== INFORMES ===== */
+.inf-filtros {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem
+}
+
+.inf-filtros-row {
+    display: flex;
+    gap: .8rem;
+    align-items: end;
+    flex-wrap: wrap
+}
+
+.inf-filtros-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem
+}
+
+.inf-filtros-grupo label {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--gray)
+}
+
+.inf-filtros-grupo input,
+.inf-filtros-grupo select {
+    padding: .6rem .8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: .85rem;
+    transition: all .2s
+}
+
+.inf-filtros-grupo input:focus,
+.inf-filtros-grupo select:focus {
+    outline: none;
+    border-color: var(--primary)
+}
+
+.inf-presets {
+    display: flex;
+    gap: .4rem;
+    flex-wrap: wrap;
+    margin-top: .8rem
+}
+
+.inf-preset-btn {
+    padding: .4rem .9rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    background: none;
+    font-family: inherit;
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all .2s
+}
+
+.inf-preset-btn:hover,
+.inf-preset-btn.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff
+}
+
+.inf-btn-filtrar {
+    padding: .6rem 1.4rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: .4rem
+}
+
+.inf-btn-filtrar:hover {
+    background: #d32f3f;
+    transform: translateY(-1px)
+}
+
+/* KPI Cards */
+.inf-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem
+}
+
+.inf-kpi {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s
+}
+
+.inf-kpi:hover {
+    transform: translateY(-3px)
+}
+
+.inf-kpi-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 5rem;
+    opacity: .06
+}
+
+.inf-kpi-label {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--gray);
+    margin-bottom: .3rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem
+}
+
+.inf-kpi-valor {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: .2rem
+}
+
+.inf-kpi-sub {
+    font-size: .75rem;
+    color: var(--gray)
+}
+
+.inf-kpi.ingreso .inf-kpi-valor {
+    color: var(--success)
+}
+
+.inf-kpi.ingreso .inf-kpi-icon {
+    color: var(--success)
+}
+
+.inf-kpi.egreso .inf-kpi-valor {
+    color: var(--danger)
+}
+
+.inf-kpi.egreso .inf-kpi-icon {
+    color: var(--danger)
+}
+
+.inf-kpi.balance .inf-kpi-valor {
+    color: var(--info)
+}
+
+.inf-kpi.balance .inf-kpi-icon {
+    color: var(--info)
+}
+
+.inf-kpi.balance.negativo .inf-kpi-valor {
+    color: var(--danger)
+}
+
+.inf-kpi.pedidos .inf-kpi-valor {
+    color: var(--secondary)
+}
+
+.inf-kpi.pedidos .inf-kpi-icon {
+    color: var(--secondary)
+}
+
+/* Flujo de dinero */
+.inf-flujo {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem
+}
+
+.inf-flujo-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.inf-flujo-diagrama {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap
+}
+
+.inf-flujo-box {
+    padding: 1.2rem 1.8rem;
+    border-radius: 14px;
+    text-align: center;
+    min-width: 180px;
+    flex: 1;
+    max-width: 260px
+}
+
+.inf-flujo-box.cliente {
+    background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+    border: 2px solid #93c5fd
+}
+
+.inf-flujo-box.negocio {
+    background: linear-gradient(135deg, #fefce8, #fef3c7);
+    border: 2px solid #fcd34d
+}
+
+.inf-flujo-box.retencion {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 2px solid #86efac
+}
+
+.inf-flujo-box.devolucion {
+    background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+    border: 2px solid #fca5a5
+}
+
+.inf-flujo-box-label {
+    font-size: .75rem;
+    font-weight: 500;
+    color: var(--gray);
+    margin-bottom: .3rem
+}
+
+.inf-flujo-box-valor {
+    font-size: 1.2rem;
+    font-weight: 700
+}
+
+.inf-flujo-box-sub {
+    font-size: .7rem;
+    color: var(--gray);
+    margin-top: .2rem
+}
+
+.inf-flujo-flecha {
+    font-size: 1.5rem;
+    color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .2rem
+}
+
+.inf-flujo-flecha span {
+    font-size: .65rem;
+    color: var(--gray)
+}
+
+/* Charts */
+.inf-charts-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem
+}
+
+.inf-chart-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow)
+}
+
+.inf-chart-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.inf-chart-wrap {
+    position: relative;
+    height: 300px
+}
+
+/* Métodos de pago */
+.inf-metodos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem
+}
+
+.inf-metodo-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem
+}
+
+.inf-metodo-item {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .8rem 1rem;
+    background: var(--light);
+    border-radius: 12px
+}
+
+.inf-metodo-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0
+}
+
+.inf-metodo-nombre {
+    flex: 1;
+    font-size: .9rem;
+    color: var(--dark)
+}
+
+.inf-metodo-valor {
+    font-weight: 700;
+    font-size: .95rem
+}
+
+.inf-metodo-pct {
+    font-size: .75rem;
+    color: var(--gray);
+    min-width: 40px;
+    text-align: right
+}
+
+/* Desglose tabla */
+.inf-desglose {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    overflow: hidden
+}
+
+.inf-desglose h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.inf-desglose-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem
+}
+
+.inf-desglose-table th {
+    background: var(--dark);
+    color: #fff;
+    padding: .7rem .8rem;
+    text-align: left;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .5px
+}
+
+.inf-desglose-table td {
+    padding: .7rem .8rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle
+}
+
+.inf-desglose-table tr:hover {
+    background: #fafafa
+}
+
+.inf-desglose-table .total-row {
+    background: var(--light);
+    font-weight: 700
+}
+
+.inf-metodo-tag {
+    display: inline-block;
+    padding: .2rem .6rem;
+    border-radius: 6px;
+    font-size: .75rem;
+    font-weight: 600;
+    margin: .1rem
+}
+
+.inf-metodo-tag.efectivo {
+    background: #dcfce7;
+    color: #166534
+}
+
+.inf-metodo-tag.nequi {
+    background: #f3e8ff;
+    color: #6b21a8
+}
+
+.inf-metodo-tag.daviplata {
+    background: #ffe4e6;
+    color: #9f1239
+}
+
+.inf-metodo-tag.transferencia {
+    background: #dbeafe;
+    color: #1e40af
+}
+
+/* Tienda destacada */
+.inf-destacada {
+    background: linear-gradient(135deg, var(--secondary), #e8952e);
+    border-radius: 16px;
+    padding: 1.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 8px 30px rgba(244, 162, 97, .3)
+}
+
+.inf-destacada-icon {
+    font-size: 3rem;
+    opacity: .8
+}
+
+.inf-destacada-info h4 {
+    font-size: .85rem;
+    opacity: .9;
+    font-weight: 400;
+    margin-bottom: .2rem
+}
+
+.inf-destacada-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: .3rem
+}
+
+.inf-destacada-info p {
+    font-size: .8rem;
+    opacity: .85
+}
+
+/* Loading */
+.inf-loading {
+    text-align: center;
+    padding: 4rem 2rem
+}
+
+.inf-vacio {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--gray)
+}
+
+.inf-vacio i {
+    font-size: 4rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem
+}
+
+/* Mobile */
+@media(max-width:768px) {
+    .admin-nav {
+        margin: 0 -24px 1.5rem;
+        /* ★ FIX: al hacerse sticky, conservar fondo sólido
+           para que no se vea el contenido pasando detrás */
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .08)
+    }
+
+    .admin-nav-btn {
+        padding: .8rem 1rem;
+        font-size: .85rem
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start
+    }
+
+    .section-actions {
+        width: 100%
+    }
+
+    .section-actions .btn {
+        flex: 1;
+        justify-content: center;
+        font-size: .85rem
+    }
+
+    .inf-kpi-grid {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .inf-charts-grid {
+        grid-template-columns: 1fr
+    }
+
+    .inf-metodos-grid {
+        grid-template-columns: 1fr
+    }
+
+    .inf-flujo-diagrama {
+        flex-direction: column
+    }
+
+    .inf-flujo-flecha {
+        transform: rotate(90deg)
+    }
+
+    .inf-filtros-grupo {
+        width: 100%
+    }
+
+    .inf-filtros-grupo input,
+    .inf-filtros-grupo select {
+        width: 100%
+    }
+
+    .inf-desglose-table {
+        font-size: .75rem
+    }
+
+    .inf-desglose-table th,
+    .inf-desglose-table td {
+        padding: .5rem
+    }
+}
+
+@media(max-width:480px) {
+    .inf-kpi-grid {
+        grid-template-columns: 1fr
+    }
+
+    .inf-kpi-valor {
+        font-size: 1.3rem
+    }
+}

@@ -1,0 +1,641 @@
+/* ============================================
+   DOMIDELIS - PANEL (Admin + Domiciliario)
+
+   PÁGINAS CONSUMIDORAS:
+   - admin.html
+   - domiciliario.html
+
+   DEPENDENCIAS (cargar ANTES este archivo):
+   - styles.css → variables, reset, botones, forms,
+     tablas base, modales, notificaciones y keyframes
+     (fadeIn lo usa .tab-content)
+   - styles.css define --header-height (la ajusta
+     config.js midiendo el header real)
+
+   ORDEN DE CARGA:
+   - admin.html:        styles.css → panel.css → informe.css → anuncios.css
+     ★ panel.css ANTES de informe.css (replica la posición
+       que §15 tenía en el monolito, informe.css pisa si pisa)
+   - domiciliario.html: styles.css → panel.css → domiciliario.css
+
+   Migrado desde styles.css:
+   - §15 completo (paneles, tabs, pedidos, historial, stats)
+   - .tienda-tag-historial / .tienda-tag-detalle (§9: los genera
+     admin.js en la tabla de historial y pedido-card.js)
+
+   FIX LAYOUT APLICADO:
+   - .tabs-container sticky bajo el header (domiciliario),
+     equivalente al .admin-nav sticky de informe.css
+
+   NO INCLUYE (siguen en styles.css):
+   - §14 Modales (index también usa .modal)
+   - §16 Notificaciones (toast.js es transversal)
+   - .section-title (fix: quedó en core, la usa domiciliario)
+   ============================================ */
+
+/* ============================================
+   1. LAYOUT DE PANELES
+   ============================================ */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.admin-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.admin-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.panel-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.pedidos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ============================================
+   2. TABS (Domiciliario)
+   ============================================ */
+.tabs-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--light);
+    padding-bottom: 0.5rem;
+
+    /* ★ NUEVO: sticky bajo el header al scrollear.
+       Fondo opaco (color de página) para que no se vea
+       el contenido deslizando detrás al pegarse. */
+    position: sticky;
+    top: var(--header-height, 92px);
+    z-index: 900;
+    background: var(--light);
+    overscroll-behavior-x: contain;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--dark);
+    background: var(--light);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    background: white;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-badge {
+    background: var(--primary);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-left: 0.3rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ============================================
+   3. PEDIDO CARD Y ESTADOS
+   (generado por pedido-card.js / admin.js)
+   ============================================ */
+.pedido-card {
+    border-left: 4px solid var(--primary);
+}
+
+.pedido-card.entregado {
+    border-left-color: var(--success);
+    background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+    opacity: 0.8;
+}
+
+.pedido-card.pendiente {
+    border-left-color: var(--warning);
+}
+
+.pedido-card.en-camino {
+    border-left-color: var(--info);
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.estado-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.estado-pendiente {
+    background: var(--warning);
+    color: #000;
+}
+
+.estado-en-camino {
+    background: var(--info);
+    color: #fff;
+}
+
+.estado-entregado {
+    background: var(--success);
+    color: #fff;
+}
+
+.estado-cancelado {
+    background: var(--danger);
+    color: #fff;
+}
+
+.pedido-info p {
+    margin-bottom: 0.5rem;
+    color: var(--gray);
+}
+
+.pedido-info p strong {
+    color: var(--dark);
+}
+
+.productos-resumen {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.productos-resumen ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.estado-botones {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.estado-botones .btn {
+    flex: 1;
+    min-width: 100px;
+}
+
+.estado-seccion {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ============================================
+   4. HISTORIAL Y ESTADÍSTICAS
+   ============================================ */
+.historial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.historial-titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin: 0;
+}
+
+.historial-controles {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filtro-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtro-grupo label {
+    font-weight: 500;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.filtro-grupo select,
+.filtro-grupo input {
+    padding: 0.6rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-width: 200px;
+    transition: var(--transition);
+}
+
+.filtro-grupo select:focus,
+.filtro-grupo input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.acciones-masivas {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: var(--light);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-accion-masiva {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-eliminar-masivo {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-eliminar-masivo:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn-exportar {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-exportar:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.contador-seleccionados {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.tabla-historial-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+#tablaHistorialPedidos {
+    margin: 0;
+}
+
+#tablaHistorialPedidos th {
+    background: var(--dark);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+#tablaHistorialPedidos th:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+#tablaHistorialPedidos td {
+    vertical-align: middle;
+}
+
+.checkbox-pedido {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+#checkboxTodos {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.fila-seleccionada {
+    background: #fff5f5 !important;
+    transition: background 0.2s ease;
+}
+
+.fila-seleccionada td {
+    border-left: 3px solid var(--primary);
+}
+
+.domiciliario-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.domiciliario-tag i {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.contador-resultados {
+    padding: 1rem 1.5rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
+.historial-stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.stat-box {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    min-width: 120px;
+}
+
+.stat-box i {
+    font-size: 1.5rem;
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.stat-box span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.stat-box small {
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+.filtros-historial {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filtro-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.historial-card {
+    opacity: 0.85;
+    border-left-color: var(--success) !important;
+}
+
+.historial-card:hover {
+    opacity: 1;
+}
+
+.fecha-entrega {
+    background: var(--success);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.historial-acciones {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tiempo-entrega {
+    color: var(--gray);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.tiempo-entrega i {
+    color: var(--accent);
+    margin-right: 0.3rem;
+}
+
+/* ============================================
+   5. TAGS DE TIENDA (migrado de §9:
+   los genera admin.js en historial y pedido-card.js)
+   ============================================ */
+.tienda-tag-historial {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    color: var(--dark);
+    font-weight: 500;
+    white-space: nowrap;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tienda-tag-historial i {
+    color: var(--secondary);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+.tienda-tag-detalle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.tienda-tag-detalle i {
+    color: var(--secondary);
+}
+
+/* ============================================
+   6. RESPONSIVE
+   (incluye ajuste móvil de tablas: solo admin
+    las usa, viaja con su consumidor)
+   ============================================ */
+@media (max-width: 768px) {
+
+    .admin-grid,
+    .pedidos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* ★ NUEVO: deslizamiento con imán suave */
+        scroll-snap-type: x proximity;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        /* ★ NUEVO: no se comprimen, deslizan */
+        flex-shrink: 0;
+        scroll-snap-align: start;
+    }
+
+    .historial-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .historial-stats {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .stat-box {
+        flex: 1;
+        padding: 0.8rem;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th,
+    td {
+        padding: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tienda-tag-historial {
+        max-width: 80px;
+        font-size: 0.68rem;
+    }
+}

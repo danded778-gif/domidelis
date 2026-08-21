@@ -1,0 +1,792 @@
+/* ============================================
+   DOMIDELIS - HOME (index.html)
+
+   DEPENDENCIAS (cargar ANTES este archivo):
+   - styles.css → variables, reset, header/footer/core,
+     .section-title (★ movido al core en Fase 3:
+     lo usa domiciliario.html) y los KEYFRAMES que
+     este archivo usa: badge-pulse, dot-blink,
+     pulse-descuento, rebote-flecha, volarEmoji,
+     fiestaCarrito, popIn ★ NO borrarlos del core
+
+   ORDEN DE CARGA en index.html:
+   styles.css → home.css → cart.css
+   → modal-personalizacion.css → anuncios.css
+   (home.css va EXACTAMENTE donde estaba styles.css
+    en la cascada, antes de modal-personalizacion
+    y anuncios, para preservar overrides)
+
+   Migrado desde styles.css:
+   - §7 Hero (excepto .hero-admin → core hasta ver login)
+   - §9 Tiendas y categorías (excepto .tienda-tag-* →
+     migrados a panel.css en Fase 3)
+   - §10 Menú y productos (excepto .section-title → core)
+
+   NO incluye:
+   - .section-title (CORE: la usa domiciliario.html)
+   - .tienda-tag-historial / .tienda-tag-detalle (panel.css)
+   - .modal genérico (core: index + admin)
+   - .cart-float / .cart-panel / header-cart (cart.css)
+   - .spinner, .paginador, .notificaciones (core)
+   ============================================ */
+
+/* ============================================
+   1. HERO
+   ★ NOTA: el hero fue eliminado del HTML del index.
+   Se migra completo por si client.js inyecta clases
+   (titulo-emoji-box, launch-badge, etc.).
+   Candidato a PURGA tras verificar client.js.
+   ============================================ */
+.hero {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: visible;
+    z-index: 100;
+    margin-top: 0;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1rem !important;
+    /* ★ UX: Reducido */
+}
+
+.hero::before {
+    content: '🍔';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.10;
+    bottom: -50px;
+    right: -50px;
+}
+
+.hero::after {
+    content: '🥃';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.08;
+    top: 10px;
+    left: -30px;
+}
+
+.hero h1 {
+    font-size: 2.2rem !important;
+    /* ★ UX: Reducido para PC */
+    margin-bottom: 0.5rem !important;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.hero p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    display: none !important;
+    /* ★ UX: Ocultar texto muerto */
+}
+
+/* Lanzamiento y Descuentos */
+.launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.45rem 1.2rem;
+    border-radius: 9999px;
+    margin-bottom: 0.8rem;
+    transform: translateY(-15px);
+    animation: badge-pulse 2.5s ease-in-out infinite;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--white);
+    animation: dot-blink 1.2s ease-in-out infinite;
+}
+
+.hero-discount {
+    display: inline-block;
+    background: var(--white);
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    margin-bottom: 0 !important;
+    /* ★ UX */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    animation: pulse-descuento 2s ease-in-out infinite;
+}
+
+.discount-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.titulo-emoji-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.titulo-emoji-box .emoji-lado {
+    font-size: 2.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.titulo-emoji-box .texto-central {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 52px;
+    height: 52px;
+    background-color: var(--dark);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 1001;
+    animation: rebote-flecha 2s ease-in-out infinite;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.scroll-down-indicator.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+    pointer-events: none;
+}
+
+/* Hero Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem 0 2.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+        /* ★ Reducido para tablets */
+    }
+
+    .scroll-down-indicator {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+        bottom: 15px;
+    }
+
+    .titulo-emoji-box {
+        gap: 10px;
+    }
+
+    .titulo-emoji-box .emoji-lado {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        /* ★ Reducido para móviles pequeños */
+    }
+
+    .titulo-emoji-box .emoji-lado {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   2. TIENDAS Y CATEGORÍAS
+   ============================================ */
+.stores-section-title {
+    font-size: 1.1rem !important;
+    text-align: left !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-left: 16px;
+    /* ★ UX */
+}
+
+/* ★ Absorbido del <style> inline del index.html
+   (era la única parte viva de ese bloque) */
+.stores-section-title i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+.stores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 2rem 0;
+}
+
+/* ★ UX: Layout horizontal automático para tiendas populares */
+.stores-grid-horizontal {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem 0 2rem 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.stores-grid-horizontal::-webkit-scrollbar {
+    display: none;
+}
+
+.stores-grid-horizontal .store-card {
+    flex: 0 0 180px !important;
+    scroll-snap-align: start;
+    /* ★ UX: 85vw a 180px para que quepan más */
+}
+
+.stores-grid-horizontal .store-img {
+    height: 120px !important;
+    /* ★ UX: Ajustado */
+}
+
+.stores-grid-horizontal .store-info {
+    padding: 0.6rem !important;
+}
+
+.stores-grid-horizontal .store-info h3 {
+    font-size: 0.9rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stores-grid-horizontal .store-info p,
+.stores-grid-horizontal .store-rating,
+.stores-grid-horizontal .btn-ver-menu-tienda {
+    display: none !important;
+    /* ★ UX: Ocultar basura visual */
+}
+
+.stores-grid-horizontal .store-card:hover {
+    transform: none;
+}
+
+.store-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+}
+
+.store-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.store-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.store-badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.store-info {
+    padding: 1.5rem;
+}
+
+.store-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.store-info p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.store-desc {
+    color: var(--gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0.3rem 0 0.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+}
+
+.store-rating {
+    color: #ffc107;
+    margin-top: 0.5rem;
+}
+
+/* Tiendas Cerradas */
+.store-card.store-closed {
+    cursor: not-allowed;
+}
+
+.store-card.store-closed:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.closed-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.65);
+    z-index: 5;
+    border-radius: var(--border-radius);
+    pointer-events: none;
+}
+
+.badge-closed {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Categorías Deslizables PWA */
+.categories-wrapper {
+    position: relative;
+    z-index: 10;
+    margin-top: 8px;
+    /* De 15px a 8px */
+    padding: 1rem 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.categories-container {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 35px;
+}
+
+.categories-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.categories-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    min-width: 75px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.category-item:active {
+    transform: scale(0.93);
+}
+
+.category-icon,
+.category-icon img,
+.category-item span {
+    pointer-events: none;
+    /* Fix click android */
+}
+
+.category-icon {
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2.5px solid transparent;
+    overflow: hidden;
+}
+
+.category-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.category-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gray);
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.category-item.active .category-icon {
+    border-color: var(--primary);
+    box-shadow: 0 6px 15px rgba(230, 57, 70, 0.25);
+}
+
+.category-item.active span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.cat-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cat-scroll-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.cat-scroll-btn.left {
+    left: 0;
+}
+
+.cat-scroll-btn.right {
+    right: 0;
+}
+
+/* Vitrina Productos Estrella (UX) */
+.destacados-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.destacado-card {
+    position: relative;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.destacado-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.destacado-card:hover .destacado-card-img {
+    transform: scale(1.05);
+}
+
+.destacado-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    padding: 2rem 0.8rem 0.8rem;
+    color: white;
+}
+
+.destacado-card-overlay h4 {
+    font-size: 1rem;
+    margin: 0 0 0.2rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.destacado-card-overlay .destacado-precio {
+    font-weight: 800;
+    color: var(--secondary);
+    font-size: 1rem;
+}
+
+.destacado-card-overlay .destacado-tienda {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 0.2rem;
+    display: block;
+}
+
+/* ============================================
+   3. MENÚ Y PRODUCTOS (vista por categoría)
+   (.section-title → vive en styles.css core,
+    la comparte con domiciliario.html)
+   ============================================ */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dark);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius-lg);
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.back-button:hover {
+    background: var(--primary);
+    transform: translateX(-5px);
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.menu-header h2 {
+    font-size: 2rem;
+    color: var(--dark);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 18px 18px 0 0;
+}
+
+#categoria-productos-grid .product-img {
+    height: 220px !important;
+}
+
+#categoria-productos-grid .product-info .product-desc {
+    display: none !important;
+}
+
+.product-img.sin-imagen {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+.product-img.sin-imagen i {
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+.product-img.con-imagen {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f5f5f5;
+}
+
+.product-img.con-imagen i {
+    display: none !important;
+}
+
+.product-img.con-imagen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-info {
+    padding: 1.2rem;
+}
+
+.product-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: var(--dark);
+}
+
+.product-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 0.8rem;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.precio-unidad-container {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.product-card:hover .product-img.con-imagen {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   4. RESPONSIVE
+   ============================================ */
+@media (min-width: 768px) {
+    .destacados-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .stores-grid,
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cat-scroll-btn {
+        display: none;
+    }
+
+    .categories-container {
+        padding: 0 0.5rem;
+    }
+
+    .category-icon {
+        width: 58px;
+        height: 58px;
+    }
+
+    .category-item span {
+        font-size: 0.75rem;
+    }
+
+    .categories-wrapper {
+        padding: 1rem 0 0.5rem 0;
+    }
+}
