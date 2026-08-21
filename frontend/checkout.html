@@ -13,7 +13,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
     <title>Finalizar Pedido - DOMICILIOS</title>
-    <!-- Google tag (gtag.js) — solo una vez -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,10 +21,10 @@
         gtag('js', new Date());
         gtag('config', 'G-K3VYX3H0RD');
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
     <link rel="stylesheet" href="assets/css/resumen-tienda.css">
     <link rel="stylesheet" href="assets/css/propina.css">
 </head>
@@ -41,84 +41,93 @@
         </div>
     </header>
 
-    <main style="margin-top: 100px; padding-bottom: 3rem;">
+    <main>
         <div class="checkout-container">
+            <!-- ★ BOTÓN "VOLVER A TIENDAS" (más arriba en móviles gracias al CSS) ★ -->
             <a href="index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver a tiendas</a>
 
             <div class="checkout-header">
                 <h1><i class="fas fa-clipboard-check"></i> Finalizar Pedido</h1>
-                <p>Completa tus datos para procesar tu orden</p>
+                <!-- ★ INDICADOR DE 4 PASOS ★ -->
+                <div class="checkout-progress">
+                    <div class="progress-step activo" data-step="1">
+                        <span class="progress-num">1</span> Datos
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <span class="progress-num">2</span> Dirección
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <span class="progress-num">3</span> Resumen
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">
+                        <span class="progress-num">4</span> Pago
+                    </div>
+                </div>
             </div>
 
-            <div class="checkout-grid">
-                <!-- Formulario de datos -->
-                <div class="checkout-card">
-                    <h3><i class="fas fa-user"></i> Tus Datos</h3>
-                    <form id="formCheckout">
-
-                        <!-- CAMPO NOMBRE -->
+            <!-- ══════════ PASO 1: DATOS PERSONALES ══════════ -->
+            <div class="checkout-step activo" id="step-1">
+                <div class="checkout-card compacto">
+                    <h3><i class="fas fa-user"></i> Tus datos</h3>
+                    <form id="formPaso1">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Nombre completo *</label>
-                            <input type="text" id="nombre" required placeholder="Ej: Juan Pérez García" maxlength="50">
+                            <input type="text" id="nombre" required autocomplete="name" placeholder="Ej: Juan Pérez García" maxlength="50">
                         </div>
-
-                        <!-- CAMPO TELÉFONO -->
                         <div class="form-group">
                             <label><i class="fas fa-phone"></i> Teléfono *</label>
-                            <input type="tel" id="telefono" required placeholder="Ej: 3001234567" maxlength="10"
-                                pattern="[0-9]{10}" title="Ingresa exactamente 10 números">
+                            <input type="tel" id="telefono" required autocomplete="tel" placeholder="Ej: 3001234567" maxlength="10" pattern="[0-9]{10}" title="Ingresa exactamente 10 números">
                         </div>
+                        <div class="checkout-acciones">
+                            <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                        <!-- CAMPO DIRECCIÓN -->
+            <!-- ══════════ PASO 2: DIRECCIÓN Y ZONA ══════════ -->
+            <div class="checkout-step" id="step-2">
+                <div class="checkout-card compacto">
+                    <h3><i class="fas fa-map-marker-alt"></i> Dónde entregamos</h3>
+                    <form id="formPaso2">
                         <div class="form-group">
-                            <label><i class="fas fa-map-marker-alt"></i> Dirección de entrega *</label>
-                            <input type="text" id="direccion" required placeholder="Ej: Calle 123 #45-67"
-                                maxlength="60">
+                            <label><i class="fas fa-map-marker-alt"></i> Dirección *</label>
+                            <input type="text" id="direccion" required autocomplete="street-address" placeholder="Calle 123 #45-67" maxlength="60">
                         </div>
-
-                        <!-- ★ SELECTOR DE ZONA CON AUTOCOMPLETADO ★ -->
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Zona de envío *</label>
                             <div class="zone-autocomplete zone-autocomplete-checkout" id="zone-autocomplete-checkout">
-                                <input type="text" id="zona-checkout-input" placeholder="Escribe tu zona o barrio..."
-                                    autocomplete="off" required>
+                                <input type="text" id="zona-checkout-input" placeholder="Escribe tu zona o barrio..." autocomplete="off" required>
                                 <input type="hidden" id="zona-checkout" name="zona-checkout" value="">
-                                <button type="button" class="zone-clear-btn" id="zone-clear-btn-checkout"
-                                    aria-label="Limpiar zona">
+                                <button type="button" class="zone-clear-btn" id="zone-clear-btn-checkout" aria-label="Limpiar zona">
                                     <i class="fas fa-times"></i>
                                 </button>
                                 <div class="zone-dropdown" id="zone-dropdown-checkout"></div>
                             </div>
-                            <small id="zona-checkout-error"
-                                style="color:var(--danger);font-size:0.8rem;display:none;margin-top:4px;">
+                            <small id="zona-checkout-error" style="color:var(--danger);font-size:0.8rem;display:none;margin-top:4px;">
                                 <i class="fas fa-exclamation-circle"></i> Selecciona una zona de la lista
                             </small>
                         </div>
-
-                        <!-- CAMPO REFERENCIAS -->
-                        <div class="form-group">
-                            <label><i class="fas fa-sticky-note"></i> Referencias adicionales</label>
-                            <textarea id="referencias" rows="2" placeholder="Ej: con cebolla, puerta cafe, etc."
-                                maxlength="100"></textarea>
+                        <div class="checkout-acciones">
+                            <button type="button" class="btn btn-secondary btn-atras" data-target="step-1">Atrás</button>
+                            <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
                         </div>
-
-                        <!-- ★ CÓDIGO PROMO ★ -->
-                        <div class="form-group" id="grupo-codigo-promo" style="display: none;">
-                            <label><i class="fas fa-tag"></i> Código de Promoción Aplicado</label>
-                            <input type="text" id="codigoPromoCheckout" class="form-control" readonly
-                                style="background: #e8f5e9; color: #2e7d32; font-weight: 700; cursor: not-allowed; border: 2px solid #2e7d32;">
-                        </div>
-
-                        <input type="hidden" id="metodoPago" value="">
                     </form>
                 </div>
+            </div>
 
-                <!-- Resumen del pedido -->
-                <div>
-                    <div class="checkout-card" style="margin-bottom: 1.5rem;">
-                        <h3><i class="fas fa-shopping-cart"></i> Resumen del Pedido</h3>
+            <!-- ══════════ PASO 3: RESUMEN + REFERENCIAS (compacto) ══════════ -->
+            <div class="checkout-step" id="step-3">
+                <div class="checkout-card compacto">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;"><i class="fas fa-receipt"></i> Resumen de tu pedido</h3>
+
+                    <!-- ★ RESUMEN FIJO ★ -->
+                    <div class="resumen-fijo">
                         <div class="resumen-pedido" id="resumenItems">
-                            <!-- Items del carrito -->
+                            <!-- Los items se renderizan con JS -->
                         </div>
                         <div class="resumen-item">
                             <span>Subtotal:</span>
@@ -129,104 +138,120 @@
                             <span id="resumenEnvio">$0</span>
                         </div>
                         <div class="resumen-item" id="resumenPropinaRow" style="display:none;">
-                            <span>🩵 Propina (aparte, para el domiciliario):</span>
+                            <span>🩵 Propina (aparte):</span>
                             <span id="resumenPropinaValor">$0</span>
                         </div>
                         <div class="resumen-total">
-                            <span>TOTAL:</span>
+                            <span>Total:</span>
                             <span id="resumenTotal">$0</span>
                         </div>
                     </div>
 
-                    <div class="checkout-card" id="propinaCard" style="margin-bottom: 1.5rem;">
-                        <label class="propina-toggle-label">
-                            <input type="checkbox" id="propinaCheckbox">
-                            <span>¿Deseas dejar una propina para tu domiciliario? 🩵</span>
-                        </label>
+                    <!-- ★ REFERENCIAS (input de una línea) ★ -->
+                    <form id="formPaso3" style="margin-top: 0.75rem;">
+                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                            <label style="font-size: 0.8rem; margin-bottom: 0.2rem;"><i class="fas fa-sticky-note"></i> Referencias (opcional)</label>
+                            <input type="text" id="referencias" class="referencias-input" placeholder="Ej: con cebolla, puerta café..." maxlength="100">
+                        </div>
+                        <div class="form-group" id="grupo-codigo-promo" style="display: none; margin-bottom: 0.5rem;">
+                            <label style="font-size: 0.8rem;"><i class="fas fa-tag"></i> Código Promo Aplicado</label>
+                            <input type="text" id="codigoPromoCheckout" class="form-control" readonly style="background:#e8f5e9; color:#2e7d32; font-weight:700; border:2px solid #2e7d32; padding: 0.3rem 0.6rem; font-size: 0.8rem; width: 100%;">
+                        </div>
+                        <div class="checkout-acciones" style="margin-top: 0.75rem;">
+                            <button type="button" class="btn btn-secondary btn-atras" data-target="step-2">Atrás</button>
+                            <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                        <div id="propinaPanel" class="propina-panel hidden-propina">
+            <!-- ══════════ PASO 4: PROPINA + MÉTODO DE PAGO (compacto) ══════════ -->
+            <div class="checkout-step" id="step-4">
 
-                            <div class="propina-dropdown" id="propinaDropdown">
-                                <button type="button" class="propina-dropdown-trigger" id="propinaDropdownTrigger">
-                                    <span id="propinaDropdownTexto"><i class="fas fa-hand-holding-heart"
-                                            style="color:var(--gray);"></i> Selecciona un motivo</span>
-                                    <i class="fas fa-chevron-down propina-chevron"></i>
-                                </button>
+                <!-- ★ PROPINA ★ -->
+                <div class="checkout-card" id="propinaCard" style="margin-bottom: 1rem;">
+                    <label class="propina-toggle-label">
+                        <input type="checkbox" id="propinaCheckbox">
+                        <span>¿Deseas dejar una propina para tu domiciliario? 🩵</span>
+                    </label>
 
-                                <div class="propina-dropdown-menu" id="propinaDropdownMenu">
-                                    <div class="propina-dropdown-item" data-valor="2000" data-label="Por lluvia">
-                                        <span class="propina-item-icon">🌧️</span>
-                                        <span class="propina-item-texto">Por lluvia</span>
-                                        <span class="propina-item-monto">$2.000</span>
-                                    </div>
-                                    <div class="propina-dropdown-item" data-valor="3000"
-                                        data-label="Por tráfico pesado">
-                                        <span class="propina-item-icon">🚦</span>
-                                        <span class="propina-item-texto">Por tráfico pesado</span>
-                                        <span class="propina-item-monto">$3.000</span>
-                                    </div>
-                                    <div class="propina-dropdown-item" data-valor="4000"
-                                        data-label="Por entrega nocturna">
-                                        <span class="propina-item-icon">🌙</span>
-                                        <span class="propina-item-texto">Por entrega nocturna</span>
-                                        <span class="propina-item-monto">$4.000</span>
-                                    </div>
-                                    <div class="propina-dropdown-item" data-valor="5000"
-                                        data-label="Por excelente servicio">
-                                        <span class="propina-item-icon">⭐</span>
-                                        <span class="propina-item-texto">Por excelente servicio</span>
-                                        <span class="propina-item-monto">$5.000</span>
-                                    </div>
-                                    <div class="propina-dropdown-item propina-item-otro" data-valor="otro"
-                                        data-label="Otro monto">
-                                        <span class="propina-item-icon">✏️</span>
-                                        <span class="propina-item-texto">Otro monto</span>
-                                    </div>
+                    <div id="propinaPanel" class="propina-panel hidden-propina">
+                        <div class="propina-dropdown" id="propinaDropdown">
+                            <button type="button" class="propina-dropdown-trigger" id="propinaDropdownTrigger">
+                                <span id="propinaDropdownTexto"><i class="fas fa-hand-holding-heart" style="color:var(--gray);"></i> Selecciona un motivo</span>
+                                <i class="fas fa-chevron-down propina-chevron"></i>
+                            </button>
+                            <div class="propina-dropdown-menu" id="propinaDropdownMenu">
+                                <div class="propina-dropdown-item" data-valor="2000" data-label="Por lluvia">
+                                    <span class="propina-item-icon">🌧️</span>
+                                    <span class="propina-item-texto">Por lluvia</span>
+                                    <span class="propina-item-monto">$2.000</span>
+                                </div>
+                                <div class="propina-dropdown-item" data-valor="3000" data-label="Por tráfico pesado">
+                                    <span class="propina-item-icon">🚦</span>
+                                    <span class="propina-item-texto">Por tráfico pesado</span>
+                                    <span class="propina-item-monto">$3.000</span>
+                                </div>
+                                <div class="propina-dropdown-item" data-valor="4000" data-label="Por entrega nocturna">
+                                    <span class="propina-item-icon">🌙</span>
+                                    <span class="propina-item-texto">Por entrega nocturna</span>
+                                    <span class="propina-item-monto">$4.000</span>
+                                </div>
+                                <div class="propina-dropdown-item" data-valor="5000" data-label="Por excelente servicio">
+                                    <span class="propina-item-icon">⭐</span>
+                                    <span class="propina-item-texto">Por excelente servicio</span>
+                                    <span class="propina-item-monto">$5.000</span>
+                                </div>
+                                <div class="propina-dropdown-item propina-item-otro" data-valor="otro" data-label="Otro monto">
+                                    <span class="propina-item-icon">✏️</span>
+                                    <span class="propina-item-texto">Otro monto</span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group hidden-propina" id="propinaOtroGroup" style="margin-top:1rem;">
+                            <label><i class="fas fa-coins"></i> ¿Cuánto deseas dar?</label>
+                            <input type="number" id="propinaOtroInput" min="500" step="500" placeholder="Ej: 4000">
+                        </div>
+                        <div class="propina-resumen-mini hidden-propina" id="propinaResumenMini">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Propina seleccionada: <strong id="propinaResumenMiniValor">$0</strong></span>
+                        </div>
+                        <p class="propina-nota"><i class="fas fa-info-circle"></i> El 100% de la propina es para tu domiciliario. No se suma al total de tu pedido.</p>
+                    </div>
+                </div>
 
-                            <div class="form-group hidden-propina" id="propinaOtroGroup" style="margin-top:1rem;">
-                                <label><i class="fas fa-coins"></i> ¿Cuánto deseas dar?</label>
-                                <input type="number" id="propinaOtroInput" min="500" step="500" placeholder="Ej: 4000">
-                            </div>
-
-                            <div class="propina-resumen-mini hidden-propina" id="propinaResumenMini">
-                                <i class="fas fa-hand-holding-heart"></i>
-                                <span>Propina seleccionada: <strong id="propinaResumenMiniValor">$0</strong></span>
-                            </div>
-
-                            <p class="propina-nota"><i class="fas fa-info-circle"></i> El 100% de la propina es para tu
-                                domiciliario. No se suma al total de tu pedido.</p>
+                <!-- ★ MÉTODO DE PAGO (compacto) ★ -->
+                <div class="checkout-card compacto-pago">
+                    <h3><i class="fas fa-credit-card"></i> Seleccionar método de pago</h3>
+                    <div class="metodo-pago metodo-pago-compacto">
+                        <div class="opcion-pago opcion-pago-compacta" data-metodo="Efectivo">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Efectivo</span>
+                        </div>
+                        <div class="opcion-pago opcion-pago-compacta" data-metodo="Nequi">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Nequi</span>
+                        </div>
+                        <div class="opcion-pago opcion-pago-compacta" data-metodo="Daviplata">
+                            <i class="fas fa-wallet"></i>
+                            <span>Daviplata</span>
+                        </div>
+                        <div class="opcion-pago opcion-pago-compacta" data-metodo="Transferencia">
+                            <i class="fas fa-university"></i>
+                            <span>Transferencia</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="checkout-card">
-                        <h3><i class="fas fa-credit-card"></i> Método de Pago</h3>
-                        <div class="metodo-pago">
-                            <div class="opcion-pago" data-metodo="Efectivo">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Efectivo</span>
-                            </div>
-                            <div class="opcion-pago" data-metodo="Nequi">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Nequi</span>
-                            </div>
-                            <div class="opcion-pago" data-metodo="Daviplata">
-                                <i class="fas fa-wallet"></i>
-                                <span>Daviplata</span>
-                            </div>
-                            <div class="opcion-pago" data-metodo="Transferencia">
-                                <i class="fas fa-university"></i>
-                                <span>Transferencia</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn-confirmar" id="btnConfirmar">
-                        <i class="fab fa-whatsapp"></i> Confirmar y enviar por WhatsApp
+                <!-- ★ ACCIONES: ATRÁS + CONFIRMAR ★ -->
+                <div class="checkout-acciones" style="margin-top: 1rem;">
+                    <button type="button" class="btn btn-secondary btn-atras" data-target="step-3">Atrás</button>
+                    <button type="button" class="btn-confirmar btn-final" id="btnConfirmar">
+                        <i class="fab fa-whatsapp"></i> Confirmar por WhatsApp
                     </button>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -244,29 +269,155 @@
     <script src="assets/js/client.js"></script>
     <script src="assets/js/checkout.js"></script>
 
-    <!-- ★★★ CORREGIDO: Importar como module, sin scripts compat ★★★ -->
+    <!-- ★ FCM (notificaciones push) como módulo ★ -->
     <script type="module" src="assets/js/fcm-manager.js"></script>
 
+    <!-- ★ Inicializar autocompletado de zona en checkout ★ -->
     <script>
-        // ★ Inicializar autocompletado de zona en checkout ★
         if (typeof initZoneAutocompleteCheckout === 'function') {
             initZoneAutocompleteCheckout();
         }
     </script>
 
+    <!-- ★★★ WIZARD DE 4 PASOS + AUTOGUARDADO ★★★ -->
+    <script>
+        (function() {
+            var CLAVE = 'domidelis_cliente';
+
+            var pasos = document.querySelectorAll('.checkout-step');
+            var progressSteps = document.querySelectorAll('.progress-step');
+
+            var zonaInput = document.getElementById('zona-checkout-input');
+            var zonaHidden = document.getElementById('zona-checkout');
+            var zonaError = document.getElementById('zona-checkout-error');
+            var zonaClearBtn = document.getElementById('zone-clear-btn-checkout');
+            var ref = document.getElementById('referencias');
+
+            function irPaso(n) {
+                pasos.forEach(function(el, i) {
+                    el.classList.toggle('activo', (i + 1) === n);
+                });
+                progressSteps.forEach(function(el, i) {
+                    var num = i + 1;
+                    el.classList.toggle('activo', num === n);
+                    el.classList.toggle('completado', num < n);
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function guardarDatosCliente() {
+                try {
+                    localStorage.setItem(CLAVE, JSON.stringify({
+                        nombre: document.getElementById('nombre').value.trim(),
+                        telefono: document.getElementById('telefono').value.trim(),
+                        direccion: document.getElementById('direccion').value.trim(),
+                        zonaNombre: zonaInput.value.trim(),
+                        zonaKey: zonaHidden.value,
+                        referencias: ref.value.trim()
+                    }));
+                } catch (e) {}
+            }
+
+            function restaurarDatosCliente() {
+                try {
+                    var d = JSON.parse(localStorage.getItem(CLAVE));
+                    if (!d) return;
+                    document.getElementById('nombre').value = d.nombre || '';
+                    document.getElementById('telefono').value = d.telefono || '';
+                    document.getElementById('direccion').value = d.direccion || '';
+                    ref.value = d.referencias || '';
+                    if (d.zonaKey && d.zonaNombre) {
+                        zonaInput.value = d.zonaNombre;
+                        zonaHidden.value = d.zonaKey;
+                        if (zonaClearBtn) zonaClearBtn.classList.add('visible');
+                    }
+                } catch (e) {}
+            }
+
+            // Autoguardar al cambiar
+            ['nombre', 'telefono', 'direccion'].forEach(function(id) {
+                document.getElementById(id).addEventListener('change', guardarDatosCliente);
+            });
+            ref.addEventListener('change', guardarDatosCliente);
+            zonaInput.addEventListener('change', guardarDatosCliente);
+
+            // Paso 1
+            document.getElementById('formPaso1').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nombre = document.getElementById('nombre').value.trim();
+                var telefono = document.getElementById('telefono').value.trim();
+                if (!nombre || !telefono) {
+                    alert('Por favor completa nombre y teléfono.');
+                    return;
+                }
+                guardarDatosCliente();
+                irPaso(2);
+            });
+
+            // Paso 2
+            document.getElementById('formPaso2').addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!zonaHidden.value) {
+                    zonaError.style.display = 'block';
+                    zonaInput.classList.add('input-error');
+                    zonaInput.focus();
+                    return;
+                }
+                guardarDatosCliente();
+                irPaso(3);
+            });
+
+            // Paso 3
+            document.getElementById('formPaso3').addEventListener('submit', function(e) {
+                e.preventDefault();
+                guardarDatosCliente();
+                irPaso(4);
+            });
+
+            // Botones "Atrás"
+            document.querySelectorAll('.btn-atras').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var target = this.dataset.target;
+                    var num = parseInt(target.split('-')[1], 10);
+                    irPaso(num);
+                });
+            });
+
+            // Limpiar error de zona al escribir
+            zonaInput.addEventListener('input', function() {
+                zonaError.style.display = 'none';
+                this.classList.remove('input-error');
+            });
+
+            // ★ Evento para el botón Confirmar (llama a procesarPedido) ★
+            document.getElementById('btnConfirmar').addEventListener('click', function() {
+                if (typeof window.procesarPedido === 'function') {
+                    window.procesarPedido();
+                } else {
+                    alert('Error: la lógica de confirmación no está cargada.');
+                }
+            });
+
+            // Restaurar datos al cargar
+            restaurarDatosCliente();
+        })();
+    </script>
+
+    <!-- ★ Service Worker ★ -->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('firebase-messaging-sw.js').catch(() => { });
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('firebase-messaging-sw.js').catch(function() {});
             });
         }
     </script>
-    <!-- ★ EVENTO GOOGLE ANALYTICS: checkout_whatsapp ★ -->
+
+    <!-- ★ Google Analytics: evento checkout_whatsapp ★ -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var btnConfirmar = document.getElementById('btnConfirmar');
             if (btnConfirmar) {
-                btnConfirmar.addEventListener('click', function () {
+                btnConfirmar.addEventListener('click', function() {
                     gtag('event', 'checkout_whatsapp', {
                         'event_category': 'ecommerce',
                         'event_label': 'confirmar_pedido'
@@ -276,6 +427,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

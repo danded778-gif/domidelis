@@ -4,6 +4,7 @@
 // Adaptado para Autocompletado de Zona
 // ★ ACTUALIZADO: Lógica de descuentos de anuncios
 // ★ ACTUALIZADO v2: Soporte para Extras y Complementos dinámicos
+// ★ ACTUALIZADO v3: Compatible con wizard de 4 pasos (sin eventos propios)
 // ============================================
 (function () {
     'use strict';
@@ -65,7 +66,7 @@
         initZonaCheckout(); // Sincroniza el selector de zona
         renderResumen();    // Muestra los productos y calcula el envío
         initPagoSeleccion();
-        initFormSubmit();
+        // initFormSubmit();  // ← ELIMINADO: ya no se usa con wizard
         limpiarErroresAlEscribir();
         initPropina();
 
@@ -78,6 +79,9 @@
             grupoCodigo.style.display = 'block';
             inputCodigo.value = codigoGuardado;
         }
+
+        // ★ Exponer procesarPedido globalmente para el wizard ★
+        window.procesarPedido = procesarPedido;
     });
 
     // ============================================
@@ -229,29 +233,10 @@
     }
 
     // ============================================
-    // CAPTURAR SUBMIT DEL FORMULARIO
-    // ============================================
-    function initFormSubmit() {
-        const form = document.getElementById('formCheckout');
-        const btn = document.getElementById('btnConfirmar');
-
-        if (!form || !btn) return;
-
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            procesarPedido();
-        });
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            procesarPedido();
-        });
-    }
-
-    // ============================================
-    // PROCESAR PEDIDO (VALIDACIONES BLINDADAS)
+    // ★ PROCESAR PEDIDO (ahora invocable desde el wizard)
     // ============================================
     function procesarPedido() {
+        // --- Leer datos directamente del DOM (igual que antes) ---
         const nombre = document.getElementById('nombre').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
         const direccion = document.getElementById('direccion').value.trim();
@@ -265,7 +250,7 @@
         const zonaValue = zonaHidden ? zonaHidden.value : '';
 
         // ============================================================
-        // ★ MURO DE SEGURIDAD ★
+        // ★ MURO DE SEGURIDAD (validaciones redundantes, por si acaso)
         // ============================================================
         if (!nombre || nombre.length < 3) {
             mostrarNotificacion('Ingresa tu nombre completo', 'error');
@@ -355,11 +340,8 @@
                 barrio, referencias, metodoPago,
                 zona: zonaValue, envio: envioFinal,
                 subtotal, total, propina, items: carrito,
-
-                // ★★★ CORREGIDO: Blindado leyendo de fcm-manager o directamente de LocalStorage ★★★
                 fcmToken: (window.obtenerTokenFCMGuardado && window.obtenerTokenFCMGuardado()) || localStorage.getItem('domidelis_fcm_token') || ''
             });
-            // ★ Limpiar promociones usadas
             localStorage.removeItem('domidelis_codigo_promo');
             localStorage.removeItem('descuento_domicilio');
         }, 500);
@@ -682,6 +664,9 @@
         }
     }
 
+    // ============================================
+    // ACTUALIZAR RESUMEN DE PROPINA
+    // ============================================
     function actualizarResumenPropina() {
         const row = document.getElementById('resumenPropinaRow');
         const valorEl = document.getElementById('resumenPropinaValor');

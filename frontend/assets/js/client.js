@@ -5,6 +5,7 @@
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
 // ★ MEJORADO: Categorías con orden prioritario y "Otras" al final
 // ★ NUEVO v3: Modal de personalización con grupos dinámicos y Stepper (Cantidades)
+// ★ CORREGIDO v4: Orden de categorías: Todas → Menú → Almuerzo → ... (todo scrollable)
 // ============================================
 
 let tiendas = [];
@@ -141,7 +142,7 @@ function resetMainViewUI() {
     const tituloPrincipal = document.getElementById('main-title');
 
     if (categoriesWrapper) categoriesWrapper.style.display = 'flex';
-    if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex'; // Aseguramos que el carrusel esté visible al inicio
+    if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex';
     if (storesGrid) {
         storesGrid.className = 'stores-grid-horizontal';
         storesGrid.style.display = 'flex';
@@ -154,39 +155,56 @@ function resetMainViewUI() {
 }
 
 // ============================================
-// 4. SISTEMA DE CATEGORÍAS
+// 4. SISTEMA DE CATEGORÍAS (CON ORDEN CORREGIDO)
 // ============================================
 function renderizarCategorias(categoriasDesdeJSON) {
     const contenedor = document.getElementById('categories-scroll');
     if (!contenedor) return;
 
-    const prioridad = ['Comida', 'Almuerzo', 'Bebidas', 'Licores', 'Cervezas', 'Farmacia'];
+    // ★ NUEVA PRIORIDAD: Todas es la primera (se agrega manualmente), luego "Menú", "Almuerzo", etc.
+    const prioridad = ['Menu', 'Almuerzo', 'Comida', 'Bebidas', 'Licores', 'Cervezas', 'Farmacia'];
+    const normalizarCategoria = categoria => String(categoria)
+        .toLowerCase()
+        .trim()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
 
     let categoriaOtras = null;
     let categoriasRestantes = [];
 
     categoriasDesdeJSON.forEach(cat => {
-        if (cat.toLowerCase().trim() === 'otras') {
+        if (normalizarCategoria(cat) === 'otras') {
             categoriaOtras = cat;
         } else {
             categoriasRestantes.push(cat);
         }
     });
 
+    // Ordenar las categorías según prioridad
     let categoriasOrdenadas = [];
     prioridad.forEach(prio => {
-        const encontrada = categoriasRestantes.find(cat => cat.toLowerCase() === prio.toLowerCase());
-        if (encontrada) categoriasOrdenadas.push(encontrada);
+        const encontrada = categoriasRestantes.find(cat => normalizarCategoria(cat) === normalizarCategoria(prio));
+        if (encontrada) {
+            categoriasOrdenadas.push(encontrada);
+            // Eliminar para que no se repita
+            categoriasRestantes = categoriasRestantes.filter(cat => cat !== encontrada);
+        }
     });
 
+    // El resto de categorías (no priorizadas) se añaden al final (excepto "Otras")
     categoriasRestantes.forEach(cat => {
-        if (!categoriasOrdenadas.includes(cat)) categoriasOrdenadas.push(cat);
+        if (normalizarCategoria(cat) !== 'otras') {
+            categoriasOrdenadas.push(cat);
+        }
     });
 
+    // "Otras" al final del todo
     if (categoriaOtras) categoriasOrdenadas.push(categoriaOtras);
 
+    // ★ CONSTRUIR LA LISTA FINAL: "Todas" al PRINCIPIO
     let listaFinal = ['Todas', ...categoriasOrdenadas];
 
+    // ★ RENDERIZAR TODOS LOS ÍTEMS EN UN SOLO CONTENEDOR SCROLLABLE (SIN ELEMENTOS FIJOS)
     contenedor.innerHTML = listaFinal.map(cat => {
         let nombreArchivo = cat.toLowerCase()
             .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -203,6 +221,13 @@ function renderizarCategorias(categoriasDesdeJSON) {
             <span>${cat}</span>
         </div>`;
     }).join('');
+
+    // Asegurar que el contenedor sea scrollable horizontalmente
+    contenedor.style.display = 'flex';
+    contenedor.style.overflowX = 'auto';
+    contenedor.style.gap = '0.5rem';
+    contenedor.style.scrollBehavior = 'smooth';
+    contenedor.style.webkitOverflowScrolling = 'touch';
 }
 
 function filtrarPorCategoria(nombreCategoria, e) {
@@ -233,8 +258,6 @@ function mostrarProductosPorCategoria() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'none';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none';
-
-    // ★ ARREGLO CARRUSEL: Se oculta al cambiar de categoría para no confundir
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
 
     if (catProductosGrid) catProductosGrid.style.display = 'block';
@@ -311,8 +334,6 @@ function volverATiendas() {
     }
     if (storesGridCerradas) storesGridCerradas.style.display = 'block';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid';
-
-    // ★ ARREGLO CARRUSEL: Vuelve a aparecer al presionar "Todas"
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'flex';
 
     if (catProductosGrid) catProductosGrid.style.display = 'none';
@@ -457,8 +478,11 @@ function renderizarProductosDestacados() {
         return;
     }
 
+// ============================================
+// 5.1 while (productosDestacados.length < 4 && productosConImagen.length > 0)  aca se cambia la cantidad de productos destacados que se muestran en la pagina principal 
+// ============================================
     let productosDestacados = [];
-    while (productosDestacados.length < 3 && productosConImagen.length > 0) {
+    while (productosDestacados.length < 4 && productosConImagen.length > 0) {
         const randomIndex = Math.floor(Math.random() * productosConImagen.length);
         productosDestacados.push(productosConImagen.splice(randomIndex, 1)[0]);
     }
@@ -561,7 +585,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const categoriesWrapper = document.getElementById('categories-wrapper');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
 
-    // Al entrar al menú de una tienda específica, ocultamos todo lo demás
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (categoriesWrapper) categoriesWrapper.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';

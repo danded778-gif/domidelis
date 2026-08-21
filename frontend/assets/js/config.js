@@ -69,7 +69,7 @@ const APP_CONFIG = {
         vista: { nombre: 'Vista Hermosa', envio: 6000 },
         calera: { nombre: 'La calera', envio: 12000 },
         undido: { nombre: 'B. hundido', envio: 5000 },
-        calera: { nombre: 'La calera', envio: 9000 },
+        
         lourdes: { nombre: 'V.lourdes', envio: 8000 },
         pantanillo: { nombre: 'Pantanillo', envio: 6000 },
         potrerio: { nombre: 'Potrerito', envio: 9000 },
@@ -246,3 +246,25 @@ function conectarSocket(rol, id) {
 }
 
 function getSocket() { return socketGlobal; }
+// ============================================
+// ★ FIX HEADER: mide la altura real del header
+// fijo y ajusta --header-height para que el main
+// NUNCA quede tapado (todas las páginas).
+// ============================================
+(function () {
+    function ajustarAlturaHeader() {
+        var header = document.querySelector('header');
+        if (!header) return;
+        var altura = header.offsetHeight;
+        if (altura > 0) {
+            document.documentElement.style.setProperty('--header-height', altura + 'px');
+        }
+    }
+    window.addEventListener('load', ajustarAlturaHeader);
+    window.addEventListener('resize', ajustarAlturaHeader);
+    // Poppins (webfont) cambia la altura al cargar:
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(ajustarAlturaHeader);
+    }
+    ajustarAlturaHeader();
+})();
