@@ -451,8 +451,16 @@ function crearTarjetaProducto(p, opciones = {}) {
 
     // Imagen: unificado con el menú de tienda — si no hay imagen_url,
     // se intenta con icono como fallback (antes solo el menú lo hacía).
-    const imagenUrl = (p.imagen_url || p.icono || '').trim();
-    const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
+        const imagenUrl = (p.imagen_url || p.icono || '').trim();
+    // ★ v4.2.2 BLINDAJE: valores placeholder (ej: "solicitando") se
+    // interpretaban como URL relativa → GET /valor → 404 en consola y
+    // caja gris sin ícono. Ahora se exige formato real de imagen:
+    // http(s)://, data:image, o ruta con extensión conocida.
+    // Cualquier otra cosa → se trata como "sin imagen" (placeholder).
+    const tieneImagen = imagenUrl !== '' &&
+        imagenUrl !== 'null' && imagenUrl !== 'undefined' &&
+        (/^(https?:\/\/|data:image)/i.test(imagenUrl) ||
+         /\.(png|jpe?g|webp|gif|svg|avif)(\?.*)?$/i.test(imagenUrl));
 
     // Badge: "agotado" normalizado es ESTADO FUNCIONAL (bloquea botón).
     // El resto de badges son solo visuales.
