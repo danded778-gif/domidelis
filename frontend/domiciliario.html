@@ -18,8 +18,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- ★ NUEVO CSS MODULAR PARA DOMICILIARIO ★ -->
+    <link rel="stylesheet" href="assets/css/panel.css">
     <link rel="stylesheet" href="assets/css/domiciliario.css">
+    
 </head>
 
 <body>
@@ -250,14 +251,7 @@
     <script>
         OfflineGame.init();
     </script>
-        <script>
-        // Service Worker unificado (FCM + PWA)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('firebase-messaging-sw.js') // <-- Cambiar a firebase-messaging-sw.js
-                .then(reg => console.log('✅ SW registrado'))
-                .catch(err => console.error('❌ SW error:', err));
-        }
-    </script>
+        
 </body>
 
 </html>
