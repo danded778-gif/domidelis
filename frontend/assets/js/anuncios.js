@@ -3,6 +3,7 @@
 // ★ ACTUALIZADO: Carrusel Promocional + AutoPlay + Botón CTA Dinámico
 // ★ MEJORA UX: Popup automático desactivado (Cero fricción)
 // ★ BLINDAJE: Protección contra errores 404 de la API
+// ★ FIX RACE CONDITION: El carrusel respeta el estado de visibilidad del contenedor
 // ============================================
 
 const Anuncios = {
@@ -67,6 +68,7 @@ const Anuncios = {
         }
     },
 
+    // ★ FUNCIÓN ACTUALIZADA CON FIX DE RACE CONDITION ★
     renderizarCard: function() {
         const contenedor = document.getElementById('contenedor-anuncios');
         if (!contenedor) return;
@@ -76,7 +78,17 @@ const Anuncios = {
             return;
         }
 
-        contenedor.style.display = 'flex'; 
+        // ★ FIX RACE CONDITION: solo forzamos 'flex' si la vista actual
+        // NO tiene el contenedor oculto. La respuesta de la API llega
+        // async y puede llegar DESPUÉS de que el usuario ya entró a una
+        // categoría o al menú de una tienda (client.js ya puso
+        // display:'none'). Pisar ese valor re-mostraba el carrusel
+        // sobre los productos. Regla: este módulo respeta el estado
+        // de visibilidad que encuentre en 'none'; solo sube a 'flex'
+        // cuando estaba visible o sin estado definido.
+        if (contenedor.style.display !== 'none') {
+            contenedor.style.display = 'flex';
+        }
 
         // Iteramos TODOS los anuncios activos
         contenedor.innerHTML = this.activos.map(anuncio => {

@@ -1,0 +1,370 @@
+/* ============================================
+   DOMIDELIS - TARJETA DE PRODUCTO HORIZONTAL
+   product-card.css
+
+   ★ v4.2 — OPCIÓN B: la descripción NO se muestra en la
+     tarjeta. Hay un botón "ⓘ Info" que la revela EN SITIO
+     (inline) como caja clara, sin límite de líneas.
+     NO usar popover/tooltip aquí: .pc-card tiene
+     overflow:hidden y lo recortaría.
+   ★ v4.1 (histórico): descripción 2 líneas + botón Info.
+     Reemplazado por v4.2 — si vienes de v4.1, este archivo
+     sustituye al anterior COMPLETO.
+
+   PREFIJO: todas las clases usan "pc-". El contenedor
+   sigue siendo .menu-grid (home.css), por eso no se
+   declara grid aquí.
+
+   DEPENDENCIAS (cargar ANTES este archivo):
+   - styles.css → variables (--primary, --secondary,
+     --accent, --dark, --gray, --light, --shadow,
+     --shadow-hover, --transition, --border-radius-lg)
+     y Font Awesome.
+
+   ORDEN DE CARGA en index.html:
+   styles.css → home.css → cart.css
+   → modal-personalizacion.css → anuncios.css
+   → product-card.css (último, es solo aditivo)
+
+   ★ PARES JS ↔ CSS (NO perder sincronía) ★
+   - .pc-desc-expandida → la ALTERNA pcToggleDesc() (client.js §4.1)
+     para revelar/ocultar la descripción de la tarjeta.
+   - NO EXISTE .pc-oculto en v4.2: el botón "Info" está
+     presente SIEMPRE que el producto tenga descripción
+     (el JS simplemente no lo renderiza si no hay texto).
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES LOCALES DEL MÓDULO
+   ============================================ */
+.pc-card {
+    --pc-img-size: 132px;
+    --pc-radius: 16px;
+    --pc-name-size: 1rem;
+    --pc-desc-size: 0.78rem;
+    --pc-price-size: 1.05rem;
+}
+
+/* ============================================
+   2. TARJETA BASE (horizontal)
+   ============================================ */
+.pc-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--white);
+    border-radius: var(--pc-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.pc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ============================================
+   3. CUADRO DE IMAGEN (izquierda)
+   ============================================ */
+.pc-img {
+    width: var(--pc-img-size);
+    min-height: var(--pc-img-size);
+    flex-shrink: 0;
+    align-self: stretch;
+    background-color: #f5f5f5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: filter 0.3s ease;
+}
+
+.pc-img.pc-sin-imagen {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pc-img.pc-sin-imagen i {
+    font-size: 2.2rem;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+.pc-img.pc-con-imagen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.25) 100%);
+    pointer-events: none;
+}
+
+.pc-card.pc-agotado .pc-img {
+    filter: grayscale(1) opacity(0.7);
+}
+
+/* ============================================
+   4. BADGE DE CATEGORÍA / ESTADO
+   ★ MAPA DE COLORES — espejo de PC_BADGES en client.js §4.1 ★
+   Para agregar un badge nuevo (ej: "oferta") son 2 pasos:
+     1. Aquí: .pc-badge--oferta { background: ... }
+     2. En client.js: 'oferta': { clase: 'pc-badge--oferta' }
+   ============================================ */
+.pc-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    color: var(--white);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    max-width: calc(var(--pc-img-size) - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pc-badge--agotado { background: #6c757d; }
+.pc-badge--popular,
+.pc-badge--vendido { background: var(--secondary); }
+.pc-badge--nuevo { background: var(--accent); }
+.pc-badge--default { background: var(--primary); }
+
+/* ============================================
+   5. COLUMNA DE INFORMACIÓN (derecha)
+   ============================================ */
+.pc-info {
+    flex: 1;
+    min-width: 0;               /* permite truncado de hijos en flex */
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pc-name {
+    font-size: var(--pc-name-size);
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0 0 3px 0;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Chip de tienda — SOLO vista por categoría */
+.pc-store {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.pc-store i {
+    font-size: 0.68rem;
+    flex-shrink: 0;
+}
+
+.pc-store span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --------------------------------------------
+   5.1 DESCRIPCIÓN — v4.2 OPCIÓN B: solo botón "Info"
+   Estructura que genera client.js §4.1:
+   <div class="pc-desc-wrap">
+     <button class="pc-info-btn">ⓘ Info</button>
+     <p class="pc-desc">…texto completo…</p>
+   </div>
+
+   - .pc-desc OCULTO por defecto (display:none).
+   - pcToggleDesc() (client.js §4.1) alterna la clase
+     .pc-desc-expandida en la TARJETA (.pc-card) para
+     revelarlo. Sin límite de líneas: es una revelación
+     deliberada del usuario.
+   - Al revelarse se muestra como caja clara con borde
+     teal (accent) para distinguirse del resto de la tarjeta.
+   - La tarjeta crece y la imagen se estira con
+     align-self: stretch sin deformarse (cover).
+   -------------------------------------------- */
+
+/* El wrap es quien empuja el footer hacia abajo */
+.pc-desc-wrap {
+    flex-grow: 1;
+}
+
+/* Botón "Info" — discreto, teal (accent) para diferenciarlo
+   del botón rojo de agregar */
+.pc-info-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    padding: 5px 0 0 0;
+    margin: 0;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.pc-info-btn i {
+    font-size: 0.85rem;
+}
+
+.pc-info-btn:hover {
+    color: var(--primary);
+}
+
+.pc-info-btn:focus-visible {
+    outline: 2px solid rgba(42, 157, 143, 0.4);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Oculto por defecto — SOLO visible al expandir */
+.pc-desc {
+    display: none;
+}
+
+/* Estado EXPANDIDO (lo alterna pcToggleDesc en client.js §4.1):
+   texto completo en caja clara, sin límite de líneas */
+.pc-card.pc-desc-expandida .pc-desc {
+    display: block;
+    background: var(--light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 10px;
+    margin: 6px 0 2px 0;
+    font-size: var(--pc-desc-size);
+    color: var(--gray);
+    line-height: 1.4;
+}
+
+/* ============================================
+   6. PIE DE TARJETA: precio + botón
+   ============================================ */
+.pc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pc-price {
+    font-size: var(--pc-price-size);
+    font-weight: 800;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+/* ============================================
+   7. BOTÓN PÍLDORA "+ Agregar"
+   a) Normal         → .pc-btn
+   b) Agotado        → .pc-btn--agotado
+   c) Tienda cerrada → .pc-btn--cerrado
+   d) Post-clic      → .pc-btn.is-added (check verde, 700ms)
+   ============================================ */
+.pc-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    padding: 9px 16px;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease,
+                box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.28);
+    white-space: nowrap;
+}
+
+.pc-btn i { font-size: 0.75rem; }
+
+.pc-btn:hover {
+    background: #d32f3f;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(230, 57, 70, 0.35);
+}
+
+.pc-btn:active { transform: scale(0.96); }
+
+.pc-btn:focus-visible {
+    outline: 3px solid rgba(230, 57, 70, 0.4);
+    outline-offset: 2px;
+}
+
+.pc-btn--agotado,
+.pc-btn--cerrado {
+    background: #b0b0b0;
+    color: var(--white);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.pc-btn--agotado:hover,
+.pc-btn--cerrado:hover,
+.pc-btn--agotado:active,
+.pc-btn--cerrado:active {
+    background: #b0b0b0;
+    transform: none;
+    box-shadow: none;
+}
+
+.pc-btn.is-added {
+    background: var(--success);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.pc-btn.is-added:hover { background: var(--success); }
+
+/* ============================================
+   8. RESPONSIVE
+   (el grid lo controla .menu-grid en home.css)
+   ============================================ */
+@media (max-width: 480px) {
+    .pc-card {
+        --pc-img-size: 108px;
+        --pc-name-size: 0.92rem;
+        --pc-desc-size: 0.74rem;
+        --pc-price-size: 0.98rem;
+    }
+
+    .pc-info { padding: 10px 12px; }
+
+    .pc-btn {
+        padding: 8px 13px;
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .pc-card { --pc-img-size: 96px; }
+}

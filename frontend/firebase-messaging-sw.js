@@ -35,7 +35,7 @@ messaging.onBackgroundMessage((payload) => {
 
 // 2. Estrategia PWA: Cache First + Network Fallback
 const isDev = false;
-const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v1.3'; 
+const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v1.4'; 
 const IMAGES_CACHE_NAME = 'domidelis-img-cache-v1.3'; 
 
 const ARCHIVOS_ESTATICOS = [

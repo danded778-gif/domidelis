@@ -1,11 +1,30 @@
-// ============================================ 
-// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v3
+// ============================================
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.2
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
 // ★ MEJORADO: Categorías con orden prioritario y "Otras" al final
 // ★ NUEVO v3: Modal de personalización con grupos dinámicos y Stepper (Cantidades)
-// ★ CORREGIDO v4: Orden de categorías: Todas → Menú → Almuerzo → ... (todo scrollable)
+// ★ CORREGIDO v4 (orden de categorías): Todas → Menú → Almuerzo → ... (todo scrollable)
+//
+// ★★★ NUEVO v4: TARJETA DE PRODUCTO HORIZONTAL ★★★
+// - §4.1 NUEVA: crearTarjetaProducto() — plantilla ÚNICA que reemplaza
+//   las 2 plantillas duplicadas (vista categoría + menú de tienda).
+//   Clases pc-* → estilos en assets/css/product-card.css.
+// - §4 y §5.1 ahora delegan el render de productos a esa función.
+// - §6 agregarAlCarrito ahora RETORNA true/false (retrocompatible:
+//   nadie usaba su retorno). Lo consume pcAgregar() para el
+//   feedback "✓ Agregado" del botón.
+// - INTACTO: tiendas, carrusel, destacados, paginador, carrito,
+//   modal de personalización, zonas, horarios.
+//
+// ★★★ v4.2 — OPCIÓN B: DESCRIPCIÓN SOLO TRAS BOTÓN "INFO" ★★★
+// - La descripción YA NO se muestra en la tarjeta. En su lugar hay
+//   un botón "ⓘ Info" que la revela EN SITIO (pcToggleDesc).
+// - Tarjetas 100% uniformes y compactas: el botón está presente
+//   siempre que el producto tenga descripción (sin lógica de
+//   ocultado por longitud → no existe pcAjustarBotonesInfo).
+// - Producto SIN descripción → no se renderiza ni botón ni bloque.
 // ============================================
 
 let tiendas = [];
@@ -273,40 +292,21 @@ function mostrarProductosPorCategoria() {
         return;
     }
 
-    container.innerHTML = productosFiltrados.map(p => {
-        const imagenUrl = (p.imagen_url || '').trim();
-        const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
-        const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
-
-        let botonHTML;
-        if (esAgotado) {
-            botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
-        } else {
-            const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(p.id));
-            if (tieneComplementos) {
-                botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); DomiModal.abrir(${JSON.stringify(p).replace(/"/g, '&quot;')})"><i class="fas fa-plus"></i> Agregar</button>`;
-            } else {
-                botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
-            }
+    // ★ v4: fallback de tiendaNombre — si el catálogo no trae el nombre,
+    // se resuelve por tiendaId (mismo patrón que renderizarProductosDestacados).
+    productosFiltrados.forEach(p => {
+        if (!p.tiendaNombre && p.tiendaId) {
+            const tienda = tiendas.find(t => t.id == p.tiendaId);
+            if (tienda) p.tiendaNombre = tienda.nombre;
         }
+    });
 
-        return `
-        <div class="product-card" id="prod-${p.id}">
-            <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
-                ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
-                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
-            </div>
-            <div class="product-info">
-                <h4> ${esc(p.nombre)}</h4>
-                <p class="product-desc" style="color: var(--accent); font-weight: 600; font-size: 0.8rem; margin-bottom: 0.3rem;">
-                    <i class="fas fa-store" style="font-size: 0.7rem;"></i> ${p.tiendaNombre || 'Sin tienda'}
-                </p>
-                <p class="product-desc">${p.descripcion || ''}</p>
-                <div class="product-price">${formatearPrecio(p.precio)}</div>
-                <div class="precio-unidad-container">${botonHTML}</div>
-            </div>
-        </div>`;
-    }).join('');
+    // ★ v4: plantilla única (antes había una plantilla inline duplicada aquí).
+    // mostrarTienda: true → en esta vista se mezclan productos de varias
+    // tiendas, el chip con el nombre es información clave para el usuario.
+    container.innerHTML = productosFiltrados
+        .map(p => crearTarjetaProducto(p, { mostrarTienda: true }))
+        .join('');
 
     requestAnimationFrame(() => {
         const targetElement = document.getElementById('categories-wrapper') || document.getElementById('main-title');
@@ -354,7 +354,213 @@ function volverATiendas() {
 }
 
 // ============================================
+// 4.1 TARJETA DE PRODUCTO HORIZONTAL (clases pc-*)
+// ============================================
+// Fuente de estilos: assets/css/product-card.css
+//
+// ★ QUÉ HACE ESTA SECCIÓN ★
+// Una ÚNICA plantilla para las 2 vistas de producto:
+//   · Vista por categoría  → crearTarjetaProducto(p, { mostrarTienda: true })
+//   · Menú de tienda       → crearTarjetaProducto(p, { mostrarTienda: false,
+//                               tiendaAbierta: status.isOpen, ... })
+//
+// ★ DEPENDENCIAS ★
+//   - esc() / formatearPrecio() / mostrarNotificacion() → definidas
+//     en archivos globales previos (toast.js / config.js)
+//   - DomiModal (modal-personalizacion.js) — se chequea en tiempo
+//     de render con window.DomiModal, igual que el código anterior
+//
+// ★ NO TOCAR SIN LEER ★
+//   - id="prod-${p.id}": verProductoDestacado() hace scroll y
+//     resaltado hacia ese id. Si se elimina, se rompe la navegación
+//     desde la vitrina de destacados.
+//   - El patrón onclick inline con JSON.stringify + &quot; es el
+//     mismo que usaba el código anterior. Funciona porque el
+//     navegador decodifica las entidades del atributo antes de
+//     ejecutar el JS.
+//
+// ★ v4.2 — OPCIÓN B: estructura de la columna de info ★
+//   <h4 class="pc-name">
+//   [chip tienda — solo vista por categoría]
+//   <div class="pc-desc-wrap">
+//     <button class="pc-info-btn">ⓘ Info</button>  ← siempre visible
+//     <p class="pc-desc">…texto…</p>               ← display:none;
+//   </div>                                            se revela con
+//   <div class="pc-footer">                          .pc-desc-expandida
+//   El texto revelado NO tiene límite de líneas (revelación
+//   deliberada del usuario). Ver §5.1 de product-card.css.
+// ============================================
+
+// ★ MAPA DE BADGES — ESPEJO EXACTO de la sección 4 de product-card.css ★
+// El valor del campo "badge" del catálogo se normaliza
+// (minúsculas, sin acentos, sin espacios) y se busca aquí.
+//
+// | valor normalizado | clase CSS           | color         | comportamiento           |
+// |-------------------|---------------------|---------------|--------------------------|
+// | agotado           | pc-badge--agotado   | gris          | BLOQUEA botón + img gris |
+// | popular           | pc-badge--popular   | naranja (2do) | solo visual              |
+// | masvendido        | pc-badge--vendido   | naranja (2do) | solo visual              |
+// | nuevo             | pc-badge--nuevo     | verde (acc.)  | solo visual              |
+// | (cualquier otro)  | pc-badge--default   | rojo (prim.)  | solo visual              |
+//
+// ★ PARA AGREGAR UN BADGE NUEVO (ej: "oferta"):
+//   1. En product-card.css §4 → crear .pc-badge--oferta { background: ... }
+//   2. Aquí abajo → agregar entrada: 'oferta': { clase: 'pc-badge--oferta' }
+//   Son exactamente 2 pasos, documentados en ambos lados.
+const PC_BADGES = {
+    'agotado':    { clase: 'pc-badge--agotado' },
+    'popular':    { clase: 'pc-badge--popular' },
+    'masvendido': { clase: 'pc-badge--vendido' },
+    'nuevo':      { clase: 'pc-badge--nuevo' }
+    // Otros valores → fallback 'pc-badge--default' (rojo)
+};
+
+// Normaliza el valor del badge para el lookup del mapa.
+// "Más Vendido" / "MAS VENDIDO" / "mas vendido" → "masvendido"
+function pcNormalizarBadge(valor) {
+    return String(valor || '')
+        .toLowerCase()
+        .trim()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')  // quita acentos
+        .replace(/\s+/g, '');              // quita espacios
+}
+
+// Devuelve la clase CSS del badge según el mapa; 'default' si no existe.
+function pcResolverClaseBadge(valor) {
+    const clave = pcNormalizarBadge(valor);
+    return (PC_BADGES[clave] && PC_BADGES[clave].clase) || 'pc-badge--default';
+}
+
+// ★ PLANTILLA ÚNICA DE TARJETA DE PRODUCTO ★
+// p: producto con { id, nombre, descripcion, precio, imagen_url, icono,
+//                   badge, tiendaId, tiendaNombre }
+// opciones:
+//   mostrarTienda  (bool, default false) → muestra chip con nombre de
+//                   tienda (solo vista por categoría)
+//   tiendaAbierta  (bool, default true)  → false = botón "Cerrado"
+//                   (solo menú de tienda; en vista categoría NO se pasa
+//                   y agregarAlCarrito valida el horario internamente,
+//                   igual que el comportamiento anterior)
+//   horarioTienda  (string)              → texto para la notificación
+//                   del botón "Cerrado"
+function crearTarjetaProducto(p, opciones = {}) {
+    const mostrarTienda = opciones.mostrarTienda === true;
+    const tiendaAbierta = opciones.tiendaAbierta !== false;
+    const horarioTienda = opciones.horarioTienda || '';
+
+    // Imagen: unificado con el menú de tienda — si no hay imagen_url,
+    // se intenta con icono como fallback (antes solo el menú lo hacía).
+    const imagenUrl = (p.imagen_url || p.icono || '').trim();
+    const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
+
+    // Badge: "agotado" normalizado es ESTADO FUNCIONAL (bloquea botón).
+    // El resto de badges son solo visuales.
+    const esAgotado = pcNormalizarBadge(p.badge) === 'agotado';
+
+    const badgeHTML = p.badge
+        ? `<span class="pc-badge ${pcResolverClaseBadge(p.badge)}">${esc(p.badge)}</span>`
+        : '';
+
+    // Chip de tienda — solo en vista por categoría (en el menú de la
+    // propia tienda sería redundante)
+    const tiendaChipHTML = mostrarTienda
+        ? `<p class="pc-store"><i class="fas fa-store"></i><span>${esc(p.tiendaNombre || 'Sin tienda')}</span></p>`
+        : '';
+
+    // ★ v4.2 (Opción B): la descripción NO se muestra directamente en la
+    // tarjeta. Se renderiza un botón "ⓘ Info" que la revela en sitio
+    // (pcToggleDesc). Producto SIN descripción → ni botón ni bloque.
+    const tieneDesc = p.descripcion && String(p.descripcion).trim() !== '';
+    const descHTML = tieneDesc ? `
+        <div class="pc-desc-wrap">
+            <button type="button" class="pc-info-btn"
+                    onclick="event.stopPropagation(); pcToggleDesc(this)"
+                    title="Ver descripción del producto"
+                    aria-label="Ver descripción del producto">
+                <i class="fas fa-circle-info"></i> Info
+            </button>
+            <p class="pc-desc">${esc(p.descripcion)}</p>
+        </div>` : '';
+
+    // ★ BOTÓN — 4 estados (misma prioridad que el código anterior) ★
+    // 1. Tienda cerrada (solo menú de tienda)
+    // 2. Producto agotado
+    // 3. Con complementos → abre DomiModal
+    // 4. Normal → pcAgregar (agrega + feedback "✓ Agregado")
+    const productoAttr = JSON.stringify(p).replace(/"/g, '&quot;');
+
+    let botonHTML;
+    if (!tiendaAbierta) {
+        botonHTML = `<button class="pc-btn pc-btn--cerrado" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${horarioTienda}', 'error')"><i class="fas fa-clock"></i> Cerrado</button>`;
+    } else if (esAgotado) {
+        botonHTML = `<button class="pc-btn pc-btn--agotado" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
+    } else {
+        const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(p.id));
+        if (tieneComplementos) {
+            botonHTML = `<button class="pc-btn" onclick="event.stopPropagation(); DomiModal.abrir(${productoAttr})"><i class="fas fa-plus"></i> Agregar</button>`;
+        } else {
+            botonHTML = `<button class="pc-btn" onclick="event.stopPropagation(); pcAgregar(this, ${productoAttr})"><i class="fas fa-plus"></i> Agregar</button>`;
+        }
+    }
+
+    return `
+    <div class="pc-card${esAgotado ? ' pc-agotado' : ''}" id="prod-${p.id}">
+        <div class="pc-img ${tieneImagen ? 'pc-con-imagen' : 'pc-sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
+            ${!tieneImagen ? '<i class="fas fa-utensils"></i>' : ''}
+            ${badgeHTML}
+        </div>
+        <div class="pc-info">
+            <h4 class="pc-name">${esc(p.nombre)}</h4>
+            ${tiendaChipHTML}
+            ${descHTML}
+            <div class="pc-footer">
+                <span class="pc-price">${formatearPrecio(p.precio)}</span>
+                ${botonHTML}
+            </div>
+        </div>
+    </div>`;
+}
+
+// ★ FEEDBACK DEL BOTÓN "+ Agregar" ★
+// Llama a agregarAlCarrito(); SOLO si el producto se agregó (retorna
+// true) muestra el estado verde "✓ Agregado" por 700ms y restaura el
+// botón. Si la tienda estaba cerrada, agregarAlCarrito ya muestra la
+// notificación y el botón NO cambia (evita feedback engañoso).
+function pcAgregar(boton, producto) {
+    if (!agregarAlCarrito(producto, 1)) return;
+
+    const htmlOriginal = boton.innerHTML;
+    boton.classList.add('is-added');
+    boton.innerHTML = '<i class="fas fa-check"></i> Agregado';
+
+    setTimeout(() => {
+        boton.classList.remove('is-added');
+        boton.innerHTML = htmlOriginal;
+    }, 700);
+}
+
+// ★ v4.2 (Opción B): BOTÓN "INFO" ★
+// Revela/oculta la descripción EN SITIO: alterna la clase
+// .pc-desc-expandida en la tarjeta contenedora (ver §5.1 de
+// product-card.css) y cambia la etiqueta: "Info" ↔ "Ver menos".
+// NOTA: se expande en sitio (no tooltip/popover) porque .pc-card
+// tiene overflow:hidden por las esquinas redondeadas y recortaría
+// cualquier elemento flotante.
+function pcToggleDesc(boton) {
+    const tarjeta = boton.closest('.pc-card');
+    if (!tarjeta) return;
+
+    const expandida = tarjeta.classList.toggle('pc-desc-expandida');
+
+    boton.innerHTML = expandida
+        ? '<i class="fas fa-chevron-up"></i> Ver menos'
+        : '<i class="fas fa-circle-info"></i> Info';
+}
+
+// ============================================
 // 5. RENDERIZADO DE TIENDAS Y MENÚ 
+// (★ v4: esta sección quedó INTACTA — las tiendas siguen iguales)
 // ============================================
 function renderizarTiendas() {
     const container = document.getElementById("stores-grid");
@@ -574,6 +780,8 @@ function iniciarAutoScrollTiendas() {
 
 // ============================================
 // 5.1 MENÚ DE TIENDA CON PAGINADOR
+// (★ v4: solo cambió renderMenuProducts → usa crearTarjetaProducto.
+//  Paginador, buscador, scroll y resaltado: INTACTOS)
 // ============================================
 async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const container = document.getElementById("stores-grid");
@@ -646,6 +854,10 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         <div id="menu-paginator-container" style="margin-top: 2rem;"></div>
     `;
 
+    // ★ v4: renderMenuProducts delega en la plantilla única.
+    // mostrarTienda: false → dentro del menú no hace falta el chip.
+    // tiendaAbierta: false → todas las tarjetas salen con botón
+    // "Cerrado" (misma prioridad que el código anterior).
     const renderMenuProducts = (productsToRender) => {
         const gridContainer = document.getElementById('menu-grid-container');
         if (!gridContainer) return;
@@ -655,39 +867,11 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
             return;
         }
 
-        gridContainer.innerHTML = productsToRender.map(p => {
-            const imagenUrl = (p.imagen_url || p.icono || '').trim();
-            const tieneImagen = imagenUrl && imagenUrl !== 'null' && imagenUrl !== 'undefined';
-            const esAgotado = p.badge && p.badge.toLowerCase() === 'agotado';
-
-            let botonHTML;
-            if (!status.isOpen) {
-                botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tienda.horario)}', 'error')"><i class="fas fa-clock"></i> Cerrado</button>`;
-            } else if (esAgotado) {
-                botonHTML = `<button class="btn-agregar-unidad btn-cerrado-menu" onclick="event.stopPropagation(); mostrarNotificacion('Este producto está agotado por el momento', 'error')"><i class="fas fa-ban"></i> Agotado</button>`;
-            } else {
-                const tieneComplementos = (window.DomiModal && window.DomiModal.tieneComplementos(p.id));
-                if (tieneComplementos) {
-                    botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); DomiModal.abrir(${JSON.stringify(p).replace(/"/g, '&quot;')})"><i class="fas fa-plus"></i> Agregar</button>`;
-                } else {
-                    botonHTML = `<button class="btn-agregar-unidad" onclick="event.stopPropagation(); agregarAlCarrito(${JSON.stringify(p).replace(/"/g, '&quot;')}, 1)"><i class="fas fa-plus"></i> Agregar</button>`;
-                }
-            }
-
-            return `
-            <div class="product-card" id="prod-${p.id}">
-                <div class="product-img ${tieneImagen ? 'con-imagen' : 'sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
-                    ${!tieneImagen ? `<i class="fas fa-utensils"></i>` : ''}
-                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
-                </div>
-                <div class="product-info">
-                    <h4> ${esc(p.nombre)}</h4>
-                    <p class="product-desc">${p.descripcion || ''}</p>
-                    <div class="product-price">${formatearPrecio(p.precio)}</div>
-                    <div class="precio-unidad-container">${botonHTML}</div>
-                </div>
-            </div>`;
-        }).join('');
+        gridContainer.innerHTML = productsToRender.map(p => crearTarjetaProducto(p, {
+            mostrarTienda: false,
+            tiendaAbierta: status.isOpen,
+            horarioTienda: getHorarioHoy(tienda.horario)
+        })).join('');
     };
 
     if (currentPaginator) {
@@ -826,6 +1010,10 @@ function crearExplosionComida() {
     setTimeout(() => contenedor.remove(), 1400);
 }
 
+// ★ v4: ahora RETORNA true si el producto se agregó al carrito,
+// false si fue bloqueado (tienda cerrada). Retrocompatible: ninguna
+// parte del código usaba el retorno antes. Lo consume pcAgregar()
+// para decidir si mostrar el feedback "✓ Agregado" del botón.
 function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
     selecciones = selecciones || {};
     extrasVacios = extrasVacios || [];
@@ -835,7 +1023,7 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
         const status = checkStoreStatus(tiendaOrigen.horario);
         if (!status.isOpen) {
             mostrarNotificacion(`Esta tienda está cerrada hoy. Horario: ${getHorarioHoy(tiendaOrigen.horario)}`, 'error');
-            return;
+            return false; // ★ v4
         }
     }
 
@@ -928,6 +1116,8 @@ function agregarAlCarrito(producto, cantidadTipo, selecciones, extrasVacios) {
             setTimeout(() => { prompt.style.display = 'block'; }, 1500);
         }
     }
+
+    return true; // ★ v4
 }
 
 function actualizarCarritoUI() {
