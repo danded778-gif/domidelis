@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-17-21",
-  "ultimaActualizacion": "2026-08-27T18:17:21.270Z",
+  "version": "v2026-08-27T18-17-24",
+  "ultimaActualizacion": "2026-08-27T18:17:24.192Z",
   "tiendas": [
     {
       "id": 1,
@@ -189,7 +189,7 @@
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -1791,7 +1791,7 @@
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "bebidas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "1",
