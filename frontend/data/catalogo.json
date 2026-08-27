@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-09-23",
-  "ultimaActualizacion": "2026-08-27T18:09:23.166Z",
+  "version": "v2026-08-27T18-11-30",
+  "ultimaActualizacion": "2026-08-27T18:11:30.852Z",
   "tiendas": [
     {
       "id": 1,
@@ -123,6 +123,19 @@
           "descripcion": "500 ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
+        },
+        {
+          "id": 172,
+          "nombre": "Hit mora",
+          "descripcion": "500 ml",
+          "precio": 3998,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_mora_.png",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1660,6 +1673,19 @@
       "descripcion": "500 ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 172,
+      "nombre": "Hit mora",
+      "descripcion": "500 ml",
+      "precio": 3998,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_mora_.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
