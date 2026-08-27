@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-15-05",
-  "ultimaActualizacion": "2026-08-27T18:15:05.854Z",
+  "version": "v2026-08-27T18-15-09",
+  "ultimaActualizacion": "2026-08-27T18:15:09.155Z",
   "tiendas": [
     {
       "id": 1,
@@ -1749,7 +1749,7 @@
       "id": 173,
       "nombre": "",
       "descripcion": "",
-      "precio": 0,
+      "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
       "badge": "",
       "categoria": "Otras",
