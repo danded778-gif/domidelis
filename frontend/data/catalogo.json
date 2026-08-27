@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-15-46",
-  "ultimaActualizacion": "2026-08-27T18:15:46.015Z",
+  "version": "v2026-08-27T18-16-54",
+  "ultimaActualizacion": "2026-08-27T18:16:54.359Z",
   "tiendas": [
     {
       "id": 1,
@@ -159,7 +159,7 @@
         {
           "id": 173,
           "nombre": "",
-          "descripcion": "500 ml",
+          "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
           "badge": "NUEVO",
@@ -1748,7 +1748,7 @@
     {
       "id": 173,
       "nombre": "",
-      "descripcion": "500 ml",
+      "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
       "badge": "NUEVO",
