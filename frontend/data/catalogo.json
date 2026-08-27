@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-17-24",
-  "ultimaActualizacion": "2026-08-27T18:17:24.192Z",
+  "version": "v2026-08-27T18-17-49",
+  "ultimaActualizacion": "2026-08-27T18:17:49.270Z",
   "tiendas": [
     {
       "id": 1,
@@ -158,7 +158,7 @@
         },
         {
           "id": 174,
-          "nombre": "",
+          "nombre": "gasesosa manzana",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
@@ -1760,7 +1760,7 @@
     },
     {
       "id": 174,
-      "nombre": "",
+      "nombre": "gasesosa manzana",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
