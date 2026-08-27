@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-17-49",
-  "ultimaActualizacion": "2026-08-27T18:17:49.270Z",
+  "version": "v2026-08-27T18-18-13",
+  "ultimaActualizacion": "2026-08-27T18:18:13.446Z",
   "tiendas": [
     {
       "id": 1,
@@ -171,7 +171,7 @@
         },
         {
           "id": 175,
-          "nombre": "",
+          "nombre": "gasesosa naranja",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
@@ -184,7 +184,7 @@
         },
         {
           "id": 176,
-          "nombre": "",
+          "nombre": "gasesosa uva",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 175,
-      "nombre": "",
+      "nombre": "gasesosa naranja",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
@@ -1786,7 +1786,7 @@
     },
     {
       "id": 176,
-      "nombre": "",
+      "nombre": "gasesosa uva",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
