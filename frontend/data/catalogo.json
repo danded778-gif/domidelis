@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-08-52",
-  "ultimaActualizacion": "2026-08-27T18:08:52.981Z",
+  "version": "v2026-08-27T18-09-23",
+  "ultimaActualizacion": "2026-08-27T18:09:23.166Z",
   "tiendas": [
     {
       "id": 1,
@@ -99,19 +99,6 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
           "badge": "Disponible",
           "categoria": "bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "1",
-          "tiendaNombre": "Domi Delis"
-        },
-        {
-          "id": 169,
-          "nombre": "Hit mango",
-          "descripcion": "",
-          "precio": 4000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
-          "badge": "NUEVO",
-          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -1653,19 +1640,6 @@
       "activo": true,
       "tiendaId": "10",
       "tiendaNombre": "mantenimiento"
-    },
-    {
-      "id": 169,
-      "nombre": "Hit mango",
-      "descripcion": "",
-      "precio": 4000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
-      "badge": "NUEVO",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
     },
     {
       "id": 170,
