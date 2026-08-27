@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T18-16-54",
-  "ultimaActualizacion": "2026-08-27T18:16:54.359Z",
+  "version": "v2026-08-27T18-17-21",
+  "ultimaActualizacion": "2026-08-27T18:17:21.270Z",
   "tiendas": [
     {
       "id": 1,
@@ -157,7 +157,7 @@
           "tiendaNombre": "Domi Delis"
         },
         {
-          "id": 173,
+          "id": 174,
           "nombre": "",
           "descripcion": "400ml",
           "precio": 4000,
@@ -170,13 +170,26 @@
           "tiendaNombre": "Domi Delis"
         },
         {
-          "id": 173,
+          "id": 175,
           "nombre": "",
-          "descripcion": "",
+          "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
           "badge": "NUEVO",
           "categoria": "bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
+        },
+        {
+          "id": 176,
+          "nombre": "",
+          "descripcion": "400ml",
+          "precio": 4000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -1746,7 +1759,7 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 173,
+      "id": 174,
       "nombre": "",
       "descripcion": "400ml",
       "precio": 4000,
@@ -1759,13 +1772,26 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 173,
+      "id": 175,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
       "badge": "NUEVO",
       "categoria": "bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 176,
+      "nombre": "",
+      "descripcion": "400ml",
+      "precio": 4000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "1",
