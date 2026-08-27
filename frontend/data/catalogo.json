@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-27T17-55-40",
-  "ultimaActualizacion": "2026-08-27T17:55:40.031Z",
+  "version": "v2026-08-27T18-06-33",
+  "ultimaActualizacion": "2026-08-27T18:06:33.517Z",
   "tiendas": [
     {
       "id": 1,
@@ -123,6 +123,19 @@
           "descripcion": "",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
+        },
+        {
+          "id": 170,
+          "nombre": "gasesosa colombiana",
+          "descripcion": "400ml",
+          "precio": 3999,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1660,6 +1673,19 @@
       "descripcion": "",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 170,
+      "nombre": "gasesosa colombiana",
+      "descripcion": "400ml",
+      "precio": 3999,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
