@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-28T17-48-27",
-  "ultimaActualizacion": "2026-08-28T17:48:27.771Z",
+  "version": "v2026-08-28T17-48-53",
+  "ultimaActualizacion": "2026-08-28T17:48:53.557Z",
   "tiendas": [
     {
       "id": 1,
@@ -948,19 +948,6 @@
           "activo": true,
           "tiendaId": "10",
           "tiendaNombre": "mantenimiento"
-        },
-        {
-          "id": 177,
-          "nombre": "prueba local 2",
-          "descripcion": "",
-          "precio": 1000,
-          "imagen_url": "",
-          "badge": "prueba",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "10",
-          "tiendaNombre": "mantenimiento"
         }
       ]
     },
@@ -1809,19 +1796,6 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 177,
-      "nombre": "prueba local 2",
-      "descripcion": "",
-      "precio": 1000,
-      "imagen_url": "",
-      "badge": "prueba",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "10",
-      "tiendaNombre": "mantenimiento"
     }
   ],
   "complementosGlobal": [
