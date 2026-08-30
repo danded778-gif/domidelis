@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-30T07-01-44",
-  "ultimaActualizacion": "2026-08-30T07:01:44.724Z",
+  "version": "v2026-08-30T07-05-15",
+  "ultimaActualizacion": "2026-08-30T07:05:15.629Z",
   "tiendas": [
     {
       "id": 1,
@@ -954,7 +954,7 @@
     {
       "id": 11,
       "nombre": "Dulce fusión",
-      "descripcion": "almuerzos",
+      "descripcion": "Restaurante Bar Cafe",
       "direccion": "la judea",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
