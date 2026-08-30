@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-30T07-05-15",
-  "ultimaActualizacion": "2026-08-30T07:05:15.629Z",
+  "version": "v2026-08-30T07-05-27",
+  "ultimaActualizacion": "2026-08-30T07:05:27.915Z",
   "tiendas": [
     {
       "id": 1,
@@ -803,7 +803,7 @@
       "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-22:00\",\"sun\":\"14:00-22:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/basilica/basilica%202.jpg",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
