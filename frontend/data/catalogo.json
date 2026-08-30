@@ -1,6 +1,6 @@
 {
-  "version": "v2026-08-28T17-48-53",
-  "ultimaActualizacion": "2026-08-28T17:48:53.557Z",
+  "version": "v2026-08-30T07-01-44",
+  "ultimaActualizacion": "2026-08-30T07:01:44.724Z",
   "tiendas": [
     {
       "id": 1,
@@ -958,7 +958,7 @@
       "direccion": "la judea",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Dulce%20fusion/dulcefusion.png",
       "promovida": 0,
       "activo": true,
       "productos": []
