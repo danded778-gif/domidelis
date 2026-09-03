@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-40-02",
-  "ultimaActualizacion": "2026-09-03T16:40:02.871Z",
+  "version": "v2026-09-03T16-40-28",
+  "ultimaActualizacion": "2026-09-03T16:40:28.410Z",
   "tiendas": [
     {
       "id": 1,
@@ -852,6 +852,19 @@
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
           "badge": "",
+          "categoria": "menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "7",
+          "tiendaNombre": "La Basilica"
+        },
+        {
+          "id": 177,
+          "nombre": "pizza",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "NUEVO",
           "categoria": "menu",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1796,6 +1809,19 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 177,
+      "nombre": "pizza",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "menu",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "7",
+      "tiendaNombre": "La Basilica"
     }
   ],
   "complementosGlobal": [
