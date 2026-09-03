@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-43-45",
-  "ultimaActualizacion": "2026-09-03T16:43:45.699Z",
+  "version": "v2026-09-03T16-44-28",
+  "ultimaActualizacion": "2026-09-03T16:44:28.278Z",
   "tiendas": [
     {
       "id": 1,
@@ -847,7 +847,7 @@
         },
         {
           "id": 161,
-          "nombre": "pizza",
+          "nombre": "pizza mediana",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
@@ -860,7 +860,7 @@
         },
         {
           "id": 177,
-          "nombre": "pizza personal",
+          "nombre": "pizza mediana",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
@@ -1643,7 +1643,7 @@
     },
     {
       "id": 161,
-      "nombre": "pizza",
+      "nombre": "pizza mediana",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
@@ -1812,7 +1812,7 @@
     },
     {
       "id": 177,
-      "nombre": "pizza personal",
+      "nombre": "pizza mediana",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
