@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-55-23",
-  "ultimaActualizacion": "2026-09-03T16:55:23.231Z",
+  "version": "v2026-09-03T16-56-59",
+  "ultimaActualizacion": "2026-09-03T16:56:59.874Z",
   "tiendas": [
     {
       "id": 1,
@@ -3207,6 +3207,46 @@
       "precio": 1000,
       "tipo": "salsa",
       "max": 3,
+      "min": 1
+    },
+    {
+      "id": 153,
+      "id_producto": 161,
+      "grupo": "Sabores",
+      "nombre": "clasica",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 154,
+      "id_producto": 161,
+      "grupo": "Sabores",
+      "nombre": "hawaina",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 155,
+      "id_producto": 161,
+      "grupo": "Sabores",
+      "nombre": "peperoni",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 156,
+      "id_producto": 161,
+      "grupo": "Sabores",
+      "nombre": "napolitana",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
       "min": 1
     },
     {
