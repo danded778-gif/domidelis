@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-57-29",
-  "ultimaActualizacion": "2026-09-03T16:57:29.925Z",
+  "version": "v2026-09-03T16-59-51",
+  "ultimaActualizacion": "2026-09-03T16:59:51.199Z",
   "tiendas": [
     {
       "id": 1,
@@ -3216,7 +3216,7 @@
       "nombre": "clasica",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 2,
       "min": 1
     },
     {
@@ -3261,7 +3261,7 @@
     },
     {
       "id": 158,
-      "id_producto": 161,
+      "id_producto": 177,
       "grupo": "Sabores",
       "nombre": "hawaina",
       "precio": 0,
@@ -3271,7 +3271,7 @@
     },
     {
       "id": 159,
-      "id_producto": 161,
+      "id_producto": 177,
       "grupo": "Sabores",
       "nombre": "peperoni",
       "precio": 0,
@@ -3281,7 +3281,7 @@
     },
     {
       "id": 160,
-      "id_producto": 161,
+      "id_producto": 177,
       "grupo": "Sabores",
       "nombre": "napolitana",
       "precio": 0,
