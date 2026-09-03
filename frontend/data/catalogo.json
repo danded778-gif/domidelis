@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-41-20",
-  "ultimaActualizacion": "2026-09-03T16:41:21.010Z",
+  "version": "v2026-09-03T16-43-45",
+  "ultimaActualizacion": "2026-09-03T16:43:45.699Z",
   "tiendas": [
     {
       "id": 1,
@@ -860,10 +860,10 @@
         },
         {
           "id": 177,
-          "nombre": "pizza",
+          "nombre": "pizza personal",
           "descripcion": "",
           "precio": 0,
-          "imagen_url": "",
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
           "badge": "agotado",
           "categoria": "menu",
           "cantidadTipo": "UND",
@@ -1812,10 +1812,10 @@
     },
     {
       "id": 177,
-      "nombre": "pizza",
+      "nombre": "pizza personal",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
       "badge": "agotado",
       "categoria": "menu",
       "cantidadTipo": "UND",
