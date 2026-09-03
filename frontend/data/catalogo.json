@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-49-47",
-  "ultimaActualizacion": "2026-09-03T16:49:47.818Z",
+  "version": "v2026-09-03T16-50-19",
+  "ultimaActualizacion": "2026-09-03T16:50:19.941Z",
   "tiendas": [
     {
       "id": 1,
@@ -3245,9 +3245,9 @@
       "grupo": "Sabores",
       "nombre": "napolitana",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     }
   ]
 }
