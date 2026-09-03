@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-47-19",
-  "ultimaActualizacion": "2026-09-03T16:47:19.407Z",
+  "version": "v2026-09-03T16-48-49",
+  "ultimaActualizacion": "2026-09-03T16:48:49.458Z",
   "tiendas": [
     {
       "id": 1,
@@ -46,19 +46,6 @@
           "precio": 16000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
           "badge": "Disponible",
-          "categoria": "menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "1",
-          "tiendaNombre": "Domi Delis"
-        },
-        {
-          "id": 104,
-          "nombre": "Pizza",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
-          "badge": "agotado",
           "categoria": "menu",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1011,19 +998,6 @@
       "precio": 16000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/salchipapas_1.png",
       "badge": "Disponible",
-      "categoria": "menu",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 104,
-      "nombre": "Pizza",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/tienda1/producto%203.png",
-      "badge": "agotado",
       "categoria": "menu",
       "cantidadTipo": "UND",
       "activo": true,
