@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T17-21-06",
-  "ultimaActualizacion": "2026-09-03T17:21:06.195Z",
+  "version": "v2026-09-03T17-29-26",
+  "ultimaActualizacion": "2026-09-03T17:29:26.090Z",
   "tiendas": [
     {
       "id": 1,
@@ -787,7 +787,7 @@
       "nombre": "La Basilica",
       "descripcion": "Somos la mejor opción Para toda ocasión.",
       "direccion": "parque lineal",
-      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"11:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-22:00\",\"sun\":\"14:00-22:00\"}",
+      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-22:00\",\"sun\":\"14:00-22:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/basilica/basilica%202.jpg",
       "promovida": 0,
@@ -3213,7 +3213,7 @@
       "id": 153,
       "id_producto": 161,
       "grupo": "Sabores",
-      "nombre": "clasica",
+      "nombre": "Clasica",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
