@@ -21,7 +21,7 @@
  * ============================================================
  */
 
-const CORREO_DESTINO = 'solucionventasconfiables@gmail.com';
+const CORREO_DESTINO = 'soluvencon@gmail.com';
 
 // ==============================
 // ESTADO DEL FORMULARIO
