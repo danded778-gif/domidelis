@@ -10,7 +10,7 @@
  * Para cambiar el correo donde se envia la copia del PDF:
  * 
  * OPCION 1: Cambiar directamente aqui abajo
- *   Cambia: 'solucionventasconfiables@gmail.com' por tu correo
+ *   Cambia: 'soluvencon@gmail.com' por tu correo
  * 
  * OPCION 2: Configurar en el backend
  *   Archivo: backend/routes/trabajaRoutes.js

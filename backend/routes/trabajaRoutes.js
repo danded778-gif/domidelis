@@ -44,7 +44,7 @@ const router = express.Router();
 // ============================================================
 // CONFIGURACION DEL CORREO
 // ============================================================
-const CORREO_DESTINO = process.env.CORREO_DESTINO || 'solucionventasconfiables@gmail.com';
+const CORREO_DESTINO = process.env.CORREO_DESTINO || 'soluvencon@gmail.com';
 // ============================================================
 
 // Ruta POST para recibir datos del formulario

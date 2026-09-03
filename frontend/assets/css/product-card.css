@@ -7,9 +7,9 @@
      (inline) como caja clara, sin límite de líneas.
      NO usar popover/tooltip aquí: .pc-card tiene
      overflow:hidden y lo recortaría.
-   ★ v4.1 (histórico): descripción 2 líneas + botón Info.
-     Reemplazado por v4.2 — si vienes de v4.1, este archivo
-     sustituye al anterior COMPLETO.
+   ★ v4.3 — LAZY LOAD: Se reemplazó background-image por 
+     etiqueta <img loading="lazy"> para optimizar la carga 
+     de la app y evitar reinicios por exceso de peticiones.
 
    PREFIJO: todas las clases usan "pc-". El contenedor
    sigue siendo .menu-grid (home.css), por eso no se
@@ -66,19 +66,28 @@
 }
 
 /* ============================================
-   3. CUADRO DE IMAGEN (izquierda)
+   3. CUADRO DE IMAGEN (izquierda) - ACTUALIZADO v4.3
    ============================================ */
 .pc-img {
     width: var(--pc-img-size);
     min-height: var(--pc-img-size);
     flex-shrink: 0;
     align-self: stretch;
-    background-color: #f5f5f5;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #f5f5f5; /* Fondo gris mientras carga la imagen */
     position: relative;
+    overflow: hidden; /* Para que la foto no se salga del borde redondeado */
     transition: filter 0.3s ease;
+}
+
+/* Estilo para la nueva etiqueta <img> con Lazy Load */
+.pc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la foto cubra el cuadrado sin deformarse */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Debajo del degradado y los badges */
 }
 
 .pc-img.pc-sin-imagen {
@@ -102,6 +111,7 @@
         rgba(0, 0, 0, 0) 60%,
         rgba(0, 0, 0, 0.25) 100%);
     pointer-events: none;
+    z-index: 1; /* Encima de la imagen, debajo del badge */
 }
 
 .pc-card.pc-agotado .pc-img {

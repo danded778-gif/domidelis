@@ -173,8 +173,14 @@ const AdminAnuncios = {
         const container = document.getElementById('camposTienda');
         if (!container) return;
 
-        // Verificar si ya existe el select para no duplicarlo
-        if (document.getElementById('anuncioTiendaId')) return;
+        // ★ CORREGIDO: Si el select ya existe, solo le actualizamos el valor y salimos
+        const selectExistente = document.getElementById('anuncioTiendaId');
+        if (selectExistente) {
+            if (selectedId) {
+                selectExistente.value = selectedId;
+            }
+            return;
+        }
 
         let optionsHtml = '<option value="0">-- Tienda no específica --</option>';
         this.tiendas.forEach(t => {

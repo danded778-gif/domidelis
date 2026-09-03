@@ -4,6 +4,7 @@
 // ★ MEJORA UX: Popup automático desactivado (Cero fricción)
 // ★ BLINDAJE: Protección contra errores 404 de la API
 // ★ FIX RACE CONDITION: El carrusel respeta el estado de visibilidad del contenedor
+// ★ FIX v2: Validación de tienda cerrada en anuncios de tipo "tienda"
 // ============================================
 
 const Anuncios = {
@@ -186,11 +187,31 @@ const Anuncios = {
                 const carritoActual = typeof obtenerCarrito === 'function' ? obtenerCarrito() : [];
                 const enCarrito = carritoActual.some(item => item.id === `promo_${anuncio.id}`);
 
+                // ★ NUEVA VALIDACIÓN: Verificar si la tienda vinculada está abierta
+                let tiendaCerrada = false;
+                if (anuncio.tiendaId && typeof tiendas !== 'undefined' && typeof checkStoreStatus === 'function') {
+                    const tienda = tiendas.find(t => t.id == anuncio.tiendaId);
+                    if (tienda) {
+                        const status = checkStoreStatus(tienda.horario);
+                        tiendaCerrada = !status.isOpen;
+                    }
+                }
+
                 if (enCarrito) {
                     htmlInterno += `
                         <div class="popup-precio">$${Number(anuncio.precioPromo).toLocaleString('es-CO')}</div>
                         <button class="popup-btn" disabled style="background:#ccc; cursor:not-allowed; box-shadow:none;">
                             <i class="fas fa-check-circle"></i> Promo en el carrito
+                        </button>
+                    `;
+                } else if (tiendaCerrada) {
+                    // ★ SI ESTÁ CERRADA, MOSTRAMOS BOTÓN DE BLOQUEO
+                    htmlInterno += `
+                        <div class="popup-precio">$${Number(anuncio.precioPromo).toLocaleString('es-CO')} 
+                            ${anuncio.precioNormal ? `<span>$${Number(anuncio.precioNormal).toLocaleString('es-CO')}</span>` : ''}
+                        </div>
+                        <button class="popup-btn" disabled style="background:#b0b0b0; cursor:not-allowed; box-shadow:none;">
+                            <i class="fas fa-clock"></i> Tienda Cerrada
                         </button>
                     `;
                 } else {
@@ -270,7 +291,16 @@ const Anuncios = {
         };
 
         if (typeof agregarAlCarrito === 'function') {
-            agregarAlCarrito(productoPromo, 1);
+            // ★ CAPTURAMOS EL RETORNO DE agregarAlCarrito
+            const exito = agregarAlCarrito(productoPromo, 1);
+            
+            // Si devuelve false, significa que la tienda está cerrada. 
+            // ¡No bloqueamos al usuario y salimos!
+            if (!exito) {
+                return;
+            }
+            
+            // Solo si fue exitoso, guardamos el bloqueo de 6 horas
             localStorage.setItem(this.CLAIM_KEY, Date.now().toString());
         }
         this.cerrarPopup();

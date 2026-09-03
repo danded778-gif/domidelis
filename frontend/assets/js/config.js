@@ -113,20 +113,51 @@ function cerrarSesion() {
 function logout() { cerrarSesion(); }
 
 // ============================================
-// CARRITO
+// CARRITO (Con expiración automática de 24 horas)
 // ============================================
-function obtenerCarrito() {
-    try { return JSON.parse(localStorage.getItem('carrito')) || []; }
-    catch (e) { return []; }
+function guardarCarrito(nuevoCarrito) {
+    const ahora = new Date().getTime(); // Hora actual en milisegundos
+    const data = {
+        items: nuevoCarrito,
+        timestamp: ahora
+    };
+    localStorage.setItem('carrito', JSON.stringify(data));
 }
 
-function guardarCarrito(carrito) {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+function obtenerCarrito() {
+    const dataStr = localStorage.getItem('carrito');
+    if (!dataStr) return [];
+
+    try {
+        const data = JSON.parse(dataStr);
+        
+        // ★ COMPATIBILIDAD: Si alguien tenía un carrito viejo (solo array), lo migramos/borramos
+        if (Array.isArray(data)) {
+            localStorage.removeItem('carrito');
+            return [];
+        }
+
+        const ahora = new Date().getTime();
+        const horas24 = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+
+        // ★ VERIFICACIÓN DE TIEMPO ★
+        if (ahora - data.timestamp > horas24) {
+            console.log("⏰ El carrito tiene más de 24h. Vaciando...");
+            localStorage.removeItem('carrito');
+            return []; // Devuelve carrito vacío
+        }
+
+        return data.items || [];
+    } catch (e) {
+        console.error("Error leyendo el carrito", e);
+        return [];
+    }
 }
 
 function limpiarCarrito() {
     localStorage.removeItem('carrito');
 }
+
 
 // ============================================
 // UTILIDADES

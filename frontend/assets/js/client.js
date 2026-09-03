@@ -514,8 +514,10 @@ function crearTarjetaProducto(p, opciones = {}) {
 
     return `
     <div class="pc-card${esAgotado ? ' pc-agotado' : ''}" id="prod-${p.id}">
-        <div class="pc-img ${tieneImagen ? 'pc-con-imagen' : 'pc-sin-imagen'}" ${tieneImagen ? `style="background-image: url('${imagenUrl}');"` : ''}>
-            ${!tieneImagen ? '<i class="fas fa-utensils"></i>' : ''}
+        <div class="pc-img ${tieneImagen ? 'pc-con-imagen' : 'pc-sin-imagen'}">
+            ${tieneImagen 
+                ? `<img src="${imagenUrl}" alt="${esc(p.nombre)}" loading="lazy" onerror="this.style.display='none';">` 
+                : '<i class="fas fa-utensils"></i>'}
             ${badgeHTML}
         </div>
         <div class="pc-info">
