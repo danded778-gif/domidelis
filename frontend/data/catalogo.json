@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T16-38-57",
-  "ultimaActualizacion": "2026-09-03T16:38:57.132Z",
+  "version": "v2026-09-03T16-40-02",
+  "ultimaActualizacion": "2026-09-03T16:40:02.871Z",
   "tiendas": [
     {
       "id": 1,
@@ -847,7 +847,7 @@
         },
         {
           "id": 161,
-          "nombre": "extra familiar",
+          "nombre": "pizza",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
@@ -1630,7 +1630,7 @@
     },
     {
       "id": 161,
-      "nombre": "extra familiar",
+      "nombre": "pizza",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
