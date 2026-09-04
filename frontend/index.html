@@ -51,6 +51,7 @@
     <!-- ★ CSS ANUNCIOS ★ -->
     <link rel="stylesheet" href="assets/css/anuncios.css">
     <link rel="stylesheet" href="assets/css/product-card.css">
+    <link rel="stylesheet" href="assets/css/buscador.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
@@ -328,6 +329,15 @@
                     <i class="fas fa-utensils"></i> DOMI<span>DELIS</span>
                 </a>
 
+                <div class="header-search" id="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="header-search-input" placeholder="Buscar comida..." autocomplete="off">
+                    <button type="button" class="header-search-clear" id="header-search-clear" aria-label="Limpiar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="header-search-dropdown" id="header-search-dropdown"></div>
+                </div>
+
                 <ul class="nav-links" id="nav-links">
                     <li>
                         <a href="#" id="btn-como-pedir">
@@ -335,6 +345,10 @@
                         </a>
                     </li>
                 </ul>
+
+                <button class="header-search-btn" id="header-search-btn" type="button" aria-label="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
 
                 <button class="header-cart" id="header-cart" type="button" aria-label="Ver carrito">
                     <i class="fas fa-shopping-cart"></i>
@@ -431,6 +445,19 @@
             <button class="btn-whatsapp-cart" id="checkout-whatsapp">
                 Continuar con el pedido
             </button>
+        </div>
+    </div>
+    <div class="search-overlay" id="search-overlay"></div>
+    <div class="search-panel" id="search-panel">
+        <div class="search-panel-header">
+            <div class="search-panel-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="mobile-search-input" placeholder="Buscar comida..." autocomplete="off">
+            </div>
+            <button class="search-panel-cancel" id="close-search" type="button">Cancelar</button>
+        </div>
+        <div class="search-panel-results" id="mobile-search-results">
+            <p class="search-empty">Escribe para buscar productos</p>
         </div>
     </div>
 
@@ -573,6 +600,7 @@
     <script src="assets/js/components/toast.js"></script>
     <script src="assets/js/paginator.js"></script>
     <script src="assets/js/client.js"></script>
+    <script src="assets/js/buscador.js"></script>
     <!-- ★ NUEVO JS DE ANUNCIOS ★ -->
     <script src="assets/js/anuncios.js"></script>
     <!-- ★ NUEVO JS DE MODAL ★ -->
@@ -925,4 +953,4 @@
     </script>
 </body>
 
-</html> 
+</html>

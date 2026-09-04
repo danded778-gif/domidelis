@@ -83,6 +83,10 @@ function inicializarEventos() {
             mobileMenu.classList.toggle("active");
         };
     }
+
+    if (typeof inicializarBuscador === 'function') {
+        inicializarBuscador();
+    }
 }
 
 function abrirCarrito() {

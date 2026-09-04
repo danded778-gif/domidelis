@@ -1,0 +1,162 @@
+
+body.page-home .header-search {
+    display: none;
+    position: relative;
+    flex: 1;
+    max-width: 520px;
+    margin: 0 1rem;
+}
+
+@media (min-width: 769px) {
+    body.page-home .header-search {
+        display: block;
+    }
+    body.page-home .header-search-btn {
+        display: none !important;
+    }
+    body.page-home .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+}
+
+body.page-home .header-search input {
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-radius: 50px;
+    padding: 0 40px 0 42px;
+    background: rgba(255,255,255,0.18);
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+body.page-home .header-search input::placeholder { color: rgba(255,255,255,0.7); }
+body.page-home .header-search > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.8);
+    pointer-events: none;
+}
+body.page-home .header-search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    display: none;
+}
+
+body.page-home .header-search-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 1200;
+}
+body.page-home .header-search-dropdown.active { display: block; }
+body.page-home .header-search-dropdown .pc-card { cursor: pointer; margin-bottom: 8px; }
+
+@media (max-width: 768px) {
+    body.page-home .main-nav {
+        display: grid;
+        grid-template-columns: 44px 1fr 44px 44px;
+        align-items: center;
+        gap: 8px;
+    }
+    body.page-home .mobile-menu { order: 1; }
+    body.page-home .logo { order: 2; justify-self: center; }
+    body.page-home .header-search-btn { order: 3; justify-self: end; }
+    body.page-home .header-cart { order: 4; justify-self: end; }
+    body.page-home .nav-links { order: 5; grid-column: 1 / -1; }
+    body.page-home .header-search { display: none !important; }
+}
+
+body.page-home .header-search-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px) {
+    body.page-home .header-search-btn { display: flex; align-items: center; justify-content: center; }
+}
+
+.search-overlay {
+    position: fixed; inset: 0;
+    background: rgba(93,64,55,0.6);
+    z-index: 1000;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+.search-overlay.active { opacity: 1; visibility: visible; }
+
+.search-panel {
+    position: fixed; inset: 0;
+    background: #fff;
+    z-index: 1001;
+    display: flex; flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.search-panel.active { transform: translateY(0); }
+
+.search-panel-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, var(--dark), var(--secondary));
+}
+.search-panel-input-wrap {
+    flex: 1; position: relative;
+}
+.search-panel-input-wrap i {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #888;
+}
+.search-panel-input-wrap input {
+    width: 100%; height: 42px; border: none; border-radius: 50px;
+    padding: 0 14px 0 40px; font-family: inherit;
+}
+.search-panel-cancel {
+    background: none; border: none; color: white; font-weight: 700;
+    font-family: inherit; cursor: pointer;
+}
+.search-panel-results {
+    flex: 1; overflow-y: auto; padding: 12px;
+    background: var(--light);
+}
+.search-empty { text-align: center; color: var(--gray); padding: 3rem 1rem; }
+
+.search-panel-results,
+.header-search-dropdown {
+    padding: 16px;
+}
+
+.search-panel-results .menu-grid,
+.header-search-dropdown .menu-grid {
+    gap: 0.7rem;
+}
+
+.search-panel-results .pc-card,
+.header-search-dropdown .pc-card {
+    --pc-img-size: 108px;
+}
