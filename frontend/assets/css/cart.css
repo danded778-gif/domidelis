@@ -481,3 +481,22 @@ body.page-home .cart-float {
         border-width: 3px;
     }
 }
+
+/* Botón "Continuar con el pedido" gris y bloqueado si el carrito está vacío */
+
+.btn-whatsapp-cart:disabled,
+.btn-whatsapp-cart.is-disabled {
+    background: #c5c5c5;
+    color: #f5f5f5;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 1;
+}
+
+.btn-whatsapp-cart:disabled:hover,
+.btn-whatsapp-cart.is-disabled:hover {
+    background: #c5c5c5;
+    transform: none;
+    box-shadow: none;
+}
