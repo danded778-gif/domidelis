@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-03T18-04-21",
-  "ultimaActualizacion": "2026-09-03T18:04:21.165Z",
+  "version": "v2026-09-05T02-25-25",
+  "ultimaActualizacion": "2026-09-05T02:25:25.270Z",
   "tiendas": [
     {
       "id": 1,
@@ -927,9 +927,9 @@
     },
     {
       "id": 10,
-      "nombre": "mantenimiento",
-      "descripcion": "peuqueña",
-      "direccion": "calle 41numero 5232",
+      "nombre": "Mantenimiento",
+      "descripcion": "Mantenimiento",
+      "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"23:00 - 00:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"00:00 - 05:59\",\"sat\":\"00:00 - 05:59\",\"sun\":\"Cerrado\"}",
       "rating": 1,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
@@ -947,7 +947,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "10",
-          "tiendaNombre": "mantenimiento"
+          "tiendaNombre": "Mantenimiento"
         }
       ]
     },
@@ -1691,7 +1691,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "10",
-      "tiendaNombre": "mantenimiento"
+      "tiendaNombre": "Mantenimiento"
     },
     {
       "id": 170,
