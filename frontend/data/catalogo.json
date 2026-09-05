@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-05T02-33-54",
-  "ultimaActualizacion": "2026-09-05T02:33:54.896Z",
+  "version": "v2026-09-05T02-34-27",
+  "ultimaActualizacion": "2026-09-05T02:34:27.699Z",
   "tiendas": [
     {
       "id": 1,
@@ -93,12 +93,12 @@
         },
         {
           "id": 170,
-          "nombre": "gasesosa colombiana",
+          "nombre": "Gaseosa colombiana",
           "descripcion": "400ml",
           "precio": 3999,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
           "badge": "NUEVO",
-          "categoria": "bebidas",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -1695,12 +1695,12 @@
     },
     {
       "id": 170,
-      "nombre": "gasesosa colombiana",
+      "nombre": "Gaseosa colombiana",
       "descripcion": "400ml",
       "precio": 3999,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
       "badge": "NUEVO",
-      "categoria": "bebidas",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "1",
