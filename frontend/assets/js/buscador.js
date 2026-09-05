@@ -64,9 +64,24 @@
         setTimeout(() => document.getElementById('mobile-search-input')?.focus(), 250);
     }
 
-    function cerrarBuscadorMovil() {
-        document.getElementById('search-panel')?.classList.remove('active');
-        document.getElementById('search-overlay')?.classList.remove('active');
+    function cerrarBuscadorMovil(inmediato) {
+        const panel = document.getElementById('search-panel');
+        const overlay = document.getElementById('search-overlay');
+
+        if (inmediato && panel) {
+            const prev = panel.style.transition;
+            panel.style.transition = 'none';
+            if (overlay) overlay.style.transition = 'none';
+            panel.classList.remove('active');
+            overlay?.classList.remove('active');
+            panel.offsetHeight;
+            panel.style.transition = prev;
+            if (overlay) overlay.style.transition = '';
+        } else {
+            panel?.classList.remove('active');
+            overlay?.classList.remove('active');
+        }
+
         document.body.style.overflow = '';
     }
 
@@ -75,10 +90,24 @@
         if (termino.length < 2) return [];
 
         return (productosGlobal || []).filter(p => {
+            const badge = String(p.badge || '')
+                .toLowerCase()
+                .trim()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/\s+/g, '');
+            if (badge === 'agotado') return false;
+
+            const tienda = (tiendas || []).find(t => String(t.id) === String(p.tiendaId));
+            if (!tienda) return false;
+            if (typeof checkStoreStatus === 'function' && !checkStoreStatus(tienda.horario).isOpen) {
+                return false;
+            }
+
             const nombre = (p.nombre || '').toLowerCase();
             const desc = (p.descripcion || '').toLowerCase();
-            const tienda = (p.tiendaNombre || '').toLowerCase();
-            return nombre.includes(termino) || desc.includes(termino) || tienda.includes(termino);
+            const tiendaNom = (p.tiendaNombre || tienda.nombre || '').toLowerCase();
+            return nombre.includes(termino) || desc.includes(termino) || tiendaNom.includes(termino);
         }).slice(0, 20);
     }
 
@@ -129,13 +158,18 @@
 
         const dropDesk = document.getElementById('header-search-dropdown');
         const resultsMobile = document.getElementById('mobile-search-results');
+        const inputDesk = document.getElementById('header-search-input');
+        const inputMobile = document.getElementById('mobile-search-input');
+
         if (dropDesk) {
             dropDesk.classList.remove('active');
             dropDesk.innerHTML = '';
         }
         if (resultsMobile) resultsMobile.innerHTML = '';
+        if (inputDesk) inputDesk.value = '';
+        if (inputMobile) inputMobile.value = '';
 
-        cerrarBuscadorMovil();
+        cerrarBuscadorMovil(true);
         await verMenuTienda(prod.tiendaId, productoId);
     }
 
