@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-05T02-34-27",
-  "ultimaActualizacion": "2026-09-05T02:34:27.699Z",
+  "version": "v2026-09-05T18-19-36",
+  "ultimaActualizacion": "2026-09-05T18:19:36.521Z",
   "tiendas": [
     {
       "id": 1,
@@ -743,12 +743,12 @@
         },
         {
           "id": 139,
-          "nombre": "Hamburgesa Doble Carne",
+          "nombre": "Hamburguesa Doble Carne",
           "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
           "precio": 17000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
           "badge": "Disponible",
-          "categoria": "menu",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "6",
@@ -1396,12 +1396,12 @@
     },
     {
       "id": 139,
-      "nombre": "Hamburgesa Doble Carne",
+      "nombre": "Hamburguesa Doble Carne",
       "descripcion": "Disfruta de nuestra deliciosa hamburguesa con doble carne de res jugosa, acompañada de queso cheddar fundido, lechuga fresca, tomate y salsas especiales de la casa, todo dentro de un suave pan con ajonjolí.",
       "precio": 17000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
       "badge": "Disponible",
-      "categoria": "menu",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "6",
