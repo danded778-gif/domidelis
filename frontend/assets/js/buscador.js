@@ -58,8 +58,16 @@
     }
 
     function abrirBuscadorMovil() {
-        document.getElementById('search-panel')?.classList.add('active');
-        document.getElementById('search-overlay')?.classList.add('active');
+        const panel = document.getElementById('search-panel');
+        const overlay = document.getElementById('search-overlay');
+        if (panel) panel.style.display = 'flex';
+        if (overlay) overlay.style.display = 'block';
+
+        requestAnimationFrame(() => {
+            panel?.classList.add('active');
+            overlay?.classList.add('active');
+        });
+
         document.body.style.overflow = 'hidden';
         setTimeout(() => document.getElementById('mobile-search-input')?.focus(), 250);
     }
@@ -68,18 +76,24 @@
         const panel = document.getElementById('search-panel');
         const overlay = document.getElementById('search-overlay');
 
-        if (inmediato && panel) {
-            const prev = panel.style.transition;
-            panel.style.transition = 'none';
+        const ocultar = () => {
+            if (panel) panel.style.display = 'none';
+            if (overlay) overlay.style.display = 'none';
+        };
+
+        if (inmediato) {
+            if (panel) panel.style.transition = 'none';
             if (overlay) overlay.style.transition = 'none';
-            panel.classList.remove('active');
+            panel?.classList.remove('active');
             overlay?.classList.remove('active');
-            panel.offsetHeight;
-            panel.style.transition = prev;
+            if (panel) panel.offsetHeight;
+            if (panel) panel.style.transition = '';
             if (overlay) overlay.style.transition = '';
+            ocultar();
         } else {
             panel?.classList.remove('active');
             overlay?.classList.remove('active');
+            setTimeout(ocultar, 320);
         }
 
         document.body.style.overflow = '';
