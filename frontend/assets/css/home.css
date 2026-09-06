@@ -790,3 +790,35 @@
         padding: 1rem 0 0.5rem 0;
     }
 }
+
+.footer-cta {
+    margin: 0 0 1.5rem;
+}
+
+.btn-footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 18px;
+    min-height: 44px;
+    border-radius: 50px;
+    background: var(--primary);
+    color: #fff !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+    transition: var(--transition);
+}
+
+.btn-footer-cta:hover {
+    background: #d32f3f;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+}
+
+.btn-footer-cta:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+}
