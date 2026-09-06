@@ -735,6 +735,13 @@ footer {
     transform: translateY(-3px);
 }
 
+footer .social-links a:hover,
+footer .social-links a:focus-visible {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
