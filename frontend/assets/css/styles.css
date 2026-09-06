@@ -1776,3 +1776,8 @@ footer .social-links a:focus-visible {
     color: #6c757d;
     font-weight: 600;
 }
+
+.store-card.is-oculto,
+.destacado-card.is-oculto {
+    display: none !important;
+}
