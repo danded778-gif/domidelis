@@ -57,7 +57,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3VYX3H0RD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+        function gtag() {dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-K3VYX3H0RD');
     </script>
@@ -306,7 +306,7 @@
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+            if (f.fbq) return; n = f.fbq = function () {n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)};
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
             t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
         }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
@@ -583,7 +583,8 @@
             <div class="footer-section">
                 <h3>Síguenos</h3>
                 <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/domidelis2026" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61567224268766" target="_blank"><i
                             class="fab fa-facebook"></i></a>
                 </div>
@@ -605,7 +606,7 @@
     <script src="assets/js/components/toast.js"></script>
     <script src="assets/js/paginator.js"></script>
     <script src="assets/js/client.js"></script>
-     <script src="assets/js/tienda-oculto.js"></script>
+    <script src="assets/js/tienda-oculto.js"></script>
     <script src="assets/js/cart-empty-cta.js"></script>
     <script src="assets/js/buscador.js"></script>
     <!-- ★ NUEVO JS DE ANUNCIOS ★ -->
@@ -635,7 +636,7 @@
                             console.log('✅ SW registrado y controlando:', reg.scope);
                         }
                     })
-                    .catch(function (err) { console.warn('⚠️ SW no registrado:', err.message); });
+                    .catch(function (err) {console.warn('⚠️ SW no registrado:', err.message);});
             });
         }
     </script>
@@ -663,8 +664,8 @@
             var stepsContainer = document.getElementById('install-steps-container');
             var esStandalone = window.matchMedia('(display-mode: standalone)').matches;
             var esIOSPWA = window.navigator.standalone === true;
-            if (esStandalone || esIOSPWA) { console.log('✅ App ya está instalada'); return; }
-            if (cerradoRecientemente()) { console.log('⏭️ Banner cerrado recientemente, no mostrar'); return; }
+            if (esStandalone || esIOSPWA) {console.log('✅ App ya está instalada'); return;}
+            if (cerradoRecientemente()) {console.log('⏭️ Banner cerrado recientemente, no mostrar'); return;}
             var esIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
             var esAndroid = /Android/.test(navigator.userAgent);
             var esChrome = /Chrome/.test(navigator.userAgent) && !/Edge|Edg|OPR/.test(navigator.userAgent);
@@ -673,61 +674,61 @@
 
             if (esIOS) {
                 stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el botón <i class="fas fa-share-from-square"></i> <strong>Compartir</strong> aquí abajo</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Desplázate y busca <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Toca <strong>"Agregar"</strong> y hecho</div></div>';
-                setTimeout(function () { bannerManual.classList.add('mostrar'); }, 3000);
+                setTimeout(function () {bannerManual.classList.add('mostrar');}, 3000);
                 configurarCierreManual(); return;
             }
 
             window.addEventListener('beforeinstallprompt', function (e) {
                 e.preventDefault(); deferredPrompt = e;
-                if (!yaSeMostró) { yaSeMostró = true; setTimeout(function () { mostrarBannerAuto(); }, 2500); }
+                if (!yaSeMostró) {yaSeMostró = true; setTimeout(function () {mostrarBannerAuto();}, 2500);}
             });
 
             setTimeout(function () {
                 if (!deferredPrompt && !yaSeMostró) {
                     yaSeMostró = true;
-                    if (esSamsung) { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-bars"></i> (3 líneas) abajo a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Agregar página a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Toca <strong>"Agregar"</strong></div></div>'; }
-                    else if (esFirefox) { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) del navegador</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Instalar"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>'; }
-                    else { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) arriba a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca y toca <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>'; }
+                    if (esSamsung) {stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-bars"></i> (3 líneas) abajo a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Agregar página a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Toca <strong>"Agregar"</strong></div></div>';}
+                    else if (esFirefox) {stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) del navegador</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Instalar"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>';}
+                    else {stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) arriba a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca y toca <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>';}
                     bannerManual.classList.add('mostrar'); configurarCierreManual();
                 }
             }, 6000);
 
             btnInstall.addEventListener('click', function (e) {
                 e.preventDefault(); e.stopPropagation();
-                gtag('event', 'clic_instalar_app', { 'event_category': 'engagement', 'event_label': 'banner_instalar' });
-                if (!deferredPrompt) { ocultarBannerAuto(); bannerManual.classList.add('mostrar'); configurarCierreManual(); return; }
+                gtag('event', 'clic_instalar_app', {'event_category': 'engagement', 'event_label': 'banner_instalar'});
+                if (!deferredPrompt) {ocultarBannerAuto(); bannerManual.classList.add('mostrar'); configurarCierreManual(); return;}
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(function (choiceResult) {
-                    if (choiceResult.outcome === 'accepted') { console.log('🎉 Usuario aceptó instalar'); ocultarBannerAuto(); } else { console.log('❌ Usuario rechazó instalar'); }
+                    if (choiceResult.outcome === 'accepted') {console.log('🎉 Usuario aceptó instalar'); ocultarBannerAuto();} else {console.log('❌ Usuario rechazó instalar');}
                     deferredPrompt = null;
-                }).catch(function (err) { console.error('Error en userChoice:', err); deferredPrompt = null; });
+                }).catch(function (err) {console.error('Error en userChoice:', err); deferredPrompt = null;});
             });
 
-            btnCloseAuto.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); ocultarBannerAuto(); guardarCierre(); });
-            window.addEventListener('appinstalled', function () { console.log('🎉 appinstalled disparado'); ocultarBannerAuto(); ocultarBannerManual(); deferredPrompt = null; });
+            btnCloseAuto.addEventListener('click', function (e) {e.preventDefault(); e.stopPropagation(); ocultarBannerAuto(); guardarCierre();});
+            window.addEventListener('appinstalled', function () {console.log('🎉 appinstalled disparado'); ocultarBannerAuto(); ocultarBannerManual(); deferredPrompt = null;});
 
             function mostrarBannerAuto() {
                 var cartPanel = document.getElementById("cart-panel");
-                if (cartPanel && cartPanel.classList.contains("active")) { setTimeout(mostrarBannerAuto, 2000); return; }
+                if (cartPanel && cartPanel.classList.contains("active")) {setTimeout(mostrarBannerAuto, 2000); return;}
                 bannerAuto.classList.add('mostrar');
             }
-            function ocultarBannerAuto() { bannerAuto.classList.remove('mostrar'); }
-            function ocultarBannerManual() { bannerManual.classList.remove('mostrar'); }
+            function ocultarBannerAuto() {bannerAuto.classList.remove('mostrar');}
+            function ocultarBannerManual() {bannerManual.classList.remove('mostrar');}
             function configurarCierreManual() {
                 btnCloseManual.replaceWith(btnCloseManual.cloneNode(true));
                 var nuevoBtn = document.getElementById('btn-manual-close');
-                nuevoBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); ocultarBannerManual(); guardarCierre(); });
+                nuevoBtn.addEventListener('click', function (e) {e.preventDefault(); e.stopPropagation(); ocultarBannerManual(); guardarCierre();});
             }
-            function guardarCierre() { try { localStorage.setItem('install_banner_cerrado', Date.now().toString()); } catch (e) { } }
-            function cerradoRecientemente() { try { var t = localStorage.getItem('install_banner_cerrado'); if (!t) return false; return (Date.now() - parseInt(t, 10)) < (1 * 24 * 60 * 60 * 1000); } catch (e) { return false; } }
+            function guardarCierre() {try {localStorage.setItem('install_banner_cerrado', Date.now().toString());} catch (e) { } }
+            function cerradoRecientemente() {try {var t = localStorage.getItem('install_banner_cerrado'); if (!t) return false; return (Date.now() - parseInt(t, 10)) < (1 * 24 * 60 * 60 * 1000);} catch (e) {return false;} }
         })();
     </script>
 
     <script>
         (function () {
             var rol = localStorage.getItem('rol');
-            if (rol === 'admin') { window.location.replace('admin.html'); }
-            else if (rol === 'domiciliario') { window.location.replace('domiciliario.html'); }
+            if (rol === 'admin') {window.location.replace('admin.html');}
+            else if (rol === 'domiciliario') {window.location.replace('domiciliario.html');}
         })();
     </script>
 
@@ -754,7 +755,7 @@
                     || document.querySelector('main > .container');
                 if (objetivo) {
                     var offsetTop = objetivo.getBoundingClientRect().top + window.pageYOffset - 70;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    window.scrollTo({top: offsetTop, behavior: 'smooth'});
                 }
             });
         }
@@ -858,7 +859,7 @@
                 const pwaMessage = document.getElementById('pwa-message');
 
                 function preventExit(event) {
-                    window.history.pushState({ noBackExitsApp: true }, '');
+                    window.history.pushState({noBackExitsApp: true}, '');
                     exitModal.style.display = 'flex';
 
                     if (esPWA) {
@@ -870,7 +871,7 @@
                     }
                 }
 
-                window.history.pushState({ noBackExitsApp: true }, '');
+                window.history.pushState({noBackExitsApp: true}, '');
                 window.addEventListener('popstate', preventExit);
 
                 if (btnQuedarse) {
