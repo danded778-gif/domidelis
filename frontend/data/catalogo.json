@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-09T23-00-10",
-  "ultimaActualizacion": "2026-09-09T23:00:10.719Z",
+  "version": "v2026-09-09T23-04-08",
+  "ultimaActualizacion": "2026-09-09T23:04:08.468Z",
   "tiendas": [
     {
       "id": 1,
@@ -981,7 +981,7 @@
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
-          "badge": "NUEVO",
+          "badge": "ago",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1843,7 +1843,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
-      "badge": "NUEVO",
+      "badge": "ago",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
