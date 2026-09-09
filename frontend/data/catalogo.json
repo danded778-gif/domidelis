@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-09T22-51-16",
-  "ultimaActualizacion": "2026-09-09T22:51:16.525Z",
+  "version": "v2026-09-09T22-52-18",
+  "ultimaActualizacion": "2026-09-09T22:52:18.319Z",
   "tiendas": [
     {
       "id": 1,
@@ -145,7 +145,7 @@
         },
         {
           "id": 174,
-          "nombre": "gaseosa manzana",
+          "nombre": "Gaseosa manzana",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
@@ -158,7 +158,7 @@
         },
         {
           "id": 175,
-          "nombre": "gasesosa naranja",
+          "nombre": "gaseosa naranja",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
@@ -171,7 +171,7 @@
         },
         {
           "id": 176,
-          "nombre": "gasesosa uva",
+          "nombre": "gaseosa uva",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
@@ -1760,7 +1760,7 @@
     },
     {
       "id": 174,
-      "nombre": "gaseosa manzana",
+      "nombre": "Gaseosa manzana",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 175,
-      "nombre": "gasesosa naranja",
+      "nombre": "gaseosa naranja",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
@@ -1786,7 +1786,7 @@
     },
     {
       "id": 176,
-      "nombre": "gasesosa uva",
+      "nombre": "gaseosa uva",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
