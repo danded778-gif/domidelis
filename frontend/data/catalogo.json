@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-09T23-05-14",
-  "ultimaActualizacion": "2026-09-09T23:05:14.466Z",
+  "version": "v2026-09-12T16-33-40",
+  "ultimaActualizacion": "2026-09-12T16:33:40.969Z",
   "tiendas": [
     {
       "id": 1,
@@ -989,6 +989,18 @@
           "tiendaNombre": "Dulce fusión"
         }
       ]
+    },
+    {
+      "id": 12,
+      "nombre": "MR Simon",
+      "descripcion": "",
+      "direccion": "parque lineal",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/mr%20simon/MR%20SIMON%20LOGO%20PNG.PNG",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
     }
   ],
   "productosGlobal": [
