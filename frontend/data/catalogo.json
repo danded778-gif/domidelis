@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-12T16-58-12",
-  "ultimaActualizacion": "2026-09-12T16:58:12.550Z",
+  "version": "v2026-09-12T16-59-10",
+  "ultimaActualizacion": "2026-09-12T16:59:10.409Z",
   "tiendas": [
     {
       "id": 1,
@@ -994,7 +994,7 @@
       "id": 12,
       "nombre": "MR Simon",
       "descripcion": "",
-      "direccion": "parque lineal",
+      "direccion": "",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/mr%20simon/MR_SIMON_LOGO_500KB.png",
