@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T16-11-13",
-  "ultimaActualizacion": "2026-09-14T16:11:13.040Z",
+  "version": "v2026-09-14T16-13-27",
+  "ultimaActualizacion": "2026-09-14T16:13:27.422Z",
   "tiendas": [
     {
       "id": 1,
@@ -1013,6 +1013,19 @@
           "activo": true,
           "tiendaId": "12",
           "tiendaNombre": "MR Simon"
+        },
+        {
+          "id": 181,
+          "nombre": "Oriental Grande",
+          "descripcion": "",
+          "precio": 60000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
+          "badge": "agotado",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "12",
+          "tiendaNombre": "MR Simon"
         }
       ]
     }
@@ -1882,6 +1895,19 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "12",
+      "tiendaNombre": "MR Simon"
+    },
+    {
+      "id": 181,
+      "nombre": "Oriental Grande",
+      "descripcion": "",
+      "precio": 60000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
       "badge": "agotado",
       "categoria": "Otras",
       "cantidadTipo": "UND",
