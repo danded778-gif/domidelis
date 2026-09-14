@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T03-48-20",
-  "ultimaActualizacion": "2026-09-14T03:48:20.095Z",
+  "version": "v2026-09-14T16-11-13",
+  "ultimaActualizacion": "2026-09-14T16:11:13.040Z",
   "tiendas": [
     {
       "id": 1,
@@ -1000,7 +1000,21 @@
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/mr%20simon/MR_SIMON_LOGO_500KB.png",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 180,
+          "nombre": "sho suet",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
+          "badge": "agotado",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "12",
+          "tiendaNombre": "MR Simon"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -1861,6 +1875,19 @@
       "activo": true,
       "tiendaId": "11",
       "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 180,
+      "nombre": "sho suet",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "12",
+      "tiendaNombre": "MR Simon"
     }
   ],
   "complementosGlobal": [
