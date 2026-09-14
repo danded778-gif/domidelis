@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-11-04",
-  "ultimaActualizacion": "2026-09-14T17:11:04.290Z",
+  "version": "v2026-09-14T17-12-35",
+  "ultimaActualizacion": "2026-09-14T17:12:35.062Z",
   "tiendas": [
     {
       "id": 1,
@@ -972,7 +972,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Dulce%20fusion/dulcefusion.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
