@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-51-32",
-  "ultimaActualizacion": "2026-09-14T17:51:32.024Z",
+  "version": "v2026-09-14T17-52-13",
+  "ultimaActualizacion": "2026-09-14T17:52:13.153Z",
   "tiendas": [
     {
       "id": 1,
@@ -2390,7 +2390,7 @@
       "id_producto": 152,
       "grupo": "",
       "nombre": "Yuquitas",
-      "precio": 5000,
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -2400,7 +2400,7 @@
       "id_producto": 152,
       "grupo": "",
       "nombre": "salsa",
-      "precio": 1000,
+      "precio": 1500,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -2490,7 +2490,7 @@
       "id_producto": 153,
       "grupo": "",
       "nombre": "Yuquitas",
-      "precio": 5000,
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -2500,7 +2500,7 @@
       "id_producto": 153,
       "grupo": "",
       "nombre": "salsa",
-      "precio": 1000,
+      "precio": 1500,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -3448,11 +3448,11 @@
     {
       "id": 161,
       "id_producto": 180,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "salsa",
+      "max": 3,
       "min": 0
     }
   ]
