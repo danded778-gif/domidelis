@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-52-13",
-  "ultimaActualizacion": "2026-09-14T17:52:13.153Z",
+  "version": "v2026-09-14T17-54-33",
+  "ultimaActualizacion": "2026-09-14T17:54:33.149Z",
   "tiendas": [
     {
       "id": 1,
@@ -3452,7 +3452,17 @@
       "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
-      "max": 3,
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 162,
+      "id_producto": 180,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
       "min": 0
     }
   ]
