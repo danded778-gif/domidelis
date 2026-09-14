@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T16-13-27",
-  "ultimaActualizacion": "2026-09-14T16:13:27.422Z",
+  "version": "v2026-09-14T16-14-10",
+  "ultimaActualizacion": "2026-09-14T16:14:10.532Z",
   "tiendas": [
     {
       "id": 1,
@@ -1005,7 +1005,7 @@
           "id": 180,
           "nombre": "sho suet",
           "descripcion": "",
-          "precio": 0,
+          "precio": 28000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
           "badge": "agotado",
           "categoria": "Otras",
@@ -1893,7 +1893,7 @@
       "id": 180,
       "nombre": "sho suet",
       "descripcion": "",
-      "precio": 0,
+      "precio": 28000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
       "badge": "agotado",
       "categoria": "Otras",
