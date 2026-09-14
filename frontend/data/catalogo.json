@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-13-37",
-  "ultimaActualizacion": "2026-09-14T17:13:37.520Z",
+  "version": "v2026-09-14T17-15-24",
+  "ultimaActualizacion": "2026-09-14T17:15:24.233Z",
   "tiendas": [
     {
       "id": 1,
@@ -1029,7 +1029,7 @@
         },
         {
           "id": 182,
-          "nombre": "sho suey",
+          "nombre": "Sho suey",
           "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
           "precio": 28000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
@@ -1930,7 +1930,7 @@
     },
     {
       "id": 182,
-      "nombre": "sho suey",
+      "nombre": "Sho suey",
       "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
       "precio": 28000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
