@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T16-17-59",
-  "ultimaActualizacion": "2026-09-14T16:17:59.349Z",
+  "version": "v2026-09-14T16-27-35",
+  "ultimaActualizacion": "2026-09-14T16:27:35.801Z",
   "tiendas": [
     {
       "id": 1,
@@ -1017,7 +1017,7 @@
         {
           "id": 181,
           "nombre": "Oriental Grande",
-          "descripcion": "",
+          "descripcion": "4 - 5 porciones.",
           "precio": 60000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
           "badge": "agotado",
@@ -1905,7 +1905,7 @@
     {
       "id": 181,
       "nombre": "Oriental Grande",
-      "descripcion": "",
+      "descripcion": "4 - 5 porciones.",
       "precio": 60000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
       "badge": "agotado",
