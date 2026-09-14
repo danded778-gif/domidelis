@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T16-27-35",
-  "ultimaActualizacion": "2026-09-14T16:27:35.801Z",
+  "version": "v2026-09-14T17-06-00",
+  "ultimaActualizacion": "2026-09-14T17:06:00.322Z",
   "tiendas": [
     {
       "id": 1,
@@ -1026,6 +1026,19 @@
           "activo": true,
           "tiendaId": "12",
           "tiendaNombre": "MR Simon"
+        },
+        {
+          "id": 182,
+          "nombre": "sho suey",
+          "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
+          "precio": 28000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "12",
+          "tiendaNombre": "MR Simon"
         }
       ]
     }
@@ -1909,6 +1922,19 @@
       "precio": 60000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
       "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "12",
+      "tiendaNombre": "MR Simon"
+    },
+    {
+      "id": 182,
+      "nombre": "sho suey",
+      "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
+      "precio": 28000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
