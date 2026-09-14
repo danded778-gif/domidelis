@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-12-35",
-  "ultimaActualizacion": "2026-09-14T17:12:35.062Z",
+  "version": "v2026-09-14T17-13-37",
+  "ultimaActualizacion": "2026-09-14T17:13:37.520Z",
   "tiendas": [
     {
       "id": 1,
@@ -1020,7 +1020,7 @@
           "descripcion": "4 - 5 porciones.",
           "precio": 60000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
-          "badge": "agotado",
+          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1921,7 +1921,7 @@
       "descripcion": "4 - 5 porciones.",
       "precio": 60000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
-      "badge": "agotado",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
