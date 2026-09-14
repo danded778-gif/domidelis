@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T16-14-10",
-  "ultimaActualizacion": "2026-09-14T16:14:10.532Z",
+  "version": "v2026-09-14T16-17-59",
+  "ultimaActualizacion": "2026-09-14T16:17:59.349Z",
   "tiendas": [
     {
       "id": 1,
@@ -1003,7 +1003,7 @@
       "productos": [
         {
           "id": 180,
-          "nombre": "sho suet",
+          "nombre": "Alitas",
           "descripcion": "",
           "precio": 28000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
@@ -1891,7 +1891,7 @@
     },
     {
       "id": 180,
-      "nombre": "sho suet",
+      "nombre": "Alitas",
       "descripcion": "",
       "precio": 28000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
