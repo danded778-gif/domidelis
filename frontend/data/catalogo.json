@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-49-09",
-  "ultimaActualizacion": "2026-09-14T17:49:09.595Z",
+  "version": "v2026-09-14T17-50-51",
+  "ultimaActualizacion": "2026-09-14T17:50:51.941Z",
   "tiendas": [
     {
       "id": 1,
@@ -2040,7 +2040,7 @@
       "id_producto": 148,
       "grupo": "",
       "nombre": "salsa",
-      "precio": 1000,
+      "precio": 1500,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -3446,8 +3446,8 @@
       "min": 1
     },
     {
-      "id": 180,
-      "id_producto": "",
+      "id": 161,
+      "id_producto": 180,
       "grupo": "",
       "nombre": "",
       "precio": 0,
