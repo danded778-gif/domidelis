@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T04-22-40",
-  "ultimaActualizacion": "2026-09-15T04:22:40.207Z",
+  "version": "v2026-09-15T04-23-00",
+  "ultimaActualizacion": "2026-09-15T04:23:00.633Z",
   "tiendas": [
     {
       "id": 1,
@@ -1019,7 +1019,7 @@
           "nombre": "Tacos mixtos",
           "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
           "precio": 19500,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Tacos%20mixtos.png",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -2036,7 +2036,7 @@
       "nombre": "Tacos mixtos",
       "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
       "precio": 19500,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Tacos%20mixtos.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
