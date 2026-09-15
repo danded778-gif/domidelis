@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-17-51",
-  "ultimaActualizacion": "2026-09-15T03:17:51.952Z",
+  "version": "v2026-09-15T03-20-08",
+  "ultimaActualizacion": "2026-09-15T03:20:08.752Z",
   "tiendas": [
     {
       "id": 1,
@@ -1005,7 +1005,7 @@
           "id": 184,
           "nombre": "Salchipapas con birria",
           "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
-          "precio": 28,
+          "precio": 27000,
           "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Otras",
@@ -1996,7 +1996,7 @@
       "id": 184,
       "nombre": "Salchipapas con birria",
       "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
-      "precio": 28,
+      "precio": 27000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
