@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-06-12",
-  "ultimaActualizacion": "2026-09-15T03:06:12.990Z",
+  "version": "v2026-09-15T03-17-51",
+  "ultimaActualizacion": "2026-09-15T03:17:51.952Z",
   "tiendas": [
     {
       "id": 1,
@@ -1003,8 +1003,8 @@
         },
         {
           "id": 184,
-          "nombre": "Cazuela paisa",
-          "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+          "nombre": "Salchipapas con birria",
+          "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
           "precio": 28,
           "imagen_url": "",
           "badge": "NUEVO",
@@ -1994,8 +1994,8 @@
     },
     {
       "id": 184,
-      "nombre": "Cazuela paisa",
-      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+      "nombre": "Salchipapas con birria",
+      "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
       "precio": 28,
       "imagen_url": "",
       "badge": "NUEVO",
