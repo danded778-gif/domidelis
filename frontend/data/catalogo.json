@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-21-16",
-  "ultimaActualizacion": "2026-09-15T03:21:16.163Z",
+  "version": "v2026-09-15T03-23-48",
+  "ultimaActualizacion": "2026-09-15T03:23:48.952Z",
   "tiendas": [
     {
       "id": 1,
@@ -1026,6 +1026,19 @@
           "activo": true,
           "tiendaId": "11",
           "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 186,
+          "nombre": "Bandeja paisa",
+          "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa \n\n$32500",
+          "precio": 32500,
+          "imagen_url": "",
+          "badge": "",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
         }
       ]
     },
@@ -2025,6 +2038,19 @@
       "precio": 19500,
       "imagen_url": "",
       "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 186,
+      "nombre": "Bandeja paisa",
+      "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa \n\n$32500",
+      "precio": 32500,
+      "imagen_url": "",
+      "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
