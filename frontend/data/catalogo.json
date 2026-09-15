@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-37-16",
-  "ultimaActualizacion": "2026-09-15T03:37:16.364Z",
+  "version": "v2026-09-15T04-22-04",
+  "ultimaActualizacion": "2026-09-15T04:22:04.423Z",
   "tiendas": [
     {
       "id": 1,
@@ -993,7 +993,7 @@
           "nombre": "Cazuela paisa",
           "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
           "precio": 28000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -2010,7 +2010,7 @@
       "nombre": "Cazuela paisa",
       "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
       "precio": 28000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
