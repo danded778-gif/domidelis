@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T04-23-00",
-  "ultimaActualizacion": "2026-09-15T04:23:00.633Z",
+  "version": "v2026-09-15T04-23-40",
+  "ultimaActualizacion": "2026-09-15T04:23:40.715Z",
   "tiendas": [
     {
       "id": 1,
@@ -1032,7 +1032,7 @@
           "nombre": "Bandeja paisa",
           "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
           "precio": 32500,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -2049,7 +2049,7 @@
       "nombre": "Bandeja paisa",
       "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
       "precio": 32500,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
