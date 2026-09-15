@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-04-50",
-  "ultimaActualizacion": "2026-09-15T03:04:50.499Z",
+  "version": "v2026-09-15T03-06-12",
+  "ultimaActualizacion": "2026-09-15T03:06:12.990Z",
   "tiendas": [
     {
       "id": 1,
@@ -1000,6 +1000,19 @@
           "activo": true,
           "tiendaId": "11",
           "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 184,
+          "nombre": "Cazuela paisa",
+          "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+          "precio": 28,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
         }
       ]
     },
@@ -1968,6 +1981,19 @@
     },
     {
       "id": 183,
+      "nombre": "Cazuela paisa",
+      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+      "precio": 28,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 184,
       "nombre": "Cazuela paisa",
       "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
       "precio": 28,
