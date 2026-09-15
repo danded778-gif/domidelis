@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-14T17-54-36",
-  "ultimaActualizacion": "2026-09-14T17:54:36.271Z",
+  "version": "v2026-09-15T03-04-50",
+  "ultimaActualizacion": "2026-09-15T03:04:50.499Z",
   "tiendas": [
     {
       "id": 1,
@@ -987,6 +987,19 @@
           "activo": true,
           "tiendaId": "11",
           "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 183,
+          "nombre": "Cazuela paisa",
+          "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+          "precio": 28,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
         }
       ]
     },
@@ -1952,6 +1965,19 @@
       "activo": true,
       "tiendaId": "12",
       "tiendaNombre": "Mr Simon"
+    },
+    {
+      "id": 183,
+      "nombre": "Cazuela paisa",
+      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+      "precio": 28,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
     }
   ],
   "complementosGlobal": [
