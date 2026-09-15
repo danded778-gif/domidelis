@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-15T03-20-23",
-  "ultimaActualizacion": "2026-09-15T03:20:23.502Z",
+  "version": "v2026-09-15T03-21-16",
+  "ultimaActualizacion": "2026-09-15T03:21:16.163Z",
   "tiendas": [
     {
       "id": 1,
@@ -1013,6 +1013,19 @@
           "activo": true,
           "tiendaId": "11",
           "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 185,
+          "nombre": "Tacos mixtos",
+          "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
+          "precio": 19500,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
         }
       ]
     },
@@ -1997,6 +2010,19 @@
       "nombre": "Salchipapas con birria",
       "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
       "precio": 27000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 185,
+      "nombre": "Tacos mixtos",
+      "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
+      "precio": 19500,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
