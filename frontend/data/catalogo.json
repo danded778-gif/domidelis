@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T17-47-34",
-  "ultimaActualizacion": "2026-09-17T17:47:34.610Z",
+  "version": "v2026-09-17T17-48-01",
+  "ultimaActualizacion": "2026-09-17T17:48:01.505Z",
   "tiendas": [
     {
       "id": 1,
@@ -392,8 +392,8 @@
         },
         {
           "id": 124,
-          "nombre": "Aguardiente Antioqueño 260 roja",
-          "descripcion": "",
+          "nombre": "Aguardiente Antioqueño",
+          "descripcion": "260 roja",
           "precio": 17300,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo_260ml_40kb.jpg",
           "badge": "Disponible",
@@ -405,8 +405,8 @@
         },
         {
           "id": 125,
-          "nombre": "aguardiente antioqueño 260 verde",
-          "descripcion": "",
+          "nombre": "aguardiente antioqueño",
+          "descripcion": "260 verde",
           "precio": 16500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
           "badge": "Disponible",
@@ -1383,8 +1383,8 @@
     },
     {
       "id": 124,
-      "nombre": "Aguardiente Antioqueño 260 roja",
-      "descripcion": "",
+      "nombre": "Aguardiente Antioqueño",
+      "descripcion": "260 roja",
       "precio": 17300,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo_260ml_40kb.jpg",
       "badge": "Disponible",
@@ -1396,8 +1396,8 @@
     },
     {
       "id": 125,
-      "nombre": "aguardiente antioqueño 260 verde",
-      "descripcion": "",
+      "nombre": "aguardiente antioqueño",
+      "descripcion": "260 verde",
       "precio": 16500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
       "badge": "Disponible",
