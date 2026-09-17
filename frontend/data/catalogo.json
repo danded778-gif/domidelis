@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T17-47-08",
-  "ultimaActualizacion": "2026-09-17T17:47:08.737Z",
+  "version": "v2026-09-17T17-47-32",
+  "ultimaActualizacion": "2026-09-17T17:47:32.652Z",
   "tiendas": [
     {
       "id": 1,
@@ -353,8 +353,8 @@
         },
         {
           "id": 121,
-          "nombre": "Aguardiente Antioqueño litro roja",
-          "descripcion": "",
+          "nombre": "Aguardiente Antioqueño",
+          "descripcion": "litro roja",
           "precio": 53000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20rojp.jpg",
           "badge": "Disponible",
@@ -366,8 +366,8 @@
         },
         {
           "id": 122,
-          "nombre": "aguardiente antioqueño litro verde",
-          "descripcion": "",
+          "nombre": "aguardiente antioqueño",
+          "descripcion": "litro verde",
           "precio": 50000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
           "badge": "Disponible",
@@ -379,8 +379,8 @@
         },
         {
           "id": 123,
-          "nombre": "Aguardiente Antioqueño 260 azul",
-          "descripcion": "",
+          "nombre": "Aguardiente Antioqueño",
+          "descripcion": "260 azul",
           "precio": 16500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul_260ml_40kb.jpg",
           "badge": "Disponible",
@@ -1344,8 +1344,8 @@
     },
     {
       "id": 121,
-      "nombre": "Aguardiente Antioqueño litro roja",
-      "descripcion": "",
+      "nombre": "Aguardiente Antioqueño",
+      "descripcion": "litro roja",
       "precio": 53000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20rojp.jpg",
       "badge": "Disponible",
@@ -1357,8 +1357,8 @@
     },
     {
       "id": 122,
-      "nombre": "aguardiente antioqueño litro verde",
-      "descripcion": "",
+      "nombre": "aguardiente antioqueño",
+      "descripcion": "litro verde",
       "precio": 50000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
       "badge": "Disponible",
@@ -1370,8 +1370,8 @@
     },
     {
       "id": 123,
-      "nombre": "Aguardiente Antioqueño 260 azul",
-      "descripcion": "",
+      "nombre": "Aguardiente Antioqueño",
+      "descripcion": "260 azul",
       "precio": 16500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul_260ml_40kb.jpg",
       "badge": "Disponible",
