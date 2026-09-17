@@ -1571,4 +1571,4 @@ async function eliminarUsuarioTienda(id) {
 
 window.onclick = function (event) {
     if (event.target.classList.contains('modal')) event.target.classList.remove('active');
-};
+}; 

@@ -1,42 +1,63 @@
-/* ============================================
-   DOMIDELIS - HOME (index.html)
+/* ============================================================
+   DOMIDELIS — HOME (index.html)
+   home.css · v3.4
+   ============================================================
 
-   DEPENDENCIAS (cargar ANTES este archivo):
-   - styles.css → variables, reset, header/footer/core,
-     .section-title (★ movido al core en Fase 3:
-     lo usa domiciliario.html) y los KEYFRAMES que
-     este archivo usa: badge-pulse, dot-blink,
-     pulse-descuento, rebote-flecha, volarEmoji,
-     fiestaCarrito, popIn ★ NO borrarlos del core
+   QUÉ ESTILO ESTE ARCHIVO:
+   Únicamente la página de inicio del CLIENTE (index.html).
+   El panel admin, domiciliario y app-tiendas NO usan este
+   archivo (usan panel.css, domiciliario.css, etc.).
 
-   ORDEN DE CARGA en index.html:
-   styles.css → home.css → cart.css
+   ORDEN DE CARGA (importante, no reordenar):
+   styles.css (core) → home.css → cart.css
    → modal-personalizacion.css → anuncios.css
-   (home.css va EXACTAMENTE donde estaba styles.css
-    en la cascada, antes de modal-personalizacion
-    y anuncios, para preservar overrides)
+   Este archivo va DESPUÉS del core porque SOBREESCRIBE
+   variables y componentes base; si lo mueves, otros CSS
+   lo pisan.
 
-   Migrado desde styles.css:
-   - §7 Hero (excepto .hero-admin → core hasta ver login)
-   - §9 Tiendas y categorías (excepto .tienda-tag-* →
-     migrados a panel.css en Fase 3)
-   - §10 Menú y productos (excepto .section-title → core)
+   MAPA DE SECCIONES:
+   1. Hero ............ banner superior (el HTML ya no lo usa)
+   2. Título tiendas ... encabezado "Populares en El Santuario"
+   3. Grid de tiendas .. contenedores de tarjetas de tiendas
+   4. Tarjeta tienda ... la tarjeta individual con imagen/info
+   5. Tiendas cerradas . bloque gris de tiendas no disponibles
+   6. Categorías ....... carrusel + flechas + dots Instagram ★v3.4
+   7. Destacados ....... vitrina de productos con foto
+   8. Menú/productos ... vista de una tienda o de una categoría
+   9. Responsive ....... ajustes por tamaño de pantalla
+   10. Footer CTA ...... botón "Trabaja con nosotros"
 
-   NO incluye:
-   - .section-title (CORE: la usa domiciliario.html)
-   - .tienda-tag-historial / .tienda-tag-detalle (panel.css)
-   - .modal genérico (core: index + admin)
-   - .cart-float / .cart-panel / header-cart (cart.css)
-   - .spinner, .paginador, .notificaciones (core)
-   ============================================ */
+   HISTORIAL DEL CARRUSEL DE CATEGORÍAS:
+   v3.0  Flechas visibles en móvil (se descartó: tapaban)
+   v3.2  Fades en los bordes (se descartó: poco notorio en
+         pantallas grandes o de baja densidad)
+   v3.3  Dots estilo Instagram (client.js los crea y controla)
+   v3.4  Dots COMPACTOS e integrados DENTRO de la caja de
+         categorías (antes quedaban sueltos debajo, con un
+         hueco feo). La caja es ahora flex-column: carrusel
+         arriba, dots pegaditos abajo. Flechas re-ancladas.
+         Fades: RETIRADOS definitivamente.
 
-/* ============================================
-   1. HERO
-   ★ NOTA: el hero fue eliminado del HTML del index.
-   Se migra completo por si client.js inyecta clases
-   (titulo-emoji-box, launch-badge, etc.).
-   Candidato a PURGA tras verificar client.js.
-   ============================================ */
+   COMO FUNCIONAN LOS DOTS (sección 6):
+   - client.js crea #categories-dots DENTRO de
+     .categories-container, como hermano del carrusel.
+   - Si TODAS las categorías caben en pantalla → clase
+     .vacio → los dots desaparecen (nada que indicar).
+   - El dot activo se vuelve píldora de color y avanza
+     según el scroll. Tocar un dot desliza el carrusel.
+   - Solo se muestran en móvil (≤768px).
+   ============================================================ */
+
+
+/* ============================================================
+   SECCIÓN 1 — HERO
+   Qué es: el banner degradado rojo/naranja con el título grande.
+   Estado: EL HTML DEL INDEX YA NO LO USA (fue eliminado).
+   Se conserva porque client.js aún puede inyectar algunas
+   clases (launch-badge, titulo-emoji-box...). Candidato a
+   purgar en el futuro UNA VEZ verificado client.js.
+   ============================================================ */
+
 .hero {
     background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
     color: var(--white);
@@ -45,11 +66,11 @@
     overflow: visible;
     z-index: 100;
     margin-top: 0;
-    padding-top: 1.5rem !important;
+    padding-top: 1.5rem !important;   /* ★ UX: más compacto */
     padding-bottom: 1rem !important;
-    /* ★ UX: Reducido */
 }
 
+/* Emojis decorativos gigantes de fondo */
 .hero::before {
     content: '🍔';
     position: absolute;
@@ -70,7 +91,6 @@
 
 .hero h1 {
     font-size: 2.2rem !important;
-    /* ★ UX: Reducido para PC */
     margin-bottom: 0.5rem !important;
     font-weight: 800;
     position: relative;
@@ -83,11 +103,10 @@
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.95;
-    display: none !important;
-    /* ★ UX: Ocultar texto muerto */
+    display: none !important;         /* ★ UX: texto muerto */
 }
 
-/* Lanzamiento y Descuentos */
+/* Cinta "LANZAMIENTO" con punto parpadeante */
 .launch-badge {
     display: inline-flex;
     align-items: center;
@@ -104,7 +123,7 @@
     border-radius: 9999px;
     margin-bottom: 0.8rem;
     transform: translateY(-15px);
-    animation: badge-pulse 2.5s ease-in-out infinite;
+    animation: badge-pulse 2.5s ease-in-out infinite; /* core */
 }
 
 .badge-dot {
@@ -112,9 +131,10 @@
     height: 6px;
     border-radius: 50%;
     background: var(--white);
-    animation: dot-blink 1.2s ease-in-out infinite;
+    animation: dot-blink 1.2s ease-in-out infinite; /* core */
 }
 
+/* Cápsula blanca "50% DESCUENTO" */
 .hero-discount {
     display: inline-block;
     background: var(--white);
@@ -124,9 +144,8 @@
     padding: 0.6rem 1.8rem;
     border-radius: 50px;
     margin-bottom: 0 !important;
-    /* ★ UX */
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    animation: pulse-descuento 2s ease-in-out infinite;
+    animation: pulse-descuento 2s ease-in-out infinite; /* core */
 }
 
 .discount-number {
@@ -135,6 +154,7 @@
     letter-spacing: -0.02em;
 }
 
+/* Fila del título con emoji a cada lado */
 .titulo-emoji-box {
     display: flex;
     align-items: center;
@@ -154,6 +174,9 @@
     white-space: nowrap;
 }
 
+/* Flechita circular que rebota para invitar a bajar.
+   El HTML del hero la eliminó, pero index.html conserva
+   el listener protegido con if(scrollIndicator). */
 .scroll-down-indicator {
     position: absolute;
     bottom: 25px;
@@ -170,7 +193,7 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     z-index: 1001;
-    animation: rebote-flecha 2s ease-in-out infinite;
+    animation: rebote-flecha 2s ease-in-out infinite; /* core */
     transition: opacity 0.4s ease, transform 0.4s ease;
     transform: translateX(-50%);
 }
@@ -181,62 +204,67 @@
     pointer-events: none;
 }
 
-/* Hero Responsive */
+/* Hero en tablets */
 @media (max-width: 768px) {
     .hero {
         padding: 1.5rem 0 2.5rem;
     }
-
     .hero h1 {
         font-size: 2.4rem;
-        /* ★ Reducido para tablets */
     }
-
     .scroll-down-indicator {
         width: 46px;
         height: 46px;
         font-size: 1.2rem;
         bottom: 15px;
     }
-
     .titulo-emoji-box {
         gap: 10px;
     }
-
     .titulo-emoji-box .emoji-lado {
         font-size: 2.2rem;
     }
 }
 
+/* Hero en celulares pequeños */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 1.8rem;
-        /* ★ Reducido para móviles pequeños */
     }
-
     .titulo-emoji-box .emoji-lado {
         font-size: 1.8rem;
     }
 }
 
-/* ============================================
-   2. TIENDAS Y CATEGORÍAS
-   ============================================ */
+
+/* ============================================================
+   SECCIÓN 2 — TÍTULO DE LA SECCIÓN DE TIENDAS
+   Qué es: el "🔥 Populares en El Santuario" (main-title).
+   client.js reescribe su innerHTML según la vista, así que
+   solo se estiliza, nunca se reposiciona.
+   ============================================================ */
+
 .stores-section-title {
     font-size: 1.1rem !important;
     text-align: left !important;
     margin-top: 1rem !important;
     margin-bottom: 0.5rem !important;
     padding-left: 16px;
-    /* ★ UX */
 }
 
-/* ★ Absorbido del <style> inline del index.html
-   (era la única parte viva de ese bloque) */
 .stores-section-title i {
     color: var(--primary);
     margin-right: 10px;
 }
+
+
+/* ============================================================
+   SECCIÓN 3 — CONTENEDORES DE TIENDAS
+   a) .stores-grid .......... grilla (tiendas CERRADAS, columnas)
+   b) .stores-grid-horizontal fila deslizable con autoscroll
+      (tiendas ABIERTAS). Oculta scrollbar e info secundaria:
+      solo foto + nombre para que quepan más en pantalla.
+   ============================================================ */
 
 .stores-grid {
     display: grid;
@@ -246,7 +274,7 @@
     padding: 2rem 0;
 }
 
-/* ★ UX: Layout horizontal automático para tiendas populares */
+/* client.js la empuja cada 3s (iniciarAutoScrollTiendas) */
 .stores-grid-horizontal {
     display: flex;
     gap: 1.5rem;
@@ -262,15 +290,14 @@
     display: none;
 }
 
+/* Modo horizontal: tarjeta compacta, ancho fijo */
 .stores-grid-horizontal .store-card {
     flex: 0 0 180px !important;
     scroll-snap-align: start;
-    /* ★ UX: 85vw a 180px para que quepan más */
 }
 
 .stores-grid-horizontal .store-img {
     height: 120px !important;
-    /* ★ UX: Ajustado */
 }
 
 .stores-grid-horizontal .store-info {
@@ -287,13 +314,21 @@
 .stores-grid-horizontal .store-info p,
 .stores-grid-horizontal .store-rating,
 .stores-grid-horizontal .btn-ver-menu-tienda {
-    display: none !important;
-    /* ★ UX: Ocultar basura visual */
+    display: none !important;       /* ★ UX: ocultar ruido */
 }
 
 .stores-grid-horizontal .store-card:hover {
     transform: none;
 }
+
+
+/* ============================================================
+   SECCIÓN 4 — TARJETA DE TIENDA (store-card)
+   Imagen grande arriba, nombre, dirección, horario, estrellas
+   y botón "Ver menú". Sirve a AMBOS layouts.
+   La imagen se carga diferido: client.js pone data-bg="url"
+   y un IntersectionObserver la aplica al estar por verse.
+   ============================================================ */
 
 .store-card {
     background: var(--white);
@@ -320,6 +355,7 @@
     padding: 1rem;
 }
 
+/* Cápsula "⭐ 5" sobre la imagen */
 .store-badge {
     background: var(--primary);
     color: white;
@@ -348,6 +384,7 @@
     gap: 0.5rem;
 }
 
+/* Descripción limitada a 2 líneas con "..." */
 .store-desc {
     color: var(--gray);
     font-size: 0.85rem;
@@ -367,7 +404,14 @@
     margin-top: 0.5rem;
 }
 
-/* Tiendas Cerradas */
+
+/* ============================================================
+   SECCIÓN 5 — TIENDAS CERRADAS
+   Bloque "Otras Tiendas (Cerradas ahora)": mismas tarjetas
+   con velo blanco y badge con la hora de apertura
+   ("Abre a las 16:30", la calcula client.js).
+   ============================================================ */
+
 .store-card.store-closed {
     cursor: not-allowed;
 }
@@ -406,25 +450,50 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Categorías Deslizables PWA */
+
+/* ============================================================
+   SECCIÓN 6 — CARRUSEL DE CATEGORÍAS  ★ v3.4
+   Scroll horizontal con "snap". Composición:
+
+   .categories-wrapper (ancla flechas, position:relative)
+    └─ .categories-container (★ FLEX-COLUMN v3.4)
+        ├─ .categories-scroll  (la pista deslizable)
+        └─ #categories-dots    (dots Instagram, lo crea JS)
+
+   DESKTOP (>768px): flechas .cat-scroll-btn a los lados.
+   MÓVIL (≤768px): sin flechas, dots abajo (si hay scroll).
+   ============================================================ */
+
+/* Contenedor externo. ★ v3.4: padding apretado (antes
+   1rem 0 0.5rem) para ganar espacio vertical */
 .categories-wrapper {
     position: relative;
     z-index: 10;
     margin-top: 8px;
-    /* De 15px a 8px */
-    padding: 1rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.25rem 0;
     display: flex;
     align-items: center;
 }
 
+/* ★ v3.4: la caja es ahora COLUMNA — el carrusel y los
+   dots viven en la MISMA pieza visual (antes los dots
+   quedaban sueltos debajo, con un hueco feo) */
 .categories-container {
     flex: 1;
     overflow: hidden;
     padding: 0 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* La pista deslizable. width:100% es necesario ahora que
+   el padre es columna (si no, se encogería al contenido).
+   scroll-snap: al soltar, se alinea con la categoría más
+   cercana. */
 .categories-scroll {
     display: flex;
+    width: 100%;
     gap: 0.5rem;
     overflow-x: auto;
     padding: 0.5rem 0;
@@ -438,6 +507,7 @@
     display: none;
 }
 
+/* Cada categoría: círculo + nombre debajo */
 .category-item {
     display: flex;
     flex-direction: column;
@@ -454,13 +524,16 @@
     transform: scale(0.93);
 }
 
+/* pointer-events:none en el contenido interno:
+   sin esto, en Android el toque a veces "atina" al ícono
+   en vez del .category-item y el click no dispara */
 .category-icon,
 .category-icon img,
 .category-item span {
     pointer-events: none;
-    /* Fix click android */
 }
 
+/* El círculo: vidrio esmerilado, borde rojo si está activa */
 .category-icon {
     width: 65px;
     height: 65px;
@@ -501,9 +574,13 @@
     font-weight: 700;
 }
 
+/* ── Flechas de desplazamiento (SOLO desktop; el media
+      query de la Sección 9 las oculta en móvil) ──
+   ★ v3.4: top compensado -7px porque la caja ahora incluye
+   los dots abajo; así quedan centradas con los CÍRCULOS. */
 .cat-scroll-btn {
     position: absolute;
-    top: 50%;
+    top: calc(50% - 7px);
     transform: translateY(-50%);
     background: var(--white);
     border: 1px solid #eee;
@@ -534,12 +611,71 @@
     right: 0;
 }
 
-/* Vitrina Productos Estrella (UX) */
+/* ── INDICADOR DE PUNTOS estilo Instagram (SOLO móvil)
+      ★ v3.4 COMPACTO e INTEGRADO: vive DENTRO de la caja
+      (client.js lo inserta como hermano del carrusel).
+      Punto 5px, píldora activa 14px, zona táctil 10px.
+      Altura extra del conjunto: ~12px. ── */
+.categories-dots {
+    display: none;                  /* desktop: sin dots (allá hay flechas) */
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+    padding: 2px 0 0 0;             /* pegadito al carrusel */
+}
+
+.cat-dot {
+    width: 10px;                    /* zona táctil compacta */
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* El punto visible se dibuja con ::before para poder
+   agrandarlo a píldora sin agrandar la zona táctil */
+.cat-dot::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.18);
+    transition: all 0.25s ease;
+}
+
+.cat-dot.active::before {
+    width: 14px;                    /* píldora alargada */
+    background: var(--primary);
+}
+
+/* En móvil SÍ se muestran (salvo que no haya scroll:
+   .vacio la pone client.js) */
+@media (max-width: 768px) {
+    .categories-dots:not(.vacio) {
+        display: flex;
+    }
+}
+
+
+/* ============================================================
+   SECCIÓN 7 — VITRINA DE PRODUCTOS DESTACADOS
+   Fotos grandes (2 en móvil, 3 en desktop) con productos al
+   azar de client.js. Clic → abre el menú de la tienda y
+   resalta el producto (verProductoDestacado).
+   ============================================================ */
+
+/* ★ v3.4: margin-top reducido (antes 1.5rem) — los
+   productos suben para dar protagonismo */
 .destacados-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 0.75rem;
     margin-bottom: 1.5rem;
 }
 
@@ -567,6 +703,7 @@
     transform: scale(1.05);
 }
 
+/* Franja inferior degradada: nombre, precio y tienda */
 .destacado-card-overlay {
     position: absolute;
     bottom: 0;
@@ -599,11 +736,16 @@
     display: block;
 }
 
-/* ============================================
-   3. MENÚ Y PRODUCTOS (vista por categoría)
-   (.section-title → vive en styles.css core,
-    la comparte con domiciliario.html)
-   ============================================ */
+
+/* ============================================================
+   SECCIÓN 8 — MENÚ Y PRODUCTOS
+   Vista al entrar a una TIENDA o a una CATEGORÍA. La tarjeta
+   moderna la genera client.js con clases pc-* (product-card.css);
+   estas clases (.product-card...) son del sistema antiguo
+   que aún convive.
+   ============================================================ */
+
+/* Botón "← Volver a tiendas" */
 .back-button {
     display: inline-flex;
     align-items: center;
@@ -666,6 +808,7 @@
     border-radius: 18px 18px 0 0;
 }
 
+/* En vista por CATEGORÍA: imagen más alta, sin descripción */
 #categoria-productos-grid .product-img {
     height: 220px !important;
 }
@@ -674,6 +817,7 @@
     display: none !important;
 }
 
+/* Variante SIN imagen: degradado gris + ícono grande */
 .product-img.sin-imagen {
     background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
 }
@@ -684,6 +828,8 @@
     opacity: 0.5;
 }
 
+/* Variante CON imagen: la foto tapa el ícono + sombreado
+   inferior para que el badge resalte */
 .product-img.con-imagen {
     background-size: cover !important;
     background-position: center !important;
@@ -707,6 +853,7 @@
     z-index: 1;
 }
 
+/* Etiqueta ("Más pedida", "Oferta"...) sobre la imagen */
 .product-badge {
     position: absolute;
     top: 12px;
@@ -753,10 +900,16 @@
     transform: scale(1.05);
 }
 
-/* ============================================
-   4. RESPONSIVE
-   ============================================ */
+
+/* ============================================================
+   SECCIÓN 9 — RESPONSIVE
+   Punto de corte principal: 768px. Resumen v3.4:
+   MÓVIL = sin flechas + dots integrados.
+   DESKTOP = flechas + sin dots.
+   ============================================================ */
+
 @media (min-width: 768px) {
+    /* Destacados pasan de 2 a 3 columnas */
     .destacados-container {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -769,6 +922,7 @@
         grid-template-columns: 1fr;
     }
 
+    /* Flechas OCULTAS en móvil: el indicador son los dots */
     .cat-scroll-btn {
         display: none;
     }
@@ -777,6 +931,7 @@
         padding: 0 0.5rem;
     }
 
+    /* Íconos de categoría más pequeños para caber más */
     .category-icon {
         width: 58px;
         height: 58px;
@@ -786,10 +941,18 @@
         font-size: 0.75rem;
     }
 
+    /* ★ v3.4: padding apretado (coherente con la regla base) */
     .categories-wrapper {
-        padding: 1rem 0 0.5rem 0;
+        padding: 0.5rem 0 0.25rem 0;
     }
 }
+
+
+/* ============================================================
+   SECCIÓN 10 — FOOTER CTA
+   Botón "¿Quieres trabajar con nosotros?" del pie.
+   min-height:44px = zona táctil mínima estándar.
+   ============================================================ */
 
 .footer-cta {
     margin: 0 0 1.5rem;

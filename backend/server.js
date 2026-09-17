@@ -1,6 +1,7 @@
 // ============================================
 // server.js — Backend completo de Domicilios
 // 5 funciones: Static + Proxy + Socket.IO + Push + JWT Auth
+// ★ v2.4: Blindaje de acceso (Fase 1)
 // ============================================
 
 const express = require('express');
@@ -18,11 +19,9 @@ const { getMessaging } = require("firebase-admin/messaging");
 const { getFirestore } = require("firebase-admin/firestore");
 
 try {
-    // Construimos el objeto de credenciales usando variables de entorno
     const serviceAccount = {
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        // El .replace es VITAL para convertir los caracteres '\n' en saltos de línea reales en producción
         privateKey: process.env.FIREBASE_PRIVATE_KEY 
             ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') 
             : undefined
@@ -36,13 +35,26 @@ try {
     console.error("❌ Error al inicializar Firebase Admin:", error.message);
 }
 
-const firestoreDb = getFirestore(); // Inicializar Firestore
+const firestoreDb = getFirestore();
 
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
     console.error('❌ Faltan JWT_SECRET en el archivo .env');
+    process.exit(1);
+}
+
+// ============================================
+// ★ v2.4: CONFIGURACIÓN DEL GAS + CLAVE SECRETA
+// ============================================
+// GAS_URL ahora es opcional por .env (si no está, usa la URL actual).
+const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbw2R_nABf0FbpfWf_6F9pz2DmHuMrd3N1Dw9_4v6-oETZ2Kmh4pDSNW9mDV0ObGK-sK/exec';
+
+// Clave compartida con el Apps Script. OBLIGATORIA: sin ella el GAS rechaza todo.
+const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
+if (!GAS_SECRET_KEY) {
+    console.error('❌ Falta GAS_SECRET_KEY en las variables de entorno (.env / Railway)');
     process.exit(1);
 }
 
@@ -60,7 +72,7 @@ const allowedOrigins = [
     'http://localhost:5500',
     'http://127.0.0.1:5500',
     'http://localhost:3000',
-    'https://net-sensation-carol.ngrok-free.dev/'
+    'https://net-sensation-carol.ngrok-free.dev' // ★ v2.4: sin "/" final (los navegadores envían el origen sin slash)
 ];
 
 const io = socketIo(server, {
@@ -104,6 +116,8 @@ webpush.setVapidDetails(VAPID_EMAIL, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
 
 // ============================================
 // AUTENTICACIÓN JWT - LOGIN
+// ★ v2.4: ahora envía las credenciales al GAS por POST (ya no viajan en la URL)
+//   y adjunta la clave secreta.
 // ============================================
 app.post('/api/login', async (req, res) => {
     const { nombre, password } = req.body;
@@ -113,8 +127,16 @@ app.post('/api/login', async (req, res) => {
     }
 
     try {
-        const url = `${GAS_URL}?action=login&nombre=${encodeURIComponent(nombre)}&password=${encodeURIComponent(password)}`;
-        const response = await axios.get(url);
+        const body = new URLSearchParams({
+            action: 'login',
+            nombre: nombre,
+            password: password,
+            key: GAS_SECRET_KEY
+        }).toString();
+
+        const response = await axios.post(GAS_URL, body, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
         const data = response.data;
 
         if (data.success) {
@@ -169,11 +191,6 @@ function verificarToken(req, res, next) {
 const suscripciones = new Map();
 
 // ============================================
-// GOOGLE APPS SCRIPT — URL fija
-// ============================================
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwre5UdiffxhIRxVAS2VrAgVESNSbdS878L83ygHOU8VrvS8_vq0TSxq9FkUH1EIXJX/exec';
-
-// ============================================
 // ENDPOINTS DE SUSCRIPCIÓN PUSH
 // ============================================
 app.post('/api/suscripciones', (req, res) => {
@@ -201,7 +218,12 @@ app.get('/api/vapid-public-key', (req, res) => {
     res.json({ publicKey: VAPID_PUBLIC_KEY });
 });
 
-app.post('/api/enviar-push', async (req, res) => {
+// ★ v2.4: enviar-push ahora exige token de ADMIN (antes era de acceso libre)
+app.post('/api/enviar-push', verificarToken, async (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de administrador.' });
+    }
+
     const { titulo, mensaje, url = '/', tipo = 'general', roles = ['admin'], pedidoId = null } = req.body;
     const payload = JSON.stringify({
         title: titulo, body: mensaje, url, tipo, pedidoId,
@@ -257,7 +279,6 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
         ? `Pedido #${pedidoId} - ${pedidoDetalle.clienteNombre || ''} - $${parseInt(pedidoDetalle.total || 0).toLocaleString('es-CO')}`
         : `Pedido #${pedidoId} asignado`;
 
-    // 1. Notificación Web Push tradicional (Heredada)
     await enviarPushAUsuario(domiciliarioId, 'domiciliario', {
         title: '🛵 Nuevo pedido asignado',
         body: cuerpo,
@@ -272,10 +293,8 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
         data: { url: '/domiciliario.html', pedidoId: String(pedidoId), tipo: 'asignacion' }
     });
 
-    // 2. ★★★ NUEVO: Notificación push FCM a través de Firestore ★★★
     try {
         const domiId = Number(domiciliarioId);
-        // Buscamos tokens correspondientes a este domiciliario (blindado contra string/number)
         const domiSnapshot = await firestoreDb.collection('tokens_clientes')
             .where('rol', '==', 'domiciliario')
             .where('usuarioId', 'in', [domiId, String(domiId), Number(domiId)])
@@ -296,7 +315,7 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
                     )
                 );
             });
-            await Promise.all(promesasDomi); // Despachamos en paralelo
+            await Promise.all(promesasDomi);
         } else {
             console.log(`⚠️ No se encontraron tokens FCM registrados para el domiciliario ID: ${domiId}`);
         }
@@ -329,7 +348,7 @@ async function enviarPushATienda(tiendaId, pedidoId, pedidoDetalle) {
 }
 
 // ============================================
-// ★★★ FUNCIÓN: Enviar notificación FCM a UN TOKEN específico ★★★
+// FUNCIÓN: Enviar notificación FCM a UN TOKEN específico
 // ============================================
 async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
     if (!token) {
@@ -354,11 +373,10 @@ async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
 }
 
 // ============================================
-// ★★★ NUEVA FUNCIÓN: Enviar FCM a TODOS los ADMINISTRADORES ★★★
+// FUNCIÓN: Enviar FCM a TODOS los ADMINISTRADORES
 // ============================================
 async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
     try {
-        // Buscamos en Firestore todos los documentos donde el rol sea 'admin'
         const tokensRef = firestoreDb.collection('tokens_clientes');
         const snapshot = await tokensRef.where('rol', '==', 'admin').get();
 
@@ -375,13 +393,12 @@ async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
 
         if (tokens.length === 0) return;
 
-        // Usamos sendEachForMulticast (recomendado por Firebase para SDK modernos)
         const message = {
             notification: { title: titulo, body: cuerpo },
             data: datosExtra,
             android: { priority: 'high' },
             webpush: { headers: { Urgency: 'high' } },
-            tokens: tokens // <--- Array de tokens
+            tokens: tokens
         };
 
         const response = await getMessaging().sendEachForMulticast(message);
@@ -394,10 +411,11 @@ async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
 
 // ============================================
 // FUNCIÓN: Obtener pedido completo desde GAS
+// ★ v2.4: adjunta la clave secreta
 // ============================================
 async function obtenerPedidoPorId(pedidoId) {
     try {
-        const response = await axios.get(`${GAS_URL}?action=getPedidos`);
+        const response = await axios.get(`${GAS_URL}?action=getPedidos&key=${encodeURIComponent(GAS_SECRET_KEY)}`);
         const pedidos = response.data;
         if (!Array.isArray(pedidos)) return null;
         return pedidos.find(p => String(p.id) === String(pedidoId));
@@ -425,37 +443,126 @@ app.get('/api/status', (req, res) => {
 });
 
 // ============================================
+// ★ v2.4: MATRIZ DE PERMISOS DEL PROXY
+// Por defecto TODO requiere sesión. Solo lo listado como público es abierto.
+// ============================================
+const ACCIONES_PUBLICAS = new Set([
+    'login', 'crearPedido', 'getAnunciosActivos', 'getCatalogo',
+    'getTiendas', 'getProductos', 'getComplementos' // datos públicos (idénticos al catálogo estático)
+]);
+
+const ACCIONES_SOLO_ADMIN = new Set([
+    'crearTienda', 'actualizarTienda', 'eliminarTienda',
+    'crearProducto', 'actualizarProducto', 'eliminarProducto',
+    'crearDomiciliario', 'actualizarDomiciliario', 'eliminarDomiciliario',
+    'eliminarPedido', 'eliminarPedidos', 'asignarDomiciliario',
+    'getDomiciliarios', 'getUsuariosTienda', 'crearUsuarioTienda', 'actualizarUsuarioTienda', 'eliminarUsuarioTienda',
+    'guardarAnuncio', 'cambiarEstadoAnuncio', 'getAnunciosAdmin',
+    'crearComplemento', 'eliminarComplemento', 'eliminarComplementos'
+]);
+
+const ACCIONES_DOMI_O_ADMIN = new Set([
+    'actualizarEstado', 'getPedidos',
+    'getPerfilDomiciliario', 'actualizarPerfilDomiciliario'
+]);
+
+const ACCIONES_TIENDA_O_ADMIN = new Set([
+    'getPedidosTienda', 'actualizarPasswordTienda'
+]);
+
+// ★ v2.4: límite simple anti-spam de pedidos (por IP, 5 pedidos cada 10 min)
+const registroPedidosPorIP = new Map();
+function limitePedidosAlcanzado(ip) {
+    const ahora = Date.now();
+    const ventana = 10 * 60 * 1000;
+    const marcas = (registroPedidosPorIP.get(ip) || []).filter(t => ahora - t < ventana);
+    if (marcas.length >= 5) {
+        registroPedidosPorIP.set(ip, marcas);
+        return true;
+    }
+    marcas.push(ahora);
+    registroPedidosPorIP.set(ip, marcas);
+    return false;
+}
+
+// ============================================
 // PROXY PRINCIPAL — Todas las llamadas a /api
 // ============================================
 app.all('/api', verificarToken, async (req, res) => {
     try {
         const action = req.query.action || req.body.action;
-        console.log(`📥 [${req.method}] action=${action} (User: ${req.user ? req.user.nombre : 'Público'})`);
+        console.log(`📥 [${req.method}] action=${action} (User: ${req.user ? `${req.user.nombre} [${req.user.rol}]` : 'Público'})`);
 
         if (!action) {
             return res.status(400).json({ success: false, error: 'Falta action' });
         }
 
-        // PROTECCIÓN DE RUTAS POR ROL
-        const accionesAdmin = ['crearTienda', 'actualizarTienda', 'eliminarTienda', 'crearProducto', 'actualizarProducto', 'eliminarProducto', 'crearDomiciliario', 'actualizarDomiciliario', 'eliminarDomiciliario', 'eliminarPedidos', 'asignarDomiciliario'];
-        const accionesDomiciliario = ['actualizarEstado'];
-        const accionesAutenticadas = ['getDomiciliarios', 'getPedidos'];
+        // ─────────────────────────────────────────────
+        // ★ v2.4: CONTROL DE ACCESO POR DEFECTO CERRADO
+        // ─────────────────────────────────────────────
+        if (!req.user) {
+            if (!ACCIONES_PUBLICAS.has(action)) {
+                return res.status(401).json({ success: false, error: 'Debes iniciar sesión para realizar esta acción.' });
+            }
+        } else {
+            const rol = req.user.rol;
+            const esAdmin = rol === 'admin';
 
-        if (accionesAdmin.includes(action) && req.user?.rol !== 'admin') {
-            return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de administrador.' });
+            if (ACCIONES_SOLO_ADMIN.has(action) && !esAdmin) {
+                return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de administrador.' });
+            }
+            if (ACCIONES_DOMI_O_ADMIN.has(action) && rol !== 'domiciliario' && !esAdmin) {
+                return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de domiciliario o administrador.' });
+            }
+            if (ACCIONES_TIENDA_O_ADMIN.has(action) && rol !== 'tienda' && !esAdmin) {
+                return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de tienda o administrador.' });
+            }
         }
 
-        if (accionesDomiciliario.includes(action) && !['admin', 'domiciliario'].includes(req.user?.rol)) {
-            return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de domiciliario o admin.' });
+        // ★ v2.4: anti-spam solo para crearPedido
+        if (action === 'crearPedido') {
+            const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || 'desconocida';
+            if (limitePedidosAlcanzado(ip)) {
+                return res.status(429).json({ success: false, error: 'Demasiados pedidos desde esta conexión. Intenta más tarde.' });
+            }
         }
 
-        if (accionesAutenticadas.includes(action) && !req.user) {
-            return res.status(401).json({ success: false, error: 'Debes iniciar sesión para ver esta información.' });
+        // ─────────────────────────────────────────────
+        // ★ v2.4: CADA QUIEN SOLO SUS PROPIOS DATOS
+        // (si el rol es tienda/domiciliario, se fuerza el id del token,
+        //  ignorando el que venga en la petición)
+        // ─────────────────────────────────────────────
+        if (req.user) {
+            const uid = String(req.user.id);
+
+            if (req.user.rol === 'tienda') {
+                if (action === 'getPedidosTienda') {
+                    req.query.tiendaId = uid;
+                    if (req.body) req.body.tiendaId = uid;
+                }
+                if (action === 'actualizarPasswordTienda') {
+                    if (req.body) req.body.id = uid;
+                    req.query.id = uid;
+                }
+            }
+
+            if (req.user.rol === 'domiciliario') {
+                if (action === 'getPedidos') {
+                    req.query.domiciliario = uid;
+                }
+                if (action === 'getPerfilDomiciliario' || action === 'actualizarPerfilDomiciliario') {
+                    req.query.id = uid;
+                    if (req.body) req.body.id = uid;
+                }
+            }
         }
 
-        let gasUrl = `${GAS_URL}?action=${action}`;
+        // ─────────────────────────────────────────────
+        // REENVÍO AL GAS (ahora siempre con la clave secreta)
+        // ─────────────────────────────────────────────
+        let gasUrl = `${GAS_URL}?action=${encodeURIComponent(action)}&key=${encodeURIComponent(GAS_SECRET_KEY)}`;
         for (const key in req.query) {
-            if (key !== 'action') gasUrl += `&${key}=${encodeURIComponent(req.query[key])}`;
+            if (key !== 'action' && key !== 'key') gasUrl += `&${key}=${encodeURIComponent(req.query[key])}`;
         }
 
         let response;
@@ -468,13 +575,26 @@ app.all('/api', verificarToken, async (req, res) => {
             });
         }
 
-        const data = response.data;
+        let data = response.data;
         console.log(`📤 GAS: success=${data.success ?? (Array.isArray(data) ? `array[${data.length}]` : '?')}`);
+
+        // ★ v2.4: si la llamada es anónima, se oculta la comisión de cada tienda
+        // (dato comercial sensible). Usuarios con sesión sí la reciben.
+        if (action === 'getTiendas' && !req.user && Array.isArray(data)) {
+            data = data.map(t => {
+                const copia = { ...t };
+                delete copia.comision;
+                return copia;
+            });
+        }
 
         res.json(data);
 
         if (!data.success) return;
 
+        // ─────────────────────────────────────────────
+        // EVENTOS SOCKET / PUSH (sin cambios funcionales)
+        // ─────────────────────────────────────────────
         try {
             switch (action) {
                 case 'crearPedido': {
@@ -485,7 +605,6 @@ app.all('/api', verificarToken, async (req, res) => {
                     });
                     console.log(`📦 Emitido nuevoPedido #${data.id}`);
 
-                    // 1. Notificación al cliente (FCM)
                     const fcmTokenCliente = req.body.fcmToken;
                     if (fcmTokenCliente) {
                         await enviarNotificacionFCM(
@@ -496,28 +615,24 @@ app.all('/api', verificarToken, async (req, res) => {
                         );
                     }
 
-                    // 2. Notificación al admin (FCM Masivo)
                     await enviarNotificacionAdminsFCM(
                         '🛒 ¡NUEVO PEDIDO!',
                         `Cliente: ${pedido?.clienteNombre || 'Desconocido'} - Total: $${parseInt(pedido?.total || 0).toLocaleString('es-CO')}`,
                         { url: '/admin.html', pedidoId: String(data.id) }
                     );
 
-                    // 3. ★★★ CORREGIDO Y BLINDADO: Enviar push FCM a la(s) tienda(s) correspondiente(s) ★★★
                     try {
                         let productos = [];
                         try { productos = JSON.parse((pedido && pedido.productosJson) || '[]'); } catch (e) { productos = []; }
                         const tiendaIds = [...new Set(productos.map(p => p.tiendaId).filter(Boolean))];
 
                         for (const tId of tiendaIds) {
-                            // Socket.IO para tiempo real (si la tienda tiene la pestaña abierta)
                             io.to(`tienda_${tId}`).emit('nuevoPedidoTienda', {
                                 pedido: pedido || { id: data.id },
                                 mensaje: `Nuevo pedido #${data.id}`
                             });
                             console.log(`📦 Emitido nuevoPedidoTienda → tienda_${tId}`);
 
-                            // ★ Solución contra tipo de dato: Buscamos si en Firestore se guardó como string "1" o número 1 ★
                             const tiendaSnapshot = await firestoreDb.collection('tokens_clientes')
                                 .where('rol', '==', 'tienda')
                                 .where('tiendaId', 'in', [tId, String(tId), Number(tId)]) 
@@ -526,10 +641,10 @@ app.all('/api', verificarToken, async (req, res) => {
                             if (!tiendaSnapshot.empty) {
                                 console.log(`🔔 Enviando notificaciones push a tienda ID: ${tId} (${tiendaSnapshot.size} dispositivos)...`);
                                 
-                                const promesasTienda = []; // <-- Array de promesas de tienda
+                                const promesasTienda = [];
                                 tiendaSnapshot.forEach(docSnap => {
                                     const tiendaToken = docSnap.id;
-                                    promesasTienda.push( // <--- ¡CORREGIDO AQUÍ! (Antes empujaba a promesasAdmin)
+                                    promesasTienda.push(
                                         enviarNotificacionFCM(
                                             tiendaToken,
                                             '🛍️ ¡Nuevo pedido para tu tienda!',
@@ -538,7 +653,7 @@ app.all('/api', verificarToken, async (req, res) => {
                                         )
                                     );
                                 });
-                                await Promise.all(promesasTienda); // <-- Esperamos a que se completen las promesas de la tienda
+                                await Promise.all(promesasTienda);
                             } else {
                                 console.log(`⚠️ No se encontraron tokens FCM registrados para la tienda ID: ${tId}`);
                             }
@@ -550,9 +665,6 @@ app.all('/api', verificarToken, async (req, res) => {
                     break;
                 }
 
-                // ====================================================
-                // ★★★ NUEVO BLOQUE ACTUALIZARESTADO (CON FCM AL CLIENTE) ★★★
-                // ====================================================
                 case 'actualizarEstado': {
                     const pedidoId = (req.body && req.body.pedidoId) || req.query.pedidoId;
                     const nuevoEstado = (req.body && req.body.estado) || req.query.estado;
@@ -560,7 +672,6 @@ app.all('/api', verificarToken, async (req, res) => {
                     io.emit('estadoActualizado', { pedidoId, nuevoEstado });
                     console.log(`🔄 Emitido estadoActualizado #${pedidoId} → ${nuevoEstado}`);
 
-                    // 1. Notificación existente para el administrador
                     if (nuevoEstado === 'entregado') {
                         const payload = JSON.stringify({
                             title: '✅ Pedido entregado',
@@ -585,7 +696,6 @@ app.all('/api', verificarToken, async (req, res) => {
                         }
                     }
 
-                    // 2. ★★★ NUEVO: Enviar push FCM de actualización de estado al Cliente ★★★
                     try {
                         const pedido = await obtenerPedidoPorId(pedidoId);
                         
@@ -722,6 +832,7 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log(`  📍 Local:   http://localhost:${PORT}`);
     console.log(`  🔧 Modo:    ${isDev ? 'DESARROLLO (frontend incluido)' : 'PRODUCCIÓN (solo API)'}`);
     console.log(`  🔐 Auth:    JWT Habilitado`);
+    console.log(`  🛡️  v2.4:   Proxy por defecto cerrado + clave GAS`);
     console.log(`  📡 Push:    ${suscripciones.size} suscripciones Web Push`);
     console.log(`  🔥 Firebase: FCM Admin SDK Activo`);
     console.log('═══════════════════════════════════════════════');

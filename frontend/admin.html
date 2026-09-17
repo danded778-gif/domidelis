@@ -33,11 +33,11 @@
         <div>
             <strong>Activa las notificaciones</strong>
             <div style="font-size:0.85rem;color:#666;">Para recibir alertas aunque cierres la página</div>
+            <button onclick="activarPermisos()"
+                style="background:#E63946;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">
+                <i class="fas fa-bell"></i> Activar
+            </button>
         </div>
-        <button onclick="activarPermisos()"
-            style="background:#E63946;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">
-            <i class="fas fa-bell"></i> Activar
-        </button>
     </div>
 
     <header>
@@ -167,7 +167,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="8" class="text-center">Cargando pedidos...</td>
+                                    <td colspan="9" class="text-center">Cargando pedidos...</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -281,7 +281,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="9" class="text-center">Cargando historial...</td>
+                                <td colspan="10" class="text-center">Cargando historial...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -861,9 +861,12 @@
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-lock"></i> Contraseña *</label>
+                    <!-- ★ v2.4: "required" eliminado (la validación la hace guardarDomiciliario:
+                         obligatoria solo al crear; al editar, vacío = no cambiar) -->
+                    <small style="display:block; margin-bottom:6px; color:var(--gray); font-size:.8rem;">Obligatoria
+                        solo al crear. Al editar, dejar vacío conserva la actual.</small>
                     <div style="display:flex;gap:.5rem;">
-                        <input type="password" id="domiPassword" required placeholder="Mínimo 4 caracteres"
-                            style="flex:1;">
+                        <input type="password" id="domiPassword" placeholder="Mínimo 4 caracteres" style="flex:1;">
                         <button type="button" onclick="togglePasswordDomi()" class="btn btn-secondary btn-sm"
                             style="padding:.6rem 1rem;">
                             <i class="fas fa-eye" id="domi-eye-icon"></i>
@@ -898,8 +901,14 @@
                         usuario.</small></div>
                 <div class="form-group"><label><i class="fas fa-user"></i> Nombre de Usuario (Login) *</label><input
                         type="text" id="usuarioTiendaNombre" required placeholder="Ej: hamburguesas_corral"></div>
-                <div class="form-group"><label><i class="fas fa-lock"></i> Contraseña *</label><input type="text"
-                        id="usuarioTiendaPassword" required placeholder="Mínimo 4 caracteres"></div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Contraseña *</label>
+                    <!-- ★ v2.4: "required" eliminado (la validación la hace guardarUsuarioTienda:
+                         obligatoria solo al crear; al editar, vacío = no cambiar) -->
+                    <small style="display:block; margin-bottom:6px; color:var(--gray); font-size:.8rem;">Obligatoria
+                        solo al crear. Al editar, dejar vacío conserva la actual.</small>
+                    <input type="text" id="usuarioTiendaPassword" placeholder="Mínimo 4 caracteres">
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary"
                         onclick="cerrarModalUsuarioTienda()">Cancelar</button>
