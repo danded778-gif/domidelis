@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T17-52-44",
-  "ultimaActualizacion": "2026-09-17T17:52:44.036Z",
+  "version": "v2026-09-17T17-57-30",
+  "ultimaActualizacion": "2026-09-17T17:57:30.283Z",
   "tiendas": [
     {
       "id": 1,
@@ -301,7 +301,7 @@
         },
         {
           "id": 117,
-          "nombre": "Media Aguardiente Antioqueño azul",
+          "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media azul",
           "precio": 27500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
@@ -1292,7 +1292,7 @@
     },
     {
       "id": 117,
-      "nombre": "Media Aguardiente Antioqueño azul",
+      "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media azul",
       "precio": 27500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
