@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T17-52-17",
-  "ultimaActualizacion": "2026-09-17T17:52:17.413Z",
+  "version": "v2026-09-17T17-52-44",
+  "ultimaActualizacion": "2026-09-17T17:52:44.036Z",
   "tiendas": [
     {
       "id": 1,
@@ -288,7 +288,7 @@
         },
         {
           "id": 116,
-          "nombre": "Media Aguardiente Antioqueño rojo",
+          "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media roja",
           "precio": 26000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
@@ -302,7 +302,7 @@
         {
           "id": 117,
           "nombre": "Media Aguardiente Antioqueño azul",
-          "descripcion": "media",
+          "descripcion": "Media azul",
           "precio": 27500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
           "badge": "Disponible",
@@ -1279,7 +1279,7 @@
     },
     {
       "id": 116,
-      "nombre": "Media Aguardiente Antioqueño rojo",
+      "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media roja",
       "precio": 26000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_rojo.jpg",
@@ -1293,7 +1293,7 @@
     {
       "id": 117,
       "nombre": "Media Aguardiente Antioqueño azul",
-      "descripcion": "media",
+      "descripcion": "Media azul",
       "precio": 27500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente_azul.jpg",
       "badge": "Disponible",
