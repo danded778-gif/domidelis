@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T18-16-38",
-  "ultimaActualizacion": "2026-09-17T18:16:38.066Z",
+  "version": "v2026-09-17T18-16-45",
+  "ultimaActualizacion": "2026-09-17T18:16:45.610Z",
   "tiendas": [
     {
       "id": 1,
@@ -1050,7 +1050,7 @@
       "horario": "{\"mon\":\"11:00-19:00\",\"tue\":\"11:00-19:00\",\"wed\":\"11:00-19:00\",\"thu\":\"11:00-19:00\",\"fri\":\"11:00-19:00\",\"sat\":\"11:00-19:00\",\"sun\":\"11:00-19:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/mr%20simon/MR_SIMON_LOGO_500KB.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
