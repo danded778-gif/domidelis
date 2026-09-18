@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-32-05",
-  "ultimaActualizacion": "2026-09-18T23:32:05.619Z",
+  "version": "v2026-09-18T23-32-30",
+  "ultimaActualizacion": "2026-09-18T23:32:30.224Z",
   "tiendas": [
     {
       "id": 1,
@@ -3598,6 +3598,16 @@
     {
       "id": 163,
       "id_producto": 184,
+      "grupo": "Salsa",
+      "nombre": "Salsa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 163,
+      "id_producto": 187,
       "grupo": "Salsa",
       "nombre": "Salsa",
       "precio": 0,
