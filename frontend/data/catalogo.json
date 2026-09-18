@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-35-17",
-  "ultimaActualizacion": "2026-09-18T23:35:17.683Z",
+  "version": "v2026-09-18T23-36-13",
+  "ultimaActualizacion": "2026-09-18T23:36:13.550Z",
   "tiendas": [
     {
       "id": 1,
@@ -3611,7 +3611,7 @@
       "grupo": "menu del dia",
       "nombre": "sopa del dia",
       "precio": 0,
-      "tipo": "salsa",
+      "tipo": "opcion",
       "max": 1,
       "min": 0
     },
@@ -3630,6 +3630,26 @@
       "id_producto": 187,
       "grupo": "proteina",
       "nombre": "carne res",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 167,
+      "id_producto": 187,
+      "grupo": "proteina",
+      "nombre": "carne cerdo",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 168,
+      "id_producto": 187,
+      "grupo": "proteina",
+      "nombre": "pollo",
       "precio": 0,
       "tipo": "",
       "max": null,
