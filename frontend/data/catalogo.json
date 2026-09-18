@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-51-54",
-  "ultimaActualizacion": "2026-09-18T23:51:54.137Z",
+  "version": "v2026-09-18T23-58-44",
+  "ultimaActualizacion": "2026-09-18T23:58:44.522Z",
   "tiendas": [
     {
       "id": 1,
@@ -3622,7 +3622,7 @@
       "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
+      "max": 1,
       "min": 0
     },
     {
