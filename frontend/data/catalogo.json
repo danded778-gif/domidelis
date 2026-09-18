@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-47-14",
-  "ultimaActualizacion": "2026-09-18T23:47:14.561Z",
+  "version": "v2026-09-18T23-47-16",
+  "ultimaActualizacion": "2026-09-18T23:47:16.884Z",
   "tiendas": [
     {
       "id": 1,
@@ -1047,7 +1047,7 @@
           "precio": 21000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "menu",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "11",
@@ -2077,7 +2077,7 @@
       "precio": 21000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "menu",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "11",
