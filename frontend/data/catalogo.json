@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-48-38",
-  "ultimaActualizacion": "2026-09-18T23:48:38.915Z",
+  "version": "v2026-09-18T23-50-07",
+  "ultimaActualizacion": "2026-09-18T23:50:07.515Z",
   "tiendas": [
     {
       "id": 1,
@@ -3608,11 +3608,11 @@
     {
       "id": 164,
       "id_producto": 187,
-      "grupo": "menu del dia",
+      "grupo": "almuerzo",
       "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -3622,7 +3622,7 @@
       "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
