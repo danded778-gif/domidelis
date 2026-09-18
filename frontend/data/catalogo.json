@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-33-01",
-  "ultimaActualizacion": "2026-09-18T23:33:01.313Z",
+  "version": "v2026-09-18T23-33-49",
+  "ultimaActualizacion": "2026-09-18T23:33:49.901Z",
   "tiendas": [
     {
       "id": 1,
@@ -3606,13 +3606,33 @@
       "min": 0
     },
     {
-      "id": 163,
+      "id": 164,
       "id_producto": 187,
       "grupo": "menu del dia",
       "nombre": "Salsa",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
+      "min": 0
+    },
+    {
+      "id": 165,
+      "id_producto": 187,
+      "grupo": "menu del dia",
+      "nombre": "sopa del dia",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 166,
+      "id_producto": 187,
+      "grupo": "menu del dia",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
       "min": 0
     }
   ]
