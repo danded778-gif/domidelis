@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-17T18-16-45",
-  "ultimaActualizacion": "2026-09-17T18:16:45.610Z",
+  "version": "v2026-09-18T22-28-30",
+  "ultimaActualizacion": "2026-09-18T22:28:30.698Z",
   "tiendas": [
     {
       "id": 1,
@@ -1039,6 +1039,19 @@
           "activo": true,
           "tiendaId": "11",
           "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 187,
+          "nombre": "Almuerzo del Dia",
+          "descripcion": "",
+          "precio": 21000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
         }
       ]
     },
@@ -2050,6 +2063,19 @@
       "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
       "precio": 32500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 187,
+      "nombre": "Almuerzo del Dia",
+      "descripcion": "",
+      "precio": 21000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
