@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-50-07",
-  "ultimaActualizacion": "2026-09-18T23:50:07.515Z",
+  "version": "v2026-09-18T23-51-47",
+  "ultimaActualizacion": "2026-09-18T23:51:47.496Z",
   "tiendas": [
     {
       "id": 1,
@@ -3608,7 +3608,7 @@
     {
       "id": 164,
       "id_producto": 187,
-      "grupo": "almuerzo",
+      "grupo": "Acompañamiento",
       "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "opcion",
@@ -3618,7 +3618,7 @@
     {
       "id": 165,
       "id_producto": 187,
-      "grupo": "menu del dia",
+      "grupo": "Acompañamiento",
       "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
