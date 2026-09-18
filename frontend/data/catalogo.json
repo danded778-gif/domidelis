@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-33-49",
-  "ultimaActualizacion": "2026-09-18T23:33:49.901Z",
+  "version": "v2026-09-18T23-34-14",
+  "ultimaActualizacion": "2026-09-18T23:34:14.104Z",
   "tiendas": [
     {
       "id": 1,
@@ -3609,7 +3609,7 @@
       "id": 164,
       "id_producto": 187,
       "grupo": "menu del dia",
-      "nombre": "Salsa",
+      "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
