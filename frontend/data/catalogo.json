@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-34-49",
-  "ultimaActualizacion": "2026-09-18T23:34:49.351Z",
+  "version": "v2026-09-18T23-35-14",
+  "ultimaActualizacion": "2026-09-18T23:35:14.117Z",
   "tiendas": [
     {
       "id": 1,
@@ -3628,8 +3628,8 @@
     {
       "id": 166,
       "id_producto": 187,
-      "grupo": "menu del dia",
-      "nombre": "sopa del dia",
+      "grupo": "proteina",
+      "nombre": "carne res",
       "precio": 0,
       "tipo": "",
       "max": null,
