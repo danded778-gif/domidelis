@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-36-13",
-  "ultimaActualizacion": "2026-09-18T23:36:13.550Z",
+  "version": "v2026-09-18T23-36-38",
+  "ultimaActualizacion": "2026-09-18T23:36:38.106Z",
   "tiendas": [
     {
       "id": 1,
@@ -3613,7 +3613,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 165,
@@ -3621,9 +3621,9 @@
       "grupo": "menu del dia",
       "nombre": "frijoles",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 166,
@@ -3631,9 +3631,9 @@
       "grupo": "proteina",
       "nombre": "carne res",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 3,
+      "min": 1
     },
     {
       "id": 167,
