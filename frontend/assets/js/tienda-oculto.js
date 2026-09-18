@@ -22,7 +22,6 @@
     var nombre = normalizar(tienda.nombre);
     if (desc.indexOf('(oculto)') !== -1) return true;
     if (desc.indexOf('mantenimiento(oculto)') !== -1) return true;
-    if (nombre === 'mantenimiento') return true;
     return false;
   }
 
@@ -35,7 +34,6 @@
       (titulo ? titulo.textContent : '') + ' ' + (desc ? desc.textContent : '')
     );
     if (texto.indexOf('(oculto)') !== -1) return true;
-    if (nombre === 'mantenimiento') return true;
     return false;
   }
 
