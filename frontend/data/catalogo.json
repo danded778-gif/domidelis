@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T22-53-33",
-  "ultimaActualizacion": "2026-09-18T22:53:33.338Z",
+  "version": "v2026-09-18T22-58-14",
+  "ultimaActualizacion": "2026-09-18T22:58:14.628Z",
   "tiendas": [
     {
       "id": 1,
@@ -940,7 +940,7 @@
     },
     {
       "id": 10,
-      "nombre": "Mantenimiento",
+      "nombre": "Mantenimientuys",
       "descripcion": "",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"1600 - 00:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"00:00 - 05:59\",\"sat\":\"00:00 - 05:59\",\"sun\":\"Cerrado\"}",
@@ -960,7 +960,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "10",
-          "tiendaNombre": "Mantenimiento"
+          "tiendaNombre": "Mantenimientuys"
         }
       ]
     },
@@ -1847,7 +1847,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "10",
-      "tiendaNombre": "Mantenimiento"
+      "tiendaNombre": "Mantenimientuys"
     },
     {
       "id": 170,
