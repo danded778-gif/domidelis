@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-15-02",
-  "ultimaActualizacion": "2026-09-19T01:15:02.969Z",
+  "version": "v2026-09-19T01-16-27",
+  "ultimaActualizacion": "2026-09-19T01:16:27.148Z",
   "tiendas": [
     {
       "id": 1,
@@ -1142,7 +1142,21 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 189,
+          "nombre": "Kebab",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "14",
+          "tiendaNombre": "Astro"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -2120,6 +2134,19 @@
       "activo": true,
       "tiendaId": "10",
       "tiendaNombre": "Mantenimiento"
+    },
+    {
+      "id": 189,
+      "nombre": "Kebab",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "14",
+      "tiendaNombre": "Astro"
     }
   ],
   "complementosGlobal": [
