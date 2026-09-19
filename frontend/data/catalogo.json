@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-18T23-58-46",
-  "ultimaActualizacion": "2026-09-18T23:58:46.989Z",
+  "version": "v2026-09-19T00-03-13",
+  "ultimaActualizacion": "2026-09-19T00:03:13.043Z",
   "tiendas": [
     {
       "id": 1,
@@ -3613,7 +3613,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 165,
@@ -3623,7 +3623,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 166,
@@ -3632,7 +3632,7 @@
       "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
-      "max": 3,
+      "max": 1,
       "min": 1
     },
     {
@@ -3642,7 +3642,7 @@
       "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
-      "max": 3,
+      "max": 1,
       "min": 1
     },
     {
@@ -3652,7 +3652,7 @@
       "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
-      "max": 3,
+      "max": 1,
       "min": 1
     }
   ]
