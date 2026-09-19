@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-14-54",
-  "ultimaActualizacion": "2026-09-19T00:14:54.685Z",
+  "version": "v2026-09-19T00-22-28",
+  "ultimaActualizacion": "2026-09-19T00:22:28.871Z",
   "tiendas": [
     {
       "id": 1,
@@ -860,7 +860,7 @@
         },
         {
           "id": 177,
-          "nombre": "pizza grande",
+          "nombre": "Pizza grande",
           "descripcion": "",
           "precio": 40000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
@@ -1955,7 +1955,7 @@
     },
     {
       "id": 177,
-      "nombre": "pizza grande",
+      "nombre": "Pizza grande",
       "descripcion": "",
       "precio": 40000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza2.png",
