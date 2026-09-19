@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-46-15",
-  "ultimaActualizacion": "2026-09-19T02:46:15.640Z",
+  "version": "v2026-09-19T02-49-31",
+  "ultimaActualizacion": "2026-09-19T02:49:31.647Z",
   "tiendas": [
     {
       "id": 1,
@@ -3998,7 +3998,7 @@
     },
     {
       "id": 200,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Falafel - Grande",
       "precio": 20000,
@@ -4008,7 +4008,7 @@
     },
     {
       "id": 201,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Pollo - Pequeño",
       "precio": 20000,
@@ -4018,7 +4018,7 @@
     },
     {
       "id": 202,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Pollo - Grande",
       "precio": 25000,
@@ -4028,7 +4028,7 @@
     },
     {
       "id": 203,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Mixto - Pequeño",
       "precio": 23000,
@@ -4038,7 +4038,7 @@
     },
     {
       "id": 204,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Mixto - Grande",
       "precio": 29000,
@@ -4048,7 +4048,7 @@
     },
     {
       "id": 205,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Cerdo - Pequeño",
       "precio": 23000,
@@ -4058,7 +4058,7 @@
     },
     {
       "id": 206,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Cerdo - Grande",
       "precio": 29000,
@@ -4068,7 +4068,7 @@
     },
     {
       "id": 207,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Kebab - Pequeño",
       "precio": 23000,
@@ -4078,7 +4078,7 @@
     },
     {
       "id": 208,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Kebab - Grande",
       "precio": 29000,
@@ -4088,7 +4088,7 @@
     },
     {
       "id": 209,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Servir",
       "nombre": "En bolsa",
       "precio": 0,
@@ -4098,7 +4098,7 @@
     },
     {
       "id": 210,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Servir",
       "nombre": "En plato",
       "precio": 0,
