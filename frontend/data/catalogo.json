@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-37-53",
-  "ultimaActualizacion": "2026-09-19T02:37:53.425Z",
+  "version": "v2026-09-19T02-38-34",
+  "ultimaActualizacion": "2026-09-19T02:38:34.108Z",
   "tiendas": [
     {
       "id": 1,
@@ -1145,7 +1145,7 @@
       "productos": [
         {
           "id": 189,
-          "nombre": "gyro Kebab",
+          "nombre": "Gyro",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -2150,7 +2150,7 @@
     },
     {
       "id": 189,
-      "nombre": "gyro Kebab",
+      "nombre": "Gyro",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -3798,7 +3798,7 @@
     },
     {
       "id": 178,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
       "precio": 23000,
@@ -3808,7 +3808,7 @@
     },
     {
       "id": 179,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Grande",
       "precio": 30000,
@@ -3818,7 +3818,7 @@
     },
     {
       "id": 180,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Pollo - Pequeño",
       "precio": 0,
@@ -3828,7 +3828,7 @@
     },
     {
       "id": 181,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Servir",
       "nombre": "En pan",
       "precio": 0,
@@ -3838,7 +3838,7 @@
     },
     {
       "id": 182,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Servir",
       "nombre": "En plato",
       "precio": 0,
