@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-23-00",
-  "ultimaActualizacion": "2026-09-19T00:23:00.218Z",
+  "version": "v2026-09-19T00-23-27",
+  "ultimaActualizacion": "2026-09-19T00:23:27.657Z",
   "tiendas": [
     {
       "id": 1,
@@ -821,7 +821,7 @@
         },
         {
           "id": 159,
-          "nombre": "papas la Basílica",
+          "nombre": "Papas la Basílica",
           "descripcion": "",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papala%20basilica.png",
@@ -834,7 +834,7 @@
         },
         {
           "id": 160,
-          "nombre": "papas mexicanas",
+          "nombre": "Papas mexicanas",
           "descripcion": "",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papasmexicanas.png",
@@ -847,7 +847,7 @@
         },
         {
           "id": 161,
-          "nombre": "pizza mediana",
+          "nombre": "Pizza mediana",
           "descripcion": "",
           "precio": 25000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
@@ -1760,7 +1760,7 @@
     },
     {
       "id": 159,
-      "nombre": "papas la Basílica",
+      "nombre": "Papas la Basílica",
       "descripcion": "",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papala%20basilica.png",
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 160,
-      "nombre": "papas mexicanas",
+      "nombre": "Papas mexicanas",
       "descripcion": "",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papasmexicanas.png",
@@ -1786,7 +1786,7 @@
     },
     {
       "id": 161,
-      "nombre": "pizza mediana",
+      "nombre": "Pizza mediana",
       "descripcion": "",
       "precio": 25000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
