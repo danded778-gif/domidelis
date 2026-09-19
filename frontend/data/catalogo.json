@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-57-14",
-  "ultimaActualizacion": "2026-09-19T01:57:14.328Z",
+  "version": "v2026-09-19T01-57-50",
+  "ultimaActualizacion": "2026-09-19T01:57:50.842Z",
   "tiendas": [
     {
       "id": 1,
@@ -3748,6 +3748,16 @@
     },
     {
       "id": 169,
+      "id_producto": "",
+      "grupo": "tamaño",
+      "nombre": "grande",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 170,
       "id_producto": "",
       "grupo": "tamaño",
       "nombre": "",
