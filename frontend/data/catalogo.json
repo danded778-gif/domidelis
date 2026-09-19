@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T04-55-39",
-  "ultimaActualizacion": "2026-09-19T04:55:39.403Z",
+  "version": "v2026-09-19T04-56-00",
+  "ultimaActualizacion": "2026-09-19T04:56:00.890Z",
   "tiendas": [
     {
       "id": 1,
@@ -1137,7 +1137,7 @@
       "nombre": "Astro",
       "descripcion": "",
       "direccion": "calle comercio",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-23:30\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
