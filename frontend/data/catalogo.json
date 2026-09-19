@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-34-56",
-  "ultimaActualizacion": "2026-09-19T01:34:56.070Z",
+  "version": "v2026-09-19T01-37-37",
+  "ultimaActualizacion": "2026-09-19T01:37:37.005Z",
   "tiendas": [
     {
       "id": 1,
@@ -1158,7 +1158,7 @@
         },
         {
           "id": 190,
-          "nombre": "Gyro",
+          "nombre": "Gyro Kebab",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -2163,7 +2163,7 @@
     },
     {
       "id": 190,
-      "nombre": "Gyro",
+      "nombre": "Gyro Kebab",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
