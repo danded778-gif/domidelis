@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-34-47",
-  "ultimaActualizacion": "2026-09-19T01:34:47.352Z",
+  "version": "v2026-09-19T01-34-56",
+  "ultimaActualizacion": "2026-09-19T01:34:56.070Z",
   "tiendas": [
     {
       "id": 1,
@@ -3742,16 +3742,6 @@
       "grupo": "proteina",
       "nombre": "pollo",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 170,
-      "id_producto": 188,
-      "grupo": "Tamaño",
-      "nombre": "Grande",
-      "precio": 36000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
