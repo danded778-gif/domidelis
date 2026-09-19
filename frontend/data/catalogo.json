@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-37-37",
-  "ultimaActualizacion": "2026-09-19T01:37:37.005Z",
+  "version": "v2026-09-19T01-38-14",
+  "ultimaActualizacion": "2026-09-19T01:38:14.420Z",
   "tiendas": [
     {
       "id": 1,
@@ -1145,7 +1145,7 @@
       "productos": [
         {
           "id": 189,
-          "nombre": "Kebab",
+          "nombre": "shagurma Kebab",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -2150,7 +2150,7 @@
     },
     {
       "id": 189,
-      "nombre": "Kebab",
+      "nombre": "shagurma Kebab",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
