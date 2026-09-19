@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-03-18",
-  "ultimaActualizacion": "2026-09-19T00:03:18.160Z",
+  "version": "v2026-09-19T00-11-06",
+  "ultimaActualizacion": "2026-09-19T00:11:06.007Z",
   "tiendas": [
     {
       "id": 1,
@@ -956,6 +956,19 @@
           "precio": 20000,
           "imagen_url": "",
           "badge": "si",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "10",
+          "tiendaNombre": "Mantenimiento"
+        },
+        {
+          "id": 188,
+          "nombre": "Prueba 2",
+          "descripcion": "Prueba 2",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2082,6 +2095,19 @@
       "activo": true,
       "tiendaId": "11",
       "tiendaNombre": "Dulce fusión"
+    },
+    {
+      "id": 188,
+      "nombre": "Prueba 2",
+      "descripcion": "Prueba 2",
+      "precio": 0,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "10",
+      "tiendaNombre": "Mantenimiento"
     }
   ],
   "complementosGlobal": [
