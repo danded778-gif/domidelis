@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-11-06",
-  "ultimaActualizacion": "2026-09-19T00:11:06.007Z",
+  "version": "v2026-09-19T00-11-41",
+  "ultimaActualizacion": "2026-09-19T00:11:41.267Z",
   "tiendas": [
     {
       "id": 1,
@@ -3677,6 +3677,16 @@
       "grupo": "proteina",
       "nombre": "pollo",
       "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 169,
+      "id_producto": 188,
+      "grupo": "Tamaño",
+      "nombre": "Pequeño",
+      "precio": 24000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
