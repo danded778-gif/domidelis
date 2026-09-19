@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-23-27",
-  "ultimaActualizacion": "2026-09-19T00:23:27.657Z",
+  "version": "v2026-09-19T00-23-56",
+  "ultimaActualizacion": "2026-09-19T00:23:56.300Z",
   "tiendas": [
     {
       "id": 1,
@@ -366,7 +366,7 @@
         },
         {
           "id": 122,
-          "nombre": "aguardiente antioqueño",
+          "nombre": "Aguardiente antioqueño",
           "descripcion": "litro verde",
           "precio": 50000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
@@ -405,7 +405,7 @@
         },
         {
           "id": 125,
-          "nombre": "aguardiente antioqueño",
+          "nombre": "Aguardiente antioqueño",
           "descripcion": "260 verde",
           "precio": 16500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
@@ -808,7 +808,7 @@
       "productos": [
         {
           "id": 158,
-          "nombre": "papas costeñas",
+          "nombre": "Papas costeñas",
           "descripcion": "",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
@@ -1383,7 +1383,7 @@
     },
     {
       "id": 122,
-      "nombre": "aguardiente antioqueño",
+      "nombre": "Aguardiente antioqueño",
       "descripcion": "litro verde",
       "precio": 50000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/aguardiente%20antioque%C3%B1o%20litro%20verde.jpg",
@@ -1422,7 +1422,7 @@
     },
     {
       "id": 125,
-      "nombre": "aguardiente antioqueño",
+      "nombre": "Aguardiente antioqueño",
       "descripcion": "260 verde",
       "precio": 16500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
@@ -1747,7 +1747,7 @@
     },
     {
       "id": 158,
-      "nombre": "papas costeñas",
+      "nombre": "Papas costeñas",
       "descripcion": "",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
