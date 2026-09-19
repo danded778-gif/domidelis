@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-13-11",
-  "ultimaActualizacion": "2026-09-19T02:13:12.001Z",
+  "version": "v2026-09-19T02-13-37",
+  "ultimaActualizacion": "2026-09-19T02:13:37.063Z",
   "tiendas": [
     {
       "id": 1,
@@ -3801,6 +3801,16 @@
       "id_producto": 188,
       "grupo": "Servir",
       "nombre": "En pan",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 175,
+      "id_producto": 188,
+      "grupo": "Servir",
+      "nombre": "En plato",
       "precio": 0,
       "tipo": "opcion",
       "max": 3,
