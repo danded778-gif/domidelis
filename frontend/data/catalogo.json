@@ -1,13 +1,13 @@
 {
-  "version": "v2026-09-19T00-58-12",
-  "ultimaActualizacion": "2026-09-19T00:58:12.874Z",
+  "version": "v2026-09-19T01-11-10",
+  "ultimaActualizacion": "2026-09-19T01:11:10.763Z",
   "tiendas": [
     {
       "id": 1,
       "nombre": "Domi Delis",
       "descripcion": "Bebidas y Comidas.",
       "direccion": "el santuario",
-      "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
+      "horario": "{\"mon\":\"11:00-23:00\",\"tue\":\"11:00-23:00\",\"wed\":\"11:00-23:00\",\"thu\":\"11:00-23:00\",\"fri\":\"Cerrado\",\"sat\":\"11:00-23:00\",\"sun\":\"11:00-23:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/Mi%20tienda/domideliscomidas.png",
       "promovida": 0,
@@ -1128,6 +1128,18 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/monte%20santo/los%20grillos.png",
+      "promovida": 0,
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 14,
+      "nombre": "Astra",
+      "descripcion": "",
+      "direccion": "calle comercio",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
       "productos": []
