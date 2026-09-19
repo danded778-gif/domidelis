@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-45-47",
-  "ultimaActualizacion": "2026-09-19T02:45:47.569Z",
+  "version": "v2026-09-19T02-46-15",
+  "ultimaActualizacion": "2026-09-19T02:46:15.640Z",
   "tiendas": [
     {
       "id": 1,
@@ -3867,28 +3867,8 @@
       "min": 0
     },
     {
-      "id": 183,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 184,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 185,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
       "precio": 17000,
@@ -3898,7 +3878,7 @@
     },
     {
       "id": 186,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Grande",
       "precio": 20000,
@@ -3908,7 +3888,7 @@
     },
     {
       "id": 187,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Pollo - Pequeño",
       "precio": 20000,
@@ -3918,7 +3898,7 @@
     },
     {
       "id": 188,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Pollo - Grande",
       "precio": 25000,
@@ -3928,7 +3908,7 @@
     },
     {
       "id": 189,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Mixto - Pequeño",
       "precio": 23000,
@@ -3938,7 +3918,7 @@
     },
     {
       "id": 190,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Mixto - Grande",
       "precio": 29000,
@@ -3948,7 +3928,7 @@
     },
     {
       "id": 191,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Cerdo - Pequeño",
       "precio": 23000,
@@ -3958,7 +3938,7 @@
     },
     {
       "id": 192,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Cerdo - Grande",
       "precio": 29000,
@@ -3968,7 +3948,7 @@
     },
     {
       "id": 193,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Kebab - Pequeño",
       "precio": 23000,
@@ -3978,7 +3958,7 @@
     },
     {
       "id": 194,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Kebab - Grande",
       "precio": 29000,
@@ -3988,7 +3968,7 @@
     },
     {
       "id": 195,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Servir",
       "nombre": "En bolsa",
       "precio": 0,
@@ -3998,7 +3978,7 @@
     },
     {
       "id": 196,
-      "id_producto": 189,
+      "id_producto": 190,
       "grupo": "Servir",
       "nombre": "En plato",
       "precio": 0,
@@ -4007,28 +3987,8 @@
       "min": 0
     },
     {
-      "id": 197,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 198,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 199,
-      "id_producto": 189,
+      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
       "precio": 17000,
