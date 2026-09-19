@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-16-27",
-  "ultimaActualizacion": "2026-09-19T01:16:27.148Z",
+  "version": "v2026-09-19T01-17-40",
+  "ultimaActualizacion": "2026-09-19T01:17:40.506Z",
   "tiendas": [
     {
       "id": 1,
@@ -1155,6 +1155,19 @@
           "activo": true,
           "tiendaId": "14",
           "tiendaNombre": "Astro"
+        },
+        {
+          "id": 190,
+          "nombre": "Gyro",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "agotado",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "14",
+          "tiendaNombre": "Astro"
         }
       ]
     }
@@ -2138,6 +2151,19 @@
     {
       "id": 189,
       "nombre": "Kebab",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "14",
+      "tiendaNombre": "Astro"
+    },
+    {
+      "id": 190,
+      "nombre": "Gyro",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
