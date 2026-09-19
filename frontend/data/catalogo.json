@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-35-29",
-  "ultimaActualizacion": "2026-09-19T02:35:29.715Z",
+  "version": "v2026-09-19T02-37-25",
+  "ultimaActualizacion": "2026-09-19T02:37:25.389Z",
   "tiendas": [
     {
       "id": 1,
@@ -3748,7 +3748,7 @@
     },
     {
       "id": 171,
-      "id_producto": 188,
+      "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
       "precio": 23000,
@@ -3758,7 +3758,7 @@
     },
     {
       "id": 172,
-      "id_producto": 188,
+      "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Falafel - Grande",
       "precio": 30000,
@@ -3768,7 +3768,7 @@
     },
     {
       "id": 173,
-      "id_producto": 188,
+      "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Pollo - Pequeño",
       "precio": 0,
@@ -3778,7 +3778,7 @@
     },
     {
       "id": 174,
-      "id_producto": 188,
+      "id_producto": 189,
       "grupo": "Servir",
       "nombre": "En pan",
       "precio": 0,
@@ -3788,7 +3788,7 @@
     },
     {
       "id": 175,
-      "id_producto": 188,
+      "id_producto": 189,
       "grupo": "Servir",
       "nombre": "En plato",
       "precio": 0,
