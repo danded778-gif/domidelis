@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-16-48",
-  "ultimaActualizacion": "2026-09-19T02:16:48.852Z",
+  "version": "v2026-09-19T02-35-29",
+  "ultimaActualizacion": "2026-09-19T02:35:29.715Z",
   "tiendas": [
     {
       "id": 1,
@@ -3745,26 +3745,6 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
-    },
-    {
-      "id": 169,
-      "id_producto": "",
-      "grupo": "tamaño",
-      "nombre": "grande",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 170,
-      "id_producto": "",
-      "grupo": "tamaño",
-      "nombre": "pequeña",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
     },
     {
       "id": 171,
