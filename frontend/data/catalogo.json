@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T00-22-28",
-  "ultimaActualizacion": "2026-09-19T00:22:28.871Z",
+  "version": "v2026-09-19T00-23-00",
+  "ultimaActualizacion": "2026-09-19T00:23:00.218Z",
   "tiendas": [
     {
       "id": 1,
@@ -106,7 +106,7 @@
         },
         {
           "id": 171,
-          "nombre": "jugo hit",
+          "nombre": "Jugo hit",
           "descripcion": "500 ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
@@ -1877,7 +1877,7 @@
     },
     {
       "id": 171,
-      "nombre": "jugo hit",
+      "nombre": "Jugo hit",
       "descripcion": "500 ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_hit_.png",
