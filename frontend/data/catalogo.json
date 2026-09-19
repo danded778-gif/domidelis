@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T02-37-28",
-  "ultimaActualizacion": "2026-09-19T02:37:28.146Z",
+  "version": "v2026-09-19T02-37-53",
+  "ultimaActualizacion": "2026-09-19T02:37:53.425Z",
   "tiendas": [
     {
       "id": 1,
@@ -3788,6 +3788,56 @@
     },
     {
       "id": 175,
+      "id_producto": 189,
+      "grupo": "Servir",
+      "nombre": "En plato",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 178,
+      "id_producto": 189,
+      "grupo": "Presentación",
+      "nombre": "Falafel - Pequeño",
+      "precio": 23000,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 179,
+      "id_producto": 189,
+      "grupo": "Presentación",
+      "nombre": "Falafel - Grande",
+      "precio": 30000,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 180,
+      "id_producto": 189,
+      "grupo": "Presentación",
+      "nombre": "Pollo - Pequeño",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 181,
+      "id_producto": 189,
+      "grupo": "Servir",
+      "nombre": "En pan",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 182,
       "id_producto": 189,
       "grupo": "Servir",
       "nombre": "En plato",
