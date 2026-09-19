@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-19T01-11-10",
-  "ultimaActualizacion": "2026-09-19T01:11:10.763Z",
+  "version": "v2026-09-19T01-15-02",
+  "ultimaActualizacion": "2026-09-19T01:15:02.969Z",
   "tiendas": [
     {
       "id": 1,
@@ -1134,7 +1134,7 @@
     },
     {
       "id": 14,
-      "nombre": "Astra",
+      "nombre": "Astro",
       "descripcion": "",
       "direccion": "calle comercio",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
