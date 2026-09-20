@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-20T16-28-58",
-  "ultimaActualizacion": "2026-09-20T16:28:58.321Z",
+  "version": "v2026-09-20T16-29-34",
+  "ultimaActualizacion": "2026-09-20T16:29:34.775Z",
   "tiendas": [
     {
       "id": 1,
@@ -1163,7 +1163,7 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "NUEVO",
-          "categoria": "Menu",
+          "categoria": "Almuerzo",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "14",
@@ -2168,7 +2168,7 @@
       "precio": 0,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Menu",
+      "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "14",
