@@ -895,6 +895,14 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         cargarTiendas();
         return;
     }
+    // ★ Analytics: evento ver_tienda ★
+if (typeof gtag === 'function') {
+    gtag('event', 'ver_tienda', {
+        'event_category': 'engagement',
+        'event_label': tienda.nombre,
+        'tienda_id': tienda.id
+    });
+}
 
     const productos = tienda.productos || [];
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
