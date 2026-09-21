@@ -161,6 +161,7 @@ function calcularDatosDomi(pedidos) {
 
         if (!domisMap.has(domiId)) {
             domisMap.set(domiId, {
+                domiId: domiId,
                 nombre: obtenerNombreDomi(domiId),
                 totalEnvios: 0,
                 gananciaApp: 0,
