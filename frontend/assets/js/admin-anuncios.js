@@ -34,7 +34,7 @@ const AdminAnuncios = {
         tbody.innerHTML = '<tr><td colspan="6" class="text-center">Cargando anuncios...</td></tr>';
 
         try {
-            const res = await fetch(`${API_URL}?action=getAnunciosAdmin`);
+            const res = await fetchConToken(`${API_URL}?action=getAnunciosAdmin`);
             const data = await res.json();
             
             if (data.success) {
@@ -335,7 +335,7 @@ const AdminAnuncios = {
         }
 
         try {
-            const res = await fetch(API_URL, { method: 'POST', body: params });
+            const res = await fetchConToken(API_URL, { method: 'POST', body: params });
             const data = await res.json();
 
             if (data.success) {
@@ -358,7 +358,7 @@ const AdminAnuncios = {
         params.append('estado', nuevoEstado);
 
         try {
-            const res = await fetch(API_URL, { method: 'POST', body: params });
+            const res = await fetchConToken(API_URL, { method: 'POST', body: params });
             const data = await res.json();
             if (data.success) {
                 mostrarToast('Actualizado', `Anuncio ${nuevoEstado}`, 'success');
