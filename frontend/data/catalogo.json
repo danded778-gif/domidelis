@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-41-27",
-  "ultimaActualizacion": "2026-09-22T17:41:27.352Z",
+  "version": "v2026-09-22T17-51-15",
+  "ultimaActualizacion": "2026-09-22T17:51:15.287Z",
   "tiendas": [
     {
       "id": 1,
@@ -1135,12 +1135,12 @@
     {
       "id": 14,
       "nombre": "Astro",
-      "descripcion": "",
+      "descripcion": "Comida del Medio Oriente en el Santuario",
       "direccion": "calle comercio",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
