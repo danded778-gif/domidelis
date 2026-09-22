@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-31-52",
-  "ultimaActualizacion": "2026-09-22T17:31:52.228Z",
+  "version": "v2026-09-22T17-34-25",
+  "ultimaActualizacion": "2026-09-22T17:34:25.719Z",
   "tiendas": [
     {
       "id": 1,
@@ -1181,6 +1181,19 @@
           "activo": true,
           "tiendaId": "14",
           "tiendaNombre": "Astro"
+        },
+        {
+          "id": 192,
+          "nombre": "Papas griegas",
+          "descripcion": "",
+          "precio": 6,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "14",
+          "tiendaNombre": "Astro"
         }
       ]
     },
@@ -2206,6 +2219,19 @@
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
       "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "14",
+      "tiendaNombre": "Astro"
+    },
+    {
+      "id": 192,
+      "nombre": "Papas griegas",
+      "descripcion": "",
+      "precio": 6,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
