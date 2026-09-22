@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-30-53",
-  "ultimaActualizacion": "2026-09-22T17:30:53.704Z",
+  "version": "v2026-09-22T17-31-52",
+  "ultimaActualizacion": "2026-09-22T17:31:52.228Z",
   "tiendas": [
     {
       "id": 1,
@@ -1189,10 +1189,10 @@
       "nombre": "J.C Delicias",
       "descripcion": "",
       "direccion": "calle 48a",
-      "horario": "{\"mon\":\"08:00-22:00\",\"tue\":\"08:00-22:00\",\"wed\":\"08:00-22:00\",\"thu\":\"08:00-22:00\",\"fri\":\"08:00-23:00\",\"sat\":\"08:00-23:00\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": []
     }
