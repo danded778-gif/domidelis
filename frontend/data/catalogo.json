@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-51-40",
-  "ultimaActualizacion": "2026-09-22T17:51:40.470Z",
+  "version": "v2026-09-22T17-55-32",
+  "ultimaActualizacion": "2026-09-22T17:55:32.473Z",
   "tiendas": [
     {
       "id": 1,
@@ -1140,7 +1140,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
