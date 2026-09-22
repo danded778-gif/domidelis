@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-20-01",
-  "ultimaActualizacion": "2026-09-22T17:20:01.233Z",
+  "version": "v2026-09-22T17-27-46",
+  "ultimaActualizacion": "2026-09-22T17:27:46.986Z",
   "tiendas": [
     {
       "id": 1,
@@ -1146,7 +1146,7 @@
         {
           "id": 189,
           "nombre": "Gyro",
-          "descripcion": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/astro/gyro_comprimida_170kb.png",
+          "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/gyro_comprimida_170kb.png",
           "badge": "NUEVO",
@@ -1164,6 +1164,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/Shawarma_170kb.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "14",
+          "tiendaNombre": "Astro"
+        },
+        {
+          "id": 191,
+          "nombre": "Lasana griega",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
+          "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "14",
@@ -2151,7 +2164,7 @@
     {
       "id": 189,
       "nombre": "Gyro",
-      "descripcion": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/astro/gyro_comprimida_170kb.png",
+      "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/gyro_comprimida_170kb.png",
       "badge": "NUEVO",
@@ -2169,6 +2182,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/Shawarma_170kb.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "14",
+      "tiendaNombre": "Astro"
+    },
+    {
+      "id": 191,
+      "nombre": "Lasana griega",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
+      "badge": "agotado",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "14",
