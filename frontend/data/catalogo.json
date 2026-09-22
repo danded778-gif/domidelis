@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-36-35",
-  "ultimaActualizacion": "2026-09-22T17:36:35.222Z",
+  "version": "v2026-09-22T17-36-55",
+  "ultimaActualizacion": "2026-09-22T17:36:55.227Z",
   "tiendas": [
     {
       "id": 1,
@@ -1175,7 +1175,7 @@
           "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
-          "badge": "agotado",
+          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2218,7 +2218,7 @@
       "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
-      "badge": "agotado",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
