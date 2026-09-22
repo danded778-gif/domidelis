@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-22T17-34-25",
-  "ultimaActualizacion": "2026-09-22T17:34:25.719Z",
+  "version": "v2026-09-22T17-35-09",
+  "ultimaActualizacion": "2026-09-22T17:35:09.097Z",
   "tiendas": [
     {
       "id": 1,
@@ -1172,7 +1172,7 @@
         {
           "id": 191,
           "nombre": "Lasana griega",
-          "descripcion": "",
+          "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
           "badge": "agotado",
@@ -2215,7 +2215,7 @@
     {
       "id": 191,
       "nombre": "Lasana griega",
-      "descripcion": "",
+      "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
       "badge": "agotado",
