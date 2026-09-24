@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-25-23",
-  "ultimaActualizacion": "2026-09-24T07:25:23.768Z",
+  "version": "v2026-09-24T07-25-27",
+  "ultimaActualizacion": "2026-09-24T07:25:27.005Z",
   "tiendas": [
     {
       "id": 1,
@@ -988,19 +988,6 @@
       "promovida": 0,
       "activo": true,
       "productos": [
-        {
-          "id": 183,
-          "nombre": "Cazuela paisa",
-          "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
-          "precio": 28000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "11",
-          "tiendaNombre": "Dulce fusión"
-        },
         {
           "id": 179,
           "nombre": "Burrito de carne",
@@ -2055,19 +2042,6 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 183,
-      "nombre": "Cazuela paisa",
-      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
-      "precio": 28000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "11",
-      "tiendaNombre": "Dulce fusión"
     },
     {
       "id": 177,
