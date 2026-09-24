@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T15-55-03",
-  "ultimaActualizacion": "2026-09-24T15:55:03.349Z",
+  "version": "v2026-09-24T15-55-06",
+  "ultimaActualizacion": "2026-09-24T15:55:06.063Z",
   "tiendas": [
     {
       "id": 1,
@@ -3762,7 +3762,7 @@
     },
     {
       "id": 164,
-      "id_producto": 187,
+      "id_producto": 183,
       "grupo": "Acompañamiento",
       "nombre": "sopa del dia",
       "precio": 0,
@@ -3772,7 +3772,7 @@
     },
     {
       "id": 165,
-      "id_producto": 187,
+      "id_producto": 183,
       "grupo": "Acompañamiento",
       "nombre": "frijoles",
       "precio": 0,
@@ -3782,7 +3782,7 @@
     },
     {
       "id": 166,
-      "id_producto": 187,
+      "id_producto": 183,
       "grupo": "proteina",
       "nombre": "carne res",
       "precio": 0,
@@ -3792,7 +3792,7 @@
     },
     {
       "id": 167,
-      "id_producto": 187,
+      "id_producto": 183,
       "grupo": "proteina",
       "nombre": "carne cerdo",
       "precio": 0,
@@ -3802,7 +3802,7 @@
     },
     {
       "id": 168,
-      "id_producto": 187,
+      "id_producto": 183,
       "grupo": "proteina",
       "nombre": "pollo",
       "precio": 0,
