@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T15-55-06",
-  "ultimaActualizacion": "2026-09-24T15:55:06.063Z",
+  "version": "v2026-09-24T15-55-50",
+  "ultimaActualizacion": "2026-09-24T15:55:50.917Z",
   "tiendas": [
     {
       "id": 1,
@@ -3754,7 +3754,7 @@
       "id": 163,
       "id_producto": 184,
       "grupo": "Salsa",
-      "nombre": "Salsa",
+      "nombre": "Salsa de la casa",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
