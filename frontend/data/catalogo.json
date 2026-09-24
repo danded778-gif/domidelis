@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-32-15",
-  "ultimaActualizacion": "2026-09-24T06:32:15.092Z",
+  "version": "v2026-09-24T06-36-03",
+  "ultimaActualizacion": "2026-09-24T06:36:03.192Z",
   "tiendas": [
     {
       "id": 1,
@@ -500,7 +500,7 @@
           "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
-          "badge": "mantenimiento",
+          "badge": "agotado",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1724,7 +1724,7 @@
       "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
-      "badge": "mantenimiento",
+      "badge": "agotado",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
