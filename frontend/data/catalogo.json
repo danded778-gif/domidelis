@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-33-00",
-  "ultimaActualizacion": "2026-09-24T16:33:00.214Z",
+  "version": "v2026-09-24T16-39-03",
+  "ultimaActualizacion": "2026-09-24T16:39:03.050Z",
   "tiendas": [
     {
       "id": 1,
@@ -941,7 +941,7 @@
     {
       "id": 10,
       "nombre": "Mantenimiento",
-      "descripcion": "tamos trabajando ...",
+      "descripcion": "(oculto)",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"1600 - 00:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"14:00 - 23:30\",\"sat\":\"00:00 - 05:59\",\"sun\":\"00:00 - 05:59\"}",
       "rating": 1,
@@ -4109,16 +4109,6 @@
       "tipo": "opcion",
       "max": 4,
       "min": 0
-    },
-    {
-      "id": 220,
-      "id_producto": 188,
-      "grupo": "Acompañamiento",
-      "nombre": "sopa del dia",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
     }
   ]
 }
