@@ -67,7 +67,7 @@ const APP_CONFIG = {
         valle: { nombre: 'Valle Maria', envio: 12000 },
         oriente: { nombre: 'Vargas', envio: 7000 },
         vista: { nombre: 'Vista Hermosa', envio: 6000 },
-        calera: { nombre: 'La calera', envio: 12000 },
+        calera: { nombre: 'La calera', envio: 15000 },
         undido: { nombre: 'B. hundido', envio: 5000 },
         
         lourdes: { nombre: 'V.lourdes', envio: 8000 },
@@ -75,6 +75,7 @@ const APP_CONFIG = {
         potrerio: { nombre: 'Potrerito', envio: 9000 },
         villas: { nombre: 'Villas del poli', envio: 5000 },
         saladito: { nombre: 'V. Saladito', envio: 6000 },
+        otro_santuario: { nombre: 'Otro barrio/vereda Santuario', envio: 6000 }
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
