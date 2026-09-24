@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-13-59",
-  "ultimaActualizacion": "2026-09-24T07:13:59.633Z",
+  "version": "v2026-09-24T07-14-23",
+  "ultimaActualizacion": "2026-09-24T07:14:23.840Z",
   "tiendas": [
     {
       "id": 1,
@@ -2882,36 +2882,6 @@
     },
     {
       "id": 70,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 71,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 72,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 73,
       "id_producto": 143,
       "grupo": "Tomar",
       "nombre": "Guandolo",
@@ -2921,7 +2891,7 @@
       "min": 1
     },
     {
-      "id": 74,
+      "id": 71,
       "id_producto": 143,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
@@ -2931,7 +2901,7 @@
       "min": 1
     },
     {
-      "id": 75,
+      "id": 72,
       "id_producto": 143,
       "grupo": "",
       "nombre": "porcion arroz",
@@ -2941,12 +2911,42 @@
       "min": 0
     },
     {
-      "id": 76,
+      "id": 73,
       "id_producto": 143,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
       "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 74,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 75,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 76,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     },
@@ -3002,16 +3002,6 @@
     },
     {
       "id": 83,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 84,
       "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
@@ -3021,7 +3011,7 @@
       "min": 1
     },
     {
-      "id": 85,
+      "id": 84,
       "id_producto": 144,
       "grupo": "Proteína",
       "nombre": "Chorizo",
@@ -3029,6 +3019,16 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 85,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 86,
