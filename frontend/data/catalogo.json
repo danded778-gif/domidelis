@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-59-30",
-  "ultimaActualizacion": "2026-09-24T05:59:30.630Z",
+  "version": "v2026-09-24T06-04-33",
+  "ultimaActualizacion": "2026-09-24T06:04:33.432Z",
   "tiendas": [
     {
       "id": 1,
@@ -3912,22 +3912,22 @@
     },
     {
       "id": 181,
-      "id_producto": 189,
-      "grupo": "Servir",
-      "nombre": "En bolsa",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
       "id": 182,
-      "id_producto": 189,
-      "grupo": "Servir",
-      "nombre": "En plato",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
@@ -4272,7 +4272,7 @@
     },
     {
       "id": 221,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Acompañamiento",
       "nombre": "sopa del dia",
       "precio": 0,
@@ -4282,7 +4282,7 @@
     },
     {
       "id": 222,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Acompañamiento",
       "nombre": "frijoles",
       "precio": 0,
@@ -4292,7 +4292,7 @@
     },
     {
       "id": 223,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "proteina",
       "nombre": "carne res",
       "precio": 0,
@@ -4302,7 +4302,7 @@
     },
     {
       "id": 224,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "proteina",
       "nombre": "carne cerdo",
       "precio": 0,
@@ -4312,7 +4312,7 @@
     },
     {
       "id": 225,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "proteina",
       "nombre": "pollo",
       "precio": 0,
@@ -4322,7 +4322,7 @@
     },
     {
       "id": 226,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Proteína",
       "nombre": "Carné molida",
       "precio": 0,
@@ -4332,7 +4332,7 @@
     },
     {
       "id": 227,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
       "precio": 0,
@@ -4342,7 +4342,7 @@
     },
     {
       "id": 228,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Proteína",
       "nombre": "Chorizo",
       "precio": 0,
@@ -4352,7 +4352,7 @@
     },
     {
       "id": 229,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
@@ -4362,7 +4362,7 @@
     },
     {
       "id": 230,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
@@ -4372,7 +4372,7 @@
     },
     {
       "id": 231,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Tomar",
       "nombre": "Guandolo",
       "precio": 0,
@@ -4382,7 +4382,7 @@
     },
     {
       "id": 232,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
       "precio": 0,
@@ -4392,7 +4392,7 @@
     },
     {
       "id": 233,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "",
       "nombre": "porcion arroz",
       "precio": 6000,
@@ -4402,7 +4402,7 @@
     },
     {
       "id": 234,
-      "id_producto": 167,
+      "id_producto": 188,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
