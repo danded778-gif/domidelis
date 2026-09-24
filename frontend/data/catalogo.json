@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-15-48",
-  "ultimaActualizacion": "2026-09-24T16:15:48.682Z",
+  "version": "v2026-09-24T16-18-37",
+  "ultimaActualizacion": "2026-09-24T16:18:37.436Z",
   "tiendas": [
     {
       "id": 1,
@@ -4064,7 +4064,7 @@
       "id": 198,
       "id_producto": 186,
       "grupo": "Acompañamiento",
-      "nombre": "sopa del dia",
+      "nombre": "Frijoles",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -4109,6 +4109,16 @@
       "tipo": "opcion",
       "max": 4,
       "min": 0
+    },
+    {
+      "id": 220,
+      "id_producto": 188,
+      "grupo": "Acompañamiento",
+      "nombre": "sopa del dia",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     }
   ]
 }
