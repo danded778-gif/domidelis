@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-05-24",
-  "ultimaActualizacion": "2026-09-24T17:05:24.939Z",
+  "version": "v2026-09-24T17-06-13",
+  "ultimaActualizacion": "2026-09-24T17:06:13.180Z",
   "tiendas": [
     {
       "id": 1,
@@ -209,7 +209,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 113,
+          "id": 109,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media roja",
           "precio": 26000,
@@ -222,7 +222,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 114,
+          "id": 110,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media azul",
           "precio": 27500,
@@ -1290,7 +1290,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 113,
+      "id": 109,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media roja",
       "precio": 26000,
@@ -1303,7 +1303,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 114,
+      "id": 110,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media azul",
       "precio": 27500,
