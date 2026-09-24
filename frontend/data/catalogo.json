@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-11-23",
-  "ultimaActualizacion": "2026-09-24T16:11:23.286Z",
+  "version": "v2026-09-24T16-11-50",
+  "ultimaActualizacion": "2026-09-24T16:11:50.390Z",
   "tiendas": [
     {
       "id": 1,
@@ -4084,7 +4084,7 @@
       "id": 200,
       "id_producto": 186,
       "grupo": "Proteina",
-      "nombre": "carne molido",
+      "nombre": "Carne molido",
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
@@ -4094,7 +4094,7 @@
       "id": 201,
       "id_producto": 186,
       "grupo": "Proteina",
-      "nombre": "morcilla",
+      "nombre": "Morcilla",
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
@@ -4104,7 +4104,7 @@
       "id": 202,
       "id_producto": 186,
       "grupo": "Proteina",
-      "nombre": "huevo",
+      "nombre": "Huevo",
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
