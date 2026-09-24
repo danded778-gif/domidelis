@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-07-43",
-  "ultimaActualizacion": "2026-09-24T07:07:43.680Z",
+  "version": "v2026-09-24T07-13-30",
+  "ultimaActualizacion": "2026-09-24T07:13:30.151Z",
   "tiendas": [
     {
       "id": 1,
@@ -2813,7 +2813,7 @@
     {
       "id": 63,
       "id_producto": 143,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
