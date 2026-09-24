@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-05-47",
-  "ultimaActualizacion": "2026-09-24T16:05:47.848Z",
+  "version": "v2026-09-24T16-09-24",
+  "ultimaActualizacion": "2026-09-24T16:09:24.196Z",
   "tiendas": [
     {
       "id": 1,
@@ -3754,7 +3754,7 @@
       "id": 163,
       "id_producto": 184,
       "grupo": "Salsa",
-      "nombre": "Salsa de la casa",
+      "nombre": "salsa picante",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
@@ -4087,7 +4087,7 @@
       "nombre": "carne molido",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 4,
       "min": 0
     },
     {
@@ -4097,7 +4097,7 @@
       "nombre": "morcilla",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 4,
       "min": 0
     },
     {
@@ -4107,7 +4107,7 @@
       "nombre": "huevo",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
+      "max": 4,
       "min": 0
     }
   ]
