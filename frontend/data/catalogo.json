@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-36-53",
-  "ultimaActualizacion": "2026-09-24T05:36:53.082Z",
+  "version": "v2026-09-24T05-36-56",
+  "ultimaActualizacion": "2026-09-24T05:36:56.614Z",
   "tiendas": [
     {
       "id": 1,
@@ -4183,8 +4183,8 @@
     {
       "id": 212,
       "id_producto": 188,
-      "grupo": "Proteína",
-      "nombre": "Hígado Encebollado",
+      "grupo": "Acompañamiento",
+      "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -4193,8 +4193,8 @@
     {
       "id": 213,
       "id_producto": 188,
-      "grupo": "Proteína",
-      "nombre": "Rollos de cerdo en salsa",
+      "grupo": "Acompañamiento",
+      "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
