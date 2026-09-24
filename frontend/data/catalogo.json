@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-11-50",
-  "ultimaActualizacion": "2026-09-24T16:11:50.390Z",
+  "version": "v2026-09-24T16-12-22",
+  "ultimaActualizacion": "2026-09-24T16:12:22.525Z",
   "tiendas": [
     {
       "id": 1,
@@ -4084,7 +4084,7 @@
       "id": 200,
       "id_producto": 186,
       "grupo": "Proteina",
-      "nombre": "Carne molido",
+      "nombre": "Carne molida",
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
