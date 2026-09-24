@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-41-38",
-  "ultimaActualizacion": "2026-09-24T05:41:38.194Z",
+  "version": "v2026-09-24T05-44-49",
+  "ultimaActualizacion": "2026-09-24T05:44:49.238Z",
   "tiendas": [
     {
       "id": 1,
@@ -941,7 +941,7 @@
     {
       "id": 10,
       "nombre": "Mantenimiento",
-      "descripcion": "(oculto)",
+      "descripcion": "tamos trabajando ...",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"1600 - 00:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"14:00 - 23:30\",\"sat\":\"00:00 - 05:59\",\"sun\":\"00:00 - 05:59\"}",
       "rating": 1,
@@ -3352,23 +3352,23 @@
     },
     {
       "id": 121,
-      "id_producto": 146,
-      "grupo": "Acompañamiento",
-      "nombre": "Sopa mazorca",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 122,
-      "id_producto": 146,
-      "grupo": "Acompañamiento",
-      "nombre": "Frijoles",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 123,
