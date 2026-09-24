@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-55-15",
-  "ultimaActualizacion": "2026-09-24T06:55:15.290Z",
+  "version": "v2026-09-24T07-07-43",
+  "ultimaActualizacion": "2026-09-24T07:07:43.680Z",
   "tiendas": [
     {
       "id": 1,
@@ -449,7 +449,7 @@
       "nombre": "Calanchos Parrilla",
       "descripcion": "El sabor de la parrilla en el santuario",
       "direccion": "Carrera 44 #50a-19",
-      "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"11:00 - 22:00\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 23:00\",\"sun\":\"11:00 - 22:00\"}",
+      "horario": "{\"mon\":\"11:00 - 22:00\",\"tue\":\"Cerrado\",\"wed\":\"11:00 - 22:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"11:00 - 22:00\",\"sat\":\"11:00 - 23:00\",\"sun\":\"11:00 - 22:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/calalnchos/calancho_149.jpg",
       "promovida": 0,
