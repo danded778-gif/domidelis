@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-23-59",
-  "ultimaActualizacion": "2026-09-24T06:23:59.184Z",
+  "version": "v2026-09-24T06-26-07",
+  "ultimaActualizacion": "2026-09-24T06:26:07.437Z",
   "tiendas": [
     {
       "id": 1,
@@ -961,19 +961,6 @@
           "activo": true,
           "tiendaId": "10",
           "tiendaNombre": "Mantenimiento"
-        },
-        {
-          "id": 188,
-          "nombre": "Prueba 2",
-          "descripcion": "Prueba 2",
-          "precio": 0,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
-          "badge": "NUEVO",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "10",
-          "tiendaNombre": "Mantenimiento"
         }
       ]
     },
@@ -1196,7 +1183,7 @@
           "tiendaNombre": "Astro"
         },
         {
-          "id": 192,
+          "id": 193,
           "nombre": "Papas griegas",
           "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
           "precio": 6,
@@ -2192,12 +2179,12 @@
       "descripcion": "Prueba 2",
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
-      "badge": "NUEVO",
-      "categoria": "Otras",
+      "badge": "192",
+      "categoria": "Papas fritas chorizo de cerdo queso feta y orégano",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "10",
-      "tiendaNombre": "Mantenimiento"
+      "tiendaId": "Papas griegas",
+      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 189,
@@ -2252,7 +2239,7 @@
       "tiendaNombre": "Astro"
     },
     {
-      "id": 192,
+      "id": 193,
       "nombre": "Papas griegas",
       "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
       "precio": 6,
