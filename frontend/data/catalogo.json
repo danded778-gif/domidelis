@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-11-53",
-  "ultimaActualizacion": "2026-09-24T17:11:53.367Z",
+  "version": "v2026-09-24T17-12-28",
+  "ultimaActualizacion": "2026-09-24T17:12:28.651Z",
   "tiendas": [
     {
       "id": 1,
@@ -1288,6 +1288,19 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 108,
+      "nombre": "Ron Medellin",
+      "descripcion": "",
+      "precio": 78000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/RON%20MEDELLIN%208%20A%C3%91OS%20750%20ML.jpg",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 109,
