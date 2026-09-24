@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-04-59",
-  "ultimaActualizacion": "2026-09-24T17:04:59.191Z",
+  "version": "v2026-09-24T17-05-24",
+  "ultimaActualizacion": "2026-09-24T17:05:24.939Z",
   "tiendas": [
     {
       "id": 1,
@@ -196,7 +196,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 112,
+          "id": 107,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media verde",
           "precio": 24000,
@@ -339,6 +339,19 @@
           "tiendaNombre": "Domi Express"
         },
         {
+          "id": 123,
+          "nombre": "🥤 Gaseosa 1.5L",
+          "descripcion": "Coca-Cola",
+          "precio": 6500,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+          "badge": "Disponible",
+          "categoria": "Bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
           "id": 107,
           "nombre": "🥛 Leche",
           "descripcion": "",
@@ -398,19 +411,6 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
           "badge": "Disponible",
           "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 123,
-          "nombre": "🥤 Gaseosa 1.5L",
-          "descripcion": "Coca-Cola",
-          "precio": 6500,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-          "badge": "Disponible",
-          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1277,7 +1277,7 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 112,
+      "id": 107,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media verde",
       "precio": 24000,
@@ -1420,6 +1420,32 @@
       "tiendaNombre": "Domi Express"
     },
     {
+      "id": 123,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 124,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
       "id": 107,
       "nombre": "🥛 Leche",
       "descripcion": "",
@@ -1483,32 +1509,6 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 123,
-      "nombre": "🥤 Gaseosa 1.5L",
-      "descripcion": "Coca-Cola",
-      "precio": 6500,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 124,
-      "nombre": "🥤 Gaseosa 1.5L",
-      "descripcion": "Coca-Cola",
-      "precio": 6500,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
     },
     {
       "id": 128,
