@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-04-02",
-  "ultimaActualizacion": "2026-09-24T16:04:02.707Z",
+  "version": "v2026-09-24T16-04-27",
+  "ultimaActualizacion": "2026-09-24T16:04:27.536Z",
   "tiendas": [
     {
       "id": 1,
@@ -4051,6 +4051,16 @@
       "min": 0
     },
     {
+      "id": 211,
+      "id_producto": 192,
+      "grupo": "Salsa",
+      "nombre": "Tzatziki",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 0
+    },
+    {
       "id": 197,
       "id_producto": 186,
       "grupo": "Proteina",
@@ -4098,16 +4108,6 @@
       "precio": 0,
       "tipo": "",
       "max": null,
-      "min": 0
-    },
-    {
-      "id": 211,
-      "id_producto": 192,
-      "grupo": "Salsa",
-      "nombre": "Tzatziki",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
       "min": 0
     }
   ]
