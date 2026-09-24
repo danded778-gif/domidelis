@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-55-03",
-  "ultimaActualizacion": "2026-09-24T05:55:03.558Z",
+  "version": "v2026-09-24T05-59-30",
+  "ultimaActualizacion": "2026-09-24T05:59:30.630Z",
   "tiendas": [
     {
       "id": 1,
@@ -4182,7 +4182,7 @@
     },
     {
       "id": 212,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "Acompañamiento",
       "nombre": "sopa del dia",
       "precio": 0,
@@ -4192,7 +4192,7 @@
     },
     {
       "id": 213,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "Acompañamiento",
       "nombre": "frijoles",
       "precio": 0,
@@ -4202,7 +4202,7 @@
     },
     {
       "id": 214,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "proteina",
       "nombre": "carne res",
       "precio": 0,
@@ -4212,7 +4212,7 @@
     },
     {
       "id": 215,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "proteina",
       "nombre": "carne cerdo",
       "precio": 0,
@@ -4222,7 +4222,7 @@
     },
     {
       "id": 216,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "proteina",
       "nombre": "pollo",
       "precio": 0,
@@ -4232,7 +4232,7 @@
     },
     {
       "id": 217,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "Proteína",
       "nombre": "Carné molida",
       "precio": 0,
@@ -4242,7 +4242,7 @@
     },
     {
       "id": 218,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "Proteína",
       "nombre": "Chicharrón",
       "precio": 0,
@@ -4252,7 +4252,7 @@
     },
     {
       "id": 219,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "Proteína",
       "nombre": "Chorizo",
       "precio": 0,
