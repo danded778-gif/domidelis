@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-07-19",
-  "ultimaActualizacion": "2026-09-24T06:07:19.959Z",
+  "version": "v2026-09-24T06-08-00",
+  "ultimaActualizacion": "2026-09-24T06:08:00.212Z",
   "tiendas": [
     {
       "id": 1,
@@ -2843,12 +2843,12 @@
     {
       "id": 66,
       "id_producto": 143,
-      "grupo": "Proteína",
-      "nombre": "Carné molida",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 67,
@@ -3003,12 +3003,12 @@
     {
       "id": 83,
       "id_producto": 144,
-      "grupo": "Proteína",
-      "nombre": "Carné molida",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 84,
@@ -4323,12 +4323,12 @@
     {
       "id": 226,
       "id_producto": 188,
-      "grupo": "Proteína",
-      "nombre": "Carné molida",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 227,
