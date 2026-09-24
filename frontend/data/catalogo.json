@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T15-55-50",
-  "ultimaActualizacion": "2026-09-24T15:55:50.917Z",
+  "version": "v2026-09-24T15-59-47",
+  "ultimaActualizacion": "2026-09-24T15:59:47.959Z",
   "tiendas": [
     {
       "id": 1,
@@ -4048,126 +4048,6 @@
       "precio": 0,
       "tipo": "",
       "max": null,
-      "min": 0
-    },
-    {
-      "id": 199,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Falafel - Pequeño",
-      "precio": 17000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 200,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Falafel - Grande",
-      "precio": 20000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 201,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Pollo - Pequeño",
-      "precio": 20000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 202,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Pollo - Grande",
-      "precio": 25000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 203,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Mixto - Pequeño",
-      "precio": 23000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 204,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Mixto - Grande",
-      "precio": 29000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 205,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Cerdo - Pequeño",
-      "precio": 23000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 206,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Cerdo - Grande",
-      "precio": 29000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 207,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Kebab - Pequeño",
-      "precio": 23000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 208,
-      "id_producto": "",
-      "grupo": "Presentación",
-      "nombre": "Kebab - Grande",
-      "precio": 29000,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 209,
-      "id_producto": "",
-      "grupo": "Servir",
-      "nombre": "En bolsa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 210,
-      "id_producto": "",
-      "grupo": "Servir",
-      "nombre": "En plato",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
       "min": 0
     },
     {
