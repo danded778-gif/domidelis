@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-36-41",
-  "ultimaActualizacion": "2026-09-24T06:36:41.330Z",
+  "version": "v2026-09-24T06-38-31",
+  "ultimaActualizacion": "2026-09-24T06:38:31.947Z",
   "tiendas": [
     {
       "id": 1,
@@ -458,7 +458,7 @@
         {
           "id": 143,
           "nombre": "Almuerzo del Dia",
-          "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
+          "descripcion": "menu del dia",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
           "badge": "Disponible",
@@ -496,7 +496,7 @@
         },
         {
           "id": 146,
-          "nombre": "Menu Miercoles",
+          "nombre": "menu",
           "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
@@ -1682,7 +1682,7 @@
     {
       "id": 143,
       "nombre": "Almuerzo del Dia",
-      "descripcion": "Deléitate con este plato tradicional que incluye un crujiente chicharrón carnudo, esponjoso arroz blanco y arepa blanca asada, todo acompañado de una fresca ensalada con aguacate, tomate y zanahoria rallada.",
+      "descripcion": "menu del dia",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_01_1305x1471_149kb.jpg",
       "badge": "Disponible",
@@ -1720,7 +1720,7 @@
     },
     {
       "id": 146,
-      "nombre": "Menu Miercoles",
+      "nombre": "menu",
       "descripcion": "Higado encebollado, arroz blanco, presa de pollo guisada, arepa y ensalada fresca (lechuga, repollo, zanahoria, tomate y pepino)",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almmuerzo_4_150kb.jpg",
