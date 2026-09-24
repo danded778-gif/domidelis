@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-12-28",
-  "ultimaActualizacion": "2026-09-24T17:12:28.651Z",
+  "version": "v2026-09-24T17-12-58",
+  "ultimaActualizacion": "2026-09-24T17:12:58.143Z",
   "tiendas": [
     {
       "id": 1,
@@ -1292,10 +1292,10 @@
     {
       "id": 108,
       "nombre": "Ron Medellin",
-      "descripcion": "",
+      "descripcion": "750 ml",
       "precio": 78000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/RON%20MEDELLIN%208%20A%C3%91OS%20750%20ML.jpg",
-      "badge": "",
+      "badge": "Disponible",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
