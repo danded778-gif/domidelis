@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-36-32",
-  "ultimaActualizacion": "2026-09-24T06:36:32.802Z",
+  "version": "v2026-09-24T06-36-41",
+  "ultimaActualizacion": "2026-09-24T06:36:41.330Z",
   "tiendas": [
     {
       "id": 1,
@@ -470,7 +470,7 @@
         },
         {
           "id": 144,
-          "nombre": "menu Miercoles",
+          "nombre": "menu",
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
@@ -483,7 +483,7 @@
         },
         {
           "id": 145,
-          "nombre": "Almuerzo",
+          "nombre": "menu",
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
@@ -1694,7 +1694,7 @@
     },
     {
       "id": 144,
-      "nombre": "menu Miercoles",
+      "nombre": "menu",
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
@@ -1707,7 +1707,7 @@
     },
     {
       "id": 145,
-      "nombre": "Almuerzo",
+      "nombre": "menu",
       "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
