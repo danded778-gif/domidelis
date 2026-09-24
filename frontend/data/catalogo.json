@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-10-31",
-  "ultimaActualizacion": "2026-09-24T06:10:31.588Z",
+  "version": "v2026-09-24T06-11-05",
+  "ultimaActualizacion": "2026-09-24T06:11:05.939Z",
   "tiendas": [
     {
       "id": 1,
@@ -2973,7 +2973,7 @@
     {
       "id": 80,
       "id_producto": 144,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
@@ -2983,7 +2983,7 @@
     {
       "id": 81,
       "id_producto": 144,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
@@ -2993,7 +2993,7 @@
     {
       "id": 82,
       "id_producto": 144,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
@@ -3002,7 +3002,7 @@
     },
     {
       "id": 83,
-      "id_producto": 144,
+      "id_producto": "",
       "grupo": "",
       "nombre": "",
       "precio": 0,
@@ -3133,7 +3133,7 @@
     {
       "id": 98,
       "id_producto": 145,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
@@ -3143,7 +3143,7 @@
     {
       "id": 99,
       "id_producto": 145,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
@@ -3153,7 +3153,7 @@
     {
       "id": 100,
       "id_producto": 145,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
@@ -3162,7 +3162,7 @@
     },
     {
       "id": 101,
-      "id_producto": 145,
+      "id_producto": "",
       "grupo": "",
       "nombre": "",
       "precio": 0,
@@ -3293,7 +3293,7 @@
     {
       "id": 115,
       "id_producto": 146,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
@@ -3303,7 +3303,7 @@
     {
       "id": 116,
       "id_producto": 146,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
@@ -3313,7 +3313,7 @@
     {
       "id": 117,
       "id_producto": 146,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
@@ -3323,7 +3323,7 @@
     {
       "id": 118,
       "id_producto": 146,
-      "grupo": "",
+      "grupo": "Proteína",
       "nombre": "",
       "precio": 0,
       "tipo": "",
