@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-26-33",
-  "ultimaActualizacion": "2026-09-24T07:26:33.323Z",
+  "version": "v2026-09-24T07-29-13",
+  "ultimaActualizacion": "2026-09-24T07:29:13.600Z",
   "tiendas": [
     {
       "id": 1,
@@ -1002,6 +1002,19 @@
           "tiendaNombre": "Dulce fusión"
         },
         {
+          "id": 187,
+          "nombre": "Almuerzo del Dia",
+          "descripcion": "menu del dia",
+          "precio": 21000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
+        },
+        {
           "id": 183,
           "nombre": "Burrito de carne",
           "descripcion": "",
@@ -1046,19 +1059,6 @@
           "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
           "precio": 32500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "11",
-          "tiendaNombre": "Dulce fusión"
-        },
-        {
-          "id": 187,
-          "nombre": "Almuerzo del Dia",
-          "descripcion": "menu del dia",
-          "precio": 21000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -2109,6 +2109,19 @@
       "tiendaNombre": "Mr Simon"
     },
     {
+      "id": 187,
+      "nombre": "Almuerzo del Dia",
+      "descripcion": "menu del dia",
+      "precio": 21000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
       "id": 183,
       "nombre": "Burrito de carne",
       "descripcion": "",
@@ -2153,19 +2166,6 @@
       "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
       "precio": 32500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "11",
-      "tiendaNombre": "Dulce fusión"
-    },
-    {
-      "id": 187,
-      "nombre": "Almuerzo del Dia",
-      "descripcion": "menu del dia",
-      "precio": 21000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/almuerzos_150kb.png",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
