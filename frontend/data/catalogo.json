@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-02-24",
-  "ultimaActualizacion": "2026-09-24T17:02:24.668Z",
+  "version": "v2026-09-24T17-04-33",
+  "ultimaActualizacion": "2026-09-24T17:04:33.704Z",
   "tiendas": [
     {
       "id": 1,
@@ -196,19 +196,6 @@
       "activo": true,
       "productos": [
         {
-          "id": 107,
-          "nombre": "🥛 Leche",
-          "descripcion": "",
-          "precio": 4500,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
-          "badge": "Disponible",
-          "categoria": "Bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
           "id": 108,
           "nombre": "🥚 Cubeta de Huevos",
           "descripcion": "",
@@ -398,6 +385,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
           "badge": "Disponible",
           "categoria": "Licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 107,
+          "nombre": "🥛 Leche",
+          "descripcion": "",
+          "precio": 4500,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
+          "badge": "Disponible",
+          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1277,19 +1277,6 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 107,
-      "nombre": "🥛 Leche",
-      "descripcion": "",
-      "precio": 4500,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
       "id": 108,
       "nombre": "🥚 Cubeta de Huevos",
       "descripcion": "",
@@ -1479,6 +1466,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
       "badge": "Disponible",
       "categoria": "Licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 107,
+      "nombre": "🥛 Leche",
+      "descripcion": "",
+      "precio": 4500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/leche.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
