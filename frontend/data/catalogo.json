@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T18-01-03",
-  "ultimaActualizacion": "2026-09-24T18:01:03.677Z",
+  "version": "v2026-09-24T18-04-03",
+  "ultimaActualizacion": "2026-09-24T18:04:03.080Z",
   "tiendas": [
     {
       "id": 1,
@@ -98,7 +98,7 @@
           "precio": 3999,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -1972,7 +1972,7 @@
       "precio": 3999,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Bebidas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "1",
