@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-18-47",
-  "ultimaActualizacion": "2026-09-24T06:18:47.275Z",
+  "version": "v2026-09-24T06-23-32",
+  "ultimaActualizacion": "2026-09-24T06:23:32.034Z",
   "tiendas": [
     {
       "id": 1,
@@ -969,7 +969,7 @@
           "precio": 0,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "mantenimiento",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "10",
@@ -2180,7 +2180,7 @@
       "precio": 0,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "mantenimiento",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "10",
