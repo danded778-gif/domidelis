@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T18-04-03",
-  "ultimaActualizacion": "2026-09-24T18:04:03.080Z",
+  "version": "v2026-09-24T18-17-07",
+  "ultimaActualizacion": "2026-09-24T18:17:07.815Z",
   "tiendas": [
     {
       "id": 1,
@@ -443,7 +443,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 178,
+          "id": 104,
           "nombre": "Ramo floral artesanal en limpiapipas",
           "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
           "precio": 65000,
@@ -2070,7 +2070,7 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 178,
+      "id": 104,
       "nombre": "Ramo floral artesanal en limpiapipas",
       "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
       "precio": 65000,
