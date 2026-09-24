@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-12-22",
-  "ultimaActualizacion": "2026-09-24T16:12:22.525Z",
+  "version": "v2026-09-24T16-15-13",
+  "ultimaActualizacion": "2026-09-24T16:15:13.600Z",
   "tiendas": [
     {
       "id": 1,
@@ -4063,12 +4063,12 @@
     {
       "id": 198,
       "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Acompañamiento",
+      "nombre": "sopa del dia",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 199,
