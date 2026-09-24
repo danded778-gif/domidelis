@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-10-28",
-  "ultimaActualizacion": "2026-09-24T06:10:28.285Z",
+  "version": "v2026-09-24T06-10-31",
+  "ultimaActualizacion": "2026-09-24T06:10:31.588Z",
   "tiendas": [
     {
       "id": 1,
@@ -2842,8 +2842,8 @@
     },
     {
       "id": 66,
-      "id_producto": 143,
-      "grupo": "Proteína",
+      "id_producto": "",
+      "grupo": "",
       "nombre": "",
       "precio": 0,
       "tipo": "",
