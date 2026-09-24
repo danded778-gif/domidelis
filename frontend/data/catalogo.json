@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-29-18",
-  "ultimaActualizacion": "2026-09-24T16:29:18.205Z",
+  "version": "v2026-09-24T16-29-41",
+  "ultimaActualizacion": "2026-09-24T16:29:41.471Z",
   "tiendas": [
     {
       "id": 1,
@@ -3447,7 +3447,7 @@
       "nombre": "Rosada",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -3457,7 +3457,7 @@
       "nombre": "Tocineta",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -3467,7 +3467,7 @@
       "nombre": "Ajo",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -3477,7 +3477,7 @@
       "nombre": "Piña",
       "precio": 0,
       "tipo": "salsa",
-      "max": 1,
+      "max": 2,
       "min": 0
     },
     {
@@ -3507,7 +3507,7 @@
       "nombre": "BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
@@ -3517,7 +3517,7 @@
       "nombre": "Rosada",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
@@ -3527,7 +3527,7 @@
       "nombre": "Tocineta",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
@@ -3537,7 +3537,7 @@
       "nombre": "Ajo",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
@@ -3547,7 +3547,7 @@
       "nombre": "Piña",
       "precio": 0,
       "tipo": "salsa",
-      "max": 2,
+      "max": 3,
       "min": 0
     },
     {
@@ -3577,7 +3577,7 @@
       "nombre": "BBQ",
       "precio": 0,
       "tipo": "salsa",
-      "max": 3,
+      "max": 4,
       "min": 0
     },
     {
