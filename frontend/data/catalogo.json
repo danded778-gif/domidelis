@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-40-17",
-  "ultimaActualizacion": "2026-09-24T05:40:17.146Z",
+  "version": "v2026-09-24T05-40-46",
+  "ultimaActualizacion": "2026-09-24T05:40:46.846Z",
   "tiendas": [
     {
       "id": 1,
@@ -3113,8 +3113,8 @@
     {
       "id": 96,
       "id_producto": 145,
-      "grupo": "Proteína",
-      "nombre": "Hígado Encebollado",
+      "grupo": "Acompañamiento",
+      "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3123,8 +3123,8 @@
     {
       "id": 97,
       "id_producto": 145,
-      "grupo": "Proteína",
-      "nombre": "Rollos de cerdo en salsa",
+      "grupo": "Acompañamiento",
+      "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3133,8 +3133,8 @@
     {
       "id": 98,
       "id_producto": 145,
-      "grupo": "Proteína",
-      "nombre": "Cerdo",
+      "grupo": "proteina",
+      "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3143,8 +3143,8 @@
     {
       "id": 99,
       "id_producto": 145,
-      "grupo": "Proteína",
-      "nombre": "Pechuga a la plancha",
+      "grupo": "proteina",
+      "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3153,8 +3153,8 @@
     {
       "id": 100,
       "id_producto": 145,
-      "grupo": "Proteína",
-      "nombre": "Bistec",
+      "grupo": "proteina",
+      "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
