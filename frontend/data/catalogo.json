@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-55-10",
-  "ultimaActualizacion": "2026-09-24T06:55:10.293Z",
+  "version": "v2026-09-24T06-55-12",
+  "ultimaActualizacion": "2026-09-24T06:55:12.845Z",
   "tiendas": [
     {
       "id": 1,
@@ -1139,7 +1139,7 @@
       "direccion": "calle comercio",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/astro/astro.png",
       "promovida": 1,
       "activo": true,
       "productos": [
