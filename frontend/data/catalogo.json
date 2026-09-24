@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-03-36",
-  "ultimaActualizacion": "2026-09-24T16:03:36.836Z",
+  "version": "v2026-09-24T16-04-02",
+  "ultimaActualizacion": "2026-09-24T16:04:02.707Z",
   "tiendas": [
     {
       "id": 1,
@@ -4042,6 +4042,56 @@
     },
     {
       "id": 196,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 197,
+      "id_producto": 186,
+      "grupo": "Proteina",
+      "nombre": "chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 198,
+      "id_producto": 186,
+      "grupo": "Proteina",
+      "nombre": "carne molido",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 199,
+      "id_producto": 186,
+      "grupo": "Proteina",
+      "nombre": "morcilla",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 200,
+      "id_producto": 186,
+      "grupo": "Proteina",
+      "nombre": "huevo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 0
+    },
+    {
+      "id": 201,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
