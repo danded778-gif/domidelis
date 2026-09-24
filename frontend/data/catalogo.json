@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-36-09",
-  "ultimaActualizacion": "2026-09-24T05:36:09.615Z",
+  "version": "v2026-09-24T05-36-53",
+  "ultimaActualizacion": "2026-09-24T05:36:53.082Z",
   "tiendas": [
     {
       "id": 1,
@@ -4199,6 +4199,146 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 214,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Cerdo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 215,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Pechuga a la plancha",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 216,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Bistec",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 217,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Carné molida",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 218,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Chicharrón",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 219,
+      "id_producto": 188,
+      "grupo": "Proteína",
+      "nombre": "Chorizo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 220,
+      "id_producto": 188,
+      "grupo": "Acompañamiento",
+      "nombre": "Sopa mazorca",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 221,
+      "id_producto": 188,
+      "grupo": "Acompañamiento",
+      "nombre": "Frijoles",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 222,
+      "id_producto": 188,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 223,
+      "id_producto": 188,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
+      "precio": 0,
+      "tipo": "verdura",
+      "max": 2,
+      "min": 0
+    },
+    {
+      "id": 224,
+      "id_producto": 188,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 225,
+      "id_producto": 188,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
+      "precio": 0,
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 226,
+      "id_producto": 188,
+      "grupo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 227,
+      "id_producto": 188,
+      "grupo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
     }
   ]
 }
