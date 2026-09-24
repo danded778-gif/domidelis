@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-25-27",
-  "ultimaActualizacion": "2026-09-24T07:25:27.005Z",
+  "version": "v2026-09-24T07-25-31",
+  "ultimaActualizacion": "2026-09-24T07:25:31.557Z",
   "tiendas": [
     {
       "id": 1,
@@ -1009,19 +1009,6 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "11",
-          "tiendaNombre": "Dulce fusión"
-        },
-        {
-          "id": 179,
-          "nombre": "Burrito de carne",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
-          "badge": "agotado",
-          "categoria": "Menu",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "11",
@@ -2129,19 +2116,6 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "11",
-      "tiendaNombre": "Dulce fusión"
-    },
-    {
-      "id": 179,
-      "nombre": "Burrito de carne",
-      "descripcion": "",
-      "precio": 0,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
-      "badge": "agotado",
-      "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "11",
