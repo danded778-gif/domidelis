@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-04-27",
-  "ultimaActualizacion": "2026-09-24T16:04:27.536Z",
+  "version": "v2026-09-24T16-04-53",
+  "ultimaActualizacion": "2026-09-24T16:04:53.391Z",
   "tiendas": [
     {
       "id": 1,
@@ -4051,7 +4051,7 @@
       "min": 0
     },
     {
-      "id": 211,
+      "id": 197,
       "id_producto": 192,
       "grupo": "Salsa",
       "nombre": "Tzatziki",
@@ -4061,7 +4061,7 @@
       "min": 0
     },
     {
-      "id": 197,
+      "id": 198,
       "id_producto": 186,
       "grupo": "Proteina",
       "nombre": "chorizo",
@@ -4071,7 +4071,7 @@
       "min": 0
     },
     {
-      "id": 198,
+      "id": 199,
       "id_producto": 186,
       "grupo": "Proteina",
       "nombre": "carne molido",
@@ -4081,7 +4081,7 @@
       "min": 0
     },
     {
-      "id": 199,
+      "id": 200,
       "id_producto": 186,
       "grupo": "Proteina",
       "nombre": "morcilla",
@@ -4091,23 +4091,13 @@
       "min": 0
     },
     {
-      "id": 200,
+      "id": 201,
       "id_producto": 186,
       "grupo": "Proteina",
       "nombre": "huevo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
-    },
-    {
-      "id": 201,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
       "min": 0
     }
   ]
