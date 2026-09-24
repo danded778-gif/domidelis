@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-39-32",
-  "ultimaActualizacion": "2026-09-24T16:39:32.306Z",
+  "version": "v2026-09-24T17-00-43",
+  "ultimaActualizacion": "2026-09-24T17:00:43.053Z",
   "tiendas": [
     {
       "id": 1,
@@ -195,19 +195,6 @@
       "promovida": 0,
       "activo": true,
       "productos": [
-        {
-          "id": 109,
-          "nombre": "🥤 Gaseosa 1.5L",
-          "descripcion": "Coca-Cola",
-          "precio": 6500,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-          "badge": "Disponible",
-          "categoria": "Bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
         {
           "id": 110,
           "nombre": "🥛 Leche",
@@ -411,6 +398,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
           "badge": "Disponible",
           "categoria": "Licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 109,
+          "nombre": "🥤 Gaseosa 1.5L",
+          "descripcion": "Coca-Cola",
+          "precio": 6500,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+          "badge": "Disponible",
+          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1290,19 +1290,6 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 109,
-      "nombre": "🥤 Gaseosa 1.5L",
-      "descripcion": "Coca-Cola",
-      "precio": 6500,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
       "id": 110,
       "nombre": "🥛 Leche",
       "descripcion": "",
@@ -1505,6 +1492,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/AGUARDIENTE%20ANTIOQUE%C3%91O%20TETRA%20VERDE%20260%20ML.jpg",
       "badge": "Disponible",
       "categoria": "Licores",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 109,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
