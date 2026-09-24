@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-40-11",
-  "ultimaActualizacion": "2026-09-24T05:40:11.524Z",
+  "version": "v2026-09-24T05-40-14",
+  "ultimaActualizacion": "2026-09-24T05:40:14.646Z",
   "tiendas": [
     {
       "id": 1,
@@ -2872,7 +2872,7 @@
     },
     {
       "id": 69,
-      "id_producto": "",
+      "id_producto": 143,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
@@ -2882,7 +2882,7 @@
     },
     {
       "id": 70,
-      "id_producto": "",
+      "id_producto": 143,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
