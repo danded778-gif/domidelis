@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T18-17-07",
-  "ultimaActualizacion": "2026-09-24T18:17:07.815Z",
+  "version": "v2026-09-24T18-17-31",
+  "ultimaActualizacion": "2026-09-24T18:17:31.437Z",
   "tiendas": [
     {
       "id": 1,
@@ -195,6 +195,19 @@
       "promovida": 0,
       "activo": true,
       "productos": [
+        {
+          "id": 104,
+          "nombre": "Ramo floral artesanal en limpiapipas",
+          "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
+          "precio": 65000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
         {
           "id": 107,
           "nombre": "🥤 Gaseosa 1.5L",
@@ -436,19 +449,6 @@
           "precio": 0,
           "imagen_url": "",
           "badge": "agotado",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 104,
-          "nombre": "Ramo floral artesanal en limpiapipas",
-          "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
-          "precio": 65000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
-          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1264,6 +1264,19 @@
       "tiendaNombre": "Domi Delis"
     },
     {
+      "id": 104,
+      "nombre": "Ramo floral artesanal en limpiapipas",
+      "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
+      "precio": 65000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
       "id": 105,
       "nombre": "Cuarto de pollo",
       "descripcion": "",
@@ -2070,17 +2083,17 @@
       "tiendaNombre": "La Basilica"
     },
     {
-      "id": 104,
-      "nombre": "Ramo floral artesanal en limpiapipas",
-      "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
-      "precio": 65000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
-      "badge": "NUEVO",
+      "id": 178,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 179,
