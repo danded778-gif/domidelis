@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T17-01-08",
-  "ultimaActualizacion": "2026-09-24T17:01:08.591Z",
+  "version": "v2026-09-24T17-02-24",
+  "ultimaActualizacion": "2026-09-24T17:02:24.668Z",
   "tiendas": [
     {
       "id": 1,
@@ -79,7 +79,7 @@
           "tiendaNombre": "Domi Delis"
         },
         {
-          "id": 107,
+          "id": 124,
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "Coca-Cola",
           "precio": 6500,
@@ -196,7 +196,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 110,
+          "id": 107,
           "nombre": "🥛 Leche",
           "descripcion": "",
           "precio": 4500,
@@ -209,7 +209,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 111,
+          "id": 108,
           "nombre": "🥚 Cubeta de Huevos",
           "descripcion": "",
           "precio": 14000,
@@ -222,7 +222,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 112,
+          "id": 109,
           "nombre": "💊 Acetaminofén",
           "descripcion": "",
           "precio": 0,
@@ -235,7 +235,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 113,
+          "id": 110,
           "nombre": "🌹 Flores",
           "descripcion": "",
           "precio": 12000,
@@ -248,7 +248,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 114,
+          "id": 111,
           "nombre": "🧸 Peluche",
           "descripcion": "",
           "precio": 0,
@@ -261,7 +261,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 115,
+          "id": 112,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media verde",
           "precio": 24000,
@@ -274,7 +274,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 116,
+          "id": 113,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media roja",
           "precio": 26000,
@@ -287,7 +287,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 117,
+          "id": 114,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "Media azul",
           "precio": 27500,
@@ -300,7 +300,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 118,
+          "id": 115,
           "nombre": "Cerveza Pilsen lata",
           "descripcion": "",
           "precio": 0,
@@ -313,7 +313,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 119,
+          "id": 116,
           "nombre": "Cerveza Aguila en lata",
           "descripcion": "",
           "precio": 0,
@@ -326,7 +326,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 120,
+          "id": 117,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "litro azul",
           "precio": 56500,
@@ -339,7 +339,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 121,
+          "id": 118,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "litro roja",
           "precio": 53000,
@@ -352,7 +352,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 122,
+          "id": 119,
           "nombre": "Aguardiente antioqueño",
           "descripcion": "litro verde",
           "precio": 50000,
@@ -365,7 +365,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 123,
+          "id": 120,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "260 azul",
           "precio": 16500,
@@ -378,7 +378,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 124,
+          "id": 121,
           "nombre": "Aguardiente Antioqueño",
           "descripcion": "260 roja",
           "precio": 17300,
@@ -391,7 +391,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 125,
+          "id": 122,
           "nombre": "Aguardiente antioqueño",
           "descripcion": "260 verde",
           "precio": 16500,
@@ -404,7 +404,7 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 109,
+          "id": 123,
           "nombre": "🥤 Gaseosa 1.5L",
           "descripcion": "Coca-Cola",
           "precio": 6500,
@@ -1278,19 +1278,6 @@
     },
     {
       "id": 107,
-      "nombre": "🥤 Gaseosa 1.5L",
-      "descripcion": "Coca-Cola",
-      "precio": 6500,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 110,
       "nombre": "🥛 Leche",
       "descripcion": "",
       "precio": 4500,
@@ -1303,7 +1290,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 111,
+      "id": 108,
       "nombre": "🥚 Cubeta de Huevos",
       "descripcion": "",
       "precio": 14000,
@@ -1316,7 +1303,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 112,
+      "id": 109,
       "nombre": "💊 Acetaminofén",
       "descripcion": "",
       "precio": 0,
@@ -1329,7 +1316,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 113,
+      "id": 110,
       "nombre": "🌹 Flores",
       "descripcion": "",
       "precio": 12000,
@@ -1342,7 +1329,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 114,
+      "id": 111,
       "nombre": "🧸 Peluche",
       "descripcion": "",
       "precio": 0,
@@ -1355,7 +1342,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 115,
+      "id": 112,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media verde",
       "precio": 24000,
@@ -1368,7 +1355,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 116,
+      "id": 113,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media roja",
       "precio": 26000,
@@ -1381,7 +1368,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 117,
+      "id": 114,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "Media azul",
       "precio": 27500,
@@ -1394,7 +1381,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 118,
+      "id": 115,
       "nombre": "Cerveza Pilsen lata",
       "descripcion": "",
       "precio": 0,
@@ -1407,7 +1394,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 119,
+      "id": 116,
       "nombre": "Cerveza Aguila en lata",
       "descripcion": "",
       "precio": 0,
@@ -1420,7 +1407,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 120,
+      "id": 117,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "litro azul",
       "precio": 56500,
@@ -1433,7 +1420,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 121,
+      "id": 118,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "litro roja",
       "precio": 53000,
@@ -1446,7 +1433,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 122,
+      "id": 119,
       "nombre": "Aguardiente antioqueño",
       "descripcion": "litro verde",
       "precio": 50000,
@@ -1459,7 +1446,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 123,
+      "id": 120,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "260 azul",
       "precio": 16500,
@@ -1472,7 +1459,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 124,
+      "id": 121,
       "nombre": "Aguardiente Antioqueño",
       "descripcion": "260 roja",
       "precio": 17300,
@@ -1485,7 +1472,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 125,
+      "id": 122,
       "nombre": "Aguardiente antioqueño",
       "descripcion": "260 verde",
       "precio": 16500,
@@ -1498,7 +1485,7 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 109,
+      "id": 123,
       "nombre": "🥤 Gaseosa 1.5L",
       "descripcion": "Coca-Cola",
       "precio": 6500,
@@ -1509,6 +1496,19 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 124,
+      "nombre": "🥤 Gaseosa 1.5L",
+      "descripcion": "Coca-Cola",
+      "precio": 6500,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
     },
     {
       "id": 128,
