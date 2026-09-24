@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-39-27",
-  "ultimaActualizacion": "2026-09-24T05:39:27.268Z",
+  "version": "v2026-09-24T05-40-11",
+  "ultimaActualizacion": "2026-09-24T05:40:11.524Z",
   "tiendas": [
     {
       "id": 1,
@@ -2873,21 +2873,21 @@
     {
       "id": 69,
       "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 2,
       "min": 0
     },
     {
       "id": 70,
       "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 2,
       "min": 0
     },
     {
@@ -3032,23 +3032,23 @@
     },
     {
       "id": 86,
-      "id_producto": 144,
-      "grupo": "Acompañamiento",
-      "nombre": "Sopa de Verdura",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 87,
-      "id_producto": 144,
-      "grupo": "Acompañamiento",
-      "nombre": "Frijoles",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 88,
