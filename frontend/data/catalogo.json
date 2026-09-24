@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-11-05",
-  "ultimaActualizacion": "2026-09-24T06:11:05.939Z",
+  "version": "v2026-09-24T06-15-45",
+  "ultimaActualizacion": "2026-09-24T06:15:45.865Z",
   "tiendas": [
     {
       "id": 1,
@@ -474,7 +474,7 @@
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
-          "badge": "Disponible",
+          "badge": "modificando",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1698,7 +1698,7 @@
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
-      "badge": "Disponible",
+      "badge": "modificando",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
@@ -3322,8 +3322,8 @@
     },
     {
       "id": 118,
-      "id_producto": 146,
-      "grupo": "Proteína",
+      "id_producto": "",
+      "grupo": "",
       "nombre": "",
       "precio": 0,
       "tipo": "",
