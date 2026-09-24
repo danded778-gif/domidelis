@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-10-04",
-  "ultimaActualizacion": "2026-09-24T16:10:04.191Z",
+  "version": "v2026-09-24T16-11-23",
+  "ultimaActualizacion": "2026-09-24T16:11:23.286Z",
   "tiendas": [
     {
       "id": 1,
@@ -4074,7 +4074,7 @@
       "id": 199,
       "id_producto": 186,
       "grupo": "Proteina",
-      "nombre": "chorizo",
+      "nombre": "Chorizo",
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
