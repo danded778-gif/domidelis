@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-09-24",
-  "ultimaActualizacion": "2026-09-24T16:09:24.196Z",
+  "version": "v2026-09-24T16-10-04",
+  "ultimaActualizacion": "2026-09-24T16:10:04.191Z",
   "tiendas": [
     {
       "id": 1,
@@ -3754,7 +3754,7 @@
       "id": 163,
       "id_producto": 184,
       "grupo": "Salsa",
-      "nombre": "salsa picante",
+      "nombre": "Salsa picante",
       "precio": 0,
       "tipo": "salsa",
       "max": 1,
