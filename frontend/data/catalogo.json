@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T05-40-46",
-  "ultimaActualizacion": "2026-09-24T05:40:46.846Z",
+  "version": "v2026-09-24T05-41-38",
+  "ultimaActualizacion": "2026-09-24T05:41:38.194Z",
   "tiendas": [
     {
       "id": 1,
@@ -3192,23 +3192,23 @@
     },
     {
       "id": 104,
-      "id_producto": 145,
-      "grupo": "Acompañamiento",
-      "nombre": "Sopa mazorca",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 105,
-      "id_producto": 145,
-      "grupo": "Acompañamiento",
-      "nombre": "Frijoles",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 106,
@@ -3273,8 +3273,8 @@
     {
       "id": 113,
       "id_producto": 146,
-      "grupo": "Proteína",
-      "nombre": "Hígado Encebollado",
+      "grupo": "Acompañamiento",
+      "nombre": "sopa del dia",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3283,8 +3283,8 @@
     {
       "id": 114,
       "id_producto": 146,
-      "grupo": "Proteína",
-      "nombre": "Rollos de cerdo en salsa",
+      "grupo": "Acompañamiento",
+      "nombre": "frijoles",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3293,8 +3293,8 @@
     {
       "id": 115,
       "id_producto": 146,
-      "grupo": "Proteína",
-      "nombre": "Cerdo",
+      "grupo": "proteina",
+      "nombre": "carne res",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3303,8 +3303,8 @@
     {
       "id": 116,
       "id_producto": 146,
-      "grupo": "Proteína",
-      "nombre": "Pechuga a la plancha",
+      "grupo": "proteina",
+      "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3313,8 +3313,8 @@
     {
       "id": 117,
       "id_producto": 146,
-      "grupo": "Proteína",
-      "nombre": "Bistec",
+      "grupo": "proteina",
+      "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
