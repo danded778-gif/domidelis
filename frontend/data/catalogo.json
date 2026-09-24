@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T16-31-37",
-  "ultimaActualizacion": "2026-09-24T16:31:37.923Z",
+  "version": "v2026-09-24T16-32-02",
+  "ultimaActualizacion": "2026-09-24T16:32:02.000Z",
   "tiendas": [
     {
       "id": 1,
@@ -3483,7 +3483,7 @@
     {
       "id": 134,
       "id_producto": 136,
-      "grupo": "Salsa",
+      "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
       "tipo": "extra",
@@ -3493,7 +3493,7 @@
     {
       "id": 135,
       "id_producto": 136,
-      "grupo": "Salsa",
+      "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
       "tipo": "extra",
@@ -3553,7 +3553,7 @@
     {
       "id": 142,
       "id_producto": 137,
-      "grupo": "Salsa",
+      "grupo": "",
       "nombre": "Queso extra",
       "precio": 2000,
       "tipo": "extra",
@@ -3563,7 +3563,7 @@
     {
       "id": 143,
       "id_producto": 137,
-      "grupo": "Salsa",
+      "grupo": "",
       "nombre": "Tocineta extra",
       "precio": 3000,
       "tipo": "extra",
