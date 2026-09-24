@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T06-09-59",
-  "ultimaActualizacion": "2026-09-24T06:09:59.750Z",
+  "version": "v2026-09-24T06-10-28",
+  "ultimaActualizacion": "2026-09-24T06:10:28.285Z",
   "tiendas": [
     {
       "id": 1,
@@ -2823,7 +2823,7 @@
     {
       "id": 64,
       "id_producto": 143,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "carne cerdo",
       "precio": 0,
       "tipo": "opcion",
@@ -2833,7 +2833,7 @@
     {
       "id": 65,
       "id_producto": 143,
-      "grupo": "proteina",
+      "grupo": "Proteína",
       "nombre": "pollo",
       "precio": 0,
       "tipo": "opcion",
@@ -2843,7 +2843,7 @@
     {
       "id": 66,
       "id_producto": 143,
-      "grupo": "",
+      "grupo": "Proteína",
       "nombre": "",
       "precio": 0,
       "tipo": "",
