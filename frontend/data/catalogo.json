@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-14-27",
-  "ultimaActualizacion": "2026-09-24T07:14:27.170Z",
+  "version": "v2026-09-24T07-14-51",
+  "ultimaActualizacion": "2026-09-24T07:14:51.592Z",
   "tiendas": [
     {
       "id": 1,
@@ -3022,36 +3022,6 @@
     },
     {
       "id": 85,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 86,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 87,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 88,
       "id_producto": 144,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
@@ -3061,7 +3031,7 @@
       "min": 0
     },
     {
-      "id": 89,
+      "id": 86,
       "id_producto": 144,
       "grupo": "Verdura",
       "nombre": "chips de papa",
@@ -3071,7 +3041,7 @@
       "min": 0
     },
     {
-      "id": 90,
+      "id": 87,
       "id_producto": 144,
       "grupo": "Tomar",
       "nombre": "Guandolo",
@@ -3081,7 +3051,7 @@
       "min": 1
     },
     {
-      "id": 91,
+      "id": 88,
       "id_producto": 144,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
@@ -3091,7 +3061,7 @@
       "min": 1
     },
     {
-      "id": 92,
+      "id": 89,
       "id_producto": 144,
       "grupo": "",
       "nombre": "porcion arroz",
@@ -3101,12 +3071,42 @@
       "min": 0
     },
     {
-      "id": 93,
+      "id": 90,
       "id_producto": 144,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
       "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 91,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 92,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 93,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     },
@@ -3162,16 +3162,6 @@
     },
     {
       "id": 101,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 102,
       "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
@@ -3181,7 +3171,7 @@
       "min": 1
     },
     {
-      "id": 103,
+      "id": 102,
       "id_producto": 145,
       "grupo": "Proteína",
       "nombre": "Chorizo",
@@ -3191,27 +3181,7 @@
       "min": 1
     },
     {
-      "id": 104,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 105,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 106,
+      "id": 103,
       "id_producto": 145,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
@@ -3221,7 +3191,7 @@
       "min": 0
     },
     {
-      "id": 107,
+      "id": 104,
       "id_producto": 145,
       "grupo": "Verdura",
       "nombre": "chips de papa",
@@ -3231,7 +3201,7 @@
       "min": 0
     },
     {
-      "id": 108,
+      "id": 105,
       "id_producto": 145,
       "grupo": "Tomar",
       "nombre": "Guandolo",
@@ -3241,7 +3211,7 @@
       "min": 1
     },
     {
-      "id": 109,
+      "id": 106,
       "id_producto": 145,
       "grupo": "Tomar",
       "nombre": "Jugo Natural",
@@ -3251,7 +3221,7 @@
       "min": 1
     },
     {
-      "id": 110,
+      "id": 107,
       "id_producto": 145,
       "grupo": "",
       "nombre": "porcion arroz",
@@ -3261,12 +3231,42 @@
       "min": 0
     },
     {
-      "id": 111,
+      "id": 108,
       "id_producto": 145,
       "grupo": "",
       "nombre": "Carne extra",
       "precio": 7000,
       "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 109,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 110,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 111,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     },
