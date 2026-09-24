@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-25-34",
-  "ultimaActualizacion": "2026-09-24T07:25:34.212Z",
+  "version": "v2026-09-24T07-26-08",
+  "ultimaActualizacion": "2026-09-24T07:26:08.266Z",
   "tiendas": [
     {
       "id": 1,
@@ -989,19 +989,6 @@
       "activo": true,
       "productos": [
         {
-          "id": 179,
-          "nombre": "Burrito de carne",
-          "descripcion": "",
-          "precio": 0,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
-          "badge": "agotado",
-          "categoria": "Menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "11",
-          "tiendaNombre": "Dulce fusión"
-        },
-        {
           "id": 183,
           "nombre": "Cazuela paisa",
           "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
@@ -1009,6 +996,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "11",
+          "tiendaNombre": "Dulce fusión"
+        },
+        {
+          "id": 179,
+          "nombre": "Burrito de carne",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Dulce%20fusion/burritopapasalsa_50kb.webp",
+          "badge": "agotado",
+          "categoria": "Menu",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "11",
@@ -2057,6 +2057,19 @@
       "tiendaNombre": "Domi Express"
     },
     {
+      "id": 183,
+      "nombre": "Cazuela paisa",
+      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
+      "precio": 28000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "11",
+      "tiendaNombre": "Dulce fusión"
+    },
+    {
       "id": 179,
       "nombre": "Burrito de carne",
       "descripcion": "",
@@ -2107,19 +2120,6 @@
       "activo": true,
       "tiendaId": "12",
       "tiendaNombre": "Mr Simon"
-    },
-    {
-      "id": 183,
-      "nombre": "Cazuela paisa",
-      "descripcion": "( frijoles, chicharrón ,chorizo, maícitos, maduritos, ripio de papa, aguacate acompañada de arroz ensalada y arepa)",
-      "precio": 28000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Cazuela%20paisa.png",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "11",
-      "tiendaNombre": "Dulce fusión"
     },
     {
       "id": 184,
@@ -3342,61 +3342,61 @@
     },
     {
       "id": 120,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "id_producto": 146,
+      "grupo": "Verdura",
+      "nombre": "Ensalada, Tajada de maduro",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 2,
       "min": 0
     },
     {
       "id": 121,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "id_producto": 146,
+      "grupo": "Verdura",
+      "nombre": "chips de papa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 2,
       "min": 0
     },
     {
       "id": 122,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "id_producto": 146,
+      "grupo": "Tomar",
+      "nombre": "Guandolo",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 123,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "id_producto": 146,
+      "grupo": "Tomar",
+      "nombre": "Jugo Natural",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "tomar",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 124,
-      "id_producto": "",
+      "id_producto": 146,
       "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
+      "nombre": "porcion arroz",
+      "precio": 6000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
       "id": 125,
-      "id_producto": "",
+      "id_producto": 146,
       "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
+      "nombre": "Carne extra",
+      "precio": 7000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
