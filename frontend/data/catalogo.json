@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T07-13-30",
-  "ultimaActualizacion": "2026-09-24T07:13:30.151Z",
+  "version": "v2026-09-24T07-13-56",
+  "ultimaActualizacion": "2026-09-24T07:13:56.856Z",
   "tiendas": [
     {
       "id": 1,
@@ -2842,16 +2842,6 @@
     },
     {
       "id": 66,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 67,
       "id_producto": 143,
       "grupo": "Proteína",
       "nombre": "Chicharrón",
@@ -2861,7 +2851,7 @@
       "min": 1
     },
     {
-      "id": 68,
+      "id": 67,
       "id_producto": 143,
       "grupo": "Proteína",
       "nombre": "Chorizo",
@@ -2871,7 +2861,7 @@
       "min": 1
     },
     {
-      "id": 69,
+      "id": 68,
       "id_producto": 143,
       "grupo": "Verdura",
       "nombre": "Ensalada, Tajada de maduro",
@@ -2881,13 +2871,23 @@
       "min": 0
     },
     {
-      "id": 70,
+      "id": 69,
       "id_producto": 143,
       "grupo": "Verdura",
       "nombre": "chips de papa",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
+      "min": 0
+    },
+    {
+      "id": 70,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
