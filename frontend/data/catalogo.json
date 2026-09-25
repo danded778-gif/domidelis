@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-11-08",
-  "ultimaActualizacion": "2026-09-25T21:11:08.412Z",
+  "version": "v2026-09-25T21-13-07",
+  "ultimaActualizacion": "2026-09-25T21:13:07.845Z",
   "tiendas": [
     {
       "id": 1,
@@ -4194,6 +4194,16 @@
       "tipo": "salsa",
       "max": 3,
       "min": 0
+    },
+    {
+      "id": 205,
+      "id_producto": 191,
+      "grupo": "Salsa",
+      "nombre": "Tzatziki",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 1,
+      "min": 1
     }
   ]
 }
