@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T23-04-29",
-  "ultimaActualizacion": "2026-09-25T23:04:29.257Z",
+  "version": "v2026-09-25T23-04-51",
+  "ultimaActualizacion": "2026-09-25T23:04:51.761Z",
   "tiendas": [
     {
       "id": 1,
@@ -4249,40 +4249,40 @@
       "id": 210,
       "id_producto": 190,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "Lechuga 🥬",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 4,
       "min": 0
     },
     {
       "id": 211,
       "id_producto": 190,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "tomate 🍅",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 4,
       "min": 0
     },
     {
       "id": 212,
       "id_producto": 190,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "Cebolla 🧅",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 4,
       "min": 0
     },
     {
       "id": 213,
       "id_producto": 190,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "Perejil",
       "precio": 0,
-      "tipo": "",
-      "max": null,
+      "tipo": "verdura",
+      "max": 4,
       "min": 0
     }
   ]
