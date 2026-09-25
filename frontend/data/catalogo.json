@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T23-03-58",
-  "ultimaActualizacion": "2026-09-25T23:03:58.236Z",
+  "version": "v2026-09-25T23-04-26",
+  "ultimaActualizacion": "2026-09-25T23:04:26.272Z",
   "tiendas": [
     {
       "id": 1,
@@ -4080,7 +4080,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Kebab - Pequeño",
-      "precio": 24000,
+      "precio": 4000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4090,7 +4090,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Kebab - Grande",
-      "precio": 29000,
+      "precio": 9000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4100,7 +4100,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Vegetariano - Pequeño",
-      "precio": 20000,
+      "precio": 0,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4110,7 +4110,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Vegetariano - Grande",
-      "precio": 24000,
+      "precio": 4000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4248,7 +4248,7 @@
     {
       "id": 210,
       "id_producto": 190,
-      "grupo": "",
+      "grupo": "Verdura",
       "nombre": "",
       "precio": 0,
       "tipo": "",
@@ -4258,7 +4258,7 @@
     {
       "id": 211,
       "id_producto": 190,
-      "grupo": "",
+      "grupo": "Verdura",
       "nombre": "",
       "precio": 0,
       "tipo": "",
