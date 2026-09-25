@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T05-02-44",
-  "ultimaActualizacion": "2026-09-25T05:02:44.446Z",
+  "version": "v2026-09-25T16-18-14",
+  "ultimaActualizacion": "2026-09-25T16:18:14.564Z",
   "tiendas": [
     {
       "id": 1,
@@ -1214,7 +1214,7 @@
       "id": 15,
       "nombre": "J.C Delicias",
       "descripcion": "",
-      "direccion": "calle 48a",
+      "direccion": "calle 49 - #48A 17",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
