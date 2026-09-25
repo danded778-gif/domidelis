@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-38-38",
-  "ultimaActualizacion": "2026-09-25T21:38:38.544Z",
+  "version": "v2026-09-25T21-42-31",
+  "ultimaActualizacion": "2026-09-25T21:42:31.954Z",
   "tiendas": [
     {
       "id": 1,
@@ -1212,7 +1212,7 @@
           "id": 192,
           "nombre": "Papas griegas",
           "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
-          "precio": 0,
+          "precio": 14000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2281,7 +2281,7 @@
       "id": 192,
       "nombre": "Papas griegas",
       "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
-      "precio": 0,
+      "precio": 14000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
       "badge": "NUEVO",
       "categoria": "Menu",
@@ -4204,6 +4204,16 @@
       "tipo": "salsa",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 189,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     }
   ]
 }
