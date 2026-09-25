@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T23-00-36",
-  "ultimaActualizacion": "2026-09-25T23:00:36.559Z",
+  "version": "v2026-09-25T23-01-08",
+  "ultimaActualizacion": "2026-09-25T23:01:08.967Z",
   "tiendas": [
     {
       "id": 1,
@@ -3880,7 +3880,7 @@
       "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
-      "precio": 22000,
+      "precio": 0,
       "tipo": "opcion",
       "max": 1,
       "min": 1
