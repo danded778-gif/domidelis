@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-47-43",
-  "ultimaActualizacion": "2026-09-25T21:47:43.674Z",
+  "version": "v2026-09-25T21-48-51",
+  "ultimaActualizacion": "2026-09-25T21:48:51.561Z",
   "tiendas": [
     {
       "id": 1,
@@ -4213,7 +4213,7 @@
       "precio": 0,
       "tipo": "verdura",
       "max": 4,
-      "min": 4
+      "min": 2
     },
     {
       "id": 207,
@@ -4223,7 +4223,7 @@
       "precio": 0,
       "tipo": "verdura",
       "max": 4,
-      "min": 4
+      "min": 2
     },
     {
       "id": 208,
@@ -4247,7 +4247,7 @@
     },
     {
       "id": 210,
-      "id_producto": "",
+      "id_producto": 188,
       "grupo": "",
       "nombre": "",
       "precio": 0,
