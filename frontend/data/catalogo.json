@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-07-43",
-  "ultimaActualizacion": "2026-09-25T21:07:43.880Z",
+  "version": "v2026-09-25T21-11-08",
+  "ultimaActualizacion": "2026-09-25T21:11:08.412Z",
   "tiendas": [
     {
       "id": 1,
@@ -4180,6 +4180,16 @@
       "id_producto": 188,
       "grupo": "Salsa prueba",
       "nombre": "tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
+      "min": 0
+    },
+    {
+      "id": 204,
+      "id_producto": 192,
+      "grupo": "Salsa",
+      "nombre": "Crema de pimentón",
       "precio": 0,
       "tipo": "salsa",
       "max": 3,
