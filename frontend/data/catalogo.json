@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-24T20-39-30",
-  "ultimaActualizacion": "2026-09-24T20:39:30.392Z",
+  "version": "v2026-09-25T05-02-44",
+  "ultimaActualizacion": "2026-09-25T05:02:44.446Z",
   "tiendas": [
     {
       "id": 1,
@@ -4147,6 +4147,16 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 4,
+      "min": 0
+    },
+    {
+      "id": 203,
+      "id_producto": 188,
+      "grupo": "Salsa prueba",
+      "nombre": "tocineta",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 3,
       "min": 0
     }
   ]
