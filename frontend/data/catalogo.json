@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-22-16",
-  "ultimaActualizacion": "2026-09-25T21:22:16.108Z",
+  "version": "v2026-09-25T21-23-00",
+  "ultimaActualizacion": "2026-09-25T21:23:00.816Z",
   "tiendas": [
     {
       "id": 1,
@@ -1199,7 +1199,7 @@
           "id": 191,
           "nombre": "Lasana griega",
           "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
-          "precio": 25000,
+          "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -1212,7 +1212,7 @@
           "id": 192,
           "nombre": "Papas griegas",
           "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
-          "precio": 14000,
+          "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2268,7 +2268,7 @@
       "id": 191,
       "nombre": "Lasana griega",
       "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
-      "precio": 25000,
+      "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
       "badge": "NUEVO",
       "categoria": "Menu",
@@ -2281,7 +2281,7 @@
       "id": 192,
       "nombre": "Papas griegas",
       "descripcion": "Papas fritas chorizo de cerdo queso feta y orégano",
-      "precio": 14000,
+      "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/papas_griegas_170kb.png",
       "badge": "NUEVO",
       "categoria": "Menu",
@@ -3880,7 +3880,7 @@
       "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
-      "precio": 17000,
+      "precio": 0,
       "tipo": "opcion",
       "max": 1,
       "min": 1
