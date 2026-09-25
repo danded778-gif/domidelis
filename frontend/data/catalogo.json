@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-28-57",
-  "ultimaActualizacion": "2026-09-25T21:28:57.153Z",
+  "version": "v2026-09-25T21-29-22",
+  "ultimaActualizacion": "2026-09-25T21:29:22.358Z",
   "tiendas": [
     {
       "id": 1,
@@ -4088,7 +4088,7 @@
     {
       "id": 194,
       "id_producto": 190,
-      "grupo": "Presentación",
+      "grupo": "Presentacion",
       "nombre": "Kebab - Grande",
       "precio": 29000,
       "tipo": "opcion",
@@ -4098,7 +4098,7 @@
     {
       "id": 195,
       "id_producto": 190,
-      "grupo": "Presentación",
+      "grupo": "Presentacion",
       "nombre": "Vegetariano - Pequeño",
       "precio": 20000,
       "tipo": "opcion",
@@ -4108,7 +4108,7 @@
     {
       "id": 196,
       "id_producto": 190,
-      "grupo": "",
+      "grupo": "Presentacion",
       "nombre": "Vegetariano - Grande",
       "precio": 24000,
       "tipo": "opcion",
