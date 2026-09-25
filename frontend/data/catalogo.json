@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-25-52",
-  "ultimaActualizacion": "2026-09-25T21:25:52.048Z",
+  "version": "v2026-09-25T21-26-14",
+  "ultimaActualizacion": "2026-09-25T21:26:14.832Z",
   "tiendas": [
     {
       "id": 1,
@@ -3979,8 +3979,8 @@
       "id": 181,
       "id_producto": "",
       "grupo": "",
-      "nombre": "vegetariano - pequeño",
-      "precio": 0,
+      "nombre": "Vegetariano - pequeño",
+      "precio": 22000,
       "tipo": "",
       "max": null,
       "min": 0
@@ -3989,8 +3989,8 @@
       "id": 182,
       "id_producto": "",
       "grupo": "",
-      "nombre": "vegetariano - Gr",
-      "precio": 0,
+      "nombre": "vegetariano - Grande",
+      "precio": 25000,
       "tipo": "",
       "max": null,
       "min": 0
