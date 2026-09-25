@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-29-22",
-  "ultimaActualizacion": "2026-09-25T21:29:22.358Z",
+  "version": "v2026-09-25T21-30-06",
+  "ultimaActualizacion": "2026-09-25T21:30:06.040Z",
   "tiendas": [
     {
       "id": 1,
@@ -4000,7 +4000,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Pequeño",
-      "precio": 17000,
+      "precio": 20000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4102,8 +4102,8 @@
       "nombre": "Vegetariano - Pequeño",
       "precio": 20000,
       "tipo": "opcion",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 196,
@@ -4112,8 +4112,8 @@
       "nombre": "Vegetariano - Grande",
       "precio": 24000,
       "tipo": "opcion",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 197,
