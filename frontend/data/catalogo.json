@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-31-06",
-  "ultimaActualizacion": "2026-09-25T21:31:06.448Z",
+  "version": "v2026-09-25T21-38-38",
+  "ultimaActualizacion": "2026-09-25T21:38:38.544Z",
   "tiendas": [
     {
       "id": 1,
@@ -1199,7 +1199,7 @@
           "id": 191,
           "nombre": "Lasana griega",
           "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
-          "precio": 0,
+          "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2268,7 +2268,7 @@
       "id": 191,
       "nombre": "Lasana griega",
       "descripcion": "Carne de res laminas de berenjena salsa bechamel y queso feta",
-      "precio": 0,
+      "precio": 25000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/lasana_griega_170kb.png",
       "badge": "NUEVO",
       "categoria": "Menu",
@@ -4060,7 +4060,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Cerdo - Pequeño",
-      "precio": 29000,
+      "precio": 24000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4080,7 +4080,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Kebab - Pequeño",
-      "precio": 23000,
+      "precio": 24000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
