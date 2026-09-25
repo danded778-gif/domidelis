@@ -166,24 +166,18 @@ async function cargarAdminData() {
         }
     }, 150); // Comprueba cada 150ms
 
+    const sesionAdmin = (typeof obtenerSesion === 'function') ? obtenerSesion() : {};
+    const socket = conectarSocket('admin', sesionAdmin.id);
+    escucharPresenciaAdmin(socket);
+
     await cargarTiendasAdmin();
     await cargarDomiciliarios();
     await cargarDomiciliariosAdmin();
     await cargarUsuariosTiendaAdmin();
     await cargarPedidosAdmin();
     await cargarHistorialPedidos();
-
-    const sesionAdmin = (typeof obtenerSesion === 'function') ? obtenerSesion() : {};
-    const socket = conectarSocket('admin', sesionAdmin.id);
-
-    window.__presenciaMap = window.__presenciaMap || {};
-    socket.on('presencia:lista', (lista) => {
-        window.__presenciaMap = {};
-        (lista || []).forEach(p => {
-            window.__presenciaMap[`${p.rol}:${p.id}`] = p;
-        });
-        pintarPresenciaEnUI();
-    });
+    pintarPresenciaEnUI();
+    pedirSnapshotPresencia();
 
     socket.on('nuevoPedido', (data) => {
         console.log('🛎️ [ADMIN] nuevoPedido:', data);
@@ -850,8 +844,36 @@ function cerrarModalAsignarDomiciliario() {
     pedidoIdAsignar = null;
 }
 
+function aplicarListaPresencia(lista) {
+    window.__presenciaMap = {};
+    (lista || []).forEach(p => {
+        if (!p || p.id == null) return;
+        window.__presenciaMap[`${p.rol}:${String(p.id)}`] = p;
+    });
+    pintarPresenciaEnUI();
+}
+
+function escucharPresenciaAdmin(socket) {
+    if (!socket || socket.__presenciaAdminBound) return;
+    socket.__presenciaAdminBound = true;
+    socket.on('presencia:lista', aplicarListaPresencia);
+    if (Array.isArray(window.__presenciaUltimaLista)) {
+        aplicarListaPresencia(window.__presenciaUltimaLista);
+    }
+}
+
+async function pedirSnapshotPresencia() {
+    try {
+        const res = await fetchConToken(`${API_URL}/presencia`);
+        const data = await res.json();
+        if (data && Array.isArray(data.presencia)) aplicarListaPresencia(data.presencia);
+    } catch (e) {
+        console.warn('No se pudo leer /api/presencia', e.message);
+    }
+}
+
 function estadoPresencia(rol, id) {
-    const p = (window.__presenciaMap || {})[`${rol}:${id}`];
+    const p = (window.__presenciaMap || {})[`${rol}:${String(id)}`];
     return (p && p.estado) || 'offline';
 }
 

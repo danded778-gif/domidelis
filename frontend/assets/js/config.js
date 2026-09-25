@@ -270,6 +270,10 @@ function conectarSocket(rol, id) {
         forceNew: true
     });
 
+    socketGlobal.on('presencia:lista', (lista) => {
+        window.__presenciaUltimaLista = lista || [];
+    });
+
     socketGlobal.on('connect', () => {
         console.log(`✅ Socket conectado: ${socketGlobal.id}`);
         if (identificacionPendiente) {
