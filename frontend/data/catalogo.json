@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-57-14",
-  "ultimaActualizacion": "2026-09-25T21:57:14.258Z",
+  "version": "v2026-09-25T22-01-00",
+  "ultimaActualizacion": "2026-09-25T22:01:00.587Z",
   "tiendas": [
     {
       "id": 1,
@@ -1163,10 +1163,10 @@
       "nombre": "Astro",
       "descripcion": "Comida del Medio Oriente en el Santuario",
       "direccion": "calle comercio",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-22:00\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"16:00 - 22:00\",\"tue\":\"16:00 - 22:00\",\"wed\":\"16:00 - 22:00\",\"thu\":\"16:00 - 22:00\",\"fri\":\"16:00 - 22:30\",\"sat\":\"16:00 - 22:30\",\"sun\":\"16:00 - 22:30\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/astro/astro.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -4098,7 +4098,7 @@
     {
       "id": 195,
       "id_producto": 190,
-      "grupo": "Presentacion",
+      "grupo": "Presentación",
       "nombre": "Vegetariano - Pequeño",
       "precio": 20000,
       "tipo": "opcion",
@@ -4108,7 +4108,7 @@
     {
       "id": 196,
       "id_producto": 190,
-      "grupo": "Presentacion",
+      "grupo": "Presentación",
       "nombre": "Vegetariano - Grande",
       "precio": 24000,
       "tipo": "opcion",
