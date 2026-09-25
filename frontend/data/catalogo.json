@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T19-15-30",
-  "ultimaActualizacion": "2026-09-25T19:15:30.470Z",
+  "version": "v2026-09-25T19-16-05",
+  "ultimaActualizacion": "2026-09-25T19:16:05.072Z",
   "tiendas": [
     {
       "id": 1,
@@ -703,7 +703,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 193,
+          "id": 134,
           "nombre": "Hamburguesa de pollo",
           "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
           "precio": 18000,
@@ -716,7 +716,7 @@
           "tiendaNombre": "Candela Burger"
         },
         {
-          "id": 134,
+          "id": 193,
           "nombre": "Carnes",
           "descripcion": "",
           "precio": 0,
@@ -1641,6 +1641,19 @@
       "tiendaNombre": "Candela Burger"
     },
     {
+      "id": 134,
+      "nombre": "Hamburguesa de pollo",
+      "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
+      "precio": 18000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/candela%20burger/comprimida_200kb.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
+    },
+    {
       "id": 136,
       "nombre": "Salchipapas Pequeña",
       "descripcion": "Crujientes papas fritas acompañadas de salchicha, butifarra, tocineta crocante, abundante queso y nuestras deliciosas salsas de la casa.",
@@ -2279,19 +2292,6 @@
     },
     {
       "id": 193,
-      "nombre": "Hamburguesa de pollo",
-      "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
-      "precio": 18000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/candela%20burger/comprimida_200kb.png",
-      "badge": "NUEVO",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "5",
-      "tiendaNombre": "Candela Burger"
-    },
-    {
-      "id": 134,
       "nombre": "Carnes",
       "descripcion": "",
       "precio": 0,
