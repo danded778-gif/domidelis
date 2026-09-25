@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T23-01-59",
-  "ultimaActualizacion": "2026-09-25T23:01:59.349Z",
+  "version": "v2026-09-25T23-02-25",
+  "ultimaActualizacion": "2026-09-25T23:02:25.589Z",
   "tiendas": [
     {
       "id": 1,
@@ -3960,7 +3960,7 @@
       "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Kebab - Pequeño",
-      "precio": 25000,
+      "precio": 3000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -3970,7 +3970,7 @@
       "id_producto": 189,
       "grupo": "Presentación",
       "nombre": "Kebab - Grande",
-      "precio": 29000,
+      "precio": 7000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
