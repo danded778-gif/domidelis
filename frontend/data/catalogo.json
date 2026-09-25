@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T23-03-34",
-  "ultimaActualizacion": "2026-09-25T23:03:34.469Z",
+  "version": "v2026-09-25T23-03-58",
+  "ultimaActualizacion": "2026-09-25T23:03:58.236Z",
   "tiendas": [
     {
       "id": 1,
@@ -4050,7 +4050,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Mixto - Grande",
-      "precio": 29000,
+      "precio": 9000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4060,7 +4060,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Cerdo - Pequeño",
-      "precio": 24000,
+      "precio": 4000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4070,7 +4070,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Cerdo - Grande",
-      "precio": 29000,
+      "precio": 9000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
