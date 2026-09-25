@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-30-06",
-  "ultimaActualizacion": "2026-09-25T21:30:06.040Z",
+  "version": "v2026-09-25T21-30-29",
+  "ultimaActualizacion": "2026-09-25T21:30:29.186Z",
   "tiendas": [
     {
       "id": 1,
@@ -4010,7 +4010,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Falafel - Grande",
-      "precio": 20000,
+      "precio": 24000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4020,7 +4020,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Pollo - Pequeño",
-      "precio": 20000,
+      "precio": 24000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4030,7 +4030,7 @@
       "id_producto": 190,
       "grupo": "Presentación",
       "nombre": "Pollo - Grande",
-      "precio": 25000,
+      "precio": 27000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
