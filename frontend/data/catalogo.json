@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-13-07",
-  "ultimaActualizacion": "2026-09-25T21:13:07.845Z",
+  "version": "v2026-09-25T21-22-16",
+  "ultimaActualizacion": "2026-09-25T21:22:16.108Z",
   "tiendas": [
     {
       "id": 1,
@@ -1186,7 +1186,7 @@
           "id": 190,
           "nombre": "Shawarma",
           "descripcion": "Pan pita / vegetales / crema de hummus / crema de pimentón / proteína",
-          "precio": 25000,
+          "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/Shawarma_170kb.webp",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2255,7 +2255,7 @@
       "id": 190,
       "nombre": "Shawarma",
       "descripcion": "Pan pita / vegetales / crema de hummus / crema de pimentón / proteína",
-      "precio": 25000,
+      "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/astro/Shawarma_170kb.webp",
       "badge": "NUEVO",
       "categoria": "Menu",
