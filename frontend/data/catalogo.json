@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-55-51",
-  "ultimaActualizacion": "2026-09-25T21:55:51.861Z",
+  "version": "v2026-09-25T21-55-54",
+  "ultimaActualizacion": "2026-09-25T21:55:54.564Z",
   "tiendas": [
     {
       "id": 1,
@@ -3983,7 +3983,7 @@
       "precio": 22000,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 182,
