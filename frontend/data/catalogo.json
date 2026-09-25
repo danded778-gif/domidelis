@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T18-23-18",
-  "ultimaActualizacion": "2026-09-25T18:23:18.880Z",
+  "version": "v2026-09-25T19-10-22",
+  "ultimaActualizacion": "2026-09-25T19:10:22.593Z",
   "tiendas": [
     {
       "id": 1,
@@ -710,6 +710,19 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/candela%20burger/carnes.png",
           "badge": "agotado",
           "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "5",
+          "tiendaNombre": "Candela Burger"
+        },
+        {
+          "id": 193,
+          "nombre": "Hamburguesa de pollo",
+          "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
+          "precio": 18000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "5",
@@ -2276,6 +2289,19 @@
       "activo": true,
       "tiendaId": "14",
       "tiendaNombre": "Astro"
+    },
+    {
+      "id": 193,
+      "nombre": "Hamburguesa de pollo",
+      "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
+      "precio": 18000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "5",
+      "tiendaNombre": "Candela Burger"
     }
   ],
   "complementosGlobal": [
