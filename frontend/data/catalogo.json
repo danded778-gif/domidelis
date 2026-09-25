@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T16-18-14",
-  "ultimaActualizacion": "2026-09-25T16:18:14.564Z",
+  "version": "v2026-09-25T18-23-18",
+  "ultimaActualizacion": "2026-09-25T18:23:18.880Z",
   "tiendas": [
     {
       "id": 1,
@@ -1213,7 +1213,7 @@
     {
       "id": 15,
       "nombre": "J.C Delicias",
-      "descripcion": "",
+      "descripcion": "¡Lo Máximo en Sabor!",
       "direccion": "calle 49 - #48A 17",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
