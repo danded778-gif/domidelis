@@ -173,7 +173,17 @@ async function cargarAdminData() {
     await cargarPedidosAdmin();
     await cargarHistorialPedidos();
 
-    const socket = conectarSocket('admin', null);
+    const sesionAdmin = (typeof obtenerSesion === 'function') ? obtenerSesion() : {};
+    const socket = conectarSocket('admin', sesionAdmin.id);
+
+    window.__presenciaMap = window.__presenciaMap || {};
+    socket.on('presencia:lista', (lista) => {
+        window.__presenciaMap = {};
+        (lista || []).forEach(p => {
+            window.__presenciaMap[`${p.rol}:${p.id}`] = p;
+        });
+        pintarPresenciaEnUI();
+    });
 
     socket.on('nuevoPedido', (data) => {
         console.log('🛎️ [ADMIN] nuevoPedido:', data);
@@ -804,7 +814,7 @@ async function cargarPedidosAdmin() {
                     <td>${formatearPrecio(p.total)}</td>
                     <td>${renderPropinaBadge(p)}</td>
                     <td><span class="badge badge-${p.estado.replace(/\s/g, '-')}">${p.estado}</span></td>
-                    <td>${domi ? `<i class="fas fa-user"></i> ${esc(domi.nombre)}` : "— Sin asignar —"}</td>
+                    <td>${domi ? `<i class="fas fa-user"></i> ${esc(domi.nombre)} ${badgePresencia('domiciliario', domi.id)}` : "— Sin asignar —"}</td>
                     <td>${formatearFecha(p.fecha)}</td>
                     <td>
                         <button class="btn btn-info btn-sm" onclick="verDetallePedido(${p.id})"><i class="fas fa-eye"></i></button>
@@ -840,6 +850,55 @@ function cerrarModalAsignarDomiciliario() {
     pedidoIdAsignar = null;
 }
 
+function estadoPresencia(rol, id) {
+    const p = (window.__presenciaMap || {})[`${rol}:${id}`];
+    return (p && p.estado) || 'offline';
+}
+
+function badgePresencia(rol, id) {
+    const estado = estadoPresencia(rol, id);
+    const label = estado === 'online' ? 'Conectado' : estado === 'away' ? 'En reposo' : 'Desconectado';
+    const key = `${rol}:${id}`;
+    return `<span class="presence-wrap" data-presence-key="${key}">
+        <span class="presence-dot presence-${estado}" title="${label}" aria-label="${label}"></span>
+        <span class="presence-label presence-${estado}">${label}</span>
+    </span>`;
+}
+
+function pintarPresenciaEnUI() {
+    document.querySelectorAll('[data-presence-key]').forEach(el => {
+        const key = el.getAttribute('data-presence-key');
+        const p = (window.__presenciaMap || {})[key];
+        const estado = (p && p.estado) || 'offline';
+        const label = estado === 'online' ? 'Conectado' : estado === 'away' ? 'En reposo' : 'Desconectado';
+        el.querySelectorAll('.presence-dot, .presence-label').forEach(n => {
+            n.classList.remove('presence-online', 'presence-away', 'presence-offline');
+            n.classList.add('presence-' + estado);
+        });
+        const lab = el.querySelector('.presence-label');
+        if (lab) lab.textContent = label;
+        const dot = el.querySelector('.presence-dot');
+        if (dot) { dot.title = label; dot.setAttribute('aria-label', label); }
+        el.closest('.domiciliario-item')?.classList.toggle('is-offline', estado === 'offline');
+    });
+
+    const modal = document.getElementById('modalAsignarDomiciliario');
+    if (modal && modal.classList.contains('active')) {
+        const q = (document.getElementById('buscarDomiciliario')?.value || '').toLowerCase().trim();
+        const lista = q
+            ? domiciliariosCache.filter(d =>
+                String(d.nombre || '').toLowerCase().includes(q) ||
+                String(d.id).includes(q) ||
+                (d.telefono && String(d.telefono).includes(q)))
+            : domiciliariosCache;
+        renderizarDomiciliarios(lista);
+    }
+
+    if (document.querySelector('#tablaDomiciliarios tbody')) {
+        renderTablaDomiciliarios(domiciliariosCache);
+    }
+}
+
 function renderizarDomiciliarios(domiciliarios) {
     const contenedor = document.getElementById("listaDomiciliarios");
     const sinResultados = document.getElementById("sinResultados");
@@ -850,19 +909,28 @@ function renderizarDomiciliarios(domiciliarios) {
         return;
     }
     if (sinResultados) sinResultados.style.display = "none";
-    contenedor.innerHTML = domiciliarios.map(d => `
-        <div class="domiciliario-item" onclick="confirmarAsignacion(${d.id}, '${escapeQuotes(d.nombre)}')"
+    const orden = { online: 0, away: 1, offline: 2 };
+    const ordenados = [...domiciliarios].sort((a, b) =>
+        (orden[estadoPresencia('domiciliario', a.id)] ?? 2) - (orden[estadoPresencia('domiciliario', b.id)] ?? 2)
+    );
+    contenedor.innerHTML = ordenados.map(d => {
+        const estado = estadoPresencia('domiciliario', d.id);
+        return `
+        <div class="domiciliario-item ${estado === 'offline' ? 'is-offline' : ''}" onclick="confirmarAsignacion(${d.id}, '${escapeQuotes(d.nombre)}')"
              style="display: flex; align-items: center; padding: 16px; margin-bottom: 12px; background: #fff; border: 2px solid #e0e0e0; border-radius: 16px; cursor: pointer;">
-            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--dark), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.3rem; margin-right: 16px;">
-                ${d.nombre.charAt(0).toUpperCase()}
+            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--dark), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.3rem; margin-right: 16px; position: relative;">
+                ${esc(String(d.nombre || '?').charAt(0).toUpperCase())}
             </div>
             <div style="flex: 1;">
-                <div style="font-weight: 600;">${esc(d.nombre)}</div>
-                <div style="font-size: 0.85rem; color: var(--gray);"><i class="fas fa-phone"></i> ${d.telefono || 'Sin teléfono'} | ID: ${d.id}</div>
+                <div style="font-weight: 600; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    ${esc(d.nombre)}
+                    ${badgePresencia('domiciliario', d.id)}
+                </div>
+                <div style="font-size: 0.85rem; color: var(--gray);"><i class="fas fa-phone"></i> ${esc(d.telefono || 'Sin teléfono')} | ID: ${d.id}</div>
             </div>
             <div style="color: var(--primary);"><i class="fas fa-chevron-right"></i></div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
 }
 
 function filtrarDomiciliarios() {
@@ -1224,25 +1292,37 @@ async function cargarDomiciliariosAdmin() {
         const tbody = document.querySelector('#tablaDomiciliarios tbody');
         if (!tbody) return;
 
-        if (domiciliarios.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="text-center">No hay domiciliarios registrados</td></tr>';
-            return;
-        }
+        renderTablaDomiciliarios(domiciliarios);
+    } catch (error) {
+        console.error(error);
+        mostrarNotificacion('Error cargando domiciliarios', 'error');
+    }
+}
 
-        const conteoPedidos = {};
-        if (window._infPedidos) {
-            window._infPedidos.forEach(p => {
-                if (p.domiciliarioId) {
-                    conteoPedidos[p.domiciliarioId] = (conteoPedidos[p.domiciliarioId] || 0) + 1;
-                }
-            });
-        }
+function renderTablaDomiciliarios(domiciliarios) {
+    const tbody = document.querySelector('#tablaDomiciliarios tbody');
+    if (!tbody) return;
+    const lista = domiciliarios || [];
+    if (lista.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No hay domiciliarios registrados</td></tr>';
+        return;
+    }
 
-        tbody.innerHTML = domiciliarios.map(d => `
+    const conteoPedidos = {};
+    if (window._infPedidos) {
+        window._infPedidos.forEach(p => {
+            if (p.domiciliarioId) {
+                conteoPedidos[p.domiciliarioId] = (conteoPedidos[p.domiciliarioId] || 0) + 1;
+            }
+        });
+    }
+
+    tbody.innerHTML = lista.map(d => `
             <tr>
                 <td>${d.id}</td>
-                <td><strong>${escapeQuotes(d.nombre)}</strong></td>
-                <td><i class="fas fa-phone" style="color:var(--accent);margin-right:4px;font-size:.8rem;"></i> ${d.telefono || '—'}</td>
+                <td><strong>${esc(d.nombre)}</strong></td>
+                <td>${badgePresencia('domiciliario', d.id)}</td>
+                <td><i class="fas fa-phone" style="color:var(--accent);margin-right:4px;font-size:.8rem;"></i> ${esc(d.telefono || '—')}</td>
                 <td>
                     <code style="background:var(--light);padding:2px 8px;border-radius:6px;font-size:.85rem;">${d.password ? '••••••' : '—'}</code>
                 </td>
@@ -1257,10 +1337,6 @@ async function cargarDomiciliariosAdmin() {
                 </td>
             </tr>
         `).join('');
-    } catch (error) {
-        console.error(error);
-        mostrarNotificacion('Error cargando domiciliarios', 'error');
-    }
 }
 
 function mostrarModalDomiciliario() {

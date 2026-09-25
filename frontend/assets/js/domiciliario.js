@@ -97,7 +97,40 @@ async function cargarDomiciliarioData() {
 
     const socket = conectarSocket('domiciliario', sesion.id);
 
-    socket.on('connect', () => console.log(`✅ [DOMI] Socket: ${socket.id}`));
+    socket.on('connect', () => {
+        console.log(`✅ [DOMI] Socket: ${socket.id}`);
+        const chip = document.getElementById('mi-presencia');
+        if (chip) {
+            const dot = chip.querySelector('.presence-dot');
+            const lab = chip.querySelector('.presence-label');
+            if (dot) {
+                dot.classList.remove('presence-away', 'presence-offline');
+                dot.classList.add('presence-online');
+            }
+            if (lab) {
+                lab.className = 'presence-label presence-online';
+                lab.textContent = 'Conectado';
+            }
+        }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        const chip = document.getElementById('mi-presencia');
+        if (!chip) return;
+        const hidden = document.hidden;
+        const estado = hidden ? 'away' : 'online';
+        const label = hidden ? 'En reposo' : 'Conectado';
+        const dot = chip.querySelector('.presence-dot');
+        const lab = chip.querySelector('.presence-label');
+        if (dot) {
+            dot.classList.remove('presence-online', 'presence-away', 'presence-offline');
+            dot.classList.add('presence-' + estado);
+        }
+        if (lab) {
+            lab.className = 'presence-label presence-' + estado;
+            lab.textContent = label;
+        }
+    });
 
     socket.on('nuevoPedidoAsignado', (data) => {
         console.log('🔔 [DOMI] nuevoPedidoAsignado:', data);

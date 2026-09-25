@@ -1,0 +1,77 @@
+/* ============================================
+  PRESENCIA — puntos estilo Teams
+  Verde: conectado / Amarillo: reposo / Gris: desconectado
+   ============================================ */
+
+.presence-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
+}
+
+.presence-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px #fff;
+  background: #9ca3af;
+}
+
+.presence-dot.presence-online {
+  background: #22c55e;
+}
+
+.presence-dot.presence-away {
+  background: #eab308;
+}
+
+.presence-dot.presence-offline {
+  background: #9ca3af;
+}
+
+.presence-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.presence-label.presence-online {
+  color: #16a34a;
+}
+
+.presence-label.presence-away {
+  color: #ca8a04;
+}
+
+.presence-label.presence-offline {
+  color: #6b7280;
+}
+
+.presence-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.presence-legend .presence-dot {
+  margin-right: 4px;
+}
+
+.domiciliario-item.is-offline {
+  opacity: 0.72;
+}
+
+.presence-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

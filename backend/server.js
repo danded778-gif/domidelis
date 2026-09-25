@@ -13,29 +13,46 @@ const axios = require('axios');
 const webpush = require('web-push');
 require('dotenv').config();
 
-// ★★★ Firebase Admin SDK (API Modular v10+) + Firestore ★★★
+// ★★★ Firebase Admin SDK — opcional en local ★★★
+// Si no hay credenciales válidas, el server arranca igual.
+// FCM/Firestore se saltan; Socket.IO, JWT, proxy GAS y presencia siguen.
 const { initializeApp, cert } = require("firebase-admin/app");
 const { getMessaging } = require("firebase-admin/messaging");
 const { getFirestore } = require("firebase-admin/firestore");
 
-try {
-    const serviceAccount = {
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY 
-            ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') 
-            : undefined
-    };
+let firestoreDb = null;
+let firebaseOk = false;
 
-    initializeApp({
-        credential: cert(serviceAccount)
-    });
-    console.log("✅ Firebase Admin SDK inicializado correctamente desde variables de entorno.");
-} catch (error) {
-    console.error("❌ Error al inicializar Firebase Admin:", error.message);
+function privateKeyPareceValida(key) {
+    if (!key || typeof key !== 'string') return false;
+    const k = key.replace(/\\n/g, '\n').trim();
+    return k.includes('BEGIN PRIVATE KEY') && k.includes('END PRIVATE KEY');
 }
 
-const firestoreDb = getFirestore();
+try {
+    const projectId = process.env.FIREBASE_PROJECT_ID;
+    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+    const privateKeyRaw = process.env.FIREBASE_PRIVATE_KEY;
+
+    if (!projectId || !clientEmail || !privateKeyPareceValida(privateKeyRaw)) {
+        console.warn("⚠️ Firebase desactivado: faltan credenciales válidas (normal en local).");
+    } else {
+        initializeApp({
+            credential: cert({
+                projectId,
+                clientEmail,
+                privateKey: privateKeyRaw.replace(/\\n/g, '\n')
+            })
+        });
+        firestoreDb = getFirestore();
+        firebaseOk = true;
+        console.log("✅ Firebase Admin SDK inicializado correctamente desde variables de entorno.");
+    }
+} catch (error) {
+    firestoreDb = null;
+    firebaseOk = false;
+    console.warn("⚠️ Firebase desactivado:", error.message);
+}
 
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -191,6 +208,49 @@ function verificarToken(req, res, next) {
 const suscripciones = new Map();
 
 // ============================================
+// PRESENCIA (admin + domiciliario) en memoria
+// Verde = online, Amarillo = away, Gris = offline
+// ============================================
+const presencia = new Map();
+
+function clavePresencia(rol, id) {
+    return `${rol}:${String(id)}`;
+}
+
+function snapshotPresencia() {
+    return Array.from(presencia.values()).map(p => ({
+        rol: p.rol,
+        id: String(p.id),
+        nombre: p.nombre || '',
+        estado: p.estado,
+        lastSeen: p.lastSeen,
+        sockets: p.sockets ? p.sockets.size : 0
+    }));
+}
+
+function emitirPresencia() {
+    io.to('admin_room').emit('presencia:lista', snapshotPresencia());
+}
+
+function upsertPresencia(rol, id, patch) {
+    const key = clavePresencia(rol, id);
+    const prev = presencia.get(key) || {
+        rol,
+        id,
+        nombre: '',
+        estado: 'offline',
+        lastSeen: Date.now(),
+        sockets: new Set(),
+        _offlineTimer: null
+    };
+    Object.assign(prev, patch);
+    presencia.set(key, prev);
+    emitirPresencia();
+    return prev;
+}
+
+
+// ============================================
 // ENDPOINTS DE SUSCRIPCIÓN PUSH
 // ============================================
 app.post('/api/suscripciones', (req, res) => {
@@ -293,6 +353,8 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
         data: { url: '/domiciliario.html', pedidoId: String(pedidoId), tipo: 'asignacion' }
     });
 
+    if (!firestoreDb) return;
+
     try {
         const domiId = Number(domiciliarioId);
         const domiSnapshot = await firestoreDb.collection('tokens_clientes')
@@ -351,6 +413,7 @@ async function enviarPushATienda(tiendaId, pedidoId, pedidoDetalle) {
 // FUNCIÓN: Enviar notificación FCM a UN TOKEN específico
 // ============================================
 async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
+    if (!firebaseOk) return;
     if (!token) {
         console.warn("⚠️ No se proporcionó token FCM, no se puede enviar notificación.");
         return;
@@ -376,6 +439,7 @@ async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
 // FUNCIÓN: Enviar FCM a TODOS los ADMINISTRADORES
 // ============================================
 async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
+    if (!firestoreDb) return;
     try {
         const tokensRef = firestoreDb.collection('tokens_clientes');
         const snapshot = await tokensRef.where('rol', '==', 'admin').get();
@@ -633,6 +697,7 @@ app.all('/api', verificarToken, async (req, res) => {
                             });
                             console.log(`📦 Emitido nuevoPedidoTienda → tienda_${tId}`);
 
+                            if (!firestoreDb) continue;
                             const tiendaSnapshot = await firestoreDb.collection('tokens_clientes')
                                 .where('rol', '==', 'tienda')
                                 .where('tiendaId', 'in', [tId, String(tId), Number(tId)]) 
@@ -789,7 +854,13 @@ app.all('/api', verificarToken, async (req, res) => {
 io.on('connection', (socket) => {
     console.log(`🔗 Conectado: ${socket.id}`);
 
-    socket.on('identificar', ({ rol, id }) => {
+    socket.on('identificar', ({ rol, id, nombre }) => {
+        if (!rol) return;
+
+        socket.data.rol = rol;
+        socket.data.id = id;
+        socket.data.nombre = nombre || '';
+
         if (rol === 'domiciliario' && id) {
             socket.join(`domiciliario_${id}`);
             console.log(`✅ ${socket.id} → room domiciliario_${id}`);
@@ -800,11 +871,79 @@ io.on('connection', (socket) => {
             socket.join(`tienda_${id}`);
             console.log(`✅ ${socket.id} → room tienda_${id}`);
         }
+
+        if ((rol === 'admin' || rol === 'domiciliario') && id != null && id !== '') {
+            const key = clavePresencia(rol, id);
+            const prev = presencia.get(key) || {
+                rol, id, nombre: nombre || '', estado: 'offline',
+                lastSeen: Date.now(), sockets: new Set(), _offlineTimer: null
+            };
+            if (nombre) prev.nombre = nombre;
+            prev.sockets.add(socket.id);
+            prev.estado = 'online';
+            prev.lastSeen = Date.now();
+            if (prev._offlineTimer) {
+                clearTimeout(prev._offlineTimer);
+                prev._offlineTimer = null;
+            }
+            presencia.set(key, prev);
+            emitirPresencia();
+        }
+
+        if (rol === 'admin') {
+            socket.emit('presencia:lista', snapshotPresencia());
+        }
+    });
+
+    socket.on('presencia:ping', () => {
+        const { rol, id } = socket.data || {};
+        if (!rol || id == null || id === '') return;
+        const rec = presencia.get(clavePresencia(rol, id));
+        if (!rec) return;
+        rec.estado = 'online';
+        rec.lastSeen = Date.now();
+        presencia.set(clavePresencia(rol, id), rec);
+        emitirPresencia();
+    });
+
+    socket.on('presencia:away', () => {
+        const { rol, id } = socket.data || {};
+        if (!rol || id == null || id === '') return;
+        const rec = presencia.get(clavePresencia(rol, id));
+        if (!rec || rec.sockets.size === 0) return;
+        rec.estado = 'away';
+        rec.lastSeen = Date.now();
+        presencia.set(clavePresencia(rol, id), rec);
+        emitirPresencia();
     });
 
     socket.on('disconnect', () => {
         console.log(`⚠️ Desconectado: ${socket.id}`);
+        const { rol, id } = socket.data || {};
+        if (!rol || id == null || id === '') return;
+        const key = clavePresencia(rol, id);
+        const rec = presencia.get(key);
+        if (!rec) return;
+        rec.sockets.delete(socket.id);
+        if (rec.sockets.size === 0) {
+            rec._offlineTimer = setTimeout(() => {
+                if (rec.sockets.size === 0) {
+                    rec.estado = 'offline';
+                    rec.lastSeen = Date.now();
+                    presencia.set(key, rec);
+                    emitirPresencia();
+                }
+            }, 10000);
+        }
+        presencia.set(key, rec);
     });
+});
+
+app.get('/api/presencia', verificarToken, (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Solo admin' });
+    }
+    res.json({ success: true, presencia: snapshotPresencia() });
 });
 
 app.get('/api/suscripciones/estado', (req, res) => {

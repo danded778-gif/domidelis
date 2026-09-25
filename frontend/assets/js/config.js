@@ -229,12 +229,25 @@ function descripcionRecargo(carritoItems) {
 let socketGlobal = null;
 let identificacionPendiente = null;
 
+function payloadIdentificar(rol, id) {
+    let nombre = '';
+    try {
+        if (typeof obtenerSesion === 'function') {
+            const s = obtenerSesion();
+            nombre = (s && (s.nombre || s.usuario)) || '';
+        }
+    } catch (e) { }
+    return { rol, id, nombre };
+}
+
 function conectarSocket(rol, id) {
-    identificacionPendiente = { rol, id };
+    identificacionPendiente = payloadIdentificar(rol, id);
 
     if (socketGlobal && socketGlobal.connected) {
-        socketGlobal.emit('identificar', { rol, id });
+        identificacionPendiente = payloadIdentificar(rol, id);
+        socketGlobal.emit('identificar', identificacionPendiente);
         console.log(`🔄 Re-identificado: ${rol}/${id}`);
+        iniciarPresenciaCliente();
         return socketGlobal;
     }
 
@@ -242,6 +255,7 @@ function conectarSocket(rol, id) {
         socketGlobal.removeAllListeners();
         socketGlobal.close();
         socketGlobal = null;
+        window.__presenciaIniciada = false;
     }
 
     console.log(`🔗 Conectando socket → ${SOCKET_URL}`);
@@ -259,11 +273,16 @@ function conectarSocket(rol, id) {
     socketGlobal.on('connect', () => {
         console.log(`✅ Socket conectado: ${socketGlobal.id}`);
         if (identificacionPendiente) {
+            identificacionPendiente = payloadIdentificar(
+                identificacionPendiente.rol,
+                identificacionPendiente.id
+            );
             socketGlobal.emit('identificar', identificacionPendiente);
         }
+        iniciarPresenciaCliente();
     });
 
-    socketGlobal.on('Disconnect', (reason) => {
+    socketGlobal.on('disconnect', (reason) => {
         console.warn(`⚠️ Socket desconectado: ${reason}`);
         if (reason === 'io server disconnect') {
             setTimeout(() => socketGlobal.connect(), 1000);
@@ -278,6 +297,62 @@ function conectarSocket(rol, id) {
 }
 
 function getSocket() { return socketGlobal; }
+
+// ============================================
+// PRESENCIA — heartbeat + idle (Teams-like)
+// Verde = actividad, Amarillo = reposo, Gris = sin socket
+// ============================================
+const PRESENCIA_IDLE_MS = 2 * 60 * 1000;
+const PRESENCIA_PING_MS = 25 * 1000;
+
+function iniciarPresenciaCliente() {
+    const socket = getSocket();
+    if (!socket || window.__presenciaIniciada) return;
+    window.__presenciaIniciada = true;
+
+    let lastActivity = Date.now();
+    let awayEnviado = false;
+
+    const marcarActividad = () => {
+        lastActivity = Date.now();
+        if (awayEnviado && socket.connected) {
+            socket.emit('presencia:ping');
+            awayEnviado = false;
+        }
+    };
+
+    ['click', 'keydown', 'touchstart', 'mousemove', 'scroll'].forEach(ev => {
+        document.addEventListener(ev, marcarActividad, { passive: true });
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (!socket.connected) return;
+        if (document.hidden) {
+            socket.emit('presencia:away');
+            awayEnviado = true;
+        } else {
+            marcarActividad();
+            socket.emit('presencia:ping');
+        }
+    });
+
+    window.addEventListener('beforeunload', () => {
+        try { socket.emit('presencia:away'); } catch (e) { }
+    });
+
+    setInterval(() => {
+        if (!socket.connected) return;
+        if (document.hidden || Date.now() - lastActivity >= PRESENCIA_IDLE_MS) {
+            if (!awayEnviado) {
+                socket.emit('presencia:away');
+                awayEnviado = true;
+            }
+        } else {
+            socket.emit('presencia:ping');
+        }
+    }, PRESENCIA_PING_MS);
+}
+
 // ============================================
 // ★ FIX HEADER: mide la altura real del header
 // fijo y ajusta --header-height para que el main
