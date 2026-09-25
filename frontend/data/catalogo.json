@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-43-23",
-  "ultimaActualizacion": "2026-09-25T21:43:23.974Z",
+  "version": "v2026-09-25T21-43-52",
+  "ultimaActualizacion": "2026-09-25T21:43:52.360Z",
   "tiendas": [
     {
       "id": 1,
@@ -4209,7 +4209,7 @@
       "id": 206,
       "id_producto": 189,
       "grupo": "Verdura",
-      "nombre": "",
+      "nombre": "Lechuga 🥬",
       "precio": 0,
       "tipo": "",
       "max": null,
