@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-28-54",
-  "ultimaActualizacion": "2026-09-25T21:28:54.512Z",
+  "version": "v2026-09-25T21-28-57",
+  "ultimaActualizacion": "2026-09-25T21:28:57.153Z",
   "tiendas": [
     {
       "id": 1,
@@ -4098,7 +4098,7 @@
     {
       "id": 195,
       "id_producto": 190,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "Vegetariano - Pequeño",
       "precio": 20000,
       "tipo": "opcion",
