@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-56-31",
-  "ultimaActualizacion": "2026-09-25T21:56:31.277Z",
+  "version": "v2026-09-25T21-57-14",
+  "ultimaActualizacion": "2026-09-25T21:57:14.258Z",
   "tiendas": [
     {
       "id": 1,
@@ -4088,7 +4088,7 @@
     {
       "id": 194,
       "id_producto": 190,
-      "grupo": "Presentacion",
+      "grupo": "Presentación",
       "nombre": "Kebab - Grande",
       "precio": 29000,
       "tipo": "opcion",
@@ -4247,6 +4247,16 @@
     },
     {
       "id": 210,
+      "id_producto": 190,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 211,
       "id_producto": 190,
       "grupo": "",
       "nombre": "",
