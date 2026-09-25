@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T19-18-45",
-  "ultimaActualizacion": "2026-09-25T19:18:45.302Z",
+  "version": "v2026-09-25T21-07-43",
+  "ultimaActualizacion": "2026-09-25T21:07:43.880Z",
   "tiendas": [
     {
       "id": 1,
@@ -1163,7 +1163,7 @@
       "nombre": "Astro",
       "descripcion": "Comida del Medio Oriente en el Santuario",
       "direccion": "calle comercio",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"14:00-22:00\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/astro/astro.png",
       "promovida": 1,
