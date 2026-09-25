@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-25T21-42-31",
-  "ultimaActualizacion": "2026-09-25T21:42:31.954Z",
+  "version": "v2026-09-25T21-43-23",
+  "ultimaActualizacion": "2026-09-25T21:43:23.974Z",
   "tiendas": [
     {
       "id": 1,
@@ -4206,9 +4206,9 @@
       "min": 1
     },
     {
-      "id": 189,
-      "id_producto": "",
-      "grupo": "",
+      "id": 206,
+      "id_producto": 189,
+      "grupo": "Verdura",
       "nombre": "",
       "precio": 0,
       "tipo": "",
