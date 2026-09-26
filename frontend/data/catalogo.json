@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-26T17-48-10",
-  "ultimaActualizacion": "2026-09-26T17:48:10.204Z",
+  "version": "v2026-09-26T17-48-36",
+  "ultimaActualizacion": "2026-09-26T17:48:36.400Z",
   "tiendas": [
     {
       "id": 1,
@@ -1317,6 +1317,19 @@
     },
     {
       "id": 106,
+      "nombre": "Coca-cola Mega",
+      "descripcion": "3L",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 106,
       "nombre": "Coca-cola",
       "descripcion": "400ml",
       "precio": 4000,
@@ -1587,19 +1600,6 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 127,
-      "nombre": "Coca-cola Mega",
-      "descripcion": "3L",
-      "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
     },
     {
       "id": 128,
