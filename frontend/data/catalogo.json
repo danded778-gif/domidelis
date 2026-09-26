@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-26T02-45-13",
-  "ultimaActualizacion": "2026-09-26T02:45:13.954Z",
+  "version": "v2026-09-26T05-44-28",
+  "ultimaActualizacion": "2026-09-26T05:44:28.280Z",
   "tiendas": [
     {
       "id": 1,
@@ -203,6 +203,19 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
           "badge": "Disponible",
           "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 194,
+          "nombre": "Coca-cola",
+          "descripcion": "400ml",
+          "precio": 4000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
+          "badge": "NUEVO",
+          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -450,19 +463,6 @@
           "imagen_url": "",
           "badge": "agotado",
           "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 194,
-          "nombre": "Coca-cola",
-          "descripcion": "400ml",
-          "precio": 4000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
-          "badge": "NUEVO",
-          "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1314,6 +1314,19 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 194,
+      "nombre": "Coca-cola",
+      "descripcion": "400ml",
+      "precio": 4000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
+      "badge": "NUEVO",
+      "categoria": "Bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 106,
@@ -2315,19 +2328,6 @@
       "activo": true,
       "tiendaId": "5",
       "tiendaNombre": "Candela Burger"
-    },
-    {
-      "id": 194,
-      "nombre": "Coca-cola",
-      "descripcion": "400ml",
-      "precio": 4000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
-      "badge": "NUEVO",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
     }
   ],
   "complementosGlobal": [
