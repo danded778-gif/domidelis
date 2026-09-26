@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#E63946">
-    <title>Política de Privacidad - DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Política de Privacidad | DOMIDELIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,9 +18,10 @@
             --light: #FFF8E7;
             --white: #FFFFFF;
             --gray: #6c757d;
+            --line: #f0e5d4;
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
@@ -31,21 +34,40 @@
             padding: 0 20px;
         }
         header {
-            background: var(--dark);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(135deg, #5D4037 0%, #C4854E 100%);
+            color: #fff;
+            padding: 22px 0;
+            box-shadow: 0 4px 18px rgba(93, 64, 55, .18);
+        }
+        header .container {
+            max-width: 1120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         header a {
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            color: #fff;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            letter-spacing: -.04em;
+            font-size: 2rem;
         }
+        header a i { color: var(--primary); font-size: 2.4rem; }
         main {
             padding: 3rem 0;
             background: var(--white);
             min-height: 70vh;
+        }
+        h1, h2 {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -.04em;
         }
         h1 {
             color: var(--primary);
@@ -90,26 +112,71 @@
             border-left: 4px solid #3498db;
             margin: 1.5rem 0;
         }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
+
+        /* Lista de datos en tarjetas (reemplaza la tabla) */
+        .data-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
             margin: 1.5rem 0;
-            font-size: 0.9rem;
         }
-        .data-table th {
-            background: var(--dark);
-            color: white;
-            padding: 0.7rem 1rem;
+        .data-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 16px;
+            background: var(--light);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+        .data-icon {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            border-radius: 10px;
+            background: #fff0ed;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        .data-copy { min-width: 0; }
+        .data-copy strong {
+            display: block;
+            color: var(--dark);
+            font-size: .95rem;
+            line-height: 1.3;
+        }
+        .data-copy p {
+            margin: 3px 0 8px;
+            font-size: .86rem;
             text-align: left;
+            line-height: 1.45;
+        }
+        .data-when {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--gray);
+            font-size: .74rem;
             font-weight: 600;
         }
-        .data-table td {
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid #eee;
-            color: #444;
+        .data-when i { color: var(--secondary); font-size: .7rem; }
+
+        @media (max-width: 800px) {
+            header { padding: 18px 0; }
+            .data-list { grid-template-columns: 1fr; }
         }
-        .data-table tr:nth-child(even) td {
-            background: #fafafa;
+        @media (max-width: 600px) {
+            header { padding: 14px 0; }
+            header a { font-size: 1.5rem; gap: 9px; }
+            header a i { font-size: 1.8rem; }
+            .container { padding: 0 16px; }
+            .data-item { padding: 12px 14px; }
         }
         .btn-volver {
             display: inline-flex;
@@ -148,118 +215,152 @@
     <main>
         <div class="container">
             <h1><i class="fas fa-shield-alt"></i> Política de Privacidad</h1>
-            <p class="update-date"><strong>Fecha de vigencia:</strong> Junio 2026</p>
+            <p class="update-date"><strong>Fecha de vigencia:</strong> Septiembre 2026</p>
 
-            <p>En DOMIDELIS, nos comprometemos a proteger su privacidad y a garantizar la transparencia en el manejo de su información personal. Esta Política de Privacidad describe qué datos recopilamos, cómo los utilizamos, con quién los compartimos y qué derechos tiene usted como usuario de nuestra plataforma. Al utilizar DOMIDELIS, usted acepta las prácticas descritas en este documento.</p>
+            <p>En DOMIDELIS nos comprometemos a tratar la información personal de forma transparente y responsable. Esta versión de revisión describe qué datos solicita la aplicación, cómo se utilizan, con quién pueden compartirse y cómo puede ejercer sus derechos.</p>
 
             <div class="highlight">
-                <strong>Compromiso fundamental:</strong> DOMIDELIS no vende, alquila ni comparte sus datos personales con terceros con fines comerciales o publicitarios. Su información se utiliza única y exclusivamente para prestar el servicio de domicilios y mejorar su experiencia en la plataforma.
+                <strong>Compromiso fundamental:</strong> DOMIDELIS no vende ni alquila sus datos personales. La información se comparte solo cuando es necesaria para gestionar pedidos, coordinar entregas, operar la plataforma, cumplir obligaciones legales o mejorar el servicio.
             </div>
 
             <h2>1. Datos que recopilamos</h2>
             <p>Para prestar nuestros servicios, recopilamos los siguientes datos personales que usted proporciona voluntariamente al utilizar la aplicación:</p>
 
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Dato</th>
-                        <th>Finalidad</th>
-                        <th>Cuándo se recopila</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Nombre completo</strong></td>
-                        <td>Identificar al cliente y facilitar la entrega del pedido</td>
-                        <td>Al realizar un pedido (checkout)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Número de teléfono</strong></td>
-                        <td>Contacto para coordinar la entrega y confirmación del pedido</td>
-                        <td>Al realizar un pedido (checkout)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Dirección de entrega</strong></td>
-                        <td>Dirigir al domiciliario al lugar de entrega</td>
-                        <td>Al realizar un pedido (checkout)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Zona de entrega</strong></td>
-                        <td>Calcular la tarifa de envío y verificar cobertura</td>
-                        <td>Al seleccionar zona en la página principal</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Contenido del pedido</strong></td>
-                        <td>Procesar y enviar la orden al establecimiento</td>
-                        <td>Al confirmar un pedido</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Método de pago elegido</strong></td>
-                        <td>Informar al domiciliario sobre la forma de cobro</td>
-                        <td>Al seleccionar método de pago en checkout</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Credenciales de acceso</strong></td>
-                        <td>Autenticar a administradores, domiciliarios y tiendas</td>
-                        <td>Al iniciar sesión en los paneles</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Suscripción de notificaciones push</strong></td>
-                        <td>Enviar alertas de nuevos pedidos y asignaciones</td>
-                        <td>Al conceder permiso de notificaciones</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="data-list">
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-user"></i></div>
+                    <div class="data-copy">
+                        <strong>Nombre completo</strong>
+                        <p>Identificar al cliente y facilitar la entrega del pedido.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al realizar un pedido (checkout)</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-phone"></i></div>
+                    <div class="data-copy">
+                        <strong>Número de teléfono</strong>
+                        <p>Contacto para coordinar la entrega y la confirmación del pedido.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al realizar un pedido (checkout)</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="data-copy">
+                        <strong>Dirección de entrega</strong>
+                        <p>Dirigir al domiciliario al lugar de entrega.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al realizar un pedido (checkout)</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-map-location-dot"></i></div>
+                    <div class="data-copy">
+                        <strong>Zona de entrega</strong>
+                        <p>Calcular la tarifa de envío y verificar la cobertura.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al seleccionar zona en la página principal</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-basket-shopping"></i></div>
+                    <div class="data-copy">
+                        <strong>Contenido del pedido</strong>
+                        <p>Procesar y enviar la orden al establecimiento.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al confirmar un pedido</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-note-sticky"></i></div>
+                    <div class="data-copy">
+                        <strong>Referencias de entrega</strong>
+                        <p>Comunicar indicaciones adicionales para preparar o entregar el pedido.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Cuando el cliente las escribe en el checkout</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="data-copy">
+                        <strong>Método de pago elegido</strong>
+                        <p>Informar la forma de pago seleccionada y coordinar la confirmación.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al seleccionar método de pago en checkout</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-tags"></i></div>
+                    <div class="data-copy">
+                        <strong>Propina y código promocional</strong>
+                        <p>Registrar la propina opcional y aplicar promociones.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Cuando el cliente los utiliza</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-key"></i></div>
+                    <div class="data-copy">
+                        <strong>Credenciales de acceso</strong>
+                        <p>Autenticar a administradores, domiciliarios y tiendas.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al iniciar sesión en los paneles</span>
+                    </div>
+                </article>
+                <article class="data-item">
+                    <div class="data-icon"><i class="fas fa-bell"></i></div>
+                    <div class="data-copy">
+                        <strong>Token de notificaciones push</strong>
+                        <p>Enviar alertas relacionadas con pedidos y cambios de estado.</p>
+                        <span class="data-when"><i class="fas fa-clock"></i> Al conceder permiso de notificaciones</span>
+                    </div>
+                </article>
+            </div>
 
             <div class="highlight-blue">
-                <strong>Datos que NO recopilamos:</strong> DOMIDELIS no solicita ni almacena datos financieros como números de tarjeta de crédito, cuentas bancarias o contraseñas de plataformas de pago (Nequi, Daviplata). Los pagos se realizan directamente entre las partes al momento de la entrega.
+                <strong>Datos financieros:</strong> DOMIDELIS no solicita números de tarjeta ni contraseñas de plataformas de pago. La aplicación registra el método elegido; cualquier transferencia o comprobante se gestiona por los canales indicados y no debe incluir claves personales.
             </div>
 
             <h2>2. Cómo utilizamos su información</h2>
             <p>Los datos personales que recopilamos se utilizan exclusivamente para los siguientes fines:</p>
             <ul>
-                <li><strong>Procesamiento de pedidos:</strong> Su nombre, teléfono, dirección y contenido del pedido se envían vía WhatsApp al establecimiento y al domiciliario asignado para que puedan preparar y entregar su pedido correctamente.</li>
+                <li><strong>Procesamiento de pedidos:</strong> Su nombre, teléfono, dirección, zona, referencias, productos y opciones de pago se utilizan para preparar, confirmar y entregar el pedido.</li>
                 <li><strong>Cálculo de tarifas:</strong> La zona de entrega seleccionada se utiliza para calcular automáticamente el costo del envío y aplicar los recargos correspondientes por pedidos de múltiples tiendas.</li>
+                <li><strong>Promociones y propinas:</strong> El código promocional se usa para calcular el descuento y la propina se registra como una suma opcional destinada al domiciliario.</li>
+                <li><strong>Comunicación operativa:</strong> Los datos necesarios pueden enviarse por los canales de coordinación de DOMIDELIS al establecimiento y al domiciliario asignado.</li>
                 <li><strong>Autenticación y seguridad:</strong> Las credenciales de acceso de administradores, domiciliarios y tiendas se utilizan para verificar su identidad mediante tokens JWT y garantizar que solo accedan a las funciones correspondientes a su rol.</li>
                 <li><strong>Notificaciones:</strong> La suscripción de notificaciones push se utiliza para enviar alertas relevantes en tiempo real, como nuevos pedidos para administradores, asignaciones para domiciliarios y actualizaciones de estado.</li>
-                <li><strong>Mejora del servicio:</strong> Los datos agregados y anónimos de pedidos se utilizan para generar informes financieros, estadísticas de uso y mejoras en la plataforma, sin identificar individualmente a los usuarios.</li>
+                <li><strong>Mejora y medición:</strong> Podemos utilizar información técnica, métricas de navegación y datos agregados para detectar errores, medir el uso y mejorar la plataforma.</li>
             </ul>
 
             <h2>3. Con quién compartimos su información</h2>
-            <p>Su información personal solo se comparte con los actores directamente involucrados en la prestación del servicio de domicilios:</p>
+            <p>Su información se comparte solo en la medida necesaria para prestar el servicio, operar la plataforma o cumplir una obligación legal:</p>
             <ul>
-                <li><strong>Establecimientos adheridos:</strong> Al realizar un pedido, los detalles del mismo (productos, nombre, teléfono, dirección) se envían al establecimiento correspondiente a través de WhatsApp para que puedan preparar su orden.</li>
+                <li><strong>Establecimientos adheridos:</strong> Al realizar un pedido, los detalles del mismo (productos, nombre, teléfono, dirección) se envían al establecimiento correspondiente para que pueda preparar su orden.</li>
                 <li><strong>Domiciliarios asignados:</strong> Cuando un domiciliario es asignado a su pedido, recibe la información necesaria para la entrega (nombre, dirección, teléfono, contenido del pedido y método de pago).</li>
                 <li><strong>Administradores de la plataforma:</strong> Los administradores pueden acceder a los datos de pedidos para gestión operativa, resolución de incidencias y generación de informes financieros.</li>
+                <li><strong>Proveedores tecnológicos:</strong> DOMIDELIS puede utilizar servicios de backend, base de datos, mensajería push, analítica y comunicación para operar la aplicación.</li>
             </ul>
 
             <div class="highlight">
-                <strong>Importante:</strong> No compartimos su información con terceros no relacionados con el servicio. No vendemos, alquilamos ni cedemos sus datos a empresas de publicidad, brokers de datos ni a ninguna entidad ajena al proceso de entrega de su pedido.
+                <strong>Importante:</strong> No vendemos sus datos ni los cedemos para comercialización. Los servicios externos pueden recibir datos técnicos o información necesaria para la función que prestan.
             </div>
 
             <h2>4. Almacenamiento y seguridad de los datos</h2>
-            <p>DOMIDELIS utiliza Google Apps Script como capa de almacenamiento de datos. Los pedidos y registros se almacenan en hojas de cálculo de Google (Google Sheets) protegidas por las políticas de seguridad de Google Cloud. Los datos de autenticación (tokens JWT) se almacenan temporalmente en la sesión de su navegador con una vigencia máxima de 8 horas, tras las cuales debe iniciar sesión nuevamente.</p>
-            <p>Las suscripciones de notificaciones push se almacenan en la memoria del servidor de DOMIDELIS y se eliminan automáticamente cuando el servidor se reinicia. Estas suscripciones contienen únicamente un identificador de endpoint proporcionado por el navegador y no incluyen datos personales directamente.</p>
+            <p>La plataforma puede utilizar servicios de backend, Google Apps Script/Google Sheets y Firebase/Firestore para procesar pedidos, administrar datos operativos y gestionar tokens de notificaciones. La disponibilidad de cada servicio puede variar según el entorno.</p>
+            <p>Los tokens de autenticación se almacenan temporalmente en el navegador y tienen una vigencia limitada. Las suscripciones push contienen identificadores técnicos del navegador y pueden asociarse al rol o usuario necesario para entregar la notificación.</p>
 
             <h2>5. Datos almacenados en su dispositivo</h2>
             <p>Como aplicación web progresiva, DOMIDELIS almacena ciertos datos localmente en su dispositivo para mejorar la experiencia de uso:</p>
             <ul>
-                <li><strong>LocalStorage:</strong> Se almacenan el carrito de compras activo, la zona de entrega seleccionada, el historial de entregas del domiciliario y la puntuación más alta del juego offline. Estos datos se pueden eliminar en cualquier momento limpiando los datos del navegador.</li>
+                <li><strong>LocalStorage:</strong> Puede almacenar el carrito activo, la zona seleccionada, preferencias de la aplicación, historial operativo del domiciliario y datos del juego offline. Estos datos se pueden eliminar limpiando el navegador.</li>
                 <li><strong>Caché del Service Worker:</strong> Los archivos estáticos de la aplicación (HTML, CSS, JS, imágenes) se almacenan en caché para permitir la navegación sin conexión. Esta caché se actualiza automáticamente cuando publicamos una nueva versión de la aplicación.</li>
                 <li><strong>Sesión del navegador:</strong> El token de autenticación se almacena en la sesión del navegador (SessionStorage) para mantener su sesión activa mientras utiliza la aplicación. Al cerrar el navegador, este token se elimina automáticamente.</li>
             </ul>
 
             <h2>6. Notificaciones push</h2>
-            <p>DOMIDELIS utiliza notificaciones push basadas en el protocolo VAPID para enviar alertas relevantes a los usuarios que han otorgado permiso explícito. Las notificaciones push se utilizan únicamente para informar sobre eventos relacionados con el servicio:</p>
+            <p>DOMIDELIS utiliza notificaciones push mediante Web Push/VAPID y, según el rol y el dispositivo, Firebase Cloud Messaging. Solo se solicitan después de pedir permiso al usuario:</p>
             <ul>
                 <li>Administradores: alertas de nuevos pedidos recibidos.</li>
                 <li>Domiciliarios: alertas de pedidos asignados y cambios de estado.</li>
-                <li>Clientes: no se envían notificaciones push a los clientes en la versión actual.</li>
+                <li>Clientes: pueden recibir actualizaciones relacionadas con sus pedidos si conceden el permiso y la función está habilitada.</li>
             </ul>
             <p>Puede desactivar las notificaciones push en cualquier momento desde la configuración de su navegador o desde la configuración de notificaciones de su dispositivo. La desactivación de las notificaciones no afecta el funcionamiento de la aplicación, pero podría retrasar la recepción de información importante sobre sus pedidos.</p>
 
             <h2>7. Cookies y tecnologías similares</h2>
-            <p>DOMIDELIS no utiliza cookies de rastreo ni cookies publicitarias. No implementamos píxeles de seguimiento, scripts de análisis de terceros (como Google Analytics) ni herramientas de fingerprinting. Las únicas tecnologías de almacenamiento local que utilizamos son LocalStorage, SessionStorage y la caché del Service Worker, todas ellas necesarias para el funcionamiento básico de la aplicación web progresiva.</p>
+            <p>La aplicación utiliza LocalStorage, SessionStorage y la caché del Service Worker para funciones básicas. Algunas páginas también cargan Google Analytics y Meta Pixel, que pueden recopilar información técnica y de navegación conforme a sus propias políticas.</p>
 
             <h2>8. Derechos del usuario</h2>
             <p>De conformidad con la legislación colombiana sobre protección de datos personales (Ley 1581 de 2012 y Decreto 1377 de 2013), usted tiene los siguientes derechos:</p>
@@ -269,24 +370,21 @@
                 <li><strong>Supresión:</strong> Puede solicitar la eliminación de sus datos personales de nuestros registros, salvo que exista una obligación legal de conservarlos.</li>
                 <li><strong>Revocación de autorización:</strong> Puede revocar en cualquier momento la autorización para el tratamiento de sus datos personales.</li>
             </ul>
-            <p>Para ejercer cualquiera de estos derechos, puede contactarnos directamente a través de nuestro WhatsApp oficial, indicando su nombre completo y el derecho que desea ejercer. Daremos respuesta a su solicitud en un plazo máximo de 15 días hábiles, conforme a la legislación vigente.</p>
+            <p>Para ejercer cualquiera de estos derechos, consulte el <a href="centro-de-ayuda.html" style="color:var(--primary); font-weight:600;">Centro de Ayuda</a> e indique su nombre y la solicitud. Verificaremos razonablemente su identidad antes de entregar o modificar información. Los tiempos de respuesta estarán sujetos a la legislación colombiana vigente.</p>
 
-            <h2>9. Menores de edad</h2>
+            <h2>9. Menores de edad</h2> 
             <p>DOMIDELIS no está dirigido a menores de edad. Los servicios de la plataforma, especialmente los relacionados con la venta de licores, están destinados exclusivamente a personas mayores de 18 años. No recopilamos conscientemente datos personales de menores de edad. Si detectamos que un menor ha proporcionado datos personales sin el consentimiento de su representante legal, procederemos a eliminar dicha información de nuestros registros de forma inmediata.</p>
 
-            <h2>10. Comunicaciones vía WhatsApp</h2>
-            <p>Al realizar un pedido, DOMIDELIS genera automáticamente un mensaje con los detalles de su orden y lo envía a través de WhatsApp al número oficial de la plataforma y al establecimiento correspondiente. Este mensaje incluye su nombre, teléfono, dirección, productos solicitados y método de pago. Esta comunicación es esencial para la prestación del servicio y no puede desactivarse sin afectar la funcionalidad del pedido. El uso de WhatsApp como canal de comunicación está sujeto a las políticas de privacidad de Meta Platforms, Inc.</p>
+            <h2>10. Comunicaciones del servicio</h2>
+            <p>Al confirmar un pedido, DOMIDELIS puede preparar una comunicación con los datos necesarios, como nombre, teléfono, dirección, zona, productos, referencias, método de pago, promoción y, cuando corresponda, propina. El usuario debe revisar la información antes de confirmar. Para orientación o soporte, consulte el <a href="centro-de-ayuda.html" style="color:var(--primary); font-weight:600;">Centro de Ayuda</a>.</p>
 
             <h2>11. Retención de datos</h2>
-            <p>Los datos de los pedidos se conservan en la plataforma mientras sean necesarios para la prestación del servicio y la resolución de posibles reclamaciones. Los datos almacenados en su dispositivo (LocalStorage, caché) se mantienen hasta que usted los elimine manualmente o el sistema operativo los libere por falta de espacio. Los tokens de autenticación expiran automáticamente después de 8 horas de inactividad.</p>
+            <p>Los datos de los pedidos se conservan durante el tiempo necesario para prestar el servicio, gestionar la operación, atender reclamaciones y cumplir obligaciones legales. Los datos almacenados en su dispositivo se mantienen hasta que usted los elimine o el sistema operativo los libere. Los tokens de autenticación expiran conforme a la configuración de seguridad vigente.</p>
 
             <h2>12. Cambios a esta política</h2>
             <p>DOMIDELIS se reserva el derecho de actualizar esta Política de Privacidad en cualquier momento para reflejar cambios en nuestras prácticas de manejo de datos o en la legislación aplicable. Cualquier cambio significativo será comunicado a través de un aviso visible en la aplicación. El uso continuado de la plataforma después de la publicación de cambios constituye la aceptación de la política actualizada.</p>
 
-            <p style="margin-top: 3rem; text-align: center; font-weight: 600; color: var(--dark);">
-                Para cualquier duda, consulta o ejercicio de sus derechos sobre protección de datos, puede contactarnos directamente a través de nuestro WhatsApp oficial.
-            </p>
-
+            
             <div style="text-align: center;">
                 <a href="../index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
             </div>

@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#E63946">
-    <title>Términos y Condiciones - DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Términos y Condiciones | DOMIDELIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -18,7 +20,7 @@
             --gray: #6c757d;
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
@@ -31,17 +33,31 @@
             padding: 0 20px;
         }
         header {
-            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(135deg, var(--dark) 0%, #C4854E 100%);
             color: white;
-            padding: 1rem 0;
-            text-align: center;
+            padding: 22px 0;
+            box-shadow: 0 4px 18px rgba(93, 64, 55, .18);
+        }
+        header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         header a {
             color: white;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            letter-spacing: -.04em;
+            font-size: 2rem;
         }
+        header a i { color: var(--primary); font-size: 2.4rem; }
         main {
             padding: 3rem 0;
             background: var(--white);
@@ -50,6 +66,8 @@
         h1 {
             color: var(--primary);
             margin-bottom: 1rem;
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -.04em;
             font-size: 2rem;
             text-align: center;
         }
@@ -75,6 +93,15 @@
         }
         ul {
             padding-left: 20px;
+        }
+        @media (max-width: 800px) {
+            header { padding: 18px 0; }
+        }
+        @media (max-width: 600px) {
+            header { padding: 14px 0; }
+            header a { font-size: 1.5rem; gap: 9px; }
+            header a i { font-size: 1.8rem; }
+            .container { padding: 0 16px; }
         }
         .highlight {
             background: #fff3cd;
@@ -120,56 +147,57 @@
     <main>
         <div class="container">
             <h1><i class="fas fa-file-contract"></i> Términos y Condiciones</h1>
-            <p class="update-date"><strong>Fecha de vigencia:</strong> Julio 2025</p>
+            <p class="update-date"><strong>Última actualización:</strong> Septiembre 2026</p>
 
-            <p>Bienvenido a DOMIDELIS. Al acceder, navegar o utilizar nuestra aplicación, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, no podrá utilizar nuestros servicios.</p>
+            <p>Bienvenido a DOMIDELIS. Al acceder, navegar o utilizar nuestra aplicación, usted acepta estos Términos y Condiciones.</p>
 
             <div class="highlight">
                 <strong>Nota importante:</strong> DOMIDELIS es una plataforma tecnológica de intermediación. No somos los propietarios ni preparadores de los alimentos, bebidas o productos ofrecidos en las tiendas adheridas. Cada establecimiento es responsable de la calidad, preparación y estado de sus productos.
             </div>
 
             <h2>1. Sobre el Servicio</h2>
-            <p>DOMIDELIS es una aplicación web progresiva (PWA) que conecta a los usuarios con establecimientos locales (tiendas de comida, licores, etc.) para facilitar la realización de pedidos a domicilio. Nuestro servicio incluye la gestión del carrito de compras, el cálculo de tarifas de envío y la notificación del pedido a través de WhatsApp al establecimiento y/o al domiciliario asignado.</p>
+            <p>DOMIDELIS es una aplicación web progresiva (PWA) que conecta a los usuarios con establecimientos locales para facilitar pedidos a domicilio. El servicio incluye catálogo, carrito, selección de zona, cálculo del envío, checkout y comunicación del pedido al establecimiento y/o domiciliario asignado.</p>
 
             <h2>2. Proceso de Compra y Pedidos</h2>
             <ul>
                 <li><strong>Selección de Zona:</strong> El costo del envío se calcula automáticamente según la zona de entrega seleccionada por el usuario. Es responsabilidad del usuario seleccionar la zona correcta.</li>
-                <li><strong>Confirmación vía WhatsApp:</strong> Al confirmar un pedido en la aplicación, se generará un mensaje de WhatsApp con los detalles de la orden. El pedido se considera formalizado únicamente cuando el mensaje es enviado y recibido por el establecimiento.</li>
+                <li><strong>Confirmación del pedido:</strong> Al confirmar, la aplicación prepara una comunicación con los datos del pedido. El usuario debe revisarla y enviarla por el canal indicado; el pedido queda sujeto a la recepción y aceptación del establecimiento.</li>
                 <li><strong>Disponibilidad:</strong> Los productos, precios y disponibilidad pueden cambiar sin previo aviso dependiendo del establecimiento.</li>
             </ul>
 
             <h2>3. Precios, Tarifas de Envío y Pagos</h2>
             <ul>
-                <li><strong>Precios:</strong> Los precios mostrados en la app incluyen el valor del producto establecido por la tienda. Los precios pueden estar sujetos a cambios por parte del establecimiento sin previo aviso en la app.</li>
+                <li><strong>Precios:</strong> Los precios mostrados corresponden a los valores cargados por la tienda y pueden cambiar según disponibilidad o actualización del establecimiento.</li>
                 <li><strong>Tarifa de Envío:</strong> El valor del domicilio varía según la zona geográfica (P. principal, La Judea, La Chapa, etc.). Este valor se suma al subtotal de los productos.</li>
-                <li><strong>Métodos de Pago:</strong> DOMIDELIS no procesa pagos en línea directamente. Los pagos se realizan contra entrega al domiciliario mediante los métodos acordados (Efectivo, Nequi, Daviplata, Transferencia). Las operaciones en plataformas como Nequi o Daviplata son responsabilidad exclusiva de los usuarios involucrados.</li>
+                <li><strong>Métodos de Pago:</strong> El checkout puede ofrecer efectivo, Nequi, Daviplata y transferencia. DOMIDELIS registra el método elegido para coordinar el pedido; las operaciones electrónicas se realizan por los canales indicados y no deben incluir claves personales.</li>
+                <li><strong>Propina:</strong> La propina es opcional, se destina al domiciliario y puede seleccionarse por motivos como lluvia, tráfico, entrega nocturna o excelente servicio.</li>
             </ul>
 
             <h2>4. Códigos Promocionales y Descuentos</h2>
             <p>Periódicamente, DOMIDELIS podrá ofrecer códigos promocionales a través de campañas publicitarias (carteles, redes sociales, etc.). Su uso está sujeto a las siguientes reglas:</p>
             <ul>
                 <li>Los códigos deben ser ingresados en la sección designada dentro de la aplicación o en el anuncio emergente para ser validados.</li>
-                <li>Los códigos tienen una vigencia y condiciones específicas (ej. 50% de descuento en el envío) que serán aplicadas manualmente al momento de la entrega o cobro del pedido.</li>
+                <li>Los códigos tienen una vigencia y condiciones específicas que se reflejan en el checkout cuando son válidos.</li>
                 <li>DOMIDELIS se reserva el derecho de anular o rechazar cualquier código que sea utilizado de manera fraudulenta, fuera de su fecha de vigencia o que no cumpla con las condiciones de la promoción.</li>
             </ul>
 
             <h2>5. Tiempos de Entrega</h2>
-            <p>Los tiempos de entrega son estimados y dependerán de factores como el tiempo de preparación del establecimiento, el clima, el tráfico y la disponibilidad de domiciliarios. DOMIDELIS no garantiza una hora exacta de entrega, sino que actúa como intermediario para que el pedido llegue lo más rápido posible.</p>
+            <p>Los tiempos de entrega son estimados y dependen de la preparación del establecimiento, clima, tráfico, distancia y disponibilidad de domiciliarios. DOMIDELIS no garantiza una hora exacta y actúa como intermediario para facilitar la entrega.</p>
 
             <h2>6. Cancelaciones y Devoluciones</h2>
-            <p>Dado que se trata de productos de consumo rápido (alimentos y bebidas), las cancelaciones deben realizarse comunicándose directamente con el establecimiento o el domiciliario a través de WhatsApp lo antes posible tras haber realizado el pedido. Las devoluciones por productos en mal estado o pedidos incorrectos deben reclamarse directamente al establecimiento proveedor.</p>
+            <p>Dado que se trata de productos de consumo rápido, las cancelaciones deben solicitarse lo antes posible al establecimiento, domiciliario o soporte. Una vez iniciada la preparación, la cancelación puede no ser posible o estar sujeta a condiciones. Los productos en mal estado, incorrectos o incompletos deben reportarse al establecimiento proveedor. Para orientación, consulte el <a href="centro-de-ayuda.html" style="color:var(--primary); font-weight:600;">Centro de Ayuda</a>.</p>
 
             <h2>7. Privacidad y Protección de Datos</h2>
-            <p>Al utilizar DOMIDELIS, usted acepta que la información proporcionada (Nombres, Teléfono, Dirección de entrega, Referencias) sea utilizada única y exclusivamente para los fines de procesar y entregar su pedido. Sus datos son enviados al establecimiento y/o domiciliario correspondiente a través del mensaje de WhatsApp para cumplir con el servicio. No compartimos su información con terceros para fines de marketing.</p>
+            <p>El tratamiento de datos personales se describe en la <a href="politicas.html" style="color:var(--primary); font-weight:600;">Política de Privacidad</a> de DOMIDELIS. Para gestionar un pedido, pueden utilizarse datos como nombre, teléfono, dirección, zona, referencias, productos y método de pago, y comunicarse al establecimiento o domiciliario correspondiente. No vendemos los datos personales para fines comerciales.</p>
 
             <h2>8. Uso de la Aplicación (PWA)</h2>
-            <p>DOMIDELIS funciona como una Aplicación Web Progresiva. El usuario puede instalarla en su dispositivo desde el navegador. El uso de la aplicación es gratuito, sin embargo, los costos de conexión a internet y/o planes de datos correrán por cuenta del usuario.</p>
+            <p>DOMIDELIS funciona como una Aplicación Web Progresiva. El usuario puede instalarla desde el navegador. Algunas funciones pueden estar disponibles sin conexión gracias a la caché, pero se necesita internet para consultar datos actuales y enviar pedidos. Los costos de conexión corren por cuenta del usuario.</p>
 
             <h2>9. Modificaciones a los Términos</h2>
             <p>DOMIDELIS se reserva el derecho de modificar, actualizar o alterar estos Términos y Condiciones en cualquier momento para adaptarlos a la legislación vigente en Colombia o a mejoras en el servicio. El uso continuado de la app después de cualquier cambio constituye la aceptación de los nuevos términos.</p>
 
             <p style="margin-top: 3rem; text-align: center; font-weight: 600; color: var(--dark);">
-                Para cualquier duda o reclamación, puede contactarnos directamente a través de nuestro WhatsApp oficial.
+                Para cualquier duda o reclamación, consulte el <a href="centro-de-ayuda.html" style="color:var(--primary);">Centro de Ayuda de DOMIDELIS</a>.
             </p>
 
             <div style="text-align: center;">

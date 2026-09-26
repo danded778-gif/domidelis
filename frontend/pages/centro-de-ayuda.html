@@ -5,715 +5,462 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#E63946">
-    <title>Centro de Ayuda - DOMIDELIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title>Centro de Ayuda | DOMIDELIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #E63946;
-            --secondary: #F4A261;
-            --dark: #5D4037;
-            --light: #FFF8E7;
-            --white: #FFFFFF;
-            --gray: #6c757d;
+            --ink: #5D4037;
+            --muted: #6c757d;
+            --paper: #FFF8E7;
+            --white: #ffffff;
+            --coral: #E63946;
+            --orange: #F4A261;
+            --mint: #e8f8e8;
+            --line: #f0e5d4;
+            --shadow: 0 12px 32px rgba(93, 64, 55, .10);
         }
 
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.55;
         }
+        a { color: inherit; }
+        .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: linear-gradient(135deg, #5D4037 0%, #C4854E 100%);
+            color: #fff;
+            padding: 22px 0;
+            box-shadow: 0 4px 18px rgba(93,64,55,.18);
         }
-
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+        .topbar-inner, .brand, .top-links, .app-main-nav { display: flex; align-items: center; }
+        .app-main-nav { justify-content: center; gap: 12px; width: 100%; }
+        .topbar-inner { justify-content: space-between; gap: 20px; }
+        .brand { gap: 11px; flex-shrink: 0; text-decoration: none; font-weight: 800; letter-spacing: -.04em; }
+        .brand-mark {
+            display: grid; place-items: center; color: var(--coral); font-size: 2.4rem;
         }
+        .brand > span:last-child { font-size: 2rem; color: #fff; }
+        .brand strong { color: var(--coral); }
+        .app-header-search { position: relative; flex: 1; max-width: 520px; margin: 0 1rem; }
+        .app-header-search > i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,.8); pointer-events: none; }
+        .app-header-search input { width: 100%; height: 42px; padding: 0 18px 0 42px; border: 0; border-radius: 50px; background: rgba(255,255,255,.18); color: #fff; font: inherit; outline: none; }
+        .app-header-search input::placeholder { color: rgba(255,255,255,.72); }
+        .app-header-search input:focus { box-shadow: 0 0 0 3px rgba(255,255,255,.25); }
+        .top-links { gap: 12px; margin-left: auto; font-size: .9rem; color: rgba(255,255,255,.78); }
+        .top-links a { text-decoration: none; }
+        .top-links a:hover { color: #fff; }
+        .top-links a:first-child { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; min-height: 44px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(255,255,255,.12); color: #fff; font-size: .85rem; font-weight: 600; }
+        .app-search-button, .app-cart, .app-menu-button { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 auto; border: 0; border-radius: 50%; color: rgba(255,255,255,.9); background: rgba(255,255,255,.15); font-size: 1.1rem; cursor: pointer; text-decoration: none; }
+        .app-search-button { display: none; }
+        .app-cart { position: relative; }
+        .app-cart:hover, .app-search-button:hover, .app-menu-button:hover { background: rgba(255,255,255,.25); }
+        .app-cart-count { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; display: grid; place-items: center; border: 2px solid rgba(255,255,255,.9); border-radius: 50%; background: rgba(255,255,255,.35); color: #fff; font-size: .7rem; font-weight: 800; }
+        .app-menu-button { display: none; }
+        .top-links.mobile-open { display: flex; }
 
-        header a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.5rem;
+        .hero { padding: 70px 0 46px; background: linear-gradient(135deg, var(--orange) 0%, var(--coral) 100%); color: #fff; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: end; }
+        .eyebrow { color: #fff; text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; font-weight: 700; opacity: .9; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -.04em; line-height: 1.1; }
+        h1 { max-width: 680px; margin: 14px 0 18px; font-size: clamp(2.4rem, 6vw, 4.8rem); }
+        .hero-copy { max-width: 620px; margin: 0; color: rgba(255,255,255,.92); font-size: 1.08rem; }
+        .hero-note { padding: 24px; border: 1px solid rgba(255,255,255,.35); border-radius: 18px; background: rgba(93,64,55,.18); box-shadow: 0 10px 25px rgba(93,64,55,.12); }
+        .hero-note strong { display: block; margin-bottom: 7px; font-size: 1.15rem; }
+        .hero-note p { margin: 0; color: rgba(255,255,255,.9); font-size: .94rem; }
+        .search { margin-top: 30px; position: relative; max-width: 590px; }
+        .search i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+        .search input { width: 100%; min-width: 0; padding: 16px 18px 16px 48px; border: 0; border-radius: 12px; font: inherit; color: var(--ink); outline: 3px solid transparent; }
+        .search input:focus { outline-color: rgba(244,162,97,.5); }
+        .search-modal-backdrop { display: none; position: fixed; inset: 0; z-index: 1000; padding: 7vh 20px 20px; background: rgba(93,64,55,.48); }
+        .search-modal-backdrop.open { display: block; }
+        .search-modal { width: min(620px, 100%); max-height: 78vh; margin: 0 auto; overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 70px rgba(93,64,55,.24); }
+        .search-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px 22px 16px; border-bottom: 1px solid var(--line); }
+        .search-modal-header h2 { margin: 0; font-size: 1.3rem; }
+        .search-modal-query { margin: 5px 0 0; color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+        .search-modal-close { display: grid; place-items: center; width: 36px; height: 36px; flex: 0 0 auto; border: 0; border-radius: 50%; background: #fff0ed; color: var(--coral); cursor: pointer; font-size: 1rem; }
+        .search-modal-close:hover, .search-modal-close:focus-visible { background: var(--coral); color: #fff; }
+        .search-results { display: grid; gap: 8px; max-height: calc(78vh - 100px); padding: 14px; overflow-y: auto; }
+        .search-result { display: flex; align-items: flex-start; gap: 12px; width: 100%; padding: 14px; border: 1px solid transparent; border-radius: 12px; background: #fffaf3; color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
+        .search-result:hover, .search-result:focus-visible { border-color: var(--orange); background: #fff4e5; outline: none; }
+        .search-result-icon { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: 9px; background: #fff0ed; color: var(--coral); }
+        .search-result-copy { min-width: 0; }
+        .search-result-title { display: block; margin-bottom: 3px; font-weight: 700; }
+        .search-result-excerpt { display: -webkit-box; overflow: hidden; color: var(--muted); font-size: .84rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
+        .search-no-results { margin: 0; padding: 24px 10px; color: var(--muted); text-align: center; }
+
+        .quick-nav { background: var(--white); border-bottom: 1px solid var(--line); }
+        .quick-nav .wrap { display: flex; gap: 10px; overflow-x: auto; padding: 14px 0; }
+        .quick-nav a { flex: 0 0 auto; padding: 9px 13px; border-radius: 8px; text-decoration: none; color: var(--muted); font-size: .88rem; }
+        .quick-nav a:hover { background: #fff1ed; color: var(--coral); }
+
+        main { padding: 50px 0 72px; }
+        .section { margin-bottom: 58px; scroll-margin-top: 25px; }
+        .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
+        .section-heading h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.35rem); }
+        .section-heading p { max-width: 460px; margin: 0; color: var(--muted); }
+        .section-kicker { margin: 0 0 8px; color: var(--coral); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        .step, .info-card, .faq-item, .contact-panel { background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 5px 18px rgba(93,64,55,.05); }
+        .step { padding: 22px 18px; min-height: 190px; }
+        .step-number { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 22px; background: var(--coral); color: #fff; border-radius: 10px; font-weight: 800; }
+        .step h3, .info-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+        .step p, .info-card p { margin: 0; color: var(--muted); font-size: .91rem; }
+
+        .notice { display: flex; gap: 14px; align-items: flex-start; margin-top: 18px; padding: 18px 20px; border-left: 4px solid var(--orange); background: #fff8ee; border-radius: 10px; color: #65451d; }
+        .notice i { color: var(--orange); margin-top: 4px; }
+        .notice p { margin: 0; font-size: .92rem; }
+        .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .info-card { padding: 22px; }
+        .card-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 18px; color: var(--coral); background: #fff0ed; border-radius: 11px; }
+        .info-card ul { padding-left: 18px; margin: 13px 0 0; color: var(--muted); font-size: .91rem; }
+        .info-card li + li { margin-top: 8px; }
+
+        .faq-list { display: grid; gap: 10px; }
+        .faq-item { overflow: hidden; }
+        .faq-button { width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 0; background: var(--white); color: var(--ink); text-align: left; font: 600 .98rem 'DM Sans', sans-serif; cursor: pointer; }
+        .faq-button i:first-child { color: var(--coral); width: 18px; }
+        .faq-button .chevron { margin-left: auto; color: var(--muted); transition: transform .25s; }
+        .faq-answer { display: none; padding: 0 52px 19px; color: var(--muted); font-size: .93rem; }
+        .faq-answer p { margin: 0; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .chevron { transform: rotate(180deg); }
+        .faq-item.hidden { display: none; }
+        .faq-empty { display: none; padding: 20px; color: var(--muted); text-align: center; background: var(--white); border: 1px dashed var(--line); border-radius: 12px; }
+        .faq-empty.visible { display: block; }
+        .search-target-highlight { animation: search-highlight 1.8s ease; }
+        @keyframes search-highlight { 0%, 100% { box-shadow: none; } 18%, 70% { box-shadow: 0 0 0 4px rgba(230,57,70,.22); } }
+
+        .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 26px 28px; color: #fff; background: linear-gradient(110deg, var(--coral), #bc3041); border: 0; }
+        .contact-panel h2 { margin: 0 0 7px; font-size: 1.65rem; }
+        .contact-panel p { margin: 0; color: #ffe8e5; }
+        .whatsapp { display: inline-flex; align-items: center; gap: 9px; padding: 12px 17px; border-radius: 9px; background: #fff; color: #168b54; text-decoration: none; font-weight: 800; white-space: nowrap; }
+        .whatsapp:hover { background: #ecfff5; }
+        footer { padding: 24px 0; background: #5D4037; color: rgba(255,255,255,.78); text-align: center; font-size: .83rem; }
+        footer a { color: #fff; text-decoration: none; }
+
+        @media (max-width: 800px) {
+            .topbar { padding: 18px 0; }
+            .app-main-nav { display: flex; justify-content: center; }
+            .hero { padding: 48px 0 38px; }
+            .hero-grid, .card-grid { grid-template-columns: 1fr; gap: 24px; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .section-heading { display: block; }
+            .section-heading p { margin-top: 10px; }
+            .contact-panel { align-items: flex-start; flex-direction: column; }
+            .app-menu-button, .app-search-button { display: grid; }
+            .app-header-search { display: none; }
+            .top-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 6px; margin: 0; padding: 12px 20px 16px; background: linear-gradient(135deg, #5D4037, #C4854E); box-shadow: 0 10px 18px rgba(93,64,55,.18); }
+            .top-links.mobile-open { display: flex; }
+            .top-links a { padding: 10px 12px; }
+            .top-links a:first-child { justify-content: center; }
         }
-
-        main {
-            padding: 3rem 0;
-            background: var(--white);
-            min-height: 70vh;
-        }
-
-        h1 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        .update-date {
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            color: var(--dark);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 0.5rem;
-        }
-
-        p,
-        li {
-            color: #444;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            text-align: justify;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        .highlight {
-            background: #fff3cd;
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary);
-            margin: 1.5rem 0;
-        }
-
-        .highlight-green {
-            background: #e8f8e8;
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #27ae60;
-            margin: 1.5rem 0;
-        }
-
-        .highlight-blue {
-            background: #e8f4fd;
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-            margin: 1.5rem 0;
-        }
-
-        .highlight-red {
-            background: #fde8e8;
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            margin: 1.5rem 0;
-        }
-
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1rem 1.2rem;
-            background: #fafafa;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            transition: background 0.2s;
-            user-select: none;
-        }
-
-        .faq-question:hover {
-            background: #f0f0f0;
-        }
-
-        .faq-question i {
-            color: var(--primary);
-            font-size: 1.1rem;
-            min-width: 20px;
-        }
-
-        .faq-answer {
-            padding: 0 1.2rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 600px;
-            padding: 1rem 1.2rem;
-        }
-
-        .faq-item.active .faq-question i.fa-chevron-down {
-            transform: rotate(180deg);
-        }
-
-        .faq-question .chevron {
-            margin-left: auto;
-            transition: transform 0.3s;
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        .step-card {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary);
-            position: relative;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-        }
-
-        .contact-card {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border-radius: 14px;
-            padding: 1.5rem;
-            color: white;
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-
-        .contact-card i {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            display: inline-block;
-            margin-top: 0.8rem;
-            transition: background 0.2s;
-        }
-
-        .contact-card a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-volver {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 3rem;
-            transition: transform 0.2s;
-        }
-
-        .btn-volver:hover {
-            transform: translateY(-2px);
-            background: #c0392b;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.85rem;
+        @media (max-width: 520px) {
+            .wrap { width: min(100% - 28px, 1120px); }
+            .topbar { padding: 14px 0; }
+            .brand > span:last-child { font-size: 1.5rem; }
+            .brand-mark { font-size: 1.8rem; }
+            .hero h1 { font-size: 2.55rem; }
+            .steps { grid-template-columns: 1fr; }
+            .step { min-height: auto; }
+            .faq-answer { padding-left: 52px; }
+            .contact-panel { padding: 22px; }
+            .whatsapp { width: 100%; justify-content: center; }
+            .search-modal-backdrop { padding: 14px 12px; }
+            .search-modal { max-height: 86vh; border-radius: 14px; }
+            .search-results { max-height: calc(86vh - 100px); padding: 10px; }
+            .search-modal-header { padding: 18px 16px 14px; }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <a href="../index.html"><i class="fas fa-utensils"></i> DOMI<span
-                    style="color: var(--primary)">DELIS</span></a>
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <nav class="app-main-nav" aria-label="Navegación principal">
+            <a class="brand" href="../index.html" aria-label="Volver a DOMIDELIS">
+                <span class="brand-mark"><i class="fas fa-utensils"></i></span>
+                <span>DOMI<strong>DELIS</strong></span>
+            </a>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <h1><i class="fas fa-life-ring"></i> Centro de Ayuda</h1>
-            <p class="update-date">Encuentra respuestas rápidas a tus preguntas y aprende a usar DOMIDELIS al máximo</p>
-
-            <!-- CONTACTO RAPIDO -->
-            <div class="contact-card">
-                <i class="fab fa-whatsapp"></i>
-                <h3 style="margin:0;">¿Necesitas ayuda inmediata?</h3>
-                <p style="margin:0.5rem 0 0; opacity:0.9;">Escríbenos por WhatsApp y te atendemos al instante</p>
-                <a href="https://wa.me/570000000000" target="_blank"><i class="fab fa-whatsapp"></i> Chatear Ahora</a>
+    <section class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <div class="eyebrow">Centro de ayuda</div>
+                <h1>Respuestas claras para pedir sin complicaciones.</h1>
+                <p class="hero-copy">Conoce cómo funciona DOMIDELIS, desde elegir tu zona hasta confirmar el pedido por WhatsApp.</p>
+                <label class="search" for="faq-search">
+                    <i class="fas fa-search"></i>
+                    <input id="faq-search" type="search" placeholder="Busca una pregunta frecuente..." autocomplete="off" aria-controls="faq-list">
+                </label>
             </div>
-
-            <!-- COMO HACER UN PEDIDO -->
-            <h2><i class="fas fa-shopping-bag" style="color:var(--primary);"></i> Cómo hacer un pedido</h2>
-            <p>Realizar un pedido en DOMIDELIS es rápido y sencillo. Sigue estos pasos y tendrás tu comida o licores en
-                la puerta de tu casa en cuestión de minutos:</p>
-
-            <div class="step-card">
-                <span class="step-number">1</span>
-                <strong>Selecciona tu zona</strong>
-                <p style="margin:0.5rem 0 0;">En la parte superior de la página principal, elige la zona donde te
-                    encuentras. Esto determina el costo de envío y las tiendas disponibles para tu ubicación. Si no ves
-                    tu zona, es posible que aún no tengamos cobertura en tu sector.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">2</span>
-                <strong>Explora las tiendas</strong>
-                <p style="margin:0.5rem 0 0;">Desplázate por la lista de tiendas disponibles. Cada tarjeta muestra el
-                    nombre, la calificación en estrellas y la categoría. Toca una tienda para ver su menú completo con
-                    todos los productos, precios y descripciones.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">3</span>
-                <strong>Agrega productos al carrito</strong>
-                <p style="margin:0.5rem 0 0;">Toca el botón de agregar en cada producto que desees. El carrito se
-                    actualiza automáticamente y muestra el subtotal por tienda. Puedes agregar productos de diferentes
-                    tiendas en un mismo pedido, pero se generará un recargo adicional.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">4</span>
-                <strong>Revisa tu carrito</strong>
-                <p style="margin:0.5rem 0 0;">Toca el icono del carrito (esquina inferior derecha) para ver el resumen
-                    completo. Verifica las cantidades, elimina productos si es necesario y revisa el desglose de costos:
-                    subtotal por tienda, envío, recargos y descuentos promocionales.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">5</span>
-                <strong>Completa tus datos y paga</strong>
-                <p style="margin:0.5rem 0 0;">Toca "Finalizar pedido", ingresa tu nombre (mínimo 3 caracteres), teléfono
-                    (10 dígitos), dirección de entrega y selecciona el método de pago (Efectivo, Nequi, Daviplata o
-                    Transferencia). Confirma y el pedido se enviará automáticamente vía WhatsApp.</p>
-            </div>
-
-            <div class="highlight-green">
-                <strong><i class="fas fa-check-circle"></i> ¡Listo!</strong> Después de confirmar, recibirás una
-                pantalla de confirmación y tu pedido será procesado. Un domiciliario será asignado lo antes posible para
-                realizar la entrega.
-            </div>
-
-            <!-- INSTALACION -->
-            <h2><i class="fas fa-download" style="color:var(--primary);"></i> Cómo instalar la app en tu teléfono</h2>
-            <p>DOMIDELIS es una aplicación web progresiva (PWA), lo que significa que puedes instalarla directamente
-                desde el navegador sin necesidad de ir a una tienda de aplicaciones. La instalación te permite acceder
-                rápidamente desde tu pantalla de inicio y recibir notificaciones push.</p>
-
-            <h2 style="border-bottom:none; margin-top:1.5rem;"><i class="fab fa-android" style="color:#3DDC84;"></i>
-                Android (Chrome)</h2>
-            <ul>
-                <li>Abre Chrome y visita la dirección de DOMIDELIS.</li>
-                <li>Espera a que aparezca el banner de instalación en la parte inferior y toca
-                    <strong>"Instalar"</strong>.
-                </li>
-                <li>Si no ves el banner, toca el menú (tres puntos) y selecciona <strong>"Instalar aplicación"</strong>
-                    o <strong>"Añadir a pantalla de inicio"</strong>.</li>
-                <li>Confirma la instalación. El icono aparecerá en tu pantalla de inicio.</li>
-            </ul>
-
-            <h2 style="border-bottom:none; margin-top:1.5rem;"><i class="fab fa-apple" style="color:#999;"></i> iPhone /
-                iPad (Safari)</h2>
-            <ul>
-                <li>Abre <strong>Safari</strong> (no Chrome ni otros navegadores) y visita DOMIDELIS.</li>
-                <li>Toca el icono de <strong>compartir</strong> (cuadrado con flecha hacia arriba) en la barra inferior.
-                </li>
-                <li>Desplázate y selecciona <strong>"Añadir a pantalla de inicio"</strong>.</li>
-                <li>Confirma tocando <strong>"Añadir"</strong>. El icono aparecerá en tu pantalla de inicio.</li>
-            </ul>
-
-            <div class="highlight-blue">
-                <strong><i class="fas fa-info-circle"></i> Nota para iOS:</strong> Las notificaciones push están
-                disponibles a partir de iOS 16.4. Abre la aplicación regularmente para que los datos almacenados no sean
-                liberados automáticamente por el sistema.
-            </div>
-
-            <!-- MÉTODOS DE PAGO -->
-            <h2><i class="fas fa-wallet" style="color:var(--primary);"></i> Métodos de pago</h2>
-
-            <p>
-                DOMIDELIS ofrece diferentes métodos de pago según la preferencia del cliente.
-                Los pagos en efectivo se realizan contra entrega. Para pagos por Nequi,
-                Daviplata o transferencia bancaria, el cliente deberá realizar el pago
-                previamente y enviar el comprobante por WhatsApp para confirmar y procesar
-                el pedido.
-            </p>
-
-            <div class="step-card" style="border-left-color: #27ae60;">
-                <strong><i class="fas fa-money-bill-wave" style="color:#27ae60;"></i> Efectivo</strong>
-                <p style="margin:0.3rem 0 0;">
-                    Paga al recibir tu pedido. Se recomienda tener el valor exacto o cercano
-                    para agilizar la entrega.
-                </p>
-            </div>
-
-            <div class="step-card" style="border-left-color: #8A2BE2;">
-                <strong><i class="fas fa-mobile-alt" style="color:#8A2BE2;"></i> Nequi</strong>
-                <p style="margin:0.3rem 0 0;">
-                    Realiza el pago al número indicado y envía el comprobante por WhatsApp.
-                    El pedido será procesado una vez se confirme la transferencia.
-                </p>
-            </div>
-
-            <div class="step-card" style="border-left-color: #E63946;">
-                <strong><i class="fas fa-mobile-alt" style="color:#E63946;"></i> Daviplata</strong>
-                <p style="margin:0.3rem 0 0;">
-                    Envía el pago mediante Daviplata y comparte el comprobante por WhatsApp
-                    para validar y confirmar tu pedido.
-                </p>
-            </div>
-
-            <div class="step-card" style="border-left-color: #3498db;">
-                <strong><i class="fas fa-university" style="color:#3498db;"></i> Transferencia bancaria</strong>
-                <p style="margin:0.3rem 0 0;">
-                    Solicita los datos bancarios, realiza la transferencia y envía el
-                    comprobante por WhatsApp. El pedido será procesado después de la validación
-                    del pago.
-                </p>
-            </div>
-            <div class="highlight">
-                <strong><i class="fas fa-exclamation-triangle"></i>Importante:</strong> Los pedidos pagados mediante Nequi,
-                Daviplata o transferencia bancaria serán preparados y despachados
-                únicamente después de verificar el comprobante de pago.
-            </div>
-
-            <!-- CODIGOS PROMOCIONALES -->
-            <h2><i class="fas fa-tag" style="color:var(--primary);"></i> Códigos promocionales</h2>
-            <p>DOMIDELIS ofrece periódicamente códigos de descuento a través de campañas en redes sociales, carteles y
-                promociones especiales. Para usar un código:</p>
-            <ul>
-                <li>Cuando abras la aplicación, aparecerá un <strong>popup promocional</strong>. Ingresa tu código ahí.
-                </li>
-                <li>Si cerraste el popup, puedes ingresarlo también desde la sección de checkout antes de finalizar el
-                    pedido.</li>
-                <li>El descuento se reflejará automáticamente en el resumen de tu pedido.</li>
-            </ul>
-            <div class="highlight">
-                <strong><i class="fas fa-exclamation-triangle"></i> Recuerda:</strong> Solo se puede usar un código por
-                pedido. Los códigos no son acumulables entre sí y pueden tener fecha de vencimiento o condiciones
-                específicas.
-            </div>
-
-            <!-- PREGUNTAS FRECUENTES -->
-            <h2><i class="fas fa-question-circle" style="color:var(--primary);"></i> Preguntas frecuentes</h2>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Cuánto cuesta el envío?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>El costo de envío depende de la zona de entrega que selecciones al inicio de la aplicación. Cada
-                        zona tiene una tarifa predefinida que se calcula automáticamente. Si tu pedido incluye productos
-                        de más de una tienda, se aplicará un recargo adicional porque cada tienda prepara y envía sus
-                        productos por separado. El desglose completo del costo siempre se muestra antes de confirmar tu
-                        pedido.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Cuánto tiempo tarda mi pedido?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>El tiempo de entrega varía según el tiempo de preparación del establecimiento, la distancia, el
-                        tráfico y la disponibilidad de domiciliarios. Por lo general, los pedidos se entregan entre 30 y
-                        60 minutos. En horas pico o condiciones climáticas adversas, los tiempos pueden ser mayores.
-                        Puedes contactar al establecimiento o al domiciliario por WhatsApp para obtener una estimación
-                        más precisa.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Puedo cancelar un pedido?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sí, pero debes hacerlo lo antes posible comunicándote directamente con el establecimiento o el
-                        domiciliario a través de WhatsApp. Dado que se trata de alimentos y bebidas de consumo rápido,
-                        una vez que el establecimiento ha comenzado a preparar tu pedido, puede que no sea posible
-                        cancelarlo sin costo. Te recomendamos contactar inmediatamente después de realizar el pedido si
-                        necesitas cancelarlo.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Puedo pedir de varias tiendas a la vez?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sí, puedes agregar productos de diferentes tiendas en un mismo pedido. Sin embargo, se generará
-                        un recargo adicional automático porque cada tienda prepara y envía sus productos de forma
-                        independiente. Este recargo se indica claramente en el carrito y en el checkout antes de
-                        confirmar tu pedido, para que siempre sepas cuánto vas a pagar.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Qué pasa si mi pedido llega mal o incompleto?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Si tu pedido llega con productos incorrectos, en mal estado o incompleto, debes reclamar
-                        directamente al establecimiento proveedor a través de WhatsApp. DOMIDELIS es una plataforma de
-                        intermediación y cada tienda es responsable de la calidad y preparación de sus productos.
-                        También puedes contactarnos por nuestro WhatsApp oficial para que te ayudemos a mediar con el
-                        establecimiento.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿La app funciona sin internet?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Parcialmente. La aplicación almacena en caché las páginas y recursos que has visitado
-                        previamente, por lo que puedes navegar por las tiendas y menús sin conexión. Sin embargo, para
-                        realizar un pedido, ver precios actualizados o enviar datos, necesitas conexión a internet
-                        activa. Si pierdes la conexión mientras navegas, la app activará un juego interactivo de motos
-                        para entretenerte hasta que se recupere la señal.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Cómo puedo ser domiciliario?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Los domiciliarios son registrados por el administrador de la plataforma. Si deseas ser
-                        domiciliario de DOMIDELIS, contáctanos por nuestro WhatsApp oficial con tu nombre completo y
-                        número de teléfono. El equipo administrativo creará tu cuenta y te proporcionará las
-                        credenciales de acceso para que puedas empezar a recibir pedidos asignados desde tu panel
-                        dedicado.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Cómo registro mi tienda en DOMIDELIS?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Para registrar tu tienda en la plataforma, contáctanos por WhatsApp. El equipo administrativo
-                        creará el perfil de tu tienda, cargará tus productos y te proporcionará credenciales de acceso
-                        al panel de tienda, donde podrás consultar tus pedidos y productos en tiempo real. La gestión de
-                        productos (crear, editar, eliminar) se realiza actualmente desde el panel de administración.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>¿Mis datos personales están seguros?</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sí. DOMIDELIS no vende ni comparte tus datos con terceros con fines comerciales. Tu información
-                        se utiliza únicamente para procesar y entregar tus pedidos. Los datos se envían al
-                        establecimiento y domiciliario correspondiente a través de WhatsApp para cumplir con el
-                        servicio. Para más detalles, consulta nuestra <a href="politicas.html"
-                            style="color:var(--primary); font-weight:600;">Política de Privacidad</a>.</p>
-                </div>
-            </div>
-
-            <!-- PANEL DOMICILIARIO -->
-            <h2><i class="fas fa-motorcycle" style="color:var(--primary);"></i> Ayuda para domiciliarios</h2>
-            <p>Si eres domiciliario de DOMIDELIS, aquí tienes información clave sobre el uso de tu panel:</p>
-            <ul>
-                <li><strong>Recibir pedidos:</strong> Cuando un administrador te asigna un pedido, recibirás una alerta
-                    sonora y una notificación en la aplicación. No necesitas recargar la página; los pedidos aparecen
-                    automáticamente en tiempo real.</li>
-                <li><strong>Actualizar estado:</strong> Cambia el estado del pedido a "En camino" cuando hayas recogido
-                    los productos, y a "Entregado" cuando el cliente haya recibido su pedido. Estos cambios se
-                    sincronizan con el panel del administrador en tiempo real.</li>
-                <li><strong>Navegación:</strong> Desde los detalles del pedido, puedes abrir la dirección del cliente
-                    directamente en Google Maps tocando el enlace de ubicación.</li>
-                <li><strong>Mantener conexión activa:</strong> La aplicación usa tecnología Wake Lock y un temporizador
-                    keep-alive para evitar que tu dispositivo suspenda la conexión. No cierres la página del panel
-                    mientras estés en servicio.</li>
-                <li><strong>Notificaciones push:</strong> Asegúrate de conceder permiso de notificaciones para recibir
-                    alertas incluso cuando la aplicación esté en segundo plano.</li>
-            </ul>
-
-            <div class="highlight-red">
-                <strong><i class="fas fa-exclamation-circle"></i> Importante:</strong> Si cierras completamente el
-                navegador o la aplicación, dejarás de recibir notificaciones en tiempo real. Mantén la pestaña del panel
-                abierta mientras estés disponible para recibir pedidos.
-            </div>
-
-            <!-- PANEL TIENDA -->
-            <h2><i class="fas fa-store" style="color:var(--primary);"></i> Ayuda para tiendas</h2>
-            <p>Si eres propietario o administrador de una tienda en DOMIDELIS, esta información te será útil:</p>
-            <ul>
-                <li><strong>Acceso:</strong> Ingresa a tu panel con las credenciales proporcionadas por el
-                    administrador. Solo puedes ver la información correspondiente a tu tienda.</li>
-                <li><strong>Productos:</strong> La pestaña de productos muestra tu catálogo actual. La gestión de
-                    productos (crear, editar, eliminar) se realiza actualmente desde el panel de administración.
-                    Contáctanos si necesitas actualizar precios o agregar productos nuevos.</li>
-                <li><strong>Pedidos:</strong> La pestaña de pedidos muestra los pedidos que incluyen productos de tu
-                    tienda, filtrados automáticamente para mostrar solo tus artículos. Aquí puedes ver qué productos
-                    debes preparar para cada pedido.</li>
-                <li><strong>Instalación:</strong> Puedes instalar el panel de tienda como una PWA independiente en tu
-                    dispositivo, con su propio icono en la pantalla de inicio y acceso directo.</li>
-            </ul>
-
-            <!-- RESOLUCION DE PROBLEMAS -->
-            <h2><i class="fas fa-wrench" style="color:var(--primary);"></i> Solución de problemas</h2>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>No puedo instalar la app en mi teléfono</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Verifica que estés usando un navegador compatible: Chrome en Android o Safari en iOS. En iOS,
-                        solo Safari permite instalar PWAs. Asegúrate de haber visitado la aplicación al menos una vez y
-                        de estar en la página principal (index.html). Si el banner de instalación no aparece, usa la
-                        opción manual desde el menú del navegador. En computadores, busca el icono de instalación en la
-                        barra de direcciones de Chrome o Edge.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>No recibo notificaciones push</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Asegúrate de haber concedido permiso de notificaciones cuando la aplicación lo solicitó. Si lo
-                        denegaste, ve a la configuración del navegador, busca el sitio de DOMIDELIS y cambia el permiso
-                        de notificaciones a "Permitir". En iOS, necesitas iOS 16.4 o superior y haber instalado la PWA
-                        desde Safari. También verifica que las notificaciones estén habilitadas en la configuración del
-                        sistema de tu dispositivo.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>La app no carga o se ve desactualizada</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Es posible que tu navegador esté usando una versión en caché antigua. Cuando hay una
-                        actualización disponible, aparecerá un banner en la parte superior de la pantalla indicando que
-                        hay una nueva versión. Toca el banner para actualizar. Si no ves el banner, intenta limpiar la
-                        caché del navegador o cerrar y reabrir la aplicación completamente.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>Mi sesión se cerró sola</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Las sesiones de administrador, domiciliario y tienda tienen una vigencia de 8 horas por
-                        seguridad. Después de ese tiempo, debes iniciar sesión nuevamente con tus credenciales. También
-                        es posible que tu sesión se cierre si cierras el navegador completamente (en el caso de
-                        SessionStorage). Simplemente vuelve a iniciar sesión para continuar.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <i class="fas fa-chevron-down chevron"></i>
-                    <span>No puedo enviar el pedido por WhatsApp</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Verifica que tengas WhatsApp instalado en tu dispositivo. En Android, la aplicación abre WhatsApp
-                        automáticamente al confirmar el pedido. En iOS, si la apertura directa no funciona, la
-                        aplicación intentará abrir WhatsApp a través de un enlace alternativo. Asegúrate de tener una
-                        conexión a internet estable al momento de enviar el pedido. Si el problema persiste, copia los
-                        datos del pedido y envíalos manualmente al número de WhatsApp de DOMIDELIS.</p>
-                </div>
-            </div>
-
-            <!-- ENLACES UTILES -->
-            <h2><i class="fas fa-link" style="color:var(--primary);"></i> Enlaces útiles</h2>
-            <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:1rem;">
-                <a href="politicas.html"
-                    style="display:flex; align-items:center; gap:0.7rem; padding:1rem; background:#fafafa; border-radius:10px; text-decoration:none; color:var(--dark); border:1px solid #eee; transition:background 0.2s;">
-                    <i class="fas fa-shield-alt" style="color:var(--primary); font-size:1.2rem;"></i>
-                    <div>
-                        <strong style="display:block;">Política de Privacidad</strong>
-                        <span style="font-size:0.85rem; color:var(--gray);">Cómo protegemos tus datos personales</span>
-                    </div>
-                </a>
-                <a href="terminos.html"
-                    style="display:flex; align-items:center; gap:0.7rem; padding:1rem; background:#fafafa; border-radius:10px; text-decoration:none; color:var(--dark); border:1px solid #eee; transition:background 0.2s;">
-                    <i class="fas fa-file-contract" style="color:var(--primary); font-size:1.2rem;"></i>
-                    <div>
-                        <strong style="display:block;">Términos y Condiciones</strong>
-                        <span style="font-size:0.85rem; color:var(--gray);">Reglas de uso de la plataforma</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- CONTACTO FINAL -->
-            <div class="contact-card" style="margin-top:3rem;">
-                <i class="fab fa-whatsapp"></i>
-                <h3 style="margin:0;">¿No encontraste lo que buscabas?</h3>
-                <p style="margin:0.5rem 0 0; opacity:0.9;">Estamos aquí para ayudarte. Escríbenos y te responderemos lo
-                    antes posible.</p>
-                <a href="https://wa.me/570000000000" target="_blank"><i class="fab fa-whatsapp"></i> Contactar
-                    Soporte</a>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="../index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
-            </div>
+            <aside class="hero-note">
+                <strong><i class="fas fa-bolt" style="color:var(--orange)"></i> Atención directa</strong>
+                <p>¿Tienes un pedido en curso o necesitas reportar un inconveniente? Escríbenos al WhatsApp oficial de DOMIDELIS.</p>
+            </aside>
         </div>
+    </section>
+
+    <div class="search-modal-backdrop" id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-title" aria-hidden="true">
+        <div class="search-modal">
+            <div class="search-modal-header">
+                <div>
+                    <h2 id="search-modal-title">Resultados de búsqueda</h2>
+                    <p class="search-modal-query" id="search-modal-query"></p>
+                </div>
+                <button class="search-modal-close" id="search-close" type="button" aria-label="Cerrar resultados">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="search-results" id="search-results" role="listbox" aria-label="Resultados encontrados"></div>
+        </div>
+    </div>
+
+    <nav class="quick-nav" aria-label="Secciones de ayuda">
+        <div class="wrap">
+            <a href="#pedido">Hacer un pedido</a>
+            <a href="#pagos">Pagos y propina</a>
+            <a href="#perfiles">Perfiles</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#instalar">Instalar la app</a>
+        </div>
+    </nav>
+
+    <main class="wrap">
+        <section class="section" id="pedido">
+            <div class="section-heading">
+                <div><p class="section-kicker">Tu primer pedido</p><h2>Así funciona DOMIDELIS</h2></div>
+                <p>El checkout está organizado en cuatro etapas para que revises cada dato antes de confirmar.</p>
+            </div>
+            <div class="steps">
+                <article class="step"><div class="step-number">1</div><h3>Tus datos</h3><p>Ingresa tu nombre completo y un teléfono de 10 dígitos para poder coordinar la entrega.</p></article>
+                <article class="step"><div class="step-number">2</div><h3>Dirección y zona</h3><p>Escribe la dirección y selecciona tu barrio o zona de la lista. La zona define el valor del envío.</p></article>
+                <article class="step"><div class="step-number">3</div><h3>Revisa el pedido</h3><p>Comprueba productos, subtotal, envío, referencias opcionales y cualquier código promocional aplicado.</p></article>
+                <article class="step"><div class="step-number">4</div><h3>Pago y confirmación</h3><p>Elige el método de pago y pulsa “Confirmar por WhatsApp” para enviar los datos del pedido.</p></article>
+            </div>
+            <div class="notice"><i class="fas fa-circle-info"></i><p><strong>Antes de confirmar:</strong> revisa que la dirección, la zona y el número de teléfono sean correctos. Esto ayuda a evitar demoras en la entrega.</p></div>
+        </section>
+
+        <section class="section" id="pagos">
+            <div class="section-heading">
+                <div><p class="section-kicker">Checkout</p><h2>Pagos, referencias y propina</h2></div>
+                <p>Todo se selecciona en el último paso del checkout, justo antes de enviar el pedido.</p>
+            </div>
+            <div class="card-grid">
+                <article class="info-card"><div class="card-icon"><i class="fas fa-money-bill-wave"></i></div><h3>Efectivo</h3><p>Paga al recibir el pedido. Procura tener un valor cercano para facilitar la entrega.</p></article>
+                <article class="info-card"><div class="card-icon"><i class="fas fa-mobile-screen-button"></i></div><h3>Nequi o Daviplata</h3><p>Selecciona el método correspondiente y sigue las instrucciones que te proporcione el equipo de DOMIDELIS.</p></article>
+                <article class="info-card"><div class="card-icon"><i class="fas fa-building-columns"></i></div><h3>Transferencia</h3><p>Elige transferencia y confirma el pago según los datos bancarios vigentes de atención.</p></article>
+            </div>
+            <div class="notice"><i class="fas fa-hand-holding-heart"></i><p><strong>Propina opcional:</strong> puedes dejar una propina para tu domiciliario por lluvia, tráfico, entrega nocturna, excelente servicio u otro monto. El 100% es para él y no se suma al total del pedido.</p></div>
+        </section>
+
+        <section class="section" id="perfiles">
+            <div class="section-heading">
+                <div><p class="section-kicker">Ayuda según tu rol</p><h2>Una guía para cada persona</h2></div>
+                <p>DOMIDELIS conecta clientes, tiendas y domiciliarios en un mismo flujo de trabajo.</p>
+            </div>
+            <div class="card-grid">
+                <article class="info-card"><div class="card-icon"><i class="fas fa-user"></i></div><h3>Clientes</h3><ul><li>Consulta tiendas y productos disponibles en tu zona.</li><li>Usa referencias para indicar detalles de la entrega.</li><li>Contacta soporte si necesitas ayuda con un pedido.</li></ul></article>
+                <article class="info-card"><div class="card-icon"><i class="fas fa-motorcycle"></i></div><h3>Domiciliarios</h3><ul><li>Mantén abierto el panel mientras estés disponible.</li><li>Actualiza el estado del pedido en cada etapa.</li><li>Activa las notificaciones para recibir alertas.</li></ul></article>
+                <article class="info-card"><div class="card-icon"><i class="fas fa-store"></i></div><h3>Tiendas</h3><ul><li>Revisa los pedidos que incluyen productos de tu tienda.</li><li>Prepara los artículos indicados en el panel.</li><li>Solicita al administrador cambios en el catálogo.</li></ul></article>
+            </div>
+        </section>
+
+        <section class="section" id="instalar">
+            <div class="section-heading">
+                <div><p class="section-kicker">Acceso rápido</p><h2>Instala DOMIDELIS</h2></div>
+                <p>Es una PWA: puedes agregarla a la pantalla de inicio sin descargarla desde una tienda de aplicaciones.</p>
+            </div>
+            <div class="card-grid">
+                <article class="info-card"><div class="card-icon"><i class="fab fa-android"></i></div><h3>Android</h3><p>Abre DOMIDELIS en Chrome y usa el banner de instalación o el menú del navegador para añadirla a la pantalla de inicio.</p></article>
+                <article class="info-card"><div class="card-icon"><i class="fab fa-apple"></i></div><h3>iPhone y iPad</h3><p>Abre el sitio en Safari, toca Compartir y selecciona “Añadir a pantalla de inicio”.</p></article>
+                <article class="info-card"><div class="card-icon"><i class="fas fa-bell"></i></div><h3>Notificaciones</h3><p>Concede el permiso cuando aparezca. En iOS se requiere iOS 16.4 o posterior y la PWA instalada.</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="faq">
+            <div class="section-heading">
+                <div><p class="section-kicker">Respuestas rápidas</p><h2>Preguntas frecuentes</h2></div>
+                <p id="faq-status">Selecciona una pregunta para ver la respuesta.</p>
+            </div>
+            <div class="faq-list" id="faq-list">
+                <article class="faq-item"><button class="faq-button" type="button"><i class="fas fa-truck"></i><span>¿Cómo se calcula el envío?</span><i class="fas fa-chevron-down chevron"></i></button><div class="faq-answer"><p>El valor depende de la zona que selecciones. El checkout muestra el desglose del subtotal y el envío antes de confirmar.</p></div></article>
+                <article class="faq-item"><button class="faq-button" type="button"><i class="fas fa-clock"></i><span>¿Cuánto tarda la entrega?</span><i class="fas fa-chevron-down chevron"></i></button><div class="faq-answer"><p>El tiempo depende de la preparación del establecimiento, la distancia, el tráfico y la disponibilidad de domiciliarios. Para una estimación de un pedido específico, contacta al equipo por WhatsApp.</p></div></article>
+                <article class="faq-item"><button class="faq-button" type="button"><i class="fas fa-ban"></i><span>¿Puedo cancelar un pedido?</span><i class="fas fa-chevron-down chevron"></i></button><div class="faq-answer"><p>Comunícate cuanto antes con el establecimiento o el soporte. Si el pedido ya empezó a prepararse, la cancelación puede no ser posible o tener condiciones.</p></div></article>
+                <article class="faq-item"><button class="faq-button" type="button"><i class="fas fa-wifi"></i><span>¿La aplicación funciona sin internet?</span><i class="fas fa-chevron-down chevron"></i></button><div class="faq-answer"><p>Algunos recursos visitados pueden estar disponibles sin conexión, pero necesitas internet para consultar información actualizada y enviar un pedido.</p></div></article>
+                <article class="faq-item"><button class="faq-button" type="button"><i class="fas fa-shield-halved"></i><span>¿Cómo se protegen mis datos?</span><i class="fas fa-chevron-down chevron"></i></button><div class="faq-answer"><p>Tus datos se usan para gestionar y entregar el pedido. Consulta la <a href="politicas.html" style="color:var(--coral);font-weight:700;">Política de Privacidad</a> para conocer más detalles.</p></div></article>
+            </div>
+            <p class="faq-empty" id="faq-empty">No encontramos una pregunta con ese término. Prueba con “envío”, “pago” o “cancelar”.</p>
+        </section>
+
+        <section class="contact-panel" aria-label="Contacto de soporte">
+            <div><h2>¿Necesitas hablar con soporte?</h2><p>Escríbenos al WhatsApp oficial de DOMIDELIS.</p></div>
+            <a class="whatsapp" href="https://wa.me/573005005306" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Abrir WhatsApp</a>
+        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            &copy; 2025 DOMIDELIS - Todos los derechos reservados.
-        </div>
-    </footer>
+    <footer><div class="wrap">© 2025 DOMIDELIS · <a href="../index.html">Volver al inicio</a></div></footer>
 
     <script>
-        function toggleFaq(el) {
-            const item = el.parentElement;
-            const wasActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-            if (!wasActive) item.classList.add('active');
+        const faqItems = [...document.querySelectorAll('.faq-item')];
+        const helpSections = [...document.querySelectorAll('main .section:not(#faq)')];
+        const faqStatus = document.getElementById('faq-status');
+        const searchInput = document.getElementById('faq-search');
+        const faqEmpty = document.getElementById('faq-empty');
+        const searchModal = document.getElementById('search-modal');
+        const searchModalQuery = document.getElementById('search-modal-query');
+        const searchResults = document.getElementById('search-results');
+        const searchClose = document.getElementById('search-close');
+
+        const searchTargets = [
+            ...helpSections.map(section => ({
+                element: section,
+                title: section.querySelector('h2')?.textContent.trim() || 'Sección de ayuda',
+                text: section.textContent,
+                icon: 'fa-circle-info'
+            })),
+            ...faqItems.map(item => ({
+                element: item,
+                title: item.querySelector('.faq-button span').textContent.trim(),
+                text: item.textContent,
+                icon: item.querySelector('.faq-button i').className.split(' ').find(name => name.startsWith('fa-')) || 'fa-circle-question'
+            }))
+        ];
+
+        faqItems.forEach(item => {
+            item.querySelector('.faq-button').addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                faqItems.forEach(other => other.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        function updateFaqFilter(query) {
+            let visible = 0;
+            faqItems.forEach(item => {
+                const matches = item.textContent.toLowerCase().includes(query);
+                item.classList.toggle('hidden', !matches);
+                if (!matches) item.classList.remove('open');
+                if (matches) visible++;
+            });
+            faqEmpty.classList.toggle('visible', query.length > 0 && visible === 0);
+            faqStatus.textContent = query ? `${visible} resultado${visible === 1 ? '' : 's'} encontrado${visible === 1 ? '' : 's'}.` : 'Selecciona una pregunta para ver la respuesta.';
         }
+
+        function closeSearch() {
+            searchModal.classList.remove('open');
+            searchModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            searchInput.focus();
+        }
+
+        function navigateToResult(index) {
+            const target = searchTargets[index];
+            if (!target) return;
+
+            closeSearch();
+            target.element.classList.remove('search-target-highlight');
+            if (target.element.classList.contains('faq-item')) target.element.classList.add('open');
+            target.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            window.setTimeout(() => {
+                target.element.classList.add('search-target-highlight');
+                window.setTimeout(() => target.element.classList.remove('search-target-highlight'), 1900);
+            }, 350);
+        }
+
+        function renderSearchResults(rawQuery) {
+            const query = rawQuery.trim().toLowerCase();
+            searchModalQuery.textContent = `Buscando: “${rawQuery.trim()}”`;
+            const matches = searchTargets.filter(target => target.text.toLowerCase().includes(query));
+            searchResults.replaceChildren();
+
+            if (!matches.length) {
+                const empty = document.createElement('p');
+                empty.className = 'search-no-results';
+                empty.textContent = 'No encontramos ese texto en el Centro de Ayuda.';
+                searchResults.appendChild(empty);
+                return;
+            }
+
+            matches.forEach(target => {
+                const index = searchTargets.indexOf(target);
+                const result = document.createElement('button');
+                result.className = 'search-result';
+                result.type = 'button';
+                result.setAttribute('role', 'option');
+                result.setAttribute('aria-label', `Ir a ${target.title}`);
+
+                const icon = document.createElement('span');
+                icon.className = 'search-result-icon';
+                icon.innerHTML = `<i class="fas ${target.icon}" aria-hidden="true"></i>`;
+
+                const copy = document.createElement('span');
+                copy.className = 'search-result-copy';
+                const title = document.createElement('span');
+                title.className = 'search-result-title';
+                title.textContent = target.title;
+                const excerpt = document.createElement('span');
+                excerpt.className = 'search-result-excerpt';
+                excerpt.textContent = target.text.replace(/\s+/g, ' ').trim().slice(0, 150) + '...';
+                copy.append(title, excerpt);
+                result.append(icon, copy);
+                result.addEventListener('click', () => navigateToResult(index));
+                searchResults.appendChild(result);
+            });
+        }
+
+        function openSearch(rawQuery) {
+            if (!rawQuery.trim()) return;
+            renderSearchResults(rawQuery);
+            searchModal.classList.add('open');
+            searchModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        searchInput.addEventListener('input', event => {
+            const rawQuery = event.target.value;
+            const query = rawQuery.trim().toLowerCase();
+            updateFaqFilter(query);
+            if (query) openSearch(rawQuery);
+            else closeSearch();
+        });
+
+        searchInput.addEventListener('keydown', event => {
+            const firstResult = searchResults.querySelector('.search-result');
+            if (event.key === 'Escape') closeSearch();
+            if (event.key === 'ArrowDown' && firstResult && searchModal.classList.contains('open')) {
+                event.preventDefault();
+                firstResult.focus();
+            }
+            if (event.key === 'Enter' && firstResult && searchModal.classList.contains('open')) {
+                event.preventDefault();
+                firstResult.click();
+            }
+        });
+
+        searchClose.addEventListener('click', closeSearch);
+        searchModal.addEventListener('click', event => {
+            if (event.target === searchModal) closeSearch();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && searchModal.classList.contains('open')) closeSearch();
+        });
     </script>
 </body>
 
