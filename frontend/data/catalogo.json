@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-26T05-58-06",
-  "ultimaActualizacion": "2026-09-26T05:58:06.395Z",
+  "version": "v2026-09-26T06-00-05",
+  "ultimaActualizacion": "2026-09-26T06:00:05.477Z",
   "tiendas": [
     {
       "id": 1,
@@ -4313,9 +4313,9 @@
     },
     {
       "id": 214,
-      "id_producto": 106,
+      "id_producto": 105,
       "grupo": "Proteína",
-      "nombre": "Pechuga ala",
+      "nombre": "Pechuga - ala",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -4325,7 +4325,7 @@
       "id": 215,
       "id_producto": 106,
       "grupo": "Proteína",
-      "nombre": "Muslo Contramuslo",
+      "nombre": "Muslo - Contramuslo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
