@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-26T17-55-06",
-  "ultimaActualizacion": "2026-09-26T17:55:06.568Z",
+  "version": "v2026-09-26T17-55-08",
+  "ultimaActualizacion": "2026-09-26T17:55:08.824Z",
   "tiendas": [
     {
       "id": 1,
@@ -443,19 +443,6 @@
           "tiendaNombre": "Domi Express"
         },
         {
-          "id": 127,
-          "nombre": "🌹 Flores",
-          "descripcion": "",
-          "precio": 12000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
-          "badge": "Disponible",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
           "id": 126,
           "nombre": "💊 Acetaminofén",
           "descripcion": "",
@@ -463,6 +450,19 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/acetaminofen.png",
           "badge": "agotado",
           "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 127,
+          "nombre": "🌹 Flores",
+          "descripcion": "",
+          "precio": 12000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
+          "badge": "Disponible",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -1589,19 +1589,6 @@
       "tiendaNombre": "Domi Express"
     },
     {
-      "id": 127,
-      "nombre": "🌹 Flores",
-      "descripcion": "",
-      "precio": 12000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
-      "badge": "Disponible",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
       "id": 126,
       "nombre": "💊 Acetaminofén",
       "descripcion": "",
@@ -1609,6 +1596,19 @@
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/acetaminofen.png",
       "badge": "agotado",
       "categoria": "Farmacia",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 127,
+      "nombre": "🌹 Flores",
+      "descripcion": "",
+      "precio": 12000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/flores.png",
+      "badge": "Disponible",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
