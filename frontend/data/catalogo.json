@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-29-36",
-  "ultimaActualizacion": "2026-09-27T22:29:36.219Z",
+  "version": "v2026-09-27T22-30-01",
+  "ultimaActualizacion": "2026-09-27T22:30:01.325Z",
   "tiendas": [
     {
       "id": 1,
@@ -3097,7 +3097,7 @@
       "id": 78,
       "id_producto": 144,
       "grupo": "Acompañamiento",
-      "nombre": "Arroz, fríjoles, , , plátano maduro, arepa y chicharrón",
+      "nombre": "Arroz, fríjoles,",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3167,7 +3167,7 @@
       "id": 85,
       "id_producto": 144,
       "grupo": "Verdura",
-      "nombre": "aguacate",
+      "nombre": "Aguacate",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
@@ -3177,7 +3177,7 @@
       "id": 86,
       "id_producto": 144,
       "grupo": "Verdura",
-      "nombre": "chips de papa",
+      "nombre": "plátano maduro",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
