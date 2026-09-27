@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-29-06",
-  "ultimaActualizacion": "2026-09-27T22:29:06.079Z",
+  "version": "v2026-09-27T22-29-33",
+  "ultimaActualizacion": "2026-09-27T22:29:33.761Z",
   "tiendas": [
     {
       "id": 1,
@@ -3097,7 +3097,7 @@
       "id": 78,
       "id_producto": 144,
       "grupo": "Acompañamiento",
-      "nombre": "Arroz, fríjoles, , aguacate, plátano maduro, arepa y chicharrón",
+      "nombre": "Arroz, fríjoles, , , plátano maduro, arepa y chicharrón",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3117,7 +3117,7 @@
       "id": 80,
       "id_producto": 144,
       "grupo": "Proteína",
-      "nombre": "huevo frito",
+      "nombre": "Huevo frito",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3156,18 +3156,18 @@
     {
       "id": 84,
       "id_producto": 144,
-      "grupo": "Proteína",
-      "nombre": "Chorizo",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 85,
       "id_producto": 144,
       "grupo": "Verdura",
-      "nombre": "Ensalada, Tajada de maduro",
+      "nombre": "aguacate",
       "precio": 0,
       "tipo": "verdura",
       "max": 2,
