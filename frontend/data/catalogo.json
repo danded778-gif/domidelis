@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-58-04",
-  "ultimaActualizacion": "2026-09-27T21:58:04.031Z",
+  "version": "v2026-09-27T21-58-28",
+  "ultimaActualizacion": "2026-09-27T21:58:28.192Z",
   "tiendas": [
     {
       "id": 1,
@@ -80,7 +80,7 @@
         },
         {
           "id": 110,
-          "nombre": "🥤 Gaseosa 1.5L",
+          "nombre": "🥤 Coca-Cola1.5L",
           "descripcion": "Coca-Cola",
           "precio": 6500,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
@@ -1395,7 +1395,7 @@
     },
     {
       "id": 110,
-      "nombre": "🥤 Gaseosa 1.5L",
+      "nombre": "🥤 Coca-Cola1.5L",
       "descripcion": "Coca-Cola",
       "precio": 6500,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/gaseosa.png",
@@ -4495,10 +4495,10 @@
     },
     {
       "id": 229,
-      "id_producto": "",
+      "id_producto": 1,
       "grupo": "",
       "nombre": "Coca - Cola",
-      "precio": 0,
+      "precio": 6500,
       "tipo": "extra",
       "max": null,
       "min": 0
