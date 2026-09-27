@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-36-51",
-  "ultimaActualizacion": "2026-09-27T22:36:51.788Z",
+  "version": "v2026-09-27T22-38-52",
+  "ultimaActualizacion": "2026-09-27T22:38:52.914Z",
   "tiendas": [
     {
       "id": 1,
@@ -3368,7 +3368,7 @@
       "id_producto": 145,
       "grupo": "",
       "nombre": "Bandeja Paisa Especial",
-      "precio": 25000,
+      "precio": 22000,
       "tipo": "extra",
       "max": null,
       "min": 0
