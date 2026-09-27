@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-30-01",
-  "ultimaActualizacion": "2026-09-27T22:30:01.325Z",
+  "version": "v2026-09-27T22-30-40",
+  "ultimaActualizacion": "2026-09-27T22:30:40.790Z",
   "tiendas": [
     {
       "id": 1,
@@ -3095,13 +3095,13 @@
     },
     {
       "id": 78,
-      "id_producto": 144,
-      "grupo": "Acompañamiento",
-      "nombre": "Arroz, fríjoles,",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 79,
@@ -3217,7 +3217,7 @@
       "id": 90,
       "id_producto": 144,
       "grupo": "",
-      "nombre": "Carne extra",
+      "nombre": "Bandeja Paisa Especial",
       "precio": 7000,
       "tipo": "extra",
       "max": null,
