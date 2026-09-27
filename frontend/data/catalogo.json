@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-26-39",
-  "ultimaActualizacion": "2026-09-27T22:26:39.180Z",
+  "version": "v2026-09-27T22-27-39",
+  "ultimaActualizacion": "2026-09-27T22:27:39.943Z",
   "tiendas": [
     {
       "id": 1,
@@ -3097,7 +3097,7 @@
       "id": 78,
       "id_producto": 144,
       "grupo": "Acompañamiento",
-      "nombre": "sopa del dia",
+      "nombre": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
