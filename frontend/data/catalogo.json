@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-21-16",
-  "ultimaActualizacion": "2026-09-27T22:21:16.554Z",
+  "version": "v2026-09-27T22-22-20",
+  "ultimaActualizacion": "2026-09-27T22:22:20.366Z",
   "tiendas": [
     {
       "id": 1,
@@ -522,8 +522,8 @@
         },
         {
           "id": 144,
-          "nombre": "Bandeja paisa especial",
-          "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
+          "nombre": "Bandeja Paisa Especial",
+          "descripcion": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
           "precio": 18000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
           "badge": "agotado",
@@ -1811,8 +1811,8 @@
     },
     {
       "id": 144,
-      "nombre": "Bandeja paisa especial",
-      "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
+      "nombre": "Bandeja Paisa Especial",
+      "descripcion": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
       "precio": 18000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
       "badge": "agotado",
