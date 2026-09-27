@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-39-14",
-  "ultimaActualizacion": "2026-09-27T22:39:14.300Z",
+  "version": "v2026-09-27T22-40-47",
+  "ultimaActualizacion": "2026-09-27T22:40:47.764Z",
   "tiendas": [
     {
       "id": 1,
@@ -535,7 +535,7 @@
         },
         {
           "id": 145,
-          "nombre": "Mnini Bandeja Paisa",
+          "nombre": "Mini Bandeja Paisa",
           "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
           "precio": 22000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/MINIBANDEJAPAISA.png",
@@ -1824,7 +1824,7 @@
     },
     {
       "id": 145,
-      "nombre": "Mnini Bandeja Paisa",
+      "nombre": "Mini Bandeja Paisa",
       "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
       "precio": 22000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/MINIBANDEJAPAISA.png",
