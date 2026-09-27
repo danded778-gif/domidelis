@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-42-13",
-  "ultimaActualizacion": "2026-09-27T21:42:13.945Z",
+  "version": "v2026-09-27T21-42-52",
+  "ultimaActualizacion": "2026-09-27T21:42:52.317Z",
   "tiendas": [
     {
       "id": 1,
@@ -4369,6 +4369,26 @@
       "grupo": "",
       "nombre": "Coca - Cola",
       "precio": 4000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 217,
+      "id_producto": 111,
+      "grupo": "",
+      "nombre": "Media verde",
+      "precio": 24000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 218,
+      "id_producto": 112,
+      "grupo": "",
+      "nombre": "750 ml",
+      "precio": 78000,
       "tipo": "extra",
       "max": null,
       "min": 0
