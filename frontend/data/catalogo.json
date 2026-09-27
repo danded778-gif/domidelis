@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-56-23",
-  "ultimaActualizacion": "2026-09-27T22:56:23.624Z",
+  "version": "v2026-09-27T22-56-49",
+  "ultimaActualizacion": "2026-09-27T22:56:49.146Z",
   "tiendas": [
     {
       "id": 1,
@@ -198,7 +198,7 @@
         {
           "id": 195,
           "nombre": "Noxpirin",
-          "descripcion": "",
+          "descripcion": "4 und",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
           "badge": "NUEVO",
@@ -210,8 +210,8 @@
         },
         {
           "id": 196,
-          "nombre": "Sevedol",
-          "descripcion": "",
+          "nombre": "Sevedol EXTRA FUERTE",
+          "descripcion": "6 und",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
           "badge": "NUEVO",
@@ -2410,7 +2410,7 @@
     {
       "id": 195,
       "nombre": "Noxpirin",
-      "descripcion": "",
+      "descripcion": "4 und",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
       "badge": "NUEVO",
@@ -2422,8 +2422,8 @@
     },
     {
       "id": 196,
-      "nombre": "Sevedol",
-      "descripcion": "",
+      "nombre": "Sevedol EXTRA FUERTE",
+      "descripcion": "6 und",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
       "badge": "NUEVO",
