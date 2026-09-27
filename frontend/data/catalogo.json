@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-33-00",
-  "ultimaActualizacion": "2026-09-27T21:33:00.690Z",
+  "version": "v2026-09-27T21-33-02",
+  "ultimaActualizacion": "2026-09-27T21:33:02.986Z",
   "tiendas": [
     {
       "id": 1,
@@ -1316,19 +1316,6 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 105,
-      "nombre": "Cuarto de pollo",
-      "descripcion": "Pechuga ala muslo contramuslo",
-      "precio": 13000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
-      "badge": "Mas vendido",
-      "categoria": "Menu",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
-    },
-    {
       "id": 104,
       "nombre": "Ramo floral artesanal en limpiapipas",
       "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
@@ -1340,6 +1327,19 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 105,
+      "nombre": "Cuarto de pollo",
+      "descripcion": "Pechuga ala muslo contramuslo",
+      "precio": 13000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/cuartodepollos.png",
+      "badge": "Mas vendido",
+      "categoria": "Menu",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
     },
     {
       "id": 106,
