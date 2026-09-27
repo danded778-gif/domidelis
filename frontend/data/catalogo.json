@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-20-45",
-  "ultimaActualizacion": "2026-09-27T22:20:45.347Z",
+  "version": "v2026-09-27T22-21-16",
+  "ultimaActualizacion": "2026-09-27T22:21:16.554Z",
   "tiendas": [
     {
       "id": 1,
@@ -522,7 +522,7 @@
         },
         {
           "id": 144,
-          "nombre": "menu",
+          "nombre": "Bandeja paisa especial",
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
@@ -535,7 +535,7 @@
         },
         {
           "id": 145,
-          "nombre": "menu",
+          "nombre": "Mnini Bandeja Paisa",
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
@@ -1811,7 +1811,7 @@
     },
     {
       "id": 144,
-      "nombre": "menu",
+      "nombre": "Bandeja paisa especial",
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
@@ -1824,7 +1824,7 @@
     },
     {
       "id": 145,
-      "nombre": "menu",
+      "nombre": "Mnini Bandeja Paisa",
       "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
       "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
