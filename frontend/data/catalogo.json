@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-26T18-54-12",
-  "ultimaActualizacion": "2026-09-26T18:54:12.284Z",
+  "version": "v2026-09-27T21-27-52",
+  "ultimaActualizacion": "2026-09-27T21:27:52.607Z",
   "tiendas": [
     {
       "id": 1,
@@ -177,6 +177,19 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_uva_fondo_.png",
           "badge": "NUEVO",
           "categoria": "Bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
+        },
+        {
+          "id": 194,
+          "nombre": "Flores",
+          "descripcion": "Detalles exprés",
+          "precio": 12000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
+          "badge": "NUEVO",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -2354,6 +2367,19 @@
       "activo": true,
       "tiendaId": "5",
       "tiendaNombre": "Candela Burger"
+    },
+    {
+      "id": 194,
+      "nombre": "Flores",
+      "descripcion": "Detalles exprés",
+      "precio": 12000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
     }
   ],
   "complementosGlobal": [
