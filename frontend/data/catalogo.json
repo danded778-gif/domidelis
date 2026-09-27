@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-28-53",
-  "ultimaActualizacion": "2026-09-27T21:28:53.336Z",
+  "version": "v2026-09-27T21-30-40",
+  "ultimaActualizacion": "2026-09-27T21:30:40.381Z",
   "tiendas": [
     {
       "id": 1,
@@ -1316,19 +1316,6 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 104,
-      "nombre": "Ramo floral artesanal en limpiapipas",
-      "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
-      "precio": 65000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
-      "badge": "Disponible",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
       "id": 105,
       "nombre": "Cuarto de pollo",
       "descripcion": "Pechuga ala muslo contramuslo",
@@ -1340,6 +1327,19 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 104,
+      "nombre": "Ramo floral artesanal en limpiapipas",
+      "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
+      "precio": 65000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/abarrotes/sofia_transparente_50kb.webp",
+      "badge": "Disponible",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 106,
