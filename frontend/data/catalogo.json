@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-36-58",
-  "ultimaActualizacion": "2026-09-27T21:36:58.966Z",
+  "version": "v2026-09-27T21-39-59",
+  "ultimaActualizacion": "2026-09-27T21:39:59.806Z",
   "tiendas": [
     {
       "id": 1,
@@ -4371,26 +4371,6 @@
       "precio": 4000,
       "tipo": "extra",
       "max": null,
-      "min": 0
-    },
-    {
-      "id": 203,
-      "id_producto": 188,
-      "grupo": "Salsa prueba",
-      "nombre": "tocineta",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
-      "min": 0
-    },
-    {
-      "id": 204,
-      "id_producto": 192,
-      "grupo": "Salsa",
-      "nombre": "Crema de pimentón",
-      "precio": 0,
-      "tipo": "salsa",
-      "max": 3,
       "min": 0
     }
   ]
