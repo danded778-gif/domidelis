@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-23-35",
-  "ultimaActualizacion": "2026-09-27T22:23:35.170Z",
+  "version": "v2026-09-27T22-25-04",
+  "ultimaActualizacion": "2026-09-27T22:25:04.989Z",
   "tiendas": [
     {
       "id": 1,
@@ -536,7 +536,7 @@
         {
           "id": 145,
           "nombre": "Mnini Bandeja Paisa",
-          "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
+          "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
           "precio": 21000,
           "imagen_url": "",
           "badge": "Disponible",
@@ -1825,7 +1825,7 @@
     {
       "id": 145,
       "nombre": "Mnini Bandeja Paisa",
-      "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
+      "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
       "precio": 21000,
       "imagen_url": "",
       "badge": "Disponible",
