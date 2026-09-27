@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-32-37",
-  "ultimaActualizacion": "2026-09-27T22:32:37.592Z",
+  "version": "v2026-09-27T22-33-30",
+  "ultimaActualizacion": "2026-09-27T22:33:30.746Z",
   "tiendas": [
     {
       "id": 1,
@@ -3120,8 +3120,8 @@
       "nombre": "Huevo frito",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 0
+      "max": 2,
+      "min": 4
     },
     {
       "id": 81,
@@ -3130,8 +3130,8 @@
       "nombre": "Carne molida",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 82,
@@ -3140,8 +3140,8 @@
       "nombre": "Chorizo",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 83,
@@ -3150,8 +3150,8 @@
       "nombre": "Chicharrón",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 84,
@@ -3270,8 +3270,8 @@
       "nombre": "Huevo frito",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 98,
@@ -3280,8 +3280,8 @@
       "nombre": "Carne molida",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 99,
@@ -3290,8 +3290,8 @@
       "nombre": "Chorizo",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": 2,
+      "min": 4
     },
     {
       "id": 100,
@@ -3300,8 +3300,8 @@
       "nombre": "",
       "precio": 0,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 2,
+      "min": 4
     },
     {
       "id": 101,
