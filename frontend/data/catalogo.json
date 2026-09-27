@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-27-39",
-  "ultimaActualizacion": "2026-09-27T22:27:39.943Z",
+  "version": "v2026-09-27T22-28-10",
+  "ultimaActualizacion": "2026-09-27T22:28:10.469Z",
   "tiendas": [
     {
       "id": 1,
@@ -3097,7 +3097,7 @@
       "id": 78,
       "id_producto": 144,
       "grupo": "Acompañamiento",
-      "nombre": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
+      "nombre": "Arroz, fríjoles, carne molida, chorizo, aguacate, plátano maduro, arepa y chicharrón",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3117,7 +3117,7 @@
       "id": 80,
       "id_producto": 144,
       "grupo": "Proteína",
-      "nombre": "carne res",
+      "nombre": "huevo frito",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
