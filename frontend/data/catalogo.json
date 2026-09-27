@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-33-02",
-  "ultimaActualizacion": "2026-09-27T21:33:02.986Z",
+  "version": "v2026-09-27T21-34-14",
+  "ultimaActualizacion": "2026-09-27T21:34:14.218Z",
   "tiendas": [
     {
       "id": 1,
@@ -185,7 +185,7 @@
         {
           "id": 194,
           "nombre": "Flores",
-          "descripcion": "Detalles exprés",
+          "descripcion": "Detalles exprés la imagen es de referencia",
           "precio": 12000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
           "badge": "NUEVO",
@@ -2371,7 +2371,7 @@
     {
       "id": 194,
       "nombre": "Flores",
-      "descripcion": "Detalles exprés",
+      "descripcion": "Detalles exprés la imagen es de referencia",
       "precio": 12000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
       "badge": "NUEVO",
