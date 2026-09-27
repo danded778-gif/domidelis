@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-58-44",
-  "ultimaActualizacion": "2026-09-27T21:58:44.215Z",
+  "version": "v2026-09-27T22-20-45",
+  "ultimaActualizacion": "2026-09-27T22:20:45.347Z",
   "tiendas": [
     {
       "id": 1,
@@ -525,7 +525,7 @@
           "nombre": "menu",
           "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
           "precio": 18000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
           "badge": "agotado",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -1814,7 +1814,7 @@
       "nombre": "menu",
       "descripcion": "Carne de res en salsa, arroz blanco, arepa, papa en salsa verde, ensalada fresca (repollo, zanahoria y tomate) y aguacate.",
       "precio": 18000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_02_1305x1471_139kb.jpg",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
       "badge": "agotado",
       "categoria": "Otras",
       "cantidadTipo": "UND",
