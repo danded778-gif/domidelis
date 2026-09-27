@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-46-10",
-  "ultimaActualizacion": "2026-09-27T21:46:10.691Z",
+  "version": "v2026-09-27T21-49-27",
+  "ultimaActualizacion": "2026-09-27T21:49:27.413Z",
   "tiendas": [
     {
       "id": 1,
@@ -189,7 +189,7 @@
           "precio": 12000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
           "badge": "NUEVO",
-          "categoria": "Otros",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -2375,7 +2375,7 @@
       "precio": 12000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
       "badge": "NUEVO",
-      "categoria": "Otros",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "1",
