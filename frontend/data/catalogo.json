@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-55-02",
-  "ultimaActualizacion": "2026-09-27T22:55:02.088Z",
+  "version": "v2026-09-27T22-56-00",
+  "ultimaActualizacion": "2026-09-27T22:56:00.650Z",
   "tiendas": [
     {
       "id": 1,
@@ -197,7 +197,7 @@
         },
         {
           "id": 195,
-          "nombre": "",
+          "nombre": "Noxpirin",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
@@ -209,7 +209,7 @@
           "tiendaNombre": "Domi Delis"
         },
         {
-          "id": 195,
+          "id": 196,
           "nombre": "",
           "descripcion": "",
           "precio": 0,
@@ -2409,7 +2409,7 @@
     },
     {
       "id": 195,
-      "nombre": "",
+      "nombre": "Noxpirin",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
@@ -2421,7 +2421,7 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 195,
+      "id": 196,
       "nombre": "",
       "descripcion": "",
       "precio": 0,
