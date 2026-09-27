@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-31-02",
-  "ultimaActualizacion": "2026-09-27T21:31:02.416Z",
+  "version": "v2026-09-27T21-32-57",
+  "ultimaActualizacion": "2026-09-27T21:32:57.755Z",
   "tiendas": [
     {
       "id": 1,
@@ -53,7 +53,7 @@
           "tiendaNombre": "Domi Delis"
         },
         {
-          "id": 104,
+          "id": 105,
           "nombre": "Cuarto de pollo",
           "descripcion": "Pechuga ala muslo contramuslo",
           "precio": 13000,
@@ -209,7 +209,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 105,
+          "id": 104,
           "nombre": "Ramo floral artesanal en limpiapipas",
           "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
           "precio": 65000,
@@ -1316,7 +1316,7 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 104,
+      "id": 105,
       "nombre": "Cuarto de pollo",
       "descripcion": "Pechuga ala muslo contramuslo",
       "precio": 13000,
@@ -1329,20 +1329,7 @@
       "tiendaNombre": "Domi Delis"
     },
     {
-      "id": 108,
-      "nombre": "Arepa de Queso",
-      "descripcion": "Nuestra tradicional arepa de queso santuariana, recién preparada, con mantequilla derretida y deliciosa lecherita. Suave por dentro, doradita por fuera y con el auténtico sabor que tanto te gusta.",
-      "precio": 12000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/arepadequeso_150kb.jpg",
-      "badge": "Mas vendido",
-      "categoria": "Menu",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 105,
+      "id": 104,
       "nombre": "Ramo floral artesanal en limpiapipas",
       "descripcion": "Ramo elaborado completamente a mano con flores de limpia pipa Decorado y envuelto para regalar un detalle original que conserva su belleza por mucho tiempo",
       "precio": 65000,
@@ -1379,6 +1366,19 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 108,
+      "nombre": "Arepa de Queso",
+      "descripcion": "Nuestra tradicional arepa de queso santuariana, recién preparada, con mantequilla derretida y deliciosa lecherita. Suave por dentro, doradita por fuera y con el auténtico sabor que tanto te gusta.",
+      "precio": 12000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/arepadequeso_150kb.jpg",
+      "badge": "Mas vendido",
+      "categoria": "Menu",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
     },
     {
       "id": 109,
