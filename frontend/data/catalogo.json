@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-42-54",
-  "ultimaActualizacion": "2026-09-27T21:42:54.183Z",
+  "version": "v2026-09-27T21-43-35",
+  "ultimaActualizacion": "2026-09-27T21:43:35.439Z",
   "tiendas": [
     {
       "id": 1,
@@ -4389,6 +4389,106 @@
       "grupo": "",
       "nombre": "750 ml",
       "precio": 78000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 219,
+      "id_producto": 113,
+      "grupo": "",
+      "nombre": "Media roja",
+      "precio": 26000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 220,
+      "id_producto": 114,
+      "grupo": "",
+      "nombre": "Media azul",
+      "precio": 27500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 221,
+      "id_producto": 115,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 222,
+      "id_producto": 116,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 223,
+      "id_producto": 117,
+      "grupo": "",
+      "nombre": "litro azul",
+      "precio": 56500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 224,
+      "id_producto": 118,
+      "grupo": "",
+      "nombre": "litro roja",
+      "precio": 53000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 225,
+      "id_producto": 119,
+      "grupo": "",
+      "nombre": "litro verde",
+      "precio": 50000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 226,
+      "id_producto": 120,
+      "grupo": "",
+      "nombre": "260 azul",
+      "precio": 16500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 227,
+      "id_producto": 121,
+      "grupo": "",
+      "nombre": "260 roja",
+      "precio": 17300,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 228,
+      "id_producto": 122,
+      "grupo": "",
+      "nombre": "260 verde",
+      "precio": 16500,
       "tipo": "extra",
       "max": null,
       "min": 0
