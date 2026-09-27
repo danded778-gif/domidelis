@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-40-47",
-  "ultimaActualizacion": "2026-09-27T22:40:47.764Z",
+  "version": "v2026-09-27T22-44-13",
+  "ultimaActualizacion": "2026-09-27T22:44:13.237Z",
   "tiendas": [
     {
       "id": 1,
@@ -874,7 +874,7 @@
         {
           "id": 158,
           "nombre": "Papas costeñas",
-          "descripcion": "",
+          "descripcion": "[2:50 p. m., 27/9/2026] Domidelis: Papas naturales",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
           "badge": "Disponible",
@@ -887,7 +887,7 @@
         {
           "id": 159,
           "nombre": "Papas la Basílica",
-          "descripcion": "",
+          "descripcion": "[2:51 p. m., 27/9/2026] Domidelis: Salsa  queso costeño chorizo maíz pollo y tocineta",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papala%20basilica.png",
           "badge": "Disponible",
@@ -900,7 +900,7 @@
         {
           "id": 160,
           "nombre": "Papas mexicanas",
-          "descripcion": "",
+          "descripcion": "[2:51 p. m., 27/9/2026] Domidelis: La salsa de ajo y bbq",
           "precio": 22000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papasmexicanas.png",
           "badge": "Disponible",
@@ -1942,7 +1942,7 @@
     {
       "id": 158,
       "nombre": "Papas costeñas",
-      "descripcion": "",
+      "descripcion": "[2:50 p. m., 27/9/2026] Domidelis: Papas naturales",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papacoste%C3%B1as.png",
       "badge": "Disponible",
@@ -1955,7 +1955,7 @@
     {
       "id": 159,
       "nombre": "Papas la Basílica",
-      "descripcion": "",
+      "descripcion": "[2:51 p. m., 27/9/2026] Domidelis: Salsa  queso costeño chorizo maíz pollo y tocineta",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papala%20basilica.png",
       "badge": "Disponible",
@@ -1968,7 +1968,7 @@
     {
       "id": 160,
       "nombre": "Papas mexicanas",
-      "descripcion": "",
+      "descripcion": "[2:51 p. m., 27/9/2026] Domidelis: La salsa de ajo y bbq",
       "precio": 22000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/papasmexicanas.png",
       "badge": "Disponible",
@@ -3367,7 +3367,7 @@
       "id": 107,
       "id_producto": 145,
       "grupo": "",
-      "nombre": "Mnini Bandeja Paisa",
+      "nombre": "Mini Bandeja Paisa",
       "precio": 22000,
       "tipo": "extra",
       "max": null,
