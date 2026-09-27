@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-26-33",
-  "ultimaActualizacion": "2026-09-27T22:26:33.819Z",
+  "version": "v2026-09-27T22-26-36",
+  "ultimaActualizacion": "2026-09-27T22:26:36.513Z",
   "tiendas": [
     {
       "id": 1,
@@ -524,7 +524,7 @@
           "id": 144,
           "nombre": "Bandeja Paisa Especial",
           "descripcion": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
-          "precio": 24000,
+          "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
           "badge": "Disponible",
           "categoria": "Almuerzo",
@@ -1813,7 +1813,7 @@
       "id": 144,
       "nombre": "Bandeja Paisa Especial",
       "descripcion": "Arroz, fríjoles, carne molida, chorizo, huevo frito, aguacate, plátano maduro, arepa y chicharrón",
-      "precio": 24000,
+      "precio": 25000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/BANDEJAPAISAESPECIAL.png",
       "badge": "Disponible",
       "categoria": "Almuerzo",
