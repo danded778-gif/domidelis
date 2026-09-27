@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-56-02",
-  "ultimaActualizacion": "2026-09-27T21:56:02.983Z",
+  "version": "v2026-09-27T21-56-35",
+  "ultimaActualizacion": "2026-09-27T21:56:35.023Z",
   "tiendas": [
     {
       "id": 1,
@@ -4489,6 +4489,16 @@
       "grupo": "",
       "nombre": "260 verde",
       "precio": 16500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 229,
+      "id_producto": 107,
+      "grupo": "",
+      "nombre": "Coca - Cola",
+      "precio": 0,
       "tipo": "extra",
       "max": null,
       "min": 0
