@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-54-11",
-  "ultimaActualizacion": "2026-09-27T22:54:11.360Z",
+  "version": "v2026-09-27T22-54-33",
+  "ultimaActualizacion": "2026-09-27T22:54:33.688Z",
   "tiendas": [
     {
       "id": 1,
@@ -2387,7 +2387,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
