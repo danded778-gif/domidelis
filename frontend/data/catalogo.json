@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-33-45",
-  "ultimaActualizacion": "2026-09-27T22:33:45.153Z",
+  "version": "v2026-09-27T22-36-00",
+  "ultimaActualizacion": "2026-09-27T22:36:00.917Z",
   "tiendas": [
     {
       "id": 1,
@@ -3120,8 +3120,8 @@
       "nombre": "Huevo frito",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 4
+      "max": 4,
+      "min": 2
     },
     {
       "id": 81,
