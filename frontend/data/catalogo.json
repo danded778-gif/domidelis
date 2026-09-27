@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-56-00",
-  "ultimaActualizacion": "2026-09-27T22:56:00.650Z",
+  "version": "v2026-09-27T22-56-23",
+  "ultimaActualizacion": "2026-09-27T22:56:23.624Z",
   "tiendas": [
     {
       "id": 1,
@@ -210,7 +210,7 @@
         },
         {
           "id": 196,
-          "nombre": "",
+          "nombre": "Sevedol",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
@@ -2422,7 +2422,7 @@
     },
     {
       "id": 196,
-      "nombre": "",
+      "nombre": "Sevedol",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
