@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-51-20",
-  "ultimaActualizacion": "2026-09-27T21:51:20.991Z",
+  "version": "v2026-09-27T21-56-02",
+  "ultimaActualizacion": "2026-09-27T21:56:02.983Z",
   "tiendas": [
     {
       "id": 1,
@@ -236,7 +236,7 @@
         },
         {
           "id": 107,
-          "nombre": "Coca-cola",
+          "nombre": "Coca-cola Personal",
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
@@ -1356,7 +1356,7 @@
     },
     {
       "id": 107,
-      "nombre": "Coca-cola",
+      "nombre": "Coca-cola Personal",
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/bebidas/cola.jpg",
