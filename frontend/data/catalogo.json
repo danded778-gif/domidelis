@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-30-40",
-  "ultimaActualizacion": "2026-09-27T22:30:40.790Z",
+  "version": "v2026-09-27T22-31-06",
+  "ultimaActualizacion": "2026-09-27T22:31:06.829Z",
   "tiendas": [
     {
       "id": 1,
@@ -3107,7 +3107,7 @@
       "id": 79,
       "id_producto": 144,
       "grupo": "Acompañamiento",
-      "nombre": "frijoles",
+      "nombre": "Frijoles",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3218,7 +3218,7 @@
       "id_producto": 144,
       "grupo": "",
       "nombre": "Bandeja Paisa Especial",
-      "precio": 7000,
+      "precio": 25000,
       "tipo": "extra",
       "max": null,
       "min": 0
