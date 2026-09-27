@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-28-10",
-  "ultimaActualizacion": "2026-09-27T22:28:10.469Z",
+  "version": "v2026-09-27T22-28-34",
+  "ultimaActualizacion": "2026-09-27T22:28:34.164Z",
   "tiendas": [
     {
       "id": 1,
@@ -3127,7 +3127,7 @@
       "id": 81,
       "id_producto": 144,
       "grupo": "Proteína",
-      "nombre": "carne cerdo",
+      "nombre": "Carne molida",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -3137,7 +3137,7 @@
       "id": 82,
       "id_producto": 144,
       "grupo": "Proteína",
-      "nombre": "pollo",
+      "nombre": "",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
