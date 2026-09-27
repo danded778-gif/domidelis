@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-23-11",
-  "ultimaActualizacion": "2026-09-27T22:23:11.790Z",
+  "version": "v2026-09-27T22-23-35",
+  "ultimaActualizacion": "2026-09-27T22:23:35.170Z",
   "tiendas": [
     {
       "id": 1,
@@ -538,7 +538,7 @@
           "nombre": "Mnini Bandeja Paisa",
           "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
           "precio": 21000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
+          "imagen_url": "",
           "badge": "Disponible",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -1827,7 +1827,7 @@
       "nombre": "Mnini Bandeja Paisa",
       "descripcion": "Pechuga de pollo apanada, arroz blanco, papa en salsa verde, ensalada fresca (repollo, zanahoria, tomate y aguacate) y acompañamiento de patacón o arepa.",
       "precio": 21000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/calalnchos/almuerzo_03_150kb.jpg",
+      "imagen_url": "",
       "badge": "Disponible",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
