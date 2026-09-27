@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-38-52",
-  "ultimaActualizacion": "2026-09-27T22:38:52.914Z",
+  "version": "v2026-09-27T22-39-14",
+  "ultimaActualizacion": "2026-09-27T22:39:14.300Z",
   "tiendas": [
     {
       "id": 1,
@@ -3367,7 +3367,7 @@
       "id": 107,
       "id_producto": 145,
       "grupo": "",
-      "nombre": "Bandeja Paisa Especial",
+      "nombre": "Mnini Bandeja Paisa",
       "precio": 22000,
       "tipo": "extra",
       "max": null,
