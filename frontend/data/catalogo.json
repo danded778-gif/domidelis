@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T21-56-37",
-  "ultimaActualizacion": "2026-09-27T21:56:37.694Z",
+  "version": "v2026-09-27T21-57-20",
+  "ultimaActualizacion": "2026-09-27T21:57:20.012Z",
   "tiendas": [
     {
       "id": 1,
@@ -4365,7 +4365,7 @@
     },
     {
       "id": 216,
-      "id_producto": 106,
+      "id_producto": 107,
       "grupo": "",
       "nombre": "Coca - Cola",
       "precio": 4000,
