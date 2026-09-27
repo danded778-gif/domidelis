@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-58-06",
-  "ultimaActualizacion": "2026-09-27T22:58:06.467Z",
+  "version": "v2026-09-27T23-00-09",
+  "ultimaActualizacion": "2026-09-27T23:00:09.674Z",
   "tiendas": [
     {
       "id": 1,
@@ -97,7 +97,7 @@
           "descripcion": "400ml",
           "precio": 3999,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
-          "badge": "NUEVO",
+          "badge": "Disponible",
           "categoria": "Bebidas",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2088,7 +2088,7 @@
       "descripcion": "400ml",
       "precio": 3999,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_colombiana_.png",
-      "badge": "NUEVO",
+      "badge": "Disponible",
       "categoria": "Bebidas",
       "cantidadTipo": "UND",
       "activo": true,
