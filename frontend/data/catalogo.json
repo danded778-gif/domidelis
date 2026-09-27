@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-57-17",
-  "ultimaActualizacion": "2026-09-27T22:57:17.964Z",
+  "version": "v2026-09-27T22-58-06",
+  "ultimaActualizacion": "2026-09-27T22:58:06.467Z",
   "tiendas": [
     {
       "id": 1,
@@ -4551,6 +4551,26 @@
       "grupo": "",
       "nombre": "Coca - Cola",
       "precio": 6500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 230,
+      "id_producto": 195,
+      "grupo": "",
+      "nombre": "Noxpirin",
+      "precio": 5600,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 231,
+      "id_producto": 196,
+      "grupo": "",
+      "nombre": "Sevedol EXTRA FUERTE",
+      "precio": 9000,
       "tipo": "extra",
       "max": null,
       "min": 0
