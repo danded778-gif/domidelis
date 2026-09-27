@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-27T22-25-36",
-  "ultimaActualizacion": "2026-09-27T22:25:36.846Z",
+  "version": "v2026-09-27T22-26-33",
+  "ultimaActualizacion": "2026-09-27T22:26:33.819Z",
   "tiendas": [
     {
       "id": 1,
@@ -537,7 +537,7 @@
           "id": 145,
           "nombre": "Mnini Bandeja Paisa",
           "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
-          "precio": 21000,
+          "precio": 22000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/MINIBANDEJAPAISA.png",
           "badge": "Disponible",
           "categoria": "Almuerzo",
@@ -1826,7 +1826,7 @@
       "id": 145,
       "nombre": "Mnini Bandeja Paisa",
       "descripcion": "Arroz blanco Fríjoles Chorizo Huevo frito Aguacate Plátano maduro Arepa Carne molida",
-      "precio": 21000,
+      "precio": 22000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/calalnchos/MINIBANDEJAPAISA.png",
       "badge": "Disponible",
       "categoria": "Almuerzo",
