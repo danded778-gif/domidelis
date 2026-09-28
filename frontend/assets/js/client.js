@@ -288,6 +288,10 @@ function resetMainViewUI() {
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid';
     if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
 
+    // ★ Mostrar banner de identidad (solo en inicio)
+    const domidelisIntro = document.getElementById('domidelis-intro');
+    if (domidelisIntro) domidelisIntro.style.display = 'flex';
+
     // ★ v4.5: al volver a la vista principal, recalcular los dots
     requestAnimationFrame(actualizarIndicadorCarrusel);
 }
@@ -401,6 +405,10 @@ function mostrarProductosPorCategoria() {
 
     if (catProductosGrid) catProductosGrid.style.display = 'block';
 
+    // ★ Ocultar banner de identidad (fuera del inicio)
+    const domidelisIntro = document.getElementById('domidelis-intro');
+    if (domidelisIntro) domidelisIntro.style.display = 'none';
+
     if (tituloPrincipal) tituloPrincipal.innerHTML = `<i class="fas fa-utensils"></i> ${categoriaActiva}`;
 
     const productosFiltrados = productosGlobal.filter(p => p.categoria === categoriaActiva);
@@ -497,6 +505,10 @@ function volverATiendas() {
     if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
 
     categoriaActiva = 'Todas';
+
+    // ★ Mostrar banner de identidad (solo en inicio)
+    const domidelisIntro = document.getElementById('domidelis-intro');
+    if (domidelisIntro) domidelisIntro.style.display = 'flex';
     document.querySelectorAll('.category-item').forEach(item => {
         if (item.querySelector('span').innerText === 'Todas') item.classList.add('active');
         else item.classList.remove('active');
@@ -866,6 +878,10 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
 
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (categoriesWrapper) categoriesWrapper.style.display = 'none';
+
+    // ★ Ocultar banner de identidad (fuera del inicio)
+    const domidelisIntro = document.getElementById('domidelis-intro');
+    if (domidelisIntro) domidelisIntro.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
     if (storesGridCerradas) storesGridCerradas.style.display = 'none';
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'none';
@@ -896,13 +912,13 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         return;
     }
     // ★ Analytics: evento ver_tienda ★
-if (typeof gtag === 'function') {
-    gtag('event', 'ver_tienda', {
-        'event_category': 'engagement',
-        'event_label': tienda.nombre,
-        'tienda_id': tienda.id
-    });
-}
+    if (typeof gtag === 'function') {
+        gtag('event', 'ver_tienda', {
+            'event_category': 'engagement',
+            'event_label': tienda.nombre,
+            'tienda_id': tienda.id
+        });
+    }
 
     const productos = tienda.productos || [];
     const productosValidos = productos.filter(p => p.id && p.id !== '' && p.nombre);
