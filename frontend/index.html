@@ -359,77 +359,60 @@
         </div>
     </header>
 
-
     <main>
-        <div class="container">
 
-            <!-- ★★★ IDENTIDAD DOMIDELIS ★★★ -->
-            <section class="domidelis-intro" aria-label="Información de DOMIDELIS">
+        <!-- ★★★ MENSAJE DE IDENTIDAD DOMIDELIS (fluido, sin container) ★★★ -->
+        <section class="domidelis-intro" aria-label="Domicilios en El Santuario">
+            <div class="domidelis-intro-icon">
+                <i class="fas fa-motorcycle"></i>
+            </div>
+            <div class="domidelis-intro-content">
+                <h1><span>Domicilios en</span> <strong>El Santuario</strong></h1>
+                <p class="domidelis-intro-sub">Comida, bebidas y promociones en un solo lugar.</p>
+            </div>
+        </section>
 
-                <div class="domidelis-intro-icon">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
+        <!-- ★★★ CONTENIDO PRINCIPAL (fluido, aire mínimo) ★★★ -->
+        <div class="container-fluid">
 
-                <div class="domidelis-intro-content">
-                    <h1>
-                        <span>DOMI</span><strong>DELIS</strong>
-                    </h1>
-
-                    <p class="domidelis-intro-main">
-                        Domicilios en <strong>El Santuario</strong>
-                    </p>
-
-                    <p class="domidelis-intro-sub">
-                        Comida, bebidas y promociones en un solo lugar.
-                    </p>
-                </div>
-
-            </section>
-
-            <!-- ★★★ 1. CARRUSEL DE PROMOCIONES ★★★ -->
+            <!-- ★★★ 1. CARRUSEL DE PROMOCIONES (ARRIBA DE TODO - Tipo El Corral) ★★★ -->
             <div id="contenedor-anuncios"></div>
 
-            <!-- ★ HERO ELIMINADO: El carrusel de promociones ahora es el protagonista visual ★ -->
-            <div class="container">
-
-                <!-- ★★★ 1. CARRUSEL DE PROMOCIONES (ARRIBA DE TODO - Tipo El Corral) ★★★ -->
-                <div id="contenedor-anuncios"></div>
-
-                <!-- ★★★ 2. MENÚ DE CATEGORÍAS DESLIZABLE ★★★ -->
-                <div class="categories-wrapper" id="categories-wrapper">
-                    <button class="cat-scroll-btn left" id="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                    <div class="categories-container">
-                        <div class="categories-scroll" id="categories-scroll">
-                            <!-- Las categorías se inyectarán aquí dinámicamente desde el JS -->
-                        </div>
-                    </div>
-                    <button class="cat-scroll-btn right" id="scroll-right"><i class="fas fa-chevron-right"></i></button>
-                </div>
-
-                <!-- ★★★ 3. VITRINA DE PRODUCTOS ESTRELLA ★★★ -->
-                <div id="productos-destacados-grid" class="destacados-container"></div>
-
-                <!-- ★★★ 4. TÍTULO DE TIENDAS ★★★ -->
-                <h2 id="main-title" class="stores-section-title"> 🔥 Populares en El Santuario</h2>
-
-                <!-- ★★★ 5. GRID DE TIENDAS (CARRUSEL) ★★★ -->
-                <div id="stores-grid">
-                    <div style="text-align:center; padding: 4rem 0;">
-                        <div class="spinner" style="margin: 0 auto 1rem;"></div>
-                        <p style="color: var(--gray);">Conectando con las Tiendas ...</p>
+            <!-- ★★★ 2. MENÚ DE CATEGORÍAS DESLIZABLE ★★★ -->
+            <div class="categories-wrapper" id="categories-wrapper">
+                <button class="cat-scroll-btn left" id="scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="categories-container">
+                    <div class="categories-scroll" id="categories-scroll">
+                        <!-- Las categorías se inyectarán aquí dinámicamente desde el JS -->
                     </div>
                 </div>
+                <button class="cat-scroll-btn right" id="scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
 
-                <!-- ★★★ 6. CONTENEDOR DE TIENDAS CERRADAS (Se llena desde JS) ★★★ -->
-                <div id="stores-grid-cerradas"></div>
+            <!-- ★★★ 3. VITRINA DE PRODUCTOS ESTRELLA ★★★ -->
+            <div id="productos-destacados-grid" class="destacados-container"></div>
 
-                <!-- ★★★ 7. GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
-                <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
-                    <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
-                        tiendas</button>
-                    <div class="menu-grid" id="productos-por-categoria-container" style="margin-top: 1rem;"></div>
+            <!-- ★★★ 4. TÍTULO DE TIENDAS ★★★ -->
+            <h2 id="main-title" class="stores-section-title"> 🔥 Populares en El Santuario</h2>
+
+            <!-- ★★★ 5. GRID DE TIENDAS (CARRUSEL) ★★★ -->
+            <div id="stores-grid">
+                <div style="text-align:center; padding: 4rem 0;">
+                    <div class="spinner" style="margin: 0 auto 1rem;"></div>
+                    <p style="color: var(--gray);">Conectando con las Tiendas ...</p>
                 </div>
             </div>
+
+            <!-- ★★★ 6. CONTENEDOR DE TIENDAS CERRADAS (Se llena desde JS) ★★★ -->
+            <div id="stores-grid-cerradas"></div>
+
+            <!-- ★★★ 7. GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
+            <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
+                <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
+                    tiendas</button>
+                <div class="menu-grid" id="productos-por-categoria-container" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
     </main>
 
     <!-- ★ FLECHA DE SCROLL ELIMINADA ★ -->
@@ -782,7 +765,7 @@
             scrollIndicator.addEventListener('click', function () {
                 var objetivo = document.getElementById('categories-wrapper')
                     || document.getElementById('main-title')
-                    || document.querySelector('main > .container');
+                    || document.querySelector('main > .container-fluid');
                 if (objetivo) {
                     var offsetTop = objetivo.getBoundingClientRect().top + window.pageYOffset - 70;
                     window.scrollTo({top: offsetTop, behavior: 'smooth'});
