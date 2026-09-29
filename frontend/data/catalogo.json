@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-29T22-26-11",
-  "ultimaActualizacion": "2026-09-29T22:26:11.462Z",
+  "version": "v2026-09-29T22-27-29",
+  "ultimaActualizacion": "2026-09-29T22:27:29.138Z",
   "tiendas": [
     {
       "id": 1,
@@ -1297,18 +1297,6 @@
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
       "promovida": 1,
-      "activo": true,
-      "productos": []
-    },
-    {
-      "id": 16,
-      "nombre": "test",
-      "descripcion": "test",
-      "direccion": "calle 11",
-      "horario": "{\"mon\":\"08:00-22:00\",\"tue\":\"08:00-22:00\",\"wed\":\"08:00-22:00\",\"thu\":\"08:00-22:00\",\"fri\":\"08:00-23:00\",\"sat\":\"08:00-23:00\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
-      "promovida": 0,
       "activo": true,
       "productos": []
     }
@@ -3128,46 +3116,6 @@
       "min": 0
     },
     {
-      "id": 74,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 75,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 76,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 78,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 79,
       "id_producto": 144,
       "grupo": "Acompañamiento",
@@ -3288,36 +3236,6 @@
       "min": 0
     },
     {
-      "id": 91,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 92,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 93,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
       "id": 96,
       "id_producto": 145,
       "grupo": "Acompañamiento",
@@ -3434,46 +3352,6 @@
       "nombre": "Mini Bandeja Paisa",
       "precio": 22000,
       "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 108,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 109,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 110,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 111,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
       "max": null,
       "min": 0
     },
@@ -3604,36 +3482,6 @@
       "nombre": "Carne extra",
       "precio": 7000,
       "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 126,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 127,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 128,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
       "max": null,
       "min": 0
     },
