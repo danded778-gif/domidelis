@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-29T05-01-26",
-  "ultimaActualizacion": "2026-09-29T05:01:26.662Z",
+  "version": "v2026-09-29T05-01-29",
+  "ultimaActualizacion": "2026-09-29T05:01:29.445Z",
   "tiendas": [
     {
       "id": 1,
@@ -1166,7 +1166,7 @@
       "direccion": "el santuario",
       "horario": "{\"mon\":\"11:00-19:00\",\"tue\":\"11:00-19:00\",\"wed\":\"11:00-19:00\",\"thu\":\"11:00-19:00\",\"fri\":\"11:00-19:00\",\"sat\":\"11:00-19:00\",\"sun\":\"11:00-19:00\"}",
       "rating": 5,
-      "imagen": "",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/mr%20simon/mrsimon_201kb.jpg",
       "promovida": 0,
       "activo": true,
       "productos": [
