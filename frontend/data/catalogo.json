@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-29T05-01-29",
-  "ultimaActualizacion": "2026-09-29T05:01:29.445Z",
+  "version": "v2026-09-29T05-05-33",
+  "ultimaActualizacion": "2026-09-29T05:05:33.175Z",
   "tiendas": [
     {
       "id": 1,
@@ -1295,7 +1295,7 @@
       "direccion": "calle 49 - #48A 17",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida.jpg",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
       "promovida": 1,
       "activo": true,
       "productos": []
