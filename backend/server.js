@@ -66,7 +66,7 @@ if (!JWT_SECRET) {
 // ★ v2.4: CONFIGURACIÓN DEL GAS + CLAVE SECRETA
 // ============================================
 // GAS_URL ahora es opcional por .env (si no está, usa la URL actual).
-const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbw2R_nABf0FbpfWf_6F9pz2DmHuMrd3N1Dw9_4v6-oETZ2Kmh4pDSNW9mDV0ObGK-sK/exec';
+const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbzQ1Z4fhqHRYZLz6eb2NotVYL06AAdAuInZ8DTgqcfbp1HOyEiQoNwSasv8YIgl_q8k/exec';
 
 // Clave compartida con el Apps Script. OBLIGATORIA: sin ella el GAS rechaza todo.
 const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
