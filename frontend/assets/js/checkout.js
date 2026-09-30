@@ -5,6 +5,9 @@
 // ★ ACTUALIZADO: Lógica de descuentos de anuncios
 // ★ ACTUALIZADO v2: Soporte para Extras y Complementos dinámicos
 // ★ ACTUALIZADO v3: Compatible con wizard de 4 pasos (sin eventos propios)
+// ★ ACTUALIZADO v4: Badge "+30%..." reemplazado por botón "¿Por qué?"
+//                   + modal explicativo (autocontenido: no requiere
+//                   cambios en config.js ni styles.css)
 // ============================================
 (function () {
     'use strict';
@@ -57,6 +60,165 @@
             }
         });
         return texto;
+    }
+
+    // ============================================
+    // ★ NUEVO v4: DESGLOSE DEL RECARGO MULTI-TIENDA
+    // Misma matemática que calcularEnvio() (config.js):
+    // factor = 1 + 0.3 × (n-1), tope ×2.0
+    // Devuelve null si hay 0 o 1 tienda (nada que explicar)
+    // ============================================
+    function calcularDesgloseRecargo(carritoItems) {
+        const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
+        const base = zona.envio;
+
+        const tiendas = new Set(
+            carritoItems
+                .filter(item => item.tiendaId)
+                .map(item => String(item.tiendaId))
+        );
+        const n = tiendas.size;
+        if (n <= 1) return null;
+
+        const factor = Math.min(1 + 0.3 * (n - 1), 2.0);
+        const final = Math.round(base * factor);
+        const pct = Math.round(Math.min(0.3 * (n - 1), 1.0) * 100);
+
+        return { tiendas: n, base, final, delta: final - base, pct };
+    }
+
+    // ============================================
+    // ★ NUEVO v4: BOTÓN "¿POR QUÉ?" junto al envío
+    // Se crea solo si hay 2+ tiendas. Se elimina solo si
+    // el carrito vuelve a 1 tienda.
+    // ============================================
+    function actualizarBotonPorQue(envioEl, desglose) {
+        let btn = document.getElementById('btn-porque-envio');
+
+        if (!desglose) {
+            if (btn) btn.remove();
+            return;
+        }
+
+        if (!btn) {
+            btn = document.createElement('button');
+            btn.id = 'btn-porque-envio';
+            btn.className = 'btn-porque';
+            btn.type = 'button';
+            btn.textContent = '¿Por qué?';
+            // onclick como atributo (sobrevive a los innerHTML += del descuento)
+            btn.setAttribute('onclick', 'window.abrirModalEnvio()');
+            envioEl.appendChild(btn);
+        }
+    }
+
+    // ============================================
+    // ★ NUEVO v4: MODAL "¿POR QUÉ SUBE EL ENVÍO?"
+    // Ventanita explicativa con el desglose. Se crea la
+    // primera vez que se necesita y se reutiliza.
+    // ============================================
+    function abrirModalEnvio() {
+        const carrito = obtenerCarrito();
+        const desglose = calcularDesgloseRecargo(carrito);
+        if (!desglose) return;
+
+        inyectarEstilosModalEnvio();
+
+        let overlay = document.getElementById('modal-envio-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'modal-envio-overlay';
+            overlay.className = 'me-overlay';
+            document.body.appendChild(overlay);
+        }
+
+        const notaExtra = obtenerDescuentoDomicilio() > 0
+            ? '<div class="me-tip"><i class="fas fa-tag"></i><span>El descuento promo se aplica después sobre este envío.</span></div>'
+            : '<div class="me-tip"><i class="fas fa-lightbulb"></i><span>Tip: si pides todo en una sola tienda, pagas el envío normal.</span></div>';
+
+        overlay.innerHTML = `
+            <div class="me-modal">
+                <h3><i class="fas fa-motorcycle"></i> ¿Por qué sube el envío?</h3>
+                <p>Tu pedido incluye productos de <strong>${desglose.tiendas} tiendas</strong>. El domiciliario hace más paradas para recoger todo, por eso el envío aumenta:</p>
+                <div class="me-desglose">
+                    <div class="me-fila"><span>Envío base</span><span>${formatearPrecio(desglose.base)}</span></div>
+                    <div class="me-fila"><span>Recargo ${desglose.tiendas} tiendas (+${desglose.pct}%)</span><span>+${formatearPrecio(desglose.delta)}</span></div>
+                    <div class="me-fila me-total"><span>Envío final</span><span>${formatearPrecio(desglose.final)}</span></div>
+                </div>
+                ${notaExtra}
+                <button class="me-btn" onclick="document.getElementById('modal-envio-overlay').classList.remove('abierto')">Entendido</button>
+            </div>
+        `;
+
+        overlay.classList.add('abierto');
+
+        // Cerrar al tocar fuera de la ventanita
+        overlay.onclick = function (e) {
+            if (e.target === overlay) overlay.classList.remove('abierto');
+        };
+    }
+
+    // Exponer globalmente (el botón usa onclick="window.abrirModalEnvio()")
+    window.abrirModalEnvio = abrirModalEnvio;
+
+    // ============================================
+    // ★ NUEVO v4: ESTILOS DEL BOTÓN Y DEL MODAL
+    // Se inyectan una sola vez en <head> — por eso este
+    // archivo NO necesita cambios en styles.css
+    // ============================================
+    function inyectarEstilosModalEnvio() {
+        if (document.getElementById('estilos-modal-envio')) return;
+
+        const style = document.createElement('style');
+        style.id = 'estilos-modal-envio';
+        style.textContent = `
+            .btn-porque {
+                background:#FFF0F0; color:#E63946;
+                border:1px solid #F8C9C9; border-radius:20px;
+                padding:3px 10px; font-size:.72rem; font-weight:600;
+                font-family:inherit; cursor:pointer; margin-left:8px;
+                transition:.2s; vertical-align:middle;
+            }
+            .btn-porque:hover { background:#E63946; color:#fff; }
+
+            .me-overlay {
+                display:none; position:fixed; inset:0;
+                background:rgba(0,0,0,.55); z-index:10000;
+                align-items:center; justify-content:center; padding:20px;
+            }
+            .me-overlay.abierto { display:flex; }
+
+            .me-modal {
+                background:#fff; border-radius:20px; padding:24px;
+                max-width:360px; width:100%;
+                font-family:'Poppins',sans-serif;
+                animation:meAparecer .25s ease;
+            }
+            @keyframes meAparecer { from { transform:scale(.9); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+            .me-modal h3 {
+                color:#3E2723; font-size:1.05rem; margin-bottom:12px;
+                display:flex; align-items:center; gap:8px;
+            }
+            .me-modal h3 i { color:#E63946; }
+            .me-modal p { color:#666; font-size:.88rem; line-height:1.5; margin-bottom:14px; }
+
+            .me-desglose { background:#FFF8E1; border-radius:12px; padding:12px 14px; margin-bottom:14px; }
+            .me-fila { display:flex; justify-content:space-between; font-size:.85rem; padding:3px 0; color:#3E2723; }
+            .me-fila span:last-child { font-weight:600; }
+            .me-fila.me-total { border-top:1px dashed #E0C9A6; margin-top:6px; padding-top:8px; font-weight:700; color:#E63946; }
+
+            .me-tip { font-size:.8rem; color:#666; display:flex; gap:6px; align-items:flex-start; margin-bottom:18px; }
+            .me-tip i { color:#F9A825; margin-top:2px; }
+
+            .me-btn {
+                width:100%; background:#E63946; color:#fff;
+                border:none; border-radius:25px; padding:12px;
+                font-size:.95rem; font-weight:700; font-family:inherit; cursor:pointer;
+            }
+            .me-btn:hover { background:#c1121f; }
+        `;
+        document.head.appendChild(style);
     }
 
     // ============================================
@@ -199,16 +361,16 @@
         }
 
         const total = subtotal + envioFinal;
-        const recargo = descripcionRecargo(carrito);
 
         document.getElementById('resumenSubtotal').textContent = formatearPrecio(subtotal);
 
         const envioEl = document.getElementById('resumenEnvio');
-        if (recargo) {
-            envioEl.innerHTML = `${formatearPrecio(envioFinal)} <span style="background:#fff0f0;color:#c62828;font-size:0.72rem;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:4px;">${recargo}</span>`;
-        } else {
-            envioEl.textContent = formatearPrecio(envioFinal);
-        }
+
+        // ★ v4: ANTES aquí iba el badge rojo "+30% aplicado por 2 tiendas"
+        // AHORA: precio limpio + botón "¿Por qué?" (solo si hay 2+ tiendas)
+        const desglose = calcularDesgloseRecargo(carrito);
+        envioEl.textContent = formatearPrecio(envioFinal);
+        actualizarBotonPorQue(envioEl, desglose);
 
         if (descuentoPct > 0) {
             envioEl.innerHTML += ` <span style="color:var(--success); font-weight:700; font-size:0.8rem;">(-${descuentoPct}%)</span>`;

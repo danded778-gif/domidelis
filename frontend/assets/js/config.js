@@ -219,6 +219,33 @@ function descripcionRecargo(carritoItems) {
 }
 
 // ============================================
+// DESGLOSE DEL RECARGO MULTI-TIENDA
+// Le entrega al modal "¿Por qué?" los números reales:
+// cuántas tiendas, % del recargo, base y final.
+// Devuelve null si hay 0 o 1 tienda (nada que explicar).
+// USA LA MISMA MATEMÁTICA de calcularEnvio() — nunca puede
+// mostrar números diferentes a los que se cobran.
+// ============================================
+function desgloseRecargo(carritoItems) {
+    const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
+    const base = zona.envio;
+
+    const tiendas = new Set(
+        carritoItems
+            .filter(item => item.tiendaId)
+            .map(item => String(item.tiendaId))
+    );
+    const n = tiendas.size;
+    if (n <= 1) return null;
+
+    const factor = Math.min(1 + 0.3 * (n - 1), 2.0);
+    const final = Math.round(base * factor);
+    const pct = Math.round(Math.min(0.3 * (n - 1), 1.0) * 100);
+
+    return { tiendas: n, base: base, final: final, delta: final - base, pct: pct };
+}
+
+// ============================================
 // SOCKET.IO — Conexión global compartida
 // ============================================
 let socketGlobal = null;

@@ -1781,3 +1781,154 @@ footer .social-links a:focus-visible {
 .destacado-card.is-oculto {
     display: none !important;
 }
+
+/* ============================================
+   18. CLASES DE UTILIDAD (porque de los pagos multi-tienda)
+   ============================================ */
+   /* ============================================
+   MODAL "¿POR QUÉ SUBE EL ENVÍO?"
+   Botón + modal explicativo del recargo multi-tienda
+   Usado en: carrito (index.html) y checkout (paso Resumen)
+   ============================================ */
+
+/* ─── El botoncito rojo ─── */
+.btn-porque {
+    background: #FFF0F0;
+    color: var(--primary);
+    border: 1px solid #F8C9C9;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 6px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.btn-porque:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ─── El fondo oscuro que cubre la pantalla ─── */
+.overlay-envio {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.overlay-envio.abierto {
+    display: flex;
+}
+
+/* ─── La ventanita blanca ─── */
+.modal-envio {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 360px;
+    width: 100%;
+    animation: modalEnvioIn 0.25s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+
+@keyframes modalEnvioIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-envio h3 {
+    color: var(--dark);
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.modal-envio h3 i {
+    color: var(--primary);
+}
+
+.modal-envio p {
+    color: var(--gray);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.modal-envio p strong {
+    color: var(--dark);
+}
+
+/* ─── La cajita del desglose (amarilla) ─── */
+.desglose-envio {
+    background: #FFF8E1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+}
+
+.desglose-envio .de-fila {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 3px 0;
+    color: var(--dark);
+}
+
+.desglose-envio .de-fila span:last-child {
+    font-weight: 600;
+}
+
+.desglose-envio .de-total {
+    border-top: 1px dashed #E0C9A6;
+    margin-top: 6px;
+    padding-top: 8px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ─── El tip con el bombillo ─── */
+.tip-envio {
+    font-size: 0.8rem;
+    color: var(--gray);
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.tip-envio i {
+    color: #F9A825;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* ─── El botón "Entendido" ─── */
+.btn-entendido-envio {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-entendido-envio:hover {
+    background: #c1121f;
+}

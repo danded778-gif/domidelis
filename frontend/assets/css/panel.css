@@ -639,3 +639,93 @@
         font-size: 0.68rem;
     }
 }
+/* ============================================
+   7. HISTORIAL — ESTANDARIZACIÓN (pisa §4)
+   Igualar el look al resto de tablas del panel
+   ============================================ */
+
+/* A. El thead deja de ser marrón → estándar crema como Usuarios Tienda */
+#tablaHistorialPedidos th {
+    background: #FDF3E7;
+    color: var(--dark);
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.9rem;
+}
+
+/* B. Scroll horizontal REAL en el contenedor (mata el overflow:hidden) */
+.tabla-historial-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* C. Botones de acción circulares (idénticos a los de Usuarios),
+    sin tocar JS: se aplican a los btn dentro de la tabla */
+#tablaHistorialPedidos .btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    margin: 2px;
+}
+
+/* D. MODO TARJETA MÓVIL (usa los data-label del historial.js nuevo) */
+@media (max-width: 768px) {
+    #tablaHistorialPedidos thead { display: none; }
+    #tablaHistorialPedidos tbody { display: block; width: 100%; }
+
+    #tablaHistorialPedidos tr {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 14px;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    #tablaHistorialPedidos tr.fila-seleccionada {
+        border-color: var(--primary);
+        background: #fff5f5;
+    }
+
+    #tablaHistorialPedidos td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border: none;
+        padding: 6px 0;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    #tablaHistorialPedidos td[data-label]::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--gray);
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    #tablaHistorialPedidos td.td-check {
+        justify-content: flex-start;
+        border-bottom: 1px dashed #eee;
+        margin-bottom: 4px;
+        padding-bottom: 8px;
+    }
+
+    #tablaHistorialPedidos td.td-actions {
+        justify-content: flex-end;
+        border-top: 1px dashed #eee;
+        margin-top: 4px;
+        padding-top: 8px;
+    }
+}

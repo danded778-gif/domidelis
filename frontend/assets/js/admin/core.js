@@ -327,3 +327,30 @@ window.onclick = function (event) {
         event.target.classList.remove('active');
     }
 };
+
+// ─── DRAG-TO-SCROLL para tablas (mouse fluido, táctil ya es nativo) ───
+(function () {
+    document.querySelectorAll('.tabla-historial-container, .tabla-scroll').forEach(c => {
+        c.style.cursor = 'grab';
+        let down = false, startX = 0, scrollLeft = 0, moved = false;
+
+        c.addEventListener('mousedown', e => {
+            down = true; moved = false;
+            startX = e.pageX - c.offsetLeft;
+            scrollLeft = c.scrollLeft;
+            c.style.cursor = 'grabbing';
+        });
+        c.addEventListener('mouseleave', () => { down = false; c.style.cursor = 'grab'; });
+        c.addEventListener('mouseup', () => { down = false; c.style.cursor = 'grab'; });
+        c.addEventListener('mousemove', e => {
+            if (!down) return;
+            const x = e.pageX - c.offsetLeft;
+            if (Math.abs(x - startX) > 5) moved = true;   // umbral anti-clic
+            c.scrollLeft = scrollLeft - (x - startX);
+        });
+        // Si arrastró, cancela el click que siga (para no borrar/editar sin querer)
+        c.addEventListener('click', e => {
+            if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
+        }, true);
+    });
+})();
