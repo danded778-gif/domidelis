@@ -69,7 +69,7 @@ const APP_CONFIG = {
         vista: { nombre: 'Vista Hermosa', envio: 6000 },
         calera: { nombre: 'La calera', envio: 15000 },
         undido: { nombre: 'B. hundido', envio: 5000 },
-        
+
         lourdes: { nombre: 'V.lourdes', envio: 8000 },
         pantanillo: { nombre: 'Pantanillo', envio: 6000 },
         potrerio: { nombre: 'Potrerito', envio: 9000 },
@@ -81,7 +81,7 @@ const APP_CONFIG = {
     }
 };
 
-// ★★★ NUEVA URL DEL CATÁLOGO ESTÁTICO ★★★
+// ★★★ URL DEL CATÁLOGO ESTÁTICO ★★★
 const CATALOGO_URL = 'https://www.domidelis.top/data/catalogo.json';
 
 // ============================================
@@ -117,7 +117,7 @@ function logout() { cerrarSesion(); }
 // CARRITO (Con expiración automática de 24 horas)
 // ============================================
 function guardarCarrito(nuevoCarrito) {
-    const ahora = new Date().getTime(); // Hora actual en milisegundos
+    const ahora = new Date().getTime();
     const data = {
         items: nuevoCarrito,
         timestamp: ahora
@@ -131,21 +131,20 @@ function obtenerCarrito() {
 
     try {
         const data = JSON.parse(dataStr);
-        
-        // ★ COMPATIBILIDAD: Si alguien tenía un carrito viejo (solo array), lo migramos/borramos
+
+        // Compatibilidad: carrito viejo (solo array)
         if (Array.isArray(data)) {
             localStorage.removeItem('carrito');
             return [];
         }
 
         const ahora = new Date().getTime();
-        const horas24 = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+        const horas24 = 24 * 60 * 60 * 1000;
 
-        // ★ VERIFICACIÓN DE TIEMPO ★
         if (ahora - data.timestamp > horas24) {
             console.log("⏰ El carrito tiene más de 24h. Vaciando...");
             localStorage.removeItem('carrito');
-            return []; // Devuelve carrito vacío
+            return [];
         }
 
         return data.items || [];
@@ -158,7 +157,6 @@ function obtenerCarrito() {
 function limpiarCarrito() {
     localStorage.removeItem('carrito');
 }
-
 
 // ============================================
 // UTILIDADES
@@ -176,21 +174,18 @@ function generarEstrellas(rating) {
     }
     return s;
 }
+
 // ============================================
 // SEGURIDAD ANTI-XSS (Escapar HTML)
 // ============================================
 function esc(str) {
     if (!str) return '';
-    // Si no es string, lo convertimos (por si llega un número)
     if (typeof str !== 'string') str = String(str);
-    // Creamos un elemento temporal, inyectamos el texto y sacamos el HTML seguro
     const div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
 }
 
-// Mantenemos la antigua por si acaso la usas en algún lado para comillas específicas, 
-// pero NO la uses para pintar en pantalla.
 function escapeQuotes(str) {
     if (!str) return '';
     return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
@@ -229,6 +224,10 @@ function descripcionRecargo(carritoItems) {
 let socketGlobal = null;
 let identificacionPendiente = null;
 
+// ★ FIX: ¿Esta página ya tuvo al menos una conexión exitosa?
+// Sirve para distinguir PRIMERA conexión de RECONEXIÓN real
+window.__socketConectoAlgunaVez = false;
+
 function payloadIdentificar(rol, id) {
     let nombre = '';
     try {
@@ -240,9 +239,20 @@ function payloadIdentificar(rol, id) {
     return { rol, id, nombre };
 }
 
+function avisarReconexionSocket() {
+    // Evento limpio para que admin (u otras páginas) reaccionen
+    window.dispatchEvent(new CustomEvent('socket:reconectado', {
+        detail: {
+            socketId: socketGlobal ? socketGlobal.id : null,
+            identificacion: identificacionPendiente
+        }
+    }));
+}
+
 function conectarSocket(rol, id) {
     identificacionPendiente = payloadIdentificar(rol, id);
 
+    // Si ya hay socket conectado → solo re-identificar
     if (socketGlobal && socketGlobal.connected) {
         identificacionPendiente = payloadIdentificar(rol, id);
         socketGlobal.emit('identificar', identificacionPendiente);
@@ -251,6 +261,7 @@ function conectarSocket(rol, id) {
         return socketGlobal;
     }
 
+    // Si existe socket viejo → limpiar
     if (socketGlobal) {
         socketGlobal.removeAllListeners();
         socketGlobal.close();
@@ -270,12 +281,15 @@ function conectarSocket(rol, id) {
         forceNew: true
     });
 
+    // Guardar última lista de presencia (para recuperar si el admin aún no escuchaba)
     socketGlobal.on('presencia:lista', (lista) => {
         window.__presenciaUltimaLista = lista || [];
     });
 
     socketGlobal.on('connect', () => {
         console.log(`✅ Socket conectado: ${socketGlobal.id}`);
+
+        // 1) Re-identificar SIEMPRE (el servidor ve cada connect como cliente nuevo)
         if (identificacionPendiente) {
             identificacionPendiente = payloadIdentificar(
                 identificacionPendiente.rol,
@@ -283,13 +297,26 @@ function conectarSocket(rol, id) {
             );
             socketGlobal.emit('identificar', identificacionPendiente);
         }
+
+        // 2) Presencia
         iniciarPresenciaCliente();
+
+        // ★ FIX: avisar reconexión SOLO si ya habíamos conectado antes.
+        // La primera conexión NO es reconexión → no se emite el evento.
+        // Así core.js puede escuchar 'socket:reconectado' sin duplicar cargas.
+        if (window.__socketConectoAlgunaVez) {
+            console.log('🔌 Reconexión real → emitiendo socket:reconectado');
+            avisarReconexionSocket();
+        }
+        window.__socketConectoAlgunaVez = true;
     });
 
     socketGlobal.on('disconnect', (reason) => {
         console.warn(`⚠️ Socket desconectado: ${reason}`);
         if (reason === 'io server disconnect') {
-            setTimeout(() => socketGlobal.connect(), 1000);
+            setTimeout(() => {
+                if (socketGlobal) socketGlobal.connect();
+            }, 1000);
         }
     });
 
@@ -300,7 +327,9 @@ function conectarSocket(rol, id) {
     return socketGlobal;
 }
 
-function getSocket() { return socketGlobal; }
+function getSocket() {
+    return socketGlobal;
+}
 
 // ============================================
 // PRESENCIA — heartbeat + idle (Teams-like)
@@ -350,12 +379,48 @@ function iniciarPresenciaCliente() {
             if (!awayEnviado) {
                 socket.emit('presencia:away');
                 awayEnviado = true;
+            } else {
+                socket.emit('presencia:ping');
             }
         } else {
             socket.emit('presencia:ping');
         }
     }, PRESENCIA_PING_MS);
 }
+
+// ============================================
+// RECUPERACIÓN DESDE BACK-FORWARD CACHE
+// Cuando el navegador restaura la pestaña, el WebSocket
+// suele estar cerrado. Aquí se reconecta y re-identifica.
+// ============================================
+window.addEventListener('pageshow', (event) => {
+    // event.persisted = true → página restaurada desde bfcache
+    if (!event.persisted) return;
+
+    console.log('🔄 Página restaurada desde bfcache — revisando socket...');
+
+    const socket = getSocket();
+
+    if (!socket) return;
+
+    if (!socket.connected) {
+        console.log('🔗 Socket caído tras bfcache — reconectando...');
+        socket.connect();
+        // Al conectar, el handler 'connect' emitirá socket:reconectado
+        // automáticamente (porque __socketConectoAlgunaVez ya es true)
+        return;
+    }
+
+    // Socket sigue "vivo" pero conviene re-identificar
+    if (identificacionPendiente) {
+        socket.emit('identificar', payloadIdentificar(
+            identificacionPendiente.rol,
+            identificacionPendiente.id
+        ));
+        iniciarPresenciaCliente();
+        avisarReconexionSocket();
+    }
+});
 
 // ============================================
 // ★ FIX HEADER: mide la altura real del header
@@ -373,7 +438,6 @@ function iniciarPresenciaCliente() {
     }
     window.addEventListener('load', ajustarAlturaHeader);
     window.addEventListener('resize', ajustarAlturaHeader);
-    // Poppins (webfont) cambia la altura al cargar:
     if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(ajustarAlturaHeader);
     }
