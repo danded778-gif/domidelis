@@ -1,5 +1,5 @@
 // ============================================
-// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.5
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.6
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
@@ -12,23 +12,16 @@
 // - agregarAlCarrito retorna true/false (pcAgregar feedback)
 //
 // ★★★ v4.2 — DESCRIPCIÓN SOLO TRAS BOTÓN "INFO" ★★★
-// - Descripción oculta; botón "ⓘ Info" la revela in-place
 //
 // ★★★ v4.3 — LAZY LOAD + PAGINACIÓN CATEGORÍAS ★★★
-// - mostrarProductosPorCategoria: Paginator (6/página)
-// - renderizarTiendas + renderizarProductosDestacados: data-bg + IntersectionObserver
 //
 // ★★★ v4.5 — DOTS ESTILO INSTAGRAM EN EL CARRUSEL ★★★
-// - construirDotsCategorias(): crea los puntos DENTRO de la
-//   caja de categorías (hermano de categories-scroll) y los
-//   marca .vacio si todo cabe en pantalla.
-// - actualizarDotsCategorias(): mueve la píldora activa
-//   según el progreso del scroll (0 a 1).
-// - actualizarIndicadorCarrusel(): interruptor único que
-//   usan el scroll, el resize y el render de categorías.
-// - Historial: v4.4 usaba fades en los bordes → RETIRADOS
-//   (poco notorios en pantallas grandes o de baja densidad).
-//   Pareja de trabajo: home.css sección 6 (estilos de dots).
+//
+// ★★★ v4.6 — BOTÓN "¿POR QUÉ?" + MODAL DE ENVÍO EN EL CARRITO ★★★
+// - El texto "+30% aplicado por N tiendas" (maluco) fue ELIMINADO
+// - En su lugar: botón rojo "¿Por qué?" junto al total (solo si 2+ tiendas)
+// - Modal autocontenido (trae sus propios estilos, no requiere
+//   cambios en styles.css ni config.js)
 // ============================================
 
 let tiendas = [];
@@ -102,28 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
 // 1.1 DOTS ESTILO INSTAGRAM ★ v4.5
 // ============================================
 
-// Crea los puntos bajo el carrusel, DENTRO de la caja de
-// categorías (hermano de .categories-scroll). Calcula cuántas
-// "páginas" de categorías caben y genera un dot por página.
-// Si TODO cabe en pantalla → clase .vacio (desaparecen).
 function construirDotsCategorias() {
     const scroller = document.getElementById('categories-scroll');
     if (!scroller) return;
 
-    // El contenedor se crea una sola vez, dentro de la caja
     let dotsContainer = document.getElementById('categories-dots');
     if (!dotsContainer) {
         dotsContainer = document.createElement('div');
         dotsContainer.id = 'categories-dots';
         dotsContainer.className = 'categories-dots';
-        // ★ v4.5: DENTRO de la caja de categorías (la caja es
-        //   flex-column en home.css: carrusel arriba, dots abajo)
         scroller.parentNode.appendChild(dotsContainer);
     }
 
     const maxScroll = scroller.scrollWidth - scroller.clientWidth;
 
-    // Todo cabe en pantalla → sin indicador
     if (maxScroll <= 5) {
         dotsContainer.classList.add('vacio');
         dotsContainer.innerHTML = '';
@@ -138,7 +123,6 @@ function construirDotsCategorias() {
         `<button type="button" class="cat-dot${i === 0 ? ' active' : ''}" data-pagina="${i}" aria-label="Ir a página ${i + 1} de categorías"></button>`
     ).join('');
 
-    // Tocar un dot desliza el carrusel a esa posición
     dotsContainer.querySelectorAll('.cat-dot').forEach(dot => {
         dot.addEventListener('click', () => {
             const pagina = parseInt(dot.dataset.pagina);
@@ -150,7 +134,6 @@ function construirDotsCategorias() {
     });
 }
 
-// Marca el dot activo según el progreso del scroll (0 a 1)
 function actualizarDotsCategorias() {
     const scroller = document.getElementById('categories-scroll');
     const dotsContainer = document.getElementById('categories-dots');
@@ -168,7 +151,6 @@ function actualizarDotsCategorias() {
     dots.forEach((d, i) => d.classList.toggle('active', i === indiceActivo));
 }
 
-// Interruptor único de indicadores (lo usan scroll, resize y render)
 function actualizarIndicadorCarrusel() {
     actualizarDotsCategorias();
 }
@@ -288,11 +270,9 @@ function resetMainViewUI() {
     if (productosDestacadosGrid) productosDestacadosGrid.style.display = 'grid';
     if (tituloPrincipal) tituloPrincipal.innerHTML = ` 🔥 Populares en El Santuario`;
 
-    // ★ Mostrar banner de identidad (solo en inicio)
     const domidelisIntro = document.getElementById('domidelis-intro');
     if (domidelisIntro) domidelisIntro.style.display = 'flex';
 
-    // ★ v4.5: al volver a la vista principal, recalcular los dots
     requestAnimationFrame(actualizarIndicadorCarrusel);
 }
 
@@ -363,10 +343,6 @@ function renderizarCategorias(categoriasDesdeJSON) {
     contenedor.style.scrollBehavior = 'smooth';
     contenedor.style.webkitOverflowScrolling = 'touch';
 
-    // ★ v4.5: tras pintar las categorías, reconstruir los dots
-    //   (el número puede cambiar) y marcar el activo.
-    //   rAF = espera al siguiente frame, cuando el navegador ya
-    //   calculó el ancho real del contenido.
     requestAnimationFrame(() => {
         construirDotsCategorias();
         actualizarIndicadorCarrusel();
@@ -405,7 +381,6 @@ function mostrarProductosPorCategoria() {
 
     if (catProductosGrid) catProductosGrid.style.display = 'block';
 
-    // ★ Ocultar banner de identidad (fuera del inicio)
     const domidelisIntro = document.getElementById('domidelis-intro');
     if (domidelisIntro) domidelisIntro.style.display = 'none';
 
@@ -431,7 +406,6 @@ function mostrarProductosPorCategoria() {
         }
     });
 
-    // Paginador: 6 productos por página. Solo se crean las tarjetas de la página actual.
     const renderCategoriaProducts = (productsToRender) => {
         container.innerHTML = productsToRender
             .map(p => crearTarjetaProducto(p, { mostrarTienda: true }))
@@ -443,7 +417,6 @@ function mostrarProductosPorCategoria() {
         currentCategoriaPaginator = null;
     }
 
-    // Contenedor del paginador (reutilizado o creado)
     let paginatorEl = document.getElementById('categoria-paginator-container');
     if (!paginatorEl) {
         paginatorEl = document.createElement('div');
@@ -506,7 +479,6 @@ function volverATiendas() {
 
     categoriaActiva = 'Todas';
 
-    // ★ Mostrar banner de identidad (solo en inicio)
     const domidelisIntro = document.getElementById('domidelis-intro');
     if (domidelisIntro) domidelisIntro.style.display = 'flex';
     document.querySelectorAll('.category-item').forEach(item => {
@@ -879,7 +851,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     if (contenedorAnuncios) contenedorAnuncios.style.display = 'none';
     if (categoriesWrapper) categoriesWrapper.style.display = 'none';
 
-    // ★ Ocultar banner de identidad (fuera del inicio)
     const domidelisIntro = document.getElementById('domidelis-intro');
     if (domidelisIntro) domidelisIntro.style.display = 'none';
     if (catProductosGrid) catProductosGrid.style.display = 'none';
@@ -911,7 +882,6 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
         cargarTiendas();
         return;
     }
-    // ★ Analytics: evento ver_tienda ★
     if (typeof gtag === 'function') {
         gtag('event', 'ver_tienda', {
             'event_category': 'engagement',
@@ -1278,12 +1248,12 @@ function actualizarCarritoUI() {
     const subtotal = carrito.reduce((s, i) => s + i.subtotal, 0);
     const envio = calcularEnvio(carrito);
     const total = subtotal + envio;
-    const recargo = descripcionRecargo(carrito);
 
     const totalPriceEl = document.getElementById("cart-total-price");
     if (totalPriceEl) {
-        const recargoHtml = recargo ? ` <span style="color:var(--primary);font-size:0.75rem;font-weight:600;">${recargo}</span>` : '';
-        totalPriceEl.innerHTML = `${formatearPrecio(total)} <small>(envío: ${formatearPrecio(envio)})</small>${recargoHtml}`;
+        // ★ v4.6: total limpio + botón ¿Por qué? (solo si hay 2+ tiendas)
+        totalPriceEl.innerHTML = `${formatearPrecio(total)} <small>(envío: ${formatearPrecio(envio)})</small>`;
+        actualizarBotonPorQueCarrito(totalPriceEl, carrito);
     }
 }
 
@@ -1318,6 +1288,158 @@ function vaciarCarrito() {
     carrito = [];
     guardarCarrito(carrito);
     actualizarCarritoUI();
+}
+
+// ============================================
+// 6.1 ★ NUEVO v4.6: BOTÓN "¿POR QUÉ?" + MODAL DE ENVÍO (CARRITO)
+// Mismo diseño que el del checkout. Autocontenido: trae sus
+// propios estilos para no depender de styles.css.
+// ============================================
+
+// Calculadora del recargo — misma matemática que calcularEnvio()
+// (config.js): factor = 1 + 0.3 × (n-1), tope ×2.0
+function calcularDesgloseRecargoCarrito(carritoItems) {
+    const zona = APP_CONFIG.zonas[APP_CONFIG.zonaActual] || APP_CONFIG.zonas.centro;
+    const base = zona.envio;
+
+    const tiendasSet = new Set(
+        carritoItems
+            .filter(item => item.tiendaId)
+            .map(item => String(item.tiendaId))
+    );
+    const n = tiendasSet.size;
+    if (n <= 1) return null;
+
+    const factor = Math.min(1 + 0.3 * (n - 1), 2.0);
+    const final = Math.round(base * factor);
+    const pct = Math.round(Math.min(0.3 * (n - 1), 1.0) * 100);
+
+    return { tiendas: n, base, final, delta: final - base, pct };
+}
+
+// Crea/quita el botón "¿Por qué?" junto al total del carrito
+function actualizarBotonPorQueCarrito(totalPriceEl, carritoItems) {
+    let btn = document.getElementById('btn-porque-envio-carrito');
+    const desglose = calcularDesgloseRecargoCarrito(carritoItems);
+
+    // 1 tienda o menos → no hay nada que explicar → quitar botón
+    if (!desglose) {
+        if (btn) btn.remove();
+        return;
+    }
+
+    if (!btn) {
+        inyectarEstilosModalEnvio(); // garantiza estilos desde el primer render
+        btn = document.createElement('button');
+        btn.id = 'btn-porque-envio-carrito';
+        btn.className = 'btn-porque';
+        btn.type = 'button';
+        btn.textContent = '¿Por qué?';
+        btn.setAttribute('onclick', 'window.abrirModalEnvioCarrito()');
+        totalPriceEl.appendChild(btn);
+    }
+}
+
+// Abre la ventanita explicativa con el desglose real
+function abrirModalEnvioCarrito() {
+    const desglose = calcularDesgloseRecargoCarrito(carrito);
+    if (!desglose) return;
+
+    inyectarEstilosModalEnvio();
+
+    let overlay = document.getElementById('modal-envio-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'modal-envio-overlay';
+        overlay.className = 'me-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    overlay.innerHTML = `
+        <div class="me-modal">
+            <h3><i class="fas fa-motorcycle"></i> ¿Por qué sube el envío?</h3>
+            <p>Tu pedido incluye productos de <strong>${desglose.tiendas} tiendas</strong>. El domiciliario hace más paradas para recoger todo, por eso el envío aumenta:</p>
+            <div class="me-desglose">
+                <div class="me-fila"><span>Envío base</span><span>${formatearPrecio(desglose.base)}</span></div>
+                <div class="me-fila"><span>Recargo ${desglose.tiendas} tiendas (+${desglose.pct}%)</span><span>+${formatearPrecio(desglose.delta)}</span></div>
+                <div class="me-fila me-total"><span>Envío final</span><span>${formatearPrecio(desglose.final)}</span></div>
+            </div>
+            <div class="me-tip">
+                <i class="fas fa-lightbulb"></i>
+                <span>Tip: si pides todo en una sola tienda, pagas el envío normal.</span>
+            </div>
+            <button class="me-btn" onclick="document.getElementById('modal-envio-overlay').classList.remove('abierto')">Entendido</button>
+        </div>
+    `;
+
+    overlay.classList.add('abierto');
+
+    // Cerrar al tocar fuera de la ventanita
+    overlay.onclick = function (e) {
+        if (e.target === overlay) overlay.classList.remove('abierto');
+    };
+}
+
+// Exponer globalmente (el botón del carrito la llama con onclick)
+window.abrirModalEnvioCarrito = abrirModalEnvioCarrito;
+
+// Estilos del botón y del modal — se inyectan UNA sola vez.
+// Usa las mismas clases (.me-*) que el modal del checkout, así
+// en checkout.html (que carga este archivo Y checkout.js) no se
+// duplican estilos: quien llegue primero inyecta, el otro se da cuenta.
+function inyectarEstilosModalEnvio() {
+    if (document.getElementById('estilos-modal-envio')) return;
+
+    const style = document.createElement('style');
+    style.id = 'estilos-modal-envio';
+    style.textContent = `
+        .btn-porque {
+            background:#FFF0F0; color:#E63946;
+            border:1px solid #F8C9C9; border-radius:20px;
+            padding:3px 10px; font-size:.72rem; font-weight:600;
+            font-family:inherit; cursor:pointer; margin-left:8px;
+            transition:.2s; vertical-align:middle;
+        }
+        .btn-porque:hover { background:#E63946; color:#fff; }
+
+        .me-overlay {
+            display:none; position:fixed; inset:0;
+            background:rgba(0,0,0,.55); z-index:10000;
+            align-items:center; justify-content:center; padding:20px;
+        }
+        .me-overlay.abierto { display:flex; }
+
+        .me-modal {
+            background:#fff; border-radius:20px; padding:24px;
+            max-width:360px; width:100%;
+            font-family:'Poppins',sans-serif;
+            animation:meAparecer .25s ease;
+        }
+        @keyframes meAparecer { from { transform:scale(.9); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+        .me-modal h3 {
+            color:#3E2723; font-size:1.05rem; margin-bottom:12px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .me-modal h3 i { color:#E63946; }
+        .me-modal p { color:#666; font-size:.88rem; line-height:1.5; margin-bottom:14px; }
+
+        .me-desglose { background:#FFF8E1; border-radius:12px; padding:12px 14px; margin-bottom:14px; }
+        .me-fila { display:flex; justify-content:space-between; font-size:.85rem; padding:3px 0; color:#3E2723; }
+        .me-fila span:last-child { font-weight:600; }
+        .me-fila.me-total { border-top:1px dashed #E0C9A6; margin-top:6px; padding-top:8px; font-weight:700; color:#E63946; }
+
+        .me-tip { font-size:.8rem; color:#666; display:flex; gap:6px; align-items:flex-start; margin-bottom:18px; }
+        .me-tip i { color:#F9A825; margin-top:2px; }
+
+        .me-btn {
+            width:100%; background:#E63946; color:#fff;
+            border:none; border-radius:25px; padding:12px;
+            font-size:.95rem; font-weight:700; font-family:inherit; cursor:pointer;
+        }
+        .me-btn:hover { background:#c1121f; }
+    `;
+    document.head.appendChild(style);
 }
 
 // ============================================
