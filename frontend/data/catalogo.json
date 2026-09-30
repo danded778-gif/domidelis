@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-30T00-15-31",
-  "ultimaActualizacion": "2026-09-30T00:15:31.109Z",
+  "version": "v2026-09-30T00-39-01",
+  "ultimaActualizacion": "2026-09-30T00:39:01.189Z",
   "tiendas": [
     {
       "id": 1,
@@ -1310,7 +1310,21 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 0,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 197,
+          "nombre": "test",
+          "descripcion": "test",
+          "precio": 10000,
+          "imagen_url": "",
+          "badge": "es",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "16",
+          "tiendaNombre": "test"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -2444,6 +2458,19 @@
       "activo": true,
       "tiendaId": "1",
       "tiendaNombre": "Domi Delis"
+    },
+    {
+      "id": 197,
+      "nombre": "test",
+      "descripcion": "test",
+      "precio": 10000,
+      "imagen_url": "",
+      "badge": "es",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "16",
+      "tiendaNombre": "test"
     }
   ],
   "complementosGlobal": [
