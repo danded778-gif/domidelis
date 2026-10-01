@@ -1,6 +1,6 @@
 {
-  "version": "v2026-09-30T15-20-46",
-  "ultimaActualizacion": "2026-09-30T15:20:46.573Z",
+  "version": "v2026-10-01T05-33-59",
+  "ultimaActualizacion": "2026-10-01T05:33:59.482Z",
   "tiendas": [
     {
       "id": 1,
@@ -1297,6 +1297,18 @@
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
       "promovida": 1,
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 16,
+      "nombre": "Brazas el Santuario",
+      "descripcion": "",
+      "direccion": "p.p",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 0,
       "activo": true,
       "productos": []
     }
