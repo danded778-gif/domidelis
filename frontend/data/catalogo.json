@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-01T05-35-22",
-  "ultimaActualizacion": "2026-10-01T05:35:22.018Z",
+  "version": "v2026-10-01T05-37-53",
+  "ultimaActualizacion": "2026-10-01T05:37:53.297Z",
   "tiendas": [
     {
       "id": 1,
@@ -1317,6 +1317,18 @@
       "nombre": "Fragaria",
       "descripcion": "",
       "direccion": "p.j",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 0,
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 18,
+      "nombre": "Don perro",
+      "descripcion": "",
+      "direccion": "P.L",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
