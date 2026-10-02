@@ -75,9 +75,9 @@ const APP_CONFIG = {
         potrerio: { nombre: 'Potrerito', envio: 9000 },
         villas: { nombre: 'Villas del poli', envio: 5000 },
         saladito: { nombre: 'V. Saladito', envio: 6000 },
-        otro_santuario: { nombre: 'Otro barrio/vereda Santuario', envio: 6000 }
-        cataleya: { nombre: 'Cataleya', envio: 6000 }
-        yamaha: { nombre: 'yamaha', envio: 5000 }
+        otro_santuario: { nombre: 'Otro barrio/vereda Santuario', envio: 6000 },
+        cataleya: { nombre: 'Cataleya', envio: 6000 },
+        yamaha: { nombre: 'yamaha', envio: 5000 },
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
