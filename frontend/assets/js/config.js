@@ -28,7 +28,7 @@ console.log(`⚙️ Socket: ${SOCKET_URL}`);
 // ============================================
 const APP_CONFIG = {
     nombre: 'DOMIDELIS',
-    telefonoWhatsApp: '573006330518',
+    telefonoWhatsApp: '573005005306',
     envioBase: 2000,
     zonaActual: localStorage.getItem('zonaSeleccionada') || 'centro',
     zonas: {
