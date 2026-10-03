@@ -110,7 +110,7 @@ function cerrarSesion() {
     localStorage.removeItem('id');
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
 }
 
 function logout() { cerrarSesion(); }
