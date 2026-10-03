@@ -69,7 +69,7 @@ function aplicarFiltrosHistorial() {
             const tiendasTexto = obtenerTextoTiendas(p).toLowerCase();
             return (
                 p.clienteNombre.toLowerCase().includes(texto) ||
-                p.clienteTelefono.includes(texto) ||
+                p.clienteTelefono.toString().includes(texto) || 
                 p.clienteDireccion.toLowerCase().includes(texto) ||
                 p.id.toString().includes(texto) ||
                 tiendasTexto.includes(texto)
