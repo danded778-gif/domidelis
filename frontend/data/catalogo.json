@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-22-22",
-  "ultimaActualizacion": "2026-10-05T23:22:22.939Z",
+  "version": "v2026-10-05T23-22-25",
+  "ultimaActualizacion": "2026-10-05T23:22:25.427Z",
   "tiendas": [
     {
       "id": 1,
@@ -190,19 +190,6 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/abarrotes/flores_comprimida_200kb.png",
           "badge": "NUEVO",
           "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "1",
-          "tiendaNombre": "Domi Delis"
-        },
-        {
-          "id": 195,
-          "nombre": "Noxpirin",
-          "descripcion": "4 und",
-          "precio": 5600,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
-          "badge": "NUEVO",
-          "categoria": "Farmacia",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "1",
@@ -502,6 +489,19 @@
           "imagen_url": "",
           "badge": "agotado",
           "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 195,
+          "nombre": "Noxpirin",
+          "descripcion": "4 und",
+          "precio": 5600,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -2466,8 +2466,8 @@
       "categoria": "Farmacia",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 196,
