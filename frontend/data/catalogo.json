@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-45-24",
-  "ultimaActualizacion": "2026-10-05T23:45:24.135Z",
+  "version": "v2026-10-05T23-50-43",
+  "ultimaActualizacion": "2026-10-05T23:50:43.205Z",
   "tiendas": [
     {
       "id": 1,
@@ -4499,7 +4499,7 @@
     },
     {
       "id": 232,
-      "id_producto": "",
+      "id_producto": 197,
       "grupo": "",
       "nombre": "Pedialite 1 und",
       "precio": 10000,
