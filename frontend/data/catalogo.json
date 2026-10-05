@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-40-18",
-  "ultimaActualizacion": "2026-10-05T23:40:18.062Z",
+  "version": "v2026-10-05T23-41-12",
+  "ultimaActualizacion": "2026-10-05T23:41:12.722Z",
   "tiendas": [
     {
       "id": 1,
@@ -4494,6 +4494,16 @@
       "nombre": "Sevedol EXTRA FUERTE",
       "precio": 9000,
       "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 232,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     }
