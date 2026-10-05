@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-22-25",
-  "ultimaActualizacion": "2026-10-05T23:22:25.427Z",
+  "version": "v2026-10-05T23-40-18",
+  "ultimaActualizacion": "2026-10-05T23:40:18.062Z",
   "tiendas": [
     {
       "id": 1,
@@ -527,7 +527,7 @@
           "precio": 10000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Botella%20Pedialyte%20MAX%20sabor%20uva_comprimido.png",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "Farmacia",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -2489,7 +2489,7 @@
       "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Botella%20Pedialyte%20MAX%20sabor%20uva_comprimido.png",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Farmacia",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "2",
