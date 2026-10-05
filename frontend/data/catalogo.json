@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-21-17",
-  "ultimaActualizacion": "2026-10-05T23:21:17.496Z",
+  "version": "v2026-10-05T23-22-22",
+  "ultimaActualizacion": "2026-10-05T23:22:22.939Z",
   "tiendas": [
     {
       "id": 1,
@@ -201,19 +201,6 @@
           "descripcion": "4 und",
           "precio": 5600,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/noxpirin.png",
-          "badge": "NUEVO",
-          "categoria": "Farmacia",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "1",
-          "tiendaNombre": "Domi Delis"
-        },
-        {
-          "id": 196,
-          "nombre": "Sevedol EXTRA FUERTE",
-          "descripcion": "6 und",
-          "precio": 9000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
           "badge": "NUEVO",
           "categoria": "Farmacia",
           "cantidadTipo": "UND",
@@ -515,6 +502,19 @@
           "imagen_url": "",
           "badge": "agotado",
           "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 196,
+          "nombre": "Sevedol EXTRA FUERTE",
+          "descripcion": "6 und",
+          "precio": 9000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/sebedol.png",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "2",
@@ -2479,8 +2479,8 @@
       "categoria": "Farmacia",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     },
     {
       "id": 197,
