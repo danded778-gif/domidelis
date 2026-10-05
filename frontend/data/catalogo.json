@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-44-20",
-  "ultimaActualizacion": "2026-10-05T23:44:20.836Z",
+  "version": "v2026-10-05T23-44-54",
+  "ultimaActualizacion": "2026-10-05T23:44:54.443Z",
   "tiendas": [
     {
       "id": 1,
@@ -4491,7 +4491,7 @@
       "id": 231,
       "id_producto": 196,
       "grupo": "",
-      "nombre": "Sevedol EXTRA FUERTE",
+      "nombre": "Sevedol Extra FUERTE",
       "precio": 9000,
       "tipo": "extra",
       "max": null,
@@ -4501,7 +4501,7 @@
       "id": 232,
       "id_producto": "",
       "grupo": "",
-      "nombre": "Pedialite",
+      "nombre": "Pedialite 1 und",
       "precio": 10000,
       "tipo": "extra",
       "max": null,
