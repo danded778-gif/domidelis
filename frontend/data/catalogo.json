@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-05T23-41-43",
-  "ultimaActualizacion": "2026-10-05T23:41:43.978Z",
+  "version": "v2026-10-05T23-42-10",
+  "ultimaActualizacion": "2026-10-05T23:42:10.005Z",
   "tiendas": [
     {
       "id": 1,
@@ -4500,7 +4500,7 @@
     {
       "id": 232,
       "id_producto": "",
-      "grupo": "#ERROR!",
+      "grupo": "",
       "nombre": "Pedialite",
       "precio": 10000,
       "tipo": "extra",
