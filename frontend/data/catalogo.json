@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-07T05-27-50",
-  "ultimaActualizacion": "2026-10-07T05:27:50.751Z",
+  "version": "v2026-10-07T08-42-02",
+  "ultimaActualizacion": "2026-10-07T08:42:02.336Z",
   "tiendas": [
     {
       "id": 1,
@@ -1071,7 +1071,7 @@
     {
       "id": 10,
       "nombre": "Mantenimiento",
-      "descripcion": "(oculto)",
+      "descripcion": "abierto",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"1600 - 00:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"14:00 - 23:30\",\"sat\":\"00:00 - 05:59\",\"sun\":\"00:00 - 05:59\"}",
       "rating": 1,
