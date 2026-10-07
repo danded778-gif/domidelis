@@ -1,5 +1,5 @@
 // ============================================
-// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.6
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.7
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
@@ -22,7 +22,106 @@
 // - En su lugar: botón rojo "¿Por qué?" junto al total (solo si 2+ tiendas)
 // - Modal autocontenido (trae sus propios estilos, no requiere
 //   cambios en styles.css ni config.js)
+//
+// ★★★ v4.7 — CATEGORÍAS DINÁMICAS POR HORARIO ★★★
+//
+// ★★★ v4.7.1 — CORRECCIÓN 404 ★★★
+// - Funciones del módulo embebidas en la SECCIÓN 0 (sin archivo externo)
+//
+// ★★★ v4.8 — ROTACIÓN DE PRODUCTOS EN CADA RECARGA ★★★
+// - Si una categoría tiene muchos productos, la vitrina estrella ROTA:
+//   cada recarga muestra productos distintos (barajado Fisher-Yates)
+// - Aplica a la categoría principal, a Bebidas y al relleno general
+// - Bebidas (2ª prioridad del horario) rellena la vitrina ANTES que
+//   cualquier otra categoría cuando la principal no alcanza los 4
 // ============================================
+
+// ============================================
+// 0. CATEGORÍAS DINÁMICAS POR HORARIO ★ v4.8
+// (embebidas desde v4.7.1 — ya NO se requiere archivo externo)
+//
+// ★ NUEVO v4.8 — ROTACIÓN DE PRODUCTOS EN CADA RECARGA:
+//   Antes: si la categoría prioritaria tenía muchos productos, SIEMPRE
+//   se mostraban los mismos primeros 4 (los primeros del JSON).
+//   Ahora: los productos se BARAJAN (Fisher-Yates) dentro de cada grupo,
+//   así cada recarga de página rota la vitrina con productos distintos
+//   de la misma categoría. Aplica para la categoría principal, para
+//   Bebidas y para todo el relleno de otras categorías.
+// ============================================
+
+// 0.0 Baraja (mezcla aleatoria) una lista SIN mutar la original.
+//     Algoritmo Fisher-Yates: distribución uniforme, sin sesgos.
+function barajarArray(lista) {
+    const copia = [...lista];
+    for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+    return copia;
+}
+
+// 0.1 Obtiene la hora decimal exacta en Colombia (GMT-5). Ej: 14:30 → 14.5
+function obtenerHoraColombia() {
+    const coStr = new Date().toLocaleString("en-US", { timeZone: "America/Bogota" });
+    const fecha = new Date(coStr);
+    return fecha.getHours() + (fecha.getMinutes() / 60);
+}
+
+// 0.2 Retorna las categorías prioritarias según el bloque horario:
+//     06:00–10:30 → Menú + Bebidas + Farmacia (desayunos)
+//     10:30–15:00 → Almuerzo + Bebidas + Menú
+//     15:00–16:00 → Detalles + Bebidas (snacks de tarde)
+//     16:00–17:00 → Farmacia + Bebidas (bienestar)
+//     17:00–21:00 → Menú + Bebidas (comidas rápidas)
+//     21:00–23:00 → Licores + Cervezas + Bebidas (noche)
+//     23:00–06:00 → Modo dinámico base
+function obtenerPrioridadesPorHorario() {
+    const hora = obtenerHoraColombia();
+    if (hora >= 6.0 && hora < 10.5) return ['Menu', 'Bebidas', 'Farmacia'];
+    if (hora >= 10.5 && hora < 15.0) return ['Almuerzo', 'Bebidas', 'Menu'];
+    if (hora >= 15.0 && hora < 16.0) return ['Detalles', 'Bebidas'];
+    if (hora >= 16.0 && hora < 17.0) return ['Farmacia', 'Bebidas'];
+    if (hora >= 17.0 && hora < 21.0) return ['Menu', 'Bebidas'];
+    if (hora >= 21.0 && hora < 23.0) return ['Licores', 'Cervezas', 'Bebidas'];
+    return ['Menu', 'Almuerzo', 'Licores', 'Cervezas', 'Bebidas'];
+}
+
+// 0.3 Filtra, BARAJA y prioriza los productos de la vitrina estrella.
+//     ★ v4.8: dentro de cada grupo el orden es aleatorio en cada recarga,
+//     pero la regla de prioridad se mantiene intacta:
+//       1º) productos de la categoría ideal de la hora (ej: Almuerzo al mediodía)
+//       2º) productos de la 2ª categoría del horario (ej: Bebidas) — rotan
+//       3º) el resto de productos — también barajados
+//     Se conservan las protecciones originales (imágenes 'null'/'undefined'
+//     descartadas y badge "Agotado" detectado sin importar mayúsculas).
+function obtenerProductosEstrellaPriorizados(productos, limite = 4) {
+    const prioridad = obtenerPrioridadesPorHorario();
+    const catPrincipal = prioridad[0];   // La categoría ideal de la hora actual
+    const catSecundaria = prioridad[1];  // ★ v4.8: 2ª prioridad (ej: Bebidas)
+
+    const validos = (productos || []).filter(p =>
+        p.imagen_url &&
+        p.imagen_url.trim() !== '' &&
+        p.imagen_url !== 'null' &&
+        p.imagen_url !== 'undefined' &&
+        !(p.badge && String(p.badge).toLowerCase() === 'agotado')
+    );
+
+    // ★ v4.8: Barajamos DENTRO de cada grupo (rotación por recarga)
+    const prioritarios = barajarArray(validos.filter(p => p.categoria === catPrincipal));
+
+    const secundarios = (catSecundaria && catSecundaria !== catPrincipal)
+        ? barajarArray(validos.filter(p => p.categoria === catSecundaria))
+        : [];
+
+    const otros = barajarArray(validos.filter(p =>
+        p.categoria !== catPrincipal &&
+        p.categoria !== catSecundaria
+    ));
+
+    // Prioridad de categorías intacta: principal → secundaria (Bebidas) → resto
+    return [...prioritarios, ...secundarios, ...otros].slice(0, limite);
+}
 
 let tiendas = [];
 let carrito = [];
@@ -283,7 +382,15 @@ function renderizarCategorias(categoriasDesdeJSON) {
     const contenedor = document.getElementById('categories-scroll');
     if (!contenedor) return;
 
-    const prioridad = ['Menu', 'Almuerzo', 'Comida', 'Bebidas', 'Licores', 'Cervezas', 'Farmacia'];
+    // ★ v4.7: Prioridad DINÁMICA según horario (funciones en la SECCIÓN 0
+    //   de este archivo). Antes: array estático
+    //   ['Menu', 'Almuerzo', 'Comida', 'Bebidas', 'Licores', 'Cervezas', 'Farmacia'].
+    //   Ahora: el carrusel se ordena según la hora actual en Colombia
+    //   (ej: a las 12pm "Almuerzo" queda primero; a las 10pm "Licores").
+    //   Las categorías del JSON que no estén en la prioridad del momento
+    //   conservan su posición natural, y "Otras" sigue quedando al final.
+    const prioridad = obtenerPrioridadesPorHorario();
+
     const normalizarCategoria = categoria => String(categoria)
         .toLowerCase()
         .trim()
@@ -727,25 +834,21 @@ function renderizarTiendas() {
     }
 }
 
+// ★ v4.8 — Vitrina estrella con priorización por horario + ROTACIÓN.
+//   Antes: selección ALEATORIA simple (v4.6) o fija por orden del JSON (v4.7).
+//   Ahora: los productos de la categoría de la hora van primero pero ROTAN
+//   en cada recarga (barajado Fisher-Yates), Bebidas rellena como 2ª
+//   prioridad (también rotando) y el resto completa barajado.
 function renderizarProductosDestacados() {
     const contenedor = document.getElementById('productos-destacados-grid');
     if (!contenedor) return;
 
-    let productosConImagen = productosGlobal.filter(p =>
-        p.imagen_url && p.imagen_url.trim() !== '' &&
-        p.imagen_url !== 'null' && p.imagen_url !== 'undefined' &&
-        !(p.badge && p.badge.toLowerCase() === 'agotado')
-    );
+    // ★ v4.7/v4.8: Priorización inteligente por horario + rotación
+    let productosDestacados = obtenerProductosEstrellaPriorizados(productosGlobal, 4);
 
-    if (productosConImagen.length === 0) {
+    if (productosDestacados.length === 0) {
         contenedor.style.display = 'none';
         return;
-    }
-
-    let productosDestacados = [];
-    while (productosDestacados.length < 4 && productosConImagen.length > 0) {
-        const randomIndex = Math.floor(Math.random() * productosConImagen.length);
-        productosDestacados.push(productosConImagen.splice(randomIndex, 1)[0]);
     }
 
     contenedor.innerHTML = productosDestacados.map(p => {
