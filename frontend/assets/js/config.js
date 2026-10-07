@@ -78,6 +78,7 @@ const APP_CONFIG = {
         otro_santuario: { nombre: 'Otro barrio/vereda Santuario', envio: 6000 },
         cataleya: { nombre: 'Cataleya', envio: 6000 },
         yamaha: { nombre: 'yamaha', envio: 5000 },
+        miraflores: { nombre: 'Miraflores', envio: 5000 },
         // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
         // progreso: { nombre: 'Barrio Progreso', envio: 6000 }
     }
