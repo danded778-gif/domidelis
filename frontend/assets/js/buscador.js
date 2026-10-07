@@ -3,6 +3,8 @@
  * -------------------------------------------------------
  * Buscador global del header (desktop dropdown + panel móvil)
  * Solo se usa en index.html
+ *
+ * ★ v4.9 — capas DomiBack en abrir/cerrar buscador móvil
  */
 (function (global) {
     'use strict';
@@ -70,9 +72,12 @@
 
         document.body.style.overflow = 'hidden';
         setTimeout(() => document.getElementById('mobile-search-input')?.focus(), 250);
+        window.DomiBack?.capaAbierta('buscador'); // ★ v4.9
     }
 
     function cerrarBuscadorMovil(inmediato) {
+        window.DomiBack?.capaCerrada('buscador'); // ★ v4.9
+
         const panel = document.getElementById('search-panel');
         const overlay = document.getElementById('search-overlay');
 

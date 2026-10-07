@@ -1,5 +1,5 @@
 // ============================================
-// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.7
+// client.js - FUSIÓN DOCUMENTADA Y ACTUALIZADA v4.9.2
 // Incluye: Horario JSON, Autocomplete, Carrito, Analíticas, Categorías
 // ★ ACTUALIZADO: Menú deslizable filtra productos globales por categoría
 // ★ CORREGIDO: Íconos dinámicos según el nombre de la categoría
@@ -34,6 +34,18 @@
 // - Aplica a la categoría principal, a Bebidas y al relleno general
 // - Bebidas (2ª prioridad del horario) rellena la vitrina ANTES que
 //   cualquier otra categoría cuando la principal no alcanza los 4
+//
+// ★★★ v4.9 — SOPORTE DEL BOTÓN ATRÁS (domi-back.js) ★★★
+// - navegar() en volverATiendas / mostrarProductosPorCategoria / verMenuTienda / cargarTiendas
+// - renderDesdeAtras() + marcarChipCategoria() para restauración instantánea
+// - capaAbierta / capaCerrada en carrito, modal-envio y menú hamburguesa
+// - Botón "Volver a tiendas" usa DomiBack.atras() (sin re-fetch)
+//
+// ★★★ v4.9.1 — FIX categories-wrapper + dots al volver ★★★
+//
+// ★★★ v4.9.2 — irACheckout sin carrera con DomiBack ★★★
+// - Cierre visual del carrito SIN capaCerrada (evita history.back diferido)
+// - location.replace("checkout.html") en vez de location.href
 // ============================================
 
 // ============================================
@@ -270,10 +282,16 @@ function inicializarEventos() {
     if (cartOverlay) cartOverlay.onclick = cerrarCarrito;
     if (checkoutBtn) checkoutBtn.onclick = irACheckout;
 
+    // ★ v4.9 — menú hamburguesa con capa DomiBack
     if (mobileMenu && navLinks) {
         mobileMenu.onclick = () => {
-            navLinks.classList.toggle("active");
-            mobileMenu.classList.toggle("active");
+            if (navLinks.classList.contains("active")) {
+                cerrarMenuHamburguesa();                        // ★ v4.9
+            } else {
+                navLinks.classList.add("active");
+                mobileMenu.classList.add("active");
+                window.DomiBack?.capaAbierta('menu');           // ★ v4.9
+            }
         };
     }
 
@@ -282,12 +300,22 @@ function inicializarEventos() {
     }
 }
 
+// ★ v4.9 — cierre del menú hamburguesa (lo usan el toggle y el botón atrás)
+function cerrarMenuHamburguesa() {
+    const navLinks = document.getElementById("nav-links");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (navLinks) navLinks.classList.remove("active");
+    if (mobileMenu) mobileMenu.classList.remove("active");
+    window.DomiBack?.capaCerrada('menu');
+}
+
 function abrirCarrito() {
     const cartPanel = document.getElementById("cart-panel");
     const cartOverlay = document.getElementById("cart-overlay");
     if (cartPanel) cartPanel.classList.add("active");
     if (cartOverlay) cartOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    window.DomiBack?.capaAbierta('carrito');  // ★ v4.9
 }
 
 function cerrarCarrito() {
@@ -296,6 +324,7 @@ function cerrarCarrito() {
     if (cartPanel) cartPanel.classList.remove("active");
     if (cartOverlay) cartOverlay.classList.remove("active");
     document.body.style.overflow = "";
+    window.DomiBack?.capaCerrada('carrito');  // ★ v4.9
 }
 
 // ============================================
@@ -330,6 +359,7 @@ async function cargarTiendas(reintentos = 3) {
         resetMainViewUI();
         renderizarTiendas();
         renderizarProductosDestacados();
+        window.DomiBack?.navegar('principal', {});  // ★ v4.9
     } catch (error) {
         console.error("Error cargando catálogo estático", error);
         if (reintentos > 0) {
@@ -471,6 +501,8 @@ function filtrarPorCategoria(nombreCategoria, e) {
 }
 
 function mostrarProductosPorCategoria() {
+    window.DomiBack?.navegar('categoria', { nombre: categoriaActiva }); // ★ v4.9
+
     const storesGrid = document.getElementById('stores-grid');
     const storesGridCerradas = document.getElementById('stores-grid-cerradas');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
@@ -564,13 +596,17 @@ function mostrarProductosPorCategoria() {
 }
 
 function volverATiendas() {
+    window.DomiBack?.navegar('principal', {}); // ★ v4.9
+
     const storesGrid = document.getElementById('stores-grid');
     const storesGridCerradas = document.getElementById('stores-grid-cerradas');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
     const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     const tituloPrincipal = document.getElementById('main-title');
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
+    const categoriesWrapper = document.getElementById('categories-wrapper'); // ★ v4.9.1
 
+    if (categoriesWrapper) categoriesWrapper.style.display = 'flex'; // ★ v4.9.1 — EL FIX del bug
     if (storesGrid) {
         storesGrid.className = 'stores-grid-horizontal';
         storesGrid.style.display = 'flex';
@@ -603,6 +639,37 @@ function volverATiendas() {
         storesGrid.scrollLeft = 0;
         iniciarAutoScrollTiendas();
     }
+
+    requestAnimationFrame(actualizarIndicadorCarrusel); // ★ v4.9.1 — puntitos del carrusel al día
+}
+
+// ============================================
+// 4.2 ★ v4.9 — SOPORTE DEL BOTÓN ATRÁS (domi-back.js)
+// ============================================
+// Marca el chip activo del carrusel de categorías
+function marcarChipCategoria(nombre) {
+    document.querySelectorAll('.category-item').forEach(item => {
+        const span = item.querySelector('span');
+        item.classList.toggle('active', !!(span && span.innerText === nombre));
+    });
+}
+// Punto único de render cuando el botón atrás pide una pantalla.
+// Lo llama domi-back.js. Restaura desde memoria: SIN red, instantáneo.
+function renderDesdeAtras(vista, params, scroll) {
+    if (vista === 'tienda') {
+        verMenuTienda(params.id);
+    } else if (vista === 'categoria') {
+        categoriaActiva = params.nombre;
+        marcarChipCategoria(params.nombre);
+        mostrarProductosPorCategoria();
+    } else {
+        volverATiendas();
+        renderizarTiendas();
+    }
+    // Doble rAF: le gana a los scrolls internos de cada render
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        window.scrollTo(0, scroll || 0);
+    }));
 }
 
 // ============================================
@@ -947,6 +1014,8 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const productosDestacadosGrid = document.getElementById('productos-destacados-grid');
     if (!container) return;
 
+    window.DomiBack?.navegar('tienda', { id: tiendaId }); // ★ v4.9
+
     const contenedorAnuncios = document.getElementById('contenedor-anuncios');
     const categoriesWrapper = document.getElementById('categories-wrapper');
     const catProductosGrid = document.getElementById('categoria-productos-grid');
@@ -1005,7 +1074,7 @@ async function verMenuTienda(tiendaId, productoIdDestacado = null) {
     const status = checkStoreStatus(tienda.horario);
 
     container.innerHTML = `
-        <button class="back-button" onclick="cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
+        <button class="back-button" onclick="window.DomiBack ? DomiBack.atras() : cargarTiendas()"><i class="fas fa-arrow-left"></i> Volver a tiendas</button>
         <div class="menu-header">
             <p>${tienda.descripcion || ""}</p>
             <span style="display:inline-block;margin-top:.5rem;background:var(--light);color:var(--gray);padding:.3rem .9rem;border-radius:20px;font-size:.85rem;">
@@ -1383,7 +1452,19 @@ function irACheckout() {
         mostrarNotificacion("Tu carrito está vacío", "error");
         return;
     }
-    window.location.href = "checkout.html";
+    // ★ v4.9.2 — Cierre visual SIN avisar a DomiBack:
+    // estamos por SALIR de la página. Si avisáramos, el guardián
+    // programaría su history.back() diferido, que ABORTARÍA esta
+    // navegación (la carrera que rompía el checkout).
+    const cartPanel = document.getElementById("cart-panel");
+    const cartOverlay = document.getElementById("cart-overlay");
+    if (cartPanel) cartPanel.classList.remove("active");
+    if (cartOverlay) cartOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+    // ★ v4.9.2 — location.replace: en vez de apilar checkout ENCIMA del
+    // guardián (historial sucio), REEMPLAZA la entrada del guardián.
+    // Volver desde el checkout queda limpio: una sola página atrás.
+    window.location.replace("checkout.html");
 }
 
 function vaciarCarrito() {
@@ -1471,17 +1552,26 @@ function abrirModalEnvioCarrito() {
                 <i class="fas fa-lightbulb"></i>
                 <span>Tip: si pides todo en una sola tienda, pagas el envío normal.</span>
             </div>
-            <button class="me-btn" onclick="document.getElementById('modal-envio-overlay').classList.remove('abierto')">Entendido</button>
+            <button class="me-btn" onclick="cerrarModalEnvioCarrito()">Entendido</button>
         </div>
     `;
 
     overlay.classList.add('abierto');
+    window.DomiBack?.capaAbierta('modal-envio'); // ★ v4.9
 
     // Cerrar al tocar fuera de la ventanita
     overlay.onclick = function (e) {
-        if (e.target === overlay) overlay.classList.remove('abierto');
+        if (e.target === overlay) cerrarModalEnvioCarrito(); // ★ v4.9
     };
 }
+
+// ★ v4.9 — cierre único del modal de envío (botón, toque fuera y botón atrás)
+function cerrarModalEnvioCarrito() {
+    const overlay = document.getElementById('modal-envio-overlay');
+    if (overlay) overlay.classList.remove('abierto');
+    window.DomiBack?.capaCerrada('modal-envio');
+}
+window.cerrarModalEnvioCarrito = cerrarModalEnvioCarrito;
 
 // Exponer globalmente (el botón del carrito la llama con onclick)
 window.abrirModalEnvioCarrito = abrirModalEnvioCarrito;

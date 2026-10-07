@@ -35,7 +35,7 @@
             <nav>
                 <a href="index.html" class="logo"><i class="fas fa-utensils"></i> DOMI<span>DELIS</span></a>
                 <ul class="nav-links">
-                    <li><a href="index.html"><i class="fas fa-arrow-left"></i> Seguir comprando</a></li>
+                    <li><a href="index.html" class="checkout-back-link"><i class="fas fa-arrow-left"></i> Seguir comprando</a></li>
                 </ul>
             </nav>
         </div>
@@ -44,7 +44,7 @@
     <main>
         <div class="checkout-container">
             <!-- ★ BOTÓN "VOLVER A TIENDAS" (más arriba en móviles gracias al CSS) ★ -->
-            <a href="index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver a tiendas</a>
+            <a href="index.html" class="btn-volver checkout-back-link"><i class="fas fa-arrow-left"></i> Volver a tiendas</a>
 
             <div class="checkout-header">
                 <h1><i class="fas fa-clipboard-check"></i> Finalizar Pedido</h1>
@@ -292,8 +292,31 @@
             var zonaError = document.getElementById('zona-checkout-error');
             var zonaClearBtn = document.getElementById('zone-clear-btn-checkout');
             var ref = document.getElementById('referencias');
+            var pasoActual = 1;
+            var volverATiendaPendiente = false;
 
-            function irPaso(n) {
+            history.replaceState({ checkoutWizard: true, paso: pasoActual }, '');
+
+            document.querySelectorAll('.checkout-back-link').forEach(function(btn) {
+                btn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (pasoActual === 1) {
+                        window.location.replace('index.html');
+                    } else {
+                        volverATiendaPendiente = true;
+                        window.history.go(1 - pasoActual);
+                    }
+                });
+            });
+
+            function irPaso(n, registrarEnHistorial) {
+                if (!Number.isInteger(n) || n < 1 || n > pasos.length) return;
+
+                if (registrarEnHistorial && n !== pasoActual) {
+                    history.pushState({ checkoutWizard: true, paso: n }, '');
+                }
+
+                pasoActual = n;
                 pasos.forEach(function(el, i) {
                     el.classList.toggle('activo', (i + 1) === n);
                 });
@@ -304,6 +327,22 @@
                 });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+
+            window.addEventListener('popstate', function(event) {
+                var state = event.state;
+                if (volverATiendaPendiente && state &&
+                    state.checkoutWizard && state.paso === 1) {
+                    volverATiendaPendiente = false;
+                    window.location.replace('index.html');
+                    return;
+                }
+
+                if (state && state.checkoutWizard &&
+                    Number.isInteger(state.paso) &&
+                    state.paso >= 1 && state.paso <= pasos.length) {
+                    irPaso(state.paso, false);
+                }
+            });
 
             function guardarDatosCliente() {
                 try {
@@ -351,7 +390,7 @@
                     return;
                 }
                 guardarDatosCliente();
-                irPaso(2);
+                irPaso(2, true);
             });
 
             // Paso 2
@@ -364,14 +403,14 @@
                     return;
                 }
                 guardarDatosCliente();
-                irPaso(3);
+                irPaso(3, true);
             });
 
             // Paso 3
             document.getElementById('formPaso3').addEventListener('submit', function(e) {
                 e.preventDefault();
                 guardarDatosCliente();
-                irPaso(4);
+                irPaso(4, true);
             });
 
             // Botones "Atrás"
@@ -379,7 +418,11 @@
                 btn.addEventListener('click', function() {
                     var target = this.dataset.target;
                     var num = parseInt(target.split('-')[1], 10);
-                    irPaso(num);
+                    if (num < pasoActual) {
+                        history.back();
+                    } else {
+                        irPaso(num, true);
+                    }
                 });
             });
 
@@ -430,4 +473,4 @@
 
 </body>
 
-</html>
+</html> 

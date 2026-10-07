@@ -321,8 +321,9 @@
     <header>
         <div class="container">
             <nav class="main-nav">
-                <div class="mobile-menu" id="mobile-menu"
-                    onclick="document.getElementById('nav-links').classList.toggle('active');this.classList.toggle('active')">
+                <!-- ★ v4.9.2 — onclick inline ELIMINADO (código muerto: client.js
+                     controla el menú y avisa a DomiBack) -->
+                <div class="mobile-menu" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
 
@@ -408,7 +409,7 @@
 
             <!-- ★★★ 7. GRID DE PRODUCTOS POR CATEGORÍA ★★★ -->
             <div id="categoria-productos-grid" style="display: none; padding-bottom: 2rem;">
-                <button class="back-button" onclick="volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
+                <button class="back-button" onclick="window.DomiBack ? DomiBack.atras() : volverATiendas()"><i class="fas fa-arrow-left"></i> Volver a
                     tiendas</button>
                 <div class="menu-grid" id="productos-por-categoria-container" style="margin-top: 1rem;"></div>
             </div>
@@ -578,11 +579,11 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Enlaces</h3>
-                    <p><a href="pages/terminos.html"><i class="fas fa-file-contract"></i> Términos de Uso</a></p>
+                    <p><a href="pages/TyC.html"><i class="fas fa-file-contract"></i> Términos de Uso</a></p>
                     <p><a href="pages/politicas.html"><i class="fas fa-file-contract"></i> Política de Privacidad</a>
                     </p>
                     <p><a href="pages/centro-de-ayuda.html"><i class="fas fa-file-contract"></i> Centro de Ayuda</a></p>
-                    <p><a href="pages/TyC.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></p>
+                    <p><a href="pages/terminos.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></p>
                 </div>
             </div>
             <div class="footer-section footer-cta">
@@ -618,6 +619,7 @@
     <script src="assets/js/paginator.js"></script>
     <script src="assets/js/cliente/categorias-dinamicas.js"></script>
     <script src="assets/js/client.js"></script>
+    <script src="assets/js/cliente/domi-back.js"></script>
     <script src="assets/js/tienda-oculto.js"></script>
     <script src="assets/js/cart-empty-cta.js"></script>
     <script src="assets/js/buscador.js"></script>
@@ -698,7 +700,7 @@
             setTimeout(function () {
                 if (!deferredPrompt && !yaSeMostró) {
                     yaSeMostró = true;
-                    if (esSamsung) { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-bars"></i> (3 líneas) abajo a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Agregar página a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Toca <strong>"Agregar"</strong></div></div>'; }
+                    if (esSamsung) { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-bars"></i> (3 líneas) abajo a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Agregar página a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Toca <strong>"Agregar"</strong> y hecho</div></div>'; }
                     else if (esFirefox) { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) del navegador</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca <strong>"Instalar"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>'; }
                     else { stepsContainer.innerHTML = '<div class="install-manual-step"><div class="step-num">1</div><div class="step-text">Toca el menú <i class="fas fa-ellipsis-v"></i> (tres puntos) arriba a la derecha</div></div><div class="install-manual-step"><div class="step-num">2</div><div class="step-text">Busca y toca <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla de inicio"</strong></div></div><div class="install-manual-step"><div class="step-num">3</div><div class="step-text">Confirma tocando <strong>"Instalar"</strong></div></div>'; }
                     bannerManual.classList.add('mostrar'); configurarCierreManual();
@@ -744,11 +746,6 @@
         })();
     </script>
 
-    <script>
-        carrito = obtenerCarrito();
-        actualizarCarritoUI();
-    </script>
-
     <link rel="stylesheet" href="assets/css/offline-game.css">
     <script src="assets/js/offline-game.js"></script>
     <script>OfflineGame.init();</script>
@@ -791,8 +788,9 @@
             btnComoPedir.addEventListener('click', function (e) {
                 e.preventDefault();
                 modalComoPedir.classList.add('active');
-                document.getElementById('nav-links').classList.remove('active');
-                document.getElementById('mobile-menu').classList.remove('active');
+                // ★ v4.9.2 — cerrar el menú AVISANDO a DomiBack (antes lo hacía
+                // en silencio y dejaba una capa fantasma = un "atrás" muerto)
+                if (typeof cerrarMenuHamburguesa === 'function') cerrarMenuHamburguesa();
             });
         }
 
@@ -809,96 +807,6 @@
                 }
             });
         }
-    </script>
-
-    <!-- ★ MODAL PREVENIR SALIDA ACCIDENTAL ★ -->
-    <div id="exit-modal" class="exit-modal">
-        <div class="exit-modal-content">
-            <div class="exit-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-
-            <h3>¿Salir de Domidelis?</h3>
-
-            <p>Si cierras la app, podrías perder tu carrito actual. ¿Seguro que deseas salir?</p>
-
-            <p id="pwa-message" class="pwa-message">
-                Para salir completamente, debes presionar el botón de <strong>atrás</strong> de tu celular <strong>dos
-                    veces</strong>.
-            </p>
-
-            <div class="exit-buttons">
-                <button id="btn-quedarse">Quedarme</button>
-                <button id="btn-salir">Salir</button>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            const rol = localStorage.getItem('rol');
-
-            if (!rol || rol === 'cliente') {
-
-                const esPWA = window.matchMedia('(display-mode: standalone)').matches ||
-                    window.navigator.standalone === true;
-
-                const exitModal = document.getElementById('exit-modal');
-                const btnSalir = document.getElementById('btn-salir');
-                const btnQuedarse = document.getElementById('btn-quedarse');
-                const pwaMessage = document.getElementById('pwa-message');
-
-                function preventExit(event) {
-                    window.history.pushState({ noBackExitsApp: true }, '');
-                    exitModal.style.display = 'flex';
-
-                    if (esPWA) {
-                        if (btnSalir) btnSalir.style.display = 'none';
-                        if (pwaMessage) pwaMessage.style.display = 'block';
-                    } else {
-                        if (btnSalir) btnSalir.style.display = 'block';
-                        if (pwaMessage) pwaMessage.style.display = 'none';
-                    }
-                }
-
-                window.history.pushState({ noBackExitsApp: true }, '');
-                window.addEventListener('popstate', preventExit);
-
-                if (btnQuedarse) {
-                    btnQuedarse.addEventListener('click', function () {
-                        exitModal.style.display = 'none';
-                        if (pwaMessage) pwaMessage.style.display = 'none';
-                    });
-                }
-
-                if (btnSalir) {
-                    btnSalir.addEventListener('click', function () {
-                        exitModal.style.display = 'none';
-                        window.removeEventListener('popstate', preventExit);
-
-                        window.history.back();
-
-                        setTimeout(function () {
-                            if (document.visibilityState === 'visible' && !esPWA) {
-                                window.history.back();
-
-                                setTimeout(function () {
-                                    if (document.visibilityState === 'visible') {
-                                        window.close();
-
-                                        setTimeout(function () {
-                                            if (document.visibilityState === 'visible') {
-                                                window.location.replace('https://www.google.com');
-                                            }
-                                        }, 200);
-                                    }
-                                }, 150);
-                            }
-                        }, 80);
-                    });
-                }
-            }
-        });
     </script>
 
     <!-- ★★★ NUEVO: Scripts de Firebase ★★★ -->

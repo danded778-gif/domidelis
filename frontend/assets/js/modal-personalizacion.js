@@ -3,6 +3,7 @@
    - Extras: Stepper (+/-)
    - Opciones únicas: Radio (Círculo)
    - Opciones múltiples (incluidas): Checkbox (Chulito)
+   ★ v4.9 — capas DomiBack en abrir/cerrar
    ============================================ */
 
 (function () {
@@ -443,6 +444,7 @@
         overlay.classList.add('domi-is-open');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        window.DomiBack?.capaAbierta('modal-producto'); // ★ v4.9
     }
 
         function cerrar() {
@@ -457,6 +459,7 @@
         overlay.classList.remove('domi-is-open');
         overlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        window.DomiBack?.capaCerrada('modal-producto'); // ★ v4.9
     }
 
     function confirmar() {
