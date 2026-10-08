@@ -181,12 +181,22 @@ async function verDetallePedido(pedidoId) {
                 <p><strong>Dirección:</strong> ${pedido.clienteDireccion}</p>
                 <p><strong>Teléfono:</strong> ${pedido.clienteTelefono}</p>
                 <p><strong>Tienda:</strong> <span class="tienda-tag-detalle"><i class="fas fa-store"></i> ${tiendasTexto}</span></p>
+                <p><strong>Pago:</strong> ${esc(pedido.metodoPago || '—')}</p>
+                ${pedido.referencias ? `<p><strong>Referencias:</strong> ${esc(pedido.referencias)}</p>` : ''}
                 <p><strong>Propina:</strong> ${renderPropinaBadge(pedido)}</p>
                 <p><strong>Fecha:</strong> ${formatearFecha(pedido.fecha)}</p>
                 <p><strong>Estado:</strong> <span class="badge badge-${pedido.estado.replace(/\s/g, '-')}">${pedido.estado}</span></p>
                 <h4>Productos:</h4>
                 <div class="productos-lista">
-                    ${productos.map(prod => `<div class="producto-item"><span>${prod.cantidad}x ${esc(prod.nombre)} (${prod.cantidadTipo} UND)</span><span>${formatearPrecio(prod.subtotal)}</span></div>`).join('')}
+                    ${productos.map(prod => `
+                        <div class="producto-item" style="flex-direction:column; align-items:stretch; gap:4px;">
+                            <div style="display:flex; justify-content:space-between;">
+                                <span>${prod.cantidad}x ${esc(prod.nombre)} (${prod.cantidadTipo || 'UND'})</span>
+                                <span>${formatearPrecio(prod.subtotal)}</span>
+                            </div>
+                            ${formatearComplementosDetalle(prod.complementos)}
+                        </div>
+                    `).join('')}
                 </div>
                 <div class="total-pedido"><strong>Total: ${formatearPrecio(pedido.total)}</strong></div>
             </div>
@@ -231,4 +241,27 @@ function obtenerTextoTiendas(pedido) {
     const tiendas = obtenerTiendasPedido(pedido);
     if (tiendas.size === 0) return '—';
     return Array.from(tiendas.values()).join(', ');
+}
+
+// ============================================
+// HELPER: COMPLEMENTOS EN DETALLE DE PEDIDO
+// El texto llega como: "✦ Grupo: A, B | ✦ Grupo2: C"
+// (así lo arma getExtrasTexto del checkout). Se parte por "|"
+// y se pinta cada línea debajo del producto.
+// ============================================
+function formatearComplementosDetalle(textoComplementos) {
+    if (!textoComplementos || String(textoComplementos).trim() === '') return '';
+
+    const lineas = String(textoComplementos)
+        .split('|')
+        .map(l => l.trim())
+        .filter(l => l !== '');
+
+    if (lineas.length === 0) return '';
+
+    return `
+        <div style="font-size:0.8rem; color:var(--gray); padding:4px 10px; border-left:2px solid var(--accent); margin:2px 0 4px 0; line-height:1.5;">
+            ${lineas.map(l => `<div>✔ ${esc(l)}</div>`).join('')}
+        </div>
+    `;
 }
