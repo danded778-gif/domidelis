@@ -45,7 +45,7 @@ const isDev = false;
 //   todo caché que no sea este nombre ni el de imágenes: se lleva puesta
 //   la basura acumulada por el truco viejo del ?v= (una copia del catálogo
 //   por visita) y obliga a re-precachear la lista nueva de archivos.
-const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v2.1';
+const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v2.2';
 // ★ v2.1 — imágenes SIN tocar (v2.0): se conservan entre versiones.
 const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2.0';
 
