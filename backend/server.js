@@ -959,6 +959,10 @@ const tiendaRoutes = require('./routes/tiendaRoutes');
 app.use('/api/tienda', tiendaRoutes);
 const trabajaRoutes = require('./routes/trabajaRoutes');
 app.use('/api/trabaja', trabajaRoutes);
+// ★ TEMA 2 — catálogo fresco:
+const catalogoRoutes = require('./routes/catalogoRoutes');
+app.use('/api/catalogo', catalogoRoutes);
+
 
 // ============================================
 // INICIAR SERVIDOR

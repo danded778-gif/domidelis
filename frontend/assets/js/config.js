@@ -84,8 +84,16 @@ const APP_CONFIG = {
     }
 };
 
-// ★★★ URL DEL CATÁLOGO ESTÁTICO ★★★
-const CATALOGO_URL = 'https://www.domidelis.top/data/catalogo.json';
+// ★★★ TEMA 2 — CATÁLOGO ★★★
+// 1º) CATALOGO_URL: backend Railway (datos frescos de Sheets vía GAS,
+//     caché de 60s en el servidor). Se construye desde API_URL →
+//     local usa mismo origen, producción usa Railway. Cero dominios
+//     hardcodeados nuevos.
+// 2º) CATALOGO_FALLBACK_URL: JSON local en GitHub Pages (salvavidas
+//     si el backend está dormido o caído). Tu GAS ya lo mantiene
+//     actualizado con cada cambio (subirCatalogoAGitHub).
+const CATALOGO_URL = API_URL + '/catalogo';
+const CATALOGO_FALLBACK_URL = 'data/catalogo.json';
 
 // ============================================
 // SESIÓN — localStorage (persiste al cerrar pestaña)

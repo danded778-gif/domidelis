@@ -1,5 +1,11 @@
 // ============================================
 // firebase-messaging-sw.js — PWA + FCM Unificado
+// ★ v2.1 — TEMA 1 + TEMA 2:
+//   - CACHE_NAME v2.0 → v2.1 (purga la basura del ?v= viejo
+//     y dispara la actualización en usuarios con la app instalada)
+//   - ARCHIVOS_ESTATICOS ampliado: domi-back.js, catalogo-fresco.js,
+//     catalogo.json (salvavidas offline) + CSS/JS que faltaban
+//   - IMAGES_CACHE_NAME se mantiene en v2.0 (conserva las imágenes)
 // ============================================
 
 // 1. Inicialización de Firebase (Compatibilidad en SW)
@@ -35,9 +41,19 @@ messaging.onBackgroundMessage((payload) => {
 
 // 2. Estrategia PWA: Cache First + Network Fallback
 const isDev = false;
-const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v2.0'; 
-const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2.0'; 
+// ★ v2.1 — TOQUE 1: versión subida (era v2.0). Al activarse, el SW borra
+//   todo caché que no sea este nombre ni el de imágenes: se lleva puesta
+//   la basura acumulada por el truco viejo del ?v= (una copia del catálogo
+//   por visita) y obliga a re-precachear la lista nueva de archivos.
+const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v2.1';
+// ★ v2.1 — imágenes SIN tocar (v2.0): se conservan entre versiones.
+const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2.0';
 
+// ★ v2.1 — TOQUE 2: lista ampliada. Antes solo estaban unos pocos archivos:
+//   el resto se cacheaba "al vuelo" tras la primera visita online, así que
+//   abrir offline DESDE LA PRIMERA VEZ dejaba la app a medias (sin botón
+//   atrás, sin modal, sin buscador, sin estilos del home...).
+//   Ahora el SW guarda por adelantado todo lo que index.html carga.
 const ARCHIVOS_ESTATICOS = [
   '/',
   '/index.html',
@@ -47,21 +63,43 @@ const ARCHIVOS_ESTATICOS = [
   '/admin.html',
   '/domiciliario.html',
   '/manifest.json',
+  // CSS del catálogo (index.html) — ★ v2.1: faltaban
   '/assets/css/styles.css',
+  '/assets/css/home.css',
+  '/assets/css/cart.css',
+  '/assets/css/modal-personalizacion.css',
+  '/assets/css/product-card.css',
+  '/assets/css/buscador.css',
+  '/assets/css/domidelis-intro.css',
+  '/assets/css/anuncios.css',
+  '/assets/css/offline-game.css',
+  // JS base del catálogo (index.html) — ★ v2.1: faltaban
   '/assets/js/config.js',
+  '/assets/js/components/toast.js',
+  '/assets/js/paginator.js',
   '/assets/js/client.js',
+  '/assets/js/cliente/categorias-dinamicas.js',
+  '/assets/js/tienda-oculto.js',
+  '/assets/js/cart-empty-cta.js',
+  '/assets/js/buscador.js',
+  '/assets/js/anuncios.js',
+  '/assets/js/modal-personalizacion.js',
+  '/assets/js/offline-game.js',
+  // ★ v2.1 — TEMA 1: botón atrás
+  '/assets/js/cliente/domi-back.js',
+  // ★ v2.1 — TEMA 2: catálogo fresco + refresco al reabrir
+  '/assets/js/cliente/catalogo-fresco.js',
+  // ★ v2.1 — TEMA 2: salvavidas offline total.
+  '/data/catalogo.json',
+  // Otras páginas (como ya estaba)
   '/assets/js/checkout.js',
-  '/assets/js/admin.js',
+  '/assets/js/confirmacion.js',
   '/assets/js/domiciliario.js',
   '/assets/js/informe-financiero.js',
   '/assets/js/notificaciones.js',
   '/assets/js/auth-guard.js',
   '/assets/img/icon-192x192.png',
-  '/assets/img/icon-512x512.png',
-  '/assets/css/offline-game.css',  
-  '/assets/js/offline-game.js',
-  '/assets/css/anuncios.css',
-  '/assets/js/anuncios.js'
+  '/assets/img/icon-512x512.png'
 ];
 
 
@@ -90,8 +128,8 @@ self.addEventListener('install', (event) => {
           })
         );
         const promExternos = Promise.allSettled(
-          RECURSOS_EXTERNOS.map(url => fetch(url).then(resp => { 
-            if (resp.status === 200) return cache.put(url, resp); 
+          RECURSOS_EXTERNOS.map(url => fetch(url).then(resp => {
+            if (resp.status === 200) return cache.put(url, resp);
           }).catch(() => {}))
         );
         return Promise.all([promLocales, promExternos]);
@@ -132,10 +170,13 @@ self.addEventListener('fetch', (event) => {
 
   // NO interceptar la app de tiendas
   if (url.pathname.includes('/app-tiendas/')) {
-    return; 
+    return;
   }
 
   // NO cachear peticiones a nuestra API
+  // ★ v2.1 — NOTA: esta rama YA cubre /api/catalogo sin cambios:
+  //   red primero → guarda copia → si no hay red sirve la última copia.
+  //   Es exactamente lo que el Tema 2 necesita.
   if (url.pathname.startsWith('/api')) {
     event.respondWith(
       fetch(request)
@@ -178,7 +219,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // ESTRATEGIA DEDICADA PARA IMÁGENES DE GITHUB
-  if (url.hostname.includes('githubusercontent.com') && 
+  if (url.hostname.includes('githubusercontent.com') &&
      (url.pathname.includes('.jpg') || url.pathname.includes('.png') || url.pathname.includes('.webp'))) {
     event.respondWith(
       caches.open(IMAGES_CACHE_NAME).then(cache => {
@@ -225,7 +266,7 @@ self.addEventListener('fetch', (event) => {
           .catch(() => {
             if (request.headers.get('accept')?.includes('text/html')) {
               // ★ NOTA: Cambiado de '/domidelis/index.html' a '/index.html' para alinearse con tus archivos estáticos
-              return caches.match('/index.html'); 
+              return caches.match('/index.html');
             }
             return new Response('', { status: 408 });
           });

@@ -344,12 +344,19 @@ async function cargarTiendas(reintentos = 3) {
     }
 
     try {
-        const res = await fetch(`${CATALOGO_URL}?v=${Date.now()}`);
-        if (!res.ok) throw new Error("Error en la red");
-
-        const data = await res.json();
+        // ★ v4.10 — catálogo fresco (módulo cliente/catalogo-fresco.js):
+        // 1º backend Railway, 2º salvavidas local. Sin ?v=: una sola
+        // entrada en la caché del SW → el offline vuelve a funcionar.
+        let data;
+        if (window.CatalogoFresco) {
+            data = await window.CatalogoFresco.obtenerCatalogo();
+        } else {
+            const res = await fetch(CATALOGO_URL, { cache: 'no-store' });
+            if (!res.ok) throw new Error("Error en la red");
+            data = await res.json();
+        }
         tiendas = data.tiendas || [];
-
+      //aca seguimos 
         productosGlobal = data.productosGlobal || [];
         complementosGlobal = data.complementosGlobal || [];
 
