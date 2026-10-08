@@ -7,7 +7,7 @@ const router = express.Router();
 // ★ v2.4: UNA SOLA fuente de verdad
 // Misma URL y MISMA clave que server.js (variables de entorno de Railway)
 // ============================================
-const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbwDfPjVJgHR9B1oZZUueEJfqSvHf-dldyhvZXc3ET8SpoHkMCxTq_mZ4qR-3Trlido2/exec';
+const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbyAYydmeZX4Ae1SJfvad3K4EI7WTAX9cxjVvYVF7ERQy027sPEzNP8DYJXu6oSzARe4/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
 
