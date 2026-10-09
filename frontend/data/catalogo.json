@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-18-01",
-  "ultimaActualizacion": "2026-10-09T05:18:01.861Z",
+  "version": "v2026-10-09T05-18-35",
+  "ultimaActualizacion": "2026-10-09T05:18:35.660Z",
   "tiendas": [
     {
       "id": 1,
@@ -1415,8 +1415,8 @@
         },
         {
           "id": 303,
-          "nombre": "",
-          "descripcion": "",
+          "nombre": "Perro XL:",
+          "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
           "badge": "NUEVO",
@@ -2654,8 +2654,8 @@
     },
     {
       "id": 303,
-      "nombre": "",
-      "descripcion": "",
+      "nombre": "Perro XL:",
+      "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
       "badge": "NUEVO",
