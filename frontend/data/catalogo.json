@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-23-59",
-  "ultimaActualizacion": "2026-10-09T05:23:59.880Z",
+  "version": "v2026-10-09T05-24-45",
+  "ultimaActualizacion": "2026-10-09T05:24:45.870Z",
   "tiendas": [
     {
       "id": 1,
@@ -1415,7 +1415,7 @@
         },
         {
           "id": 303,
-          "nombre": "",
+          "nombre": "Papas mexicanas",
           "descripcion": "Papas rústicas, salchicha ranchera, salsa mayo chipotle, piña , nuestra deliciosa carne de cerdo al pastor en trozos asada a la plancha, picadillo de cebolla y cilantro, aguacate cremoso, queso mozzarella, trozos de piña calada",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
@@ -2654,7 +2654,7 @@
     },
     {
       "id": 303,
-      "nombre": "",
+      "nombre": "Papas mexicanas",
       "descripcion": "Papas rústicas, salchicha ranchera, salsa mayo chipotle, piña , nuestra deliciosa carne de cerdo al pastor en trozos asada a la plancha, picadillo de cebolla y cilantro, aguacate cremoso, queso mozzarella, trozos de piña calada",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
