@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T04-17-31",
-  "ultimaActualizacion": "2026-10-09T04:17:31.297Z",
+  "version": "v2026-10-09T04-19-47",
+  "ultimaActualizacion": "2026-10-09T04:19:47.124Z",
   "tiendas": [
     {
       "id": 1,
@@ -1371,7 +1371,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/perro%20callejero.png",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": []
     }
