@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-19-15",
-  "ultimaActualizacion": "2026-10-09T05:19:15.663Z",
+  "version": "v2026-10-09T05-19-49",
+  "ultimaActualizacion": "2026-10-09T05:19:49.132Z",
   "tiendas": [
     {
       "id": 1,
@@ -1403,7 +1403,7 @@
         {
           "id": 302,
           "nombre": "",
-          "descripcion": "",
+          "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Hot%20Dog%20Cargado%20con%20Queso%20Cremoso_comprimido.png?raw=true",
           "badge": "NUEVO",
@@ -1416,7 +1416,7 @@
         {
           "id": 303,
           "nombre": "Perro XL",
-          "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
+          "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
           "badge": "NUEVO",
@@ -2642,7 +2642,7 @@
     {
       "id": 302,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Hot%20Dog%20Cargado%20con%20Queso%20Cremoso_comprimido.png?raw=true",
       "badge": "NUEVO",
@@ -2655,7 +2655,7 @@
     {
       "id": 303,
       "nombre": "Perro XL",
-      "descripcion": "Pan artellano, salchicha zenu,  ensalada de repollo, aguacate cremoso, ripio de papa, salsa bbq, mostaza y piña, tocineta y queso mozzarella.",
+      "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
       "badge": "NUEVO",
