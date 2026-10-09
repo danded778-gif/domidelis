@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-24-45",
-  "ultimaActualizacion": "2026-10-09T05:24:45.870Z",
+  "version": "v2026-10-09T05-30-15",
+  "ultimaActualizacion": "2026-10-09T05:30:15.454Z",
   "tiendas": [
     {
       "id": 1,
@@ -1367,7 +1367,7 @@
       "id": 18,
       "nombre": "Don perro",
       "descripcion": "Sabor Criminal",
-      "direccion": "P.L",
+      "direccion": "Parque Lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/perro%20callejero.png",
