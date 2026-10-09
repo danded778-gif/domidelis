@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-21-03",
-  "ultimaActualizacion": "2026-10-09T05:21:03.882Z",
+  "version": "v2026-10-09T05-21-06",
+  "ultimaActualizacion": "2026-10-09T05:21:06.635Z",
   "tiendas": [
     {
       "id": 1,
@@ -1415,7 +1415,7 @@
         },
         {
           "id": 303,
-          "nombre": "",
+          "nombre": "Papas criminales",
           "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
@@ -2654,7 +2654,7 @@
     },
     {
       "id": 303,
-      "nombre": "",
+      "nombre": "Papas criminales",
       "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
