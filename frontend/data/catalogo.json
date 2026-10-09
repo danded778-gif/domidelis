@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-16-21",
-  "ultimaActualizacion": "2026-10-09T05:16:21.040Z",
+  "version": "v2026-10-09T05-16-24",
+  "ultimaActualizacion": "2026-10-09T05:16:24.261Z",
   "tiendas": [
     {
       "id": 1,
@@ -1428,7 +1428,7 @@
         },
         {
           "id": 304,
-          "nombre": "",
+          "nombre": "Tacos al pastor",
           "descripcion": "Tortilla de maíz, aguacate cremoso, nuestra deliciosa carne de cerdo al pastor, cebolla, cilantro picados y piña en trozos",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Tr%C3%ADo%20de%20tacos%20con%20lima%20y%20cilantro_comprimido.png",
@@ -2667,7 +2667,7 @@
     },
     {
       "id": 304,
-      "nombre": "",
+      "nombre": "Tacos al pastor",
       "descripcion": "Tortilla de maíz, aguacate cremoso, nuestra deliciosa carne de cerdo al pastor, cebolla, cilantro picados y piña en trozos",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Tr%C3%ADo%20de%20tacos%20con%20lima%20y%20cilantro_comprimido.png",
