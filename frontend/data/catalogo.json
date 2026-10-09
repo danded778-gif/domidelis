@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-22-10",
-  "ultimaActualizacion": "2026-10-09T05:22:10.753Z",
+  "version": "v2026-10-09T05-22-44",
+  "ultimaActualizacion": "2026-10-09T05:22:44.293Z",
   "tiendas": [
     {
       "id": 1,
@@ -1376,7 +1376,7 @@
       "productos": [
         {
           "id": 300,
-          "nombre": "",
+          "nombre": "Papas criminales",
           "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Botana%20cargada%20de%20papas%20y%20queso_comprimido.png",
@@ -1389,8 +1389,8 @@
         },
         {
           "id": 301,
-          "nombre": "",
-          "descripcion": "",
+          "nombre": "Burger",
+          "descripcion": "Pan artellano, carne 100% de res artesanal, cebolla caramelizada, doble queso mozzarella, tocineta, salsa de ajo, lechuga y tomate",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Hamburguesa%20r%C3%BAstica%20con%20brocheta%20de%20madera_comprimido.png",
           "badge": "NUEVO",
@@ -2615,7 +2615,7 @@
     },
     {
       "id": 300,
-      "nombre": "",
+      "nombre": "Papas criminales",
       "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Botana%20cargada%20de%20papas%20y%20queso_comprimido.png",
@@ -2628,8 +2628,8 @@
     },
     {
       "id": 301,
-      "nombre": "",
-      "descripcion": "",
+      "nombre": "Burger",
+      "descripcion": "Pan artellano, carne 100% de res artesanal, cebolla caramelizada, doble queso mozzarella, tocineta, salsa de ajo, lechuga y tomate",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Hamburguesa%20r%C3%BAstica%20con%20brocheta%20de%20madera_comprimido.png",
       "badge": "NUEVO",
