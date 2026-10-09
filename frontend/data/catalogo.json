@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-16-24",
-  "ultimaActualizacion": "2026-10-09T05:16:24.261Z",
+  "version": "v2026-10-09T05-18-01",
+  "ultimaActualizacion": "2026-10-09T05:18:01.861Z",
   "tiendas": [
     {
       "id": 1,
@@ -1366,7 +1366,7 @@
     {
       "id": 18,
       "nombre": "Don perro",
-      "descripcion": "",
+      "descripcion": "Sabor Criminal",
       "direccion": "P.L",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
