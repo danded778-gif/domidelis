@@ -1,5 +1,17 @@
 // ============================================
 // core.js — Núcleo del panel de administración
+// ★ v2.3 TURBO (FINAL): carga inicial PARALELIZADA
+//   - fetchConToken: dedup por PROMESA — dos llamadas simultáneas a la
+//     misma URL comparten UN solo viaje de red.
+//   - cargarAdminData: 6 esperas en fila → 2 oleadas en paralelo
+//     + prefetch del viaje más pesado (getPedidos)
+//   - OLEADA 1 = catálogos BASE (tiendas, domiciliarios)
+//     OLEADA 2 = los que PINTAN usando esos catálogos (pedidos,
+//     historial, usuarios-tienda ← v2.2: fix del "Tienda eliminada")
+//   - Sockets registrados ANTES de cargar: el panel ya no está sordo
+//     durante la carga
+//   - v2.3: estadoPresencia corregido (String(id) — bug de transcripción
+//     que rompía la tabla de domiciliarios)
 // ============================================
 
 // ─── VARIABLES DE ESTADO GLOBALES (compartidas) ───
@@ -29,17 +41,28 @@ let domiciliarioEditando = null;
 // Evita peticiones GET duplicadas (ej: getDomiciliarios pedido por
 // pedidos.js Y por domiciliarios.js, getPedidos por pedidos.js Y historial.js).
 // Solo activo durante cargarAdminData(); el tiempo real NUNCA se cachea.
+// ★ v2 TURBO: el mapa guarda la PROMESA del viaje desde el instante en que
+// parte → el dedup también funciona con llamadas SIMULTÁNEAS (paralelo).
 let __enCargaInicial = false;
 const __cacheGET = new Map(); // url → Promise<string> (texto de la respuesta)
+
+// ★ v2 TURBO: con la carga en paralelo, varias peticiones pueden fallar con
+// 401/403 al mismo tiempo — un solo aviso y un solo cierre de sesión.
+let __sesionCerrandose = false;
+function avisarSesionInvalida() {
+    if (__sesionCerrandose) return;
+    __sesionCerrandose = true;
+    alert('Tu sesión ha expirado o no tienes permisos. Por favor, inicia sesión nuevamente.');
+    cerrarSesion();
+}
 
 // ─── FETCH SEGURO CON JWT ───
 async function fetchConToken(url, opciones = {}) {
     const metodo = (opciones.method || 'GET').toUpperCase();
     const esDedup = __enCargaInicial && metodo === 'GET';
 
-    // ★ HIT: esta URL ya se pidió en esta carga inicial →
-    // devolvemos un Response NUEVO construido desde el texto cacheado
-    // (cada consumidor puede hacer .json() sin conflicto)
+    // ★ HIT: este viaje ya está en el aire (o ya aterrizó) → engancharse a él.
+    // Cada consumidor recibe un Response NUEVO (cada uno puede hacer .json()).
     if (esDedup && __cacheGET.has(url)) {
         console.log('♻️ Dedup carga inicial:', url);
         const texto = await __cacheGET.get(url);
@@ -62,29 +85,46 @@ async function fetchConToken(url, opciones = {}) {
         opciones.headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(url, opciones);
-
-    if (response.status === 401 || response.status === 403) {
-        alert('Tu sesión ha expirado o no tienes permisos. Por favor, inicia sesión nuevamente.');
-        cerrarSesion();
-        throw new Error('No autorizado');
+    // ★ Tiempo real (fuera de la carga inicial) → comportamiento original intacto
+    if (!esDedup) {
+        const response = await fetch(url, opciones);
+        if (response.status === 401 || response.status === 403) {
+            avisarSesionInvalida();
+            throw new Error('No autorizado');
+        }
+        return response;
     }
 
-    // ★ MISS: si estamos en carga inicial y la respuesta es exitosa,
-    // leemos el body UNA vez, lo cacheamos como texto y devolvemos
-    // un Response nuevo con body intacto para el consumidor actual
-    if (esDedup && response.ok) {
-        const texto = await response.text();
-        __cacheGET.set(url, Promise.resolve(texto));
+    // ★ v2 TURBO — MISS: registrar la PROMESA ANTES de esperarla. Si otra
+    // llamada llega mientras este viaje está en el aire, hará HIT arriba
+    // y compartirá exactamente este mismo resultado (un solo viaje).
+    const promesaTexto = (async () => {
+        const response = await fetch(url, opciones);
+        if (response.status === 401 || response.status === 403) {
+            throw { __sinAutorizacion: true };
+        }
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+        }
+        return response.text();
+    })();
+
+    __cacheGET.set(url, promesaTexto);
+
+    try {
+        const texto = await promesaTexto;
         return new Response(texto, {
-            status: response.status,
-            statusText: response.statusText,
-            headers: response.headers
+            status: 200,
+            headers: { 'Content-Type': 'application/json; charset=utf-8' }
         });
+    } catch (err) {
+        __cacheGET.delete(url); // no dejar viajes rotos cacheados
+        if (err && err.__sinAutorizacion) {
+            avisarSesionInvalida();
+            throw new Error('No autorizado');
+        }
+        throw err; // error de red / HTTP → el catch de cada pantalla lo maneja como siempre
     }
-
-    // ★ Si falla o no es dedup → comportamiento original intacto
-    return response;
 }
 
 // ─── UTILIDADES ─────────────────────────────
@@ -194,8 +234,18 @@ window.addEventListener('socket:reconectado', () => {
 });
 
 // ═══════════════════════════════════════════════
-// CARGA INICIAL
+// CARGA INICIAL — ★ v2.3 TURBO (paralela)
 // ═══════════════════════════════════════════════
+
+// ★ TURBO: si un pedido cambia MIENTRAS la carga inicial sigue en curso,
+// se descarta la copia en vuelo de getPedidos para que el refresco traiga
+// ESTE pedido y no la foto de hace dos segundos.
+function invalidarCacheGetPedidos() {
+    if (__enCargaInicial) {
+        __cacheGET.delete(`${API_URL}?action=getPedidos`);
+    }
+}
+
 async function cargarAdminData() {
     // ★ Activar dedup solo durante esta función.
     // Al terminar (aunque haya errores) se desactiva y se limpia:
@@ -222,15 +272,9 @@ async function cargarAdminData() {
         const socket = conectarSocket('admin', sesionAdmin.id);
         escucharPresenciaAdmin(socket);
 
-        await cargarTiendasAdmin();
-        await cargarDomiciliarios();
-        await cargarDomiciliariosAdmin();
-        await cargarUsuariosTiendaAdmin();
-        await cargarPedidosAdmin();
-        await cargarHistorialPedidos();
-        pintarPresenciaEnUI();
-        pedirSnapshotPresencia();
-
+        // ★ TURBO: los sockets se registran ANTES de cargar. Antes, durante
+        // los ~9s de carga el panel estaba "sordo": un pedido que llegara en
+        // esa ventana no sonaba ni notificaba. Ahora sí.
         socket.on('nuevoPedido', (data) => {
             console.log('🛎️ [ADMIN] nuevoPedido:', data);
             if (typeof reproducirSonidoNuevoPedido === 'function') {
@@ -248,6 +292,7 @@ async function cargarAdminData() {
                     url: 'admin.html'
                 });
             }
+            invalidarCacheGetPedidos(); // ★ TURBO
             cargarPedidosAdmin();
             cargarHistorialPedidos();
         });
@@ -255,6 +300,7 @@ async function cargarAdminData() {
         socket.on('estadoActualizado', (data) => {
             console.log('🔄 [ADMIN] estadoActualizado:', data);
             mostrarToast(`Pedido #${data.pedidoId}`, `Cambió a: ${data.nuevoEstado}`, 'info');
+            invalidarCacheGetPedidos(); // ★ TURBO
             cargarPedidosAdmin();
             if (data.nuevoEstado === 'entregado') cargarHistorialPedidos();
         });
@@ -262,8 +308,34 @@ async function cargarAdminData() {
         socket.on('pedidoAsignado', (data) => {
             console.log('📢 [ADMIN] pedidoAsignado:', data);
             mostrarToast('Asignación', `Pedido #${data.pedidoId} asignado`, 'success');
+            invalidarCacheGetPedidos(); // ★ TURBO
             cargarPedidosAdmin();
         });
+
+        // ★ TURBO — PREFETCH: el viaje más pesado (getPedidos) parte YA,
+        // en paralelo con la oleada 1. Cuando la oleada 2 lo necesite,
+        // ya estará en el aire (o resuelto) en el dedup → cero espera extra.
+        fetchConToken(`${API_URL}?action=getPedidos`).catch(() => { });
+
+        // ★ v2.3 — OLEADA 1: catálogos BASE. Nada aquí consulta variables
+        // de otras funciones al pintar. Llena tiendasCache y domiciliariosCache.
+        await Promise.allSettled([
+            cargarTiendasAdmin(),
+            cargarDomiciliarios(),
+            cargarDomiciliariosAdmin()
+        ]);
+
+        // ★ v2.3 — OLEADA 2: lo que PINTA usando datos de la oleada 1.
+        // - pedidos e historial: necesitan tiendasCache + domiciliariosCache
+        // - usuarios-tienda: necesita tiendasCache para el nombre de la tienda
+        await Promise.allSettled([
+            cargarPedidosAdmin(),
+            cargarHistorialPedidos(),
+            cargarUsuariosTiendaAdmin()
+        ]);
+
+        pintarPresenciaEnUI();
+        pedirSnapshotPresencia();
     } finally {
         // ★ Nunca dejar cache residual: el tiempo real sigue igual que siempre
         __enCargaInicial = false;
