@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-21-31",
-  "ultimaActualizacion": "2026-10-09T05:21:31.861Z",
+  "version": "v2026-10-09T05-22-07",
+  "ultimaActualizacion": "2026-10-09T05:22:07.731Z",
   "tiendas": [
     {
       "id": 1,
@@ -1377,7 +1377,7 @@
         {
           "id": 300,
           "nombre": "",
-          "descripcion": "",
+          "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Botana%20cargada%20de%20papas%20y%20queso_comprimido.png",
           "badge": "NUEVO",
@@ -1416,7 +1416,7 @@
         {
           "id": 303,
           "nombre": "Papas criminales",
-          "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
+          "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
           "badge": "NUEVO",
@@ -2616,7 +2616,7 @@
     {
       "id": 300,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Botana%20cargada%20de%20papas%20y%20queso_comprimido.png",
       "badge": "NUEVO",
@@ -2655,7 +2655,7 @@
     {
       "id": 303,
       "nombre": "Papas criminales",
-      "descripcion": "Papas rústicas, salchicha ranchera, salsa de ajo y de humo, nuestra deliciosa carne de cerdo desmechada, reducida en bbq y especias aguacate cremoso y queso costeño rayado",
+      "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
       "badge": "NUEVO",
