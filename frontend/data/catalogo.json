@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-07T08-43-02",
-  "ultimaActualizacion": "2026-10-07T08:43:02.980Z",
+  "version": "v2026-10-09T04-16-04",
+  "ultimaActualizacion": "2026-10-09T04:16:04.625Z",
   "tiendas": [
     {
       "id": 1,
@@ -1355,10 +1355,10 @@
       "id": 17,
       "nombre": "Fragaria",
       "descripcion": "",
-      "direccion": "p.j",
+      "direccion": "Parque la Judea",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/fragaria/Carrito%20rosa%20de%20fresas%20con%20crema.png",
       "promovida": 0,
       "activo": true,
       "productos": []
