@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T05-22-07",
-  "ultimaActualizacion": "2026-10-09T05:22:07.731Z",
+  "version": "v2026-10-09T05-22-10",
+  "ultimaActualizacion": "2026-10-09T05:22:10.753Z",
   "tiendas": [
     {
       "id": 1,
@@ -1415,7 +1415,7 @@
         },
         {
           "id": 303,
-          "nombre": "Papas criminales",
+          "nombre": "",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
@@ -2654,7 +2654,7 @@
     },
     {
       "id": 303,
-      "nombre": "Papas criminales",
+      "nombre": "",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/don%20perro/Papas%20Cargadas%20con%20Pollo%20y%20pi%C3%B1a_comprimido.png",
