@@ -135,6 +135,20 @@ function obtenerProductosEstrellaPriorizados(productos, limite = 4) {
     return [...prioritarios, ...secundarios, ...otros].slice(0, limite);
 }
 
+function esProductoValido(p) {
+    if (!p) return false;
+
+    const nombreOk = p.nombre && String(p.nombre).trim() !== '';
+    const precioNum = Number(p.precio);
+    const precioOk = !isNaN(precioNum) && isFinite(precioNum) && precioNum >= 0;
+
+    const tiendaOk = p.tiendaNombre && 
+                     String(p.tiendaNombre).trim() !== '' && 
+                     p.tiendaNombre !== 'Sin tienda';
+
+    return nombreOk && precioOk && tiendaOk;
+}
+
 let tiendas = [];
 let carrito = [];
 
@@ -358,6 +372,7 @@ async function cargarTiendas(reintentos = 3) {
         tiendas = data.tiendas || [];
       //aca seguimos 
         productosGlobal = data.productosGlobal || [];
+        productosGlobal = (data.productosGlobal || []).filter(esProductoValido);
         complementosGlobal = data.complementosGlobal || [];
 
         const catsEnJSON = [...new Set(productosGlobal.map(p => p.categoria).filter(c => c && c.trim() !== ''))];
