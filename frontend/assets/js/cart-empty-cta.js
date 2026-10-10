@@ -1,3 +1,4 @@
+// carrito vacio
 (function () {
   function cartIsEmpty() {
     try {

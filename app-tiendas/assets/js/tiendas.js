@@ -1,5 +1,5 @@
 // ============================================
-// LÓGICA PRINCIPAL - PWA TIENDA (COMPLETO Y ACTUALIZADO)
+// LÓGICA PRINCIPAL - PWA TIENDA (COMPLETO Y ACTUALIZADO) tiendas.js
 // ============================================
 
 // --- UTILIDADES ---
@@ -278,6 +278,10 @@ async function cambiarPasswordTienda(event) {
 
 // ============================================
 // INICIALIZACIÓN AL CARGAR LA PÁGINA
+// ★ v2.6: PEDIDOS PRIMERO — la pestaña inicial ahora es Pedidos
+//   (cambio de pareja en index-tienda.html v1.0), así que el
+//   arranque debe pedir los PEDIDOS, no los productos.
+//   Si sigue cargando productos, la pestaña Pedidos abre VACÍA.
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar la información de la tienda en el título
@@ -287,6 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
         titulo.innerHTML = `<i class="fas fa-store"></i> ${sesion.info.nombre}`;
     }
 
-    // Cargar los productos por defecto (La pestaña activa)
-    cargarProductos();
+    // ★ v1.0: cargar los PEDIDOS por defecto (pestaña inicial)
+    cargarPedidos();
 });

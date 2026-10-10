@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     index-tienda.html — Panel PWA de la Tienda
+     ★ v2.5 — TIEMPO REAL COMPLETO
+     - 'nuevoPedidoTienda' → sonido + toast + refresco de tabla
+     - 'estadoActualizado' / 'pedidoAsignado' → cuando el ADMIN
+       asigna domiciliario o cambia estado, la tabla se refresca
+       sola (DEBOUNCE 2s para no martillar el GAS).
+     - 'visibilitychange' → al reabrir la app desde segundo plano,
+       la pestaña Pedidos nunca muestra datos viejos.
+     - Pareja de trabajo: tiendaRoutes.js v2.5 (GET /pedidos en
+       paralelo).
+     ★★★ v2.6 — PEDIDOS PRIMERO ★★★
+     - Orden de tabs: Pedidos → Productos → Comisión → Config.
+     - La pestaña activa al entrar es PEDIDOS (clase active en el
+       botón Y en el contenido — ambas deben coincidir).
+     - En tiendas.js el DOMContentLoaded pasa de cargarProductos()
+       a cargarPedidos() (si no, la pestaña abriría vacía).
+     - ★ REGLA v2.6: el botón activo y el div de contenido activo
+       SIEMPRE deben apuntar al MISMO tab (textos, onclick, íconos
+       y clases active en pareja).
+     ============================================================ -->
 <html lang="es">
 
 <head>
@@ -277,27 +298,41 @@
     <main>
         <div class="container">
             <h2 class="section-title" id="titulo-tienda"><i class="fas fa-store"></i> Cargando...</h2>
+
+            <!-- ============================================
+                 ★ v2.6: PEDIDOS PRIMERO
+                 Botón 1 = Pedidos (onclick pedidos + texto "Pedidos"
+                 + ícono recibo + clase active).
+                 Botón 2 = Productos (onclick productos + texto
+                 "Productos" + ícono caja + SIN active).
+                 ============================================ -->
             <div class="tabs-container">
-                <button class="tab-btn active" onclick="cambiarTab('productos')"><i class="fas fa-box"></i>
-                    Productos</button>
-                <button class="tab-btn" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i>
+                <button class="tab-btn active" onclick="cambiarTab('pedidos')"><i class="fas fa-receipt"></i>
                     Pedidos</button>
+                <button class="tab-btn" onclick="cambiarTab('productos')"><i class="fas fa-box"></i>
+                    Productos</button>
                 <button class="tab-btn" onclick="cambiarTab('comision')"><i class="fas fa-percent"></i>
                     Comisión</button>
                 <button class="tab-btn" onclick="cambiarTab('configuracion')"><i class="fas fa-cog"></i>
                     Config</button>
             </div>
 
+            <!-- ============================================
+                 ★ v2.6: el contenido activo al entrar es PEDIDOS.
+                 El div de Pedidos va primero y lleva la clase active.
+                 Productos pierde la clase active.
+                 ============================================ -->
+
+            <!-- TAB PEDIDOS (PRIMERA) -->
+            <div id="tab-pedidos" class="tab-content active">
+                <div class="pedidos-grid" id="lista-pedidos"></div>
+            </div>
+
             <!-- TAB PRODUCTOS -->
-            <div id="tab-productos" class="tab-content active">
+            <div id="tab-productos" class="tab-content">
                 <div class="aviso-premium"><i class="fas fa-crown"></i> <span>La edición de productos está
                         disponible en el plan Premium.</span></div>
                 <div class="products-admin-grid" id="lista-productos"></div>
-            </div>
-
-            <!-- TAB PEDIDOS -->
-            <div id="tab-pedidos" class="tab-content">
-                <div class="pedidos-grid" id="lista-pedidos"></div>
             </div>
 
             <!-- TAB COMISIÓN -->
@@ -501,10 +536,15 @@
             function guardarCierre() { try { localStorage.setItem('install_tienda_cerrado', Date.now().toString()); } catch (e) { } }
             function cerradoRecientemente() { try { var t = localStorage.getItem('install_tienda_cerrado'); if (!t) return false; return (Date.now() - parseInt(t, 10)) < (1 * 24 * 60 * 60 * 1000); } catch (e) { return false; } }
         })();
-        
-        
+
+
         // ============================================
         // NOTIFICACIONES PUSH + SOCKET — PANEL TIENDA
+        // ★ v2.5: + 'estadoActualizado' / 'pedidoAsignado'
+        //   (el ADMIN asigna domiciliario o cambia estado →
+        //    la tabla de pedidos se refresca sola, con debounce 2s)
+        //   + 'visibilitychange' (al reabrir la app desde segundo
+        //    plano, la pestaña Pedidos nunca queda con datos viejos)
         // ============================================
         (function () {
             const sesion = obtenerSesionTienda();
@@ -546,6 +586,55 @@
                     10000
                 );
                 if (typeof cargarPedidos === 'function') cargarPedidos();
+            });
+
+            // ============================================
+            // ★ v2.5: ADMIN ASIGNA → LA TIENDA LO VE EN VIVO
+            // server.js emite 'estadoActualizado' y 'pedidoAsignado'
+            // cuando el admin cambia el estado o asigna domiciliario.
+            // DEBOUNCE (2s): si llegan varios cambios seguidos
+            // (ej: asignar + "en camino"), solo se hace UN refresco —
+            // así no martillamos el GAS con peticiones repetidas.
+            // Solo refresca si la pestaña Pedidos está activa.
+            // ============================================
+            let refrescoPendiente = null;
+            function pedirRefrescoPedidos() {
+                if (refrescoPendiente) return; // ya hay uno programado
+                refrescoPendiente = setTimeout(() => {
+                    refrescoPendiente = null;
+                    const tabPedidos = document.getElementById('tab-pedidos');
+                    if (tabPedidos && tabPedidos.classList.contains('active') &&
+                        typeof cargarPedidos === 'function') {
+                        console.log('🔄 [Tienda] Cambio en pedidos → refrescando tabla');
+                        cargarPedidos();
+                    }
+                }, 2000);
+            }
+
+            socket.on('estadoActualizado', (data) => {
+                console.log('🔄 [Tienda] estadoActualizado:', data);
+                pedirRefrescoPedidos();
+            });
+
+            socket.on('pedidoAsignado', (data) => {
+                console.log('📢 [Tienda] pedidoAsignado:', data);
+                pedirRefrescoPedidos();
+            });
+
+            // ============================================
+            // ★ v2.5: RED DE SEGURIDAD — VUELTA DE SEGUNDO PLANO
+            // Si la app estaba minimizada (pudo llegar un pedido con
+            // push FCM) y el usuario la reabre, la lista podría estar
+            // vieja. Al volver a estar visible → refresco inmediato.
+            // ============================================
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState !== 'visible') return;
+                const tabPedidos = document.getElementById('tab-pedidos');
+                if (tabPedidos && tabPedidos.classList.contains('active') &&
+                    typeof cargarPedidos === 'function') {
+                    console.log('👁️ [Tienda] App visible de nuevo → refrescando pedidos');
+                    cargarPedidos();
+                }
             });
         })();
 

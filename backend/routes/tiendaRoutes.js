@@ -1,12 +1,34 @@
+// ============================================
+// tiendaRoutes.js — API exclusiva de la PWA Tienda
+// Rutas REST con JWT propio (tienda_token)
+//
+// ★ v2.4: UNA SOLA fuente de verdad
+// Misma URL y MISMA clave que server.js (variables de entorno de Railway)
+// - Login va por POST al GAS (las credenciales ya no viajan en la URL)
+// - Blindaje /pedidos: si el GAS rechazó, responde array y no objeto
+// - BUG ANTIGUO CORREGIDO en /perfil: se conserva "promovida" al editar
+//
+// ★★★ v2.5 TURBO — GET /pedidos EN PARALELO ★★★
+// - Los 2 viajes al GAS (getPedidosTienda + getDomiciliarios) viajan
+//   a la vez con Promise.allSettled. Antes iban en fila:
+//     espera total = SUMA de ambos        (~2-6s)
+//   Ahora:
+//     espera total = el MÁS LENTO de los dos (~1-3s) → ~50% más rápido
+// - getPedidosTienda sigue siendo OBLIGATORIO: si falla, el error se
+//   propaga igual que siempre (→ 500 "Error obteniendo pedidos.")
+// - getDomiciliarios sigue siendo OPCIONAL: misma tolerancia que tenía
+//   el try/catch original (warn en consola, pedidos sin nombre de domi)
+// - El resto del enriquecimiento (filtro por tiendaId, subtotal,
+//   domiciliarioNombre) queda intacto.
+// - Pareja de trabajo: index-tienda.html v2.5 (listeners
+//   estadoActualizado / pedidoAsignado → tabla de pedidos en vivo).
+// ============================================
+
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-// ============================================
-// ★ v2.4: UNA SOLA fuente de verdad
-// Misma URL y MISMA clave que server.js (variables de entorno de Railway)
-// ============================================
 const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbyAYydmeZX4Ae1SJfvad3K4EI7WTAX9cxjVvYVF7ERQy027sPEzNP8DYJXu6oSzARe4/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
@@ -103,18 +125,33 @@ router.get('/productos', verifyTienda, async (req, res) => {
 
 // ============================================
 // RUTA: Obtener Pedidos de la Tienda
+// ★★★ v2.5 TURBO: los 2 viajes al GAS van EN PARALELO ★★★
+// - Promise.allSettled dispara ambos a la vez; la espera total es el
+//   más lento, no la suma (antes: pedidos → luego domiciliarios).
+// - Pedidos = obligatorio (rejected → throw, mismo flujo de error de siempre)
+// - Domiciliarios = opcional (rejected → warn en consola, como el
+//   try/catch original; los pedidos salen sin domiciliarioNombre)
 // ============================================
 router.get('/pedidos', verifyTienda, async (req, res) => {
     try {
-        const response = await axios.get(gasUrl('getPedidosTienda', { tiendaId: req.tienda.id }));
+        const [pedidosRes, domisRes] = await Promise.allSettled([
+            axios.get(gasUrl('getPedidosTienda', { tiendaId: req.tienda.id })),
+            axios.get(gasUrl('getDomiciliarios'))
+        ]);
+
+        // Pedidos es el viaje obligatorio: si falló, propagamos el error
+        // (termina en el catch de abajo → 500, igual que antes)
+        if (pedidosRes.status === 'rejected') throw pedidosRes.reason;
+        const response = pedidosRes.value;
+
         // ★ v2.4: blindaje — si el GAS rechazó, responde objeto y no array
         const pedidos = Array.isArray(response.data) ? response.data : [];
 
+        // Domiciliarios sigue siendo OPCIONAL (misma tolerancia que antes)
         let domiciliarios = [];
-        try {
-            const domiRes = await axios.get(gasUrl('getDomiciliarios'));
-            domiciliarios = Array.isArray(domiRes.data) ? domiRes.data : [];
-        } catch (e) {
+        if (domisRes.status === 'fulfilled' && Array.isArray(domisRes.value.data)) {
+            domiciliarios = domisRes.value.data;
+        } else {
             console.warn('No se pudieron cargar domiciliarios para enriquecer pedidos');
         }
 
@@ -163,6 +200,10 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
 
 // ============================================
 // RUTA: Actualizar Perfil (Dirección, Descripción y Horario)
+// ★ NOTA v2.5: los 2 viajes aquí van en SERIE A PROPÓSITO — son
+//   dependientes: el GET lee el estado actual (promovida, rating,
+//   imagen) y el POST lo reenvía para no perderlo. Paralelizar
+//   aquí arriesgaría datos. No tocar.
 // ============================================
 router.put('/perfil', verifyTienda, async (req, res) => {
     try {

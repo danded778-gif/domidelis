@@ -6,6 +6,22 @@
  *
  * Uso:
  *   crearTarjetaPedido(pedido, { modo: 'domiciliario' | 'tienda' | 'historial' })
+ *
+ * ★★★ v1.6 — COMPLEMENTOS VISIBLES EN MODO TIENDA ★★★
+ * - Antes: los productos se pintaban como string plano
+ *   ("2x Producto, 1x Otro") — los complementos viajaban en el
+ *   JSON pero no se mostraban.
+ * - Ahora: bloque producto-por-producto con:
+ *     • cantidad x nombre (tipo UND/KG) + precio a la derecha
+ *     • debajo, SI el producto tiene, el detalle de complementos
+ *       en gris pequeño con barrita verde (mismo estilo del
+ *       detalle del admin: formatearComplementosDetalle en
+ *       admin/pedidos.js — texto "✦ Grupo: ítem | ✦ Grupo2: ítem")
+ * - El total YA incluye complementos (vienen sumados en cada
+ *   p.subtotal que arma tiendaRoutes.js) — solo presentación.
+ * - Datos sucios cubiertos: cantidadTipo numérico (ej: 1) → "UND",
+ *   complementos vacíos → no se pinta nada.
+ * - Modos 'domiciliario' e 'historial': SIN CAMBIOS.
  * -------------------------------------------------------
  */
 (function (global) {
@@ -43,6 +59,32 @@
 
   function _parseProductos(pedido) {
     try { return JSON.parse(pedido.productosJson || '[]'); } catch (e) { return []; }
+  }
+
+  // ============================================
+  // ★ v1.6 — COMPLEMENTOS DE UN PRODUCTO
+  // El texto llega como: "✦ Grupo: A, B | ✦ Grupo2: C"
+  // (así lo arma el checkout). Se parte por "|" y cada
+  // línea se pinta con ✔ — mismo estilo del detalle del
+  // admin (formatearComplementosDetalle en admin/pedidos.js),
+  // pero con implementación local para no depender de que
+  // ese archivo esté cargado en este panel.
+  // Estilos inline → cero cambios en tiendas.css.
+  // ============================================
+  function _complementosHtml(textoComplementos) {
+    if (!textoComplementos || String(textoComplementos).trim() === '') return '';
+
+    const lineas = String(textoComplementos)
+      .split('|')
+      .map(l => l.trim())
+      .filter(l => l !== '');
+
+    if (lineas.length === 0) return '';
+
+    return `
+        <div style="font-size:0.78rem; color:var(--gray); padding:4px 10px; border-left:2px solid var(--accent); margin:4px 0 6px 12px; line-height:1.5;">
+            ${lineas.map(l => `<div>✔ ${_esc(l)}</div>`).join('')}
+        </div>`;
   }
 
   /**
@@ -89,9 +131,36 @@
     let bodyHtml = '';
 
     if (modo === 'tienda') {
-      const productosStr = productos.length
-        ? productos.map(pr => `${pr.cantidad || 1}x ${_esc(pr.nombre || 'Producto')}`).join(', ')
-        : 'Sin detalles';
+      // ============================================
+      // ★ v1.6 — BLOQUE DE PRODUCTOS REESTRUCTURADO
+      // Producto por producto: cantidad x nombre (tipo) +
+      // precio a la derecha, y debajo (si tiene) su detalle
+      // de complementos en gris. Antes era un string plano
+      // separado por comas sin precios ni complementos.
+      // ============================================
+      const productosBloque = productos.length
+        ? productos.map(pr => {
+            const cant = parseInt(pr.cantidad) || 1;
+            const nombre = _esc(pr.nombre || 'Producto');
+            // Datos sucios: cantidadTipo puede venir como número (ej: 1)
+            const tipo = (typeof pr.cantidadTipo === 'string' && pr.cantidadTipo.trim() !== '')
+              ? pr.cantidadTipo.trim()
+              : 'UND';
+            // Precio del producto: subtotal si viene; si no, precioUnitario*cantidad
+            const precioProd = (pr.subtotal !== undefined && pr.subtotal !== null)
+              ? parseFloat(pr.subtotal)
+              : (parseFloat(pr.precioUnitario || pr.precio || 0) * cant);
+
+            return `
+            <div style="margin-bottom:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; gap:8px;">
+                    <span style="font-weight:500; color:var(--dark);">${cant}x ${nombre} <small style="color:var(--gray); font-size:0.72rem;">(${_esc(tipo)})</small></span>
+                    <span style="font-weight:600; color:var(--dark); white-space:nowrap;">${_fmt(precioProd)}</span>
+                </div>
+                ${_complementosHtml(pr.complementos)}
+            </div>`;
+          }).join('')
+        : '<p style="color:var(--gray); margin:0;">Sin detalles</p>';
 
       const nombreDomi = pedido.domiciliarioNombre || pedido.nombreDomiciliario || null;
 
@@ -104,7 +173,7 @@
           : `<p style="color:var(--gray);"><i class="fas fa-motorcycle" style="margin-right:4px"></i>Domiciliario: Sin asignar</p>`
         }
         </div>
-        <div class="pedido-productos">${productosStr}</div>
+        <div class="pedido-productos">${productosBloque}</div>
         <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">
             Total: ${_fmt(pedido.total)}
         </div>`;
