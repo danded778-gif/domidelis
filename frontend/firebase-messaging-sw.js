@@ -93,7 +93,7 @@ const ARCHIVOS_ESTATICOS = [
   '/data/catalogo.json',
   // Otras páginas (como ya estaba)
   '/assets/js/checkout.js',
-  '/assets/js/confirmacion.html',
+  '/confirmacion.html',
   '/assets/js/domiciliario.js',
   '/assets/js/informe-financiero.js',
   '/assets/js/notificaciones.js',
