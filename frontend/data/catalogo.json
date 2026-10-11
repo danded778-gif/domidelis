@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-09T23-16-33",
-  "ultimaActualizacion": "2026-10-09T23:16:33.233Z",
+  "version": "v2026-10-11T16-38-40",
+  "ultimaActualizacion": "2026-10-11T16:38:40.581Z",
   "tiendas": [
     {
       "id": 1,
@@ -1342,7 +1342,7 @@
     {
       "id": 16,
       "nombre": "Brazas el Santuario",
-      "descripcion": "",
+      "descripcion": "(oculto)",
       "direccion": "p.p",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
