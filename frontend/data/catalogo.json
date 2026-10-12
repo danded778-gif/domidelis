@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-11T16-39-03",
-  "ultimaActualizacion": "2026-10-11T16:39:03.456Z",
+  "version": "v2026-10-12T21-03-46",
+  "ultimaActualizacion": "2026-10-12T21:03:46.250Z",
   "tiendas": [
     {
       "id": 1,
@@ -839,7 +839,7 @@
       "nombre": "Punto Del Sabor",
       "descripcion": "",
       "direccion": "parque lineal",
-      "horario": "{\"mon\":\"14:00-22:00\",\"tue\":\"14:00-22:00\",\"wed\":\"14:00-22:00\",\"thu\":\"14:00-22:00\",\"fri\":\"14:00-22:00\",\"sat\":\"14:00-23:00\",\"sun\":\"14:00-23:00\"}",
+      "horario": "{\"mon\":\"16:00-22:00\",\"tue\":\"16:00-22:00\",\"wed\":\"16:00-22:00\",\"thu\":\"16:00-22:00\",\"fri\":\"16:00-22:00\",\"sat\":\"16:00-23:00\",\"sun\":\"16:00-23:00\"}",
       "rating": 5,
       "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/punto%20del%20sabor/puntodelsabor_150kb.jpg",
       "promovida": 0,
