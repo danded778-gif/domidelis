@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T22-10-05",
-  "ultimaActualizacion": "2026-10-13T22:10:05.710Z",
+  "version": "v2026-10-13T22-10-22",
+  "ultimaActualizacion": "2026-10-13T22:10:22.212Z",
   "tiendas": [
     {
       "id": 1,
@@ -1412,7 +1412,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/fragaria/Carrito%20rosa%20de%20fresas%20con%20crema.png",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": []
     },
