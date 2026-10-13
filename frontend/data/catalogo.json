@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T21-53-45",
-  "ultimaActualizacion": "2026-10-13T21:53:45.283Z",
+  "version": "v2026-10-13T21-55-27",
+  "ultimaActualizacion": "2026-10-13T21:55:27.112Z",
   "tiendas": [
     {
       "id": 1,
@@ -1339,7 +1339,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 305,
+          "id": 400,
           "nombre": "Arepa rellena",
           "descripcion": "",
           "precio": 20000,
@@ -2732,7 +2732,7 @@
       "tiendaNombre": "Don perro"
     },
     {
-      "id": 305,
+      "id": 400,
       "nombre": "Arepa rellena",
       "descripcion": "",
       "precio": 20000,
