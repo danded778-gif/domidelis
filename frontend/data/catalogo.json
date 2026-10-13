@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-12T21-03-46",
-  "ultimaActualizacion": "2026-10-12T21:03:46.250Z",
+  "version": "v2026-10-13T21-49-08",
+  "ultimaActualizacion": "2026-10-13T21:49:08.298Z",
   "tiendas": [
     {
       "id": 1,
@@ -1337,7 +1337,21 @@
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
       "promovida": 0,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 305,
+          "nombre": "Arepa rellena",
+          "descripcion": "",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Arepa%20rellena.jpg",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "15",
+          "tiendaNombre": "J.C Delicias"
+        }
+      ]
     },
     {
       "id": 16,
@@ -2677,6 +2691,19 @@
       "activo": true,
       "tiendaId": "18",
       "tiendaNombre": "Don perro"
+    },
+    {
+      "id": 305,
+      "nombre": "Arepa rellena",
+      "descripcion": "",
+      "precio": 20000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Arepa%20rellena.jpg",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "15",
+      "tiendaNombre": "J.C Delicias"
     }
   ],
   "complementosGlobal": [
