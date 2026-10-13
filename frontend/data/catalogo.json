@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T22-12-05",
-  "ultimaActualizacion": "2026-10-13T22:12:05.371Z",
+  "version": "v2026-10-13T22-50-51",
+  "ultimaActualizacion": "2026-10-13T22:50:51.328Z",
   "tiendas": [
     {
       "id": 1,
@@ -1385,6 +1385,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/nuggets_pollo_1x1.jpg",
           "badge": "NUEVO",
           "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "15",
+          "tiendaNombre": "J.C Delicias"
+        },
+        {
+          "id": 404,
+          "nombre": "Perrito tradicional",
+          "descripcion": "",
+          "precio": 13000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/perrito_tradicional_1x1.jpg",
+          "badge": "",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "15",
@@ -2778,6 +2791,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/nuggets_pollo_1x1.jpg",
       "badge": "NUEVO",
       "categoria": "Menu",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "15",
+      "tiendaNombre": "J.C Delicias"
+    },
+    {
+      "id": 404,
+      "nombre": "Perrito tradicional",
+      "descripcion": "",
+      "precio": 13000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/perrito_tradicional_1x1.jpg",
+      "badge": "",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "15",
