@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T21-56-36",
-  "ultimaActualizacion": "2026-10-13T21:56:36.248Z",
+  "version": "v2026-10-13T22-10-05",
+  "ultimaActualizacion": "2026-10-13T22:10:05.710Z",
   "tiendas": [
     {
       "id": 1,
@@ -1423,7 +1423,7 @@
       "direccion": "Parque Lineal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/perro%20callejero.png",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/Hamburguesas%20Don%20Perro%20de%20Noche_200kb.jpg",
       "promovida": 1,
       "activo": true,
       "productos": [
