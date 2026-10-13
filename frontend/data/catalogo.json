@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T21-52-53",
-  "ultimaActualizacion": "2026-10-13T21:52:53.016Z",
+  "version": "v2026-10-13T21-53-45",
+  "ultimaActualizacion": "2026-10-13T21:53:45.283Z",
   "tiendas": [
     {
       "id": 1,
@@ -1370,6 +1370,19 @@
           "descripcion": "",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/lasana_mixta_1x1.jpg",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "15",
+          "tiendaNombre": "J.C Delicias"
+        },
+        {
+          "id": 308,
+          "nombre": "Nuggets de pollo",
+          "descripcion": "",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/nuggets_pollo_1x1.jpg",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -2750,6 +2763,19 @@
       "descripcion": "",
       "precio": 25000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/lasana_mixta_1x1.jpg",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "15",
+      "tiendaNombre": "J.C Delicias"
+    },
+    {
+      "id": 308,
+      "nombre": "Nuggets de pollo",
+      "descripcion": "",
+      "precio": 15000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/nuggets_pollo_1x1.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
