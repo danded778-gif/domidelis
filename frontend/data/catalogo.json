@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-13T22-50-51",
-  "ultimaActualizacion": "2026-10-13T22:50:51.328Z",
+  "version": "v2026-10-14T04-10-26",
+  "ultimaActualizacion": "2026-10-14T04:10:26.293Z",
   "tiendas": [
     {
       "id": 1,
@@ -1506,6 +1506,18 @@
           "tiendaNombre": "Don perro"
         }
       ]
+    },
+    {
+      "id": 19,
+      "nombre": "Luna Cremosa",
+      "descripcion": "Copas de diferentes sabores",
+      "direccion": "Carrera 49 #41-51 Parque principal",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
     }
   ],
   "productosGlobal": [
