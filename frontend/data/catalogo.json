@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-14T19-09-59",
-  "ultimaActualizacion": "2026-10-14T19:09:59.516Z",
+  "version": "v2026-10-15T20-22-19",
+  "ultimaActualizacion": "2026-10-15T20:22:19.170Z",
   "tiendas": [
     {
       "id": 1,
@@ -1332,7 +1332,7 @@
       "nombre": "J.C Delicias",
       "descripcion": "¡Lo Máximo en Sabor!",
       "direccion": "calle 49 - #48A 17",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"09:00  21:30\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
       "promovida": 1,
