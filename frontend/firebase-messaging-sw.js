@@ -47,7 +47,7 @@ const isDev = false;
 //   por visita) y obliga a re-precachear la lista nueva de archivos.
 const CACHE_NAME = isDev ? 'dev-' + Date.now() : 'domidelis-v2.2';
 // ★ v2.1 — imágenes SIN tocar (v2.0): se conservan entre versiones.
-const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2.0';
+const IMAGES_CACHE_NAME = 'domidelis-img-cache-v2.1';
 
 // ★ v2.1 — TOQUE 2: lista ampliada. Antes solo estaban unos pocos archivos:
 //   el resto se cacheaba "al vuelo" tras la primera visita online, así que
