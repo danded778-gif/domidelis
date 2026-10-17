@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-16T21-43-30",
-  "ultimaActualizacion": "2026-10-16T21:43:30.529Z",
+  "version": "v2026-10-17T00-51-20",
+  "ultimaActualizacion": "2026-10-17T00:51:20.170Z",
   "tiendas": [
     {
       "id": 1,
@@ -3078,7 +3078,7 @@
       "id_producto": 150,
       "grupo": "",
       "nombre": "Yuquitas",
-      "precio": 5000,
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
