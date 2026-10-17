@@ -294,3 +294,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // ★ v1.0: cargar los PEDIDOS por defecto (pestaña inicial)
     cargarPedidos();
 });
+
+// ============================================
+// ★ NUEVO: CAMBIAR ESTADO DEL PEDIDO (PRIORIDAD 1)
+// Llamado por los botones [Aceptar] y [Listo] que renderiza
+// renderAccionesTienda() en pedido-card.js.
+// Llama al proxy /api?action=actualizarEstado — el backend
+// ya emite el socket 'estadoActualizado' a todos los paneles.
+// ============================================
+async function cambiarEstadoPedido(pedidoId, nuevoEstado) {
+  if (!pedidoId || !nuevoEstado) return;
+
+  const mensajes = {
+    'aceptado': `¿Aceptar el pedido #${pedidoId}?`,
+    'listo':    `¿Marcar el pedido #${pedidoId} como LISTO?`
+  };
+  if (!confirm(mensajes[nuevoEstado] || `¿Cambiar estado del pedido #${pedidoId} a "${nuevoEstado}"?`)) {
+    return;
+  }
+
+  try {
+    const url = `${BASE_API_URL}/api?action=actualizarEstado&pedidoId=${pedidoId}&estado=${encodeURIComponent(nuevoEstado)}`;
+    const res = await fetch(url, { headers: authHeaders() });
+    const data = await res.json();
+
+    if (data.success) {
+      mostrarToastTienda(
+        '✅ Estado actualizado',
+        `Pedido #${pedidoId} → ${nuevoEstado.toUpperCase()}`,
+        'success',
+        4000
+      );
+      // Refrescar la lista inmediatamente. El backend también emite
+      // 'estadoActualizado' por socket (que dispara pedirRefrescoPedidos
+      // con debounce 2s), pero la tienda debe ver el cambio YA.
+      cargarPedidos();
+    } else {
+      mostrarToastTienda(
+        '❌ Error',
+        data.error || 'No se pudo actualizar el estado.',
+        'error',
+        5000
+      );
+    }
+  } catch (err) {
+    console.error('cambiarEstadoPedido:', err);
+    mostrarToastTienda(
+      '❌ Error de conexión',
+      'Intenta de nuevo en un momento.',
+      'error',
+      5000
+    );
+  }
+}

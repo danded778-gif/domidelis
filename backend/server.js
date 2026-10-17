@@ -478,15 +478,16 @@ async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
 // ★ v2.4: adjunta la clave secreta
 // ============================================
 async function obtenerPedidoPorId(pedidoId) {
-    try {
-        const response = await axios.get(`${GAS_URL}?action=getPedidos&key=${encodeURIComponent(GAS_SECRET_KEY)}`);
-        const pedidos = response.data;
-        if (!Array.isArray(pedidos)) return null;
-        return pedidos.find(p => String(p.id) === String(pedidoId));
-    } catch (e) {
-        console.error('Error obteniendo pedido:', e.message);
-        return null;
+    const response = await axios.get(`${GAS_URL}?action=getPedidos&key=${encodeURIComponent(GAS_SECRET_KEY)}`);
+    const pedidos = response.data;
+    if (!Array.isArray(pedidos)) {
+        throw new Error('La respuesta de GAS no contiene una lista de pedidos.');
     }
+    return pedidos.find(p => String(p.id) === String(pedidoId)) || null;
+}
+
+function normalizarEstadoPedido(estado) {
+    return String(estado || '').toLowerCase().trim().replace(/-/g, ' ').replace(/\s+/g, ' ');
 }
 
 // ============================================
@@ -526,12 +527,19 @@ const ACCIONES_SOLO_ADMIN = new Set([
 ]);
 
 const ACCIONES_DOMI_O_ADMIN = new Set([
-    'actualizarEstado', 'getPedidos',
+    'getPedidos',
     'getPerfilDomiciliario', 'actualizarPerfilDomiciliario'
 ]);
 
 const ACCIONES_TIENDA_O_ADMIN = new Set([
     'getPedidosTienda', 'actualizarPasswordTienda'
+]);
+
+// ★ NUEVO: acciones permitidas para domiciliario, tienda Y admin.
+// Antes 'actualizarEstado' solo lo podía usar domi+admin; la tienda
+// necesitaba cambiar el estado de SUS pedidos y el proxy la bloqueaba.
+const ACCIONES_DOMI_TIENDA_O_ADMIN = new Set([
+    'actualizarEstado'
 ]);
 
 // ★ v2.4: límite simple anti-spam de pedidos (por IP, 5 pedidos cada 10 min)
@@ -556,6 +564,7 @@ app.all('/api', verificarToken, async (req, res) => {
     try {
         const action = req.query.action || req.body.action;
         console.log(`📥 [${req.method}] action=${action} (User: ${req.user ? `${req.user.nombre} [${req.user.rol}]` : 'Público'})`);
+        let estadoActualizacion = null;
 
         if (!action) {
             return res.status(400).json({ success: false, error: 'Falta action' });
@@ -581,6 +590,9 @@ app.all('/api', verificarToken, async (req, res) => {
             if (ACCIONES_TIENDA_O_ADMIN.has(action) && rol !== 'tienda' && !esAdmin) {
                 return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de tienda o administrador.' });
             }
+            if (ACCIONES_DOMI_TIENDA_O_ADMIN.has(action) && rol !== 'domiciliario' && rol !== 'tienda' && !esAdmin) {
+    return res.status(403).json({ success: false, error: 'Acceso denegado. Se requiere rol de domiciliario, tienda o administrador.' });
+}
         }
 
         // ★ v2.4: anti-spam solo para crearPedido
@@ -621,12 +633,84 @@ app.all('/api', verificarToken, async (req, res) => {
             }
         }
 
+        if (action === 'actualizarEstado') {
+            const pedidoId = (req.body && req.body.pedidoId) || req.query.pedidoId;
+            const estadoSolicitado = (req.body && req.body.estado) || req.query.estado;
+
+            if (!pedidoId || !estadoSolicitado) {
+                return res.status(400).json({ success: false, error: 'Faltan pedidoId o estado.' });
+            }
+
+            const nuevoEstado = normalizarEstadoPedido(estadoSolicitado);
+            const pedidoActual = await obtenerPedidoPorId(pedidoId);
+            if (!pedidoActual) {
+                return res.status(404).json({ success: false, error: 'No se encontró el pedido.' });
+            }
+
+            const estadoActual = normalizarEstadoPedido(pedidoActual.estado);
+            const rol = req.user.rol;
+            let transicionPermitida = false;
+
+            if (rol === 'admin') {
+                transicionPermitida = ['pendiente', 'en camino', 'entregado', 'cancelado'].includes(nuevoEstado);
+            } else if (rol === 'tienda') {
+                let productos;
+                try {
+                    productos = Array.isArray(pedidoActual.productosJson)
+                        ? pedidoActual.productosJson
+                        : JSON.parse(pedidoActual.productosJson || '[]');
+                } catch (error) {
+                    console.error(`productosJson inválido en pedido #${pedidoId}:`, error.message);
+                    return res.status(500).json({ success: false, error: 'No se pudieron verificar los productos del pedido.' });
+                }
+
+                if (!Array.isArray(productos)) {
+                    return res.status(500).json({ success: false, error: 'No se pudieron verificar los productos del pedido.' });
+                }
+                if (!productos.some(producto =>
+                    producto.tiendaId !== undefined &&
+                    producto.tiendaId !== null &&
+                    String(producto.tiendaId) === String(req.user.id)
+                )) {
+                    return res.status(403).json({ success: false, error: 'La tienda no tiene acceso a este pedido.' });
+                }
+
+                transicionPermitida =
+                    (estadoActual === 'pendiente' && nuevoEstado === 'aceptado') ||
+                    (estadoActual === 'aceptado' && nuevoEstado === 'listo');
+            } else if (rol === 'domiciliario') {
+                if (String(pedidoActual.domiciliarioId) !== String(req.user.id)) {
+                    return res.status(403).json({ success: false, error: 'El pedido no está asignado a este domiciliario.' });
+                }
+
+                transicionPermitida =
+                    (estadoActual === 'listo' && nuevoEstado === 'en camino') ||
+                    (estadoActual === 'en camino' && nuevoEstado === 'entregado');
+            }
+
+            if (!transicionPermitida) {
+                return res.status(409).json({
+                    success: false,
+                    error: `Transición no permitida: ${estadoActual || 'sin estado'} → ${nuevoEstado}.`
+                });
+            }
+
+            if (req.body) req.body.estado = nuevoEstado;
+            estadoActualizacion = nuevoEstado;
+        }
+
         // ─────────────────────────────────────────────
         // REENVÍO AL GAS (ahora siempre con la clave secreta)
         // ─────────────────────────────────────────────
         let gasUrl = `${GAS_URL}?action=${encodeURIComponent(action)}&key=${encodeURIComponent(GAS_SECRET_KEY)}`;
         for (const key in req.query) {
-            if (key !== 'action' && key !== 'key') gasUrl += `&${key}=${encodeURIComponent(req.query[key])}`;
+            if (key !== 'action' && key !== 'key') {
+                const value = key === 'estado' && estadoActualizacion ? estadoActualizacion : req.query[key];
+                gasUrl += `&${key}=${encodeURIComponent(value)}`;
+            }
+        }
+        if (action === 'actualizarEstado' && req.method === 'GET' && !Object.prototype.hasOwnProperty.call(req.query, 'estado')) {
+            gasUrl += `&estado=${encodeURIComponent(estadoActualizacion)}`;
         }
 
         let response;
@@ -732,8 +816,8 @@ app.all('/api', verificarToken, async (req, res) => {
 
                 case 'actualizarEstado': {
                     const pedidoId = (req.body && req.body.pedidoId) || req.query.pedidoId;
-                    const nuevoEstado = (req.body && req.body.estado) || req.query.estado;
-                    
+                    const nuevoEstado = estadoActualizacion || (req.body && req.body.estado) || req.query.estado;
+
                     io.emit('estadoActualizado', { pedidoId, nuevoEstado });
                     console.log(`🔄 Emitido estadoActualizado #${pedidoId} → ${nuevoEstado}`);
 

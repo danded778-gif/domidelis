@@ -44,7 +44,7 @@ async function cargarPedidosAdmin() {
                     <td><span class="tienda-tag-historial"><i class="fas fa-store"></i> ${escapeQuotes(tiendasTexto)}</span></td>
                     <td>${formatearPrecio(p.total)}</td>
                     <td>${renderPropinaBadge(p)}</td>
-                    <td><span class="badge badge-${p.estado.replace(/\s/g, '-')}">${p.estado}</span></td>
+                    <td><span class="badge badge-${p.estado.toLowerCase().trim().replace(/\s+/g, '-')}">${p.estado}</span></td>
                     <td>${domi ? `<i class="fas fa-user"></i> ${esc(domi.nombre)} ${badgePresencia('domiciliario', domi.id)}` : "— Sin asignar —"}</td>
                     <td>${formatearFecha(p.fecha)}</td>
                     <td>
@@ -156,9 +156,10 @@ async function cambiarEstadoPedidoAdmin(pedidoId) {
         if (data.success) {
             mostrarNotificacion("Estado actualizado");
             if (nuevoEstado === 'entregado') await cargarHistorialPedidos();
+            invalidarCacheGetPedidos();
             await cargarPedidosAdmin();
         } else {
-            mostrarNotificacion("Error al actualizar", "error");
+            mostrarNotificacion(data.error || "Error al actualizar", "error");
         }
     } catch (error) {
         mostrarNotificacion("Error de conexión", "error");

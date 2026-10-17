@@ -35,7 +35,7 @@
    - Verificar login.html / login-cliente.html → destino de
      .hero-admin y exit-modal
    - notificaciones.css existe pero NADIE lo carga (huérfano):
-     auditar contra §16 y fusionar o descartar
+     auditar contra 16 y fusionar o descartar
    ============================================ */
 
 /* ============================================
@@ -169,6 +169,16 @@ main>.container {
 .badge-pendiente {
     background: var(--warning);
     color: #000;
+}
+
+.badge-aceptado {
+    background: #f59e0b;
+    color: #fff;
+}
+
+.badge-listo {
+    background: #F4A261;
+    color: #fff;
 }
 
 .badge-en-camino {

@@ -252,10 +252,14 @@ function renderizarPedidosActivos() {
         c.innerHTML = `<div class="empty-state"><i class="fas fa-motorcycle"></i><h3>Sin pedidos activos</h3><p>Aparecerán aquí automáticamente</p><button onclick="cargarDomiciliarioData()" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Actualizar</button></div>`;
         return;
     }
+    const aceptados = pedidosActivosCache.filter(p => p.estado === 'aceptado');
+    const listo = pedidosActivosCache.filter(p => p.estado === 'listo');
     const pendientes = pedidosActivosCache.filter(p => p.estado === 'pendiente');
     const enCamino = pedidosActivosCache.filter(p => p.estado === 'en camino');
     let html = '';
     if (pendientes.length) { html += `<h3 class="estado-seccion"><i class="fas fa-clock"></i> Pendientes (${pendientes.length})</h3><div class="pedidos-grid">${renderCards(pendientes)}</div>`; }
+    if (aceptados.length) { html += `<h3 class="estado-seccion"><i class="fas fa-check-circle"></i> Aceptados (${aceptados.length})</h3><div class="pedidos-grid">${renderCards(aceptados)}</div>`; }
+    if (listo.length) { html += `<h3 class="estado-seccion"><i class="fas fa-check-double"></i> Listos (${listo.length})</h3><div class="pedidos-grid">${renderCards(listo)}</div>`; }
     if (enCamino.length) { html += `<h3 class="estado-seccion"><i class="fas fa-shipping-fast"></i> En Camino (${enCamino.length})</h3><div class="pedidos-grid">${renderCards(enCamino)}</div>`; }
     c.innerHTML = html;
 }

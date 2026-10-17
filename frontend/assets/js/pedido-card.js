@@ -7,6 +7,13 @@
  * Uso:
  *   crearTarjetaPedido(pedido, { modo: 'domiciliario' | 'tienda' | 'historial' })
  *
+ * ★★★ v1.7 — ESTADOS MODULARIZADOS ★★★
+ * - Badges renderizados via renderBadgeEstado() (componente
+ *   estados-pedido.js). Parche defensivo: si el componente no
+ *   cargó, vuelve al badge original sin icono (no rompe).
+ * - Modo 'tienda': botones [Aceptar] y [Listo] via
+ *   renderAccionesTienda() (mismo componente).
+ *
  * ★★★ v1.6 — COMPLEMENTOS VISIBLES EN MODO TIENDA ★★★
  * - Antes: los productos se pintaban como string plano
  *   ("2x Producto, 1x Otro") — los complementos viajaban en el
@@ -14,14 +21,12 @@
  * - Ahora: bloque producto-por-producto con:
  *     • cantidad x nombre (tipo UND/KG) + precio a la derecha
  *     • debajo, SI el producto tiene, el detalle de complementos
- *       en gris pequeño con barrita verde (mismo estilo del
- *       detalle del admin: formatearComplementosDetalle en
- *       admin/pedidos.js — texto "✦ Grupo: ítem | ✦ Grupo2: ítem")
+ *       en gris pequeño con barrita verde
  * - El total YA incluye complementos (vienen sumados en cada
  *   p.subtotal que arma tiendaRoutes.js) — solo presentación.
  * - Datos sucios cubiertos: cantidadTipo numérico (ej: 1) → "UND",
  *   complementos vacíos → no se pinta nada.
- * - Modos 'domiciliario' e 'historial': SIN CAMBIOS.
+ * - Modos 'domiciliario' e 'historial': SIN CAMBIOS en layout.
  * -------------------------------------------------------
  */
 (function (global) {
@@ -87,6 +92,34 @@
         </div>`;
   }
 
+  // ============================================
+  // ★ v1.7 — HELPER DEFENSIVO PARA BADGE
+  // Si estados-pedido.js no cargó (404, path mal, etc),
+  // vuelve al badge original sin icono. Así la app nunca
+  // se rompe aunque falte el componente.
+  // ============================================
+  function _renderBadgeSeguro(estado, estadoClase, textoOriginal, mayusculas) {
+    if (typeof renderBadgeEstado === 'function') {
+      return renderBadgeEstado(estado, { mayusculas: mayusculas === true });
+    }
+    const texto = mayusculas ? String(textoOriginal || '').toUpperCase() : (textoOriginal || '');
+    return `<span class="estado-badge estado-${estadoClase}">${_esc(texto)}</span>`;
+  }
+
+  // ============================================
+  // ★ v1.7 — HELPER DEFENSIVO PARA ACCIONES TIENDA
+  // Si estados-pedido.js no cargó o no hay función, devuelve ''.
+  // ============================================
+  function _renderAccionesTiendaSeguro(estadoRaw, pedidoId) {
+    if (typeof renderAccionesTienda !== 'function') return '';
+    try {
+      return renderAccionesTienda(estadoRaw, pedidoId) || '';
+    } catch (e) {
+      console.warn('renderAccionesTienda falló:', e);
+      return '';
+    }
+  }
+
   /**
    * Crea el HTML de una tarjeta de pedido
    * @param {Object} pedido
@@ -99,7 +132,8 @@
     const productos = _parseProductos(pedido);
     const estadoRaw = (pedido.estado || '').toLowerCase().trim();
     const estado = estadoRaw.replace(/\s+/g, '-');
-    const esPendiente = estadoRaw === 'pendiente';
+    const esListo = estado === 'listo';
+    const esEnCamino = estado === 'en-camino';
     const esHistorial = modo === 'historial';
     const tiendasTexto = _obtenerTiendasTexto(pedido);
     const propina = parseFloat(pedido.propina) || 0;
@@ -115,16 +149,18 @@
                     <span class="fecha-entrega"><i class="fas fa-calendar-check"></i> ${fechaTexto}</span>
                 </div>`;
     } else if (modo === 'tienda') {
+      const badgeHtml = _renderBadgeSeguro(pedido.estado, estado, pedido.estado, true);
       headerHtml = `
                 <div class="pedido-header">
                     <span class="pedido-id">#${pedido.id}</span>
-                    <span class="estado-badge estado-${estado}">${_esc(pedido.estado).toUpperCase()}</span>
+                    ${badgeHtml}
                 </div>`;
     } else {
+      const badgeHtml = _renderBadgeSeguro(pedido.estado, estado, pedido.estado, false);
       headerHtml = `
                 <div class="pedido-header">
                     <h3>Pedido #${pedido.id}</h3>
-                    <span class="estado-badge estado-${estado}">${_esc(pedido.estado)}</span>
+                    ${badgeHtml}
                 </div>`;
     }
 
@@ -220,9 +256,12 @@
     let accionesHtml = '';
 
     if (modo === 'domiciliario' && !esHistorial) {
-      const btnEstado = esPendiente
-        ? `<button class="btn btn-warning btn-sm" onclick="cambiarEstadoPedido(${pedido.id},'en camino')"><i class="fas fa-motorcycle"></i> En camino</button>`
-        : `<button class="btn btn-success btn-sm" onclick="marcarEntregado(${pedido.id})"><i class="fas fa-check"></i> Entregado</button>`;
+      let btnEstado = '';
+      if (esListo) {
+        btnEstado = `<button class="btn btn-warning btn-sm" onclick="cambiarEstadoPedido(${pedido.id},'en camino')"><i class="fas fa-motorcycle"></i> En camino</button>`;
+      } else if (esEnCamino) {
+        btnEstado = `<button class="btn btn-success btn-sm" onclick="marcarEntregado(${pedido.id})"><i class="fas fa-check"></i> Entregado</button>`;
+      }
 
       const dirEscapada = _escapeQuotes(pedido.clienteDireccion);
 
@@ -251,6 +290,12 @@
                 <div class="historial-acciones">
                     <span class="tiempo-entrega"><i class="fas fa-clock"></i> ${tiempoTexto}</span>
                 </div>`;
+    } else if (modo === 'tienda') {
+      // ★ v1.7 — BOTONES [Aceptar] y [Listo] para la tienda.
+      // renderAccionesTienda() devuelve '' si el componente no
+      // cargó o si no hay acción disponible para el estado
+      // actual (ej: en-camino, entregado, etc).
+      accionesHtml = _renderAccionesTiendaSeguro(estadoRaw, pedido.id);
     }
 
     let cardClass = '';

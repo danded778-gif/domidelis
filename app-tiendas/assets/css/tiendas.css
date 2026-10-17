@@ -683,3 +683,41 @@ main {
         background: var(--primary);
     }
 }
+
+/* ============================================
+ * NUEVOS — estados intermedios del flujo tienda
+ * (no toca los 4 estados existentes; solo agrega)
+ * ============================================ */
+.estado-aceptado  { background: #f59e0b; color: #fff; }
+.estado-listo     { background: #F4A261; color: #fff; }
+
+.pedido-card.aceptado         { border-left-color: #f59e0b; }
+.pedido-card.listo            { border-left-color: #F4A261; }
+.pedido-card-tienda.aceptado  { border-left-color: #f59e0b; }
+.pedido-card-tienda.listo     { border-left-color: #F4A261; }
+
+/* Contenedor de botones de acción (lo usan los modos tienda y domiciliario) */
+.estado-botones {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.estado-botones .btn { flex: 1; min-width: 100px; }
+
+/* Fallback si tiendas.css no tenía btn-success / btn-sm */
+.btn-success { background: var(--success, #28a745); color: #fff; border: none; }
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+.btn-sm:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
