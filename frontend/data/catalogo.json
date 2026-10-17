@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-14T19-09-59",
-  "ultimaActualizacion": "2026-10-14T19:09:59.516Z",
+  "version": "v2026-10-17T00-51-20",
+  "ultimaActualizacion": "2026-10-17T00:51:20.170Z",
   "tiendas": [
     {
       "id": 1,
@@ -1071,7 +1071,7 @@
     {
       "id": 10,
       "nombre": "Mantenimiento",
-      "descripcion": "(oculto)",
+      "descripcion": "pruebas",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"22:00 - 00:00\",\"wed\":\"00:00 - 05:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"14:00 - 23:30\",\"sat\":\"00:00 - 05:59\",\"sun\":\"00:00 - 05:59\"}",
       "rating": 1,
@@ -1332,10 +1332,10 @@
       "nombre": "J.C Delicias",
       "descripcion": "¡Lo Máximo en Sabor!",
       "direccion": "calle 49 - #48A 17",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"cerrado\",\"tue\":\"09:00 - 21:30\",\"wed\":\"09:00 - 21:30\",\"thu\":\"09:00 - 21:30\",\"fri\":\"09:00 - 21:30\",\"sat\":\"10:00 - 22:30\",\"sun\":\"09:00 - 21:30\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/J.cDelicias/jc_delicias_comprimida2.jpg",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
@@ -3078,7 +3078,7 @@
       "id_producto": 150,
       "grupo": "",
       "nombre": "Yuquitas",
-      "precio": 5000,
+      "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
