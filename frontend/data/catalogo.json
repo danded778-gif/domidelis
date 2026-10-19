@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-18-02",
-  "ultimaActualizacion": "2026-10-19T19:18:02.307Z",
+  "version": "v2026-10-19T19-18-33",
+  "ultimaActualizacion": "2026-10-19T19:18:33.371Z",
   "tiendas": [
     {
       "id": 1,
@@ -4202,21 +4202,21 @@
     {
       "id": 161,
       "id_producto": 180,
-      "grupo": "Salsa",
-      "nombre": "Salsa de la casa",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "salsa",
-      "max": 2,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
       "id": 162,
       "id_producto": 180,
-      "grupo": "Salsa",
-      "nombre": "Salsa BBQ",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
-      "tipo": "salsa",
-      "max": 2,
+      "tipo": "",
+      "max": null,
       "min": 0
     },
     {
@@ -4872,21 +4872,21 @@
     {
       "id": 234,
       "id_producto": 180,
-      "grupo": "Presentación",
-      "nombre": "Alitas x16 Mediano",
-      "precio": 17000,
-      "tipo": "",
-      "max": null,
+      "grupo": "Salsa",
+      "nombre": "Salsa de la casa",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
       "min": 0
     },
     {
       "id": 235,
       "id_producto": 180,
-      "grupo": "Presentación",
-      "nombre": "Alitas x24 Grande",
-      "precio": 29000,
-      "tipo": "",
-      "max": null,
+      "grupo": "Salsa",
+      "nombre": "Salsa BBQ",
+      "precio": 0,
+      "tipo": "salsa",
+      "max": 2,
       "min": 0
     },
     {
