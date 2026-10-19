@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-32-07",
-  "ultimaActualizacion": "2026-10-19T19:32:07.300Z",
+  "version": "v2026-10-19T19-32-35",
+  "ultimaActualizacion": "2026-10-19T19:32:35.628Z",
   "tiendas": [
     {
       "id": 1,
@@ -1226,7 +1226,7 @@
           "id": 181,
           "nombre": "Oriental Grande",
           "descripcion": "1 Porcion",
-          "precio": 60000,
+          "precio": 25000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
           "badge": "Disponible",
           "categoria": "Almuerzo",
@@ -2461,7 +2461,7 @@
       "id": 181,
       "nombre": "Oriental Grande",
       "descripcion": "1 Porcion",
-      "precio": 60000,
+      "precio": 25000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
       "badge": "Disponible",
       "categoria": "Almuerzo",
@@ -4904,7 +4904,7 @@
       "id_producto": 181,
       "grupo": "Presentación",
       "nombre": "1-2 Porcion",
-      "precio": 17000,
+      "precio": 20000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
@@ -4914,7 +4914,7 @@
       "id_producto": 181,
       "grupo": "Presentación",
       "nombre": "4-5 Porcion",
-      "precio": 29000,
+      "precio": 0,
       "tipo": "opcion",
       "max": 1,
       "min": 1
