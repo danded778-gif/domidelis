@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-40-48",
-  "ultimaActualizacion": "2026-10-19T19:40:48.118Z",
+  "version": "v2026-10-19T19-41-14",
+  "ultimaActualizacion": "2026-10-19T19:41:14.419Z",
   "tiendas": [
     {
       "id": 1,
@@ -4945,9 +4945,9 @@
       "grupo": "Presentación",
       "nombre": "1 Porcion",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 242,
@@ -4955,9 +4955,9 @@
       "grupo": "Presentación",
       "nombre": "1-2 Porcion",
       "precio": 20000,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 243,
@@ -4965,9 +4965,9 @@
       "grupo": "Presentación",
       "nombre": "4-5 Porcion",
       "precio": 35000,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 244,
