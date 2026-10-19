@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-10-14",
-  "ultimaActualizacion": "2026-10-19T20:10:14.722Z",
+  "version": "v2026-10-19T20-10-17",
+  "ultimaActualizacion": "2026-10-19T20:10:17.464Z",
   "tiendas": [
     {
       "id": 1,
@@ -2875,7 +2875,7 @@
     },
     {
       "id": 502,
-      "nombre": "",
+      "nombre": "NA",
       "descripcion": "",
       "precio": 9000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fresa%20con%20chispas%20y%20cuchara_200kb.jpg",
