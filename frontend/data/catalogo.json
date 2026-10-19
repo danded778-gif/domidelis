@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-16-49",
-  "ultimaActualizacion": "2026-10-19T21:16:49.047Z",
+  "version": "v2026-10-19T21-17-16",
+  "ultimaActualizacion": "2026-10-19T21:17:16.977Z",
   "tiendas": [
     {
       "id": 1,
@@ -3096,7 +3096,7 @@
     },
     {
       "id": 701,
-      "nombre": "",
+      "nombre": "Copa Queso",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
