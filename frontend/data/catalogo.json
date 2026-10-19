@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-25-28",
-  "ultimaActualizacion": "2026-10-19T19:25:28.697Z",
+  "version": "v2026-10-19T19-28-39",
+  "ultimaActualizacion": "2026-10-19T19:28:39.101Z",
   "tiendas": [
     {
       "id": 1,
@@ -4197,6 +4197,16 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
+      "min": 1
+    },
+    {
+      "id": 233,
+      "id_producto": 180,
+      "grupo": "Presentación",
+      "nombre": "Alitas x 8",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
       "min": 1
     },
     {
