@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-08-05",
-  "ultimaActualizacion": "2026-10-19T20:08:05.966Z",
+  "version": "v2026-10-19T20-08-34",
+  "ultimaActualizacion": "2026-10-19T20:08:34.055Z",
   "tiendas": [
     {
       "id": 1,
@@ -2864,7 +2864,7 @@
       "id": 501,
       "nombre": "",
       "descripcion": "",
-      "precio": 0,
+      "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
       "badge": "agotado",
       "categoria": "Detalles",
@@ -2877,7 +2877,7 @@
       "id": 502,
       "nombre": "",
       "descripcion": "",
-      "precio": 0,
+      "precio": 9000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fresa%20con%20chispas%20y%20cuchara_200kb.jpg",
       "badge": "agotado",
       "categoria": "Detalles",
