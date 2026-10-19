@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-35-12",
-  "ultimaActualizacion": "2026-10-19T22:35:12.501Z",
+  "version": "v2026-10-19T22-35-56",
+  "ultimaActualizacion": "2026-10-19T22:35:56.699Z",
   "tiendas": [
     {
       "id": 1,
@@ -1601,10 +1601,10 @@
     },
     {
       "id": 19,
-      "nombre": "Luna",
+      "nombre": "Luna Cremosa",
       "descripcion": "Copas de diferentes sabores",
       "direccion": "Carrera 49 #41-51 Parque principal",
-      "horario": "{\"mon\":\"06:00 - 19:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"11:00-20:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/lunacremosa/Fachada%20colorida%20de%20Luna%20Cremosa_200k.jpg",
       "promovida": 0,
@@ -1621,7 +1621,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Luna"
+          "tiendaNombre": "Luna Cremosa"
         },
         {
           "id": 701,
@@ -1634,7 +1634,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Luna"
+          "tiendaNombre": "Luna Cremosa"
         },
         {
           "id": 702,
@@ -1647,7 +1647,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Luna"
+          "tiendaNombre": "Luna Cremosa"
         },
         {
           "id": 703,
@@ -1660,7 +1660,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Luna"
+          "tiendaNombre": "Luna Cremosa"
         },
         {
           "id": 704,
@@ -1673,7 +1673,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Luna"
+          "tiendaNombre": "Luna Cremosa"
         }
       ]
     },
@@ -3158,7 +3158,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Luna"
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 701,
@@ -3171,7 +3171,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Luna"
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 702,
@@ -3184,7 +3184,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Luna"
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 703,
@@ -3197,7 +3197,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Luna"
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 704,
@@ -3210,7 +3210,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Luna"
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 705,
