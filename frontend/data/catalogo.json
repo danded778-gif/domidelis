@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-40-15",
-  "ultimaActualizacion": "2026-10-19T19:40:15.795Z",
+  "version": "v2026-10-19T19-40-48",
+  "ultimaActualizacion": "2026-10-19T19:40:48.118Z",
   "tiendas": [
     {
       "id": 1,
@@ -4954,7 +4954,7 @@
       "id_producto": 405,
       "grupo": "Presentación",
       "nombre": "1-2 Porcion",
-      "precio": 0,
+      "precio": 20000,
       "tipo": "",
       "max": null,
       "min": 0
@@ -4964,7 +4964,7 @@
       "id_producto": 405,
       "grupo": "Presentación",
       "nombre": "4-5 Porcion",
-      "precio": 0,
+      "precio": 35000,
       "tipo": "",
       "max": null,
       "min": 0
