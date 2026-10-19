@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-06-10",
-  "ultimaActualizacion": "2026-10-19T20:06:10.101Z",
+  "version": "v2026-10-19T20-06-38",
+  "ultimaActualizacion": "2026-10-19T20:06:38.312Z",
   "tiendas": [
     {
       "id": 1,
@@ -2846,6 +2846,19 @@
       "activo": true,
       "tiendaId": "12",
       "tiendaNombre": "Mr Simon"
+    },
+    {
+      "id": 500,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     }
   ],
   "complementosGlobal": [
