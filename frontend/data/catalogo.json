@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-14-32",
-  "ultimaActualizacion": "2026-10-19T22:14:32.879Z",
+  "version": "v2026-10-19T22-16-22",
+  "ultimaActualizacion": "2026-10-19T22:16:22.556Z",
   "tiendas": [
     {
       "id": 1,
@@ -1654,7 +1654,7 @@
           "nombre": "Waffle Especial",
           "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
           "precio": 20000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Postre%20de%20fresa%20y%20chocolate%20en%20plato%20blanco_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
@@ -3191,7 +3191,7 @@
       "nombre": "Waffle Especial",
       "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
       "precio": 20000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Postre%20de%20fresa%20y%20chocolate%20en%20plato%20blanco_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
