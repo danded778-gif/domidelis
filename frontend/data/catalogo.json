@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-21-22",
-  "ultimaActualizacion": "2026-10-19T21:21:22.138Z",
+  "version": "v2026-10-19T21-21-46",
+  "ultimaActualizacion": "2026-10-19T21:21:46.249Z",
   "tiendas": [
     {
       "id": 1,
@@ -1609,7 +1609,73 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 700,
+          "nombre": "Copa Frutimix",
+          "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazn Cereza Chantilly Salsa Y barquillos",
+          "precio": 17000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 701,
+          "nombre": "Copa Queso",
+          "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
+          "precio": 16000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "DetallesDetalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 702,
+          "nombre": "Ensalada de frutas",
+          "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
+          "precio": 16000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 703,
+          "nombre": "Waffle Especial",
+          "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
+          "precio": 20000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 704,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        }
+      ]
     },
     {
       "id": 20,
@@ -3088,11 +3154,11 @@
       "precio": 17000,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "19",
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 701,
@@ -3101,11 +3167,11 @@
       "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "DetallesDetalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "19",
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 702,
@@ -3114,11 +3180,11 @@
       "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "19",
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 703,
@@ -3130,8 +3196,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "19",
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 704,
@@ -3143,8 +3209,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "19",
+      "tiendaNombre": "Luna Cremosa"
     },
     {
       "id": 705,
