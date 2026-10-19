@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-16-22",
-  "ultimaActualizacion": "2026-10-19T22:16:22.556Z",
+  "version": "v2026-10-19T22-22-40",
+  "ultimaActualizacion": "2026-10-19T22:22:40.945Z",
   "tiendas": [
     {
       "id": 1,
@@ -1641,7 +1641,7 @@
           "nombre": "Ensalada de frutas",
           "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
           "precio": 16000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20de%20frutas%20en%20copa_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
@@ -3178,7 +3178,7 @@
       "nombre": "Ensalada de frutas",
       "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
       "precio": 16000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20de%20frutas%20en%20copa_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
