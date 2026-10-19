@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-33-09",
-  "ultimaActualizacion": "2026-10-19T22:33:09.285Z",
+  "version": "v2026-10-19T22-35-12",
+  "ultimaActualizacion": "2026-10-19T22:35:12.501Z",
   "tiendas": [
     {
       "id": 1,
@@ -1601,7 +1601,7 @@
     },
     {
       "id": 19,
-      "nombre": "Mantenimiento 2",
+      "nombre": "Luna",
       "descripcion": "Copas de diferentes sabores",
       "direccion": "Carrera 49 #41-51 Parque principal",
       "horario": "{\"mon\":\"06:00 - 19:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
@@ -1621,7 +1621,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Mantenimiento 2"
+          "tiendaNombre": "Luna"
         },
         {
           "id": 701,
@@ -1634,7 +1634,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Mantenimiento 2"
+          "tiendaNombre": "Luna"
         },
         {
           "id": 702,
@@ -1647,7 +1647,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Mantenimiento 2"
+          "tiendaNombre": "Luna"
         },
         {
           "id": 703,
@@ -1660,7 +1660,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Mantenimiento 2"
+          "tiendaNombre": "Luna"
         },
         {
           "id": 704,
@@ -1673,7 +1673,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
-          "tiendaNombre": "Mantenimiento 2"
+          "tiendaNombre": "Luna"
         }
       ]
     },
@@ -3158,7 +3158,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Mantenimiento 2"
+      "tiendaNombre": "Luna"
     },
     {
       "id": 701,
@@ -3171,7 +3171,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Mantenimiento 2"
+      "tiendaNombre": "Luna"
     },
     {
       "id": 702,
@@ -3184,7 +3184,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Mantenimiento 2"
+      "tiendaNombre": "Luna"
     },
     {
       "id": 703,
@@ -3197,7 +3197,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Mantenimiento 2"
+      "tiendaNombre": "Luna"
     },
     {
       "id": 704,
@@ -3210,7 +3210,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
-      "tiendaNombre": "Mantenimiento 2"
+      "tiendaNombre": "Luna"
     },
     {
       "id": 705,
@@ -5524,6 +5524,56 @@
       "nombre": "Ensalada de frutas especial",
       "precio": 7000,
       "tipo": "",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 265,
+      "id_producto": 702,
+      "grupo": "",
+      "nombre": "fresa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 266,
+      "id_producto": 702,
+      "grupo": "",
+      "nombre": "chocolate",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 267,
+      "id_producto": 702,
+      "grupo": "",
+      "nombre": "vainilla",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 268,
+      "id_producto": 702,
+      "grupo": "",
+      "nombre": "vainilla chips",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 269,
+      "id_producto": 702,
+      "grupo": "",
+      "nombre": "bateado de mora",
+      "precio": 0,
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
