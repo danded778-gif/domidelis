@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-13-40",
-  "ultimaActualizacion": "2026-10-19T19:13:40.779Z",
+  "version": "v2026-10-19T19-15-59",
+  "ultimaActualizacion": "2026-10-19T19:15:59.116Z",
   "tiendas": [
     {
       "id": 1,
@@ -1212,7 +1212,7 @@
         {
           "id": 180,
           "nombre": "Alitas",
-          "descripcion": "16 alitas",
+          "descripcion": "Alitas x 8 personal",
           "precio": 21000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
           "badge": "Disponible",
@@ -2447,7 +2447,7 @@
     {
       "id": 180,
       "nombre": "Alitas",
-      "descripcion": "16 alitas",
+      "descripcion": "Alitas x 8 personal",
       "precio": 21000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
       "badge": "Disponible",
