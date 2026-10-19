@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-15-59",
-  "ultimaActualizacion": "2026-10-19T19:15:59.116Z",
+  "version": "v2026-10-19T19-18-02",
+  "ultimaActualizacion": "2026-10-19T19:18:02.307Z",
   "tiendas": [
     {
       "id": 1,
@@ -4861,9 +4861,9 @@
     },
     {
       "id": 233,
-      "id_producto": 180,
-      "grupo": "Presentación",
-      "nombre": "Alitas x8 Personal",
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
       "tipo": "",
       "max": null,
