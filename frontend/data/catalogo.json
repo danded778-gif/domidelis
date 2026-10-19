@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-36-35",
-  "ultimaActualizacion": "2026-10-19T21:36:35.766Z",
+  "version": "v2026-10-19T21-37-23",
+  "ultimaActualizacion": "2026-10-19T21:37:23.840Z",
   "tiendas": [
     {
       "id": 1,
@@ -5413,9 +5413,9 @@
       "grupo": "",
       "nombre": "fresa",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 250,
