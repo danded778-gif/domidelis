@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-19-52",
-  "ultimaActualizacion": "2026-10-19T21:19:52.324Z",
+  "version": "v2026-10-19T21-20-23",
+  "ultimaActualizacion": "2026-10-19T21:20:23.548Z",
   "tiendas": [
     {
       "id": 1,
@@ -3110,7 +3110,7 @@
     {
       "id": 702,
       "nombre": "Ensalada de frutas",
-      "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Roomies Barquillos y salsa",
+      "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
       "precio": 0,
       "imagen_url": "",
       "badge": "",
@@ -3123,7 +3123,7 @@
     {
       "id": 703,
       "nombre": "Waffle Especial",
-      "descripcion": "",
+      "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
       "precio": 0,
       "imagen_url": "",
       "badge": "",
