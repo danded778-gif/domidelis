@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-32-09",
-  "ultimaActualizacion": "2026-10-19T22:32:09.515Z",
+  "version": "v2026-10-19T22-33-09",
+  "ultimaActualizacion": "2026-10-19T22:33:09.285Z",
   "tiendas": [
     {
       "id": 1,
@@ -5528,16 +5528,6 @@
       "min": 1
     },
     {
-      "id": 265,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
-    },
-    {
       "id": 266,
       "id_producto": 703,
       "grupo": "",
@@ -5635,7 +5625,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 3,
-      "min": 2
+      "min": 3
     }
   ]
 }
