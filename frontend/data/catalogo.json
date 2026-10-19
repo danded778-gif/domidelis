@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-36-28",
-  "ultimaActualizacion": "2026-10-19T20:36:28.840Z",
+  "version": "v2026-10-19T20-38-28",
+  "ultimaActualizacion": "2026-10-19T20:38:28.872Z",
   "tiendas": [
     {
       "id": 1,
@@ -1461,7 +1461,7 @@
       "nombre": "Fragaria",
       "descripcion": "",
       "direccion": "Parque la Judea",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"15:00-19:00\",\"tue\":\"15:00-19:00\",\"wed\":\"15:00-19:00\",\"thu\":\"15:00-19:00\",\"fri\":\"15:00-19:00\",\"sat\":\"15:00-19:00\",\"sun\":\"15:00-19:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/fragaria/Carrito%20rosa%20de%20fresas%20con%20crema.png",
       "promovida": 1,
@@ -1469,7 +1469,7 @@
       "productos": [
         {
           "id": 500,
-          "nombre": "NA",
+          "nombre": "Granizado de Mango Biche",
           "descripcion": "Granizado de Mango Biche",
           "precio": 10000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
@@ -1482,7 +1482,7 @@
         },
         {
           "id": 501,
-          "nombre": "NA",
+          "nombre": "Gomitas Enchiladas",
           "descripcion": "Gomitas Enchiladas",
           "precio": 10000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
@@ -1495,7 +1495,7 @@
         },
         {
           "id": 502,
-          "nombre": "NA",
+          "nombre": "Fresas con crema",
           "descripcion": "Fresas con crema",
           "precio": 9000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fresa%20con%20chispas%20y%20cuchara_200kb.jpg",
@@ -1508,7 +1508,7 @@
         },
         {
           "id": 503,
-          "nombre": "NA",
+          "nombre": "Gomitas Enchiladas con mango",
           "descripcion": "Gomitas Enchiladas con mango",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
@@ -2954,7 +2954,7 @@
     },
     {
       "id": 500,
-      "nombre": "NA",
+      "nombre": "Granizado de Mango Biche",
       "descripcion": "Granizado de Mango Biche",
       "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
@@ -2967,7 +2967,7 @@
     },
     {
       "id": 501,
-      "nombre": "NA",
+      "nombre": "Gomitas Enchiladas",
       "descripcion": "Gomitas Enchiladas",
       "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
@@ -2980,7 +2980,7 @@
     },
     {
       "id": 502,
-      "nombre": "NA",
+      "nombre": "Fresas con crema",
       "descripcion": "Fresas con crema",
       "precio": 9000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fresa%20con%20chispas%20y%20cuchara_200kb.jpg",
@@ -2993,7 +2993,7 @@
     },
     {
       "id": 503,
-      "nombre": "NA",
+      "nombre": "Gomitas Enchiladas con mango",
       "descripcion": "Gomitas Enchiladas con mango",
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
