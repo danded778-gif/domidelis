@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-34-18",
-  "ultimaActualizacion": "2026-10-19T19:34:18.551Z",
+  "version": "v2026-10-19T19-34-56",
+  "ultimaActualizacion": "2026-10-19T19:34:56.946Z",
   "tiendas": [
     {
       "id": 1,
@@ -1239,7 +1239,7 @@
           "id": 182,
           "nombre": "Sho suey",
           "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
-          "precio": 28000,
+          "precio": 18000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
           "badge": "Disponible",
           "categoria": "Almuerzo",
@@ -2474,7 +2474,7 @@
       "id": 182,
       "nombre": "Sho suey",
       "descripcion": "Deliciosas verduras salteadas al wok Pollo cerdo y jamón",
-      "precio": 28000,
+      "precio": 18000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
       "badge": "Disponible",
       "categoria": "Almuerzo",
@@ -4923,7 +4923,17 @@
       "id": 239,
       "id_producto": 182,
       "grupo": "Presentación",
-      "nombre": "",
+      "nombre": "1 Porcion",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 240,
+      "id_producto": 182,
+      "grupo": "Presentación",
+      "nombre": "1-2 Porcion",
       "precio": 0,
       "tipo": "",
       "max": null,
