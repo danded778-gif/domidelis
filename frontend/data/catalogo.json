@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-32-49",
-  "ultimaActualizacion": "2026-10-19T21:32:49.440Z",
+  "version": "v2026-10-19T21-33-34",
+  "ultimaActualizacion": "2026-10-19T21:33:34.117Z",
   "tiendas": [
     {
       "id": 1,
@@ -1665,7 +1665,7 @@
         {
           "id": 704,
           "nombre": "Banana Splitt",
-          "descripcion": "",
+          "descripcion": "3 bolsd de helado Banano Queso cereza Fresa lluvia de chocolate salsa y barquillos",
           "precio": 0,
           "imagen_url": "",
           "badge": "NUEVO",
@@ -3202,7 +3202,7 @@
     {
       "id": 704,
       "nombre": "Banana Splitt",
-      "descripcion": "",
+      "descripcion": "3 bolsd de helado Banano Queso cereza Fresa lluvia de chocolate salsa y barquillos",
       "precio": 0,
       "imagen_url": "",
       "badge": "NUEVO",
