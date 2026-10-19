@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-45-53",
-  "ultimaActualizacion": "2026-10-19T20:45:53.484Z",
+  "version": "v2026-10-19T20-46-22",
+  "ultimaActualizacion": "2026-10-19T20:46:22.778Z",
   "tiendas": [
     {
       "id": 1,
@@ -3017,7 +3017,7 @@
       "tiendaNombre": "Fragaria"
     },
     {
-      "id": 504,
+      "id": 600,
       "nombre": "",
       "descripcion": "",
       "precio": 0,
