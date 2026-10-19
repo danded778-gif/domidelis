@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-12-01",
-  "ultimaActualizacion": "2026-10-19T19:12:01.128Z",
+  "version": "v2026-10-19T19-12-38",
+  "ultimaActualizacion": "2026-10-19T19:12:38.830Z",
   "tiendas": [
     {
       "id": 1,
@@ -4862,7 +4862,7 @@
     {
       "id": 233,
       "id_producto": 180,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "Alitas x8",
       "precio": 0,
       "tipo": "",
@@ -4872,7 +4872,7 @@
     {
       "id": 234,
       "id_producto": 180,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "Alitas x16",
       "precio": 17000,
       "tipo": "",
@@ -4882,9 +4882,9 @@
     {
       "id": 235,
       "id_producto": 180,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "Alitas x24",
-      "precio": 0,
+      "precio": 29000,
       "tipo": "",
       "max": null,
       "min": 0
