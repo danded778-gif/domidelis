@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-09-08",
-  "ultimaActualizacion": "2026-10-19T19:09:08.261Z",
+  "version": "v2026-10-19T19-10-15",
+  "ultimaActualizacion": "2026-10-19T19:10:15.040Z",
   "tiendas": [
     {
       "id": 1,
@@ -1213,7 +1213,7 @@
           "id": 180,
           "nombre": "Alitas",
           "descripcion": "16 alitas",
-          "precio": 38000,
+          "precio": 21000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
           "badge": "Disponible",
           "categoria": "Menu",
@@ -2448,7 +2448,7 @@
       "id": 180,
       "nombre": "Alitas",
       "descripcion": "16 alitas",
-      "precio": 38000,
+      "precio": 21000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/alitas_50KB.png",
       "badge": "Disponible",
       "categoria": "Menu",
@@ -4856,6 +4856,46 @@
       "nombre": "Pedialite 1 und",
       "precio": 10000,
       "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 233,
+      "id_producto": 180,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 234,
+      "id_producto": 181,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 235,
+      "id_producto": 182,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 236,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
       "max": null,
       "min": 0
     }
