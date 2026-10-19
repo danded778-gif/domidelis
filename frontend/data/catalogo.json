@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-42-28",
-  "ultimaActualizacion": "2026-10-19T19:42:28.255Z",
+  "version": "v2026-10-19T19-44-02",
+  "ultimaActualizacion": "2026-10-19T19:44:02.864Z",
   "tiendas": [
     {
       "id": 1,
@@ -1251,7 +1251,7 @@
         {
           "id": 405,
           "nombre": "Arroz Mexicano",
-          "descripcion": "",
+          "descripcion": "Pollo, Costilla humada, Jamón Ranchera, Maduro, Carne desmechada, Maicito Verdura",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
           "badge": "NUEVO",
@@ -2837,7 +2837,7 @@
     {
       "id": 405,
       "nombre": "Arroz Mexicano",
-      "descripcion": "",
+      "descripcion": "Pollo, Costilla humada, Jamón Ranchera, Maduro, Carne desmechada, Maicito Verdura",
       "precio": 25000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
       "badge": "NUEVO",
