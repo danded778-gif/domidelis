@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-17-16",
-  "ultimaActualizacion": "2026-10-19T21:17:16.977Z",
+  "version": "v2026-10-19T21-18-01",
+  "ultimaActualizacion": "2026-10-19T21:18:01.612Z",
   "tiendas": [
     {
       "id": 1,
@@ -3109,7 +3109,7 @@
     },
     {
       "id": 702,
-      "nombre": "",
+      "nombre": "Ensalada de frutas",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -3122,7 +3122,7 @@
     },
     {
       "id": 703,
-      "nombre": "",
+      "nombre": "Waffle Especial",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
