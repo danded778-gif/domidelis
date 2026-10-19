@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-10-17",
-  "ultimaActualizacion": "2026-10-19T20:10:17.464Z",
+  "version": "v2026-10-19T20-10-40",
+  "ultimaActualizacion": "2026-10-19T20:10:40.620Z",
   "tiendas": [
     {
       "id": 1,
@@ -1440,7 +1440,60 @@
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/fragaria/Carrito%20rosa%20de%20fresas%20con%20crema.png",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 500,
+          "nombre": "NA",
+          "descripcion": "",
+          "precio": 10000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
+          "badge": "agotado",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "17",
+          "tiendaNombre": "Fragaria"
+        },
+        {
+          "id": 501,
+          "nombre": "NA",
+          "descripcion": "",
+          "precio": 10000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
+          "badge": "agotado",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "17",
+          "tiendaNombre": "Fragaria"
+        },
+        {
+          "id": 502,
+          "nombre": "NA",
+          "descripcion": "",
+          "precio": 9000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fresa%20con%20chispas%20y%20cuchara_200kb.jpg",
+          "badge": "agotado",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "17",
+          "tiendaNombre": "Fragaria"
+        },
+        {
+          "id": 503,
+          "nombre": "NA",
+          "descripcion": "",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
+          "badge": "agotado",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "17",
+          "tiendaNombre": "Fragaria"
+        }
+      ]
     },
     {
       "id": 18,
@@ -2857,8 +2910,8 @@
       "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "17",
+      "tiendaNombre": "Fragaria"
     },
     {
       "id": 501,
@@ -2870,8 +2923,8 @@
       "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "17",
+      "tiendaNombre": "Fragaria"
     },
     {
       "id": 502,
@@ -2883,12 +2936,12 @@
       "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "17",
+      "tiendaNombre": "Fragaria"
     },
     {
       "id": 503,
-      "nombre": "",
+      "nombre": "NA",
       "descripcion": "",
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
@@ -2896,8 +2949,8 @@
       "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "17",
+      "tiendaNombre": "Fragaria"
     },
     {
       "id": 504,
