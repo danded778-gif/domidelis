@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-19-19",
-  "ultimaActualizacion": "2026-10-19T21:19:19.771Z",
+  "version": "v2026-10-19T21-19-52",
+  "ultimaActualizacion": "2026-10-19T21:19:52.324Z",
   "tiendas": [
     {
       "id": 1,
@@ -3110,7 +3110,7 @@
     {
       "id": 702,
       "nombre": "Ensalada de frutas",
-      "descripcion": "",
+      "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Roomies Barquillos y salsa",
       "precio": 0,
       "imagen_url": "",
       "badge": "",
