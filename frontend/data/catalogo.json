@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-21-12",
-  "ultimaActualizacion": "2026-10-19T21:21:12.365Z",
+  "version": "v2026-10-19T21-21-14",
+  "ultimaActualizacion": "2026-10-19T21:21:14.859Z",
   "tiendas": [
     {
       "id": 1,
@@ -3100,7 +3100,7 @@
       "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
       "precio": 16000,
       "imagen_url": "",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
