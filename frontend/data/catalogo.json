@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-24-36",
-  "ultimaActualizacion": "2026-10-19T22:24:36.209Z",
+  "version": "v2026-10-19T22-25-12",
+  "ultimaActualizacion": "2026-10-19T22:25:12.563Z",
   "tiendas": [
     {
       "id": 1,
@@ -5461,7 +5461,7 @@
       "id": 250,
       "id_producto": 702,
       "grupo": "Presentación",
-      "nombre": "bateado de mora",
+      "nombre": "Ensalada de frutas Sencilla",
       "precio": 0,
       "tipo": "",
       "max": 1,
