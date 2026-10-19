@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-35-08",
-  "ultimaActualizacion": "2026-10-19T21:35:08.852Z",
+  "version": "v2026-10-19T21-35-59",
+  "ultimaActualizacion": "2026-10-19T21:35:59.458Z",
   "tiendas": [
     {
       "id": 1,
@@ -5408,6 +5408,16 @@
       "min": 1
     },
     {
+      "id": 253,
+      "id_producto": 700,
+      "grupo": "",
+      "nombre": "fresa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
       "id": 250,
       "id_producto": 702,
       "grupo": "Presentación",
@@ -5436,16 +5446,6 @@
       "tipo": "",
       "max": 1,
       "min": 1
-    },
-    {
-      "id": 253,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
     }
   ]
 }
