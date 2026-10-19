@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-30-30",
-  "ultimaActualizacion": "2026-10-19T19:30:30.386Z",
+  "version": "v2026-10-19T19-30-53",
+  "ultimaActualizacion": "2026-10-19T19:30:53.909Z",
   "tiendas": [
     {
       "id": 1,
@@ -4893,7 +4893,7 @@
       "id": 236,
       "id_producto": 181,
       "grupo": "Presentación",
-      "nombre": "Alitas x 8",
+      "nombre": "1 Porcion",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -4903,7 +4903,7 @@
       "id": 237,
       "id_producto": 181,
       "grupo": "Presentación",
-      "nombre": "Alitas x16 Mediano",
+      "nombre": "",
       "precio": 17000,
       "tipo": "opcion",
       "max": 1,
