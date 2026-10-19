@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-20-01",
-  "ultimaActualizacion": "2026-10-19T20:20:01.584Z",
+  "version": "v2026-10-19T20-20-26",
+  "ultimaActualizacion": "2026-10-19T20:20:26.400Z",
   "tiendas": [
     {
       "id": 1,
@@ -1254,6 +1254,19 @@
           "descripcion": "Pollo, Costilla humada, Jamón Ranchera, Maduro, Carne desmechada, Maicito Verdura",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "12",
+          "tiendaNombre": "Mr Simon"
+        },
+        {
+          "id": 406,
+          "nombre": "Arroz Mr",
+          "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Arroz%20frito%20con%20salchicha%20en%20envase%20de%20espuma_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Menu",
           "cantidadTipo": "UND",
@@ -2906,12 +2919,12 @@
       "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Arroz%20frito%20con%20salchicha%20en%20envase%20de%20espuma_200kb.jpg",
-      "badge": "",
-      "categoria": "Otras",
+      "badge": "NUEVO",
+      "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "12",
+      "tiendaNombre": "Mr Simon"
     },
     {
       "id": 500,
@@ -5102,7 +5115,7 @@
     },
     {
       "id": 244,
-      "id_producto": "",
+      "id_producto": 406,
       "grupo": "",
       "nombre": "",
       "precio": 0,
