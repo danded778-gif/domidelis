@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-28-01",
-  "ultimaActualizacion": "2026-10-19T21:28:01.175Z",
+  "version": "v2026-10-19T21-32-49",
+  "ultimaActualizacion": "2026-10-19T21:32:49.440Z",
   "tiendas": [
     {
       "id": 1,
@@ -1664,7 +1664,7 @@
         },
         {
           "id": 704,
-          "nombre": "",
+          "nombre": "Banana Splitt",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "",
@@ -3201,7 +3201,7 @@
     },
     {
       "id": 704,
-      "nombre": "",
+      "nombre": "Banana Splitt",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
