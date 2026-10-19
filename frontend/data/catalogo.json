@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-41-14",
-  "ultimaActualizacion": "2026-10-19T19:41:14.419Z",
+  "version": "v2026-10-19T19-41-54",
+  "ultimaActualizacion": "2026-10-19T19:41:54.023Z",
   "tiendas": [
     {
       "id": 1,
@@ -1254,7 +1254,7 @@
           "descripcion": "",
           "precio": 25000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
-          "badge": "agotado",
+          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2840,7 +2840,7 @@
       "descripcion": "",
       "precio": 25000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
-      "badge": "agotado",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
