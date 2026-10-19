@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-34-06",
-  "ultimaActualizacion": "2026-10-19T21:34:06.441Z",
+  "version": "v2026-10-19T21-35-06",
+  "ultimaActualizacion": "2026-10-19T21:35:06.429Z",
   "tiendas": [
     {
       "id": 1,
@@ -1666,7 +1666,7 @@
           "id": 704,
           "nombre": "Banana Splitt",
           "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
-          "precio": 0,
+          "precio": 16000,
           "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Detalles",
@@ -3203,7 +3203,7 @@
       "id": 704,
       "nombre": "Banana Splitt",
       "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
-      "precio": 0,
+      "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Detalles",
@@ -5436,6 +5436,16 @@
       "tipo": "",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 253,
+      "id_producto": 700,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     }
   ]
 }
