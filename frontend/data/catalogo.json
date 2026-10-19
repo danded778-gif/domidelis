@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-26-48",
-  "ultimaActualizacion": "2026-10-19T22:26:48.048Z",
+  "version": "v2026-10-19T22-27-16",
+  "ultimaActualizacion": "2026-10-19T22:27:16.173Z",
   "tiendas": [
     {
       "id": 1,
@@ -5540,52 +5540,52 @@
     {
       "id": 266,
       "id_producto": 703,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
+      "grupo": "",
+      "nombre": "fresa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
     },
     {
       "id": 267,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
+      "id_producto": 703,
+      "grupo": "",
+      "nombre": "chocolate",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
     },
     {
       "id": 268,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
+      "id_producto": 703,
+      "grupo": "",
+      "nombre": "vainilla",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
     },
     {
       "id": 269,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
+      "id_producto": 703,
+      "grupo": "",
+      "nombre": "vainilla chips",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
     },
     {
       "id": 270,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Super",
-      "precio": 14000,
-      "tipo": "",
-      "max": 1,
-      "min": 1
+      "id_producto": 703,
+      "grupo": "",
+      "nombre": "bateado de mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
     },
     {
       "id": 271,
