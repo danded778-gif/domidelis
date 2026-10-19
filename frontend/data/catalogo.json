@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-58-14",
-  "ultimaActualizacion": "2026-10-19T21:58:14.699Z",
+  "version": "v2026-10-19T22-12-56",
+  "ultimaActualizacion": "2026-10-19T22:12:56.777Z",
   "tiendas": [
     {
       "id": 1,
@@ -1667,7 +1667,7 @@
           "nombre": "Banana Splitt",
           "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
           "precio": 16000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Banana%20Split%20Multicolor%20con%20Fresas%20y%20Caramelo_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
@@ -3204,7 +3204,7 @@
       "nombre": "Banana Splitt",
       "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
       "precio": 16000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Banana%20Split%20Multicolor%20con%20Fresas%20y%20Caramelo_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
