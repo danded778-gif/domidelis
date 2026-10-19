@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-20-23",
-  "ultimaActualizacion": "2026-10-19T21:20:23.548Z",
+  "version": "v2026-10-19T21-20-49",
+  "ultimaActualizacion": "2026-10-19T21:20:49.044Z",
   "tiendas": [
     {
       "id": 1,
@@ -3085,7 +3085,7 @@
       "id": 700,
       "nombre": "Copa Frutimix",
       "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazn Cereza Chantilly Salsa Y barquillos",
-      "precio": 0,
+      "precio": 17000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3098,7 +3098,7 @@
       "id": 701,
       "nombre": "Copa Queso",
       "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
-      "precio": 0,
+      "precio": 16000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3111,7 +3111,7 @@
       "id": 702,
       "nombre": "Ensalada de frutas",
       "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
-      "precio": 0,
+      "precio": 16000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
