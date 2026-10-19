@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-39-05",
-  "ultimaActualizacion": "2026-10-19T19:39:05.695Z",
+  "version": "v2026-10-19T19-39-42",
+  "ultimaActualizacion": "2026-10-19T19:39:42.695Z",
   "tiendas": [
     {
       "id": 1,
@@ -1250,7 +1250,7 @@
         },
         {
           "id": 405,
-          "nombre": "arroz",
+          "nombre": "Arroz Mexicano",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
@@ -2836,7 +2836,7 @@
     },
     {
       "id": 405,
-      "nombre": "arroz",
+      "nombre": "Arroz Mexicano",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
@@ -4942,7 +4942,7 @@
     {
       "id": 241,
       "id_producto": 405,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "",
       "precio": 0,
       "tipo": "",
@@ -4952,7 +4952,7 @@
     {
       "id": 242,
       "id_producto": 405,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "",
       "precio": 0,
       "tipo": "",
@@ -4962,7 +4962,7 @@
     {
       "id": 243,
       "id_producto": 405,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "",
       "precio": 0,
       "tipo": "",
