@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-48-10",
-  "ultimaActualizacion": "2026-10-19T21:48:10.291Z",
+  "version": "v2026-10-19T21-56-13",
+  "ultimaActualizacion": "2026-10-19T21:56:13.145Z",
   "tiendas": [
     {
       "id": 1,
@@ -1606,7 +1606,7 @@
       "direccion": "Carrera 49 #41-51 Parque principal",
       "horario": "{\"mon\":\"06:00 - 19:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/lunacremosa/Fachada%20colorida%20de%20Luna%20Cremosa_200kb.jpg",
       "promovida": 0,
       "activo": true,
       "productos": [
