@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-26-45",
-  "ultimaActualizacion": "2026-10-19T22:26:45.216Z",
+  "version": "v2026-10-19T22-26-48",
+  "ultimaActualizacion": "2026-10-19T22:26:48.048Z",
   "tiendas": [
     {
       "id": 1,
@@ -5539,7 +5539,7 @@
     },
     {
       "id": 266,
-      "id_producto": 702,
+      "id_producto": 703,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas Super",
       "precio": 14000,
