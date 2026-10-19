@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-45-39",
-  "ultimaActualizacion": "2026-10-19T21:45:39.585Z",
+  "version": "v2026-10-19T21-48-10",
+  "ultimaActualizacion": "2026-10-19T21:48:10.291Z",
   "tiendas": [
     {
       "id": 1,
@@ -1639,7 +1639,7 @@
         {
           "id": 702,
           "nombre": "Ensalada de frutas",
-          "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
+          "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
           "precio": 16000,
           "imagen_url": "",
           "badge": "NUEVO",
@@ -3176,7 +3176,7 @@
     {
       "id": 702,
       "nombre": "Ensalada de frutas",
-      "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
+      "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
       "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
