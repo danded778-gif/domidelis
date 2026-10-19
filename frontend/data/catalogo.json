@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-40-20",
-  "ultimaActualizacion": "2026-10-19T20:40:20.684Z",
+  "version": "v2026-10-19T20-45-53",
+  "ultimaActualizacion": "2026-10-19T20:45:53.484Z",
   "tiendas": [
     {
       "id": 1,
@@ -1604,6 +1604,18 @@
       "nombre": "Luna Cremosa",
       "descripcion": "Copas de diferentes sabores",
       "direccion": "Carrera 49 #41-51 Parque principal",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
+    },
+    {
+      "id": 20,
+      "nombre": "Kiosko la Judea",
+      "descripcion": "La judea",
+      "direccion": "La judea",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
