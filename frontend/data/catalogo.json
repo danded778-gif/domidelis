@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-33-51",
-  "ultimaActualizacion": "2026-10-19T19:33:51.813Z",
+  "version": "v2026-10-19T19-34-18",
+  "ultimaActualizacion": "2026-10-19T19:34:18.551Z",
   "tiendas": [
     {
       "id": 1,
@@ -4918,6 +4918,16 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 239,
+      "id_producto": 182,
+      "grupo": "Presentación",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     }
   ]
 }
