@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-29-23",
-  "ultimaActualizacion": "2026-10-19T22:29:23.326Z",
+  "version": "v2026-10-19T22-29-49",
+  "ultimaActualizacion": "2026-10-19T22:29:49.624Z",
   "tiendas": [
     {
       "id": 1,
@@ -5589,7 +5589,7 @@
     },
     {
       "id": 271,
-      "id_producto": 703,
+      "id_producto": 704,
       "grupo": "",
       "nombre": "fresa",
       "precio": 0,
