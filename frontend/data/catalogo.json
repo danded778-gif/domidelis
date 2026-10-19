@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-31-32",
-  "ultimaActualizacion": "2026-10-19T19:31:32.496Z",
+  "version": "v2026-10-19T19-32-07",
+  "ultimaActualizacion": "2026-10-19T19:32:07.300Z",
   "tiendas": [
     {
       "id": 1,
@@ -1225,7 +1225,7 @@
         {
           "id": 181,
           "nombre": "Oriental Grande",
-          "descripcion": "4 - 5 porciones.",
+          "descripcion": "1 Porcion",
           "precio": 60000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
           "badge": "Disponible",
@@ -2460,7 +2460,7 @@
     {
       "id": 181,
       "nombre": "Oriental Grande",
-      "descripcion": "4 - 5 porciones.",
+      "descripcion": "1 Porcion",
       "precio": 60000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
       "badge": "Disponible",
@@ -4903,7 +4903,7 @@
       "id": 237,
       "id_producto": 181,
       "grupo": "Presentación",
-      "nombre": "",
+      "nombre": "1-2 Porcion",
       "precio": 17000,
       "tipo": "opcion",
       "max": 1,
@@ -4913,7 +4913,7 @@
       "id": 238,
       "id_producto": 181,
       "grupo": "Presentación",
-      "nombre": "Alitas x24 Grande",
+      "nombre": "4-5 Porcion",
       "precio": 29000,
       "tipo": "opcion",
       "max": 1,
