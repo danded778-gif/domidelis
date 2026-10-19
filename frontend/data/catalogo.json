@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-25-31",
-  "ultimaActualizacion": "2026-10-19T21:25:31.925Z",
+  "version": "v2026-10-19T21-26-21",
+  "ultimaActualizacion": "2026-10-19T21:26:21.090Z",
   "tiendas": [
     {
       "id": 1,
@@ -5404,6 +5404,36 @@
       "nombre": "4-5 Porcion",
       "precio": 30000,
       "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 250,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Sencilla",
+      "precio": 0,
+      "tipo": "",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 251,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas especial",
+      "precio": 7000,
+      "tipo": "",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 252,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
+      "tipo": "",
       "max": 1,
       "min": 1
     }
