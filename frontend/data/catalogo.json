@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-18T22-58-15",
-  "ultimaActualizacion": "2026-10-18T22:58:15.507Z",
+  "version": "v2026-10-19T19-07-20",
+  "ultimaActualizacion": "2026-10-19T19:07:20.712Z",
   "tiendas": [
     {
       "id": 1,
@@ -1243,6 +1243,19 @@
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/shosuet_200KB.png",
           "badge": "Disponible",
           "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "12",
+          "tiendaNombre": "Mr Simon"
+        },
+        {
+          "id": 405,
+          "nombre": "arroz",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
+          "badge": "agotado",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "12",
@@ -2820,6 +2833,19 @@
       "activo": true,
       "tiendaId": "15",
       "tiendaNombre": "J.C Delicias"
+    },
+    {
+      "id": 405,
+      "nombre": "arroz",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Recipiente%20con%20arroz_comprimido.png",
+      "badge": "agotado",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "12",
+      "tiendaNombre": "Mr Simon"
     }
   ],
   "complementosGlobal": [
