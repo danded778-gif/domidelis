@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T19-35-22",
-  "ultimaActualizacion": "2026-10-19T19:35:22.473Z",
+  "version": "v2026-10-19T19-35-26",
+  "ultimaActualizacion": "2026-10-19T19:35:26.973Z",
   "tiendas": [
     {
       "id": 1,
@@ -4936,7 +4936,7 @@
       "nombre": "1-2 Porcion",
       "precio": 10000,
       "tipo": "",
-      "max": null,
+      "max": 1,
       "min": 1
     }
   ]
