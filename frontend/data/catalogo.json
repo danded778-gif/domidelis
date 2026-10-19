@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-38-28",
-  "ultimaActualizacion": "2026-10-19T20:38:28.872Z",
+  "version": "v2026-10-19T20-38-48",
+  "ultimaActualizacion": "2026-10-19T20:38:48.548Z",
   "tiendas": [
     {
       "id": 1,
@@ -1459,7 +1459,7 @@
     {
       "id": 17,
       "nombre": "Fragaria",
-      "descripcion": "",
+      "descripcion": "Detalles para disfrutar",
       "direccion": "Parque la Judea",
       "horario": "{\"mon\":\"15:00-19:00\",\"tue\":\"15:00-19:00\",\"wed\":\"15:00-19:00\",\"thu\":\"15:00-19:00\",\"fri\":\"15:00-19:00\",\"sat\":\"15:00-19:00\",\"sun\":\"15:00-19:00\"}",
       "rating": 5,
