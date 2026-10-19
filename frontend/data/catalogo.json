@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-12-56",
-  "ultimaActualizacion": "2026-10-19T22:12:56.777Z",
+  "version": "v2026-10-19T22-13-58",
+  "ultimaActualizacion": "2026-10-19T22:13:58.802Z",
   "tiendas": [
     {
       "id": 1,
@@ -1628,7 +1628,7 @@
           "nombre": "Copa Queso",
           "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
           "precio": 16000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20de%20caramelo%20con%20cereza%20y%20obleas_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
@@ -3165,7 +3165,7 @@
       "nombre": "Copa Queso",
       "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
       "precio": 16000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20de%20caramelo%20con%20cereza%20y%20obleas_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
