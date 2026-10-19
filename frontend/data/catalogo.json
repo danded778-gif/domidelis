@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-22-25",
-  "ultimaActualizacion": "2026-10-19T20:22:25.689Z",
+  "version": "v2026-10-19T20-24-20",
+  "ultimaActualizacion": "2026-10-19T20:24:20.371Z",
   "tiendas": [
     {
       "id": 1,
@@ -1224,7 +1224,7 @@
         },
         {
           "id": 181,
-          "nombre": "Oriental Grande",
+          "nombre": "Arroz Oriental",
           "descripcion": "1 Porcion",
           "precio": 25000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
@@ -2525,7 +2525,7 @@
     },
     {
       "id": 181,
-      "nombre": "Oriental Grande",
+      "nombre": "Arroz Oriental",
       "descripcion": "1 Porcion",
       "precio": 25000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/mr%20simon/oriental_grande_50KB.png",
