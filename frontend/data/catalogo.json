@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-47-05",
-  "ultimaActualizacion": "2026-10-19T20:47:05.064Z",
+  "version": "v2026-10-19T20-52-28",
+  "ultimaActualizacion": "2026-10-19T20:52:28.866Z",
   "tiendas": [
     {
       "id": 1,
@@ -1203,7 +1203,7 @@
       "nombre": "Mr Simon",
       "descripcion": "Arroz al wok -",
       "direccion": "el santuario",
-      "horario": "{\"mon\":\"11:00-19:00\",\"tue\":\"11:00-19:00\",\"wed\":\"11:00-19:00\",\"thu\":\"11:00-19:00\",\"fri\":\"11:00-19:00\",\"sat\":\"11:00-19:00\",\"sun\":\"11:00-19:00\"}",
+      "horario": "{\"mon\":\"11:30-20:00\",\"tue\":\"11:30-20:00\",\"wed\":\"11:30-20:00\",\"thu\":\"11:30-20:00\",\"fri\":\"11:30-21:00\",\"sat\":\"11:30-21:00\",\"sun\":\"11:30-20:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/mr%20simon/mrsimon_201kb.jpg",
       "promovida": 0,
@@ -3031,6 +3031,58 @@
     },
     {
       "id": 601,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 602,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 603,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 604,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 605,
       "nombre": "",
       "descripcion": "",
       "precio": 0,
