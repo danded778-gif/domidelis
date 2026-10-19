@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-38-48",
-  "ultimaActualizacion": "2026-10-19T20:38:48.548Z",
+  "version": "v2026-10-19T20-40-20",
+  "ultimaActualizacion": "2026-10-19T20:40:20.684Z",
   "tiendas": [
     {
       "id": 1,
@@ -1461,7 +1461,7 @@
       "nombre": "Fragaria",
       "descripcion": "Detalles para disfrutar",
       "direccion": "Parque la Judea",
-      "horario": "{\"mon\":\"15:00-19:00\",\"tue\":\"15:00-19:00\",\"wed\":\"15:00-19:00\",\"thu\":\"15:00-19:00\",\"fri\":\"15:00-19:00\",\"sat\":\"15:00-19:00\",\"sun\":\"15:00-19:00\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"15:00-19:00\",\"wed\":\"15:00-19:00\",\"thu\":\"15:00-19:00\",\"fri\":\"15:00-19:00\",\"sat\":\"15:00-19:00\",\"sun\":\"15:00-19:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/fragaria/Carrito%20rosa%20de%20fresas%20con%20crema.png",
       "promovida": 1,
