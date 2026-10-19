@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-26-22",
-  "ultimaActualizacion": "2026-10-19T22:26:22.544Z",
+  "version": "v2026-10-19T22-26-45",
+  "ultimaActualizacion": "2026-10-19T22:26:45.216Z",
   "tiendas": [
     {
       "id": 1,
@@ -5539,53 +5539,53 @@
     },
     {
       "id": 266,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 267,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 268,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 269,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 270,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 702,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Super",
+      "precio": 14000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 271,
