@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-21-49",
-  "ultimaActualizacion": "2026-10-19T21:21:49.511Z",
+  "version": "v2026-10-19T21-21-52",
+  "ultimaActualizacion": "2026-10-19T21:21:52.855Z",
   "tiendas": [
     {
       "id": 1,
@@ -1630,7 +1630,7 @@
           "precio": 16000,
           "imagen_url": "",
           "badge": "NUEVO",
-          "categoria": "DetallesDetalles",
+          "categoria": "Detalles",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "19",
@@ -3167,7 +3167,7 @@
       "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "DetallesDetalles",
+      "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "19",
