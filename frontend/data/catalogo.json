@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-21-17",
-  "ultimaActualizacion": "2026-10-19T21:21:17.992Z",
+  "version": "v2026-10-19T21-21-22",
+  "ultimaActualizacion": "2026-10-19T21:21:22.138Z",
   "tiendas": [
     {
       "id": 1,
@@ -3035,7 +3035,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "NUEVONUEVO",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
@@ -3139,7 +3139,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
