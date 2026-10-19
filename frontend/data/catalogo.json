@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-21-14",
-  "ultimaActualizacion": "2026-10-19T21:21:14.859Z",
+  "version": "v2026-10-19T21-21-17",
+  "ultimaActualizacion": "2026-10-19T21:21:17.992Z",
   "tiendas": [
     {
       "id": 1,
@@ -3113,7 +3113,7 @@
       "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Rumis Barquillos y salsa",
       "precio": 16000,
       "imagen_url": "",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
@@ -3126,7 +3126,7 @@
       "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
       "precio": 20000,
       "imagen_url": "",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
