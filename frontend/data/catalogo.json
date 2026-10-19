@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-27-16",
-  "ultimaActualizacion": "2026-10-19T22:27:16.173Z",
+  "version": "v2026-10-19T22-27-41",
+  "ultimaActualizacion": "2026-10-19T22:27:41.075Z",
   "tiendas": [
     {
       "id": 1,
@@ -5544,8 +5544,8 @@
       "nombre": "fresa",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 2
+      "max": 1,
+      "min": 1
     },
     {
       "id": 267,
@@ -5554,8 +5554,8 @@
       "nombre": "chocolate",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 2
+      "max": 1,
+      "min": 1
     },
     {
       "id": 268,
@@ -5564,8 +5564,8 @@
       "nombre": "vainilla",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 2
+      "max": 1,
+      "min": 1
     },
     {
       "id": 269,
@@ -5574,8 +5574,8 @@
       "nombre": "vainilla chips",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 2
+      "max": 1,
+      "min": 1
     },
     {
       "id": 270,
@@ -5584,8 +5584,8 @@
       "nombre": "bateado de mora",
       "precio": 0,
       "tipo": "opcion",
-      "max": 2,
-      "min": 2
+      "max": 1,
+      "min": 1
     },
     {
       "id": 271,
