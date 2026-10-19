@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-31-45",
-  "ultimaActualizacion": "2026-10-19T20:31:45.379Z",
+  "version": "v2026-10-19T20-33-05",
+  "ultimaActualizacion": "2026-10-19T20:33:05.952Z",
   "tiendas": [
     {
       "id": 1,
@@ -1276,8 +1276,8 @@
         },
         {
           "id": 407,
-          "nombre": "Arroz Mr",
-          "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
+          "nombre": "Arroz  Miami",
+          "descripcion": "Pollo, Tocineta, Carne Miami, Jamón, Cerdo, Maicito.",
           "precio": 20000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Envase%20de%20espuma%20con%20arroz%20chaufa_200kb.jpg",
           "badge": "NUEVO",
@@ -2941,8 +2941,8 @@
     },
     {
       "id": 407,
-      "nombre": "Arroz Mr",
-      "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
+      "nombre": "Arroz  Miami",
+      "descripcion": "Pollo, Tocineta, Carne Miami, Jamón, Cerdo, Maicito.",
       "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Envase%20de%20espuma%20con%20arroz%20chaufa_200kb.jpg",
       "badge": "NUEVO",
