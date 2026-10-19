@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T21-27-10",
-  "ultimaActualizacion": "2026-10-19T21:27:10.426Z",
+  "version": "v2026-10-19T21-28-01",
+  "ultimaActualizacion": "2026-10-19T21:28:01.175Z",
   "tiendas": [
     {
       "id": 1,
@@ -1613,7 +1613,7 @@
         {
           "id": 700,
           "nombre": "Copa Frutimix",
-          "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazn Cereza Chantilly Salsa Y barquillos",
+          "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
           "precio": 17000,
           "imagen_url": "",
           "badge": "NUEVO",
@@ -3150,7 +3150,7 @@
     {
       "id": 700,
       "nombre": "Copa Frutimix",
-      "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazn Cereza Chantilly Salsa Y barquillos",
+      "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
       "precio": 17000,
       "imagen_url": "",
       "badge": "NUEVO",
