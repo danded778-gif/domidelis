@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-25-15",
-  "ultimaActualizacion": "2026-10-19T22:25:15.392Z",
+  "version": "v2026-10-19T22-25-44",
+  "ultimaActualizacion": "2026-10-19T22:25:44.013Z",
   "tiendas": [
     {
       "id": 1,
@@ -5458,7 +5458,57 @@
       "min": 2
     },
     {
-      "id": 250,
+      "id": 258,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "fresa",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 259,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "chocolate",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 260,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "vainilla",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 261,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "vainilla chips",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 262,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "bateado de mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 263,
       "id_producto": 702,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas Sencilla",
@@ -5468,7 +5518,7 @@
       "min": 1
     },
     {
-      "id": 251,
+      "id": 264,
       "id_producto": 702,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas especial",
@@ -5478,7 +5528,7 @@
       "min": 1
     },
     {
-      "id": 252,
+      "id": 265,
       "id_producto": 702,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas Super",
