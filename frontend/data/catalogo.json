@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-35-53",
-  "ultimaActualizacion": "2026-10-19T20:35:53.982Z",
+  "version": "v2026-10-19T20-36-28",
+  "ultimaActualizacion": "2026-10-19T20:36:28.840Z",
   "tiendas": [
     {
       "id": 1,
@@ -1470,7 +1470,7 @@
         {
           "id": 500,
           "nombre": "NA",
-          "descripcion": "Granizado de mango viche",
+          "descripcion": "Granizado de Mango Biche",
           "precio": 10000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
           "badge": "NUEVO",
@@ -1483,7 +1483,7 @@
         {
           "id": 501,
           "nombre": "NA",
-          "descripcion": "",
+          "descripcion": "Gomitas Enchiladas",
           "precio": 10000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
           "badge": "NUEVO",
@@ -2955,7 +2955,7 @@
     {
       "id": 500,
       "nombre": "NA",
-      "descripcion": "Granizado de mango viche",
+      "descripcion": "Granizado de Mango Biche",
       "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
       "badge": "NUEVO",
@@ -2968,7 +2968,7 @@
     {
       "id": 501,
       "nombre": "NA",
-      "descripcion": "",
+      "descripcion": "Gomitas Enchiladas",
       "precio": 10000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
       "badge": "NUEVO",
