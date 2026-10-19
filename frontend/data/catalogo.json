@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-07-02",
-  "ultimaActualizacion": "2026-10-19T20:07:02.971Z",
+  "version": "v2026-10-19T20-07-26",
+  "ultimaActualizacion": "2026-10-19T20:07:26.997Z",
   "tiendas": [
     {
       "id": 1,
@@ -2854,7 +2854,7 @@
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Refresco%20verde%20con%20fruta%20y%20chile_200kb.jpg",
       "badge": "agotado",
-      "categoria": "Otras",
+      "categoria": "DetallesDetalles",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "",
@@ -2867,7 +2867,7 @@
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20Gomitas%20con%20Chile_200kb.jpg",
       "badge": "agotado",
-      "categoria": "Otras",
+      "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "",
