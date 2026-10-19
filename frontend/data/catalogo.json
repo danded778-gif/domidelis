@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T20-21-05",
-  "ultimaActualizacion": "2026-10-19T20:21:05.924Z",
+  "version": "v2026-10-19T20-21-38",
+  "ultimaActualizacion": "2026-10-19T20:21:38.273Z",
   "tiendas": [
     {
       "id": 1,
@@ -1265,7 +1265,7 @@
           "id": 406,
           "nombre": "Arroz Mr",
           "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
-          "precio": 0,
+          "precio": 20000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Arroz%20frito%20con%20salchicha%20en%20envase%20de%20espuma_200kb.jpg",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2917,7 +2917,7 @@
       "id": 406,
       "nombre": "Arroz Mr",
       "descripcion": "Pollo chorizo jamón ranchera chicharrón raíces chinas verduras",
-      "precio": 0,
+      "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/mr%20simon/Arroz%20frito%20con%20salchicha%20en%20envase%20de%20espuma_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Menu",
@@ -5119,6 +5119,26 @@
       "grupo": "Presentación",
       "nombre": "1 Porcion",
       "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 245,
+      "id_producto": 406,
+      "grupo": "Presentación",
+      "nombre": "1-2 Porcion",
+      "precio": 20000,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 246,
+      "id_producto": 406,
+      "grupo": "Presentación",
+      "nombre": "4-5 Porcion",
+      "precio": 35000,
       "tipo": "opcion",
       "max": 1,
       "min": 1
