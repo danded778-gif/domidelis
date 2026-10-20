@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-19T22-36-31",
-  "ultimaActualizacion": "2026-10-19T22:36:31.528Z",
+  "version": "v2026-10-20T04-57-11",
+  "ultimaActualizacion": "2026-10-20T04:57:11.898Z",
   "tiendas": [
     {
       "id": 1,
@@ -1094,11 +1094,11 @@
         },
         {
           "id": 188,
-          "nombre": "Prueba 2",
-          "descripcion": "Prueba 2",
-          "precio": 0,
+          "nombre": "Descuentos",
+          "descripcion": "Las Promociones Son Mis Favoritas",
+          "precio": 35000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
-          "badge": "mantenimiento",
+          "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2707,11 +2707,11 @@
     },
     {
       "id": 188,
-      "nombre": "Prueba 2",
-      "descripcion": "Prueba 2",
-      "precio": 0,
+      "nombre": "Descuentos",
+      "descripcion": "Las Promociones Son Mis Favoritas",
+      "precio": 35000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
-      "badge": "mantenimiento",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
