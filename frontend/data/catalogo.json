@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-20T05-00-53",
-  "ultimaActualizacion": "2026-10-20T05:00:53.566Z",
+  "version": "v2026-10-20T18-25-07",
+  "ultimaActualizacion": "2026-10-20T18:25:07.181Z",
   "tiendas": [
     {
       "id": 1,
@@ -1206,7 +1206,7 @@
       "horario": "{\"mon\":\"11:30-20:00\",\"tue\":\"11:30-20:00\",\"wed\":\"11:30-20:00\",\"thu\":\"11:30-20:00\",\"fri\":\"11:30-21:00\",\"sat\":\"11:30-21:00\",\"sun\":\"11:30-20:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/mr%20simon/mrsimon_201kb.jpg",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": [
         {
