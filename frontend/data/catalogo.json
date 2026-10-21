@@ -1,85 +1,7 @@
 {
-  "version": "v2026-10-21T04-10-06",
-  "ultimaActualizacion": "2026-10-21T04:10:06.430Z",
+  "version": "v2026-10-21T04-11-28",
+  "ultimaActualizacion": "2026-10-21T04:11:28.078Z",
   "tiendas": [
-    {
-      "id": 20,
-      "nombre": "Kiosko la Judea",
-      "descripcion": "La judea",
-      "direccion": "P. La judea",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/kioskojudea/Plaza%20urbana%20con%20pabell%C3%B3n%20y%20visitantes_200kb.jpg",
-      "promovida": 1,
-      "activo": true,
-      "productos": [
-        {
-          "id": 600,
-          "nombre": "Granizados",
-          "descripcion": "Granizados de café o milo con sus respectivas adiciones",
-          "precio": 15000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "20",
-          "tiendaNombre": "Kiosko la Judea"
-        },
-        {
-          "id": 601,
-          "nombre": "Granizados",
-          "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
-          "precio": 15000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Licores",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "20",
-          "tiendaNombre": "Kiosko la Judea"
-        },
-        {
-          "id": 602,
-          "nombre": "Salchipapa",
-          "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
-          "precio": 20000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "20",
-          "tiendaNombre": "Kiosko la Judea"
-        },
-        {
-          "id": 603,
-          "nombre": "Costillas",
-          "descripcion": "Costillas 250 g de costilla en salsa barbecue Ensalada Papas a la francesa",
-          "precio": 28000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "20",
-          "tiendaNombre": "Kiosko la Judea"
-        },
-        {
-          "id": 604,
-          "nombre": "Cazuela de Frijoles",
-          "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
-          "precio": 30000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "20",
-          "tiendaNombre": "Kiosko la Judea"
-        }
-      ]
-    },
     {
       "id": 1,
       "nombre": "Domi Delis",
@@ -1378,6 +1300,84 @@
       "promovida": 0,
       "activo": true,
       "productos": []
+    },
+    {
+      "id": 20,
+      "nombre": "Kiosko la Judea",
+      "descripcion": "La judea",
+      "direccion": "P. La judea",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/kioskojudea/Plaza%20urbana%20con%20pabell%C3%B3n%20y%20visitantes_200kb.jpg",
+      "promovida": 1,
+      "activo": true,
+      "productos": [
+        {
+          "id": 600,
+          "nombre": "Granizados",
+          "descripcion": "Granizados de café o milo con sus respectivas adiciones",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 601,
+          "nombre": "Granizados",
+          "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 602,
+          "nombre": "Salchipapa",
+          "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 603,
+          "nombre": "Costillas",
+          "descripcion": "Costillas 250 g de costilla en salsa barbecue Ensalada Papas a la francesa",
+          "precio": 28000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 604,
+          "nombre": "Cazuela de Frijoles",
+          "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        }
+      ]
     },
     {
       "id": 14,
