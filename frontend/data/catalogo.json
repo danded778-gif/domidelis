@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-19-43",
-  "ultimaActualizacion": "2026-10-21T03:19:43.272Z",
+  "version": "v2026-10-21T03-20-15",
+  "ultimaActualizacion": "2026-10-21T03:20:15.943Z",
   "tiendas": [
     {
       "id": 1,
@@ -3085,8 +3085,8 @@
     {
       "id": 600,
       "nombre": "",
-      "descripcion": "Granizados de caféomillo con sus respectivas adiciones",
-      "precio": 0,
+      "descripcion": "Granizados de café o milo con sus respectivas adiciones",
+      "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
