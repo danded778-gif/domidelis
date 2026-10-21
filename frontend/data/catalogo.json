@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-20T18-25-07",
-  "ultimaActualizacion": "2026-10-20T18:25:07.181Z",
+  "version": "v2026-10-21T03-15-32",
+  "ultimaActualizacion": "2026-10-21T03:15:32.324Z",
   "tiendas": [
     {
       "id": 1,
@@ -3087,7 +3087,7 @@
       "nombre": "",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "Collage de dulces y bebidas Kiosko_200kb.jpg (1254×1254)",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
