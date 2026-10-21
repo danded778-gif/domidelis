@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-28-02",
-  "ultimaActualizacion": "2026-10-21T03:28:02.881Z",
+  "version": "v2026-10-21T03-28-30",
+  "ultimaActualizacion": "2026-10-21T03:28:30.212Z",
   "tiendas": [
     {
       "id": 1,
@@ -1617,7 +1617,7 @@
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
           "badge": "NUEVO",
-          "categoria": "Menu",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "18",
@@ -3167,7 +3167,7 @@
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
       "badge": "NUEVO",
-      "categoria": "Menu",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "18",
