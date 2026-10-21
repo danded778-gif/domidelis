@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-28-30",
-  "ultimaActualizacion": "2026-10-21T03:28:30.212Z",
+  "version": "v2026-10-21T03-28-32",
+  "ultimaActualizacion": "2026-10-21T03:28:32.452Z",
   "tiendas": [
     {
       "id": 1,
@@ -1604,7 +1604,7 @@
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "Licores",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "18",
@@ -3154,7 +3154,7 @@
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Licores",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "18",
