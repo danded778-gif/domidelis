@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-21-50",
-  "ultimaActualizacion": "2026-10-21T03:21:50.927Z",
+  "version": "v2026-10-21T03-22-13",
+  "ultimaActualizacion": "2026-10-21T03:22:13.540Z",
   "tiendas": [
     {
       "id": 1,
@@ -3098,7 +3098,7 @@
     {
       "id": 601,
       "nombre": "Granizados",
-      "descripcion": "Granizado",
+      "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
       "badge": "NUEVO",
