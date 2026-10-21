@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T04-11-30",
-  "ultimaActualizacion": "2026-10-21T04:11:30.805Z",
+  "version": "v2026-10-21T16-13-00",
+  "ultimaActualizacion": "2026-10-21T16:13:00.341Z",
   "tiendas": [
     {
       "id": 1,
@@ -1070,8 +1070,8 @@
     },
     {
       "id": 10,
-      "nombre": "Fresas Con Crema",
-      "descripcion": "promociones",
+      "nombre": "Mantenimiento",
+      "descripcion": "(oculto)",
       "direccion": "calle 41 número 5232",
       "horario": "{\"mon\":\"23:00 - 00:00\",\"tue\":\"00:00 - 05:00\",\"wed\":\"00:00 - 05:00\",\"thu\":\"00:00 - 05:59\",\"fri\":\"14:00 - 23:30\",\"sat\":\"00:00 - 05:59\",\"sun\":\"00:00 - 05:59\"}",
       "rating": 1,
@@ -1090,7 +1090,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "10",
-          "tiendaNombre": "Fresas Con Crema"
+          "tiendaNombre": "Mantenimiento"
         },
         {
           "id": 188,
@@ -1103,7 +1103,7 @@
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "10",
-          "tiendaNombre": "Fresas Con Crema"
+          "tiendaNombre": "Mantenimiento"
         }
       ]
     },
@@ -2535,7 +2535,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "10",
-      "tiendaNombre": "Fresas Con Crema"
+      "tiendaNombre": "Mantenimiento"
     },
     {
       "id": 170,
@@ -2782,7 +2782,7 @@
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "10",
-      "tiendaNombre": "Fresas Con Crema"
+      "tiendaNombre": "Mantenimiento"
     },
     {
       "id": 189,
