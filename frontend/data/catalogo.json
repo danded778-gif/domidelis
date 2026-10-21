@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T04-11-28",
-  "ultimaActualizacion": "2026-10-21T04:11:28.078Z",
+  "version": "v2026-10-21T04-11-30",
+  "ultimaActualizacion": "2026-10-21T04:11:30.805Z",
   "tiendas": [
     {
       "id": 1,
@@ -1290,18 +1290,6 @@
       ]
     },
     {
-      "id": 13,
-      "nombre": "Monte Santo",
-      "descripcion": "",
-      "direccion": "el santuario",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
-      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/monte%20santo/los%20grillos.png",
-      "promovida": 0,
-      "activo": true,
-      "productos": []
-    },
-    {
       "id": 20,
       "nombre": "Kiosko la Judea",
       "descripcion": "La judea",
@@ -1378,6 +1366,18 @@
           "tiendaNombre": "Kiosko la Judea"
         }
       ]
+    },
+    {
+      "id": 13,
+      "nombre": "Monte Santo",
+      "descripcion": "",
+      "direccion": "el santuario",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@refs/heads/main/monte%20santo/los%20grillos.png",
+      "promovida": 0,
+      "activo": true,
+      "productos": []
     },
     {
       "id": 14,
