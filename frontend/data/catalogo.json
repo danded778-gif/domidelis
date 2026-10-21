@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-17-55",
-  "ultimaActualizacion": "2026-10-21T03:17:55.645Z",
+  "version": "v2026-10-21T03-19-43",
+  "ultimaActualizacion": "2026-10-21T03:19:43.272Z",
   "tiendas": [
     {
       "id": 1,
@@ -3085,7 +3085,7 @@
     {
       "id": 600,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "Granizados de caféomillo con sus respectivas adiciones",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
       "badge": "NUEVO",
@@ -3139,7 +3139,7 @@
       "nombre": "",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
