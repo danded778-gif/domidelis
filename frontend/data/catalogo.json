@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-27-17",
-  "ultimaActualizacion": "2026-10-21T03:27:17.564Z",
+  "version": "v2026-10-21T03-27-20",
+  "ultimaActualizacion": "2026-10-21T03:27:20.728Z",
   "tiendas": [
     {
       "id": 1,
@@ -1609,6 +1609,19 @@
           "activo": true,
           "tiendaId": "18",
           "tiendaNombre": "Don perro"
+        },
+        {
+          "id": 601,
+          "nombre": "Granizados",
+          "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "18",
+          "tiendaNombre": "Don perro"
         }
       ]
     },
@@ -3118,8 +3131,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "18",
+      "tiendaNombre": "Don perro"
     },
     {
       "id": 602,
