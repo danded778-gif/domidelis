@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-20-48",
-  "ultimaActualizacion": "2026-10-21T03:20:48.137Z",
+  "version": "v2026-10-21T03-21-48",
+  "ultimaActualizacion": "2026-10-21T03:21:48.156Z",
   "tiendas": [
     {
       "id": 1,
@@ -3097,8 +3097,8 @@
     },
     {
       "id": 601,
-      "nombre": "",
-      "descripcion": "",
+      "nombre": "Granizados",
+      "descripcion": "Granizado",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
       "badge": "NUEVO",
