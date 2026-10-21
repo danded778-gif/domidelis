@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-27-20",
-  "ultimaActualizacion": "2026-10-21T03:27:20.728Z",
+  "version": "v2026-10-21T03-27-23",
+  "ultimaActualizacion": "2026-10-21T03:27:23.131Z",
   "tiendas": [
     {
       "id": 1,
@@ -1622,6 +1622,19 @@
           "activo": true,
           "tiendaId": "18",
           "tiendaNombre": "Don perro"
+        },
+        {
+          "id": 602,
+          "nombre": "Salchipapa",
+          "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "18",
+          "tiendaNombre": "Don perro"
         }
       ]
     },
@@ -3144,8 +3157,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "18",
+      "tiendaNombre": "Don perro"
     },
     {
       "id": 603,
