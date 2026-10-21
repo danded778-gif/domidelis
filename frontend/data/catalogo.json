@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-29-09",
-  "ultimaActualizacion": "2026-10-21T03:29:09.402Z",
+  "version": "v2026-10-21T03-30-11",
+  "ultimaActualizacion": "2026-10-21T03:30:11.805Z",
   "tiendas": [
     {
       "id": 1,
@@ -1596,71 +1596,6 @@
           "activo": true,
           "tiendaId": "18",
           "tiendaNombre": "Don perro"
-        },
-        {
-          "id": 600,
-          "nombre": "Granizados",
-          "descripcion": "Granizados de café o milo con sus respectivas adiciones",
-          "precio": 15000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "18",
-          "tiendaNombre": "Don perro"
-        },
-        {
-          "id": 601,
-          "nombre": "Granizados",
-          "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
-          "precio": 15000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Licores",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "18",
-          "tiendaNombre": "Don perro"
-        },
-        {
-          "id": 602,
-          "nombre": "Salchipapa",
-          "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
-          "precio": 20000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "18",
-          "tiendaNombre": "Don perro"
-        },
-        {
-          "id": 603,
-          "nombre": "Costillas",
-          "descripcion": "Costillas 250 g de costilla en salsa barbecue Ensalada Papas a la francesa",
-          "precio": 28000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Menu",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "18",
-          "tiendaNombre": "Don perro"
-        },
-        {
-          "id": 604,
-          "nombre": "Cazuela de Frijoles",
-          "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
-          "precio": 30000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "18",
-          "tiendaNombre": "Don perro"
         }
       ]
     },
@@ -1752,7 +1687,73 @@
       "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 600,
+          "nombre": "Granizados",
+          "descripcion": "Granizados de café o milo con sus respectivas adiciones",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 601,
+          "nombre": "Granizados",
+          "descripcion": "Granizado Con o sin licor maracuyá tamarindo mangoviche manzana verde blueberry Ciresa",
+          "precio": 15000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Granizados%20coloridos%20con%20dulces%20y%20gomitas_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Licores",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 602,
+          "nombre": "Salchipapa",
+          "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 603,
+          "nombre": "Costillas",
+          "descripcion": "Costillas 250 g de costilla en salsa barbecue Ensalada Papas a la francesa",
+          "precio": 28000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        },
+        {
+          "id": 604,
+          "nombre": "Cazuela de Frijoles",
+          "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "20",
+          "tiendaNombre": "Kiosko la Judea"
+        }
+      ]
     }
   ],
   "productosGlobal": [
@@ -3157,8 +3158,8 @@
       "categoria": "Bebidas",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "18",
-      "tiendaNombre": "Don perro"
+      "tiendaId": "20",
+      "tiendaNombre": "Kiosko la Judea"
     },
     {
       "id": 601,
@@ -3170,8 +3171,8 @@
       "categoria": "Licores",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "18",
-      "tiendaNombre": "Don perro"
+      "tiendaId": "20",
+      "tiendaNombre": "Kiosko la Judea"
     },
     {
       "id": 602,
@@ -3183,8 +3184,8 @@
       "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "18",
-      "tiendaNombre": "Don perro"
+      "tiendaId": "20",
+      "tiendaNombre": "Kiosko la Judea"
     },
     {
       "id": 603,
@@ -3196,8 +3197,8 @@
       "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "18",
-      "tiendaNombre": "Don perro"
+      "tiendaId": "20",
+      "tiendaNombre": "Kiosko la Judea"
     },
     {
       "id": 604,
@@ -3209,8 +3210,8 @@
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "18",
-      "tiendaNombre": "Don perro"
+      "tiendaId": "20",
+      "tiendaNombre": "Kiosko la Judea"
     },
     {
       "id": 700,
