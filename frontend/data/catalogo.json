@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-25-42",
-  "ultimaActualizacion": "2026-10-21T03:25:42.756Z",
+  "version": "v2026-10-21T03-26-05",
+  "ultimaActualizacion": "2026-10-21T03:26:05.326Z",
   "tiendas": [
     {
       "id": 1,
@@ -3136,9 +3136,9 @@
     },
     {
       "id": 604,
-      "nombre": "",
+      "nombre": "Cazuela de Frijoles",
       "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
-      "precio": 0,
+      "precio": 30000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
