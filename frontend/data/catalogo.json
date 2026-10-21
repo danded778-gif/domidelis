@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-23-16",
-  "ultimaActualizacion": "2026-10-21T03:23:16.901Z",
+  "version": "v2026-10-21T03-24-00",
+  "ultimaActualizacion": "2026-10-21T03:24:00.999Z",
   "tiendas": [
     {
       "id": 1,
@@ -3111,7 +3111,7 @@
     {
       "id": 602,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "Papas salchichas tocinetas pollo salsa de piña salsa rosada queso costeño",
       "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
       "badge": "NUEVO",
@@ -3125,7 +3125,7 @@
       "id": 603,
       "nombre": "",
       "descripcion": "",
-      "precio": 0,
+      "precio": 28000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
