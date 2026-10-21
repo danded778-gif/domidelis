@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-27-23",
-  "ultimaActualizacion": "2026-10-21T03:27:23.131Z",
+  "version": "v2026-10-21T03-28-00",
+  "ultimaActualizacion": "2026-10-21T03:28:00.172Z",
   "tiendas": [
     {
       "id": 1,
@@ -1635,6 +1635,32 @@
           "activo": true,
           "tiendaId": "18",
           "tiendaNombre": "Don perro"
+        },
+        {
+          "id": 603,
+          "nombre": "Costillas",
+          "descripcion": "Costillas 250 g de costilla en salsa barbecue Ensalada Papas a la francesa",
+          "precio": 28000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Menu",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "18",
+          "tiendaNombre": "Don perro"
+        },
+        {
+          "id": 604,
+          "nombre": "Cazuela de Frijoles",
+          "descripcion": "Frijol chicharrón cardes mechada Plátano Maduro aguacate ensalada arepa ripe de papá",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "18",
+          "tiendaNombre": "Don perro"
         }
       ]
     },
@@ -3167,11 +3193,11 @@
       "precio": 28000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20BBQ%2C%20papas%20y%20ensalada_200kb.jpg",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "18",
+      "tiendaNombre": "Don perro"
     },
     {
       "id": 604,
@@ -3180,11 +3206,11 @@
       "precio": 30000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Plato%20latino%20con%20arroz%20y%20guiso_200kb.jpg",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "18",
+      "tiendaNombre": "Don perro"
     },
     {
       "id": 700,
