@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-21T03-22-39",
-  "ultimaActualizacion": "2026-10-21T03:22:39.914Z",
+  "version": "v2026-10-21T03-23-16",
+  "ultimaActualizacion": "2026-10-21T03:23:16.901Z",
   "tiendas": [
     {
       "id": 1,
@@ -3112,7 +3112,7 @@
       "id": 602,
       "nombre": "",
       "descripcion": "",
-      "precio": 0,
+      "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Papas%20cargadas%20con%20queso%20y%20salchicha_200kb.jpg",
       "badge": "NUEVO",
       "categoria": "Otras",
