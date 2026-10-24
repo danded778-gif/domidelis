@@ -174,7 +174,7 @@
 
             // Mostrar una sola vez por pestaña/sesión.
             try {
-                if (sessionStorage.getItem(CLAVE_VISTA) === '1') return;
+                if (localStorage.getItem(CLAVE_VISTA) === '1') return;
             } catch (_) {}
 
             guiaActiva = true;
@@ -188,7 +188,7 @@
 
         botonCerrar.addEventListener('click', () => {
             try {
-                sessionStorage.setItem(CLAVE_VISTA, '1');
+                localStorage.setItem(CLAVE_VISTA, '1');
             } catch (_) {}
             ocultarGuia();
         });
@@ -198,7 +198,7 @@
         carrito.addEventListener('click', () => {
             if (guiaActiva) {
                 try {
-                    sessionStorage.setItem(CLAVE_VISTA, '1');
+                    localStorage.setItem(CLAVE_VISTA, '1');
                 } catch (_) {}
             }
             ocultarGuia();
