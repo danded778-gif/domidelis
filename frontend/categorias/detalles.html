@@ -1,56 +1,76 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  DETALLES.HTML - Página SEO informativa | Proyecto DOMIDELIS
+  ============================================================================
+  Ubicación: frontend/categorias/detalles.html
+  Canónica:  https://domidelis.top/categorias/detalles.html
+  Gemelas:   salchipapas.html y hamburguesas.html (misma plantilla).
+
+  CATEGORÍA "Detalles" (nombre real en el catálogo): antojos pequeños que la
+  gente puede pedir a domicilio — ensaladas de frutas, helados y fresas con
+  crema (confirmado por el proyecto).
+
+  Página INFORMATIVA: sin carrito ni pago; el pedido se completa en la app.
+
+  1. Catálogo real: 1º CatalogoFresco (/assets/js/config.js + catalogo-fresco.js),
+     2º backend Railway (estructura A: tiendas, productosGlobal,
+     complementosGlobal), 3º respaldo /data/catalogo.json. ?debug=1 diagnostica.
+  2. Visibilidad: excluye inactivos, tienda oculta (id 10) y agotados; cada
+     exclusión queda listada con su motivo. Badges reales normalizados.
+  3. WhatsApp apagado (WHATSAPP.ACTIVO:false) hasta confirmar ese canal.
+  4. Datos estructurados: Organization + FAQPage + ItemList dinámico.
+  5. Publicar, probar en celular y solicitar indexación en Search Console.
+
+  Filtro: PALABRAS_CLAVE ['detalles', 'ensalada de frutas', 'helado', 'fresa'].
+-->
 <html lang="es-CO">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ================= SEO PRINCIPAL ================= -->
+  <!-- SEO principal -->
   <title>Detalles a Domicilio en El Santuario | DOMIDELIS</title>
   <meta name="description" content="Detalles a domicilio en El Santuario, Antioquia: ensaladas de frutas, helados, fresas con crema y más antojos. Mira precios y pide fácil por la app DOMIDELIS.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="geo.region" content="CO-ANT">
   <meta name="geo.placename" content="El Santuario, Antioquia, Colombia">
   <meta name="theme-color" content="#E63946">
-  <!-- URL canónica definitiva (Paso 4); el script la reafirma desde CONFIG. -->
+  <!-- Canónica definitiva; el script la reafirma desde CONFIG. -->
   <link rel="canonical" href="https://domidelis.top/categorias/detalles.html">
   <meta property="og:url" content="https://domidelis.top/categorias/detalles.html">
 
-  <!-- ================= OPEN GRAPH / REDES (igual que la app) ================= -->
+  <!-- Open Graph / redes (igual que la app) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="DOMIDELIS">
   <meta property="og:title" content="Detalles a Domicilio en El Santuario | DOMIDELIS">
-  <meta property="og:description" content="Descubre los detalles disponibles hoy en El Santuario, Antioquia — ensaladas de frutas, helados y fresas con crema — y pide fácil por la app DOMIDELIS.">
+  <meta property="og:description" content="Descubre los detalles publicados en El Santuario, Antioquia — ensaladas de frutas, helados y fresas con crema — y pide fácil por la app DOMIDELIS.">
   <meta property="og:image" content="https://domidelis.top/assets/img/metas.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <!-- ================= FUENTES E ICONOS (los mismos de la app) ================= -->
+  <!-- Fuentes e iconos (los mismos de la app) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- ================= CATÁLOGO REAL (mismo mecanismo de la app) ==========
-       Al publicar esta página dentro de frontend/ estas rutas relativas
-       apuntan a los archivos REALES. Orden obligatorio:
-         1º config.js          (define CATALOGO_URL y CATALOGO_FALLBACK_URL)
-         2º catalogo-fresco.js (usa esas globales y expone CatalogoFresco)
-       En pruebas locales pueden fallar (404): la página sigue con su
-       cargador propio y el panel ?debug=1 lo reporta. -->
+  <!-- Catálogo real (mismo mecanismo de la app): orden obligatorio
+       config.js y luego catalogo-fresco.js. En pruebas locales pueden
+       fallar (404): la página sigue con su cargador propio y ?debug=1
+       lo reporta. -->
   <script src="/assets/js/config.js"></script>
   <script src="/assets/js/cliente/catalogo-fresco.js"></script>
 
-  <!-- ================= DATOS ESTRUCTURADOS (JSON-LD) =================
-       Solo hechos confirmados de la propia app: sin datos inventados. -->
+  <!-- Datos estructurados (JSON-LD): solo hechos confirmados de la app -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FoodEstablishment",
+    "@type": "Organization",
     "name": "DOMIDELIS",
     "url": "https://domidelis.top/",
-    "description": "Plataforma de domicilios de El Santuario, Antioquia: salchipapas, hamburguesas, pizzas, perros calientes y más, con pago en efectivo, Nequi, Daviplata o transferencia. Los pedidos se realizan en la plataforma DOMIDELIS.",
-    "servesCuisine": ["Comidas rápidas", "Salchipapas", "Hamburguesas", "Pizza", "Perros calientes"],
+    "description": "Plataforma de domicilios de El Santuario, Antioquia: conecta a los clientes con los establecimientos de comidas rápidas del municipio. Los pedidos se realizan en la plataforma con pago en efectivo, Nequi, Daviplata o transferencia.",
     "sameAs": [
       "https://www.instagram.com/domidelis2026",
       "https://www.facebook.com/profile.php?id=61567224268766"
@@ -69,7 +89,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    
+    "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
@@ -427,7 +447,7 @@
 <body>
   <a class="enlace-saltado" href="#productos">Ir a los detalles</a>
 
-  <!-- ================= CABECERA (réplica de la app) ================= -->
+  <!-- [1] Cabecera -->
   <header id="cabecera">
     <div class="container">
       <nav class="header-nav">
@@ -441,7 +461,7 @@
   </header>
 
   <main>
-    <!-- ================= INTRO (estilo domidelis-intro) ================= -->
+    <!-- [2] Intro -->
     <div class="intro">
       <div class="container">
         <div class="intro-caja">
@@ -449,7 +469,7 @@
           <div>
             <span class="badge-seo">Antojos dulces y frescos a domicilio</span>
             <h1>Detalles a domicilio en <strong>El Santuario</strong>, Antioquia</h1>
-            <p>Explora los detalles disponibles hoy en los establecimientos del municipio — ensaladas de frutas, helados, fresas con crema y más antojos —, consulta precios y fotografías, y pide por la app DOMIDELIS.</p>
+            <p>Explora los detalles publicados por los establecimientos del municipio — ensaladas de frutas, helados, fresas con crema y más antojos —, consulta precios y fotografías, y pide por la app DOMIDELIS.</p>
             <div class="acciones">
               <a class="btn btn-grad enlace-domidelis" href="#"><i class="fas fa-motorcycle"></i> Pedir en la app DOMIDELIS</a>
               <a class="btn btn-secondary" href="#productos">Ver opciones</a>
@@ -460,14 +480,14 @@
       </div>
     </div>
 
-    <!-- ================= PRODUCTOS ================= -->
+    <!-- [3] Productos -->
     <section id="productos" aria-labelledby="titulo-productos">
       <div class="container">
-        <h2 class="titulo-seccion" id="titulo-productos"><i class="fas fa-star"></i> Detalles disponibles hoy</h2>
+        <h2 class="titulo-seccion" id="titulo-productos"><i class="fas fa-star"></i> Opciones de detalles en El Santuario</h2>
         <p class="intro-seccion">
-          Este listado proviene directamente del catálogo de DOMIDELIS y se actualiza
-          automáticamente, de modo que lo que ves aquí refleja la oferta real de los
-          establecimientos. Elige una opción y continúa tu pedido en la app.
+          Este listado proviene directamente del catálogo de DOMIDELIS. La
+          disponibilidad de cada producto depende del horario de cada establecimiento
+          y se confirma al hacer el pedido. Elige una opción y continúa en la app.
         </p>
 
         <div id="aviso-demo" class="aviso demo" hidden>
@@ -517,7 +537,7 @@
       </div>
     </section>
 
-    <!-- ================= ESTABLECIMIENTOS ================= -->
+    <!-- [4] Establecimientos -->
     <section id="establecimientos" aria-labelledby="titulo-establecimientos">
       <div class="container">
         <h2 class="titulo-seccion" id="titulo-establecimientos"><i class="fas fa-store"></i> Establecimientos con detalles</h2>
@@ -532,7 +552,7 @@
       </div>
     </section>
 
-    <!-- ================= CÓMO PEDIR (flujo real de la app) ================= -->
+    <!-- [5] Cómo pedir -->
     <section id="como-pedir" aria-labelledby="titulo-como-pedir">
       <div class="container">
         <h2 class="titulo-seccion" id="titulo-como-pedir"><i class="fas fa-circle-question"></i> ¿Cómo pedir?</h2>
@@ -571,9 +591,7 @@
               Confirma tu pedido en la app y un domiciliario de DOMIDELIS lo
               lleva hasta la puerta de tu casa en El Santuario.
             </p>
-            <!-- Solo aparece si CONFIG.WHATSAPP.ACTIVO es true (número real
-                 de APP_CONFIG.telefonoWhatsApp). Sin activación, la página
-                 NO muestra ningún botón de WhatsApp. -->
+            <!-- Solo aparece si CONFIG.WHATSAPP.ACTIVO es true. -->
             <a id="boton-whatsapp" class="whatsapp-mini" href="#" target="_blank" rel="noopener" hidden>
               <i class="fab fa-whatsapp"></i> Confirmar mi pedido por WhatsApp
             </a>
@@ -582,7 +600,7 @@
       </div>
     </section>
 
-    <!-- ================= POR QUÉ ================= -->
+    <!-- [6] Por qué -->
     <section id="por-que" class="porque" aria-labelledby="titulo-por-que">
       <div class="container">
         <h2 class="titulo-seccion" id="titulo-por-que"><i class="fas fa-heart"></i> ¿Por qué pedir detalles por DOMIDELIS?</h2>
@@ -604,7 +622,7 @@
       </div>
     </section>
 
-    <!-- ================= FAQ ================= -->
+    <!-- [7] Preguntas frecuentes -->
     <section id="preguntas" class="faq" aria-labelledby="titulo-faq">
       <div class="container">
         <h2 class="titulo-seccion" id="titulo-faq"><i class="fas fa-comments"></i> Preguntas frecuentes</h2>
@@ -651,7 +669,7 @@
             </div>
     </section>
 
-    <!-- ================= PÁGINAS RELACIONADAS ================= -->
+    <!-- [8] Páginas relacionadas -->
     <section id="relacionadas" aria-labelledby="titulo-relacionadas">
       <div class="container">
         <h2 class="titulo-seccion" id="titulo-relacionadas"><i class="fas fa-utensils"></i> Otras comidas a domicilio en El Santuario</h2>
@@ -671,15 +689,15 @@
       </div>
     </section>
 
-    <!-- ================= CTA FINAL ================= -->
+    <!-- [9] CTA final -->
     <section aria-label="Continuar pedido">
       <div class="container">
         <div class="cta-final">
           <h2>¿Se te antojó algo dulce? Pide tus detalles por la app</h2>
           <p>
             En DOMIDELIS encontrarás ensaladas de frutas, helados, fresas con crema,
-            salchipapas, hamburguesas y más, con los establecimientos de El Santuario
-            disponibles ahora mismo.
+            salchipapas, hamburguesas y más, en los establecimientos de El Santuario.
+            La disponibilidad se confirma al hacer el pedido.
           </p>
           <a class="btn enlace-productos" href="#"><i class="fas fa-utensils"></i> Ver productos en la app</a>
         </div>
@@ -687,7 +705,7 @@
     </section>
   </main>
 
-  <!-- ================= PIE (réplica del footer de la app) ================= -->
+  <!-- [10] Pie -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -730,77 +748,52 @@
   <script>
   (function(){
   'use strict';
-  /* ========================================================================
-     DOMIDELIS - Página SEO informativa (detalles.html)
-     · Reutiliza window.CatalogoFresco.obtenerCatalogo() si catalogo-fresco.js
-       está incluido en esta página (mecanismo existente, sin duplicar).
-     · Si no lo está, usa un cargador de prueba propio con timeout y respaldo,
-       pensado SOLO para esta página independiente.
-     · Normaliza las dos estructuras posibles del catálogo:
-         A) { productosGlobal: [...], tiendas: [...] }   (esperada por client.js)
-         B) { tiendas: [ { productos: [...] } ] }         (vista en catalogo.json)
-     ======================================================================== */
+  /* [1] Página SEO informativa (detalles.html). Usa CatalogoFresco si está
+     disponible; si no, cargador propio con timeout y respaldo. Normaliza
+     las estructuras A (productosGlobal) y B (tiendas[].productos). */
 
-  /* ======================================================================
-     BLOQUE DE CONFIGURACION - revisar antes de publicar
-     ====================================================================== */
+  /* [2] Configuración - revisar antes de publicar */
   const CONFIG = {
-    // Backend Railway REAL: es API_URL + '/catalogo' de assets/js/config.js
-    // (verificado: entrega estructura A con productosGlobal y CORS solo
-    // permite https://domidelis.top).
+    // Backend Railway real (API_URL + '/catalogo' de config.js; estructura A).
     CATALOGO_URL: 'https://prueba-production-b9fb.up.railway.app/api/catalogo',
 
-    // Respaldo: el MISMO archivo de la app (frontend/data/catalogo.json),
-    // publicado en la raíz del sitio (https://domidelis.top/data/catalogo.json).
+    // Respaldo: el mismo archivo de la app, publicado en la raíz del sitio.
     CATALOGO_FALLBACK_URL: '/data/catalogo.json',
 
     // App principal de DOMIDELIS: destino de TODOS los botones "Pedir".
     DOMI_DELIS_URL: 'https://domidelis.top/',
 
-    // URL definitiva de esta página (canonical y og:url). Debe coincidir con
-    // la etiqueta <link rel="canonical"> estática del <head>.
+    // URL definitiva de esta página (debe coincidir con el <link canonical>).
     CANONICA_URL: 'https://domidelis.top/categorias/detalles.html',
 
-    // Dominio base para imágenes relativas del catálogo. Si el backend
-    // devuelve URLs absolutas o rutas que ya funcionan, déjalo así o ajústalo.
+    // Dominio base para imágenes relativas del catálogo.
     BASE_IMAGENES: 'https://domidelis.top',
 
     // Tiempo máximo de espera de las solicitudes (mismo criterio de la app).
     TIMEOUT_MS: 8000,
 
-    // Reglas de visibilidad (Paso 3 del plan):
-    // false -> los productos con badge "agotado" NO se publican.
-    // true  -> se publican atenuados, sin botón de pedido.
+    // false -> agotados no se publican; true -> se muestran sin botón de pedido.
     MOSTRAR_AGOTADOS: false,
 
     // Palabras clave que identifican los productos de esta página.
     PALABRAS_CLAVE: ['detalles', 'ensalada de frutas', 'helado', 'fresa'],
 
-    // Enlace profundo a una tienda dentro de la app. Usar SOLO cuando exista
-    // un enlace que funcione correctamente. Placeholders: {tiendaId} {nombre}
-    // Ejemplo: 'https://domidelis.top/tienda.html?id={tiendaId}'
-    // Si se deja vacío, las tarjetas muestran solo el botón "Pedir".
+    // Enlace profundo a la tienda; usar SOLO un enlace comprobado.
+    // Placeholders: {tiendaId} {nombre}. Vacío = solo botón "Pedir".
     ENLACE_TIENDA_PATRON: '',
 
-    // Enlace directo a la sección de productos/menú de la app (opcional).
-    // Si se deja vacío, se usa DOMI_DELIS_URL.
+    // Enlace a la sección de productos de la app (opcional; vacío = DOMI_DELIS_URL).
     ENLACE_PRODUCTOS: '',
 
-    // WHATSAPP (Paso 3): la página es informativa y el pedido se completa en
-    // la app, así que por defecto NO se muestra ningún botón de WhatsApp.
-    // NUMERO es el real de APP_CONFIG.telefonoWhatsApp (config.js). Si el
-    // pedido SÍ se confirma por WhatsApp, poner ACTIVO:true y el paso 3
-    // mostrará el botón con enlace wa.me prellenado.
+    // Página informativa: sin WhatsApp por defecto. NUMERO es el real de
+    // APP_CONFIG.telefonoWhatsApp; ACTIVO:true activa el botón wa.me.
     WHATSAPP: { ACTIVO:false, NUMERO:'573005005306', MENSAJE:'Hola, quiero hacer un pedido en DOMIDELIS' },
 
-    // Tiendas que la app oculta pero el catálogo todavía entrega con
-    // activo:true (ej. la tienda de pruebas "Mantenimiento", id 10).
-    // Confirmar esta lista contra assets/js/tienda-oculto.js de la app.
-    // IDs como texto (String).
+    // Tiendas ocultas en la app pero presentes en el catálogo (ver
+    // assets/js/tienda-oculto.js). IDs como texto (String).
     TIENDAS_OCULTAS: ['10'],
 
-    // Páginas SEO relacionadas, SOLO cuando existan y funcionen.
-    // Ejemplo: { titulo:'Hamburguesas a domicilio en El Santuario', url:'hamburguesas.html' }
+    // Páginas SEO relacionadas (solo páginas existentes).
     PAGINAS_RELACIONADAS: [
       { titulo: 'Salchipapas a domicilio en El Santuario', url: 'salchipapas.html' },
       { titulo: 'Hamburguesas a domicilio en El Santuario', url: 'hamburguesas.html' }
@@ -810,10 +803,7 @@
     DEBUG: false
   };
 
-  /* ======================= Datos de demostración ========================
-     Se muestran SOLO cuando no hay CATALOGO_URL ni CatalogoFresco, para poder
-     ver el diseño antes de conectar el catálogo. Nunca se publican si hay
-     conexión configurada: en caso de fallo se muestra un aviso de error. */
+  /* [3] Datos de demostración: SOLO sin conexión configurada (diseño). */
   function svgDemo(c1, c2){
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
       '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
@@ -840,10 +830,8 @@
     ]
   };
 
-  /* El catálogo REAL entrega badges como "Disponible", "Disponible ",
-     "agotado", "agotado ", "Mas vendido", "NUEVO" o "si". Se normalizan
-     (minúsculas, sin acentos ni espacios) y solo se aceptan los conocidos;
-     cualquier otro no se muestra como insignia. */
+  /* Badges reales ("Disponible", "agotado", "Mas vendido", "NUEVO", "si",
+     con variantes): se normalizan; desconocidos no se muestran. */
   function normalizarBadge(v){
     const s = limpiar(v).toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -851,7 +839,7 @@
     return ['masvendido','popular','nuevo','agotado'].includes(s) ? s : '';
   }
 
-  /* ====================== Estado y utilidades =========================== */
+  /* [4] Estado y utilidades */
   const estado = {
     fuente:'', urlUsada:'', estructura:'', tiempoMs:0,
     conteos:{ total:0, coincidentes:0, publicados:0, agotadosVisibles:0, otrasCategorias:0 },
@@ -898,7 +886,7 @@
     return n;
   }
 
-  /* ================= Normalización de estructuras ======================= */
+  /* [5] Normalización de estructuras */
   function desenvolver(d){
     let x = d, saltos = 0;
     while (x && typeof x === 'object' && !Array.isArray(x) && saltos < 4){
@@ -992,7 +980,7 @@
     return res;
   }
 
-  /* ============ Producto normalizado + validación de la app ============= */
+  /* [6] Producto normalizado + validación de la app */
   function normalizarProducto(p, mapaTiendas){
     const tienda = (p.tiendaId != null && mapaTiendas.has(String(p.tiendaId)))
       ? mapaTiendas.get(String(p.tiendaId)) : null;
@@ -1013,21 +1001,13 @@
     };
   }
 
-  /* Réplica de esProductoValido(p) de client.js: nombre, precio y
-     establecimiento. NO comprueba activo/agotado (eso es regla de
-     publicación, ver evaluarVisibilidad). */
+  /* Réplica de esProductoValido(p) de client.js (no evalúa activo/agotado). */
   function esProductoValido(p){
     return Boolean(p.nombre) && p.precio != null && Boolean(p.tiendaNombre);
   }
 
-  /* ================= Reglas de visibilidad (Paso 3) =====================
-     Decisiones publicables, separadas de esProductoValido:
-     · Producto inactivo  -> NO publicar.
-     · Establecimiento inactivo -> NO publicar sus productos.
-     · Badge agotado -> NO publicar (o mostrar atenuado con MOSTRAR_AGOTADOS).
-     · Precio 0 -> se publica pero queda marcado en el diagnóstico.
-     · Tienda ausente del listado -> se usa tiendaNombre del producto.
-  ======================================================================== */
+  /* [7] Reglas de visibilidad: producto/tienda inactivo -> fuera; agotado
+     -> fuera salvo MOSTRAR_AGOTADOS; precio 0 -> marcado en diagnóstico. */
   function evaluarVisibilidad(p){
     const motivos = [];
     if (!esProductoValido(p)){
@@ -1054,7 +1034,7 @@
     return (rango[a.badge] ?? 4) - (rango[b.badge] ?? 4) || a.nombre.localeCompare(b.nombre);
   }
 
-  /* ==================== Carga del catálogo ============================== */
+  /* [8] Carga del catálogo */
   function obtenerJsonConTimeout(url, ms){
     const control = new AbortController();
     const temporizador = setTimeout(() => control.abort(), ms);
@@ -1101,7 +1081,7 @@
     // 3) Sin conexión configurada: modo demostración (solo para diseño)
     return { fuente:'demostración (sin conexión configurada)', datos: DATOS_DEMO, url:'' };
   }
-  /* ==================== Renderizado ===================================== */
+  /* [9] Renderizado */
   const ETIQUETAS_INSIGNIA = { masvendido:'Más vendido', popular:'Popular', nuevo:'Nuevo', agotado:'Agotado' };
   function insigniaDe(prod){
     if (!ETIQUETAS_INSIGNIA[prod.badge]) return null;
@@ -1111,8 +1091,7 @@
     const partes = nombre.split(/\s+/).filter(Boolean);
     return partes.slice(0, 2).map(p => p[0].toUpperCase()).join('') || 'DD';
   }
-  /* Enlace profundo a la tienda: SOLO se activa con ENLACE_TIENDA_PATRON
-     configurado (regla: no usar enlaces que no se hayan comprobado). */
+  /* Enlace a la tienda: SOLO con ENLACE_TIENDA_PATRON comprobado. */
   function enlaceDeTienda(prod){
     if (!CONFIG.ENLACE_TIENDA_PATRON) return '';
     return CONFIG.ENLACE_TIENDA_PATRON
@@ -1203,9 +1182,7 @@
     if (!conteo.size) cont.appendChild(el('span', 'chip', 'Información disponible en la app DOMIDELIS'));
   }
 
-  /* Páginas relacionadas: si CONFIG define páginas existentes, sustituye los
-     chips "próximamente" por enlaces reales. Sin configuración, conserva el
-     contenido estático (sin enlaces rotos). */
+  /* Enlaces reales solo si CONFIG.PAGINAS_RELACIONADAS está configurado. */
   function renderizarRelacionadas(){
     const cont = document.getElementById('lista-relacionadas');
     if (!cont || !CONFIG.PAGINAS_RELACIONADAS.length) return;
@@ -1238,7 +1215,7 @@
       : '';
   }
 
-  /* ================= Datos estructurados dinámicos ====================== */
+  /* [10] Datos estructurados dinámicos (ItemList) */
   function inyectarItemList(productos){
     if (!productos.length) return;
     const items = productos.map((p, i) => ({
@@ -1264,7 +1241,7 @@
     document.head.appendChild(s);
   }
 
-  /* ================= Enlaces, canonical y og:url ======================== */
+  /* [11] Enlaces, canonical y og:url */
   function aplicarEnlaces(){
     document.querySelectorAll('.enlace-domidelis').forEach(a => {
       a.href = CONFIG.DOMI_DELIS_URL || '#';
@@ -1304,7 +1281,7 @@
     } catch (e) { /* sin impacto funcional */ }
   }
 
-  /* ================= Proceso principal =================================== */
+  /* [12] Proceso principal */
   function procesar(datosCrudos){
     const norm = normalizar(datosCrudos);
     estado.estructura = norm.estructura;
@@ -1340,11 +1317,11 @@
     document.getElementById('aviso-error').hidden = false;
   }
 
-  /* ================= Panel de diagnóstico (?debug=1) ===================== */
+  /* [13] Panel de diagnóstico (?debug=1) */
   let panelDebugCuerpo = null;
   function iniciarDebug(){
-  // En producción, no mostrar el panel de diagnóstico.
-  if (!CONFIG.DEBUG) return;
+    const params = new URLSearchParams(location.search);
+    if (!CONFIG.DEBUG && !params.has('debug')) return;
     const panel = el('div');
     panel.id = 'panel-debug';
     const details = el('details');
@@ -1360,7 +1337,7 @@
     panelDebugCuerpo.textContent = JSON.stringify(estado, null, 2);
   }
 
-  /* ============ Comportamientos visuales de la app ======================= */
+  /* [14] Comportamientos visuales de la app */
   function activarComportamientos(){
     // Header que se compacta al bajar (igual que la app)
     const headerEl = document.getElementById('cabecera');
@@ -1377,7 +1354,7 @@
     }
   }
 
-  /* ================= Arranque ============================================ */
+  /* [15] Arranque */
   document.addEventListener('DOMContentLoaded', async () => {
     activarComportamientos();
     aplicarEnlaces();
