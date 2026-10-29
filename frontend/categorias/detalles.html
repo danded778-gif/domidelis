@@ -1343,8 +1343,8 @@
   /* ================= Panel de diagnóstico (?debug=1) ===================== */
   let panelDebugCuerpo = null;
   function iniciarDebug(){
-    const params = new URLSearchParams(location.search);
-    if (!CONFIG.DEBUG && !params.has('debug')) return;
+  // En producción, no mostrar el panel de diagnóstico.
+  if (!CONFIG.DEBUG) return;
     const panel = el('div');
     panel.id = 'panel-debug';
     const details = el('details');
