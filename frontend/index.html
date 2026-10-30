@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/cart.css">
     <link rel="stylesheet" href="assets/css/modal-personalizacion.css">
+    <link rel="stylesheet" href="assets/css/asistente-ia.css">   <!-- ★ NUEVO -->
     <!-- ★ CSS ANUNCIOS ★ -->
     <link rel="stylesheet" href="assets/css/anuncios.css">
     <link rel="stylesheet" href="assets/css/product-card.css">
@@ -343,11 +344,34 @@
                 </div>
 
                 <ul class="nav-links" id="nav-links">
+
                     <li>
                         <a href="#" id="btn-como-pedir">
                             <i class="fas fa-circle-info"></i> Cómo pedir
                         </a>
                     </li>
+
+                    <!-- Redes sociales del menú -->
+                    <li class="menu-social-item">
+                        <div class="social-links menu-social-links">
+
+                            <a href="https://www.instagram.com/domidelis2026"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Instagram DOMIDELIS">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <a href="https://www.facebook.com/profile.php?id=61567224268766"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Facebook DOMIDELIS">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+
+                        </div>
+                    </li>
+
                 </ul>
 
                 <button class="header-search-btn" id="header-search-btn" type="button" aria-label="Buscar">
@@ -358,7 +382,9 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span class="header-cart-count" id="cart-counter">0</span>
                 </button>
+                
             </nav>
+            
         </div>
     </header>
 
@@ -439,7 +465,7 @@
         <div class="install-manual-steps" id="install-steps-container"></div>
     </div>
 
-    <div class="cart-float" id="cart-float"><i class="fas fa-shopping-cart"></i><span id="cart-counter">0</span></div>
+
     <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-panel" id="cart-panel">
         <div class="cart-header">
@@ -631,6 +657,13 @@
     <script src="assets/js/anuncios.js"></script>
     <!-- ★ NUEVO JS DE MODAL ★ -->
     <script src="assets/js/modal-personalizacion.js"></script>
+    <!-- ★ Deep link SEO (páginas categorías) ★ -->
+    
+<!-- ★ NUEVO IA  ★ -->
+    <script src="assets/js/domi-ia/iaRazonamiento.js"></script>
+    <script src="assets/js/domi-ia/iaCatalogo.js"></script>
+    <script src="assets/js/domi-ia/boton-flotante.js"></script>
+    <script src="assets/js/domi-ia/asistente-ia.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {

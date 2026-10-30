@@ -1942,3 +1942,62 @@ footer .social-links a:focus-visible {
 .btn-entendido-envio:hover {
     background: #c1121f;
 }
+
+/*-------------------------------------*/
+/* ===== REDES SOCIALES DEL MENÚ DOMIDELIS ===== */
+
+.menu-social-item {
+    width: 100%;
+    padding: 5px 12px 10px;
+    box-sizing: border-box;
+}
+
+.menu-social-links {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.menu-social-links a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+
+    border-radius: 10px !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.13);
+
+    color: #fff !important;
+    font-size: 13px;
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+/* Iconos */
+.menu-social-links a i {
+    font-size: 17px;
+}
+
+/* Nombres de las redes */
+.menu-social-links a:first-child::after {
+    content: "Instagram";
+}
+
+.menu-social-links a:last-child::after {
+    content: "Facebook";
+}
+
+/* Efecto al tocar */
+.menu-social-links a:active {
+    background: rgba(255,255,255,0.25);
+    transform: scale(0.97);
+}
