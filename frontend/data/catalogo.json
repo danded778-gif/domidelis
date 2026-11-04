@@ -1,6 +1,6 @@
 {
-  "version": "v2026-10-31T03-53-45",
-  "ultimaActualizacion": "2026-10-31T03:53:45.201Z",
+  "version": "v2026-11-04T17-03-11",
+  "ultimaActualizacion": "2026-11-04T17:03:11.116Z",
   "tiendas": [
     {
       "id": 1,
@@ -1685,7 +1685,7 @@
       "horario": "{\"mon\":\"11:00-20:00\",\"tue\":\"11:00-20:00\",\"wed\":\"11:00-20:00\",\"thu\":\"11:00-20:00\",\"fri\":\"11:00-20:00\",\"sat\":\"10:00-20:00\",\"sun\":\"10:00-20:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/lunacremosa/Fachada%20colorida%20de%20Luna%20Cremosa_200k.jpg",
-      "promovida": 1,
+      "promovida": 0,
       "activo": true,
       "productos": [
         {
