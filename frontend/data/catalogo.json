@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-04T23-28-25",
-  "ultimaActualizacion": "2026-11-04T23:28:25.735Z",
+  "version": "v2026-11-04T23-29-24",
+  "ultimaActualizacion": "2026-11-04T23:29:24.113Z",
   "tiendas": [
     {
       "id": 1,
@@ -1757,8 +1757,8 @@
     },
     {
       "id": 21,
-      "nombre": "",
-      "descripcion": "",
+      "nombre": "Pika Peke",
+      "descripcion": "Aqui No Hay Remordimiento",
       "direccion": "",
       "horario": "",
       "rating": 5,
