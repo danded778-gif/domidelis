@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-04T23-29-54",
-  "ultimaActualizacion": "2026-11-04T23:29:54.290Z",
+  "version": "v2026-11-04T23-31-25",
+  "ultimaActualizacion": "2026-11-04T23:31:25.083Z",
   "tiendas": [
     {
       "id": 1,
@@ -1528,7 +1528,7 @@
       "direccion": "p.p",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_200kb.jpg",
+      "imagen": "",
       "promovida": 1,
       "activo": true,
       "productos": []
