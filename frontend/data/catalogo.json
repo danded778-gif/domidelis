@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-04T23-28-02",
-  "ultimaActualizacion": "2026-11-04T23:28:02.243Z",
+  "version": "v2026-11-04T23-28-25",
+  "ultimaActualizacion": "2026-11-04T23:28:25.735Z",
   "tiendas": [
     {
       "id": 1,
@@ -1762,8 +1762,8 @@
       "direccion": "",
       "horario": "",
       "rating": 5,
-      "imagen": "",
-      "promovida": 0,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_200kb.jpg",
+      "promovida": 1,
       "activo": true,
       "productos": []
     }
