@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-04T23-29-24",
-  "ultimaActualizacion": "2026-11-04T23:29:24.113Z",
+  "version": "v2026-11-04T23-29-54",
+  "ultimaActualizacion": "2026-11-04T23:29:54.290Z",
   "tiendas": [
     {
       "id": 1,
@@ -1522,6 +1522,18 @@
       ]
     },
     {
+      "id": 21,
+      "nombre": "Pika Peke",
+      "descripcion": "Aqui No Hay Remordimiento",
+      "direccion": "p.p",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_200kb.jpg",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
+    },
+    {
       "id": 18,
       "nombre": "Don perro",
       "descripcion": "Sabor Criminal",
@@ -1754,18 +1766,6 @@
           "tiendaNombre": "Luna Cremosa"
         }
       ]
-    },
-    {
-      "id": 21,
-      "nombre": "Pika Peke",
-      "descripcion": "Aqui No Hay Remordimiento",
-      "direccion": "",
-      "horario": "",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_200kb.jpg",
-      "promovida": 1,
-      "activo": true,
-      "productos": []
     }
   ],
   "productosGlobal": [
