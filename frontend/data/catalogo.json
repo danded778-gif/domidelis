@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-57-46",
-  "ultimaActualizacion": "2026-11-05T23:57:46.270Z",
+  "version": "v2026-11-05T23-58-10",
+  "ultimaActualizacion": "2026-11-05T23:58:10.962Z",
   "tiendas": [
     {
       "id": 1,
@@ -5656,24 +5656,34 @@
       "min": 1
     },
     {
-      "id": 264,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas especial",
-      "precio": 7000,
+      "id": 268,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "Blueberry",
+      "precio": 0,
       "tipo": "",
-      "max": 1,
-      "min": 1
+      "max": null,
+      "min": 0
     },
     {
-      "id": 265,
-      "id_producto": 702,
+      "id": 269,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "fresa",
+      "nombre": "Maracuyá",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 270,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "Tamarindo",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 266,
