@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-37-30",
-  "ultimaActualizacion": "2026-11-05T23:37:30.764Z",
+  "version": "v2026-11-05T23-37-54",
+  "ultimaActualizacion": "2026-11-05T23:37:54.371Z",
   "tiendas": [
     {
       "id": 1,
@@ -5488,7 +5488,7 @@
     {
       "id": 250,
       "id_producto": 500,
-      "grupo": "salsa",
+      "grupo": "Salsa",
       "nombre": "Tajin",
       "precio": 0,
       "tipo": "opcion",
@@ -5498,7 +5498,7 @@
     {
       "id": 251,
       "id_producto": 500,
-      "grupo": "salsa",
+      "grupo": "Salsa",
       "nombre": "Pimienta",
       "precio": 0,
       "tipo": "opcion",
