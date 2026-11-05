@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-30-54",
-  "ultimaActualizacion": "2026-11-05T23:30:54.983Z",
+  "version": "v2026-11-05T23-31-34",
+  "ultimaActualizacion": "2026-11-05T23:31:34.219Z",
   "tiendas": [
     {
       "id": 1,
@@ -5507,6 +5507,26 @@
     },
     {
       "id": 252,
+      "id_producto": 502,
+      "grupo": "",
+      "nombre": "galleta oreo",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 253,
+      "id_producto": 502,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 254,
       "id_producto": 502,
       "grupo": "",
       "nombre": "",
