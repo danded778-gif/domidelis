@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-58-10",
-  "ultimaActualizacion": "2026-11-05T23:58:10.962Z",
+  "version": "v2026-11-05T23-58-13",
+  "ultimaActualizacion": "2026-11-05T23:58:13.640Z",
   "tiendas": [
     {
       "id": 1,
@@ -5686,17 +5686,7 @@
       "min": 0
     },
     {
-      "id": 266,
-      "id_producto": 702,
-      "grupo": "",
-      "nombre": "chocolate",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 267,
+      "id": 26,
       "id_producto": 702,
       "grupo": "",
       "nombre": "vainilla",
