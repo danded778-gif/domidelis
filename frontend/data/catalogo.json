@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-39-14",
-  "ultimaActualizacion": "2026-11-05T23:39:14.166Z",
+  "version": "v2026-11-05T23-39-37",
+  "ultimaActualizacion": "2026-11-05T23:39:37.669Z",
   "tiendas": [
     {
       "id": 1,
@@ -5521,7 +5521,7 @@
       "grupo": "Presentación",
       "nombre": "Gomitas",
       "precio": 0,
-      "tipo": "opción",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -5531,7 +5531,7 @@
       "grupo": "Presentación",
       "nombre": "chispitas de color",
       "precio": 0,
-      "tipo": "opción",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
