@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-36-07",
-  "ultimaActualizacion": "2026-11-05T23:36:07.560Z",
+  "version": "v2026-11-05T23-36-10",
+  "ultimaActualizacion": "2026-11-05T23:36:10.531Z",
   "tiendas": [
     {
       "id": 1,
@@ -5532,8 +5532,8 @@
       "nombre": "chispitas de color",
       "precio": 0,
       "tipo": "opción",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 264,
