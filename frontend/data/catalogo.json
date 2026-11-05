@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-40-03",
-  "ultimaActualizacion": "2026-11-05T23:40:03.799Z",
+  "version": "v2026-11-05T23-40-28",
+  "ultimaActualizacion": "2026-11-05T23:40:28.056Z",
   "tiendas": [
     {
       "id": 1,
@@ -5542,7 +5542,37 @@
       "nombre": "Lecherita",
       "precio": 0,
       "tipo": "opcion",
-      "max": null,
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 256,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 257,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Chocolate",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 258,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Arequipe",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
       "min": 0
     },
     {
