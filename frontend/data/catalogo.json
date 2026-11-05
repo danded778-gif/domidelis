@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-45-26",
-  "ultimaActualizacion": "2026-11-05T23:45:26.061Z",
+  "version": "v2026-11-05T23-47-12",
+  "ultimaActualizacion": "2026-11-05T23:47:12.274Z",
   "tiendas": [
     {
       "id": 1,
@@ -5582,8 +5582,8 @@
       "nombre": "Cafe",
       "precio": 0,
       "tipo": "opcion",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 260,
@@ -5591,14 +5591,14 @@
       "grupo": "Presentación",
       "nombre": "Milo",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 261,
       "id_producto": 600,
-      "grupo": "",
+      "grupo": "Acompamiento",
       "nombre": "",
       "precio": 0,
       "tipo": "",
