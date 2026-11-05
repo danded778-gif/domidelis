@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-34-45",
-  "ultimaActualizacion": "2026-11-05T23:34:45.563Z",
+  "version": "v2026-11-05T23-35-09",
+  "ultimaActualizacion": "2026-11-05T23:35:09.514Z",
   "tiendas": [
     {
       "id": 1,
@@ -5508,7 +5508,7 @@
     {
       "id": 252,
       "id_producto": 502,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "galleta oreo",
       "precio": 0,
       "tipo": "",
@@ -5518,7 +5518,7 @@
     {
       "id": 253,
       "id_producto": 502,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "Gomitas",
       "precio": 0,
       "tipo": "",
