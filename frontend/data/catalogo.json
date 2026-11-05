@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-39-37",
-  "ultimaActualizacion": "2026-11-05T23:39:37.669Z",
+  "version": "v2026-11-05T23-40-03",
+  "ultimaActualizacion": "2026-11-05T23:40:03.799Z",
   "tiendas": [
     {
       "id": 1,
@@ -5534,6 +5534,16 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
+    },
+    {
+      "id": 255,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Lecherita",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": null,
+      "min": 0
     },
     {
       "id": 264,
