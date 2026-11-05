@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T21-46-57",
-  "ultimaActualizacion": "2026-11-05T21:46:57.898Z",
+  "version": "v2026-11-05T23-25-44",
+  "ultimaActualizacion": "2026-11-05T23:25:44.133Z",
   "tiendas": [
     {
       "id": 1,
@@ -5486,114 +5486,24 @@
       "min": 1
     },
     {
-      "id": 253,
-      "id_producto": 700,
+      "id": 250,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "fresa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 254,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "chocolate",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 255,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "vainilla",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 256,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "vainilla chips",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 257,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "bateado de mora",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 258,
-      "id_producto": 701,
-      "grupo": "",
-      "nombre": "fresa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 259,
-      "id_producto": 701,
-      "grupo": "",
-      "nombre": "chocolate",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 260,
-      "id_producto": 701,
-      "grupo": "",
-      "nombre": "vainilla",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 261,
-      "id_producto": 701,
-      "grupo": "",
-      "nombre": "vainilla chips",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 262,
-      "id_producto": 701,
-      "grupo": "",
-      "nombre": "bateado de mora",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
-      "id": 263,
-      "id_producto": 702,
-      "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Sencilla",
+      "nombre": "",
       "precio": 0,
       "tipo": "",
-      "max": 1,
-      "min": 1
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 251,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 264,
