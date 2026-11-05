@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-43-45",
-  "ultimaActualizacion": "2026-11-05T23:43:45.544Z",
+  "version": "v2026-11-05T23-44-14",
+  "ultimaActualizacion": "2026-11-05T23:44:14.940Z",
   "tiendas": [
     {
       "id": 1,
@@ -1624,7 +1624,7 @@
       "productos": [
         {
           "id": 600,
-          "nombre": "Granizados",
+          "nombre": "Granizados  Nieves Milo",
           "descripcion": "Granizados de café o milo con sus respectivas adiciones",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
@@ -3162,7 +3162,7 @@
     },
     {
       "id": 600,
-      "nombre": "Granizados",
+      "nombre": "Granizados  Nieves Milo",
       "descripcion": "Granizados de café o milo con sus respectivas adiciones",
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/kioskojudea/Collage%20de%20dulces%20y%20bebidas%20Kiosko_200kb.jpg",
