@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-36-13",
-  "ultimaActualizacion": "2026-11-05T23:36:13.216Z",
+  "version": "v2026-11-05T23-37-22",
+  "ultimaActualizacion": "2026-11-05T23:37:22.485Z",
   "tiendas": [
     {
       "id": 1,
@@ -5509,7 +5509,7 @@
       "id": 252,
       "id_producto": 502,
       "grupo": "Presentación",
-      "nombre": "galleta oreo",
+      "nombre": "Galletas oreo",
       "precio": 0,
       "tipo": "opción",
       "max": 1,
