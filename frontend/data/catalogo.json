@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-53-28",
-  "ultimaActualizacion": "2026-11-05T23:53:28.059Z",
+  "version": "v2026-11-05T23-54-47",
+  "ultimaActualizacion": "2026-11-05T23:54:47.903Z",
   "tiendas": [
     {
       "id": 1,
@@ -5644,26 +5644,6 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
-    },
-    {
-      "id": 267,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 268,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
     },
     {
       "id": 264,
