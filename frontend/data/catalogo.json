@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-58-13",
-  "ultimaActualizacion": "2026-11-05T23:58:13.640Z",
+  "version": "v2026-11-05T23-58-46",
+  "ultimaActualizacion": "2026-11-05T23:58:46.602Z",
   "tiendas": [
     {
       "id": 1,
@@ -5686,134 +5686,24 @@
       "min": 0
     },
     {
-      "id": 26,
-      "id_producto": 702,
-      "grupo": "",
-      "nombre": "vainilla",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 268,
-      "id_producto": 702,
-      "grupo": "",
-      "nombre": "vainilla chips",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 269,
-      "id_producto": 702,
-      "grupo": "",
-      "nombre": "bateado de mora",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 266,
-      "id_producto": 703,
-      "grupo": "",
-      "nombre": "fresa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 267,
-      "id_producto": 703,
-      "grupo": "",
-      "nombre": "chocolate",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 268,
-      "id_producto": 703,
-      "grupo": "",
-      "nombre": "vainilla",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 269,
-      "id_producto": 703,
-      "grupo": "",
-      "nombre": "vainilla chips",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 270,
-      "id_producto": 703,
-      "grupo": "",
-      "nombre": "bateado de mora",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
       "id": 271,
-      "id_producto": 704,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "fresa",
+      "nombre": "Mangoviche",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 3
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 272,
-      "id_producto": 704,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "chocolate",
+      "nombre": "Manzana verde",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 3
-    },
-    {
-      "id": 273,
-      "id_producto": 704,
-      "grupo": "",
-      "nombre": "vainilla",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 3
-    },
-    {
-      "id": 274,
-      "id_producto": 704,
-      "grupo": "",
-      "nombre": "vainilla chips",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 3
-    },
-    {
-      "id": 275,
-      "id_producto": 704,
-      "grupo": "",
-      "nombre": "bateado de mora",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 3,
-      "min": 3
+      "tipo": "",
+      "max": null,
+      "min": 0
     }
   ]
 }
