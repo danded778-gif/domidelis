@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-44-14",
-  "ultimaActualizacion": "2026-11-05T23:44:14.940Z",
+  "version": "v2026-11-05T23-45-01",
+  "ultimaActualizacion": "2026-11-05T23:45:01.277Z",
   "tiendas": [
     {
       "id": 1,
@@ -5578,7 +5578,7 @@
     {
       "id": 259,
       "id_producto": 600,
-      "grupo": "",
+      "grupo": "Presentación",
       "nombre": "",
       "precio": 0,
       "tipo": "",
@@ -5588,7 +5588,7 @@
     {
       "id": 260,
       "id_producto": 600,
-      "grupo": "",
+      "grupo": "Milo",
       "nombre": "",
       "precio": 0,
       "tipo": "",
