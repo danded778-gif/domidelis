@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-58-46",
-  "ultimaActualizacion": "2026-11-05T23:58:46.602Z",
+  "version": "v2026-11-05T23-58-49",
+  "ultimaActualizacion": "2026-11-05T23:58:49.656Z",
   "tiendas": [
     {
       "id": 1,
@@ -5700,6 +5700,26 @@
       "id_producto": "",
       "grupo": "",
       "nombre": "Manzana verde",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 273,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "Ciresa",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 274,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
       "precio": 0,
       "tipo": "",
       "max": null,
