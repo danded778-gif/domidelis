@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-48-32",
-  "ultimaActualizacion": "2026-11-05T23:48:32.533Z",
+  "version": "v2026-11-05T23-49-01",
+  "ultimaActualizacion": "2026-11-05T23:49:01.004Z",
   "tiendas": [
     {
       "id": 1,
@@ -5602,7 +5602,7 @@
       "nombre": "sneaker",
       "precio": 0,
       "tipo": "",
-      "max": null,
+      "max": 1,
       "min": 0
     },
     {
@@ -5612,27 +5612,27 @@
       "nombre": "M y M",
       "precio": 0,
       "tipo": "",
-      "max": null,
+      "max": 1,
       "min": 0
     },
     {
       "id": 263,
       "id_producto": 600,
       "grupo": "Acompañamiento",
-      "nombre": "",
+      "nombre": "Baileys",
       "precio": 0,
       "tipo": "",
-      "max": null,
+      "max": 1,
       "min": 0
     },
     {
       "id": 264,
       "id_producto": 600,
       "grupo": "Acompañamiento",
-      "nombre": "",
+      "nombre": "oreo",
       "precio": 0,
       "tipo": "",
-      "max": null,
+      "max": 1,
       "min": 0
     },
     {
