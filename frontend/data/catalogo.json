@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-55-34",
-  "ultimaActualizacion": "2026-11-05T23:55:34.632Z",
+  "version": "v2026-11-05T23-55-37",
+  "ultimaActualizacion": "2026-11-05T23:55:37.544Z",
   "tiendas": [
     {
       "id": 1,
@@ -5651,7 +5651,7 @@
       "grupo": "Acompañamiento",
       "nombre": "Hershey's",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
