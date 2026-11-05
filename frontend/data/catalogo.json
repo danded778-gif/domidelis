@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-35-09",
-  "ultimaActualizacion": "2026-11-05T23:35:09.514Z",
+  "version": "v2026-11-05T23-35-35",
+  "ultimaActualizacion": "2026-11-05T23:35:35.867Z",
   "tiendas": [
     {
       "id": 1,
@@ -5511,7 +5511,7 @@
       "grupo": "Presentación",
       "nombre": "galleta oreo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opción",
       "max": null,
       "min": 0
     },
@@ -5521,15 +5521,15 @@
       "grupo": "Presentación",
       "nombre": "Gomitas",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opción",
       "max": null,
       "min": 0
     },
     {
       "id": 254,
       "id_producto": 502,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Presentación",
+      "nombre": "chispitas de color",
       "precio": 0,
       "tipo": "",
       "max": null,
