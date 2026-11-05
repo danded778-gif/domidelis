@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-29-14",
-  "ultimaActualizacion": "2026-11-05T23:29:14.135Z",
+  "version": "v2026-11-05T23-30-54",
+  "ultimaActualizacion": "2026-11-05T23:30:54.983Z",
   "tiendas": [
     {
       "id": 1,
@@ -5493,7 +5493,7 @@
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 251,
@@ -5502,12 +5502,12 @@
       "nombre": "Pimienta",
       "precio": 0,
       "tipo": "opcion",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 252,
-      "id_producto": "",
+      "id_producto": 502,
       "grupo": "",
       "nombre": "",
       "precio": 0,
