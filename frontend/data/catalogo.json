@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-49-06",
-  "ultimaActualizacion": "2026-11-05T23:49:06.857Z",
+  "version": "v2026-11-05T23-49-30",
+  "ultimaActualizacion": "2026-11-05T23:49:30.259Z",
   "tiendas": [
     {
       "id": 1,
@@ -5601,7 +5601,7 @@
       "grupo": "Acompañamiento",
       "nombre": "sneaker",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -5611,7 +5611,7 @@
       "grupo": "Acompañamiento",
       "nombre": "M y M",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -5621,9 +5621,9 @@
       "grupo": "Acompañamiento",
       "nombre": "Baileys",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 264,
@@ -5633,7 +5633,7 @@
       "precio": 0,
       "tipo": "",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 265,
@@ -5643,7 +5643,7 @@
       "precio": 0,
       "tipo": "",
       "max": 1,
-      "min": 0
+      "min": 1
     },
     {
       "id": 264,
