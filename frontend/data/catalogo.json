@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-48-06",
-  "ultimaActualizacion": "2026-11-05T23:48:06.750Z",
+  "version": "v2026-11-05T23-48-32",
+  "ultimaActualizacion": "2026-11-05T23:48:32.533Z",
   "tiendas": [
     {
       "id": 1,
@@ -5599,7 +5599,7 @@
       "id": 261,
       "id_producto": 600,
       "grupo": "Acompañamiento",
-      "nombre": "",
+      "nombre": "sneaker",
       "precio": 0,
       "tipo": "",
       "max": null,
@@ -5609,7 +5609,7 @@
       "id": 262,
       "id_producto": 600,
       "grupo": "Acompañamiento",
-      "nombre": "",
+      "nombre": "M y M",
       "precio": 0,
       "tipo": "",
       "max": null,
@@ -5627,6 +5627,16 @@
     },
     {
       "id": 264,
+      "id_producto": 600,
+      "grupo": "Acompañamiento",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 265,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "",
