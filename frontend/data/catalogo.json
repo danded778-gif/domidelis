@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-35-39",
-  "ultimaActualizacion": "2026-11-05T23:35:39.972Z",
+  "version": "v2026-11-05T23-36-07",
+  "ultimaActualizacion": "2026-11-05T23:36:07.560Z",
   "tiendas": [
     {
       "id": 1,
@@ -5512,8 +5512,8 @@
       "nombre": "galleta oreo",
       "precio": 0,
       "tipo": "opción",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 253,
@@ -5522,7 +5522,7 @@
       "nombre": "Gomitas",
       "precio": 0,
       "tipo": "opción",
-      "max": null,
+      "max": 1,
       "min": 0
     },
     {
