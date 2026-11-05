@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-31-34",
-  "ultimaActualizacion": "2026-11-05T23:31:34.219Z",
+  "version": "v2026-11-05T23-34-45",
+  "ultimaActualizacion": "2026-11-05T23:34:45.563Z",
   "tiendas": [
     {
       "id": 1,
@@ -5519,7 +5519,7 @@
       "id": 253,
       "id_producto": 502,
       "grupo": "",
-      "nombre": "",
+      "nombre": "Gomitas",
       "precio": 0,
       "tipo": "",
       "max": null,
