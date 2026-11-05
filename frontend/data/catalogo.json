@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-42-42",
-  "ultimaActualizacion": "2026-11-05T23:42:42.081Z",
+  "version": "v2026-11-05T23-43-15",
+  "ultimaActualizacion": "2026-11-05T23:43:15.436Z",
   "tiendas": [
     {
       "id": 1,
@@ -5578,6 +5578,56 @@
     {
       "id": 259,
       "id_producto": 600,
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 260,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 261,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 262,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 263,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 264,
+      "id_producto": "",
       "grupo": "",
       "nombre": "",
       "precio": 0,
