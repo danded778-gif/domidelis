@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-49-30",
-  "ultimaActualizacion": "2026-11-05T23:49:30.259Z",
+  "version": "v2026-11-05T23-52-38",
+  "ultimaActualizacion": "2026-11-05T23:52:38.698Z",
   "tiendas": [
     {
       "id": 1,
@@ -5631,7 +5631,7 @@
       "grupo": "Acompañamiento",
       "nombre": "oreo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -5639,9 +5639,9 @@
       "id": 265,
       "id_producto": 600,
       "grupo": "Acompañamiento",
-      "nombre": "",
+      "nombre": "Barquillo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
