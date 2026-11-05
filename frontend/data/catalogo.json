@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-04T23-33-56",
-  "ultimaActualizacion": "2026-11-04T23:33:56.840Z",
+  "version": "v2026-11-05T21-46-57",
+  "ultimaActualizacion": "2026-11-05T21:46:57.898Z",
   "tiendas": [
     {
       "id": 1,
@@ -1616,7 +1616,7 @@
       "nombre": "Kiosko la Judea",
       "descripcion": "La judea",
       "direccion": "P. La judea",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"15:00 - 21:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"15:00 - 21:00\",\"fri\":\"15:00 - 21:00\",\"sat\":\"15:00 - 21:00\",\"sun\":\"15:00 - 21:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/kioskojudea/Plaza%20urbana%20con%20pabell%C3%B3n%20y%20visitantes_200kb.jpg",
       "promovida": 1,
