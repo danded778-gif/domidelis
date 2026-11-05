@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-55-37",
-  "ultimaActualizacion": "2026-11-05T23:55:37.544Z",
+  "version": "v2026-11-05T23-56-39",
+  "ultimaActualizacion": "2026-11-05T23:56:39.676Z",
   "tiendas": [
     {
       "id": 1,
@@ -5652,8 +5652,8 @@
       "nombre": "Hershey's",
       "precio": 0,
       "tipo": "opcion",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 264,
