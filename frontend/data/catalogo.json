@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-22-21",
-  "ultimaActualizacion": "2026-11-06T17:22:21.763Z",
+  "version": "v2026-11-06T20-30-52",
+  "ultimaActualizacion": "2026-11-06T20:30:52.683Z",
   "tiendas": [
     {
       "id": 1,
@@ -5587,7 +5587,7 @@
     },
     {
       "id": 260,
-      "id_producto": "",
+      "id_producto": 502,
       "grupo": "",
       "nombre": "",
       "precio": 0,
@@ -5846,20 +5846,10 @@
       "min": 0
     },
     {
-      "id": 285,
-      "id_producto": 700,
-      "grupo": "",
-      "nombre": "fresa",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 2,
-      "min": 2
-    },
-    {
       "id": 286,
       "id_producto": 700,
       "grupo": "",
-      "nombre": "chocolate",
+      "nombre": "fresa",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5869,7 +5859,7 @@
       "id": 287,
       "id_producto": 700,
       "grupo": "",
-      "nombre": "vainilla",
+      "nombre": "chocolate",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5879,7 +5869,7 @@
       "id": 288,
       "id_producto": 700,
       "grupo": "",
-      "nombre": "vainilla chips",
+      "nombre": "vainilla",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5889,7 +5879,7 @@
       "id": 289,
       "id_producto": 700,
       "grupo": "",
-      "nombre": "bateado de mora",
+      "nombre": "vainilla chips",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5897,9 +5887,9 @@
     },
     {
       "id": 290,
-      "id_producto": 701,
+      "id_producto": 700,
       "grupo": "",
-      "nombre": "fresa",
+      "nombre": "bateado de mora",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5909,7 +5899,7 @@
       "id": 291,
       "id_producto": 701,
       "grupo": "",
-      "nombre": "chocolate",
+      "nombre": "fresa",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5919,7 +5909,7 @@
       "id": 292,
       "id_producto": 701,
       "grupo": "",
-      "nombre": "vainilla",
+      "nombre": "chocolate",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5929,7 +5919,7 @@
       "id": 293,
       "id_producto": 701,
       "grupo": "",
-      "nombre": "vainilla chips",
+      "nombre": "vainilla",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5939,7 +5929,7 @@
       "id": 294,
       "id_producto": 701,
       "grupo": "",
-      "nombre": "bateado de mora",
+      "nombre": "vainilla chips",
       "precio": 0,
       "tipo": "opcion",
       "max": 2,
@@ -5947,6 +5937,16 @@
     },
     {
       "id": 295,
+      "id_producto": 701,
+      "grupo": "",
+      "nombre": "bateado de mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 2,
+      "min": 2
+    },
+    {
+      "id": 296,
       "id_producto": 702,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas Sencilla",
@@ -5956,7 +5956,7 @@
       "min": 1
     },
     {
-      "id": 296,
+      "id": 297,
       "id_producto": 702,
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas especial",
@@ -5966,7 +5966,7 @@
       "min": 1
     },
     {
-      "id": 297,
+      "id": 298,
       "id_producto": 702,
       "grupo": "",
       "nombre": "fresa",
@@ -5976,7 +5976,7 @@
       "min": 1
     },
     {
-      "id": 298,
+      "id": 299,
       "id_producto": 702,
       "grupo": "",
       "nombre": "chocolate",
@@ -5986,7 +5986,7 @@
       "min": 1
     },
     {
-      "id": 299,
+      "id": 300,
       "id_producto": 702,
       "grupo": "",
       "nombre": "vainilla",
@@ -5996,7 +5996,7 @@
       "min": 1
     },
     {
-      "id": 300,
+      "id": 301,
       "id_producto": 702,
       "grupo": "",
       "nombre": "vainilla chips",
@@ -6006,7 +6006,7 @@
       "min": 1
     },
     {
-      "id": 301,
+      "id": 302,
       "id_producto": 702,
       "grupo": "",
       "nombre": "bateado de mora",
@@ -6014,16 +6014,6 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
-    },
-    {
-      "id": 302,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
     },
     {
       "id": 303,
@@ -6037,19 +6027,19 @@
     },
     {
       "id": 304,
-      "id_producto": 703,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "fresa",
+      "nombre": "",
       "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "tipo": "",
+      "max": null,
+      "min": 0
     },
     {
       "id": 305,
       "id_producto": 703,
       "grupo": "",
-      "nombre": "chocolate",
+      "nombre": "fresa",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -6059,7 +6049,7 @@
       "id": 306,
       "id_producto": 703,
       "grupo": "",
-      "nombre": "vainilla",
+      "nombre": "chocolate",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -6069,7 +6059,7 @@
       "id": 307,
       "id_producto": 703,
       "grupo": "",
-      "nombre": "vainilla chips",
+      "nombre": "vainilla",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -6079,7 +6069,7 @@
       "id": 308,
       "id_producto": 703,
       "grupo": "",
-      "nombre": "bateado de mora",
+      "nombre": "vainilla chips",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -6087,6 +6077,16 @@
     },
     {
       "id": 309,
+      "id_producto": 703,
+      "grupo": "",
+      "nombre": "bateado de mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 310,
       "id_producto": 704,
       "grupo": "",
       "nombre": "fresa",
@@ -6096,7 +6096,7 @@
       "min": 3
     },
     {
-      "id": 310,
+      "id": 311,
       "id_producto": 704,
       "grupo": "",
       "nombre": "chocolate",
@@ -6106,7 +6106,7 @@
       "min": 3
     },
     {
-      "id": 311,
+      "id": 312,
       "id_producto": 704,
       "grupo": "",
       "nombre": "vainilla",
@@ -6116,7 +6116,7 @@
       "min": 3
     },
     {
-      "id": 312,
+      "id": 313,
       "id_producto": 704,
       "grupo": "",
       "nombre": "vainilla chips",
@@ -6126,7 +6126,7 @@
       "min": 3
     },
     {
-      "id": 313,
+      "id": 314,
       "id_producto": 704,
       "grupo": "",
       "nombre": "bateado de mora",
@@ -6136,7 +6136,7 @@
       "min": 3
     },
     {
-      "id": 314,
+      "id": 315,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
