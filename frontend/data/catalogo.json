@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-05T23-59-48",
-  "ultimaActualizacion": "2026-11-05T23:59:48.296Z",
+  "version": "v2026-11-06T00-00-19",
+  "ultimaActualizacion": "2026-11-06T00:00:19.706Z",
   "tiendas": [
     {
       "id": 1,
@@ -5657,7 +5657,7 @@
     },
     {
       "id": 268,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Blueberry",
       "precio": 0,
@@ -5667,7 +5667,7 @@
     },
     {
       "id": 269,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Maracuyá",
       "precio": 0,
@@ -5677,7 +5677,7 @@
     },
     {
       "id": 270,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Tamarindo",
       "precio": 0,
@@ -5687,7 +5687,7 @@
     },
     {
       "id": 271,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Mangoviche",
       "precio": 0,
@@ -5697,7 +5697,7 @@
     },
     {
       "id": 272,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Manzana verde",
       "precio": 0,
@@ -5707,7 +5707,7 @@
     },
     {
       "id": 273,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "",
       "nombre": "Ciresa",
       "precio": 0,
