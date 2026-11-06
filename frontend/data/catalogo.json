@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T00-02-05",
-  "ultimaActualizacion": "2026-11-06T00:02:05.726Z",
+  "version": "v2026-11-06T00-02-41",
+  "ultimaActualizacion": "2026-11-06T00:02:41.216Z",
   "tiendas": [
     {
       "id": 1,
@@ -5658,7 +5658,7 @@
     {
       "id": 268,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Blueberry",
       "precio": 0,
       "tipo": "opcion",
@@ -5668,7 +5668,7 @@
     {
       "id": 269,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Maracuyá",
       "precio": 0,
       "tipo": "opcion",
@@ -5678,7 +5678,7 @@
     {
       "id": 270,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Tamarindo",
       "precio": 0,
       "tipo": "opcion",
@@ -5688,7 +5688,7 @@
     {
       "id": 271,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Mangoviche",
       "precio": 0,
       "tipo": "opcion",
@@ -5698,7 +5698,7 @@
     {
       "id": 272,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Manzana verde",
       "precio": 0,
       "tipo": "opcion",
@@ -5708,7 +5708,7 @@
     {
       "id": 273,
       "id_producto": 601,
-      "grupo": "",
+      "grupo": "Acompañamiento",
       "nombre": "Ciresa",
       "precio": 0,
       "tipo": "opcion",
@@ -5718,7 +5718,7 @@
     {
       "id": 274,
       "id_producto": "",
-      "grupo": "",
+      "grupo": "Licor",
       "nombre": "",
       "precio": 0,
       "tipo": "",
