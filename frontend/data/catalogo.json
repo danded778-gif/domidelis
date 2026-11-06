@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T20-30-52",
-  "ultimaActualizacion": "2026-11-06T20:30:52.683Z",
+  "version": "v2026-11-06T20-31-25",
+  "ultimaActualizacion": "2026-11-06T20:31:25.564Z",
   "tiendas": [
     {
       "id": 1,
@@ -5510,7 +5510,7 @@
       "id_producto": 500,
       "grupo": "",
       "nombre": "Und Mango biche",
-      "precio": 0,
+      "precio": 10000,
       "tipo": "extra",
       "max": null,
       "min": 0
@@ -5589,9 +5589,9 @@
       "id": 260,
       "id_producto": 502,
       "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
+      "nombre": "Und Fresas con Crema",
+      "precio": 9000,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
