@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-13-11",
-  "ultimaActualizacion": "2026-11-06T17:13:11.115Z",
+  "version": "v2026-11-06T17-13-48",
+  "ultimaActualizacion": "2026-11-06T17:13:48.693Z",
   "tiendas": [
     {
       "id": 1,
@@ -6158,26 +6158,6 @@
     {
       "id": 502,
       "id_producto": 188,
-      "grupo": "Salsa",
-      "nombre": "Tajin",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 503,
-      "id_producto": 188,
-      "grupo": "Salsa",
-      "nombre": "Pimienta",
-      "precio": 0,
-      "tipo": "opcion",
-      "max": 1,
-      "min": 1
-    },
-    {
-      "id": 504,
-      "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Galletas oreo",
       "precio": 0,
@@ -6186,7 +6166,7 @@
       "min": 1
     },
     {
-      "id": 505,
+      "id": 503,
       "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Gomitas",
@@ -6196,10 +6176,30 @@
       "min": 1
     },
     {
-      "id": 506,
+      "id": 504,
       "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "chispitas de color",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 505,
+      "id_producto": 188,
+      "grupo": "Salsa",
+      "nombre": "Lecherita",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 506,
+      "id_producto": 188,
+      "grupo": "Salsa",
+      "nombre": "Mora",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
