@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-10-57",
-  "ultimaActualizacion": "2026-11-06T17:10:57.032Z",
+  "version": "v2026-11-06T17-12-18",
+  "ultimaActualizacion": "2026-11-06T17:12:18.548Z",
   "tiendas": [
     {
       "id": 1,
@@ -6149,7 +6149,7 @@
       "id": 501,
       "id_producto": 188,
       "grupo": "",
-      "nombre": "und",
+      "nombre": "Und",
       "precio": 1500,
       "tipo": "extra",
       "max": null,
