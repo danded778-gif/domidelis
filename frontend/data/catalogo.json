@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T00-02-41",
-  "ultimaActualizacion": "2026-11-06T00:02:41.216Z",
+  "version": "v2026-11-06T00-03-07",
+  "ultimaActualizacion": "2026-11-06T00:03:07.515Z",
   "tiendas": [
     {
       "id": 1,
@@ -5717,9 +5717,9 @@
     },
     {
       "id": 274,
-      "id_producto": "",
+      "id_producto": 601,
       "grupo": "Licor",
-      "nombre": "",
+      "nombre": "con licor",
       "precio": 0,
       "tipo": "",
       "max": null,
@@ -5727,9 +5727,9 @@
     },
     {
       "id": 275,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
+      "id_producto": 601,
+      "grupo": "Licor",
+      "nombre": "sin licor",
       "precio": 0,
       "tipo": "",
       "max": null,
