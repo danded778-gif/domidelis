@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-17-08",
-  "ultimaActualizacion": "2026-11-06T17:17:08.790Z",
+  "version": "v2026-11-06T17-18-52",
+  "ultimaActualizacion": "2026-11-06T17:18:52.689Z",
   "tiendas": [
     {
       "id": 1,
@@ -6149,7 +6149,7 @@
       "id": 501,
       "id_producto": 188,
       "grupo": "",
-      "nombre": "Und",
+      "nombre": "Und Fresas con Crema",
       "precio": 9000,
       "tipo": "extra",
       "max": null,
