@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T00-00-23",
-  "ultimaActualizacion": "2026-11-06T00:00:23.430Z",
+  "version": "v2026-11-06T00-00-51",
+  "ultimaActualizacion": "2026-11-06T00:00:51.319Z",
   "tiendas": [
     {
       "id": 1,
@@ -5661,7 +5661,7 @@
       "grupo": "",
       "nombre": "Blueberry",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
@@ -5671,7 +5671,7 @@
       "grupo": "",
       "nombre": "Maracuyá",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
@@ -5681,7 +5681,7 @@
       "grupo": "",
       "nombre": "Tamarindo",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
@@ -5691,7 +5691,7 @@
       "grupo": "",
       "nombre": "Mangoviche",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
@@ -5701,7 +5701,7 @@
       "grupo": "",
       "nombre": "Manzana verde",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": null,
       "min": 0
     },
