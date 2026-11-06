@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-21-48",
-  "ultimaActualizacion": "2026-11-06T17:21:48.235Z",
+  "version": "v2026-11-06T17-22-21",
+  "ultimaActualizacion": "2026-11-06T17:22:21.763Z",
   "tiendas": [
     {
       "id": 1,
@@ -5507,6 +5507,16 @@
     },
     {
       "id": 252,
+      "id_producto": 500,
+      "grupo": "",
+      "nombre": "Und Mango biche",
+      "precio": 0,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 253,
       "id_producto": 502,
       "grupo": "Presentación",
       "nombre": "Galletas oreo",
@@ -5516,7 +5526,7 @@
       "min": 1
     },
     {
-      "id": 253,
+      "id": 254,
       "id_producto": 502,
       "grupo": "Presentación",
       "nombre": "Gomitas",
@@ -5526,7 +5536,7 @@
       "min": 1
     },
     {
-      "id": 254,
+      "id": 255,
       "id_producto": 502,
       "grupo": "Presentación",
       "nombre": "chispitas de color",
@@ -5536,7 +5546,7 @@
       "min": 1
     },
     {
-      "id": 255,
+      "id": 256,
       "id_producto": 502,
       "grupo": "Salsa",
       "nombre": "Lecherita",
@@ -5546,7 +5556,7 @@
       "min": 1
     },
     {
-      "id": 256,
+      "id": 257,
       "id_producto": 502,
       "grupo": "Salsa",
       "nombre": "Mora",
@@ -5556,7 +5566,7 @@
       "min": 1
     },
     {
-      "id": 257,
+      "id": 258,
       "id_producto": 502,
       "grupo": "Salsa",
       "nombre": "Chocolate",
@@ -5566,7 +5576,7 @@
       "min": 1
     },
     {
-      "id": 258,
+      "id": 259,
       "id_producto": 502,
       "grupo": "Salsa",
       "nombre": "Arequipe",
@@ -5576,7 +5586,7 @@
       "min": 1
     },
     {
-      "id": 259,
+      "id": 260,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -5586,7 +5596,7 @@
       "min": 0
     },
     {
-      "id": 260,
+      "id": 261,
       "id_producto": 600,
       "grupo": "Presentación",
       "nombre": "Cafe",
@@ -5596,7 +5606,7 @@
       "min": 1
     },
     {
-      "id": 261,
+      "id": 262,
       "id_producto": 600,
       "grupo": "Presentación",
       "nombre": "Milo",
@@ -5606,7 +5616,7 @@
       "min": 1
     },
     {
-      "id": 262,
+      "id": 263,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Sneaker",
@@ -5616,7 +5626,7 @@
       "min": 1
     },
     {
-      "id": 263,
+      "id": 264,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "M y M",
@@ -5626,7 +5636,7 @@
       "min": 1
     },
     {
-      "id": 264,
+      "id": 265,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Baileys",
@@ -5636,7 +5646,7 @@
       "min": 1
     },
     {
-      "id": 265,
+      "id": 266,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Oreo",
@@ -5646,7 +5656,7 @@
       "min": 1
     },
     {
-      "id": 266,
+      "id": 267,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Barquillo",
@@ -5656,7 +5666,7 @@
       "min": 1
     },
     {
-      "id": 267,
+      "id": 268,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Hershey's",
@@ -5666,7 +5676,7 @@
       "min": 1
     },
     {
-      "id": 268,
+      "id": 269,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Blueberry",
@@ -5676,7 +5686,7 @@
       "min": 1
     },
     {
-      "id": 269,
+      "id": 270,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Maracuyá",
@@ -5686,7 +5696,7 @@
       "min": 1
     },
     {
-      "id": 270,
+      "id": 271,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Tamarindo",
@@ -5696,7 +5706,7 @@
       "min": 1
     },
     {
-      "id": 271,
+      "id": 272,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Mangoviche",
@@ -5706,7 +5716,7 @@
       "min": 1
     },
     {
-      "id": 272,
+      "id": 273,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Manzana verde",
@@ -5716,7 +5726,7 @@
       "min": 1
     },
     {
-      "id": 273,
+      "id": 274,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Ciresa",
@@ -5726,7 +5736,7 @@
       "min": 1
     },
     {
-      "id": 274,
+      "id": 275,
       "id_producto": 601,
       "grupo": "Licor",
       "nombre": "Con licor",
@@ -5736,7 +5746,7 @@
       "min": 1
     },
     {
-      "id": 275,
+      "id": 276,
       "id_producto": 601,
       "grupo": "Licor",
       "nombre": "Sin licor",
@@ -5744,16 +5754,6 @@
       "tipo": "opcion",
       "max": 1,
       "min": 1
-    },
-    {
-      "id": 276,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
     },
     {
       "id": 277,
@@ -5827,6 +5827,16 @@
     },
     {
       "id": 284,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 285,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
