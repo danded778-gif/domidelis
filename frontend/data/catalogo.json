@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-09-46",
-  "ultimaActualizacion": "2026-11-06T17:09:46.151Z",
+  "version": "v2026-11-06T17-10-10",
+  "ultimaActualizacion": "2026-11-06T17:10:10.863Z",
   "tiendas": [
     {
       "id": 1,
@@ -6137,29 +6137,69 @@
     },
     {
       "id": 500,
-      "id_producto": 188,
+      "id_producto": "",
       "grupo": "",
-      "nombre": "Yuquitas",
+      "nombre": "",
       "precio": 6000,
       "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id": 500,
+      "id": 501,
       "id_producto": 188,
       "grupo": "",
-      "nombre": "salsa",
+      "nombre": "",
       "precio": 1500,
       "tipo": "extra",
       "max": null,
       "min": 0
     },
     {
-      "id": 5,
+      "id": 502,
       "id_producto": 188,
       "grupo": "Salsa",
       "nombre": "Tajin",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 503,
+      "id_producto": 188,
+      "grupo": "Salsa",
+      "nombre": "Pimienta",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 504,
+      "id_producto": 188,
+      "grupo": "Presentación",
+      "nombre": "Galletas oreo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 505,
+      "id_producto": 188,
+      "grupo": "Presentación",
+      "nombre": "Gomitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 506,
+      "id_producto": 188,
+      "grupo": "Presentación",
+      "nombre": "chispitas de color",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
