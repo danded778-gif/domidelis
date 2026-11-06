@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!-- ★ checkout.html — WIZARD DE 3 PASOS (Entrega → Resumen → Pago)
+     Cambios vs. la versión de 4 pasos:
+     · Pasos 1+2 fusionados en "Entrega" (datos + dirección + zona).
+     · El formulario del antiguo paso 2 se eliminó; su validación de zona
+       migró al submit del formPaso1.
+     · Resumen pasa a paso 2 y Pago a paso 3 (data-target de los botones Atrás renumerados).
+     · TODOS los IDs se conservan: checkout.js, confirmar-pedido.js, propina y
+       el autocompletado de zona no requieren ningún cambio. -->
 <html lang="es">
 
 <head>
@@ -48,30 +56,26 @@
 
             <div class="checkout-header">
                 <h1><i class="fas fa-clipboard-check"></i> Finalizar Pedido</h1>
-                <!-- ★ INDICADOR DE 4 PASOS ★ -->
+                <!-- ★ INDICADOR DE 3 PASOS ★ -->
                 <div class="checkout-progress">
                     <div class="progress-step activo" data-step="1">
-                        <span class="progress-num">1</span> Datos
+                        <span class="progress-num">1</span> Entrega
                     </div>
                     <div class="progress-line"></div>
                     <div class="progress-step" data-step="2">
-                        <span class="progress-num">2</span> Dirección
+                        <span class="progress-num">2</span> Resumen
                     </div>
                     <div class="progress-line"></div>
                     <div class="progress-step" data-step="3">
-                        <span class="progress-num">3</span> Resumen
-                    </div>
-                    <div class="progress-line"></div>
-                    <div class="progress-step" data-step="4">
-                        <span class="progress-num">4</span> Pago
+                        <span class="progress-num">3</span> Pago
                     </div>
                 </div>
             </div>
 
-            <!-- ══════════ PASO 1: DATOS PERSONALES ══════════ -->
+            <!-- ══════════ PASO 1: DATOS PERSONALES + DIRECCIÓN Y ZONA (fusionado) ══════════ -->
             <div class="checkout-step activo" id="step-1">
                 <div class="checkout-card compacto">
-                    <h3><i class="fas fa-user"></i> Tus datos</h3>
+                    <h3><i class="fas fa-user"></i> Tus datos y dirección</h3>
                     <form id="formPaso1">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Nombre completo *</label>
@@ -81,18 +85,6 @@
                             <label><i class="fas fa-phone"></i> Teléfono *</label>
                             <input type="tel" id="telefono" required autocomplete="tel" placeholder="Ej: 3001234567" maxlength="10" pattern="[0-9]{10}" title="Ingresa exactamente 10 números">
                         </div>
-                        <div class="checkout-acciones">
-                            <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- ══════════ PASO 2: DIRECCIÓN Y ZONA ══════════ -->
-            <div class="checkout-step" id="step-2">
-                <div class="checkout-card compacto">
-                    <h3><i class="fas fa-map-marker-alt"></i> Dónde entregamos</h3>
-                    <form id="formPaso2">
                         <div class="form-group">
                             <label><i class="fas fa-map-marker-alt"></i> Dirección *</label>
                             <input type="text" id="direccion" required autocomplete="street-address" placeholder="Calle 123 #45-67" maxlength="60">
@@ -112,15 +104,14 @@
                             </small>
                         </div>
                         <div class="checkout-acciones">
-                            <button type="button" class="btn btn-secondary btn-atras" data-target="step-1">Atrás</button>
                             <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <!-- ══════════ PASO 3: RESUMEN + REFERENCIAS (compacto) ══════════ -->
-            <div class="checkout-step" id="step-3">
+            <!-- ══════════ PASO 2: RESUMEN + REFERENCIAS (compacto) ══════════ -->
+            <div class="checkout-step" id="step-2">
                 <div class="checkout-card compacto">
                     <h3 style="font-size: 1rem; margin-bottom: 0.5rem;"><i class="fas fa-receipt"></i> Resumen de tu pedido</h3>
 
@@ -158,15 +149,15 @@
                             <input type="text" id="codigoPromoCheckout" class="form-control" readonly style="background:#e8f5e9; color:#2e7d32; font-weight:700; border:2px solid #2e7d32; padding: 0.3rem 0.6rem; font-size: 0.8rem; width: 100%;">
                         </div>
                         <div class="checkout-acciones" style="margin-top: 0.75rem;">
-                            <button type="button" class="btn btn-secondary btn-atras" data-target="step-2">Atrás</button>
+                            <button type="button" class="btn btn-secondary btn-atras" data-target="step-1">Atrás</button>
                             <button type="submit" class="btn btn-primary btn-siguiente">Siguiente <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <!-- ══════════ PASO 4: PROPINA + MÉTODO DE PAGO (compacto) ══════════ -->
-            <div class="checkout-step" id="step-4">
+            <!-- ══════════ PASO 3: PROPINA + MÉTODO DE PAGO (compacto) ══════════ -->
+            <div class="checkout-step" id="step-3">
 
                 <!-- ★ PROPINA ★ -->
                 <div class="checkout-card" id="propinaCard" style="margin-bottom: 1rem;">
@@ -245,7 +236,7 @@
 
                 <!-- ★ ACCIONES: ATRÁS + CONFIRMAR ★ -->
                 <div class="checkout-acciones" style="margin-top: 1rem;">
-                    <button type="button" class="btn btn-secondary btn-atras" data-target="step-3">Atrás</button>
+                    <button type="button" class="btn btn-secondary btn-atras" data-target="step-2">Atrás</button>
                     <button type="button" class="btn-confirmar btn-final" id="btnConfirmar">
                         <i class="fab fa-whatsapp"></i> Confirmar por WhatsApp
                     </button>
@@ -280,7 +271,7 @@
         }
     </script>
 
-    <!-- ★★★ WIZARD DE 4 PASOS + AUTOGUARDADO ★★★ -->
+    <!-- ★★★ WIZARD DE 3 PASOS + AUTOGUARDADO ★★★ -->
     <script>
         (function() {
             var CLAVE = 'domidelis_cliente';
@@ -381,7 +372,7 @@
             ref.addEventListener('change', guardarDatosCliente);
             zonaInput.addEventListener('change', guardarDatosCliente);
 
-            // Paso 1
+            // Paso 1 (fusionado: datos personales + dirección y zona)
             document.getElementById('formPaso1').addEventListener('submit', function(e) {
                 e.preventDefault();
                 var nombre = document.getElementById('nombre').value.trim();
@@ -390,13 +381,6 @@
                     alert('Por favor completa nombre y teléfono.');
                     return;
                 }
-                guardarDatosCliente();
-                irPaso(2, true);
-            });
-
-            // Paso 2
-            document.getElementById('formPaso2').addEventListener('submit', function(e) {
-                e.preventDefault();
                 if (!zonaHidden.value) {
                     zonaError.style.display = 'block';
                     zonaInput.classList.add('input-error');
@@ -404,14 +388,14 @@
                     return;
                 }
                 guardarDatosCliente();
-                irPaso(3, true);
+                irPaso(2, true);
             });
 
-            // Paso 3
+            // Paso 2 (Resumen)
             document.getElementById('formPaso3').addEventListener('submit', function(e) {
                 e.preventDefault();
                 guardarDatosCliente();
-                irPaso(4, true);
+                irPaso(3, true);
             });
 
             // Botones "Atrás"
@@ -474,4 +458,4 @@
 
 </body>
 
-</html> 
+</html>
