@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-07-58",
-  "ultimaActualizacion": "2026-11-06T17:07:58.948Z",
+  "version": "v2026-11-06T17-08-52",
+  "ultimaActualizacion": "2026-11-06T17:08:52.139Z",
   "tiendas": [
     {
       "id": 1,
@@ -1094,7 +1094,7 @@
         },
         {
           "id": 188,
-          "nombre": "Descuentos",
+          "nombre": "prueba local 2",
           "descripcion": "Las Promociones Son Mis Favoritas",
           "precio": 35000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
@@ -2785,7 +2785,7 @@
     },
     {
       "id": 188,
-      "nombre": "Descuentos",
+      "nombre": "prueba local 2",
       "descripcion": "Las Promociones Son Mis Favoritas",
       "precio": 35000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/punto%20del%20sabor/haburgesadbole.png",
