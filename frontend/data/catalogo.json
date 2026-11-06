@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-16-32",
-  "ultimaActualizacion": "2026-11-06T17:16:32.675Z",
+  "version": "v2026-11-06T17-17-08",
+  "ultimaActualizacion": "2026-11-06T17:17:08.790Z",
   "tiendas": [
     {
       "id": 1,
@@ -4567,7 +4567,7 @@
     },
     {
       "id": 152,
-      "id_producto": 167,
+      "id_producto": "",
       "grupo": "",
       "nombre": "prueba de salsa",
       "precio": 1000,
@@ -6237,7 +6237,7 @@
     },
     {
       "id": 510,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Proteína",
       "nombre": "Alitas",
       "precio": 0,
@@ -6247,7 +6247,7 @@
     },
     {
       "id": 511,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Acompañamiento",
       "nombre": "papa",
       "precio": 0,
@@ -6257,7 +6257,7 @@
     },
     {
       "id": 512,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
       "precio": 0,
@@ -6267,7 +6267,7 @@
     },
     {
       "id": 513,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
       "precio": 0,
@@ -6277,7 +6277,7 @@
     },
     {
       "id": 514,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
       "precio": 0,
@@ -6287,7 +6287,7 @@
     },
     {
       "id": 515,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
       "precio": 0,
@@ -6297,7 +6297,7 @@
     },
     {
       "id": 516,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "",
       "nombre": "Alitas extra",
       "precio": 2000,
@@ -6307,7 +6307,7 @@
     },
     {
       "id": 517,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "",
       "nombre": "Yuquitas",
       "precio": 6000,
@@ -6317,7 +6317,7 @@
     },
     {
       "id": 518,
-      "id_producto": "",
+      "id_producto": 167,
       "grupo": "",
       "nombre": "salsa",
       "precio": 1000,
