@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T17-09-17",
-  "ultimaActualizacion": "2026-11-06T17:09:17.590Z",
+  "version": "v2026-11-06T17-09-46",
+  "ultimaActualizacion": "2026-11-06T17:09:46.151Z",
   "tiendas": [
     {
       "id": 1,
@@ -6134,6 +6134,36 @@
       "tipo": "",
       "max": null,
       "min": 0
+    },
+    {
+      "id": 500,
+      "id_producto": 188,
+      "grupo": "",
+      "nombre": "Yuquitas",
+      "precio": 6000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 500,
+      "id_producto": 188,
+      "grupo": "",
+      "nombre": "salsa",
+      "precio": 1500,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 5,
+      "id_producto": 188,
+      "grupo": "Salsa",
+      "nombre": "Tajin",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     }
   ]
 }
