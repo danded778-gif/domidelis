@@ -1046,7 +1046,9 @@ app.use('/api/trabaja', trabajaRoutes);
 // ★ TEMA 2 — catálogo fresco:
 const catalogoRoutes = require('./routes/catalogoRoutes');
 app.use('/api/catalogo', catalogoRoutes);
-
+// IA
+const iaRoutes = require('./routes/iaRoutes');
+app.use('/api/ia', iaRoutes);                         // ★ NUEVO
 
 // ============================================
 // INICIAR SERVIDOR
