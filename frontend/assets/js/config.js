@@ -94,7 +94,6 @@ const APP_CONFIG = {
 //     actualizado con cada cambio (subirCatalogoAGitHub).
 const CATALOGO_URL = API_URL + '/catalogo';
 const CATALOGO_FALLBACK_URL = 'data/catalogo.json';
-const IA_API_URL = API_URL + '/ia';
 
 // ============================================
 // SESIÓN — localStorage (persiste al cerrar pestaña)
@@ -135,7 +134,6 @@ function guardarCarrito(nuevoCarrito) {
         timestamp: ahora
     };
     localStorage.setItem('carrito', JSON.stringify(data));
-    window.dispatchEvent(new CustomEvent('domidelis:carrito-actualizado'));
 }
 
 function obtenerCarrito() {
@@ -264,7 +262,7 @@ function desgloseRecargo(carritoItems) {
 let socketGlobal = null;
 let identificacionPendiente = null;
 
-// FIX: ¿Esta página ya tuvo al menos una conexión exitosa?
+// ★ FIX: ¿Esta página ya tuvo al menos una conexión exitosa?
 // Sirve para distinguir PRIMERA conexión de RECONEXIÓN real
 window.__socketConectoAlgunaVez = false;
 
