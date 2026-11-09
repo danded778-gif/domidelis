@@ -43,7 +43,7 @@ const APP_CONFIG = {
     barandas:     { nombre: 'Barandas amarilla',        envio: 5000 },
     bomberos:     { nombre: 'Bomberos',                 envio: 5000 },
     corazon:      { nombre: 'C. de Jesus',              envio: 6000 },
-    poli:         { nombre: 'Cabrero',                  envio: 6000 },
+    poli:         { nombre: 'Cabrero',                  envio: 5000 },
     cafetex:      { nombre: 'Cafetex',                  envio: 6000 },
     calvario:     { nombre: 'Calvario',                 envio: 5000 },
     cataleya:     { nombre: 'Cataleya',                 envio: 6000 },
