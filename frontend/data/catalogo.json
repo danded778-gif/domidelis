@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-09T06-20-42",
-  "ultimaActualizacion": "2026-11-09T06:20:42.947Z",
+  "version": "v2026-11-09T06-21-23",
+  "ultimaActualizacion": "2026-11-09T06:21:23.755Z",
   "tiendas": [
     {
       "id": 1,
@@ -1522,6 +1522,18 @@
       ]
     },
     {
+      "id": 22,
+      "nombre": "Mr Pollo",
+      "descripcion": "el Santuario",
+      "direccion": "Plaza De Mercado",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/Mr.pollo/Restaurante%20Mr.%20Pollo%20al%20anochecer_201kb.jpg",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
+    },
+    {
       "id": 18,
       "nombre": "Don perro",
       "descripcion": "Sabor Criminal",
@@ -1766,18 +1778,6 @@
           "tiendaNombre": "Luna Cremosa"
         }
       ]
-    },
-    {
-      "id": 22,
-      "nombre": "Mr Pollo",
-      "descripcion": "el Santuario",
-      "direccion": "Plaza De Mercado",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/Mr.pollo/Restaurante%20Mr.%20Pollo%20al%20anochecer_201kb.jpg",
-      "promovida": 1,
-      "activo": true,
-      "productos": []
     }
   ],
   "productosGlobal": [
