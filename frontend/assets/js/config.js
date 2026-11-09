@@ -69,7 +69,7 @@ const APP_CONFIG = {
     sur:          { nombre: 'La Chapa',                 envio: 6000 },
     calera:       { nombre: 'La calera',                envio: 15000 },
     esmeralda:    { nombre: 'La Esmeralda',             envio: 5000 },
-    norte:        { nombre: 'La Judea',                 envio: 5000 },
+    norte:        { nombre: 'La Judea',                 envio: 4000 },
     lajas:        { nombre: 'Las Lajas',                envio: 5000 },
     lavadero:     { nombre: 'Lavadero de Papas',        envio: 7000 },
     miraflores:   { nombre: 'Miraflores',               envio: 4000 },
