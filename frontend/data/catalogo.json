@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-06T20-31-25",
-  "ultimaActualizacion": "2026-11-06T20:31:25.564Z",
+  "version": "v2026-11-09T06-20-15",
+  "ultimaActualizacion": "2026-11-09T06:20:15.933Z",
   "tiendas": [
     {
       "id": 1,
@@ -1766,6 +1766,18 @@
           "tiendaNombre": "Luna Cremosa"
         }
       ]
+    },
+    {
+      "id": 22,
+      "nombre": "Mr Pollo",
+      "descripcion": "el Santuario",
+      "direccion": "Plaza De Mercado",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/Mr.pollo/Restaurante%20Mr.%20Pollo%20al%20anochecer_201kb.jpg",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
     }
   ],
   "productosGlobal": [
