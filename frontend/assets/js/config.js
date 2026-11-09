@@ -86,7 +86,7 @@ const APP_CONFIG = {
     señorcaido:   { nombre: 'Señor Caido',              envio: 6000 },
     teneria:      { nombre: 'Teneria',                  envio: 5000 },
     transoriente: { nombre: 'Transoriente',             envio: 5000 },
-    valle:        { nombre: 'Valle Maria',              envio: 12000 },
+    valle:        { nombre: 'Valle Maria',              envio: 12000},
     oriente:      { nombre: 'Vargas',                   envio: 7000 },
     villa:        { nombre: 'Villa Maria',              envio: 5000 },
     villas:       { nombre: 'Villas del poli',          envio: 5000 },
@@ -94,10 +94,11 @@ const APP_CONFIG = {
     saladito:     { nombre: 'V. Saladito',              envio: 6000 },
     lourdes:      { nombre: 'V.lourdes',                envio: 8000 },
     yamaha:       { nombre: 'Yamaha',                   envio: 5000 },
-    Sol:       { nombre: 'Hotel Puerta del Sol  ',      envio: 5000 },
+    Sol:          { nombre: 'Hotel Puerta del Sol  ',   envio: 5000 },
+    calle:        { nombre: 'Calle Santander',          envio: 5000 },
     // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
 
-// Sol:       { nombre: 'Hotel Puerta del Sol  ',       envio: 5000 },
+// calle:       { nombre: 'Calle Santander',       envio: 5000 },
     }
 };
 
