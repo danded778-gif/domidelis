@@ -95,7 +95,7 @@ const APP_CONFIG = {
     lourdes:      { nombre: 'V.lourdes',                envio: 8000 },
     yamaha:       { nombre: 'Yamaha',                   envio: 5000 },
     Sol:          { nombre: 'Hotel Puerta del Sol  ',   envio: 5000 },
-    calle:        { nombre: 'Calle Santander',          envio: 5000 },
+    calle:        { nombre: 'Calle Santander',          envio: 5000 }, 
     // ★ AGREGAR NUEVAS ZONAS AQUÍ ★
 
 // calle:       { nombre: 'Calle Santander',       envio: 5000 },
