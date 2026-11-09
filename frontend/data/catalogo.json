@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-09T06-20-15",
-  "ultimaActualizacion": "2026-11-09T06:20:15.933Z",
+  "version": "v2026-11-09T06-20-42",
+  "ultimaActualizacion": "2026-11-09T06:20:42.947Z",
   "tiendas": [
     {
       "id": 1,
@@ -1522,18 +1522,6 @@
       ]
     },
     {
-      "id": 21,
-      "nombre": "Pika Peke",
-      "descripcion": "Aqui No Hay Remordimiento",
-      "direccion": "p.p",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_201kb.jpg",
-      "promovida": 1,
-      "activo": true,
-      "productos": []
-    },
-    {
       "id": 18,
       "nombre": "Don perro",
       "descripcion": "Sabor Criminal",
@@ -1688,6 +1676,18 @@
           "tiendaNombre": "Kiosko la Judea"
         }
       ]
+    },
+    {
+      "id": 21,
+      "nombre": "Pika Peke",
+      "descripcion": "Aqui No Hay Remordimiento",
+      "direccion": "p.p",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_201kb.jpg",
+      "promovida": 1,
+      "activo": true,
+      "productos": []
     },
     {
       "id": 19,
