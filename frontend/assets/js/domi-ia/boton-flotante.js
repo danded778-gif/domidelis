@@ -1,12 +1,21 @@
 // ============================================
 // DOMIDELIS — BOTÓN FLOTANTE DOMI IA
-// ★ v2: se oculta automáticamente mientras el
-//   carrito está abierto (.cart-panel.active),
-//   para no interferir con el flujo de compra.
+// ★ v3: se oculta mientras el carrito esté abierto
+//   (.cart-panel.active) O el buscador esté activo:
+//     · Móvil:      #search-panel.active
+//     · Escritorio: #header-search-dropdown.active
+//       (se activa al teclear ≥2 letras; también cuando
+//        dice "No encontramos…", porque el usuario sigue tecleando)
+//   · El buscador solo existe en index.html: cada capa se conecta
+//     con el patrón resiliente del v2 (reintento 500 ms × 20, sin errores)
+//   · El cierre móvil quita .active de inmediato (el panel se desvanece
+//     320 ms después): el botón reaparece al instante
 //   · Requiere la regla CSS .ia-float-oculto-carrito
-//     (ver domi-ia-ocultar-carrito.css)
+//     (la MISMA del v2 — v3 no cambia ni una línea de CSS)
 //   · Control manual opcional:
 //     DomiIABotonFlotante.ocultar() / .mostrar()
+//     (v3: son un bloqueo independiente — el botón solo reaparece
+//      con mostrar() si además no hay carrito ni buscador abiertos)
 // ============================================
 
 'use strict';
@@ -14,64 +23,122 @@
 (function () {
   const FLOAT_POSITION_KEY = 'domi_ia_float_position_v1';
 
-  // ★★★ NUEVO v2: OCULTAR EL BOTÓN MIENTRAS EL CARRITO ESTÁ ABIERTO ★★★
-  // Configurado con los selectores reales de cart.css:
-  // el estado abierto del carrito es .cart-panel.active
-  // (funciona igual abriendo desde el header de home que
-  // desde el .cart-float de las tiendas).
-  const SELECTOR_CARRITO = '.cart-panel';
-  const CLASES_ABIERTO = ['active'];
-  const CLASE_BODY_CARRITO = ''; // tu carrito no pone clase en <body>
+  // ★★★ v3: CAPAS QUE ESCONDEN EL BOTÓN ★★★
+  // Cada capa vigila un panel real del sitio con su clase "abierto".
+  // El botón se oculta si AL MENOS UNA capa está abierta
+  // (carrito abierto O buscador abierto). Para vigilar una capa nueva
+  // basta añadirla a esta lista: no hay que tocar el resto del código.
+  const CAPAS = [
+    {
+      razon: 'carrito',
+      // Selectores reales de cart.css: el estado abierto del carrito
+      // es .cart-panel.active (funciona igual abriendo desde el header
+      // de home que desde el .cart-float de las tiendas).
+      selector: '.cart-panel',
+      clasesAbierto: ['active'],
+      claseBody: '' // tu carrito no pone clase en <body>
+    },
+    {
+      razon: 'buscador-movil',
+      // buscador.js: abrirBuscadorMovil() añade .active a #search-panel
+      // (dentro de un requestAnimationFrame, ~1 frame después de mostrarlo)
+      selector: '#search-panel',
+      clasesAbierto: ['active'],
+      claseBody: ''
+    },
+    {
+      razon: 'buscador-desktop',
+      // buscador.js: renderResultadosBusqueda() añade .active al dropdown
+      // al teclear ≥2 letras — también en el caso "No encontramos…"
+      selector: '#header-search-dropdown',
+      clasesAbierto: ['active'],
+      claseBody: ''
+    }
+  ];
+  const MAX_REINTENTOS = 20; // igual que v2
+  const INTERVALO_REINTENTO_MS = 500;
 
   const CLASE_OCULTO = 'ia-float-oculto-carrito';
-  let ocultoPorCarrito = false;
-  let observadorCarrito = null;
+  let bloqueoManual = false;
+  let observadorCapas = null;
 
-  function aplicarVisibilidadCarrito(button) {
+  function estaOculto() {
+    if (bloqueoManual) return true;
+    return CAPAS.some(function (capa) {
+      return capa.conectada && capa.abierta;
+    });
+  }
+
+  function aplicarVisibilidad(button) {
     if (!button) return;
-    button.classList.toggle(CLASE_OCULTO, ocultoPorCarrito);
+    button.classList.toggle(CLASE_OCULTO, estaOculto());
   }
 
-  function setOcultoPorCarrito(ocultar) {
-    ocultoPorCarrito = !!ocultar;
-    aplicarVisibilidadCarrito(document.getElementById('ia-float'));
+  function refrescarVisibilidad() {
+    aplicarVisibilidad(document.getElementById('ia-float'));
   }
 
-  function carritoAbiertoAhora() {
-    if (CLASE_BODY_CARRITO && document.body.classList.contains(CLASE_BODY_CARRITO)) return true;
-    if (!SELECTOR_CARRITO) return false;
-    const panel = document.querySelector(SELECTOR_CARRITO);
-    return !!panel && CLASES_ABIERTO.some(function (clase) {
+  function setBloqueoManual(bloquear) {
+    bloqueoManual = !!bloquear;
+    refrescarVisibilidad();
+  }
+
+  function capaAbierta(capa) {
+    if (capa.claseBody && document.body.classList.contains(capa.claseBody)) return true;
+    const panel = document.querySelector(capa.selector);
+    if (!panel) return false;
+    return capa.clasesAbierto.some(function (clase) {
       return panel.classList.contains(clase);
     });
   }
 
-  function observarCarrito() {
-    if (observadorCarrito || typeof MutationObserver === 'undefined') return;
-    if (!SELECTOR_CARRITO && !CLASE_BODY_CARRITO) return;
+  function recalcularCapas() {
+    CAPAS.forEach(function (capa) {
+      if (capa.conectada) capa.abierta = capaAbierta(capa);
+    });
+    refrescarVisibilidad();
+  }
+
+  function asegurarObservador() {
+    if (observadorCapas || typeof MutationObserver === 'undefined') return;
+    observadorCapas = new MutationObserver(recalcularCapas);
+  }
+
+  function vigilarCapa(capa) {
+    if (capa.conectada || typeof MutationObserver === 'undefined') return;
 
     let intentos = 0;
     function conectar() {
-      // En páginas sin carrito (checkout, confirmación) el panel
-      // no existe: el observador queda en modo pasivo, sin errores.
-      const panel = SELECTOR_CARRITO ? document.querySelector(SELECTOR_CARRITO) : null;
-      if (SELECTOR_CARRITO && !panel && intentos++ < 20) {
-        window.setTimeout(conectar, 500);
+      // En páginas sin esta capa (el buscador solo existe en index.html;
+      // el carrito no existe en checkout/confirmación) el vigilante
+      // queda en modo pasivo, sin errores.
+      const panel = document.querySelector(capa.selector);
+      if (!panel && intentos++ < MAX_REINTENTOS) {
+        window.setTimeout(conectar, INTERVALO_REINTENTO_MS);
         return;
       }
+      if (!panel) return;
 
-      observadorCarrito = new MutationObserver(function () {
-        setOcultoPorCarrito(carritoAbiertoAhora());
-      });
-      observadorCarrito.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-      if (panel) observadorCarrito.observe(panel, { attributes: true, attributeFilter: ['class'] });
+      capa.conectada = true;
+      asegurarObservador();
 
-      // Sincronizar estado inicial (por si el carrito ya estaba abierto)
-      setOcultoPorCarrito(carritoAbiertoAhora());
+      // Si algún día una capa usa clase en <body>, vigilar <body> también
+      if (CAPAS.some(function (c) { return !!c.claseBody; })) {
+        observadorCapas.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      }
+      observadorCapas.observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+      // Sincronizar estado inicial (por si la capa ya estaba abierta)
+      capa.abierta = capaAbierta(capa);
+      refrescarVisibilidad();
     }
     conectar();
   }
-  // ★★★ FIN DEL BLOQUE NUEVO v2 ★★★
+
+  function vigilarCapas() {
+    CAPAS.forEach(vigilarCapa);
+  }
+  // ★★★ FIN DEL BLOQUE v3 ★★★
 
   const PREGUNTAS_IA = [
   // Antojo
@@ -161,9 +228,9 @@
   function crear(onActivate, onMove) {
     const existente = document.getElementById('ia-float');
     if (existente) {
-      // ★ v2: si el botón ya existía, igual aplicar estado y observador
-      aplicarVisibilidadCarrito(existente);
-      observarCarrito();
+      // ★ v3: si el botón ya existía, igual aplicar estado y vigilantes
+      aplicarVisibilidad(existente);
+      vigilarCapas();
       return existente;
     }
 
@@ -209,8 +276,8 @@
     let moved = false;
 
     button.addEventListener('pointerdown', function (event) {
-      // ★ v2: también respetar el estado "oculto por carrito"
-      if (event.button !== 0 || button.classList.contains('oculto') || ocultoPorCarrito) return;
+      // ★ v3: también respetar el estado "oculto" (carrito, buscador o manual)
+      if (event.button !== 0 || button.classList.contains('oculto') || estaOculto()) return;
       const rect = button.getBoundingClientRect();
       pointerDrag = {
         pointerId: event.pointerId,
@@ -273,8 +340,9 @@
     });
 
     window.addEventListener('resize', function () {
-      // ★ v2: no recolocar ni guardar posición mientras está oculto por el carrito
-      if (ocultoPorCarrito) return;
+      // ★ v3: no recolocar ni guardar posición mientras esté oculto
+      // (por carrito, buscador o bloqueo manual)
+      if (estaOculto()) return;
       if (!button.style.left || !button.style.top) return;
       const rect = button.getBoundingClientRect();
       posicionar(button, rect.left, rect.top);
@@ -283,17 +351,17 @@
     });
 
     document.body.appendChild(button);
-    aplicarVisibilidadCarrito(button); // ★ v2: aplica estado si ocultar() se llamó antes de crear
-    observarCarrito();                 // ★ v2: activa la detección automática del carrito
+    aplicarVisibilidad(button); // ★ v3: aplica estado si ocultar() se llamó antes de crear
+    vigilarCapas();             // ★ v3: activa la detección de carrito + buscador
     iniciarRotacion(pregunta);
     return button;
   }
 
   window.DomiIABotonFlotante = {
     crear: crear,
-    // ★ v2: control manual opcional (útil si algún día prefieres
-    // llamarlo desde tu propio JS del carrito en abrir/cerrar)
-    ocultar: function () { setOcultoPorCarrito(true); },
-    mostrar: function () { setOcultoPorCarrito(false); }
+    // ★ v3: control manual opcional (bloqueo independiente de las capas;
+    // útil si algún día prefieres llamarlo desde tu propio JS)
+    ocultar: function () { setBloqueoManual(true); },
+    mostrar: function () { setBloqueoManual(false); }
   };
 })();
