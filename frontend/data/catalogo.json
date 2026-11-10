@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-41-34",
-  "ultimaActualizacion": "2026-11-10T17:41:34.026Z",
+  "version": "v2026-11-10T17-49-05",
+  "ultimaActualizacion": "2026-11-10T17:49:05.132Z",
   "tiendas": [
     {
       "id": 1,
@@ -1549,7 +1549,7 @@
           "id": 707,
           "nombre": "1/4 pollo Asado",
           "descripcion": "Papas francesas arepa y salsa de la casa",
-          "precio": 12000,
+          "precio": 14000,
           "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Otras",
@@ -3372,7 +3372,7 @@
       "id": 707,
       "nombre": "1/4 pollo Asado",
       "descripcion": "Papas francesas arepa y salsa de la casa",
-      "precio": 12000,
+      "precio": 14000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
