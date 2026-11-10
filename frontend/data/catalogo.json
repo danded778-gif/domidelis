@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-52-41",
-  "ultimaActualizacion": "2026-11-10T17:52:41.790Z",
+  "version": "v2026-11-10T17-52-44",
+  "ultimaActualizacion": "2026-11-10T17:52:44.191Z",
   "tiendas": [
     {
       "id": 1,
@@ -3409,9 +3409,9 @@
     },
     {
       "id": 710,
-      "nombre": "Pollo Completo",
-      "descripcion": "",
-      "precio": 0,
+      "nombre": "Pollo Asado Completo",
+      "descripcion": "Papa cocida arepa sopa y salsa de la casa",
+      "precio": 45000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3422,9 +3422,9 @@
     },
     {
       "id": 711,
-      "nombre": "",
-      "descripcion": "",
-      "precio": 0,
+      "nombre": "Pollo Asado Completo",
+      "descripcion": "Papa francesa Arepa sopa salsa de la casa",
+      "precio": 49000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
