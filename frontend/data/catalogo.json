@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-09-01",
-  "ultimaActualizacion": "2026-11-10T18:09:01.485Z",
+  "version": "v2026-11-10T18-09-57",
+  "ultimaActualizacion": "2026-11-10T18:09:57.059Z",
   "tiendas": [
     {
       "id": 1,
@@ -1682,7 +1682,7 @@
           "precio": 32000,
           "imagen_url": "",
           "badge": "NUEVO",
-          "categoria": "Almuerzo",
+          "categoria": "Carnes",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3687,7 +3687,7 @@
       "precio": 32000,
       "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Almuerzo",
+      "categoria": "Carnes",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "22",
