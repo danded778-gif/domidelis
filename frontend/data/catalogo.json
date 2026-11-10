@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-05-40",
-  "ultimaActualizacion": "2026-11-10T18:05:40.939Z",
+  "version": "v2026-11-10T18-06-14",
+  "ultimaActualizacion": "2026-11-10T18:06:14.583Z",
   "tiendas": [
     {
       "id": 1,
@@ -1533,7 +1533,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 706,
+          "id": 800,
           "nombre": "1/4 Pollo Asado",
           "descripcion": "Papá cocida arepa y salsa de la casa",
           "precio": 12000,
@@ -3434,7 +3434,7 @@
       "tiendaNombre": "Sin tienda"
     },
     {
-      "id": 706,
+      "id": 800,
       "nombre": "1/4 Pollo Asado",
       "descripcion": "Papá cocida arepa y salsa de la casa",
       "precio": 12000,
@@ -3644,7 +3644,7 @@
     {
       "id": 722,
       "nombre": "Costilla de Cerdo",
-      "descripcion": "",
+      "descripcion": "350 G ensalada Papa francesa y arroz blanco",
       "precio": 35000,
       "imagen_url": "",
       "badge": "",
