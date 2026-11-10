@@ -43,10 +43,9 @@
       = helado (Luna Cremosa, categoría Detalles); Menu/Almuerzo/Otras =
       comida (las hamburguesas reales viven en "Otras"), excepto lo que
       no es comida en el catálogo real (Peluche, Flores, Cubeta de
-      Huevos, Encargo Express). Solo se anuncia cuando entra un producto
-      NUEVO al carrito (cambiar cantidad no repite el mensaje), la
-      bebida se ofrece una sola vez por pedido y si el chat está cerrado
-      el mensaje espera y aparece al abrirlo.
+      Huevos, Encargo Express). Se informa cada aumento o nueva línea del
+      carrito; la bebida se ofrece una sola vez por pedido y, si el chat
+      está cerrado, el mensaje espera y aparece al abrirlo.
    ===================================================================== */
 'use strict';
 
@@ -112,9 +111,11 @@
   /* ★ v2 punto 4 — LA IA VE EL CARRITO (mismo evento que ya usa el
      botón de checkout: 'domidelis:carrito-actualizado'). */
   let carritoInicializado = false;
-  let idsCarritoPrevios = new Set();
+  let itemsCarritoPrevios = new Map();
   let bebidaSugerida = false;
+  let ofertaBebidaPendiente = false;
   let mensajeCarritoPendiente = null;
+  let productosVistosEnSesion = new Set();
 
   const NO_SON_COMIDA = /peluche|flores?|cubeta|encargo/;
 
@@ -179,6 +180,43 @@
     }).join(', ');
   }
 
+  function claveItemCarrito(item) {
+    const selecciones = item.selecciones && typeof item.selecciones === 'object'
+      ? item.selecciones
+      : {};
+    const seleccionesClave = Object.keys(selecciones).sort().map(function (grupo) {
+      return grupo + ':' + (Array.isArray(selecciones[grupo]) ? selecciones[grupo] : [])
+        .map(function (opcion) {
+          return [
+            String(opcion.nombre || ''),
+            String(opcion.cantidad || 1),
+            String(opcion.precio || 0)
+          ].join('|');
+        }).sort().join(',');
+    }).join(';');
+    return [
+      String(item.id),
+      String(item.cantidadTipo || ''),
+      seleccionesClave
+    ].join('\u001f');
+  }
+
+  function indexarCarrito(carrito) {
+    const items = new Map();
+    carrito.forEach(function (item) {
+      items.set(claveItemCarrito(item), {
+        item: item,
+        cantidad: Number(item.cantidad) || 1
+      });
+    });
+    return items;
+  }
+
+  function inicializarSeguimientoCarrito() {
+    itemsCarritoPrevios = indexarCarrito(obtenerCarritoSeguro());
+    carritoInicializado = true;
+  }
+
   /* ★ Bebidas reales de tiendas ABIERTAS (gaseosas primero), máximo 2.
      Si la tienda de la bebida está cerrada, la bebida no se ofrece. */
   function bebidasParaSugerir(mapa) {
@@ -190,16 +228,21 @@
       const tienda = (typeof tiendas !== 'undefined' && Array.isArray(tiendas)
         ? tiendas : []).find(function (t) { return String(t.id) === String(producto.tiendaId); });
       if (!tienda || tienda.activo === false || tiendaEstaOculta(tienda)) return;
-      if (!estadoTiendaLocal(tienda).isOpen) return;
+      if (!window.DomiIACatalogo.estadoTienda(tienda).isOpen) return;
       candidatos.push(producto);
     });
+    function rotar(lista) {
+      if (lista.length < 2) return lista;
+      const inicio = Math.floor(Math.random() * lista.length);
+      return lista.slice(inicio).concat(lista.slice(0, inicio));
+    }
     const gaseosas = candidatos.filter(function (producto) {
       return /gaseosa/i.test(producto.nombre);
     });
     const otras = candidatos.filter(function (producto) {
       return !/gaseosa/i.test(producto.nombre);
     });
-    return gaseosas.concat(otras).slice(0, 2);
+    return rotar(gaseosas).concat(rotar(otras)).slice(0, 2);
   }
 
   function mostrarProductosCarrito(productos) {
@@ -214,31 +257,42 @@
   function gestionarCambioCarrito() {
     const carrito = obtenerCarritoSeguro();
     const mapa = mapaProductosCarrito();
-    const idsActuales = new Set(carrito.map(function (item) { return String(item.id); }));
+    const itemsActuales = indexarCarrito(carrito);
 
     if (!carritoInicializado) {
       carritoInicializado = true;
-      idsCarritoPrevios = idsActuales;
+      itemsCarritoPrevios = itemsActuales;
       return;
     }
     if (!carrito.length) {
-      idsCarritoPrevios = idsActuales;
+      itemsCarritoPrevios = itemsActuales;
       bebidaSugerida = false;
+      ofertaBebidaPendiente = false;
       mensajeCarritoPendiente = null;
       return;
     }
 
-    const idsNuevos = carrito.filter(function (item) {
-      return idsCarritoPrevios.has(String(item.id)) === false;
+    const adiciones = [];
+    itemsActuales.forEach(function (actual, clave) {
+      const previo = itemsCarritoPrevios.get(clave);
+      const cantidadAnterior = previo ? previo.cantidad : 0;
+      if (actual.cantidad > cantidadAnterior) {
+        adiciones.push({
+          item: actual.item,
+          cantidad: actual.cantidad - cantidadAnterior
+        });
+      }
     });
-    idsCarritoPrevios = idsActuales;
-    if (!idsNuevos.length) return;
+    itemsCarritoPrevios = itemsActuales;
+    if (!adiciones.length) return;
 
-    const nuevo = idsNuevos[0];
-    const productoNuevo = mapa.get(String(nuevo.id));
-    const nombreNuevo = productoNuevo ? productoNuevo.nombre : nuevo.nombre;
+    const resumenAdiciones = adiciones.map(function (adicion) {
+      const producto = mapa.get(String(adicion.item.id));
+      const nombre = producto ? producto.nombre : adicion.item.nombre;
+      return (adicion.cantidad > 1 ? adicion.cantidad + '\u00d7 ' : '') + nombre;
+    }).join(', ');
 
-    let mensaje = '\u00a1Vi que agregaste ' + nombreNuevo + '! Tu pedido lleva: ' +
+    let mensaje = '\u00a1Agregaste ' + resumenAdiciones + '! Tu pedido lleva: ' +
       construirResumenCarrito(carrito, mapa) + '.';
 
     /* ★ Reglas de tu palabra: la bebida SOLO se ofrece si hay comida en
@@ -255,9 +309,12 @@
       const bebidas = bebidasParaSugerir(mapa);
       if (bebidas.length) {
         bebidaSugerida = true;
+        ofertaBebidaPendiente = true;
         mensaje += ' \u00bfDeseas algo de tomar? Te muestro las bebidas disponibles:';
         idsBebidas = bebidas;
       }
+    } else if (clases.indexOf('bebida') !== -1) {
+      ofertaBebidaPendiente = false;
     }
 
     if (elementos && elementos.panel.classList.contains('abierta')) {
@@ -266,7 +323,14 @@
       historial = historial.slice(-MAX_HISTORIAL);
       if (idsBebidas.length) mostrarProductosCarrito(idsBebidas);
     } else {
-      mensajeCarritoPendiente = { texto: mensaje, bebidas: idsBebidas };
+      mensajeCarritoPendiente = {
+        texto: mensajeCarritoPendiente
+          ? mensajeCarritoPendiente.texto + ' ' + mensaje
+          : mensaje,
+        bebidas: idsBebidas.length
+          ? idsBebidas
+          : (mensajeCarritoPendiente ? mensajeCarritoPendiente.bebidas : [])
+      };
     }
   }
 
@@ -383,6 +447,7 @@
       '.ia-card-img.ia-zoom{cursor:zoom-in;}' +
       '.ia-card-img.ia-zoom img{transition:transform .15s ease;}' +
       '.ia-card-img.ia-zoom:hover img{transform:scale(1.04);}' +
+      '.ia-card-agregar:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(.25);}' +
       '.ia-card-cerrada{align-self:center;flex-shrink:0;display:inline-flex;align-items:center;gap:6px;border:1px dashed currentColor;color:inherit;opacity:.7;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:600;text-align:center;max-width:110px;}';
     document.head.appendChild(estilos);
 
@@ -436,7 +501,8 @@
       window.irACheckout();
     });
     window.addEventListener('domidelis:carrito-actualizado', actualizarBotonCheckout);
-    window.addEventListener('domidelis:carrito-actualizado', gestionarCambioCarrito); /* ★ v2 */
+    inicializarSeguimientoCarrito();
+    window.addEventListener('domidelis:carrito-actualizado', gestionarCambioCarrito);
     window.addEventListener('storage', function (event) {
       if (event.key === 'carrito') {
         actualizarBotonCheckout();
@@ -683,6 +749,7 @@
     const idsValidos = ids
       .map(function (id) { return String(id); })
       .filter(function (id) { return productosPorId.has(id); });
+    idsValidos.forEach(function (id) { productosVistosEnSesion.add(id); });
     if (idsValidos.length) ultimosProductosRecomendados = idsValidos;
 
     const nuevosIds = idsValidos.filter(function (id) {
@@ -694,6 +761,7 @@
       productosMostrados.add(String(id));
 
       const card = crearElemento('article', 'ia-card');
+      card.dataset.productName = producto.nombre;
       const imageContainer = crearElemento('div', 'ia-card-img');
       const imageUrl = producto.imagen_url || producto.imagen || producto.icono;
       if (imageUrl && /^(https?:\/\/|data:image)/i.test(String(imageUrl))) {
@@ -742,65 +810,8 @@
     desplazarMensajes();
   }
 
-  /* ★ v2 — EL FILTRO DE LA VERDAD PARA TIENDAS CERRADAS (lado chat).
-     Motor de horario: reusa window.checkStoreStatus de client.js v4.9.2
-     cuando está cargado; la copia local es fiel al mismo algoritmo
-     (la misma que iaCatalogo v1.6 usa internamente). */
-  function claveDiaLocal() {
-    const ahora = new Date();
-    const horaColombia = new Date(ahora.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
-    const dias = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    return dias[horaColombia.getDay()];
-  }
-
-  function estadoTiendaLocal(tienda) {
-    const horario = tienda && tienda.horario;
-    if (window.checkStoreStatus) {
-      try {
-        return window.checkStoreStatus(horario);
-      } catch (error) {
-        /* client.js falló: se usa la copia local */
-      }
-    }
-    let horarioHoy;
-    if (!horario) {
-      horarioHoy = '11:00-22:00';
-    } else if (typeof horario === 'string' && horario.trim().startsWith('{')) {
-      try {
-        const horarioLimpio = horario
-          .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')
-          .replace(/'/g, '"');
-        horarioHoy = JSON.parse(horarioLimpio)[claveDiaLocal()] || 'Cerrado';
-      } catch (error) {
-        horarioHoy = horario;
-      }
-    } else {
-      horarioHoy = horario;
-    }
-    if (!horarioHoy || horarioHoy.toLowerCase() === 'cerrado' || horarioHoy.indexOf('-') === -1) {
-      return { isOpen: false, nextOpening: 'Cerrado hoy' };
-    }
-    const ahora = new Date();
-    const horaColombia = new Date(ahora.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
-    const minutosActuales = (horaColombia.getHours() * 60) + horaColombia.getMinutes();
-    const partes = horarioHoy.split('-');
-    const inicio = partes[0].split(':').map(Number);
-    const fin = partes[1] ? partes[1].split(':').map(Number) : [];
-    const minutosInicio = (inicio[0] * 60) + (inicio[1] || 0);
-    const minutosFin = (fin[0] * 60) + (fin[1] || 0);
-    const abierta = minutosFin > minutosInicio
-      ? minutosActuales >= minutosInicio && minutosActuales < minutosFin
-      : minutosActuales >= minutosInicio || minutosActuales < minutosFin;
-    return {
-      isOpen: abierta,
-      nextOpening: abierta ? '' : 'Abre a las ' + partes[0].trim()
-    };
-  }
-
   function tiendaEstaOculta(tienda) {
-    return window.DomiIARazonamiento.normalizarTexto(tienda && tienda.descripcion)
-      .replace(/\s+/g, '')
-      .includes('(oculto)');
+    return window.DomiIACatalogo.tiendaEstaOculta(tienda);
   }
 
   /* ★ v2: todas las tiendas visibles (activas y sin "(oculto)"), abiertas
@@ -828,7 +839,7 @@
     });
     const encontrados = [];
     tiendasVisibles().forEach(function (tienda) {
-      const estado = estadoTiendaLocal(tienda);
+      const estado = window.DomiIACatalogo.estadoTienda(tienda);
       tienda.productos.forEach(function (producto) {
         if (!producto || producto.id === undefined || !producto.nombre ||
             producto.activo === false) return;
@@ -1026,6 +1037,46 @@
     return mensajeAnterior ? mensajeAnterior.texto + ' ' + consulta : consulta;
   }
 
+  function desactivarTarjetasProducto() {
+    if (!elementos) return;
+    elementos.mensajes.querySelectorAll('.ia-card-agregar:not(:disabled)').forEach(function (boton) {
+      const card = boton.closest('.ia-card');
+      const nombre = card ? card.dataset.productName : '';
+      boton.disabled = true;
+      boton.textContent = 'Opción anterior';
+      boton.title = 'Esta opción quedó desactualizada; consulta nuevamente para ver opciones vigentes.';
+      boton.setAttribute('aria-label', nombre
+        ? 'Opción anterior: ' + nombre
+        : 'Opción anterior');
+    });
+  }
+
+  function esRechazoBebida(consulta) {
+    const texto = window.DomiIARazonamiento.normalizarTexto(consulta)
+      .replace(/[¡!¿?.,]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return /^(?:no|no gracias(?: por ahora)?|no por ahora|ahora no|por ahora no|no quiero(?: nada| tomar nada| nada (?:de|para) tomar| eso| la bebida| bebidas?| agregarla)?|no deseo(?: nada| tomar nada| nada (?:de|para) tomar| eso| la bebida| bebidas?)?|no la quiero|no me interesa|as[ií] est[aá] bien|estoy bien|con eso(?: basta| estoy bien)?|ya est[aá]|ser[ií]a todo|nada m[aá]s|solo eso|eso es todo|estamos bien|no gracias (?:solo eso|nada m[aá]s|eso es todo))$/
+      .test(texto);
+  }
+
+  function gestionarRechazoBebida(consulta) {
+    if (!ofertaBebidaPendiente || !esRechazoBebida(consulta)) return false;
+    ofertaBebidaPendiente = false;
+    desactivarTarjetasProducto();
+    productosMostrados.clear();
+    ultimosProductosRecomendados = [];
+
+    const respuesta = '¡Entendido! No agrego bebidas. Tu pedido ya está en el carrito; toca “Ir al checkout” para completar tus datos y confirmar.';
+    agregarMensaje('user', consulta);
+    historial.push({ rol: 'user', texto: consulta });
+    agregarMensaje('ia', respuesta);
+    historial.push({ rol: 'assistant', texto: respuesta });
+    historial = historial.slice(-MAX_HISTORIAL);
+    actualizarBotonCheckout();
+    return true;
+  }
+
   /* ★ NUEVO: blindaje anti-pensamiento (segunda capa en el navegador).
      El servidor v1.4 ya limpia el razonamiento; esto protege si algún
      proveedor se cuela con bloques <think>…</think> en el texto. */
@@ -1192,6 +1243,21 @@
       guardarDatosClienteEnLocal(datosCliente);
     }
 
+    if (gestionarRechazoBebida(consulta)) {
+      elementos.chips.hidden = true;
+      elementos.input.value = '';
+      actualizarContador();
+      return;
+    }
+
+    const intencionAgregar = window.DomiIARazonamiento.interpretarSolicitud(consulta).intencionAgregar;
+    if (!intencionAgregar) {
+      ofertaBebidaPendiente = false;
+      desactivarTarjetasProducto();
+      productosMostrados.clear();
+      ultimosProductosRecomendados = [];
+    }
+
     /* ★ v2: regla de la verdad para tiendas cerradas. Va primero de
        todo: si el producto mencionado solo existe en tiendas cerradas,
        se responde con descripción real + hora real y SIN Agregar. Si
@@ -1221,7 +1287,7 @@
     }
 
     const consultaCatalogo = obtenerConsultaDeCatalogo(consulta);
-    const idsExcluidos = Array.from(productosMostrados);
+    const idsExcluidos = Array.from(productosVistosEnSesion);
     const catalogo = window.DomiIACatalogo.buscar(consultaCatalogo, {
       excluirIds: idsExcluidos,
       incluirIds: []
@@ -1332,6 +1398,7 @@
     historial = [{ rol: 'assistant', texto: SALUDO_INICIAL }];
     ultimosProductosRecomendados = [];
     productosMostrados.clear();
+    productosVistosEnSesion.clear();
     elementos.mensajes.replaceChildren();
     elementos.chips.hidden = false;
     elementos.confirmar.hidden = true;
