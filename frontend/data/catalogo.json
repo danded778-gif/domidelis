@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-50-27",
-  "ultimaActualizacion": "2026-11-10T17:50:27.919Z",
+  "version": "v2026-11-10T17-52-41",
+  "ultimaActualizacion": "2026-11-10T17:52:41.790Z",
   "tiendas": [
     {
       "id": 1,
@@ -3409,7 +3409,7 @@
     },
     {
       "id": 710,
-      "nombre": "",
+      "nombre": "Pollo Completo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
