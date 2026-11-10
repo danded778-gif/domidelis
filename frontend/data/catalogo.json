@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-57-58",
-  "ultimaActualizacion": "2026-11-10T17:57:58.555Z",
+  "version": "v2026-11-10T17-58-23",
+  "ultimaActualizacion": "2026-11-10T17:58:23.480Z",
   "tiendas": [
     {
       "id": 1,
@@ -3565,7 +3565,7 @@
     },
     {
       "id": 716,
-      "nombre": "A las barbecue",
+      "nombre": "Alas BBQ",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -3578,7 +3578,7 @@
     },
     {
       "id": 717,
-      "nombre": "Su rasgo",
+      "nombre": "Crurrasco",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
