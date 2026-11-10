@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-02-22",
-  "ultimaActualizacion": "2026-11-10T18:02:22.317Z",
+  "version": "v2026-11-10T18-02-52",
+  "ultimaActualizacion": "2026-11-10T18:02:52.421Z",
   "tiendas": [
     {
       "id": 1,
@@ -3604,7 +3604,7 @@
     },
     {
       "id": 719,
-      "nombre": "Lomo De Cerdo",
+      "nombre": "Lomo de Cerdo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -3630,7 +3630,7 @@
     },
     {
       "id": 721,
-      "nombre": "",
+      "nombre": "Mojara",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
@@ -3643,7 +3643,7 @@
     },
     {
       "id": 722,
-      "nombre": "",
+      "nombre": "Costilla de Cerdo",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
