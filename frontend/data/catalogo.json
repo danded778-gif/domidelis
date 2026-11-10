@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-55-16",
-  "ultimaActualizacion": "2026-11-10T17:55:16.986Z",
+  "version": "v2026-11-10T17-56-02",
+  "ultimaActualizacion": "2026-11-10T17:56:02.650Z",
   "tiendas": [
     {
       "id": 1,
@@ -1021,7 +1021,7 @@
           "precio": 10000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo_picado_100kb.jpg",
           "badge": "Disponible",
-          "categoria": "Menu",
+          "categoria": "Carnes",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "9",
@@ -2621,7 +2621,7 @@
       "precio": 10000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/chorizosantuariano/chorizo_picado_100kb.jpg",
       "badge": "Disponible",
-      "categoria": "Menu",
+      "categoria": "Carnes",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "9",
