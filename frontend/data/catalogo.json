@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-05-16",
-  "ultimaActualizacion": "2026-11-10T18:05:16.133Z",
+  "version": "v2026-11-10T18-05-40",
+  "ultimaActualizacion": "2026-11-10T18:05:40.939Z",
   "tiendas": [
     {
       "id": 1,
@@ -3605,7 +3605,7 @@
     {
       "id": 719,
       "nombre": "Lomo de Cerdo",
-      "descripcion": "",
+      "descripcion": "300 G ensalada Papa francesa y arroz blanco",
       "precio": 25000,
       "imagen_url": "",
       "badge": "",
@@ -3618,7 +3618,7 @@
     {
       "id": 720,
       "nombre": "Pechuga de Pollo",
-      "descripcion": "",
+      "descripcion": "300 G ensalada Papa francesa y arroz blanco",
       "precio": 25000,
       "imagen_url": "",
       "badge": "",
@@ -3631,7 +3631,7 @@
     {
       "id": 721,
       "nombre": "Mojara",
-      "descripcion": "",
+      "descripcion": "450 G ensalada Papa francesa y arroz blanco",
       "precio": 30000,
       "imagen_url": "",
       "badge": "",
