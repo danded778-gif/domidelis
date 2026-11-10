@@ -116,6 +116,8 @@
   let ofertaBebidaPendiente = false;
   let mensajeCarritoPendiente = null;
   let productosVistosEnSesion = new Set();
+  let solicitarDatosPedido = false;
+  let solicitarObservacionesPedido = false;
 
   const NO_SON_COMIDA = /peluche|flores?|cubeta|encargo/;
 
@@ -178,6 +180,70 @@
       const cantidad = Number(item.cantidad) || 1;
       return cantidad > 1 ? cantidad + '\u00d7 ' + nombre : nombre;
     }).join(', ');
+  }
+
+  function opcionesSeleccionadas(item) {
+    const selecciones = item.selecciones && typeof item.selecciones === 'object'
+      ? item.selecciones
+      : {};
+    return Object.keys(selecciones).sort().reduce(function (opciones, grupo) {
+      const seleccion = Array.isArray(selecciones[grupo]) ? selecciones[grupo] : [];
+      seleccion.forEach(function (opcion) {
+        if (!opcion || !opcion.nombre) return;
+        const cantidad = Number(opcion.cantidad) || 1;
+        opciones.push((grupo ? grupo + ': ' : '') + opcion.nombre +
+          (cantidad > 1 ? ' × ' + cantidad : ''));
+      });
+      return opciones;
+    }, []);
+  }
+
+  function construirRespuestaCarrito() {
+    const carrito = obtenerCarritoSeguro();
+    if (!carrito.length) {
+      return 'Tu carrito está vacío por ahora. Cuéntame qué se te antoja y te muestro opciones disponibles.';
+    }
+
+    const mapa = mapaProductosCarrito();
+    const lineas = carrito.map(function (item) {
+      const cantidad = Number(item.cantidad) || 1;
+      const nombre = (mapa.get(String(item.id)) || item).nombre || 'Producto';
+      const opciones = opcionesSeleccionadas(item);
+      const subtotalGuardado = item.subtotal === undefined || item.subtotal === null || item.subtotal === ''
+        ? NaN
+        : Number(item.subtotal);
+      const precioUnitario = Number(item.precioUnitario || item.precioBase || item.precio) || 0;
+      const subtotal = Number.isFinite(subtotalGuardado)
+        ? subtotalGuardado
+        : precioUnitario * cantidad;
+      return (cantidad > 1 ? cantidad + ' × ' : '') + nombre +
+        (opciones.length ? ' (' + opciones.join(', ') + ')' : '') +
+        ' — ' + formatearPrecio(subtotal);
+    });
+    const total = carrito.reduce(function (suma, item) {
+      const subtotal = item.subtotal === undefined || item.subtotal === null || item.subtotal === ''
+        ? NaN
+        : Number(item.subtotal);
+      const cantidad = Number(item.cantidad) || 1;
+      const precioUnitario = Number(item.precioUnitario || item.precioBase || item.precio) || 0;
+      return suma + (Number.isFinite(subtotal) ? subtotal : precioUnitario * cantidad);
+    }, 0);
+    return 'En tu carrito tienes: ' + lineas.join('; ') +
+      '. Subtotal de productos (sin domicilio): ' + formatearPrecio(total) +
+      '. Puedes añadir algo más o tocar “Ir al checkout” para completar tu pedido.';
+  }
+
+  function responderPreguntaCarrito(consulta) {
+    const respuesta = construirRespuestaCarrito();
+    agregarMensaje('user', consulta);
+    historial.push({ rol: 'user', texto: consulta });
+    agregarMensaje('ia', respuesta, consulta);
+    historial.push({ rol: 'assistant', texto: respuesta });
+    historial = historial.slice(-MAX_HISTORIAL);
+    elementos.chips.hidden = true;
+    elementos.input.value = '';
+    actualizarContador();
+    actualizarBotonCheckout();
   }
 
   function claveItemCarrito(item) {
@@ -269,6 +335,8 @@
       bebidaSugerida = false;
       ofertaBebidaPendiente = false;
       mensajeCarritoPendiente = null;
+      solicitarDatosPedido = false;
+      solicitarObservacionesPedido = false;
       return;
     }
 
@@ -315,6 +383,10 @@
       }
     } else if (clases.indexOf('bebida') !== -1) {
       ofertaBebidaPendiente = false;
+    }
+
+    if (!idsBebidas.length) {
+      mensaje += ' ' + construirSolicitudDatosPedido();
     }
 
     if (elementos && elementos.panel.classList.contains('abierta')) {
@@ -1067,7 +1139,8 @@
     productosMostrados.clear();
     ultimosProductosRecomendados = [];
 
-    const respuesta = '¡Entendido! No agrego bebidas. Tu pedido ya está en el carrito; toca “Ir al checkout” para completar tus datos y confirmar.';
+    solicitarDatosPedido = true;
+    const respuesta = '¡Entendido! No agrego bebidas. ' + construirSolicitudDatosPedido();
     agregarMensaje('user', consulta);
     historial.push({ rol: 'user', texto: consulta });
     agregarMensaje('ia', respuesta);
@@ -1112,7 +1185,7 @@
   ]);
 
   function extraerNombre(consulta) {
-    const coincidencia = /\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑÜáéíóúñü'’-]+(?:\s+[A-Za-zÁÉÍÓÚÑÜáéíóúñü'’-]+){0,2})/
+    const coincidencia = /\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑÜáéíóúñü'’-]+(?:\s+[A-Za-zÁÉÍÓÚÑÜáéíóúñü'’-]+){0,2})/i
       .exec(String(consulta || ''));
     if (!coincidencia) return '';
     const palabras = [];
@@ -1152,8 +1225,138 @@
   function extraerDatosCliente(consulta) {
     return {
       nombre: extraerNombre(consulta),
-      telefono: extraerTelefono(consulta)
+      telefono: extraerTelefono(consulta),
+      zona: solicitarDatosPedido ? extraerZona(consulta) : null,
+      referencias: solicitarDatosPedido || solicitarObservacionesPedido
+        ? extraerObservaciones(consulta)
+        : ''
     };
+  }
+
+  function extraerObservaciones(consulta) {
+    const texto = String(consulta || '').trim();
+    const coincidencia = /(?:\bobservaciones?\b|\breferencias?\b|\bnotas?\b|\bsin\s+|\bno\s+me\s+gustan?\b|\bno\s+quiero\b|\bno\s+le\s+pongas?\b|\bno\s+le\s+pongan\b|\bevitar\b|\bprefiero\b|\bpor\s+favor\s+(?:sin|no)\b|\btocar\s+timbre\b|\bllamar\s+al\s+llegar\b)\s*[:,-]?\s*/i
+      .exec(texto);
+    if (!coincidencia) return '';
+    return texto.slice(coincidencia.index).trim().replace(/\s+/g, ' ');
+  }
+
+  function esSinObservaciones(consulta) {
+    return /^(?:no|ninguna|ninguna observaci[oó]n|no tengo|no gracias|as[ií] est[aá] bien|todo bien|est[aá] bien)$/i
+      .test(String(consulta || '').trim().replace(/[.!?¿¡]+/g, ''));
+  }
+
+  function obtenerZonasDisponibles() {
+    return typeof ZONAS !== 'undefined' && Array.isArray(ZONAS) ? ZONAS : [];
+  }
+
+  function extraerZona(consulta) {
+    const texto = window.DomiIARazonamiento.normalizarTexto(consulta);
+    const zonas = obtenerZonasDisponibles().slice().sort(function (a, b) {
+      return String(b.nombre || '').length - String(a.nombre || '').length;
+    });
+    for (const zona of zonas) {
+      const nombres = [zona.nombre, zona.id].filter(Boolean);
+      for (const nombre of nombres) {
+        const normalizado = window.DomiIARazonamiento.normalizarTexto(nombre);
+        const escapado = normalizado.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        if (normalizado && new RegExp('(?:^|[^a-z0-9])' + escapado + '(?:$|[^a-z0-9])').test(texto)) {
+          return zona;
+        }
+      }
+    }
+    return null;
+  }
+
+  function obtenerDatosClienteGuardados() {
+    try {
+      const datos = JSON.parse(localStorage.getItem('domidelis_cliente') || '{}');
+      const zonas = obtenerZonasDisponibles();
+      const zonaKey = datos.zonaKey || localStorage.getItem('zonaSeleccionada') || '';
+      const zona = zonas.find(function (opcion) {
+        return String(opcion.id) === String(zonaKey);
+      });
+      return {
+        nombre: String(datos.nombre || '').trim(),
+        telefono: String(datos.telefono || '').trim(),
+        zona: zona || null,
+        referencias: String(datos.referencias || '').trim()
+      };
+    } catch (error) {
+      console.warn('[Asistente IA] No se pudieron leer los datos guardados del cliente:', error);
+      return { nombre: '', telefono: '', zona: null, referencias: '' };
+    }
+  }
+
+  function construirSolicitudDatosPedido() {
+    const datos = obtenerDatosClienteGuardados();
+    const faltantes = [];
+    if (!datos.nombre) faltantes.push('tu nombre completo');
+    if (!datos.telefono) faltantes.push('tu número de celular');
+    if (!datos.zona) faltantes.push('tu zona o barrio');
+    if (!faltantes.length) {
+      solicitarDatosPedido = false;
+      if (!datos.referencias) {
+        solicitarObservacionesPedido = true;
+        return 'Tus datos están listos. Si quieres, dime alguna observación o algo que no te guste (por ejemplo, “sin cebolla”) y lo guardaré como referencia del pedido. Si no tienes, responde “ninguna”. Después toca “Ir al checkout” para completar la dirección exacta y confirmar.';
+      }
+      solicitarObservacionesPedido = false;
+      return 'Tus datos y observaciones están listos. Toca “Ir al checkout” para completar la dirección exacta y confirmar el pedido.';
+    }
+    solicitarDatosPedido = true;
+    return 'Si ya terminaste de elegir, dime ' + faltantes.join(', ') +
+      '. Puedes enviarlos juntos; por ejemplo: “Me llamo Ana, mi celular es 3001234567 y vivo en Centro”. ' +
+      'Después podrás completar la dirección exacta en el checkout.';
+  }
+
+  function procesarDatosPedido(consulta, datosNuevos) {
+    if (!solicitarDatosPedido && !solicitarObservacionesPedido) return false;
+    if (datosNuevos.referencias.length > 100) {
+      guardarDatosClienteEnLocal(Object.assign({}, datosNuevos, { referencias: '' }));
+      agregarMensaje('user', consulta);
+      historial.push({ rol: 'user', texto: consulta });
+      agregarMensaje('ia', 'La referencia admite máximo 100 caracteres. Envíamela más corta, por favor.');
+      historial.push({ rol: 'assistant', texto: 'La referencia admite máximo 100 caracteres. Envíamela más corta, por favor.' });
+      historial = historial.slice(-MAX_HISTORIAL);
+      return true;
+    }
+    const omiteObservaciones = solicitarObservacionesPedido && esSinObservaciones(consulta);
+    const hayDatosNuevos = !!(
+      datosNuevos.nombre || datosNuevos.telefono || datosNuevos.zona || datosNuevos.referencias
+    );
+    if (!hayDatosNuevos && !omiteObservaciones) return false;
+
+    if (hayDatosNuevos) guardarDatosClienteEnLocal(datosNuevos);
+    const datos = obtenerDatosClienteGuardados();
+    const faltantes = [];
+    if (!datos.nombre) faltantes.push('tu nombre completo');
+    if (!datos.telefono) faltantes.push('tu número de celular');
+    if (!datos.zona) faltantes.push('tu zona o barrio (tal como aparece en el checkout)');
+
+    agregarMensaje('user', consulta);
+    historial.push({ rol: 'user', texto: consulta });
+    let respuesta;
+    if (faltantes.length) {
+      respuesta = 'Gracias, ya guardé lo que me compartiste. Aún necesito ' + faltantes.join(' y ') + '.';
+      solicitarDatosPedido = true;
+    } else {
+      solicitarDatosPedido = false;
+      if (datos.referencias || datosNuevos.referencias) {
+        solicitarObservacionesPedido = false;
+        respuesta = '¡Gracias! Ya guardé tu nombre, celular, zona y observación en las referencias del pedido. Toca “Ir al checkout” para completar la dirección exacta y confirmar.';
+      } else if (omiteObservaciones) {
+        solicitarObservacionesPedido = false;
+        respuesta = '¡Gracias! No agregaré observaciones. Toca “Ir al checkout” para completar la dirección exacta y confirmar el pedido.';
+      } else {
+        solicitarObservacionesPedido = true;
+        respuesta = '¡Gracias! Ya dejé listos tu nombre, celular y zona. ¿Quieres agregar alguna observación, como “sin cebolla”? Es opcional; si no tienes, responde “ninguna”. Después toca “Ir al checkout” para completar la dirección exacta y confirmar.';
+      }
+    }
+    agregarMensaje('ia', respuesta);
+    historial.push({ rol: 'assistant', texto: respuesta });
+    historial = historial.slice(-MAX_HISTORIAL);
+    actualizarBotonCheckout();
+    return true;
   }
 
   function guardarDatosClienteEnLocal(datos) {
@@ -1168,8 +1371,14 @@
     const fusion = Object.assign({}, previo);
     if (datos.nombre) fusion.nombre = datos.nombre;
     if (datos.telefono) fusion.telefono = datos.telefono;
+    if (datos.referencias) fusion.referencias = datos.referencias;
+    if (datos.zona) {
+      fusion.zonaNombre = datos.zona.nombre;
+      fusion.zonaKey = datos.zona.id;
+    }
     try {
       localStorage.setItem('domidelis_cliente', JSON.stringify(fusion));
+      if (datos.zona) localStorage.setItem('zonaSeleccionada', datos.zona.id);
       console.info('[Asistente IA] Datos del cliente listos para el checkout.');
     } catch (error) {
       console.warn('[Asistente IA] No se pudieron guardar los datos del cliente:', error);
@@ -1182,6 +1391,9 @@
     try {
       const campoNombre = document.getElementById('nombre');
       const campoTelefono = document.getElementById('telefono');
+      const campoReferencias = document.getElementById('referencias');
+      const campoZona = document.getElementById('zona-checkout-input');
+      const campoZonaId = document.getElementById('zona-checkout');
       if (campoNombre && datos.nombre && !String(campoNombre.value || '').trim()) {
         campoNombre.value = datos.nombre;
         campoNombre.dispatchEvent(new Event('change', { bubbles: true }));
@@ -1189,6 +1401,16 @@
       if (campoTelefono && datos.telefono && !String(campoTelefono.value || '').trim()) {
         campoTelefono.value = datos.telefono;
         campoTelefono.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (campoReferencias && datos.referencias && !String(campoReferencias.value || '').trim()) {
+        campoReferencias.value = datos.referencias;
+        campoReferencias.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (datos.zona && campoZona && campoZonaId) {
+        campoZona.value = datos.zona.nombre;
+        campoZonaId.value = datos.zona.id;
+        campoZonaId.dispatchEvent(new Event('change', { bubbles: true }));
+        campoZona.dispatchEvent(new Event('change', { bubbles: true }));
       }
     } catch (error) {
       console.warn('[Asistente IA] No se pudo rellenar el checkout:', error);
@@ -1239,9 +1461,23 @@
     /* ★ NUEVO: autollenado del checkout. Si el cliente dejó su nombre o
        celular en el mensaje, se guardan en silencio para el checkout. */
     const datosCliente = extraerDatosCliente(consulta);
-    if (datosCliente.nombre || datosCliente.telefono) {
+    if (datosCliente.nombre || datosCliente.telefono || datosCliente.zona) {
       guardarDatosClienteEnLocal(datosCliente);
     }
+
+    const intencionAgregar = window.DomiIARazonamiento.interpretarSolicitud(consulta).intencionAgregar;
+    const contextoEtapas = window.DomiIAEtapas.clasificarConsulta(consulta, {
+      tieneCarrito: obtenerCarritoSeguro().length > 0,
+      tieneDatos: !!(datosCliente.nombre || datosCliente.telefono || datosCliente.zona),
+      intencionAgregar: intencionAgregar
+    });
+    window.DomiIAEtapas.registrarPaso(contextoEtapas.etapa);
+    if (contextoEtapas.paso === 'consultar') {
+      responderPreguntaCarrito(consulta);
+      return;
+    }
+
+    if (procesarDatosPedido(consulta, datosCliente)) return;
 
     if (gestionarRechazoBebida(consulta)) {
       elementos.chips.hidden = true;
@@ -1250,7 +1486,21 @@
       return;
     }
 
-    const intencionAgregar = window.DomiIARazonamiento.interpretarSolicitud(consulta).intencionAgregar;
+    if (contextoEtapas.paso === 'guiar_checkout') {
+      solicitarDatosPedido = true;
+      const respuesta = construirSolicitudDatosPedido();
+      agregarMensaje('user', consulta);
+      historial.push({ rol: 'user', texto: consulta });
+      agregarMensaje('ia', respuesta);
+      historial.push({ rol: 'assistant', texto: respuesta });
+      historial = historial.slice(-MAX_HISTORIAL);
+      actualizarBotonCheckout();
+      elementos.chips.hidden = true;
+      elementos.input.value = '';
+      actualizarContador();
+      return;
+    }
+
     if (!intencionAgregar) {
       ofertaBebidaPendiente = false;
       desactivarTarjetasProducto();
@@ -1399,6 +1649,9 @@
     ultimosProductosRecomendados = [];
     productosMostrados.clear();
     productosVistosEnSesion.clear();
+    solicitarDatosPedido = false;
+    solicitarObservacionesPedido = false;
+    window.DomiIAEtapas.reiniciar();
     elementos.mensajes.replaceChildren();
     elementos.chips.hidden = false;
     elementos.confirmar.hidden = true;

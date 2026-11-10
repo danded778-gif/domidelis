@@ -28,6 +28,34 @@
     return window.DomiIARazonamiento.normalizarTexto(texto);
   }
 
+  function distanciaEdicion(a, b) {
+    const filaAnterior = Array.from({ length: b.length + 1 }, function (_, indice) {
+      return indice;
+    });
+    for (let indiceA = 1; indiceA <= a.length; indiceA += 1) {
+      const filaActual = [indiceA];
+      for (let indiceB = 1; indiceB <= b.length; indiceB += 1) {
+        filaActual[indiceB] = Math.min(
+          filaAnterior[indiceB] + 1,
+          filaActual[indiceB - 1] + 1,
+          filaAnterior[indiceB - 1] + (a[indiceA - 1] === b[indiceB - 1] ? 0 : 1)
+        );
+      }
+      for (let indice = 0; indice <= b.length; indice += 1) {
+        filaAnterior[indice] = filaActual[indice];
+      }
+    }
+    return filaAnterior[b.length];
+  }
+
+  function palabrasSimilares(a, b) {
+    if (a === b) return true;
+    if (a.length < 4 || b.length < 4) return false;
+    const distanciaMaxima = Math.min(2, Math.floor(Math.min(a.length, b.length) / 4));
+    if (Math.abs(a.length - b.length) > distanciaMaxima) return false;
+    return distanciaEdicion(a, b) <= distanciaMaxima;
+  }
+
   function leerCatalogoPublicado() {
     return {
       tiendas: typeof tiendas !== 'undefined' && Array.isArray(tiendas) ? tiendas : [],
@@ -214,7 +242,12 @@
         ? 0
         : (categorias.length - indiceCoincidencia) * 100;
       const puntosTexto = interpretacion.palabras.reduce(function (puntos, palabra) {
-        return puntos + (textoProducto.includes(palabra) ? 10 : 0);
+        const palabrasProducto = textoProducto.split(/\s+/);
+        const coincide = textoProducto.includes(palabra) ||
+          palabrasProducto.some(function (palabraProducto) {
+            return palabrasSimilares(palabra, palabraProducto);
+          });
+        return puntos + (coincide ? 10 : 0);
       }, 0);
       return { producto: producto, indice: indice, puntos: puntuacionFrio + puntosCategoria + puntosTexto };
     }).sort(function (a, b) {
@@ -586,7 +619,8 @@
         return total + (nombreTokens.some(function (palabra) {
           return palabra === token ||
             (palabra.length > 4 && palabra.replace(/s$/, '') === token.replace(/s$/, '')) ||
-            (palabra.length > 4 && token.length > 4 && (palabra.startsWith(token) || token.startsWith(palabra)));
+            (palabra.length > 4 && token.length > 4 && (palabra.startsWith(token) || token.startsWith(palabra))) ||
+            palabrasSimilares(token, palabra);
         }) ? 1 : 0);
       }, 0);
       return { producto: producto, puntos: puntos };
