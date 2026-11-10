@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-03-46",
-  "ultimaActualizacion": "2026-11-10T18:03:46.815Z",
+  "version": "v2026-11-10T18-03-49",
+  "ultimaActualizacion": "2026-11-10T18:03:49.587Z",
   "tiendas": [
     {
       "id": 1,
@@ -3580,7 +3580,7 @@
       "id": 717,
       "nombre": "Churrasco",
       "descripcion": "",
-      "precio": 32,
+      "precio": 32000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
