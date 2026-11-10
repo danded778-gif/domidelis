@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-07-47",
-  "ultimaActualizacion": "2026-11-10T18:07:47.811Z",
+  "version": "v2026-11-10T18-08-12",
+  "ultimaActualizacion": "2026-11-10T18:08:12.875Z",
   "tiendas": [
     {
       "id": 1,
@@ -1644,6 +1644,110 @@
           "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 809,
+          "nombre": "Crispetas de pollo",
+          "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
+          "precio": 14000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 810,
+          "nombre": "Alas BBQ",
+          "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
+          "precio": 18000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 811,
+          "nombre": "Churrasco",
+          "descripcion": "270 G ensalada Papa francés arroz blanco",
+          "precio": 32000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 812,
+          "nombre": "Chuleta de cerdo",
+          "descripcion": "Ensalada Papa francesa y arroz blanco",
+          "precio": 30000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 813,
+          "nombre": "Lomo de Cerdo",
+          "descripcion": "300 G ensalada Papa francesa y arroz blanco",
+          "precio": 25000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 814,
+          "nombre": "Pechuga de Pollo",
+          "descripcion": "300 G ensalada Papa francesa y arroz blanco",
+          "precio": 25000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 815,
+          "nombre": "Mojara",
+          "descripcion": "450 G ensalada Papa francesa y arroz blanco",
+          "precio": 30000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 816,
+          "nombre": "Costilla de Cerdo",
+          "descripcion": "350 G ensalada Papa francesa y arroz blanco",
+          "precio": 35000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3560,8 +3664,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 810,
@@ -3573,8 +3677,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 811,
@@ -3586,8 +3690,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 812,
@@ -3599,8 +3703,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 813,
@@ -3612,8 +3716,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 814,
@@ -3625,8 +3729,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 815,
@@ -3638,8 +3742,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 816,
@@ -3651,8 +3755,8 @@
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     },
     {
       "id": 817,
@@ -3660,7 +3764,7 @@
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
-      "badge": "NUEVO",
+      "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
