@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-05-13",
-  "ultimaActualizacion": "2026-11-10T18:05:13.597Z",
+  "version": "v2026-11-10T18-05-16",
+  "ultimaActualizacion": "2026-11-10T18:05:16.133Z",
   "tiendas": [
     {
       "id": 1,
@@ -3566,7 +3566,7 @@
     {
       "id": 716,
       "nombre": "Alas BBQ",
-      "descripcion": "",
+      "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
       "precio": 18000,
       "imagen_url": "",
       "badge": "",
@@ -3579,7 +3579,7 @@
     {
       "id": 717,
       "nombre": "Churrasco",
-      "descripcion": "",
+      "descripcion": "270 G ensalada Papa francés arroz blanco",
       "precio": 32000,
       "imagen_url": "",
       "badge": "",
@@ -3592,7 +3592,7 @@
     {
       "id": 718,
       "nombre": "Chuleta de cerdo",
-      "descripcion": "",
+      "descripcion": "Ensalada Papa francesa y arroz blanco",
       "precio": 30000,
       "imagen_url": "",
       "badge": "",
