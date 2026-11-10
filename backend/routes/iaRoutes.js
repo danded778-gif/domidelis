@@ -1,5 +1,29 @@
 /* =====================================================================
-   DOMIDELIS · iaRoutes.js v1.3 — 2026-10-22
+   DOMIDELIS · iaRoutes.js v1.5 — 2026-11-11
+   ---------------------------------------------------------------------
+   v1.5 (presupuesto + compartir + no repetir + formato):
+   1. extraerPresupuesto(): entiende "tengo 15 mil", "$25.000", "15k" y
+      "15000". Ignora teléfonos y cifras fuera del rango de un pedido.
+   2. La ruta rápida y el prompt de Ollama SOLO reciben opciones dentro
+      del presupuesto; si ninguna alcanza, responden con las 3 más
+      cercanas en precio (datos reales, nada inventado).
+   3. "para compartir" / "somos N": porciones individuales ("Personal",
+      "Pequeña", "individual", categoría Bebidas) van al final de la lista.
+   4. No repetir: lo ya recomendado en los últimos mensajes del historial
+      va al final de la selección de la ruta rápida.
+   5. Formato único de lista (Nombre de Tienda, $precio) en la ruta rápida.
+   ---------------------------------------------------------------------
+   v1.4 (blindaje anti-pensamiento):
+   1. Gemini: thinkingBudget 0 y descarte de partes thought:true. Antes
+      el razonamiento del modelo (flash-latest, 2.5) podía colarse en el
+      texto e incluso truncar el JSON y romper la consulta.
+   2. Los bloques <think>…</think> se eliminan del texto del proveedor y
+      del propio campo "respuesta" (Ollama, DeepSeek-R1, OpenRouter).
+   3. El streaming de Ollama calcula el parcial sobre el texto ya limpio:
+      el pensamiento nunca llega al cliente como delta.
+   4. extraerJSON tolerante: si el JSON completo queda roto, rescata al
+      menos el texto de "respuesta" (sin IDs) en vez de fallar la ruta.
+   El cliente (asistente-ia.js) aplica el mismo filtro como segunda capa.
    ---------------------------------------------------------------------
    v1.3 (auditoría de intenciones):
    1. La consulta actual conserva su significado: el historial entra al
@@ -138,6 +162,7 @@ const INSTRUCCIONES = [
   '- Si ya indica qué busca, no repitas el saludo ni hagas preguntas innecesarias: recomienda opciones pertinentes y guía el siguiente paso.',
   '- Interpreta la intención cotidiana con naturalidad. Si pide almuerzo o dice que quiere almorzar, recomienda directamente platos disponibles para almorzar; no preguntes para cuántas personas.',
   '- Pregunta por cantidad de personas solo si el cliente menciona compartir, un grupo o una cantidad. No asumas que cada pedido es para varias personas.',
+  '- Si el cliente menciona un presupuesto (ej. "tengo 15 mil" o "$25.000"), recomienda SOLO opciones dentro de ese monto; si ninguna alcanza, dilo con naturalidad y muestra las de precio más cercano.',
   '- Ante una petición amplia, toma la iniciativa y muestra de 2 a 3 opciones pertinentes de CANDIDATOS con nombre, tienda aliada y precio. No conviertas cada petición en una pregunta.',
   '- Recomienda únicamente productos que existan en CANDIDATOS: cada producto que nombres debe corresponder a un ID devuelto y a una tarjeta que el cliente pueda abrir. No inventes ni agregues hamburguesas u otros productos que no haya pedido ni que sus criterios justifiquen.',
   '- Interpreta características como frío, refrescante, dulce o ligero según nombre y descripción de los productos, no como una orden para limitarse a una categoría. Si el cliente corrige una restricción, discúlpate brevemente, retira esa restricción y amplía la búsqueda sin perder sus preferencias.',
@@ -178,7 +203,7 @@ const INSTRUCCIONES = [
 ].join('\n');
 
 const INSTRUCCIONES_OLLAMA = [
-  'Eres Domi, asistente de ventas de DOMIDELIS en Colombia. Habla en español colombiano, de forma natural, amable y breve. Máximo 2 frases y 35 palabras.',
+  'Eres Domi, asistente de ventas de DOMIDELIS en Colombia. Habla en español colombiano, de forma natural, amable y breve. Máximo 2 frases y 35 palabras. Una sola pregunta por mensaje; sin discursos de vendedor.',
   'PRIORIDAD DE INTENCIONES:',
   '1. La petición más reciente del cliente tiene prioridad sobre las anteriores cuando cambia de tema, categoría o intención.',
   '2. Usa el historial para entender mensajes incompletos como "más barato", "y ese" o "para dos". No uses el historial para contradecir una categoría nueva.',
@@ -188,6 +213,7 @@ const INSTRUCCIONES_OLLAMA = [
   '6. Si dice "amplía la búsqueda", no cambies de categoría. Si las opciones recibidas no bastan, explica que necesitas más opciones del catálogo; no afirmes que ya ampliaste la búsqueda si no se hizo.',
   '7. Si pide algo económico o más barato, ordena por precio ascendente únicamente cuando los precios de las OPCIONES permitan compararlos.',
   '8. Pregunta solo cuando falte un dato realmente necesario. Si ya fue respondido, no lo preguntes otra vez.',
+  '9. Si el cliente menciona un presupuesto (ej. "tengo 15 mil" o "$25.000"), recomienda solo opciones de OPCIONES dentro de ese monto; si ninguna alcanza, dilo y muestra las más cercanas en precio.',
   'EXPLORACIÓN Y COMPRA:',
   'Mirar, explorar, comparar y pedir recomendaciones no significa comprar ni agregar al carrito. Solo trata la petición como acción de compra cuando el cliente lo indique expresamente.',
   'PRODUCTOS:',
@@ -197,6 +223,8 @@ const INSTRUCCIONES_OLLAMA = [
   'PREGUNTAS DE PRODUCTO:',
   'Si preguntan qué trae, sus ingredientes o qué incluye, conserva como referencia el producto mencionado o seleccionado más recientemente en la conversación; no muestres un catálogo nuevo. Responde usando solo la descripción real de ese producto. Si no hay descripción suficiente, dilo claramente y no adivines.',
   'Separa lo que la descripción confirma que viene incluido de las OPCIONES configuradas para el producto. Consulta las opciones recibidas para verificar si se puede quitar, cambiar o agregar algo; si no está configurado o no hay datos, no lo prometas ni uses opciones de otro producto.',
+  'Cuando pregunten qué es o qué trae un producto, responde con su descripción real del catálogo; si no tiene descripción, dilo con naturalidad y muestra la tarjeta del producto.',
+  'Las opciones marcadas con PROMOVIDA:si (tiendas promovidas abiertas) van de primeras cuando sean pertinentes.',
   'Para calcular el total, suma el precio base y los precios adicionales de las opciones que el cliente eligió y que están configuradas para ese producto. Desglosa base, adicionales y total; si falta un precio o una elección necesaria, pide ese dato y no inventes el total.',
   'No menciones ni muestres productos o precios de tiendas ocultas; considera válidos únicamente los productos recibidos de tiendas visibles.',
   'CATEGORÍAS REALES:',
@@ -227,7 +255,30 @@ const PREGUNTAS_VENTAS = /\b(mas (?:pedid\w*|vendid\w*|solicitad\w*|piden|se pid
 const PREGUNTA_SUAVE = /\b(suave|suaves|liviano|liviana|livianos|livianas|blando|blanda|blandos|blandas|no picante|sin picante)\b/;
 const PREGUNTA_ECONOMICA = /\b(economico|economica|economicos|economicas|barato|barata|baratos|baratas|menor precio|bajo presupuesto)\b/;
 const PREGUNTA_RECOMENDACION_AMPLIA = /\b(recomiend\w*|recomendacion\w*|sugier\w*|antojo|algo rico)\b/;
-const PREGUNTA_DETALLE_PRODUCTO = /\b(que (?:trae|tiene|incluye)|ingredientes?|incluye|incluido|incluida|salsas?|sabores?|presentaciones?|cuantas vienen|cuantos vienen|puedo (?:elegir|quitar|cambiar|agregar|anadir)|se (?:le )?puede (?:quitar|cambiar|agregar|anadir)|(?:quitar|cambiar|agregar|anadir) (?:algo|el|la|los|las|un|una)|no me gusta|sin \w+|extra|adicional|cuanto (?:seria|cuesta|vale|queda|me cuesta|es))\b/;
+const PREGUNTA_DETALLE_PRODUCTO = /\b(que (?:trae|tiene|incluye|lleva|es)|de que (?:esta )?hecho|que clase de|que tipo de|ingredientes?|incluye|incluido|incluida|salsas?|sabores?|presentaciones?|cuantas vienen|cuantos vienen|puedo (?:elegir|quitar|cambiar|agregar|anadir)|se (?:le )?puede (?:quitar|cambiar|agregar|anadir)|(?:quitar|cambiar|agregar|anadir) (?:algo|el|la|los|las|un|una)|no me gusta|sin \w+|extra|adicional|cuanto (?:seria|cuesta|vale|queda|me cuesta|es))\b/;
+
+/* ★ NUEVO v1.5: presupuesto del cliente en pesos. Entiende "tengo 15 mil",
+   "$25.000", "15k" y "15000". Ignora teléfonos (con o sin espacios) y
+   cifras fuera del rango razonable de un pedido. */
+function extraerPresupuesto(consulta) {
+  const texto = String(consulta || '').toLowerCase()
+    .replace(/\b3(?:[\s.-]?\d){9}\b/g, ' ')
+    .replace(/\d{8,}/g, ' ');
+  let monto = null;
+  const conMil = /\b(\d{1,3})\s*(?:mil|k)\b/.exec(texto);
+  const conSeparador = /(?:\$|^|\s)(\d{1,3}(?:[.,]\d{3})+)(?=[\s.,;:!?]|$)/.exec(texto);
+  const simple = /(?:\$|^|\s)(\d{4,6})(?=[\s.,;:!?]|$)/.exec(texto);
+  if (conMil) {
+    monto = parseInt(conMil[1], 10) * 1000;
+  } else if (conSeparador) {
+    monto = parseInt(conSeparador[1].replace(/[.,]/g, ''), 10);
+  } else if (simple) {
+    monto = parseInt(simple[1], 10);
+  }
+  if (monto === null || Number.isNaN(monto)) return null;
+  if (monto < 1000 || monto > 2000000) return null;
+  return monto;
+}
 
 function normalizarIA(texto) {
   return String(texto || '')
@@ -235,6 +286,25 @@ function normalizarIA(texto) {
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .trim();
+}
+
+/* ★ v1.4 — blindaje anti-pensamiento. Algunos modelos razonan antes de
+   responder (gemini-2.5-flash con thought parts, deepseek-r1 y otros con
+   <think>…</think>). Ese razonamiento jamás debe llegar al cliente:
+   se filtra aquí y el cliente aplica el mismo filtro como segunda capa. */
+function quitarPensamiento(texto) {
+  let limpio = String(texto || '');
+  limpio = limpio.replace(/<think(?:ing)?\s*>[\s\S]*?<\/think(?:ing)?>/gi, '');
+  limpio = limpio.replace(/<think(?:ing)?\s*>[\s\S]*$/i, '');
+  return limpio;
+}
+
+function sanearTextoRespuesta(texto) {
+  return quitarPensamiento(String(texto || ''))
+    .replace(/[*_`#]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 600);
 }
 
 function extraerTerminosIA(texto) {
@@ -246,6 +316,78 @@ function extraerTerminosIA(texto) {
 function esSaludoSimple(texto) {
   return /^(?:hola|holi|buenas(?:\s+(?:dias|tardes|noches))?|buenos dias|hey|ey|que tal|como estas)[\s!,.¿?]*$/
     .test(normalizarIA(texto));
+}
+
+/* ★ v1.6 — continuidad: un "sí"/"dale"/"quiero agregarlo" suelto no vuelve
+   a buscar en el catálogo (evita el salto a opciones aleatorias). */
+const AFIRMACION_SIMPLE = /^(?:si+|sip|sisas|dale|dale pues|ok(?:ey)?|va|vamos|de una|listo|listico|perfecto|excelente|claro|claro que si|eso mismo|ese mismo|esa misma|el mismo|la misma|ese|esa|quiero agregarlo|agregarlo|agregalo|ponlo|ponmelo|metelo)[\s!.?]*$/;
+function esAfirmacionSimple(texto) {
+  const limpio = normalizarIA(texto).replace(/\s+/g, ' ').trim();
+  return limpio.length <= 30 && AFIRMACION_SIMPLE.test(limpio);
+}
+
+/* ★ v1.6 — descripción corta y honesta para las recomendaciones.
+   Solo aparece si el producto tiene descripción en el catálogo. */
+function detalleCorto(descripcion) {
+  const texto = String(descripcion || '').replace(/\s+/g, ' ').trim();
+  if (!texto) return '';
+  let breve = texto.split(/[.;]/)[0].trim();
+  if (breve.length > 60) breve = breve.slice(0, 57).trim() + '…';
+  if (!breve) return '';
+  return ` — ${breve.charAt(0).toLowerCase()}${breve.slice(1)}`;
+}
+
+/* ★ v1.6 — evita "Salchipapas Domi Delis de Domi Delis": si el nombre del
+   producto ya trae el nombre de la tienda, no se duplica. */
+function nombreConTienda(producto) {
+  const nombre = String((producto && producto.nombre) || '');
+  const tienda = String((producto && producto.tiendaNombre) || '');
+  if (!tienda) return nombre;
+  if (normalizarIA(nombre).includes(normalizarIA(tienda))) return nombre;
+  return `${nombre} de ${tienda}`;
+}
+
+/* ★ v1.6 — "¿Qué es X?" / "¿Qué trae X?" respondido con la descripción
+   REAL del catálogo, sin modelo ni inventos. Solo responde si el producto
+   está entre los candidatos recibidos (tiendas abiertas). */
+const PALABRAS_PREGUNTA_DETALLE = new Set([
+  'que', 'es', 'trae', 'lleva', 'incluye', 'contiene', 'ingredientes',
+  'cuentame', 'hablame', 'dime', 'sobre', 'de', 'del', 'la', 'las', 'el',
+  'los', 'un', 'una', 'unos', 'unas', 'producto', 'este', 'esta', 'ese',
+  'esa', 'eso', 'sabe', 'saber', 'quiero', 'como', 'hecho', 'con', 'viene',
+  'traen', 'tienen', 'tiene', 'informacion', 'clase', 'tipo'
+]);
+function responderDetalleProducto(consulta, candidatos) {
+  if (!Array.isArray(candidatos) || !candidatos.length) return null;
+  const palabras = extraerTerminosIA(consulta)
+    .map(palabra => palabra.length > 5 && palabra.endsWith('s') ? palabra.slice(0, -1) : palabra)
+    .filter(palabra => palabra.length > 2 && !PALABRAS_PREGUNTA_DETALLE.has(palabra));
+  if (!palabras.length) return null;
+  let mejor = null;
+  let mejorPuntos = 0;
+  candidatos.forEach(candidato => {
+    if (!candidato) return;
+    const nombre = normalizarIA(candidato.nombre);
+    const texto = normalizarIA(`${candidato.nombre} ${candidato.categoria} ${candidato.descripcion}`);
+    let puntos = 0;
+    palabras.forEach(palabra => {
+      if (nombre.includes(palabra)) puntos += 3;
+      else if (texto.includes(palabra)) puntos += 1;
+    });
+    if (puntos > mejorPuntos) {
+      mejorPuntos = puntos;
+      mejor = candidato;
+    }
+  });
+  /* Exige coincidencia por nombre (3+) para no responder de otro producto. */
+  if (!mejor || mejorPuntos < 3) return null;
+  const precio = new Intl.NumberFormat('es-CO').format(mejor.precio);
+  const conTienda = nombreConTienda(mejor);
+  const descripcion = String(mejor.descripcion || '').replace(/\s+/g, ' ').trim();
+  const respuesta = descripcion
+    ? `${conTienda}, $${precio}: ${descripcion} Lo agregas con el botón Agregar de su tarjeta.`
+    : `${conTienda}, $${precio}. No tiene descripción en el catálogo todavía, pero puedes verlo y agregarlo desde su tarjeta.`;
+  return { respuesta, ids: [mejor.id] };
 }
 
 function sanearHistorial(historial, consultaActual) {
@@ -329,7 +471,17 @@ function crearPromptOllama(consulta, candidatos, historial, contextoNegocio) {
 
   const historialBreve = sanearHistorial(historial, consulta)
     .map(item => `${item.rol === 'user' ? 'Cliente' : 'Domi'}: ${item.texto}`);
-  const opciones = candidatos.map(candidato => ({
+  /* ★ NUEVO v1.5: con presupuesto, Ollama solo recibe opciones dentro del
+     monto (datos, no instrucciones). Si ninguna alcanza, recibe las 3 más
+     económicas reales. */
+  const presupuestoPrompt = extraerPresupuesto(consulta);
+  const dentroPresupuesto = presupuestoPrompt
+    ? candidatos.filter(candidato => Number(candidato.precio) <= presupuestoPrompt)
+    : candidatos;
+  const opcionesFuente = dentroPresupuesto.length
+    ? dentroPresupuesto
+    : candidatos.slice().sort((a, b) => a.precio - b.precio).slice(0, 3);
+  const opciones = opcionesFuente.map(candidato => ({
     id: candidato.id,
     tiendaId: candidato.tiendaId,
     n: candidato.nombre,
@@ -350,7 +502,7 @@ function crearPromptOllama(consulta, candidatos, historial, contextoNegocio) {
     (Object.keys(datosOperativos).length ? `DATOS: ${JSON.stringify(datosOperativos)}` : '');
 }
 
-function seleccionarCandidatosLocales(candidatos, consulta) {
+function seleccionarCandidatosLocales(candidatos, consulta, historial) {
   const consultaNormalizada = normalizarIA(consulta);
   if (esSaludoSimple(consultaNormalizada)) return [];
   const pideAlmuerzo = /\b(?:almuerzos?|almorz\w*|menu(?:\s+del)?\s+dia)\b/.test(consultaNormalizada);
@@ -385,6 +537,46 @@ function seleccionarCandidatosLocales(candidatos, consulta) {
           .map(item => item.candidato);
       }
     }
+  }
+
+  /* ★ NUEVO v1.6: tiendas promovidas primero — dentro del resultado de la
+     búsqueda; la relevancia ya se respetó, promovida solo reordena. */
+  if (pool.length > 1 && pool.some(candidato => candidato && candidato.promovida === 1)) {
+    pool = pool.filter(candidato => candidato && candidato.promovida === 1)
+      .concat(pool.filter(candidato => !candidato || candidato.promovida !== 1));
+  }
+
+  /* ★ NUEVO v1.5: presupuesto — solo opciones que alcancen al monto. */
+  const presupuestoLocal = extraerPresupuesto(consulta);
+  if (presupuestoLocal) {
+    pool = pool.filter(candidato => Number(candidato.precio) <= presupuestoLocal);
+  }
+
+  /* ★ NUEVO v1.5: para compartir / somos N — porciones individuales y
+     bebidas al final, según el nombre y la categoría reales del producto. */
+  const pideCompartir = /\b(compartir|compartid\w*)\b/.test(consultaNormalizada) ||
+    /\bsomos\s+(?:\d+|dos|tres|cuatro|cinco|seis)\b/.test(consultaNormalizada) ||
+    /\bpara\s+(?:\d+|dos|tres|cuatro|cinco|seis)\s+(?:personas|gente)\b/.test(consultaNormalizada);
+  if (pideCompartir && pool.length > 1) {
+    const esIndividual = candidato =>
+      /\b(personal|individual|peque[ñn]a|peque[ñn]o)\b/.test(normalizarIA(candidato.nombre)) ||
+      normalizarIA(candidato.categoria) === 'bebidas';
+    const principales = pool.filter(candidato => !esIndividual(candidato));
+    const secundarios = pool.filter(esIndividual);
+    if (principales.length) pool = principales.concat(secundarios);
+  }
+
+  /* ★ NUEVO v1.5: no repetir — lo ya ofrecido en los últimos mensajes del
+     historial va al final de la lista (se usa solo si no queda otra). */
+  if (Array.isArray(historial) && historial.length && pool.length > 1) {
+    const recientes = historial.filter(mensaje => mensaje && mensaje.rol === 'assistant').slice(-4);
+    const yaOfrecido = candidato => {
+      const nombre = normalizarIA(candidato.nombre);
+      return nombre.length > 3 && recientes.some(mensaje => normalizarIA(mensaje.texto || '').includes(nombre));
+    };
+    const sinRepetir = pool.filter(candidato => !yaOfrecido(candidato));
+    const repetidos = pool.filter(candidato => yaOfrecido(candidato));
+    if (sinRepetir.length) pool = sinRepetir.concat(repetidos);
   }
 
   if (pideEconomico) {
@@ -426,9 +618,9 @@ function crearTextoRecomendacion(productos) {
   const numeroFrase = (rotacionesCandidatosLocales.get('frase-respuesta') || 0) % frases.length;
   rotacionesCandidatosLocales.set('frase-respuesta', numeroFrase + 1);
   const recomendados = productos.map(producto => {
-    const tienda = producto.tiendaNombre ? ` de ${producto.tiendaNombre}` : '';
     const precio = new Intl.NumberFormat('es-CO').format(producto.precio);
-    return `${producto.nombre}${tienda}, $${precio}`;
+    const detalle = detalleCorto(producto.descripcion); /* ★ v1.6 */
+    return `${nombreConTienda(producto)}, $${precio}${detalle}`;
   });
   return frases[numeroFrase] + recomendados.join('; ') + '.';
 }
@@ -438,7 +630,22 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
   if (esSaludoSimple(consultaNormalizada)) {
     return { respuesta: '¡Hola! ¿Qué se te antoja? Te ayudo a encontrar algo rico.', ids: [] };
   }
-  if (PREGUNTA_DETALLE_PRODUCTO.test(consultaNormalizada)) return null;
+
+  /* ★ v1.6: continuidad — "sí"/"dale"/"quiero agregarlo" retoma el hilo
+     de la conversación en vez de rebuscar en el catálogo. */
+  if (esAfirmacionSimple(consultaNormalizada)) {
+    return {
+      respuesta: 'Perfecto. Toca Agregar en la tarjeta que te gustó, o dime qué más te muestro.',
+      ids: []
+    };
+  }
+
+  if (PREGUNTA_DETALLE_PRODUCTO.test(consultaNormalizada)) {
+    /* ★ v1.6: "¿Qué es X?" — descripción real del catálogo, sin modelo. */
+    const detalle = responderDetalleProducto(consulta, candidatos);
+    if (detalle) return detalle;
+    return null; /* sin objetivo claro: lo responde la IA */
+  }
 
   if (/\b(ropa|vestuario|vestimenta|prenda\w*|camis\w*|pantalon\w*|vestid\w*|zapato\w*|zapatilla\w*|calzado|tenis|falda\w*|chaqueta\w*|blusa\w*)\b/.test(consultaNormalizada)) {
     const categorias = contextoNegocio && Array.isArray(contextoNegocio.categoriasCatalogo)
@@ -453,22 +660,39 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
     };
   }
 
+  /* ★ NUEVO v1.5: presupuesto del cliente. Si ninguna opción alcanza al
+     monto, se responde con honestidad y las 3 más cercanas en precio. */
+  const presupuesto = extraerPresupuesto(consulta);
+  let candidatosEfectivos = candidatos;
+  if (presupuesto) {
+    candidatosEfectivos = candidatos.filter(candidato => Number(candidato.precio) <= presupuesto);
+    if (!candidatosEfectivos.length && candidatos.length) {
+      const masCercanos = candidatos.slice().sort((a, b) => a.precio - b.precio).slice(0, 3);
+      return {
+        respuesta: 'Con $' + new Intl.NumberFormat('es-CO').format(presupuesto) +
+          ' no encontré opciones dentro de ese presupuesto. Lo más cercano en precio: ' +
+          masCercanos.map(producto => `${nombreConTienda(producto)}, $${new Intl.NumberFormat('es-CO').format(producto.precio)}${detalleCorto(producto.descripcion)}`).join('; ') + '.',
+        ids: masCercanos.map(producto => producto.id)
+      };
+    }
+  }
+
   const pideAlmuerzo = /\b(?:almuerzos?|almorz\w*|menu(?:\s+del)?\s+dia)\b/.test(consultaNormalizada);
   if (PREGUNTAS_VENTAS.test(consultaNormalizada)) {
-    const seleccionados = seleccionarCandidatosLocales(candidatos, consulta);
+    const seleccionados = seleccionarCandidatosLocales(candidatosEfectivos, consulta, historial);
     if (!seleccionados.length) {
       return { respuesta: 'Aún no tengo datos de ventas para confirmar qué es lo más pedido. Puedo comparar las opciones disponibles según lo que buscas.', ids: [] };
     }
     return {
       respuesta: 'No tengo datos de ventas para confirmar qué es lo más pedido, pero puedo mostrarte estas opciones: ' +
-        seleccionados.map(producto => `${producto.nombre}, $${new Intl.NumberFormat('es-CO').format(producto.precio)}`).join('; ') + '.',
+        seleccionados.map(producto => `${nombreConTienda(producto)}, $${new Intl.NumberFormat('es-CO').format(producto.precio)}${detalleCorto(producto.descripcion)}`).join('; ') + '.',
       ids: seleccionados.map(producto => producto.id)
     };
   }
 
   if (PREGUNTA_SUAVE.test(consultaNormalizada)) {
     const palabrasSuave = /\b(suave|suaves|liviano|liviana|livianos|livianas|blando|blanda|blandos|blandas|no picante|sin picante)\b/;
-    const opcionesSuaves = candidatos.filter(candidato =>
+    const opcionesSuaves = candidatosEfectivos.filter(candidato =>
       palabrasSuave.test(normalizarIA(`${candidato.nombre} ${candidato.descripcion}`))
     );
     if (!opcionesSuaves.length) {
@@ -477,7 +701,7 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
         ids: []
       };
     }
-    const seleccionados = seleccionarCandidatosLocales(opcionesSuaves, consulta);
+    const seleccionados = seleccionarCandidatosLocales(opcionesSuaves, consulta, historial);
     return {
       respuesta: crearTextoRecomendacion(seleccionados),
       ids: seleccionados.map(producto => producto.id)
@@ -485,13 +709,13 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
   }
 
   if (PREGUNTA_ECONOMICA.test(consultaNormalizada)) {
-    const seleccionados = seleccionarCandidatosLocales(candidatos, consulta);
+    const seleccionados = seleccionarCandidatosLocales(candidatosEfectivos, consulta, historial);
     if (!seleccionados.length) {
       return { respuesta: 'No recibí opciones para comparar precios en esta búsqueda. Puedo ampliar la búsqueda manteniendo tus preferencias.', ids: [] };
     }
     return {
       respuesta: 'Estas son algunas de las opciones más económicas: ' +
-        seleccionados.map(producto => `${producto.nombre}, $${new Intl.NumberFormat('es-CO').format(producto.precio)}`).join('; ') + '.',
+        seleccionados.map(producto => `${nombreConTienda(producto)}, $${new Intl.NumberFormat('es-CO').format(producto.precio)}${detalleCorto(producto.descripcion)}`).join('; ') + '.',
       ids: seleccionados.map(producto => producto.id)
     };
   }
@@ -501,12 +725,12 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
       .map(palabra => palabra.length > 5 && palabra.endsWith('s') ? palabra.slice(0, -1) : palabra)
       .filter(palabra => palabra.length > 3 && !PALABRAS_VACIAS_IA.has(palabra));
     const especificaProducto = terminosEspecificos.some(termino =>
-      candidatos.some(candidato =>
+      candidatosEfectivos.some(candidato =>
         normalizarIA(`${candidato.nombre} ${candidato.categoria}`).includes(termino)
       )
     );
     if (!especificaProducto) {
-      const seleccionados = seleccionarCandidatosLocales(candidatos, consulta);
+      const seleccionados = seleccionarCandidatosLocales(candidatosEfectivos, consulta, historial);
       if (seleccionados.length) {
         return {
           respuesta: crearTextoRecomendacion(seleccionados),
@@ -520,13 +744,13 @@ function crearRespuestaCatalogoRapida(consulta, candidatos, historial, contextoN
     .map(palabra => palabra.length > 5 && palabra.endsWith('s') ? palabra.slice(0, -1) : palabra)
     .filter(palabra => palabra.length > 3 && !PALABRAS_VACIAS_IA.has(palabra));
   const coincideProducto = terminos.some(termino =>
-    candidatos.some(candidato =>
+    candidatosEfectivos.some(candidato =>
       normalizarIA(`${candidato.nombre} ${candidato.categoria}`).includes(termino)
     )
   );
   if (!pideAlmuerzo && !coincideProducto) return null;
 
-  const seleccionados = seleccionarCandidatosLocales(candidatos, consulta);
+  const seleccionados = seleccionarCandidatosLocales(candidatosEfectivos, consulta, historial);
   if (!seleccionados.length) {
     return pideAlmuerzo
       ? { respuesta: 'No me aparecen almuerzos entre las opciones recibidas. ¿Quieres que amplíe la búsqueda o prefieres ver otra categoría?', ids: [] }
@@ -596,6 +820,7 @@ function sanearContextoNegocio(contexto) {
 function crearPrompt(consulta, candidatos, historial, contextoNegocio) {
   const lineas = candidatos.map(c =>
     `- id:${c.id} | tiendaId:${c.tiendaId || ''} | ${c.nombre} | $${c.precio} | ${c.categoria || ''} | tienda: ${c.tiendaNombre || ''} | ${c.descripcion || ''}` +
+    (c.promovida === 1 ? ' | PROMOVIDA:si' : '') +
     (c.badge ? ` | ${c.badge}` : '') +
     (c.opciones.length ? ` | OPCIONES CONFIGURADAS: ${JSON.stringify(c.opciones)}` : '')
   ).join('\n');
@@ -690,7 +915,9 @@ async function leerRespuestaOllama(respuesta, emitirTexto) {
     contenido += texto;
     datosFinales = fragmento;
 
-    const parcial = extraerRespuestaParcial(contenido);
+    /* ★ v1.4: el parcial se calcula sobre el texto sin pensamiento, para
+       que un <think> nunca se emita como delta al cliente. */
+    const parcial = extraerRespuestaParcial(quitarPensamiento(contenido));
     if (parcial.startsWith(textoEmitido)) {
       const nuevoTexto = parcial.slice(textoEmitido.length);
       if (nuevoTexto) emitirTexto(nuevoTexto);
@@ -756,7 +983,13 @@ async function llamarProveedor(proveedor, prompt, tiempoRestante, emitirTexto) {
       generationConfig: {
         temperature: 0.4,
         maxOutputTokens: 1024,
-        responseMimeType: 'application/json'
+        responseMimeType: 'application/json',
+        /* ★ v1.4: flash-latest (2.5) piensa antes de responder; ese
+           pensamiento gastaba tokens (podía truncar el JSON) y en algunas
+           pruebas llegaba hasta el cliente. thinkingBudget 0 lo desactiva.
+           Si cambias GEMINI_MODEL a un modelo sin pensamiento (1.5/2.0),
+           quita esta línea thinkingConfig. */
+        thinkingConfig: { thinkingBudget: 0 }
       }
     };
   } else {
@@ -821,6 +1054,7 @@ async function llamarProveedor(proveedor, prompt, tiempoRestante, emitirTexto) {
         ? datos && datos.candidates && datos.candidates[0] &&
           datos.candidates[0].content && datos.candidates[0].content.parts
           ? datos.candidates[0].content.parts
+            .filter(parte => !parte || parte.thought !== true) /* ★ v1.4 */
             .map(parte => parte.text || '').join('')
           : ''
         : datos && datos.choices && datos.choices[0] &&
@@ -928,18 +1162,32 @@ async function llamarIA(consulta, candidatos, historial, contextoNegocio, emitir
   throw error;
 }
 
-/* Parseo tolerante de JSON */
+/* Parseo tolerante de JSON (★ v1.4: primero se retira el pensamiento; si
+   el JSON completo quedó roto —p. ej. por corte de tokens— se rescata al
+   menos el texto de "respuesta", sin IDs, en vez de fallar la consulta). */
 function extraerJSON(texto) {
   if (!texto) throw new Error('El proveedor respondió vacío');
-  let limpio = String(texto).trim();
+  let limpio = quitarPensamiento(String(texto)).trim();
   limpio = limpio.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
   const inicio = limpio.indexOf('{');
   const fin = limpio.lastIndexOf('}');
-  if (inicio === -1 || fin === -1 || fin <= inicio) throw new Error('El proveedor no devolvió JSON');
-  const obj = JSON.parse(limpio.slice(inicio, fin + 1));
+  let obj = null;
+  if (inicio !== -1 && fin > inicio) {
+    try {
+      obj = JSON.parse(limpio.slice(inicio, fin + 1));
+    } catch (errorParseo) {
+      obj = null;
+    }
+  }
+  if (!obj) {
+    const rescatado = sanearTextoRespuesta(extraerRespuestaParcial(limpio));
+    if (!rescatado) throw new Error('El proveedor no devolvió JSON');
+    console.warn('[iaRoutes] JSON incompleto del proveedor: se rescató solo el texto de la respuesta');
+    return { respuesta: rescatado, ids: [] };
+  }
   return {
     respuesta: typeof obj.respuesta === 'string'
-      ? obj.respuesta.replace(/[*_`#]+/g, '').replace(/\s+/g, ' ').trim().slice(0, 600)
+      ? sanearTextoRespuesta(obj.respuesta)
       : '',
     ids: Array.isArray(obj.ids) ? obj.ids.map(x => String(x)) : []
   };
@@ -990,6 +1238,7 @@ router.post('/consultar', async (req, res) => {
         tiendaNombre: String(c.tiendaNombre || '').slice(0, 80),
         descripcion: String(c.descripcion || '').slice(0, 160),
         badge: String(c.badge || '').slice(0, 30),
+        promovida: c.promovida === 1 || c.promovida === true ? 1 : 0, /* ★ v1.6 */
         opciones: Array.isArray(c.opciones)
           ? c.opciones.slice(0, 30)
             .filter(opcion => opcion && typeof opcion === 'object' && opcion.nombre)
