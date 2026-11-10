@@ -1,0 +1,822 @@
+/* ============================================================================
+   DOMIDELIS · TEMA NAVIDEÑO (Diciembre) — navidad.css v1
+   Compañero de navidad.js · Prefijo: xm-  (antes hw- en Halloween)
+   Temporada: 01-dic → 06-ene (Reyes) · Clase activa: .xm-navidad-active
+   ============================================================================ */
+
+/* ---------- 1 · AMBIENTE GENERAL (cielo nocturno con estrellas y luna) ---------- */
+.page-home.xm-navidad-active {
+    background-color: #0d1f3c;
+    background-image:
+        radial-gradient(1.6px 1.6px at 11% 13%, rgba(255, 255, 255, .95) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 24% 6%, rgba(255, 255, 255, .8) 50%, transparent 51%),
+        radial-gradient(1.4px 1.4px at 37% 18%, rgba(255, 255, 255, .6) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 56% 8%, rgba(255, 255, 255, .85) 50%, transparent 51%),
+        radial-gradient(1.6px 1.6px at 68% 20%, rgba(255, 255, 255, .7) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 87% 11%, rgba(255, 255, 255, .9) 50%, transparent 51%),
+        radial-gradient(1.4px 1.4px at 95% 25%, rgba(255, 255, 255, .6) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 6% 29%, rgba(255, 255, 255, .55) 50%, transparent 51%),
+        radial-gradient(1px 1px at 15% 34%, rgba(255, 255, 255, .5) 50%, transparent 51%),
+        radial-gradient(1px 1px at 47% 28%, rgba(255, 255, 255, .45) 50%, transparent 51%),
+        radial-gradient(ellipse at 8% 80%, rgba(235, 244, 255, .16), transparent 32%),
+        radial-gradient(ellipse at 93% 68%, rgba(46, 125, 82, .28), transparent 36%),
+        linear-gradient(180deg, #0a1a38 0%, #12315e 38%, #0e2344 70%, #17382e 100%);
+    background-attachment: fixed;
+    /* Mantiene la luna (hijo con z-index negativo) detrás del contenido */
+    isolation: isolate;
+}
+
+/* ---------- 1b · LUNA GRANDE DE NAVIDAD ----------
+   Fija y centrada en la pantalla: aunque hagas scroll, no se mueve.
+   Queda detrás de las tarjetas y se asoma en los espacios del cielo.
+   Ajustes rápidos (ponlos en .xm-bigmoon o por CSS propio):
+   --xm-moon-size  → tamaño total (ej: 320px)
+   --xm-moon-shift → la baja (positivo) o la sube (negativo), ej: -60px */
+.xm-bigmoon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: var(--xm-moon-size, min(74vmin, 480px));
+    height: var(--xm-moon-size, min(74vmin, 480px));
+    margin: auto;
+    translate: 0 var(--xm-moon-shift, 0px);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .5), transparent 46%),
+        radial-gradient(circle at 66% 60%, rgba(214, 176, 106, .22) 0 12%, transparent 13%),
+        radial-gradient(circle at 40% 70%, rgba(214, 176, 106, .17) 0 8%, transparent 9%),
+        radial-gradient(circle at 58% 33%, rgba(214, 176, 106, .15) 0 6%, transparent 7%),
+        radial-gradient(circle at 38% 36%, #fff8e1, #ffeaa7 66%, #f6d372 100%);
+    box-shadow:
+        0 0 36px 12px rgba(255, 236, 170, .38),
+        0 0 120px 60px rgba(255, 236, 170, .16);
+    pointer-events: none;
+    animation: xm-moon-float 7s ease-in-out infinite;
+}
+
+/* Gorrita de Santa de la luna — cono (::before) + banda (::after) + pompón (span).
+   Va sobre el borde superior-IZQUIERDO: la punta mira hacia arriba-izquierda
+   y el pompón queda contra el cielo oscuro, bien visible. */
+.xm-bigmoon-hat {
+    position: absolute;
+    top: -12%;
+    left: 17%;
+    width: 26%;
+    height: 26%;
+    pointer-events: none;
+    filter: drop-shadow(0 6px 12px rgba(4, 12, 30, .28));
+    rotate: -24deg;                 /* inclina la punta hacia la izquierda */
+    transform-origin: 50% 100%;     /* pivota donde el gorro toca la cabeza */
+    animation: xm-moon-hat-sway 5.5s ease-in-out infinite;
+}
+
+/* Cono rojo: triángulo real */
+.xm-bigmoon-hat::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, #ff6b6b 10%, #d0342c 55%, #c1121f 92%);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* Banda blanca doblada en la base (cubre la unión del cono con la cabeza) */
+.xm-bigmoon-hat::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 148%;
+    height: 30%;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ffffff, #dde6f2);
+    box-shadow: 0 2px 6px rgba(4, 12, 30, .16);
+}
+
+/* Pompón blanco en la punta (lo crea navidad.js) */
+.xm-bigmoon-hat .xm-bigmoon-hat-pom {
+    position: absolute;
+    top: -6%;
+    left: 50%;
+    width: 46%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0 55%, #e9e1d3 100%);
+    box-shadow: 0 3px 7px rgba(4, 12, 30, .2);
+}
+
+@keyframes xm-moon-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes xm-moon-hat-sway {
+    0%,
+    100% {
+        rotate: -24deg;
+    }
+
+    50% {
+        rotate: -18deg;
+    }
+}
+
+/* Textos e iconos de la home */
+.page-home.xm-navidad-active .category-item span {
+    color: #e6efff;
+}
+
+.page-home.xm-navidad-active .category-item.active span {
+    color: #ffd166;
+}
+
+.page-home.xm-navidad-active .stores-section-title,
+.page-home.xm-navidad-active #stores-grid-cerradas > h3,
+.page-home.xm-navidad-active .menu-header,
+.page-home.xm-navidad-active .menu-header h2,
+.page-home.xm-navidad-active .menu-header p,
+.page-home.xm-navidad-active #main-title {
+    color: #f2f8ff !important;
+    text-shadow: 0 1px 8px rgba(10, 26, 56, .6);
+}
+
+.page-home.xm-navidad-active .stores-section-title i,
+.page-home.xm-navidad-active #stores-grid-cerradas > h3 i {
+    color: #ffd166;
+}
+
+/* Gorro de nieve sobre el header (línea blanca al borde inferior) */
+.xm-navidad-active header {
+    box-shadow:
+        0 3px 0 rgba(255, 255, 255, .92),
+        0 10px 26px rgba(4, 12, 30, .38);
+}
+
+/* ---------- 2 · CAPAS FIJAS (nieve, guirnaldas, escena) ---------- */
+.xm-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100%;
+    height: 32px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.xm-bottom-garland {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 995;
+    height: 28px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.xm-snow {
+    position: fixed;
+    inset: 0;
+    z-index: 994;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Copos: puntos blancos con deriva en zigzag */
+.xm-flake {
+    position: absolute;
+    top: -4vh;
+    left: var(--xm-left);
+    width: var(--xm-size);
+    height: var(--xm-size);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff, rgba(255, 255, 255, .55));
+    opacity: var(--xm-opacity);
+    animation: xm-snow-fall var(--xm-duration) linear var(--xm-delay) infinite;
+    will-change: transform;
+}
+
+/* Copos emoji (❄) más grandes, para dar variedad de profundidad */
+.xm-flake--emoji {
+    top: -8vh;
+    width: auto;
+    height: auto;
+    background: none;
+    font-size: var(--xm-size);
+    opacity: .6;
+    filter: drop-shadow(0 1px 2px rgba(10, 26, 56, .35));
+}
+
+@keyframes xm-snow-fall {
+    0% {
+        transform: translate3d(0, -4vh, 0);
+    }
+
+    25% {
+        transform: translate3d(calc(var(--xm-drift) * .55), 25vh, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 54vh, 0);
+    }
+
+    75% {
+        transform: translate3d(calc(var(--xm-drift) * -.55), 80vh, 0);
+    }
+
+    100% {
+        transform: translate3d(var(--xm-drift), 108vh, 0);
+    }
+}
+
+/* ---------- 3 · GUIRNALDA SVG (pino + nieve + bombillas tricolor) ---------- */
+.xm-garland {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.xm-garland.xm-bottom-garland {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 995;
+    height: 28px;
+}
+
+.xm-garland--bottom {
+    transform: rotate(180deg);
+}
+
+.xm-vine {
+    fill: none;
+    stroke: #1d5c33;
+    stroke-linecap: round;
+    stroke-width: 5;
+    filter: drop-shadow(0 2px 2px rgba(4, 14, 8, .4));
+}
+
+/* Rama cubierta de nieve: trazo blanco sobre la rama verde */
+.xm-snowcap {
+    fill: none;
+    stroke: rgba(255, 255, 255, .88);
+    stroke-linecap: round;
+    stroke-width: 2;
+}
+
+.xm-light-wire {
+    fill: none;
+    stroke: rgba(10, 20, 40, .7);
+    stroke-width: 1.4;
+}
+
+.xm-needle {
+    fill: #2d7a4f;
+    stroke: #1b4d2e;
+    stroke-width: 1.4;
+}
+
+.xm-needle--light {
+    fill: #40916c;
+}
+
+.xm-bulb {
+    stroke-width: 1.6;
+    animation: xm-glow 2.2s ease-in-out infinite alternate;
+}
+
+.xm-bulb--red {
+    fill: #ff5a5f;
+    stroke: #ffd9d9;
+    filter: drop-shadow(0 0 5px rgba(255, 90, 95, .95));
+}
+
+.xm-bulb--gold {
+    fill: #ffd166;
+    stroke: #fff3cf;
+    filter: drop-shadow(0 0 5px rgba(255, 209, 102, .95));
+}
+
+.xm-bulb--green {
+    fill: #5ad07a;
+    stroke: #d6ffe2;
+    filter: drop-shadow(0 0 5px rgba(90, 208, 122, .95));
+}
+
+@keyframes xm-glow {
+    from {
+        opacity: .62;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------- 4 · ADORNOS COLGANTES INTERACTIVOS ---------- */
+.xm-decoration {
+    position: absolute;
+    top: 16px;
+    display: flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    pointer-events: auto;
+    filter: drop-shadow(0 2px 4px rgba(4, 12, 30, .65));
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    animation: xm-hang 3.4s ease-in-out infinite;
+}
+
+/* Hilo del adorno */
+.xm-decoration::before {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 1px;
+    height: 9px;
+    background: linear-gradient(rgba(10, 20, 40, .15), rgba(10, 20, 40, .85));
+    content: "";
+}
+
+.xm-decoration--regalo {
+    font-size: 1.5rem;
+    animation-duration: 3.8s;
+}
+
+/* La campana se balancea desde el punto donde cuelga */
+.xm-decoration--campana {
+    font-size: 1.45rem;
+    transform-origin: 50% -9px;
+    animation-duration: 2.9s;
+}
+
+.xm-decoration--muneco {
+    font-size: 1.4rem;
+}
+
+.xm-decoration--caramelo {
+    font-size: 1.35rem;
+    animation-duration: 3s;
+}
+
+.xm-decoration:hover,
+.xm-decoration:focus-visible {
+    filter: drop-shadow(0 0 9px rgba(255, 235, 170, .95));
+}
+
+.xm-decoration:focus-visible {
+    outline: 2px solid #ffd166;
+    outline-offset: 2px;
+}
+
+.xm-decoration--moving {
+    animation: xm-pop-out .22s ease-in forwards !important;
+}
+
+.xm-decoration--moving.xm-decoration--regalo {
+    animation: xm-squash .62s cubic-bezier(.35, .05, .65, .95) forwards !important;
+}
+
+.xm-decoration--moving.xm-decoration--campana {
+    animation: xm-ring .85s ease-in-out forwards !important;
+}
+
+.xm-decoration--reappearing {
+    animation: xm-pop-in .35s cubic-bezier(.2, .85, .3, 1.3) forwards !important;
+}
+
+.xm-burst {
+    position: fixed;
+    z-index: 1003;
+    font-size: 1.05rem;
+    pointer-events: none;
+    animation: xm-burst .62s ease-out forwards;
+}
+
+@keyframes xm-hang {
+    0%,
+    100% {
+        translate: 0 0;
+        rotate: -4deg;
+    }
+
+    50% {
+        translate: 0 4px;
+        rotate: 4deg;
+    }
+}
+
+@keyframes xm-pop-out {
+    to {
+        opacity: 0;
+        scale: .35;
+    }
+}
+
+@keyframes xm-pop-in {
+    from {
+        opacity: 0;
+        scale: .35;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+/* El regalo "explota" de alegría al tocarlo */
+@keyframes xm-squash {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    22% {
+        scale: 1.18 .8;
+    }
+
+    43% {
+        scale: .82 1.18;
+    }
+
+    64% {
+        scale: 1.1 .9;
+    }
+
+    82% {
+        opacity: 1;
+        scale: .2 .12;
+    }
+
+    100% {
+        opacity: 0;
+        scale: .2 .12;
+    }
+}
+
+/* La campana repica antes de moverse */
+@keyframes xm-ring {
+    0%,
+    100% {
+        rotate: 0deg;
+    }
+
+    15% {
+        rotate: 20deg;
+    }
+
+    30% {
+        rotate: -17deg;
+    }
+
+    45% {
+        rotate: 13deg;
+    }
+
+    60% {
+        rotate: -9deg;
+    }
+
+    75% {
+        rotate: 5deg;
+    }
+
+    88% {
+        rotate: -2deg;
+    }
+}
+
+@keyframes xm-burst {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(.5);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--xm-x)), calc(-50% + var(--xm-y))) scale(1.25) rotate(35deg);
+    }
+}
+
+/* ---------- 5 · EL CARRITO SE VISTE DE NAVIDAD ---------- */
+
+/* 5a · Gorro de Santa en el botón del carrito.
+   Ajusta la posición con --xm-hat-top / --xm-hat-right si tu badge choca. */
+.xm-navidad-active #header-cart {
+    position: relative;
+    --xm-hat-top: -12px;
+    --xm-hat-right: -3px;
+}
+
+/* Cono rojo del gorro con pompón blanco */
+.xm-navidad-active #header-cart::before {
+    content: "";
+    position: absolute;
+    top: var(--xm-hat-top);
+    right: var(--xm-hat-right);
+    z-index: 2;
+    width: 21px;
+    height: 19px;
+    background:
+        radial-gradient(circle at 84% 10%, #ffffff 0 3.4px, transparent 3.9px),
+        linear-gradient(160deg, #ff6b6b, #c1121f 72%);
+    border-radius: 10% 95% 14% 48% / 22% 100% 32% 28%;
+    box-shadow: 0 1px 3px rgba(4, 12, 30, .35);
+    pointer-events: none;
+    rotate: 12deg;
+    animation: xm-hat-sway 3.6s ease-in-out infinite;
+    transform-origin: 20% 100%;
+}
+
+/* Banda de tela blanca del gorro */
+.xm-navidad-active #header-cart::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--xm-hat-top) + 13px);
+    right: calc(var(--xm-hat-right) + 1px);
+    z-index: 2;
+    width: 15px;
+    height: 5px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #ffffff, #dde6f2);
+    box-shadow: 0 1px 2px rgba(4, 12, 30, .3);
+    pointer-events: none;
+    rotate: 12deg;
+}
+
+@keyframes xm-hat-sway {
+    0%,
+    100% {
+        rotate: 12deg;
+    }
+
+    50% {
+        rotate: 18deg;
+    }
+}
+
+.xm-navidad-active #header-cart:hover::before,
+.xm-navidad-active #header-cart:focus-visible::before,
+.xm-navidad-active #header-cart.xm-cart-bump::before {
+    animation: xm-hat-wiggle .6s ease-in-out;
+}
+
+@keyframes xm-hat-wiggle {
+    0%,
+    100% {
+        rotate: 12deg;
+    }
+
+    25% {
+        rotate: -4deg;
+    }
+
+    55% {
+        rotate: 24deg;
+    }
+
+    80% {
+        rotate: 6deg;
+    }
+}
+
+/* El botón entero "salta" de emoción cuando entra un producto */
+.xm-navidad-active #header-cart.xm-cart-bump {
+    animation: xm-bump .5s cubic-bezier(.2, .85, .3, 1.3);
+}
+
+@keyframes xm-bump {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.16) rotate(-4deg);
+    }
+
+    70% {
+        transform: scale(.95) rotate(3deg);
+    }
+}
+
+/* Regalo que vuela desde el carrito al agregar un producto */
+.xm-gift-fly {
+    position: fixed;
+    z-index: 1004;
+    font-size: 1.45rem;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(4, 12, 30, .35));
+    animation: xm-gift-fly .8s ease-out forwards;
+}
+
+@keyframes xm-gift-fly {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.5);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--xm-x, 24px), -92px) scale(1.25) rotate(18deg);
+    }
+}
+
+/* 5b · Panel del carrito: borde de bastón de caramelo + cabecera verde pino */
+.xm-navidad-active .cart-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 5px;
+    background: repeating-linear-gradient(45deg, #e63946 0 10px, #ffffff 10px 20px);
+    pointer-events: none;
+}
+
+.xm-navidad-active .cart-header {
+    background: linear-gradient(135deg, #1c7c46, #0c4a2a);
+}
+
+.xm-navidad-active .cart-header h3 i {
+    color: #ffd166;
+}
+
+/* Botón de WhatsApp con brillo navideño que recorre el botón */
+.xm-navidad-active .btn-whatsapp-cart {
+    position: relative;
+    overflow: hidden;
+}
+
+.xm-navidad-active .btn-whatsapp-cart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .5), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    animation: xm-shine 3.2s ease-in-out infinite;
+}
+
+@keyframes xm-shine {
+    0% {
+        left: -60%;
+    }
+
+    55% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+}
+
+/* ---------- 6 · OCULTAR CAPAS CUANDO HAY PANEL ABIERTO ----------
+   (mismo truco de hermanos que en Halloween; los paneles van antes
+   en el DOM que los elementos inyectados por el JS) */
+.cart-panel.active ~ .xm-scene,
+.cart-panel.active ~ #xm-dismiss,
+.cart-panel.active ~ .xm-bottom-garland,
+.cart-panel.active ~ .xm-snow,
+.cart-panel.active ~ .xm-bigmoon,
+.search-panel.active ~ .xm-scene,
+.search-panel.active ~ #xm-dismiss,
+.search-panel.active ~ .xm-bottom-garland,
+.search-panel.active ~ .xm-snow,
+.search-panel.active ~ .xm-bigmoon {
+    visibility: hidden;
+}
+
+/* ---------- 7 · BOTÓN PARA OCULTAR LA DECORACIÓN ---------- */
+.xm-dismiss {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    z-index: 1002;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff6b6b, #c1121f);
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    opacity: .8;
+    box-shadow: 0 2px 8px rgba(4, 12, 30, .45);
+    transition: opacity .2s, transform .2s, box-shadow .2s;
+}
+
+.xm-dismiss:hover,
+.xm-dismiss:focus-visible {
+    box-shadow: 0 0 12px rgba(255, 214, 112, .9);
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.xm-dismiss:focus-visible {
+    outline: 2px solid #ffd166;
+    outline-offset: 2px;
+}
+
+/* ---------- 8 · MÓVIL ---------- */
+@media (max-width: 800px) {
+    .xm-scene {
+        height: 28px;
+    }
+
+    .xm-bottom-garland {
+        height: 22px;
+    }
+
+    .xm-garland.xm-bottom-garland {
+        height: 22px;
+    }
+
+    .xm-decoration {
+        top: 14px;
+        width: 23px;
+        height: 23px;
+        font-size: 1.15rem;
+    }
+
+    .xm-decoration--regalo {
+        font-size: 1.3rem;
+    }
+
+    .xm-navidad-active #header-cart {
+        --xm-hat-top: -10px;
+        --xm-hat-right: -2px;
+    }
+
+    .xm-navidad-active #header-cart::before {
+        width: 18px;
+        height: 16px;
+    }
+
+    .xm-navidad-active #header-cart::after {
+        top: calc(var(--xm-hat-top) + 11px);
+        width: 13px;
+        height: 4px;
+    }
+}
+
+/* ---------- 9 · ACCESIBILIDAD: MOVIMIENTO REDUCIDO ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .xm-decoration,
+    .xm-decoration--moving,
+    .xm-decoration--reappearing,
+    .xm-bulb,
+    .xm-burst,
+    .xm-flake,
+    .xm-bigmoon,
+    .xm-bigmoon-hat,
+    .xm-gift-fly,
+    .xm-navidad-active #header-cart::before,
+    .xm-navidad-active #header-cart.xm-cart-bump,
+    .xm-navidad-active .btn-whatsapp-cart::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    .xm-flake {
+        top: 16vh;
+        opacity: .22;
+    }
+}
