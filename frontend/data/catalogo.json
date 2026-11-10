@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-58-23",
-  "ultimaActualizacion": "2026-11-10T17:58:23.480Z",
+  "version": "v2026-11-10T17-59-00",
+  "ultimaActualizacion": "2026-11-10T17:59:00.405Z",
   "tiendas": [
     {
       "id": 1,
@@ -3578,7 +3578,7 @@
     },
     {
       "id": 717,
-      "nombre": "Crurrasco",
+      "nombre": "Churrasco",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
