@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T18-03-49",
-  "ultimaActualizacion": "2026-11-10T18:03:49.587Z",
+  "version": "v2026-11-10T18-05-13",
+  "ultimaActualizacion": "2026-11-10T18:05:13.597Z",
   "tiendas": [
     {
       "id": 1,
@@ -3553,7 +3553,7 @@
     {
       "id": 715,
       "nombre": "Crispetas de pollo",
-      "descripcion": "",
+      "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
       "precio": 14000,
       "imagen_url": "",
       "badge": "",
@@ -3593,7 +3593,7 @@
       "id": 718,
       "nombre": "Chuleta de cerdo",
       "descripcion": "",
-      "precio": 30,
+      "precio": 30000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3606,7 +3606,7 @@
       "id": 719,
       "nombre": "Lomo de Cerdo",
       "descripcion": "",
-      "precio": 25,
+      "precio": 25000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3619,7 +3619,7 @@
       "id": 720,
       "nombre": "Pechuga de Pollo",
       "descripcion": "",
-      "precio": 25,
+      "precio": 25000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3632,7 +3632,7 @@
       "id": 721,
       "nombre": "Mojara",
       "descripcion": "",
-      "precio": 30,
+      "precio": 30000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
