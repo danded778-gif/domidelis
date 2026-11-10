@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-53-44",
-  "ultimaActualizacion": "2026-11-10T17:53:44.758Z",
+  "version": "v2026-11-10T17-54-14",
+  "ultimaActualizacion": "2026-11-10T17:54:14.374Z",
   "tiendas": [
     {
       "id": 1,
@@ -3437,7 +3437,7 @@
       "id": 712,
       "nombre": "1/4 Pollo Broaster",
       "descripcion": "Papa francesa Arepa y salsa de la casa",
-      "precio": 0,
+      "precio": 14000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3449,8 +3449,8 @@
     {
       "id": 713,
       "nombre": "1/2 Pollo Broaster",
-      "descripcion": "",
-      "precio": 0,
+      "descripcion": "Papa francesa Arepa y salsa de la casa",
+      "precio": 27000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
@@ -3461,8 +3461,8 @@
     },
     {
       "id": 714,
-      "nombre": "",
-      "descripcion": "",
+      "nombre": "Pollo Asado Completo",
+      "descripcion": "Papa francesa Arepa sopa salsa de la casa",
       "precio": 0,
       "imagen_url": "",
       "badge": "",
