@@ -1,5 +1,24 @@
 'use strict';
 
+/* ============================================
+   ★ v1.6 HORARIO (11-11-2026) — EL FILTRO DE LA VERDAD
+   Regla nueva: una tienda CERRADA a esta hora (según su horario real,
+   día por día) no aparece en las respuestas de DOMI IA, ni ella ni sus
+   productos. Mismas reglas que client.js v4.9.2:
+   getDayKey + getHorarioHoy + checkStoreStatus (copia fiel).
+   Cambios de esta versión:
+   1. claveDiaHoy / horarioDeHoy / estadoTienda / tiendaEstaAbierta —
+      motor de horario con hora de Colombia (America/Bogota). Si client.js
+      está cargado en la página se reusa window.checkStoreStatus; la copia
+      interna cubre páginas sin client.js (ej. checkout.html).
+   2. buscar(): filtra productos de tiendas cerradas (además de ocultas
+      e inactivas, que ya existían).
+   3. responderPreguntaProducto(): mismo filtro de tienda cerrada.
+   4. categoriasCatalogo(): mismo filtro de tienda cerrada.
+   5. Cada candidato ahora lleva `promovida` (0/1) para que el servidor
+      ponga primero las tiendas promovidas que estén abiertas.
+   ============================================ */
+
 (function () {
   let rotacionCatalogoAmplio = 0;
   const PRODUCTO_FRIO_COMPATIBLE = /\b(helad\w*|granizad\w*|frutas?|fresas?|mangos?|ensalada|copa|kumis|hielo|frapp\w*|batid\w*|raspa\w*|postre\w*|limonad\w*|jugos?|aguas?|gaseosas?|maltead\w*)\b/;
@@ -24,6 +43,71 @@
     return normalizarTexto(tienda && tienda.descripcion)
       .replace(/\s+/g, '')
       .includes('(oculto)');
+  }
+
+  /* ★ v1.6 — Motor de horario (copia fiel de client.js v4.9.2). */
+  function claveDiaHoy() {
+    const ahora = new Date();
+    const horaColombia = new Date(ahora.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+    const dias = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    return dias[horaColombia.getDay()];
+  }
+
+  function horarioDeHoy(horario) {
+    if (!horario) return '11:00-22:00';
+    if (typeof horario === 'string' && horario.trim().startsWith('{')) {
+      try {
+        const horarioLimpio = horario
+          .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')
+          .replace(/'/g, '"');
+        const obj = JSON.parse(horarioLimpio);
+        return obj[claveDiaHoy()] || 'Cerrado';
+      } catch (error) {
+        return horario;
+      }
+    }
+    return horario;
+  }
+
+  function estadoTienda(tienda) {
+    const horario = tienda && tienda.horario;
+    if (window.checkStoreStatus) {
+      try {
+        return window.checkStoreStatus(horario);
+      } catch (error) {
+        /* client.js falló: se usa la copia interna */
+      }
+    }
+    const horarioHoy = horarioDeHoy(horario);
+    if (!horarioHoy || horarioHoy.toLowerCase() === 'cerrado' || horarioHoy.indexOf('-') === -1) {
+      return { isOpen: false, nextOpening: 'Cerrado hoy' };
+    }
+    const ahora = new Date();
+    const horaColombia = new Date(ahora.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+    const minutosActuales = (horaColombia.getHours() * 60) + horaColombia.getMinutes();
+    const partes = horarioHoy.split('-');
+    const inicio = partes[0].split(':').map(Number);
+    const fin = partes[1] ? partes[1].split(':').map(Number) : [];
+    const minutosInicio = (inicio[0] * 60) + (inicio[1] || 0);
+    const minutosFin = (fin[0] * 60) + (fin[1] || 0);
+    let abierta;
+    if (minutosFin > minutosInicio) {
+      abierta = minutosActuales >= minutosInicio && minutosActuales < minutosFin;
+    } else {
+      abierta = minutosActuales >= minutosInicio || minutosActuales < minutosFin;
+    }
+    return {
+      isOpen: abierta,
+      nextOpening: abierta ? '' : 'Abre a las ' + partes[0].trim()
+    };
+  }
+
+  function tiendaEstaAbierta(tienda) {
+    return estadoTienda(tienda).isOpen === true;
+  }
+
+  function esPromovida(tienda) {
+    return tienda && (tienda.promovida === 1 || tienda.promovida === true) ? 1 : 0;
   }
 
   function buscar(consulta, opcionesBusqueda) {
@@ -51,7 +135,7 @@
           producto.activo === false || normalizarTexto(producto.badge) === 'agotado') return false;
       if (/^(extra|salsa|opcion)$/.test(normalizarTexto(producto.tipo))) return false;
       const tienda = tiendasPorId.get(String(producto.tiendaId));
-      if (tienda && (tienda.activo === false || tiendaEstaOculta(tienda))) return false;
+      if (tienda && (tienda.activo === false || tiendaEstaOculta(tienda) || !tiendaEstaAbierta(tienda))) return false;
       const id = String(producto.id);
       if (productosPorId.has(id)) return false;
       productosPorId.set(id, producto);
@@ -182,10 +266,16 @@
       return producto && producto.nombre && producto.categoria &&
         !/^(extra|salsa|opcion)$/.test(normalizarTexto(producto.tipo)) &&
         producto.activo !== false &&
-        (!tienda || (tienda.activo !== false && !tiendaEstaOculta(tienda)));
+        (!tienda || (tienda.activo !== false && !tiendaEstaOculta(tienda) && tiendaEstaAbierta(tienda)));
     }).map(function (producto) {
       return String(producto.categoria).trim();
     }).filter(Boolean)));
+
+    /* ★ v1.6: bandera `promovida` por tienda (0/1) — la usa el servidor
+       para poner primero las tiendas promovidas abiertas. */
+    candidatos.forEach(function (candidato) {
+      candidato.promovida = esPromovida(tiendasPorId.get(candidato.tiendaId));
+    });
 
     return {
       candidatos: candidatos,
@@ -241,7 +331,7 @@
       if (!producto || producto.id === undefined || !producto.nombre ||
           producto.activo === false || normalizarTexto(producto.badge) === 'agotado') return false;
       const tienda = tiendasPorId.get(String(producto.tiendaId));
-      return !tienda || (tienda.activo !== false && !tiendaEstaOculta(tienda));
+      return !tienda || (tienda.activo !== false && !tiendaEstaOculta(tienda) && tiendaEstaAbierta(tienda));
     });
     const texto = normalizarTexto(consulta);
     const textoProducto = texto
