@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-09T22-52-38",
-  "ultimaActualizacion": "2026-11-09T22:52:38.758Z",
+  "version": "v2026-11-10T17-38-16",
+  "ultimaActualizacion": "2026-11-10T17:38:16.012Z",
   "tiendas": [
     {
       "id": 1,
@@ -1531,7 +1531,21 @@
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/Mr.pollo/Restaurante%20Mr.%20Pollo%20al%20anochecer_201kb.jpg",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 706,
+          "nombre": "1/4 pollo",
+          "descripcion": "",
+          "precio": 12000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        }
+      ]
     },
     {
       "id": 18,
@@ -3314,6 +3328,19 @@
       "activo": true,
       "tiendaId": "",
       "tiendaNombre": "Sin tienda"
+    },
+    {
+      "id": 706,
+      "nombre": "1/4 pollo",
+      "descripcion": "",
+      "precio": 12000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     }
   ],
   "complementosGlobal": [
