@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-49-05",
-  "ultimaActualizacion": "2026-11-10T17:49:05.132Z",
+  "version": "v2026-11-10T17-49-32",
+  "ultimaActualizacion": "2026-11-10T17:49:32.885Z",
   "tiendas": [
     {
       "id": 1,
@@ -1534,8 +1534,8 @@
       "productos": [
         {
           "id": 706,
-          "nombre": "1/4 pollo",
-          "descripcion": "",
+          "nombre": "1/4 Pollo Asado",
+          "descripcion": "Papá cocida arepa y salsa de la casa",
           "precio": 12000,
           "imagen_url": "",
           "badge": "NUEVO",
@@ -1547,7 +1547,7 @@
         },
         {
           "id": 707,
-          "nombre": "1/4 pollo Asado",
+          "nombre": "1/4 Pollo Asado",
           "descripcion": "Papas francesas arepa y salsa de la casa",
           "precio": 14000,
           "imagen_url": "",
@@ -3357,8 +3357,8 @@
     },
     {
       "id": 706,
-      "nombre": "1/4 pollo",
-      "descripcion": "",
+      "nombre": "1/4 Pollo Asado",
+      "descripcion": "Papá cocida arepa y salsa de la casa",
       "precio": 12000,
       "imagen_url": "",
       "badge": "NUEVO",
@@ -3370,7 +3370,7 @@
     },
     {
       "id": 707,
-      "nombre": "1/4 pollo Asado",
+      "nombre": "1/4 Pollo Asado",
       "descripcion": "Papas francesas arepa y salsa de la casa",
       "precio": 14000,
       "imagen_url": "",
