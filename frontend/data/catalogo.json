@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-10T17-53-42",
-  "ultimaActualizacion": "2026-11-10T17:53:42.427Z",
+  "version": "v2026-11-10T17-53-44",
+  "ultimaActualizacion": "2026-11-10T17:53:44.758Z",
   "tiendas": [
     {
       "id": 1,
@@ -3435,8 +3435,8 @@
     },
     {
       "id": 712,
-      "nombre": "1/4 Pollo Asado",
-      "descripcion": "",
+      "nombre": "1/4 Pollo Broaster",
+      "descripcion": "Papa francesa Arepa y salsa de la casa",
       "precio": 0,
       "imagen_url": "",
       "badge": "",
@@ -3448,7 +3448,7 @@
     },
     {
       "id": 713,
-      "nombre": "1/2 Pollo Asado",
+      "nombre": "1/2 Pollo Broaster",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
