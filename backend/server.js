@@ -18,7 +18,20 @@ require('dotenv').config();
 // FCM/Firestore se saltan; Socket.IO, JWT, proxy GAS y presencia siguen.
 const { initializeApp, cert } = require("firebase-admin/app");
 const { getMessaging } = require("firebase-admin/messaging");
-const { getFirestore } = require("firebase-admin/firestore");
+const { FieldValue, getFirestore } = require("firebase-admin/firestore");
+
+const COLECCIONES_TOKEN_POR_ROL = {
+    cliente: 'tokens_clientes',
+    tienda: 'tokens_tiendas',
+    admin: 'tokens_usuarios',
+    domiciliario: 'tokens_domiciliarios'
+};
+const COLECCIONES_TOKEN = [...new Set(Object.values(COLECCIONES_TOKEN_POR_ROL))];
+const CODIGOS_TOKEN_FCM_INVALIDO = new Set([
+    'messaging/registration-token-not-registered',
+    'messaging/invalid-registration-token'
+]);
+const LEER_TOKENS_LEGACY = process.env.FCM_LEGACY_READS !== 'false';
 
 let firestoreDb = null;
 let firebaseOk = false;
@@ -99,6 +112,62 @@ const io = socketIo(server, {
         allowedHeaders: ['Authorization']
     }
 });
+
+async function obtenerTokensFCM(rol, filtros = []) {
+    if (!firestoreDb) return new Map();
+    const coleccionNueva = COLECCIONES_TOKEN_POR_ROL[rol];
+    if (!coleccionNueva) throw new Error(`Rol FCM no reconocido: ${rol}`);
+
+    const filtrosLegacy = [['rol', '==', rol], ...filtros];
+    const consultas = coleccionNueva === 'tokens_clientes'
+        ? [{ coleccion: coleccionNueva, filtros: filtrosLegacy }]
+        : [
+            { coleccion: coleccionNueva, filtros },
+            ...(LEER_TOKENS_LEGACY ? [{ coleccion: 'tokens_clientes', filtros: filtrosLegacy }] : [])
+        ];
+    const snapshots = await Promise.all(consultas.map(consulta => {
+        let query = firestoreDb.collection(consulta.coleccion);
+        for (const [campo, operador, valor] of consulta.filtros) {
+            query = query.where(campo, operador, valor);
+        }
+        return query.get();
+    }));
+    const tokens = new Map();
+
+    for (const snapshot of snapshots) {
+        snapshot.forEach(docSnap => {
+            const token = docSnap.id;
+            tokens.set(token, { token });
+        });
+    }
+
+    return tokens;
+}
+
+async function eliminarTokenFCMInvalido(token) {
+    if (!firestoreDb || !token) return;
+
+    const referencias = [...new Set(COLECCIONES_TOKEN)].map(coleccion =>
+        firestoreDb.collection(coleccion).doc(token)
+    );
+
+    const resultados = await Promise.allSettled(referencias.map(ref => ref.delete()));
+    const fallidos = [];
+    resultados.forEach(resultado => {
+        if (resultado.status === 'rejected') {
+            fallidos.push(resultado.reason);
+            console.error('❌ No se pudo eliminar un token FCM inválido de Firestore:', resultado.reason.message);
+        }
+    });
+    if (fallidos.length > 0) {
+        throw new Error(`No se pudieron eliminar ${fallidos.length} registros del token FCM inválido.`);
+    }
+    console.warn('🧹 Token FCM inválido eliminado de las colecciones de tokens; los pedidos de Google Apps Script no se modificaron.');
+}
+
+function esTokenFCMInvalido(error) {
+    return CODIGOS_TOKEN_FCM_INVALIDO.has(error && error.code);
+}
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -201,6 +270,61 @@ function verificarToken(req, res, next) {
         return res.status(403).json({ success: false, error: 'Token inválido o expirado.' });
     }
 }
+
+app.post('/api/fcm/token', async (req, res) => {
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El servicio de notificaciones no está disponible.' });
+    }
+
+    const { token, rol } = req.body || {};
+    const coleccion = COLECCIONES_TOKEN_POR_ROL[rol];
+    if (!coleccion || typeof token !== 'string' || token.length < 20 || token.length > 4096) {
+        return res.status(400).json({ success: false, error: 'Token FCM o rol inválido.' });
+    }
+
+    let usuario = null;
+    if (rol !== 'cliente') {
+        const authHeader = req.headers.authorization || '';
+        const jwtToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+        if (!jwtToken) {
+            return res.status(401).json({ success: false, error: 'Inicia sesión con el rol correspondiente.' });
+        }
+
+        try {
+            usuario = jwt.verify(jwtToken, JWT_SECRET);
+        } catch (error) {
+            return res.status(401).json({ success: false, error: 'La sesión es inválida o expiró.' });
+        }
+
+        if (usuario.rol !== rol || !usuario.id) {
+            return res.status(403).json({ success: false, error: 'La sesión no corresponde a ese rol.' });
+        }
+    }
+
+    const datosToken = {
+        token,
+        rol,
+        plataforma: 'web',
+        creadoEn: FieldValue.serverTimestamp(),
+        ultimaActividad: FieldValue.serverTimestamp()
+    };
+
+    if (rol === 'tienda' || rol === 'domiciliario') {
+        const id = Number(usuario.id);
+        if (!Number.isSafeInteger(id) || id <= 0) {
+            return res.status(400).json({ success: false, error: 'El identificador de la cuenta no es válido.' });
+        }
+        datosToken[rol === 'tienda' ? 'tiendaId' : 'usuarioId'] = id;
+    }
+
+    try {
+        await firestoreDb.collection(coleccion).doc(token).set(datosToken, { merge: true });
+        return res.json({ success: true, rol });
+    } catch (error) {
+        console.error(`Error registrando token FCM para rol ${rol}:`, error.message);
+        return res.status(500).json({ success: false, error: 'No se pudo registrar el token de notificaciones.' });
+    }
+});
 
 // ============================================
 // SUSCRIPCIONES PUSH (Web Push Estándar)
@@ -357,27 +481,20 @@ async function enviarPushADomiciliario(domiciliarioId, pedidoId, pedidoDetalle) 
 
     try {
         const domiId = Number(domiciliarioId);
-        const domiSnapshot = await firestoreDb.collection('tokens_clientes')
-            .where('rol', '==', 'domiciliario')
-            .where('usuarioId', 'in', [domiId, String(domiId), Number(domiId)])
-            .get();
+        const tokensDomi = await obtenerTokensFCM('domiciliario', [
+            ['usuarioId', 'in', [domiId, String(domiId)]]
+        ]);
 
-        if (!domiSnapshot.empty) {
-            console.log(`🔔 Enviando push FCM a domiciliario ID: ${domiId} (${domiSnapshot.size} dispositivos)...`);
-            
-            const promesasDomi = [];
-            domiSnapshot.forEach(docSnap => {
-                const domiToken = docSnap.id;
-                promesasDomi.push(
-                    enviarNotificacionFCM(
-                        domiToken,
-                        '🛵 ¡Nuevo pedido asignado!',
-                        cuerpo,
-                        { url: '/domiciliario.html', pedidoId: String(pedidoId) }
-                    )
-                );
-            });
-            await Promise.all(promesasDomi);
+        if (tokensDomi.size > 0) {
+            console.log(`🔔 Enviando push FCM a domiciliario ID: ${domiId} (${tokensDomi.size} dispositivos)...`);
+            await Promise.all([...tokensDomi.keys()].map(domiToken =>
+                enviarNotificacionFCM(
+                    domiToken,
+                    '🛵 ¡Nuevo pedido asignado!',
+                    cuerpo,
+                    { url: '/domiciliario.html', pedidoId: String(pedidoId) }
+                )
+            ));
         } else {
             console.log(`⚠️ No se encontraron tokens FCM registrados para el domiciliario ID: ${domiId}`);
         }
@@ -432,6 +549,9 @@ async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
         console.log('✅ Notificación FCM enviada con éxito a token individual:', response);
     } catch (error) {
         console.error('❌ Error al enviar notificación FCM individual:', error.message);
+        if (esTokenFCMInvalido(error)) {
+            await eliminarTokenFCMInvalido(token);
+        }
     }
 }
 
@@ -441,32 +561,33 @@ async function enviarNotificacionFCM(token, titulo, cuerpo, datosExtra = {}) {
 async function enviarNotificacionAdminsFCM(titulo, cuerpo, datosExtra = {}) {
     if (!firestoreDb) return;
     try {
-        const tokensRef = firestoreDb.collection('tokens_clientes');
-        const snapshot = await tokensRef.where('rol', '==', 'admin').get();
+        const tokensAdmin = await obtenerTokensFCM('admin');
 
-        if (snapshot.empty) {
+        if (tokensAdmin.size === 0) {
             console.log('ℹ️ No hay administradores con tokens FCM registrados en Firestore.');
             return;
         }
 
-        const tokens = [];
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.token) tokens.push(data.token);
-        });
+        const entries = [...tokensAdmin.values()];
+        for (let inicio = 0; inicio < entries.length; inicio += 500) {
+            const lote = entries.slice(inicio, inicio + 500);
+            const response = await getMessaging().sendEachForMulticast({
+                notification: { title: titulo, body: cuerpo },
+                data: datosExtra,
+                android: { priority: 'high' },
+                webpush: { headers: { Urgency: 'high' } },
+                tokens: lote.map(entrada => entrada.token)
+            });
 
-        if (tokens.length === 0) return;
-
-        const message = {
-            notification: { title: titulo, body: cuerpo },
-            data: datosExtra,
-            android: { priority: 'high' },
-            webpush: { headers: { Urgency: 'high' } },
-            tokens: tokens
-        };
-
-        const response = await getMessaging().sendEachForMulticast(message);
-        console.log(`✅ Notificación FCM Admins enviada: ${response.successCount} exitosas, ${response.failureCount} fallidas.`);
+            const tokensInvalidos = [];
+            response.responses.forEach((resultado, indice) => {
+                if (!resultado.success && esTokenFCMInvalido(resultado.error)) {
+                    tokensInvalidos.push(lote[indice].token);
+                }
+            });
+            await Promise.all(tokensInvalidos.map(eliminarTokenFCMInvalido));
+            console.log(`✅ Notificación FCM Admins enviada: ${response.successCount} exitosas, ${response.failureCount} fallidas.`);
+        }
 
     } catch (error) {
         console.error('❌ Error al enviar FCM masivo a admins:', error.message);
@@ -747,8 +868,13 @@ app.all('/api', verificarToken, async (req, res) => {
             switch (action) {
                 case 'crearPedido': {
                     const pedido = await obtenerPedidoPorId(data.id);
-                    io.emit('nuevoPedido', {
-                        pedido: pedido || { id: data.id },
+                    const resumenPedido = {
+                        id: data.id,
+                        clienteNombre: pedido?.clienteNombre || '',
+                        total: pedido?.total || 0
+                    };
+                    io.to('admin_room').emit('nuevoPedido', {
+                        pedido: resumenPedido,
                         mensaje: `Nuevo pedido #${data.id}`
                     });
                     console.log(`📦 Emitido nuevoPedido #${data.id}`);
@@ -776,33 +902,27 @@ app.all('/api', verificarToken, async (req, res) => {
 
                         for (const tId of tiendaIds) {
                             io.to(`tienda_${tId}`).emit('nuevoPedidoTienda', {
-                                pedido: pedido || { id: data.id },
+                                pedido: resumenPedido,
                                 mensaje: `Nuevo pedido #${data.id}`
                             });
                             console.log(`📦 Emitido nuevoPedidoTienda → tienda_${tId}`);
 
                             if (!firestoreDb) continue;
-                            const tiendaSnapshot = await firestoreDb.collection('tokens_clientes')
-                                .where('rol', '==', 'tienda')
-                                .where('tiendaId', 'in', [tId, String(tId), Number(tId)]) 
-                                .get();
+                            const tokensTienda = await obtenerTokensFCM('tienda', [
+                                ['tiendaId', 'in', [tId, String(tId), Number(tId)]]
+                            ]);
 
-                            if (!tiendaSnapshot.empty) {
-                                console.log(`🔔 Enviando notificaciones push a tienda ID: ${tId} (${tiendaSnapshot.size} dispositivos)...`);
+                            if (tokensTienda.size > 0) {
+                                console.log(`🔔 Enviando notificaciones push a tienda ID: ${tId} (${tokensTienda.size} dispositivos)...`);
                                 
-                                const promesasTienda = [];
-                                tiendaSnapshot.forEach(docSnap => {
-                                    const tiendaToken = docSnap.id;
-                                    promesasTienda.push(
-                                        enviarNotificacionFCM(
-                                            tiendaToken,
-                                            '🛍️ ¡Nuevo pedido para tu tienda!',
-                                            `Has recibido el pedido #${data.id}. Revisa los detalles en tu panel.`,
-                                            { url: '/app-tiendas/index-tienda.html', pedidoId: String(data.id) }
-                                        )
-                                    );
-                                });
-                                await Promise.all(promesasTienda);
+                                await Promise.all([...tokensTienda.keys()].map(tiendaToken =>
+                                    enviarNotificacionFCM(
+                                        tiendaToken,
+                                        '🛍️ ¡Nuevo pedido para tu tienda!',
+                                        `Has recibido el pedido #${data.id}. Revisa los detalles en tu panel.`,
+                                        { url: '/app-tiendas/index-tienda.html', pedidoId: String(data.id) }
+                                    )
+                                ));
                             } else {
                                 console.log(`⚠️ No se encontraron tokens FCM registrados para la tienda ID: ${tId}`);
                             }
@@ -913,8 +1033,7 @@ app.all('/api', verificarToken, async (req, res) => {
 
                     io.emit('pedidoAsignado', {
                         pedidoId: String(pedidoId),
-                        domiciliarioId: String(domiciliarioId),
-                        pedido: pedidoDetalle
+                        domiciliarioId: String(domiciliarioId)
                     });
 
                     break;
