@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T22-56-26",
-  "ultimaActualizacion": "2026-11-11T22:56:26.474Z",
+  "version": "v2026-11-11T22-56-52",
+  "ultimaActualizacion": "2026-11-11T22:56:52.963Z",
   "tiendas": [
     {
       "id": 1,
@@ -6100,7 +6100,7 @@
       "min": 1
     },
     {
-      "id": 254,
+      "id": 262,
       "id_producto": 503,
       "grupo": "Presentación",
       "nombre": "Gomitas",
@@ -6110,7 +6110,7 @@
       "min": 1
     },
     {
-      "id": 255,
+      "id": 263,
       "id_producto": 503,
       "grupo": "Presentación",
       "nombre": "chispitas de color",
@@ -6120,7 +6120,7 @@
       "min": 1
     },
     {
-      "id": 256,
+      "id": 264,
       "id_producto": 503,
       "grupo": "Salsa",
       "nombre": "Lecherita",
@@ -6130,7 +6130,7 @@
       "min": 1
     },
     {
-      "id": 257,
+      "id": 265,
       "id_producto": 503,
       "grupo": "Salsa",
       "nombre": "Mora",
@@ -6140,7 +6140,7 @@
       "min": 1
     },
     {
-      "id": 258,
+      "id": 266,
       "id_producto": 503,
       "grupo": "Salsa",
       "nombre": "Chocolate",
@@ -6150,7 +6150,7 @@
       "min": 1
     },
     {
-      "id": 259,
+      "id": 267,
       "id_producto": 503,
       "grupo": "Salsa",
       "nombre": "Arequipe",
@@ -6160,7 +6160,7 @@
       "min": 1
     },
     {
-      "id": 260,
+      "id": 268,
       "id_producto": 503,
       "grupo": "",
       "nombre": "Und Fresas con Crema",
@@ -6170,7 +6170,27 @@
       "min": 0
     },
     {
-      "id": 261,
+      "id": 269,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 270,
+      "id_producto": "",
+      "grupo": "",
+      "nombre": "",
+      "precio": 0,
+      "tipo": "",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 271,
       "id_producto": 600,
       "grupo": "Presentación",
       "nombre": "Cafe",
@@ -6180,7 +6200,7 @@
       "min": 1
     },
     {
-      "id": 262,
+      "id": 272,
       "id_producto": 600,
       "grupo": "Presentación",
       "nombre": "Milo",
@@ -6190,7 +6210,7 @@
       "min": 1
     },
     {
-      "id": 263,
+      "id": 273,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Sneaker",
@@ -6200,7 +6220,7 @@
       "min": 1
     },
     {
-      "id": 264,
+      "id": 274,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "M y M",
@@ -6210,7 +6230,7 @@
       "min": 1
     },
     {
-      "id": 265,
+      "id": 275,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Baileys",
@@ -6220,7 +6240,7 @@
       "min": 1
     },
     {
-      "id": 266,
+      "id": 276,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Oreo",
@@ -6230,7 +6250,7 @@
       "min": 1
     },
     {
-      "id": 267,
+      "id": 277,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Barquillo",
@@ -6240,7 +6260,7 @@
       "min": 1
     },
     {
-      "id": 268,
+      "id": 278,
       "id_producto": 600,
       "grupo": "Acompañamiento",
       "nombre": "Hershey's",
@@ -6250,7 +6270,7 @@
       "min": 1
     },
     {
-      "id": 269,
+      "id": 279,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Blueberry",
@@ -6260,7 +6280,7 @@
       "min": 1
     },
     {
-      "id": 270,
+      "id": 280,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Maracuyá",
@@ -6270,7 +6290,7 @@
       "min": 1
     },
     {
-      "id": 271,
+      "id": 281,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Tamarindo",
@@ -6280,7 +6300,7 @@
       "min": 1
     },
     {
-      "id": 272,
+      "id": 282,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Mangoviche",
@@ -6290,7 +6310,7 @@
       "min": 1
     },
     {
-      "id": 273,
+      "id": 283,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Manzana verde",
@@ -6300,7 +6320,7 @@
       "min": 1
     },
     {
-      "id": 274,
+      "id": 284,
       "id_producto": 601,
       "grupo": "Acompañamiento",
       "nombre": "Ciresa",
@@ -6310,7 +6330,7 @@
       "min": 1
     },
     {
-      "id": 275,
+      "id": 285,
       "id_producto": 601,
       "grupo": "Licor",
       "nombre": "Con licor",
@@ -6320,7 +6340,7 @@
       "min": 1
     },
     {
-      "id": 276,
+      "id": 286,
       "id_producto": 601,
       "grupo": "Licor",
       "nombre": "Sin licor",
@@ -6330,7 +6350,7 @@
       "min": 1
     },
     {
-      "id": 277,
+      "id": 287,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6340,7 +6360,7 @@
       "min": 0
     },
     {
-      "id": 278,
+      "id": 288,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6350,7 +6370,7 @@
       "min": 0
     },
     {
-      "id": 279,
+      "id": 289,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6360,7 +6380,7 @@
       "min": 0
     },
     {
-      "id": 280,
+      "id": 290,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6370,7 +6390,7 @@
       "min": 0
     },
     {
-      "id": 281,
+      "id": 291,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6380,7 +6400,7 @@
       "min": 0
     },
     {
-      "id": 282,
+      "id": 292,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6390,7 +6410,7 @@
       "min": 0
     },
     {
-      "id": 283,
+      "id": 293,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6400,7 +6420,7 @@
       "min": 0
     },
     {
-      "id": 284,
+      "id": 294,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6410,7 +6430,7 @@
       "min": 0
     },
     {
-      "id": 285,
+      "id": 295,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
