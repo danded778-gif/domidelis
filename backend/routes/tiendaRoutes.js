@@ -183,8 +183,14 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
                 if (domi) domiciliarioNombre = domi.nombre;
             }
 
+            const pedidoSinContactoCliente = Object.fromEntries(
+                Object.entries(pedido).filter(([campo]) =>
+                    campo !== 'clienteDireccion' && campo !== 'clienteTelefono'
+                )
+            );
+
             return {
-                ...pedido,
+                ...pedidoSinContactoCliente,
                 productosJson: JSON.stringify(productosDeTienda),
                 total: subtotalTienda,
                 domiciliarioNombre

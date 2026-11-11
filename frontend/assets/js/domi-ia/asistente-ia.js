@@ -2,13 +2,11 @@
    DOMIDELIS · asistente-ia.js — integración (2026-11-10)
    ★ NUEVO en esta versión (se trabaja sobre el mismo código que ya
    tienes; los cambios están marcados con ★):
-   1. Autollenado del checkout (Fase 5): si el cliente escribe su nombre
-      o celular en el chat, se guardan en localStorage con la clave
-      'domidelis_cliente' (la misma que usa el checkout) y, si la página
-      tiene los campos #nombre/#telefono (asistente abierto en el
-      checkout), se rellenan y se dispara el evento change que ejecuta
-      el autoguardado. La extracción es por patrones locales: nunca
-      inventa datos.
+   1. Autollenado del checkout (Fase 5): si el cliente escribe sus datos
+      en el chat, se guardan cifrados con la clave 'domidelis_cliente'
+      (la misma que usa el checkout) y, si la página tiene los campos,
+      se rellenan y se dispara el evento change que ejecuta el autoguardado.
+      La extracción es local por patrones: nunca inventa datos.
    2. Blindaje anti-pensamiento: ningún texto tipo <think>…</think> se
       muestra en el chat ni vuelve a entrar al historial (el servidor
       v1.4 ya limpia; esto es la segunda capa).
@@ -53,6 +51,8 @@
   const API_BASE = IA_API_URL;
   const MAX_CONSULTA = 500;
   const MAX_HISTORIAL = 10;
+  const CLAVE_CONVERSACION = 'domidelis_ia_conversacion';
+  const VERSION_CONVERSACION = 1;
   const SALUDO_INICIAL = '¡Hola! Cuéntame qué se te antoja y te recomiendo opciones de nuestras tiendas aliadas.';
   const SUGERENCIAS = [
     'Algo para compartir',
@@ -87,6 +87,10 @@
   let enviando = false;
   let ultimaConsulta = '';
   let ultimoEnvioTs = 0;
+  let observadorConversacion;
+  let temporizadorGuardarConversacion;
+  let revisionConversacion = 0;
+  let colaGuardadoConversacion = Promise.resolve();
 
   function crearElemento(tag, className, text) {
     const element = document.createElement(tag);
@@ -106,6 +110,209 @@
     elementos.checkout.textContent = cantidad === 1
       ? 'Ir al checkout · 1 producto'
       : 'Ir al checkout · ' + cantidad + ' productos';
+  }
+
+  function serializarNodoConversacion(nodo) {
+    if (nodo.nodeType === Node.TEXT_NODE) {
+      return { tipo: 'texto', valor: nodo.nodeValue || '' };
+    }
+    if (nodo.nodeType !== Node.ELEMENT_NODE || nodo.classList.contains('ia-typing')) return null;
+
+    const atributos = {};
+    ['class', 'role', 'aria-label', 'aria-hidden', 'title', 'alt', 'type',
+      'disabled', 'data-product-id', 'data-product-json', 'data-consulta'].forEach(function (nombre) {
+      if (nodo.hasAttribute(nombre)) atributos[nombre] = nodo.getAttribute(nombre);
+    });
+    if (nodo.tagName === 'IMG') {
+      const src = nodo.getAttribute('src') || '';
+      if (/^(https?:\/\/|data:image\/)/i.test(src)) atributos.src = src;
+    }
+
+    return {
+      tipo: 'elemento',
+      etiqueta: nodo.tagName.toLowerCase(),
+      atributos: atributos,
+      hijos: Array.from(nodo.childNodes).map(serializarNodoConversacion).filter(Boolean)
+    };
+  }
+
+  function restaurarNodoConversacion(datos, nivel, presupuesto) {
+    if (!datos || nivel > 20 || presupuesto.restantes <= 0) return null;
+    presupuesto.restantes -= 1;
+    if (datos.tipo === 'texto' && typeof datos.valor === 'string') {
+      return document.createTextNode(datos.valor.slice(0, 10000));
+    }
+    const etiquetasPermitidas = new Set(['div', 'article', 'span', 'button', 'img', 'i', 'strong']);
+    if (datos.tipo !== 'elemento' || !etiquetasPermitidas.has(datos.etiqueta)) return null;
+
+    const elemento = document.createElement(datos.etiqueta);
+    const atributos = datos.atributos && typeof datos.atributos === 'object' ? datos.atributos : {};
+    ['class', 'role', 'aria-label', 'aria-hidden', 'title', 'alt', 'type',
+      'data-product-id', 'data-product-json', 'data-consulta'].forEach(function (nombre) {
+      if (typeof atributos[nombre] === 'string' && atributos[nombre].length <= 50000) {
+        elemento.setAttribute(nombre, atributos[nombre]);
+      }
+    });
+    if (atributos.disabled === '' || atributos.disabled === 'true') elemento.disabled = true;
+    if (datos.etiqueta === 'img' && typeof atributos.src === 'string' &&
+        /^(https?:\/\/|data:image\/)/i.test(atributos.src)) {
+      elemento.setAttribute('src', atributos.src);
+    }
+    if (Array.isArray(datos.hijos)) {
+      datos.hijos.forEach(function (hijo) {
+        const restaurado = restaurarNodoConversacion(hijo, nivel + 1, presupuesto);
+        if (restaurado) elemento.appendChild(restaurado);
+      });
+    }
+    return elemento;
+  }
+
+  function guardarConversacion() {
+    if (!elementos) return;
+    const estado = {
+      version: VERSION_CONVERSACION,
+      historial: historial.slice(-MAX_HISTORIAL),
+      mensajes: Array.from(elementos.mensajes.children)
+        .map(serializarNodoConversacion).filter(Boolean),
+      chipsOcultos: elementos.chips.hidden,
+      productosMostrados: Array.from(productosMostrados),
+      productosVistos: Array.from(productosVistosEnSesion),
+      ultimosProductosRecomendados: ultimosProductosRecomendados,
+      ultimaConsulta: ultimaConsulta,
+      ultimoEnvioTs: ultimoEnvioTs,
+      bebidaSugerida: bebidaSugerida,
+      ofertaBebidaPendiente: ofertaBebidaPendiente,
+      mensajeCarritoPendiente: mensajeCarritoPendiente,
+      solicitarDatosPedido: solicitarDatosPedido,
+      solicitarObservacionesPedido: solicitarObservacionesPedido
+    };
+    if (!window.DomiAlmacenSeguro) {
+      console.error('[Asistente IA] No se guardó la conversación porque falta el almacenamiento cifrado.');
+      return;
+    }
+    const revision = ++revisionConversacion;
+    colaGuardadoConversacion = colaGuardadoConversacion.catch(function () {}).then(async function () {
+      if (revision !== revisionConversacion) return;
+      await window.DomiAlmacenSeguro.guardarSesion(CLAVE_CONVERSACION, estado);
+    });
+    colaGuardadoConversacion.catch(function (error) {
+      console.warn('[Asistente IA] No se pudo guardar la conversación de esta sesión:', error);
+      mostrarAviso('No se pudo proteger la conversación en este navegador.');
+    });
+  }
+
+  function programarGuardadoConversacion() {
+    window.clearTimeout(temporizadorGuardarConversacion);
+    temporizadorGuardarConversacion = window.setTimeout(guardarConversacion, 100);
+  }
+
+  function restaurarInteraccionesConversacion() {
+    elementos.mensajes.querySelectorAll('.ia-card').forEach(function (tarjeta) {
+      let producto;
+      try {
+        producto = JSON.parse(tarjeta.dataset.productJson || 'null');
+      } catch (error) {
+        console.warn('[Asistente IA] No se pudo restaurar un producto de la conversación:', error);
+        return;
+      }
+      if (!producto || producto.id === undefined || !producto.nombre) return;
+      const id = String(producto.id);
+      productosPorId.set(id, producto);
+      const botonAgregar = tarjeta.querySelector('.ia-card-agregar');
+      if (botonAgregar) {
+        botonAgregar.addEventListener('click', function () {
+          if (window.DomiIAAprendizaje) {
+            window.DomiIAAprendizaje.registrarEvento('conversion', ultimaConsulta, producto.nombre);
+          }
+          if (window.DomiModal && typeof window.DomiModal.abrir === 'function') {
+            window.DomiModal.abrir(producto);
+          } else {
+            mostrarAviso('No se pudo abrir la personalización del producto.');
+          }
+        });
+      }
+      const imagen = tarjeta.querySelector('.ia-card-img img');
+      if (imagen) activarZoom(imagen.parentElement, imagen, producto.nombre);
+    });
+    elementos.mensajes.querySelectorAll('.ia-calificacion').forEach(function (fila) {
+      const consulta = fila.dataset.consulta || '';
+      const botones = fila.querySelectorAll('.ia-cal-btn');
+      botones.forEach(function (boton, indice) {
+        boton.addEventListener('click', function () {
+          if (window.DomiIAAprendizaje) {
+            window.DomiIAAprendizaje.registrarEvento(indice === 0 ? 'positivo' : 'negativo', consulta);
+          }
+          fila.replaceChildren(crearElemento(
+            'span',
+            'ia-cal-gracias',
+            indice === 0 ? '¡Genial, gracias!' : 'Gracias, lo tendremos en cuenta'
+          ));
+          programarGuardadoConversacion();
+        });
+      });
+    });
+  }
+
+  async function restaurarConversacion() {
+    let estado;
+    try {
+      if (!window.DomiAlmacenSeguro) {
+        throw new Error('No se cargó el almacenamiento cifrado.');
+      }
+      estado = await window.DomiAlmacenSeguro.leerSesion(CLAVE_CONVERSACION);
+    } catch (error) {
+      console.warn('[Asistente IA] No se pudo leer la conversación guardada:', error);
+      throw error;
+    }
+    if (!estado || estado.version !== VERSION_CONVERSACION ||
+        !Array.isArray(estado.historial) || !Array.isArray(estado.mensajes)) return false;
+
+    historial = estado.historial.filter(function (mensaje) {
+      return mensaje && (mensaje.rol === 'user' || mensaje.rol === 'assistant') &&
+        typeof mensaje.texto === 'string';
+    }).slice(-MAX_HISTORIAL);
+    if (!historial.length) return false;
+    elementos.mensajes.replaceChildren();
+    const presupuesto = { restantes: 2000 };
+    estado.mensajes.forEach(function (mensaje) {
+      const restaurado = restaurarNodoConversacion(mensaje, 0, presupuesto);
+      if (restaurado) elementos.mensajes.appendChild(restaurado);
+    });
+    if (!elementos.mensajes.childNodes.length) return false;
+    productosMostrados = new Set(Array.isArray(estado.productosMostrados)
+      ? estado.productosMostrados.map(String) : []);
+    productosVistosEnSesion = new Set(Array.isArray(estado.productosVistos)
+      ? estado.productosVistos.map(String) : []);
+    ultimosProductosRecomendados = Array.isArray(estado.ultimosProductosRecomendados)
+      ? estado.ultimosProductosRecomendados.map(String) : [];
+    ultimaConsulta = typeof estado.ultimaConsulta === 'string' ? estado.ultimaConsulta : '';
+    ultimoEnvioTs = Number(estado.ultimoEnvioTs) || 0;
+    bebidaSugerida = estado.bebidaSugerida === true;
+    ofertaBebidaPendiente = estado.ofertaBebidaPendiente === true;
+    mensajeCarritoPendiente = estado.mensajeCarritoPendiente || null;
+    solicitarDatosPedido = estado.solicitarDatosPedido === true;
+    solicitarObservacionesPedido = estado.solicitarObservacionesPedido === true;
+    elementos.chips.hidden = estado.chipsOcultos === true;
+    restaurarInteraccionesConversacion();
+    desplazarMensajes();
+    return true;
+  }
+
+  function iniciarPersistenciaConversacion() {
+    if (observadorConversacion) observadorConversacion.disconnect();
+    observadorConversacion = new MutationObserver(programarGuardadoConversacion);
+    observadorConversacion.observe(elementos.mensajes, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'disabled']
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') guardarConversacion();
+    });
+    window.addEventListener('pagehide', guardarConversacion);
+    programarGuardadoConversacion();
   }
 
   /* ★ v2 punto 4 — LA IA VE EL CARRITO (mismo evento que ya usa el
@@ -320,7 +527,7 @@
     mostrarProductos(productos.map(function (producto) { return String(producto.id); }));
   }
 
-  function gestionarCambioCarrito() {
+  async function gestionarCambioCarrito() {
     const carrito = obtenerCarritoSeguro();
     const mapa = mapaProductosCarrito();
     const itemsActuales = indexarCarrito(carrito);
@@ -386,7 +593,7 @@
     }
 
     if (!idsBebidas.length) {
-      mensaje += ' ' + construirSolicitudDatosPedido();
+      mensaje += ' ' + await construirSolicitudDatosPedido();
     }
 
     if (elementos && elementos.panel.classList.contains('abierta')) {
@@ -574,11 +781,19 @@
     });
     window.addEventListener('domidelis:carrito-actualizado', actualizarBotonCheckout);
     inicializarSeguimientoCarrito();
-    window.addEventListener('domidelis:carrito-actualizado', gestionarCambioCarrito);
+    window.addEventListener('domidelis:carrito-actualizado', function () {
+      gestionarCambioCarrito().catch(function (error) {
+        console.error('[Asistente IA] No se pudo actualizar el mensaje del carrito:', error);
+        mostrarAviso('No se pudieron recuperar los datos protegidos del pedido.');
+      });
+    });
     window.addEventListener('storage', function (event) {
       if (event.key === 'carrito') {
         actualizarBotonCheckout();
-        gestionarCambioCarrito(); /* ★ v2 */
+        gestionarCambioCarrito().catch(function (error) {
+          console.error('[Asistente IA] No se pudo actualizar el mensaje del carrito:', error);
+          mostrarAviso('No se pudieron recuperar los datos protegidos del pedido.');
+        }); /* ★ v2 */
       }
     });
     entrada.addEventListener('submit', function (event) {
@@ -588,7 +803,6 @@
     input.addEventListener('input', actualizarContador);
     document.addEventListener('keydown', gestionarTeclado);
 
-    agregarMensaje('ia', SALUDO_INICIAL);
     actualizarBotonCheckout();
     actualizarContador();
   }
@@ -668,6 +882,7 @@
     const fila = crearElemento('div', 'ia-calificacion');
     fila.setAttribute('role', 'group');
     fila.setAttribute('aria-label', '¿Te sirvió esta respuesta?');
+    fila.dataset.consulta = consulta;
     const si = crearElemento('button', 'ia-cal-btn');
     si.type = 'button';
     si.title = 'Me sirvió';
@@ -834,6 +1049,8 @@
 
       const card = crearElemento('article', 'ia-card');
       card.dataset.productName = producto.nombre;
+      card.dataset.productId = String(producto.id);
+      card.dataset.productJson = JSON.stringify(producto);
       const imageContainer = crearElemento('div', 'ia-card-img');
       const imageUrl = producto.imagen_url || producto.imagen || producto.icono;
       if (imageUrl && /^(https?:\/\/|data:image)/i.test(String(imageUrl))) {
@@ -1132,7 +1349,7 @@
       .test(texto);
   }
 
-  function gestionarRechazoBebida(consulta) {
+  async function gestionarRechazoBebida(consulta) {
     if (!ofertaBebidaPendiente || !esRechazoBebida(consulta)) return false;
     ofertaBebidaPendiente = false;
     desactivarTarjetasProducto();
@@ -1140,7 +1357,7 @@
     ultimosProductosRecomendados = [];
 
     solicitarDatosPedido = true;
-    const respuesta = '¡Entendido! No agrego bebidas. ' + construirSolicitudDatosPedido();
+    const respuesta = '¡Entendido! No agrego bebidas. ' + await construirSolicitudDatosPedido();
     agregarMensaje('user', consulta);
     historial.push({ rol: 'user', texto: consulta });
     agregarMensaje('ia', respuesta);
@@ -1162,10 +1379,8 @@
 
   /* ★ NUEVO: autollenado del checkout (Fase 5). Extracción LOCAL por
      patrones: solo guarda lo que el cliente escribió explícitamente,
-     nunca inventa datos. Guarda en localStorage 'domidelis_cliente' (la
-     misma clave que usa el checkout) y, si esta página tiene los campos
-     #nombre/#telefono (asistente abierto en el checkout), los rellena y
-     dispara el evento change que ejecuta el autoguardado del checkout. */
+     nunca inventa datos. 'domidelis_cliente' se cifra con Web Crypto y
+     se descifra al restaurarlo para el asistente o el checkout. */
 
   const PATRON_TELEFONO_CON_CLAVE = /\b(?:telefono|celular|cel|n[uú]mero|whatsapp|guatsapp|wap)\b[a-záéíóúñü\s#:]{0,12}?(?:es\b\s*|:)?\s*\+?5?7?[\s.-]*((?:\d[\s.-]?){9}\d)/i;
   const PATRON_CELULAR_LIBRE = /\b3(?:[\s.-]?\d){9}\b/;
@@ -1268,9 +1483,12 @@
     return null;
   }
 
-  function obtenerDatosClienteGuardados() {
+  async function obtenerDatosClienteGuardados() {
     try {
-      const datos = JSON.parse(localStorage.getItem('domidelis_cliente') || '{}');
+      if (!window.DomiAlmacenSeguro) {
+        throw new Error('No se cargó el almacenamiento cifrado.');
+      }
+      const datos = await window.DomiAlmacenSeguro.leerLocal('domidelis_cliente') || {};
       const zonas = obtenerZonasDisponibles();
       const zonaKey = datos.zonaKey || localStorage.getItem('zonaSeleccionada') || '';
       const zona = zonas.find(function (opcion) {
@@ -1284,12 +1502,12 @@
       };
     } catch (error) {
       console.warn('[Asistente IA] No se pudieron leer los datos guardados del cliente:', error);
-      return { nombre: '', telefono: '', zona: null, referencias: '' };
+      throw error;
     }
   }
 
-  function construirSolicitudDatosPedido() {
-    const datos = obtenerDatosClienteGuardados();
+  async function construirSolicitudDatosPedido() {
+    const datos = await obtenerDatosClienteGuardados();
     const faltantes = [];
     if (!datos.nombre) faltantes.push('tu nombre completo');
     if (!datos.telefono) faltantes.push('tu número de celular');
@@ -1309,10 +1527,10 @@
       'Después podrás completar la dirección exacta en el checkout.';
   }
 
-  function procesarDatosPedido(consulta, datosNuevos) {
+  async function procesarDatosPedido(consulta, datosNuevos) {
     if (!solicitarDatosPedido && !solicitarObservacionesPedido) return false;
     if (datosNuevos.referencias.length > 100) {
-      guardarDatosClienteEnLocal(Object.assign({}, datosNuevos, { referencias: '' }));
+      await guardarDatosClienteEnLocal(Object.assign({}, datosNuevos, { referencias: '' }));
       agregarMensaje('user', consulta);
       historial.push({ rol: 'user', texto: consulta });
       agregarMensaje('ia', 'La referencia admite máximo 100 caracteres. Envíamela más corta, por favor.');
@@ -1326,8 +1544,8 @@
     );
     if (!hayDatosNuevos && !omiteObservaciones) return false;
 
-    if (hayDatosNuevos) guardarDatosClienteEnLocal(datosNuevos);
-    const datos = obtenerDatosClienteGuardados();
+    if (hayDatosNuevos) await guardarDatosClienteEnLocal(datosNuevos);
+    const datos = await obtenerDatosClienteGuardados();
     const faltantes = [];
     if (!datos.nombre) faltantes.push('tu nombre completo');
     if (!datos.telefono) faltantes.push('tu número de celular');
@@ -1359,15 +1577,12 @@
     return true;
   }
 
-  function guardarDatosClienteEnLocal(datos) {
-    let previo = {};
-    try {
-      previo = JSON.parse(localStorage.getItem('domidelis_cliente') || '{}');
-      if (!previo || typeof previo !== 'object' || Array.isArray(previo)) previo = {};
-    } catch (error) {
-      previo = {};
+  async function guardarDatosClienteEnLocal(datos) {
+    if (!window.DomiAlmacenSeguro) {
+      throw new Error('No se cargó el almacenamiento cifrado.');
     }
-
+    let previo = await window.DomiAlmacenSeguro.leerLocal('domidelis_cliente') || {};
+    if (!previo || typeof previo !== 'object' || Array.isArray(previo)) previo = {};
     const fusion = Object.assign({}, previo);
     if (datos.nombre) fusion.nombre = datos.nombre;
     if (datos.telefono) fusion.telefono = datos.telefono;
@@ -1376,14 +1591,9 @@
       fusion.zonaNombre = datos.zona.nombre;
       fusion.zonaKey = datos.zona.id;
     }
-    try {
-      localStorage.setItem('domidelis_cliente', JSON.stringify(fusion));
-      if (datos.zona) localStorage.setItem('zonaSeleccionada', datos.zona.id);
-      console.info('[Asistente IA] Datos del cliente listos para el checkout.');
-    } catch (error) {
-      console.warn('[Asistente IA] No se pudieron guardar los datos del cliente:', error);
-      return;
-    }
+    await window.DomiAlmacenSeguro.guardarLocal('domidelis_cliente', fusion);
+    if (datos.zona) localStorage.setItem('zonaSeleccionada', datos.zona.id);
+    console.info('[Asistente IA] Datos del cliente protegidos y listos para el checkout.');
 
     /* Si el asistente corre en la página del checkout, también rellena
        los campos reales; el evento change ejecuta el autoguardado del
@@ -1444,6 +1654,8 @@
       mostrarAviso('Escribe una consulta de máximo 500 caracteres.');
       return;
     }
+    elementos.input.value = '';
+    actualizarContador();
 
     const haceUnMomento = !!ultimaConsulta && (Date.now() - ultimoEnvioTs) < 90000;
     const repitePalabra = haceUnMomento && window.DomiIARazonamiento.normalizarTexto(consulta)
@@ -1461,8 +1673,14 @@
     /* ★ NUEVO: autollenado del checkout. Si el cliente dejó su nombre o
        celular en el mensaje, se guardan en silencio para el checkout. */
     const datosCliente = extraerDatosCliente(consulta);
-    if (datosCliente.nombre || datosCliente.telefono || datosCliente.zona) {
-      guardarDatosClienteEnLocal(datosCliente);
+    if (datosCliente.nombre || datosCliente.telefono || datosCliente.zona || datosCliente.referencias) {
+      try {
+        await guardarDatosClienteEnLocal(datosCliente);
+      } catch (error) {
+        console.error('[Asistente IA] No se pudieron proteger los datos del cliente:', error);
+        mostrarAviso('No se pudieron proteger tus datos en este navegador. No los volveré a guardar en texto plano.');
+        return;
+      }
     }
 
     const intencionAgregar = window.DomiIARazonamiento.interpretarSolicitud(consulta).intencionAgregar;
@@ -1477,27 +1695,33 @@
       return;
     }
 
-    if (procesarDatosPedido(consulta, datosCliente)) return;
+    try {
+      if (await procesarDatosPedido(consulta, datosCliente)) return;
 
-    if (gestionarRechazoBebida(consulta)) {
-      elementos.chips.hidden = true;
-      elementos.input.value = '';
-      actualizarContador();
-      return;
-    }
+      if (await gestionarRechazoBebida(consulta)) {
+        elementos.chips.hidden = true;
+        elementos.input.value = '';
+        actualizarContador();
+        return;
+      }
 
-    if (contextoEtapas.paso === 'guiar_checkout') {
-      solicitarDatosPedido = true;
-      const respuesta = construirSolicitudDatosPedido();
-      agregarMensaje('user', consulta);
-      historial.push({ rol: 'user', texto: consulta });
-      agregarMensaje('ia', respuesta);
-      historial.push({ rol: 'assistant', texto: respuesta });
-      historial = historial.slice(-MAX_HISTORIAL);
-      actualizarBotonCheckout();
-      elementos.chips.hidden = true;
-      elementos.input.value = '';
-      actualizarContador();
+      if (contextoEtapas.paso === 'guiar_checkout') {
+        solicitarDatosPedido = true;
+        const respuesta = await construirSolicitudDatosPedido();
+        agregarMensaje('user', consulta);
+        historial.push({ rol: 'user', texto: consulta });
+        agregarMensaje('ia', respuesta);
+        historial.push({ rol: 'assistant', texto: respuesta });
+        historial = historial.slice(-MAX_HISTORIAL);
+        actualizarBotonCheckout();
+        elementos.chips.hidden = true;
+        elementos.input.value = '';
+        actualizarContador();
+        return;
+      }
+    } catch (error) {
+      console.error('[Asistente IA] No se pudieron procesar los datos protegidos del pedido:', error);
+      mostrarAviso('No se pudieron leer o guardar tus datos protegidos. Revisa el almacenamiento del navegador e inténtalo otra vez.');
       return;
     }
 
@@ -1645,6 +1869,17 @@
   }
 
   function limpiarConversacion() {
+    revisionConversacion += 1;
+    if (window.DomiAlmacenSeguro) {
+      colaGuardadoConversacion = colaGuardadoConversacion.catch(function () {}).then(function () {
+        window.DomiAlmacenSeguro.eliminarSesion(CLAVE_CONVERSACION);
+      }).catch(function (error) {
+        console.warn('[Asistente IA] No se pudo eliminar la conversación protegida:', error);
+      });
+    } else {
+      sessionStorage.removeItem(CLAVE_CONVERSACION);
+      sessionStorage.removeItem(CLAVE_CONVERSACION + ':cifrado');
+    }
     historial = [{ rol: 'assistant', texto: SALUDO_INICIAL }];
     ultimosProductosRecomendados = [];
     productosMostrados.clear();
@@ -1659,18 +1894,53 @@
     elementos.input.focus();
   }
 
-  function iniciar() {
+  async function iniciar() {
     if (!window.DomiIARazonamiento || !window.DomiIACatalogo) {
       console.error('[Asistente IA] No se cargaron los módulos de catálogo y razonamiento.');
       return;
     }
     construirInterfaz();
+    try {
+      if (window.DomiAlmacenSeguro) {
+        localStorage.removeItem('domidelis_telefono');
+        localStorage.removeItem('domidelis_uid');
+        await window.DomiAlmacenSeguro.leerLocal('domidelis_cliente');
+      } else {
+        throw new Error('No se cargó el almacenamiento cifrado.');
+      }
+    } catch (error) {
+      console.error('[Asistente IA] No se pudieron migrar los datos guardados al almacenamiento cifrado:', error);
+      mostrarAviso('No se pudieron migrar algunos datos guardados de forma segura.');
+    }
+    try {
+      if (!await restaurarConversacion()) {
+        if (window.DomiIAEtapas && typeof window.DomiIAEtapas.reiniciar === 'function') {
+          window.DomiIAEtapas.reiniciar();
+        }
+        agregarMensaje('ia', SALUDO_INICIAL);
+      }
+    } catch (error) {
+      if (window.DomiIAEtapas && typeof window.DomiIAEtapas.reiniciar === 'function') {
+        window.DomiIAEtapas.reiniciar();
+      }
+      agregarMensaje('ia', SALUDO_INICIAL);
+      mostrarAviso('No se pudo restaurar la conversación protegida. Puedes continuar con una nueva.');
+    }
+    actualizarBotonCheckout();
+    actualizarContador();
+    iniciarPersistenciaConversacion();
     consultarEstado();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', iniciar, { once: true });
+    document.addEventListener('DOMContentLoaded', function () {
+      iniciar().catch(function (error) {
+        console.error('[Asistente IA] No se pudo iniciar el asistente:', error);
+      });
+    }, { once: true });
   } else {
-    iniciar();
+    iniciar().catch(function (error) {
+      console.error('[Asistente IA] No se pudo iniciar el asistente:', error);
+    });
   }
 })();

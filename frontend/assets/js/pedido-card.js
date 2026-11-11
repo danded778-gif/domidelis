@@ -199,15 +199,16 @@
         : '<p style="color:var(--gray); margin:0;">Sin detalles</p>';
 
       const nombreDomi = pedido.domiciliarioNombre || pedido.nombreDomiciliario || null;
+      const referencias = String(pedido.referencias || '').trim();
 
       bodyHtml = `
                 <div class="pedido-detalles">
             <p><strong>Cliente:</strong> ${_esc(pedido.clienteNombre)}</p>
-            <p><strong>Método Pago:</strong> ${_esc(pedido.metodoPago || 'Efectivo')}</p>
             ${nombreDomi
           ? `<p><strong><i class="fas fa-motorcycle" style="color:var(--secondary);margin-right:4px"></i>Domiciliario:</strong> ${_esc(nombreDomi)}</p>`
           : `<p style="color:var(--gray);"><i class="fas fa-motorcycle" style="margin-right:4px"></i>Domiciliario: Sin asignar</p>`
         }
+            ${referencias ? `<p><strong>Referencias:</strong> ${_esc(referencias)}</p>` : ''}
         </div>
         <div class="pedido-productos">${productosBloque}</div>
         <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:1.1rem; color:var(--primary);">

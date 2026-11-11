@@ -1,12 +1,18 @@
 // ============================================
 // fcm-manager.js — Gestión de Tokens FCM (Con Roles)
 // ============================================
-import { messaging, db } from "./firebase-config.js";
+import { messaging } from "./firebase-config.js";
 import { getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging.js";
-import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const FCM_TOKEN_KEY = 'domidelis_fcm_token';
 const FCM_PROMPT_SHOWN = 'domidelis_fcm_prompt_shown';
+const API_BASE_URL = window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname.includes('.ngrok-free.dev') ||
+    window.location.hostname.includes('.ngrok.io')
+    ? window.location.origin
+    : 'https://prueba-production-b9fb.up.railway.app';
+const ROLES_FCM = new Set(['cliente', 'tienda', 'admin', 'domiciliario']);
 
 // Exponer funciones globalmente
 window.obtenerTokenFCMGuardado = function() {
@@ -19,6 +25,11 @@ window.debeMostrarPromptFCM = function() {
 
 // ★ Acepta rol dinámico ('cliente', 'admin', 'tienda', 'domiciliario'), tiendaId opcional y usuarioId opcional
 window.solicitarPermisoFCM = async function(rol = 'cliente', tiendaId = null, usuarioId = null) {
+    if (!ROLES_FCM.has(rol)) {
+        console.error(`Rol FCM no reconocido: ${rol}`);
+        return null;
+    }
+
     localStorage.setItem(FCM_PROMPT_SHOWN, 'true'); 
     
     try {
@@ -38,28 +49,25 @@ window.solicitarPermisoFCM = async function(rol = 'cliente', tiendaId = null, us
         });
 
         if (token) {
+            const credencial = rol === 'tienda'
+                ? localStorage.getItem('tienda_token')
+                : localStorage.getItem('token');
+            const headers = { 'Content-Type': 'application/json' };
+            if (rol !== 'cliente' && credencial) {
+                headers.Authorization = `Bearer ${credencial}`;
+            }
+
+            const response = await fetch(`${API_BASE_URL}/api/fcm/token`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({ token, rol, tiendaId, usuarioId })
+            });
+            const resultado = await response.json();
+            if (!response.ok || !resultado.success) {
+                throw new Error(resultado.error || 'No se pudo registrar el token FCM.');
+            }
+
             localStorage.setItem(FCM_TOKEN_KEY, token);
-            
-            const payload = {
-                token: token,
-                rol: rol, // <--- Aquí se guarda si es 'cliente', 'admin', 'tienda' o 'domiciliario'
-                plataforma: 'web',
-                creadoEn: serverTimestamp(),
-                ultimaActividad: serverTimestamp()
-            };
-
-            // Si es tienda, guardamos el tiendaId como número
-            if (rol === 'tienda' && tiendaId) {
-                payload.tiendaId = Number(tiendaId); 
-            }
-
-            // ★ NUEVO: Si es domiciliario, guardamos el usuarioId como número
-            if (rol === 'domiciliario' && usuarioId) {
-                payload.usuarioId = Number(usuarioId); 
-            }
-
-            // Guardamos en Firestore con el rol pasado por parámetro
-            await setDoc(doc(db, 'tokens_clientes', token), payload);
             
             return token;
         }
