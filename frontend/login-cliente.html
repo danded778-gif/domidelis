@@ -438,12 +438,11 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
 
             try {
-                const result = await confirmationResult.confirm(codigo);
-                const user = result.user;
+                await confirmationResult.confirm(codigo);
                 
-                // Guardar en localStorage
-                localStorage.setItem('domidelis_uid', user.uid);
-                localStorage.setItem('domidelis_telefono', user.phoneNumber);
+                // Firebase mantiene la sesión; no duplicamos identificadores ni teléfono en localStorage.
+                localStorage.removeItem('domidelis_uid');
+                localStorage.removeItem('domidelis_telefono');
                 localStorage.setItem('domidelis_rol', 'cliente');
 
                 // Redirigir

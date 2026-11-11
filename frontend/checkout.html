@@ -256,6 +256,7 @@
 
     <!-- ★ Scripts necesarios para el autocompletado y el carrito ★ -->
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/almacen-seguro.js"></script>
     <script src="assets/js/components/toast.js"></script>
     <script src="assets/js/client.js"></script>
     <script src="assets/js/checkout.js"></script>
@@ -286,6 +287,7 @@
             var ref = document.getElementById('referencias');
             var pasoActual = 1;
             var volverATiendaPendiente = false;
+            var avisoAlmacenMostrado = false;
 
             history.replaceState({ checkoutWizard: true, paso: pasoActual }, '');
 
@@ -336,22 +338,42 @@
                 }
             });
 
+            function informarErrorAlmacen(error) {
+                console.error('[Checkout] No se pudieron proteger los datos del cliente:', error);
+                if (avisoAlmacenMostrado) return;
+                avisoAlmacenMostrado = true;
+                if (typeof window.mostrarNotificacion === 'function') {
+                    window.mostrarNotificacion('No se pudieron proteger tus datos en este navegador. Puedes continuar, pero no se conservarán para más tarde.', 'error');
+                } else {
+                    alert('No se pudieron proteger tus datos en este navegador. Puedes continuar, pero no se conservarán para más tarde.');
+                }
+            }
+
             function guardarDatosCliente() {
-                try {
-                    localStorage.setItem(CLAVE, JSON.stringify({
+                if (!window.DomiAlmacenSeguro) {
+                    var error = new Error('No se cargó el almacenamiento cifrado.');
+                    informarErrorAlmacen(error);
+                    return Promise.reject(error);
+                }
+                return window.DomiAlmacenSeguro.guardarLocal(CLAVE, {
                         nombre: document.getElementById('nombre').value.trim(),
                         telefono: document.getElementById('telefono').value.trim(),
                         direccion: document.getElementById('direccion').value.trim(),
                         zonaNombre: zonaInput.value.trim(),
                         zonaKey: zonaHidden.value,
                         referencias: ref.value.trim()
-                    }));
-                } catch (e) {}
+                    }).catch(function(error) {
+                        informarErrorAlmacen(error);
+                        throw error;
+                    });
             }
 
-            function restaurarDatosCliente() {
+            async function restaurarDatosCliente() {
                 try {
-                    var d = JSON.parse(localStorage.getItem(CLAVE));
+                    if (!window.DomiAlmacenSeguro) {
+                        throw new Error('No se cargó el almacenamiento cifrado.');
+                    }
+                    var d = await window.DomiAlmacenSeguro.leerLocal(CLAVE);
                     if (!d) return;
                     document.getElementById('nombre').value = d.nombre || '';
                     document.getElementById('telefono').value = d.telefono || '';
@@ -362,18 +384,26 @@
                         zonaHidden.value = d.zonaKey;
                         if (zonaClearBtn) zonaClearBtn.classList.add('visible');
                     }
-                } catch (e) {}
+                } catch (error) {
+                    informarErrorAlmacen(error);
+                }
             }
 
             // Autoguardar al cambiar
             ['nombre', 'telefono', 'direccion'].forEach(function(id) {
-                document.getElementById(id).addEventListener('change', guardarDatosCliente);
+                document.getElementById(id).addEventListener('change', function() {
+                    guardarDatosCliente().catch(function() {});
+                });
             });
-            ref.addEventListener('change', guardarDatosCliente);
-            zonaInput.addEventListener('change', guardarDatosCliente);
+            ref.addEventListener('change', function() {
+                guardarDatosCliente().catch(function() {});
+            });
+            zonaInput.addEventListener('change', function() {
+                guardarDatosCliente().catch(function() {});
+            });
 
             // Paso 1 (fusionado: datos personales + dirección y zona)
-            document.getElementById('formPaso1').addEventListener('submit', function(e) {
+            document.getElementById('formPaso1').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 var nombre = document.getElementById('nombre').value.trim();
                 var telefono = document.getElementById('telefono').value.trim();
@@ -387,14 +417,22 @@
                     zonaInput.focus();
                     return;
                 }
-                guardarDatosCliente();
+                try {
+                    await guardarDatosCliente();
+                } catch (error) {
+                    return;
+                }
                 irPaso(2, true);
             });
 
             // Paso 2 (Resumen)
-            document.getElementById('formPaso3').addEventListener('submit', function(e) {
+            document.getElementById('formPaso3').addEventListener('submit', async function(e) {
                 e.preventDefault();
-                guardarDatosCliente();
+                try {
+                    await guardarDatosCliente();
+                } catch (error) {
+                    return;
+                }
                 irPaso(3, true);
             });
 
