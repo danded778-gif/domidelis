@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T23-35-04",
-  "ultimaActualizacion": "2026-11-11T23:35:04.889Z",
+  "version": "v2026-11-11T23-35-36",
+  "ultimaActualizacion": "2026-11-11T23:35:36.994Z",
   "tiendas": [
     {
       "id": 1,
@@ -1393,7 +1393,7 @@
         {
           "id": 401,
           "nombre": "Burrito mixto",
-          "descripcion": "",
+          "descripcion": "Salsas show barbecue de la casa Queso carne picada carne mixta lechuga tomate maicitos",
           "precio": 22000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Burrito%20mixto.jpg",
           "badge": "NUEVO",
@@ -3267,7 +3267,7 @@
     {
       "id": 401,
       "nombre": "Burrito mixto",
-      "descripcion": "",
+      "descripcion": "Salsas show barbecue de la casa Queso carne picada carne mixta lechuga tomate maicitos",
       "precio": 22000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Burrito%20mixto.jpg",
       "badge": "NUEVO",
