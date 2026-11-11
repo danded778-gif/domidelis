@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T22-52-52",
-  "ultimaActualizacion": "2026-11-11T22:52:52.281Z",
+  "version": "v2026-11-11T22-53-22",
+  "ultimaActualizacion": "2026-11-11T22:53:22.663Z",
   "tiendas": [
     {
       "id": 1,
@@ -1512,6 +1512,19 @@
           "descripcion": "Gomitas Enchiladas con mango",
           "precio": 15000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "17",
+          "tiendaNombre": "Fragaria"
+        },
+        {
+          "id": 504,
+          "nombre": "Fresas con crema Grande",
+          "descripcion": "Fresas con crema",
+          "precio": 16000,
+          "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
@@ -3387,6 +3400,19 @@
       "descripcion": "Gomitas Enchiladas con mango",
       "precio": 15000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/fragaria/Vaso%20de%20fruta%20con%20chamoy%20y%20chile_200kb.jpg",
+      "badge": "NUEVO",
+      "categoria": "Detalles",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "17",
+      "tiendaNombre": "Fragaria"
+    },
+    {
+      "id": 504,
+      "nombre": "Fresas con crema Grande",
+      "descripcion": "Fresas con crema",
+      "precio": 16000,
+      "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
