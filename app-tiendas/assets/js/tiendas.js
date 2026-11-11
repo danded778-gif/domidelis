@@ -64,24 +64,49 @@ async function cargarProductos() {
 // ============================================
 // LÓGICA PARA LA PESTAÑA DE PEDIDOS
 // ============================================
-async function cargarPedidos() {
-    try {
+let solicitudPedidosEnCurso = null;
+let cargaPedidosEnCurso = null;
+
+function obtenerPedidosTienda() {
+    if (solicitudPedidosEnCurso) return solicitudPedidosEnCurso;
+
+    solicitudPedidosEnCurso = (async () => {
         const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
-        if (!res.ok) throw new Error('Error cargando pedidos');
-        const pedidos = await res.json();
-        
-        const grid = document.getElementById('lista-pedidos');
-        if (!grid) return;
+        if (!res.ok) throw new Error(`Error cargando pedidos (HTTP ${res.status})`);
+        return res.json();
+    })().finally(() => {
+        solicitudPedidosEnCurso = null;
+    });
 
-        if (pedidos.length === 0) {
-            grid.innerHTML = '<p style="text-align:center; color:var(--gray); padding:2rem;">No tienes pedidos aún.</p>';
-            return;
+    return solicitudPedidosEnCurso;
+}
+
+function cargarPedidos() {
+    if (cargaPedidosEnCurso) return cargaPedidosEnCurso;
+
+    cargaPedidosEnCurso = (async () => {
+        const inicio = performance.now();
+        try {
+            const pedidos = await obtenerPedidosTienda();
+
+            const grid = document.getElementById('lista-pedidos');
+            if (!grid) return;
+
+            if (pedidos.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; color:var(--gray); padding:2rem;">No tienes pedidos aún.</p>';
+                return;
+            }
+
+            grid.innerHTML = pedidos.map(p => crearTarjetaPedido(p, { modo: 'tienda' })).join('');
+        } catch (err) {
+            console.error('Error cargando pedidos:', err);
+        } finally {
+            console.info(`Carga de pedidos completada en ${Math.round(performance.now() - inicio)} ms.`);
+            cargaPedidosEnCurso = null;
         }
+    })();
 
-        grid.innerHTML = pedidos.map(p => crearTarjetaPedido(p, { modo: 'tienda' })).join('');
-    } catch (err) {
-        console.error('Error cargando pedidos:', err);
-    }
+    return cargaPedidosEnCurso;
 }
 
 // ============================================
@@ -94,9 +119,7 @@ async function cargarDatosComision() {
     if (pctText) pctText.innerText = comisionPct;
 
     try {
-        const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
-        if (!res.ok) throw new Error('Error cargando pedidos');
-        const todosPedidos = await res.json();
+        const todosPedidos = await obtenerPedidosTienda();
         
         const pedidosEntregados = todosPedidos.filter(p => p.estado === 'entregado');
 

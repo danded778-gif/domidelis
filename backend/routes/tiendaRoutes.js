@@ -32,6 +32,10 @@ const router = express.Router();
 const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbyAYydmeZX4Ae1SJfvad3K4EI7WTAX9cxjVvYVF7ERQy027sPEzNP8DYJXu6oSzARe4/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
+const DOMICILIARIOS_CACHE_TTL_MS = 60 * 1000;
+let domiciliariosCache = null;
+let domiciliariosCacheExpira = 0;
+let domiciliariosRequest = null;
 
 if (!JWT_SECRET) {
     console.error('❌ Falta JWT_SECRET');
@@ -49,6 +53,28 @@ function gasUrl(action, extra = {}) {
 }
 
 // ★ v2.4: helper — POST al GAS SIEMPRE con la clave incluida
+async function obtenerDomiciliariosCacheados() {
+    if (domiciliariosCache && Date.now() < domiciliariosCacheExpira) {
+        return domiciliariosCache;
+    }
+    if (domiciliariosRequest) return domiciliariosRequest;
+
+    domiciliariosRequest = axios.get(gasUrl('getDomiciliarios'))
+        .then(response => {
+            if (!Array.isArray(response.data)) {
+                throw new Error('La respuesta de domiciliarios no contiene una lista.');
+            }
+            domiciliariosCache = response.data;
+            domiciliariosCacheExpira = Date.now() + DOMICILIARIOS_CACHE_TTL_MS;
+            return domiciliariosCache;
+        })
+        .finally(() => {
+            domiciliariosRequest = null;
+        });
+
+    return domiciliariosRequest;
+}
+
 async function gasPost(paramsObj) {
     const body = new URLSearchParams({ key: GAS_SECRET_KEY, ...paramsObj }).toString();
     return axios.post(GAS_URL, body, {
@@ -133,10 +159,11 @@ router.get('/productos', verifyTienda, async (req, res) => {
 //   try/catch original; los pedidos salen sin domiciliarioNombre)
 // ============================================
 router.get('/pedidos', verifyTienda, async (req, res) => {
+    const inicio = Date.now();
     try {
         const [pedidosRes, domisRes] = await Promise.allSettled([
             axios.get(gasUrl('getPedidosTienda', { tiendaId: req.tienda.id })),
-            axios.get(gasUrl('getDomiciliarios'))
+            obtenerDomiciliariosCacheados()
         ]);
 
         // Pedidos es el viaje obligatorio: si falló, propagamos el error
@@ -149,10 +176,10 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
 
         // Domiciliarios sigue siendo OPCIONAL (misma tolerancia que antes)
         let domiciliarios = [];
-        if (domisRes.status === 'fulfilled' && Array.isArray(domisRes.value.data)) {
-            domiciliarios = domisRes.value.data;
+        if (domisRes.status === 'fulfilled') {
+            domiciliarios = domisRes.value;
         } else {
-            console.warn('No se pudieron cargar domiciliarios para enriquecer pedidos');
+            console.warn('No se pudieron cargar domiciliarios para enriquecer pedidos:', domisRes.reason.message);
         }
 
         const pedidosProcesados = pedidos.map(pedido => {
@@ -197,9 +224,10 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
             };
         });
 
+        res.set('Server-Timing', `orders;dur=${Date.now() - inicio}`);
         res.json(pedidosProcesados);
     } catch (err) {
-        console.error('Error obteniendo pedidos de tienda:', err.message);
+        console.error(`Error obteniendo pedidos de tienda (${Date.now() - inicio} ms):`, err.message);
         res.status(500).json({ error: 'Error obteniendo pedidos.' });
     }
 });

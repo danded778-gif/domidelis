@@ -485,7 +485,8 @@ main {
     gap: 0.5rem;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 0.9rem 1rem;
     border: 2px solid #e0e0e0;
@@ -495,7 +496,12 @@ main {
     transition: var(--transition);
 }
 
-.form-group input:focus {
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
 }
