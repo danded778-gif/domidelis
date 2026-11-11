@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T23-36-02",
-  "ultimaActualizacion": "2026-11-11T23:36:02.515Z",
+  "version": "v2026-11-11T23-36-29",
+  "ultimaActualizacion": "2026-11-11T23:36:29.488Z",
   "tiendas": [
     {
       "id": 1,
@@ -1432,7 +1432,7 @@
         {
           "id": 404,
           "nombre": "Perrito tradicional",
-          "descripcion": "",
+          "descripcion": "Salsa tocineta ripio salsa de la casa y queso",
           "precio": 13000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/perrito_tradicional_1x1.jpg",
           "badge": "",
@@ -3306,7 +3306,7 @@
     {
       "id": 404,
       "nombre": "Perrito tradicional",
-      "descripcion": "",
+      "descripcion": "Salsa tocineta ripio salsa de la casa y queso",
       "precio": 13000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/perrito_tradicional_1x1.jpg",
       "badge": "",
