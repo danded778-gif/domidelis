@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T22-58-11",
-  "ultimaActualizacion": "2026-11-11T22:58:11.332Z",
+  "version": "v2026-11-11T22-58-58",
+  "ultimaActualizacion": "2026-11-11T22:58:58.279Z",
   "tiendas": [
     {
       "id": 1,
@@ -6101,7 +6101,7 @@
     },
     {
       "id": 262,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Presentación",
       "nombre": "Gomitas",
       "precio": 0,
@@ -6111,7 +6111,7 @@
     },
     {
       "id": 263,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Presentación",
       "nombre": "chispitas de color",
       "precio": 0,
@@ -6121,7 +6121,7 @@
     },
     {
       "id": 264,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Salsa",
       "nombre": "Lecherita",
       "precio": 0,
@@ -6131,7 +6131,7 @@
     },
     {
       "id": 265,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Salsa",
       "nombre": "Mora",
       "precio": 0,
@@ -6141,7 +6141,7 @@
     },
     {
       "id": 266,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Salsa",
       "nombre": "Chocolate",
       "precio": 0,
@@ -6151,7 +6151,7 @@
     },
     {
       "id": 267,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "Salsa",
       "nombre": "Arequipe",
       "precio": 0,
@@ -6161,10 +6161,10 @@
     },
     {
       "id": 268,
-      "id_producto": 503,
+      "id_producto": 504,
       "grupo": "",
       "nombre": "Und Fresas con Crema",
-      "precio": 9000,
+      "precio": 16000,
       "tipo": "extra",
       "max": null,
       "min": 0
