@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T22-58-58",
-  "ultimaActualizacion": "2026-11-11T22:58:58.279Z",
+  "version": "v2026-11-11T23-35-04",
+  "ultimaActualizacion": "2026-11-11T23:35:04.889Z",
   "tiendas": [
     {
       "id": 1,
@@ -1380,7 +1380,7 @@
         {
           "id": 400,
           "nombre": "Arepa rellena",
-          "descripcion": "",
+          "descripcion": "Carne mixta salsa rosada tocineta queso maicitos",
           "precio": 20000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Arepa%20rellena.jpg",
           "badge": "NUEVO",
@@ -3254,7 +3254,7 @@
     {
       "id": 400,
       "nombre": "Arepa rellena",
-      "descripcion": "",
+      "descripcion": "Carne mixta salsa rosada tocineta queso maicitos",
       "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/J.cDelicias/Arepa%20rellena.jpg",
       "badge": "NUEVO",
