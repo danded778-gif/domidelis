@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T22-55-02",
-  "ultimaActualizacion": "2026-11-11T22:55:02.736Z",
+  "version": "v2026-11-11T22-56-03",
+  "ultimaActualizacion": "2026-11-11T22:56:03.043Z",
   "tiendas": [
     {
       "id": 1,
@@ -6005,6 +6005,86 @@
       "grupo": "",
       "nombre": "Und Mango biche",
       "precio": 10000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 253,
+      "id_producto": 502,
+      "grupo": "Presentación",
+      "nombre": "Galletas oreo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 254,
+      "id_producto": 502,
+      "grupo": "Presentación",
+      "nombre": "Gomitas",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 255,
+      "id_producto": 502,
+      "grupo": "Presentación",
+      "nombre": "chispitas de color",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 256,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Lecherita",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 257,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Mora",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 258,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Chocolate",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 259,
+      "id_producto": 502,
+      "grupo": "Salsa",
+      "nombre": "Arequipe",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 260,
+      "id_producto": 502,
+      "grupo": "",
+      "nombre": "Und Fresas con Crema",
+      "precio": 9000,
       "tipo": "extra",
       "max": null,
       "min": 0
