@@ -490,10 +490,14 @@
             items: carrito
         });
 
-        sessionStorage.setItem('ultimoPedido', JSON.stringify({
-            pedidoId, nombre, total, metodoPago
-        }));
+        sessionStorage.setItem('ultimoPedido', JSON.stringify({ pedidoId }));
 
+        try {
+            sessionStorage.removeItem('domidelis_ia_conversacion');
+            sessionStorage.removeItem('domidelis_ia_conversacion:cifrado');
+        } catch (error) {
+            console.warn('[Checkout] No se pudo cerrar la conversación de DOMI IA:', error);
+        }
         abrirWhatsAppiOS(mensaje);
 
         setTimeout(() => {
