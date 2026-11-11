@@ -3,7 +3,6 @@
 // ============================================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getMessaging } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCfQGtf-7NBSO3j23crjhMsxggCHToqwYQ",
@@ -17,6 +16,5 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
-const db = getFirestore(app);
 
-export { messaging, db };
+export { messaging };
