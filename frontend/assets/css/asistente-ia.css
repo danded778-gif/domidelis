@@ -1140,6 +1140,7 @@
    ===================================================================== */
 
 .ia-float {
+  position: fixed;
   min-width: 218px;
   max-width: min(260px, calc(100vw - 24px));
   height: 62px;
@@ -1153,6 +1154,31 @@
   box-shadow: 0 7px 22px rgba(93, 64, 55, 0.20),
               0 2px 0 rgba(230, 57, 70, 0.12);
   touch-action: manipulation;
+}
+
+.ia-float::before {
+  content: "";
+  position: absolute;
+  top: -35%;
+  bottom: -35%;
+  left: -55%;
+  width: 38%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.78) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+  animation: iaFloatShimmer 3.8s ease-in-out infinite;
+}
+
+@keyframes iaFloatShimmer {
+  0%, 38% { left: -55%; }
+  78%, 100% { left: 125%; }
 }
 
 .ia-float:hover {
@@ -1214,6 +1240,10 @@
 
 .ia-float.ia-pulso {
   animation: iaPulsoNuevo 2.8s infinite;
+}
+
+.ia-float.ia-float-arrastrando::before {
+  animation-play-state: paused;
 }
 
 @keyframes iaPulsoNuevo {
@@ -1346,6 +1376,14 @@
   .ia-float-flecha { flex-basis: 26px; width: 26px; height: 26px; }
   .ia-float-subtitulo { max-width: 155px; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .ia-float::before {
+    animation: none;
+    display: none;
+  }
+}
+
 /* =====================================================================
    DOMI IA · Ocultar el botón mientras el carrito está abierto
    (el JS del botón pone/quita esta clase al detectar .cart-panel.active)

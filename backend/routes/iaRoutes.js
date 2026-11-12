@@ -164,6 +164,7 @@ const INSTRUCCIONES = [
   '- Pregunta por cantidad de personas solo si el cliente menciona compartir, un grupo o una cantidad. No asumas que cada pedido es para varias personas.',
   '- Si el cliente menciona un presupuesto (ej. "tengo 15 mil" o "$25.000"), recomienda SOLO opciones dentro de ese monto; si ninguna alcanza, dilo con naturalidad y muestra las de precio más cercano.',
   '- Ante una petición amplia, toma la iniciativa y muestra de 2 a 3 opciones pertinentes de CANDIDATOS con nombre, tienda aliada y precio. No conviertas cada petición en una pregunta.',
+  '- En recomendaciones de tiendas, prioriza aliadas promovidas y abiertas cuando haya opciones pertinentes; no recomiendes como disponible una tienda cerrada.',
   '- Recomienda únicamente productos que existan en CANDIDATOS: cada producto que nombres debe corresponder a un ID devuelto y a una tarjeta que el cliente pueda abrir. No inventes ni agregues hamburguesas u otros productos que no haya pedido ni que sus criterios justifiquen.',
   '- Interpreta características como frío, refrescante, dulce o ligero según nombre y descripción de los productos, no como una orden para limitarse a una categoría. Si el cliente corrige una restricción, discúlpate brevemente, retira esa restricción y amplía la búsqueda sin perder sus preferencias.',
   '- En seguimientos y búsquedas ampliadas, usa los candidatos nuevos recibidos y evita repetir productos ya mostrados cuando haya alternativas pertinentes.',
@@ -219,18 +220,20 @@ const INSTRUCCIONES_OLLAMA = [
   'PRODUCTOS:',
   'Recomienda como máximo 3 productos de las OPCIONES recibidas. Usa sus IDs exactos. No inventes productos, precios, tiendas ni características.',
   'Todo producto nombrado como recomendación debe estar en OPCIONES y tener su ID en la respuesta. Nunca inventes un producto ni sugieras una hamburguesa u otro producto que no corresponda a la petición y sus criterios.',
+  'En recomendaciones, prioriza productos de tiendas promovidas y abiertas: incluye al menos 2 si hay 2 o más candidatos pertinentes. Si no hay candidatos promovidos pertinentes, prioriza los marcados DESTACADO:si, que corresponden a productos visibles en la vitrina destacada.',
   'Interpreta características como frío, refrescante, dulce o ligero usando nombres y descripciones, no como una categoría única. Si el cliente corrige una limitación, discúlpate brevemente y amplía la búsqueda siguiendo sus preferencias actualizadas. En nuevas búsquedas evita repetir opciones anteriores si hay alternativas pertinentes.',
   'PREGUNTAS DE PRODUCTO:',
   'Si preguntan qué trae, sus ingredientes o qué incluye, conserva como referencia el producto mencionado o seleccionado más recientemente en la conversación; no muestres un catálogo nuevo. Responde usando solo la descripción real de ese producto. Si no hay descripción suficiente, dilo claramente y no adivines.',
   'Separa lo que la descripción confirma que viene incluido de las OPCIONES configuradas para el producto. Consulta las opciones recibidas para verificar si se puede quitar, cambiar o agregar algo; si no está configurado o no hay datos, no lo prometas ni uses opciones de otro producto.',
   'Cuando pregunten qué es o qué trae un producto, responde con su descripción real del catálogo; si no tiene descripción, dilo con naturalidad y muestra la tarjeta del producto.',
-  'Las opciones marcadas con PROMOVIDA:si (tiendas promovidas abiertas) van de primeras cuando sean pertinentes.',
+  'En recomendaciones, prioriza productos de tiendas con PROMOVIDA:si (las tiendas cerradas ya están excluidas) y elige al menos 2 cuando haya 2 o más opciones promovidas pertinentes. Si no hay opciones promovidas pertinentes, prioriza las marcadas DESTACADO:si, que son productos de la vitrina destacada.',
   'Para calcular el total, suma el precio base y los precios adicionales de las opciones que el cliente eligió y que están configuradas para ese producto. Desglosa base, adicionales y total; si falta un precio o una elección necesaria, pide ese dato y no inventes el total.',
   'No menciones ni muestres productos o precios de tiendas ocultas; considera válidos únicamente los productos recibidos de tiendas visibles.',
   'CATEGORÍAS REALES:',
   'Respeta CATEGORÍAS REALES; no inventes categorías ni productos. DOMIDELIS no maneja ropa ni prendas. Si piden ropa, dilo brevemente y ofrece explorar categorías reales.',
   'AYUDA OFICIAL:',
   'Responde preguntas de ayuda, privacidad y términos únicamente con los EXTRACTOS OFICIALES incluidos. No agregues requisitos ni condiciones. Si no hay un extracto pertinente, indica que no tienes ese dato y remite al Centro de Ayuda.',
+  'En recomendaciones de tiendas, prioriza aliadas promovidas y abiertas cuando haya opciones pertinentes; no recomiendes como disponible una tienda cerrada.',
   'No repitas preguntas que el cliente ya contestó en el historial.',
   'Las OPCIONES son una selección, no todo el catálogo. Si no encuentras coincidencias, di que no aparecen en esta búsqueda; no afirmes que el catálogo no tiene esos productos.',
   'Si no hay opciones pertinentes, conserva la intención actual y explica la limitación brevemente. No sustituyas la categoría solicitada por otra.',
@@ -449,23 +452,68 @@ function crearConsultaConMemoria(consulta, historial, candidatos) {
     : consulta;
 }
 
+function consultaMencionaTienda(consulta, tiendas) {
+  const texto = normalizarIA(consulta);
+  if (!texto || !Array.isArray(tiendas)) return [];
+  return tiendas.filter(tienda => {
+    const nombre = normalizarIA(tienda && tienda.nombre);
+    return nombre.length >= 4 && texto.includes(nombre);
+  });
+}
+
+function seleccionarTiendasParaContexto(consulta, contextoNegocio) {
+  if (!contextoNegocio || !Array.isArray(contextoNegocio.tiendas)) return [];
+  const mencionadas = consultaMencionaTienda(consulta, contextoNegocio.tiendas);
+  return (mencionadas.length ? mencionadas : contextoNegocio.tiendas).slice().sort((a, b) =>
+    Number(b.abiertaAhora === true) - Number(a.abiertaAhora === true) ||
+    Number(b.promovida) - Number(a.promovida) ||
+    Number(b.esTiendaBase) - Number(a.esTiendaBase)
+  );
+}
+
+function consultaNecesitaTiendas(consulta, contextoNegocio) {
+  const texto = normalizarIA(consulta);
+  return /\b(tiend\w*|aliad\w*|establecimient\w*|horari\w*|abiert\w*|cerrad\w*|atiend\w*|abren|cierran|ubicacion|direccion|negocio)\b/.test(texto) ||
+    consultaMencionaTienda(consulta, contextoNegocio && contextoNegocio.tiendas).length > 0;
+}
+
+function consultaNecesitaZonas(consulta, contextoNegocio) {
+  const texto = normalizarIA(consulta);
+  if (/\b(zonas?|coberturas?|envios?|entregas?|domicilios?|barrios?|sectores?|tarifas?)\b/.test(texto)) {
+    return true;
+  }
+  return Boolean(contextoNegocio && Array.isArray(contextoNegocio.zonas) &&
+    contextoNegocio.zonas.some(zona => {
+      const nombre = normalizarIA(zona && zona.nombre);
+      return nombre.length >= 4 && texto.includes(nombre);
+    }) && /\b(cuest\w*|preci\w*|valor)\b/.test(texto));
+}
+
 function crearPromptOllama(consulta, candidatos, historial, contextoNegocio) {
-  const textoConsulta = normalizarIA(consulta);
-  const necesitaTiendas = /\b(tiend\w*|aliad\w*|horarios?|abiert\w*|cerrad\w*|atiend\w*|abren|cierran)\b/.test(textoConsulta);
-  const necesitaZonas = /\b(zonas?|coberturas?|envios?|entregas?|domicilios?|barrios?|sectores?)\b/.test(textoConsulta);
+  const necesitaTiendas = consultaNecesitaTiendas(consulta, contextoNegocio);
+  const necesitaZonas = consultaNecesitaZonas(consulta, contextoNegocio);
   const datosOperativos = {};
   if (necesitaTiendas && contextoNegocio) {
     datosOperativos.fecha = contextoNegocio.fechaHoraActual;
-    datosOperativos.tiendas = contextoNegocio.tiendas
+    datosOperativos.tiendas = seleccionarTiendasParaContexto(consulta, contextoNegocio)
       .slice()
-      .sort((a, b) => Number(b.esTiendaBase) - Number(a.esTiendaBase))
-      .slice(0, 20)
-      .map(tienda => `${tienda.nombre}: ${tienda.abiertaAhora === null ? '' : tienda.abiertaAhora ? 'abierta' : 'cerrada'} ${tienda.horario.slice(0, 100)}`);
+      .sort((a, b) =>
+        Number(b.abiertaAhora === true) - Number(a.abiertaAhora === true) ||
+        Number(b.promovida) - Number(a.promovida) ||
+        Number(b.esTiendaBase) - Number(a.esTiendaBase)
+      )
+      .slice(0, consultaMencionaTienda(consulta, contextoNegocio.tiendas).length ? 5 : 60)
+      .map(tienda => ({
+        nombre: tienda.nombre,
+        estado: tienda.abiertaAhora === null ? 'desconocido' : tienda.abiertaAhora ? 'abierta' : 'cerrada',
+        promovida: tienda.promovida,
+        horario: tienda.horario.slice(0, consultaMencionaTienda(consulta, contextoNegocio.tiendas).length ? 500 : 100)
+      }));
     datosOperativos.reglaHorario = 'El cierre de DOMIDELIS no cierra a las tiendas aliadas; cada aliada tiene su propio horario.';
   }
   if (necesitaZonas && contextoNegocio) {
     datosOperativos.zonas = contextoNegocio.zonas
-      .slice(0, 20)
+      .slice(0, 100)
       .map(zona => `${zona.nombre}: $${zona.envioBase}`);
   }
 
@@ -489,6 +537,8 @@ function crearPromptOllama(consulta, candidatos, historial, contextoNegocio) {
     c: candidato.categoria,
     t: candidato.tiendaNombre,
     d: candidato.descripcion,
+    promovida: candidato.promovida === 1,
+    destacado: candidato.destacado === true,
     opciones: candidato.opciones
   }));
 
@@ -544,6 +594,9 @@ function seleccionarCandidatosLocales(candidatos, consulta, historial) {
   if (pool.length > 1 && pool.some(candidato => candidato && candidato.promovida === 1)) {
     pool = pool.filter(candidato => candidato && candidato.promovida === 1)
       .concat(pool.filter(candidato => !candidato || candidato.promovida !== 1));
+  } else if (pool.length > 1 && pool.some(candidato => candidato && candidato.destacado)) {
+    pool = pool.filter(candidato => candidato && candidato.destacado)
+      .concat(pool.filter(candidato => !candidato || !candidato.destacado));
   }
 
   /* ★ NUEVO v1.5: presupuesto — solo opciones que alcancen al monto. */
@@ -586,8 +639,16 @@ function seleccionarCandidatosLocales(candidatos, consulta, historial) {
   if (pool.length <= 3) return pool;
   const clave = pideAlmuerzo ? 'almuerzo' : consultaNormalizada;
   const inicio = rotacionesCandidatosLocales.get(clave) || 0;
-  const seleccionados = [];
+  const productosPreferidos = pool.filter(candidato => candidato && candidato.promovida === 1);
+  const preferidos = productosPreferidos.length
+    ? productosPreferidos
+    : pool.filter(candidato => candidato && candidato.destacado);
+  const seleccionados = preferidos.slice(0, Math.min(2, preferidos.length));
   const tiendasElegidas = new Set();
+  seleccionados.forEach(candidato => {
+    const tienda = normalizarIA(candidato.tiendaNombre);
+    if (tienda) tiendasElegidas.add(tienda);
+  });
 
   for (let offset = 0; offset < pool.length && seleccionados.length < 3; offset += 1) {
     const candidato = pool[(inicio + offset) % pool.length];
@@ -772,6 +833,7 @@ function sanearContextoNegocio(contexto) {
       nombre: String(tienda.nombre || '').slice(0, 80),
       horario: String(tienda.horario || '').slice(0, 500),
       abiertaAhora: typeof tienda.abiertaAhora === 'boolean' ? tienda.abiertaAhora : null,
+      promovida: tienda.promovida === true,
       esTiendaBase: tienda.esTiendaBase === true
     })).filter(tienda => tienda.nombre)
     : [];
@@ -793,6 +855,7 @@ function sanearContextoNegocio(contexto) {
   const fuentesPermitidas = new Set([
     '/pages/centro-de-ayuda.html',
     '/pages/politicas.html',
+    '/pages/terminos.html',
     '/pages/TyC.html'
   ]);
   const conocimiento = Array.isArray(contexto.conocimiento)
@@ -821,27 +884,26 @@ function crearPrompt(consulta, candidatos, historial, contextoNegocio) {
   const lineas = candidatos.map(c =>
     `- id:${c.id} | tiendaId:${c.tiendaId || ''} | ${c.nombre} | $${c.precio} | ${c.categoria || ''} | tienda: ${c.tiendaNombre || ''} | ${c.descripcion || ''}` +
     (c.promovida === 1 ? ' | PROMOVIDA:si' : '') +
+    (c.destacado ? ' | DESTACADO:si' : '') +
     (c.badge ? ` | ${c.badge}` : '') +
     (c.opciones.length ? ` | OPCIONES CONFIGURADAS: ${JSON.stringify(c.opciones)}` : '')
   ).join('\n');
 
-  const consultaNormalizada = String(consulta)
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-  const necesitaTiendas = /\b(tiend\w*|aliad\w*|horarios?|abiert\w*|cerrad\w*|atiend\w*|abren|cierran)\b/.test(consultaNormalizada);
-  const necesitaZonas = /\b(zonas?|coberturas?|envios?|entregas?|domicilios?|barrios?|sectores?)\b/.test(consultaNormalizada);
+  const necesitaTiendas = consultaNecesitaTiendas(consulta, contextoNegocio);
+  const necesitaZonas = consultaNecesitaZonas(consulta, contextoNegocio);
   const contextoReducido = contextoNegocio
     ? {
       zonaHoraria: contextoNegocio.zonaHoraria,
       fechaHoraActual: necesitaTiendas ? contextoNegocio.fechaHoraActual : '',
       tiendas: necesitaTiendas
-        ? contextoNegocio.tiendas.slice(0, 20).map(tienda => ({
+        ? seleccionarTiendasParaContexto(consulta, contextoNegocio)
+          .slice(0, consultaMencionaTienda(consulta, contextoNegocio.tiendas).length ? 5 : 60)
+          .map(tienda => ({
           ...tienda,
-          horario: tienda.horario.slice(0, 200)
+          horario: tienda.horario.slice(0, 500)
         }))
         : [],
-      zonas: necesitaZonas ? contextoNegocio.zonas.slice(0, 20) : []
+      zonas: necesitaZonas ? contextoNegocio.zonas.slice(0, 100) : []
     }
     : {};
 
@@ -1138,6 +1200,20 @@ async function llamarIA(consulta, candidatos, historial, contextoNegocio, emitir
           resultado.respuesta = crearTextoRecomendacion(productosRecomendados);
         }
       }
+      if (proveedor.formato !== 'ollama' &&
+          PREGUNTA_RECOMENDACION_AMPLIA.test(normalizarIA(consultaContextual)) &&
+          resultado.ids.length) {
+        const preferenciasComerciales = candidatos.some(candidato =>
+          candidato.promovida === 1 || candidato.destacado === true
+        );
+        if (preferenciasComerciales) {
+          const productosRecomendados = seleccionarCandidatosLocales(candidatos, consultaContextual, historialLimpio);
+          if (productosRecomendados.length) {
+            resultado.ids = productosRecomendados.map(producto => producto.id);
+            resultado.respuesta = crearTextoRecomendacion(productosRecomendados);
+          }
+        }
+      }
       return resultado;
     } catch (error) {
       if (envioParcial && typeof emitirEvento === 'function') {
@@ -1239,6 +1315,7 @@ router.post('/consultar', async (req, res) => {
         descripcion: String(c.descripcion || '').slice(0, 160),
         badge: String(c.badge || '').slice(0, 30),
         promovida: c.promovida === 1 || c.promovida === true ? 1 : 0, /* ★ v1.6 */
+        destacado: c.destacado === true,
         opciones: Array.isArray(c.opciones)
           ? c.opciones.slice(0, 30)
             .filter(opcion => opcion && typeof opcion === 'object' && opcion.nombre)

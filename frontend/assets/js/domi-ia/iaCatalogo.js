@@ -163,7 +163,31 @@
   }
 
   function esPromovida(tienda) {
-    return tienda && (tienda.promovida === 1 || tienda.promovida === true) ? 1 : 0;
+    return tienda && (Number(tienda.promovida) === 1 || tienda.promovida === true) ? 1 : 0;
+  }
+
+  function obtenerIdsProductosDestacados() {
+    const contenedor = document.getElementById('productos-destacados-grid');
+    return new Set(contenedor
+      ? Array.from(contenedor.querySelectorAll('[data-product-id]')).map(function (elemento) {
+        return String(elemento.dataset.productId);
+      })
+      : []);
+  }
+
+  function priorizarProductosRecomendados(productos, limite) {
+    const maximo = Math.min(productos.length, limite || productos.length);
+    const promovidos = productos.filter(function (producto) {
+      return producto.promovida === 1 || producto.promovida === true;
+    });
+    const destacados = productos.filter(function (producto) {
+      return producto.destacado === true;
+    });
+    const preferidos = promovidos.length ? promovidos : destacados;
+    const ordenados = preferidos.concat(productos.filter(function (producto) {
+      return !preferidos.includes(producto);
+    }));
+    return ordenados.slice(0, maximo);
   }
 
   function buscar(consulta, opcionesBusqueda) {
@@ -185,6 +209,7 @@
       });
     });
 
+    const productosDestacados = obtenerIdsProductosDestacados();
     const productosPorId = new Map();
     const disponibles = productos.filter(function (producto) {
       if (!producto || producto.id === undefined || !producto.nombre ||
@@ -194,8 +219,15 @@
       if (tienda && (tienda.activo === false || tiendaEstaOculta(tienda) || !tiendaEstaAbierta(tienda))) return false;
       const id = String(producto.id);
       if (productosPorId.has(id)) return false;
-      productosPorId.set(id, producto);
+      const disponible = Object.assign({}, producto, {
+        tiendaNombre: producto.tiendaNombre || (tienda && tienda.nombre) || '',
+        promovida: esPromovida(tienda),
+        destacado: productosDestacados.has(id)
+      });
+      productosPorId.set(id, disponible);
       return true;
+    }).map(function (producto) {
+      return productosPorId.get(String(producto.id));
     });
 
     const interpretacion = window.DomiIARazonamiento.interpretarSolicitud(consulta);
@@ -308,6 +340,30 @@
       }
     }
 
+    if (!interpretacion.buscaEconomico && seleccionados.length) {
+      const productosPertinentes = hayCoincidenciaTexto
+        ? priorizados.filter(function (item) { return item.puntos > 0; })
+          .map(function (item) { return item.producto; })
+        : priorizados.map(function (item) { return item.producto; });
+      const promocionados = productosPertinentes.filter(function (producto) {
+        return producto.promovida === 1;
+      });
+      const preferidos = promocionados.length
+        ? promocionados
+        : productosPertinentes.filter(function (producto) { return producto.destacado; });
+      if (preferidos.length) {
+        const prioridad = preferidos.filter(function (producto) {
+          return !excluidos.has(String(producto.id));
+        }).slice(0, 3);
+        const idsPrioridad = new Set(prioridad.map(function (producto) {
+          return String(producto.id);
+        }));
+        seleccionados = prioridad.concat(seleccionados.filter(function (producto) {
+          return !idsPrioridad.has(String(producto.id));
+        })).slice(0, 20);
+      }
+    }
+
     const candidatos = seleccionados.map(function (producto) {
       return crearCandidato(producto, catalogo.complementos);
     });
@@ -361,6 +417,8 @@
       tiendaNombre: String(producto.tiendaNombre || '').slice(0, 80),
       descripcion: String(producto.descripcion || '').slice(0, 160),
       badge: String(producto.badge || '').slice(0, 30),
+      promovida: producto.promovida === 1 || producto.promovida === true ? 1 : 0,
+      destacado: producto.destacado === true,
       opciones: obtenerComplementos(producto, complementos).map(function (opcion) {
         return {
           grupo: String(opcion.grupo || '').slice(0, 50),
@@ -486,21 +544,32 @@
     return { respuesta: respuestas.join('. ') + '.', ids: [] };
   }
 
-  function seleccionarPorTienda(productos, idsExcluidos) {
+  function seleccionarPorTienda(productos, idsExcluidos, aplicarPrioridadComercial) {
     const idsVistos = idsExcluidos || new Set();
     const nuevos = productos.filter(function (producto) {
       return !idsVistos.has(String(producto.id));
     });
     const candidatos = nuevos.length ? nuevos : productos;
-    const seleccionados = [];
-    const tiendasElegidas = new Set();
-    rotarProductos(candidatos, 10).forEach(function (producto) {
+    const rotados = rotarProductos(candidatos, 10);
+    const seleccionados = aplicarPrioridadComercial === false
+      ? []
+      : priorizarProductosRecomendados(rotados, Math.min(2, rotados.length));
+    const tiendasElegidas = new Set(seleccionados.map(function (producto) {
+      return normalizarTexto(producto.tiendaNombre);
+    }).filter(Boolean));
+    rotados.forEach(function (producto) {
+      if (seleccionados.includes(producto)) return;
       const tienda = normalizarTexto(producto.tiendaNombre);
       if (tienda && tiendasElegidas.has(tienda)) return;
       seleccionados.push(producto);
       if (tienda) tiendasElegidas.add(tienda);
     });
-    return (seleccionados.length >= 3 ? seleccionados : candidatos).slice(0, 3);
+    if (seleccionados.length < 3) {
+      rotados.forEach(function (producto) {
+        if (seleccionados.length < 3 && !seleccionados.includes(producto)) seleccionados.push(producto);
+      });
+    }
+    return seleccionados.slice(0, 3);
   }
 
   const PALABRAS_FUNCION_IA = new Set([
@@ -855,20 +924,23 @@
           ? (Number(a.producto.precio) || 0) - (Number(b.producto.precio) || 0) || a.indice - b.indice
           : b.puntaje - a.puntaje || a.indice - b.indice;
       }).map(function (item) { return item.producto; });
+      const porPrioridadComercial = interpretacion.buscaEconomico
+      ? porPuntaje
+      : priorizarProductosRecomendados(porPuntaje, porPuntaje.length);
       const elegidos = [];
       const categoriasElegidas = new Set();
       if (interpretacion.buscaEconomico) {
-        elegidos.push(...porPuntaje.slice(0, 3));
+      elegidos.push(...porPuntaje.slice(0, 3));
       } else {
-        porPuntaje.forEach(function (producto) {
-          const categoria = normalizarTexto(producto.categoria);
-          if (elegidos.length >= 3 || categoriasElegidas.has(categoria)) return;
-          elegidos.push(producto);
-          categoriasElegidas.add(categoria);
+      porPrioridadComercial.forEach(function (producto) {
+        const categoria = normalizarTexto(producto.categoria);
+        if (elegidos.length >= 3 || categoriasElegidas.has(categoria)) return;
+        elegidos.push(producto);
+        categoriasElegidas.add(categoria);
         });
-        porPuntaje.forEach(function (producto) {
-          if (elegidos.length < 3 && !elegidos.includes(producto)) elegidos.push(producto);
-        });
+      porPrioridadComercial.forEach(function (producto) {
+        if (elegidos.length < 3 && !elegidos.includes(producto)) elegidos.push(producto);
+      });
       }
       if (!elegidos.length) return null;
       const seleccionados = elegidos.map(function (producto) {
@@ -931,7 +1003,10 @@
       });
       const dulcesElegidos = interpretacion.buscaEconomico
         ? candidatosDulces.slice(0, 3)
-        : seleccionarPorTienda(candidatosDulces, idsExcluidos);
+        : seleccionarPorTienda(
+          priorizarProductosRecomendados(candidatosDulces, candidatosDulces.length),
+          idsExcluidos
+        );
       if (dulcesElegidos.length) {
         return {
           respuesta: '¡Claro! Algunas opciones dulces del catálogo son: ' + dulcesElegidos.map(function (producto) {
@@ -1010,7 +1085,13 @@
         }
         return {
           categoria: grupo.categoria,
-          productos: seleccionarPorTienda(productosGrupo, idsExcluidos).slice(0, 2)
+          productos: seleccionarPorTienda(
+            window.DomiIARazonamiento.interpretarSolicitud(consulta).buscaEconomico
+              ? productosGrupo
+              : priorizarProductosRecomendados(productosGrupo, productosGrupo.length),
+            idsExcluidos,
+            !window.DomiIARazonamiento.interpretarSolicitud(consulta).buscaEconomico
+          ).slice(0, 2)
         };
       });
       productosNoDisponibles = gruposDisponibles
@@ -1027,13 +1108,22 @@
         });
       }
     } else {
-      const productosCoincidencia = coincidencia.productos.slice();
+      let productosCoincidencia = coincidencia.productos.slice();
       if (window.DomiIARazonamiento.interpretarSolicitud(consulta).buscaEconomico) {
         productosCoincidencia.sort(function (a, b) {
           return (Number(a.precio) || 0) - (Number(b.precio) || 0);
         });
+      } else {
+        productosCoincidencia = priorizarProductosRecomendados(
+          productosCoincidencia,
+          productosCoincidencia.length
+        );
       }
-      productosSeleccionados = seleccionarPorTienda(productosCoincidencia, idsExcluidos);
+      productosSeleccionados = seleccionarPorTienda(
+        productosCoincidencia,
+        idsExcluidos,
+        !window.DomiIARazonamiento.interpretarSolicitud(consulta).buscaEconomico
+      );
     }
 
     const seleccionados = productosSeleccionados.map(function (producto) {

@@ -1326,6 +1326,134 @@
     return mensajeAnterior ? mensajeAnterior.texto + ' ' + consulta : consulta;
   }
 
+  function obtenerTiendaMencionada(consulta) {
+    const texto = window.DomiIARazonamiento.normalizarTexto(consulta);
+    if (!texto || typeof tiendas === 'undefined' || !Array.isArray(tiendas)) return null;
+    return tiendasVisibles().slice().sort(function (a, b) {
+      return String(b.nombre || '').length - String(a.nombre || '').length;
+    }).find(function (tienda) {
+      const nombre = window.DomiIARazonamiento.normalizarTexto(tienda.nombre);
+      return nombre.length >= 4 && texto.includes(nombre);
+    }) || null;
+  }
+
+  function obtenerZonaMencionada(consulta) {
+    const texto = window.DomiIARazonamiento.normalizarTexto(consulta);
+    if (typeof APP_CONFIG === 'undefined' || !APP_CONFIG.zonas) return null;
+    return Object.entries(APP_CONFIG.zonas).map(function (entrada) {
+      return { id: entrada[0], nombre: entrada[1].nombre, envio: Number(entrada[1].envio) || 0 };
+    }).sort(function (a, b) {
+      return Math.max(b.nombre.length, b.id.length) - Math.max(a.nombre.length, a.id.length);
+    }).find(function (zona) {
+      const nombre = window.DomiIARazonamiento.normalizarTexto(zona.nombre);
+      const id = window.DomiIARazonamiento.normalizarTexto(zona.id);
+      return [nombre, id].some(function (valor) {
+        if (valor.length < 3) return false;
+        const escapado = valor.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return new RegExp('(?:^|[^a-z0-9])' + escapado + '(?:$|[^a-z0-9])').test(texto);
+      });
+    }) || null;
+  }
+
+  function construirRespuestaZonas() {
+    const zonas = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.zonas
+      ? Object.entries(APP_CONFIG.zonas).map(function (entrada) {
+        return { nombre: String(entrada[1].nombre || entrada[0]).trim(), envio: Number(entrada[1].envio) || 0 };
+      })
+      : [];
+    if (!zonas.length) return 'No tengo las tarifas de envío disponibles ahora. Puedes verlas al seleccionar tu zona en el checkout.';
+
+    const grupos = new Map();
+    zonas.forEach(function (zona) {
+      const lista = grupos.get(zona.envio) || [];
+      lista.push(zona.nombre);
+      grupos.set(zona.envio, lista);
+    });
+    const tarifas = Array.from(grupos.entries()).sort(function (a, b) {
+      return a[0] - b[0];
+    }).map(function (grupo) {
+      return formatearPrecio(grupo[0]) + ': ' + grupo[1].join(', ');
+    });
+    return 'Estas son las zonas y tarifas base de envío: ' + tarifas.join(' | ') +
+      '. El total puede variar si combinas productos de varias tiendas; el checkout confirma el valor final.';
+  }
+
+  function responderConsultaOperativa(consulta) {
+    const texto = window.DomiIARazonamiento.normalizarTexto(consulta);
+    const zonaMencionada = obtenerZonaMencionada(consulta);
+    const preguntaZonas = /\b(zonas?|coberturas?|tarifas?|envios?|entregas?|domicilios?|barrios?|sectores?)\b/.test(texto) ||
+      (!!zonaMencionada && /\b(cuest\w*|preci\w*|valor|tarifa)\b/.test(texto));
+    if (preguntaZonas) {
+      return zonaMencionada
+        ? 'La tarifa base de envío para ' + zonaMencionada.nombre + ' es ' +
+          formatearPrecio(zonaMencionada.envio) +
+          '. El total puede variar si combinas productos de varias tiendas; el checkout confirma el valor final.'
+        : construirRespuestaZonas();
+    }
+
+    const solicitaRecomendacionTienda =
+      /\b(recomiend\w*|sugier\w*|mejor|preferid\w*)\b/.test(texto) &&
+      /\b(tiend\w*|restaur\w*|negocio\w*|local\w*)\b/.test(texto);
+    if (solicitaRecomendacionTienda) {
+      const abiertas = tiendasVisibles().filter(function (opcion) {
+        return window.DomiIACatalogo.estadoTienda(opcion).isOpen;
+      });
+      const promovidas = abiertas.filter(function (opcion) {
+        return Number(opcion.promovida) === 1 || opcion.promovida === true;
+      });
+      const recomendadas = promovidas.length ? promovidas : abiertas;
+      if (!recomendadas.length) {
+        return 'Según los horarios del catálogo, no hay tiendas abiertas ahora. Puedo revisar otras opciones cuando vuelvan a abrir.';
+      }
+      const nombres = recomendadas.slice(0, 5).map(function (opcion) {
+        return opcion.nombre;
+      }).join(', ');
+      return promovidas.length
+        ? 'Te recomiendo estas tiendas promovidas que están abiertas ahora: ' + nombres + '.'
+        : 'No veo tiendas promovidas abiertas ahora; estas tiendas sí están abiertas: ' + nombres + '.';
+    }
+
+    const tienda = obtenerTiendaMencionada(consulta);
+    const preguntaProductosTienda = /\b(producto\w*|vende\w*|ofrece\w*|menu|catalogo|que hay|que tiene)\b/.test(texto);
+    const preguntaTienda = /\b(tiend\w*|aliad\w*|horari\w*|abiert\w*|cerrad\w*|abre|abren|cierra|cierran|atiende|atienden|ubicacion|direccion|informacion|conoces|sabes|habl\w*|cuent\w*)\b/.test(texto) ||
+      (tienda && texto === window.DomiIARazonamiento.normalizarTexto(tienda.nombre));
+    if (tienda && preguntaTienda && !preguntaProductosTienda) {
+      const estado = window.DomiIACatalogo.estadoTienda(tienda);
+      const horarioHoy = typeof getHorarioHoy === 'function'
+        ? getHorarioHoy(tienda.horario)
+        : String(tienda.horario || '').trim();
+      const horario = horarioHoy && horarioHoy.toLowerCase() !== 'cerrado'
+        ? ' Su horario de hoy es ' + horarioHoy + '.'
+        : ' Hoy figura cerrada en el catálogo.';
+      return 'Según el catálogo, ' + tienda.nombre + ' está ' +
+        (estado.isOpen ? 'abierta ahora.' : 'cerrada ahora.') + horario;
+    }
+
+    const preguntaTiendasAbiertas = /\b(tiend\w*|aliad\w*|establecimient\w*)\b/.test(texto) &&
+      /\b(abiert\w*|disponibles|ahora|hoy)\b/.test(texto);
+    if (preguntaTiendasAbiertas) {
+      const abiertas = tiendasVisibles().filter(function (opcion) {
+        return window.DomiIACatalogo.estadoTienda(opcion).isOpen;
+      });
+      if (!abiertas.length) return 'Según los horarios del catálogo, no hay tiendas abiertas en este momento.';
+      return 'Según los horarios del catálogo, están abiertas: ' +
+        abiertas.slice(0, 12).map(function (opcion) { return opcion.nombre; }).join(', ') +
+        (abiertas.length > 12 ? ', entre otras. Dime el nombre de una tienda y reviso su horario.' : '.');
+    }
+    return null;
+  }
+
+  function responderLocal(consulta, respuesta) {
+    elementos.chips.hidden = true;
+    agregarMensaje('user', consulta);
+    historial.push({ rol: 'user', texto: consulta });
+    agregarMensaje('ia', respuesta, consulta);
+    historial.push({ rol: 'assistant', texto: respuesta });
+    historial = historial.slice(-MAX_HISTORIAL);
+    elementos.input.value = '';
+    actualizarContador();
+  }
+
   function desactivarTarjetasProducto() {
     if (!elementos) return;
     elementos.mensajes.querySelectorAll('.ia-card-agregar:not(:disabled)').forEach(function (boton) {
@@ -1690,6 +1818,11 @@
       intencionAgregar: intencionAgregar
     });
     window.DomiIAEtapas.registrarPaso(contextoEtapas.etapa);
+    const respuestaOperativa = responderConsultaOperativa(consulta);
+    if (respuestaOperativa) {
+      responderLocal(consulta, respuestaOperativa);
+      return;
+    }
     if (contextoEtapas.paso === 'consultar') {
       responderPreguntaCarrito(consulta);
       return;
@@ -1762,10 +1895,26 @@
 
     const consultaCatalogo = obtenerConsultaDeCatalogo(consulta);
     const idsExcluidos = Array.from(productosVistosEnSesion);
-    const catalogo = window.DomiIACatalogo.buscar(consultaCatalogo, {
+    const tiendaEnConsulta = obtenerTiendaMencionada(consulta);
+    const consultaProductosTienda = tiendaEnConsulta &&
+      /\b(vende\w*|ofrece\w*|producto\w*|menu|catalogo|tiene\w*|hay)\b/.test(
+        window.DomiIARazonamiento.normalizarTexto(consulta)
+      );
+    const catalogoBase = window.DomiIACatalogo.buscar(consultaCatalogo, {
       excluirIds: idsExcluidos,
       incluirIds: []
     });
+    const catalogo = consultaProductosTienda
+      ? Object.assign({}, catalogoBase, {
+        candidatos: catalogoBase.candidatos.filter(function (candidato) {
+          return String(candidato.tiendaId) === String(tiendaEnConsulta.id);
+        }),
+        productosPorId: new Map(Array.from(catalogoBase.productosPorId.entries())
+          .filter(function (entrada) {
+            return String(entrada[1].tiendaId) === String(tiendaEnConsulta.id);
+          }))
+      })
+      : catalogoBase;
     const candidatos = catalogo.candidatos;
     productosPorId = catalogo.productosPorId;
     if (gestionarSolicitudAgregar(consulta)) {

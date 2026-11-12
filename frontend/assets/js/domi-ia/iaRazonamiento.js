@@ -64,7 +64,7 @@
 
   function limpiarTextoHTML(html) {
     const documento = new DOMParser().parseFromString(html, 'text/html');
-    documento.querySelectorAll('script, style, nav, header, footer, button, input, .search-modal').forEach(function (elemento) {
+    documento.querySelectorAll('script, style, nav, header, footer, button:not(.faq-button), input, .search-modal').forEach(function (elemento) {
       elemento.remove();
     });
     return documento;
@@ -75,13 +75,27 @@
     if (!main) return [];
 
     if (tipo === 'ayuda') {
-      return Array.from(main.querySelectorAll('.faq-item')).map(function (item) {
+      const preguntas = Array.from(main.querySelectorAll('.faq-item')).map(function (item) {
         return {
           titulo: item.querySelector('.faq-button span')?.textContent.trim() || 'Ayuda',
           texto: item.querySelector('.faq-answer')?.textContent.trim() || '',
           fuente: url
         };
       }).filter(function (seccion) { return seccion.texto; });
+      const guias = Array.from(main.querySelectorAll('h2')).map(function (titulo, indice) {
+        const bloque = titulo.closest('section') || titulo.parentElement;
+        const contenido = bloque ? bloque.cloneNode(true) : null;
+        if (contenido) contenido.querySelectorAll('h2').forEach(function (elemento) {
+          elemento.remove();
+        });
+        return {
+          titulo: titulo.textContent.trim(),
+          texto: contenido ? contenido.textContent.trim().replace(/\s+/g, ' ').slice(0, 1800) : '',
+          fuente: url,
+          indice: indice
+        };
+      }).filter(function (seccion) { return seccion.texto; });
+      return guias.concat(preguntas);
     }
 
     const titulos = Array.from(main.querySelectorAll('h2'));
@@ -105,19 +119,20 @@
 
   function obtenerConocimiento(consulta) {
     const texto = normalizarTexto(consulta);
-    const consultaAyuda = /\b(ayuda|soporte|politica|privacidad|terminos?|condiciones|cancelar|cancelacion|devolucion|reclamo|pago|envio|entrega|datos personales|promocion|pedido|contacto)\b/.test(texto);
+    const consultaAyuda = /\b(ayuda|soporte|politica|privacidad|terminos?|condiciones|cancelar|cancelacion|devolucion|reclamo|pago|envio|entrega|datos personales|promocion|pedido|contacto|aplicacion|app|funciona|funcionamiento|usar|uso|agregar|anadir|carrito|checkout|confirmar|instalar|zona|barrio|domicilio)\b/.test(texto);
     if (!consultaAyuda) return Promise.resolve([]);
 
     if (!window.__domiIADocumentosOficiales) {
       const fuentes = [
         { tipo: 'ayuda', ruta: 'pages/centro-de-ayuda.html' },
         { tipo: 'politica', ruta: 'pages/politicas.html' },
+        { tipo: 'terminos', ruta: 'pages/terminos.html' },
         { tipo: 'terminos', ruta: 'pages/TyC.html' }
       ];
       window.__domiIADocumentosOficiales = Promise.all(fuentes.map(async function (fuente) {
         const url = new URL(fuente.ruta, document.baseURI);
         try {
-          const respuesta = await fetch(url.href, { cache: 'force-cache' });
+          const respuesta = await fetch(url.href, { cache: 'no-cache' });
           if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
           const documento = limpiarTextoHTML(await respuesta.text());
           return extraerSecciones(documento, fuente.tipo, '/' + fuente.ruta);
@@ -137,7 +152,12 @@
       return secciones.map(function (seccion) {
         const contenido = normalizarTexto(seccion.titulo + ' ' + seccion.texto);
         const puntos = terminos.reduce(function (total, termino) {
-          return total + (contenido.includes(termino) ? 1 : 0);
+          const variantes = [termino];
+          if (termino.length > 4 && /[aeiou]$/.test(termino)) variantes.push(termino.slice(0, -1));
+          if (termino.length > 4 && /s$/.test(termino)) variantes.push(termino.slice(0, -1));
+          return total + (variantes.some(function (variante) {
+            return contenido.includes(variante);
+          }) ? 1 : 0);
         }, 0);
         return { seccion: seccion, puntos: puntos };
       }).filter(function (item) { return item.puntos > 0; })
@@ -181,10 +201,13 @@
           nombre: String(tienda.nombre || '').slice(0, 80),
           horario: String(tienda.horario || '').slice(0, 500),
           abiertaAhora: abiertaAhora,
+          promovida: Number(tienda.promovida) === 1 || tienda.promovida === true,
           esTiendaBase: normalizarTexto(tienda.nombre).includes('domi delis')
         };
       }).sort(function (a, b) {
-        return Number(b.esTiendaBase) - Number(a.esTiendaBase);
+        return Number(b.abiertaAhora === true) - Number(a.abiertaAhora === true) ||
+          Number(b.promovida) - Number(a.promovida) ||
+          Number(b.esTiendaBase) - Number(a.esTiendaBase);
       }).slice(0, 60);
     }
 

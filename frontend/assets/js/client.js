@@ -946,7 +946,7 @@ function renderizarProductosDestacados() {
         p.tiendaNombre = tiendaNombre;
 
         return `
-        <div class="destacado-card" onclick="verProductoDestacado('${p.id}')">
+        <div class="destacado-card" data-product-id="${esc(p.id)}" onclick="verProductoDestacado('${p.id}')">
             <div class="destacado-card-img" data-bg="${p.imagen_url}"></div>
             <div class="destacado-card-overlay">
                 <h4>${esc(p.nombre)}</h4>
