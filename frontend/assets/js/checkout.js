@@ -224,7 +224,9 @@
     // ============================================
     // INICIO
     // ============================================
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (window.APP_CONFIG_READY) await window.APP_CONFIG_READY;
+        if (typeof actualizarZonasAutocompletado === 'function') actualizarZonasAutocompletado();
         initZonaCheckout(); // Sincroniza el selector de zona
         renderResumen();    // Muestra los productos y calcula el envío
         initPagoSeleccion();

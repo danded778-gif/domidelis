@@ -1,5 +1,7 @@
 // ============================================
 // firebase-messaging-sw.js — PWA + FCM Unificado
+// ★ v2.3.1 — horarios configurables de categorías:
+//   - Se precachea el módulo compartido de horarios.
 // ★ v2.1 — TEMA 1 + TEMA 2:
 //   - CACHE_NAME v2.0 → v2.1 (purga la basura del ?v= viejo
 //     y dispara la actualización en usuarios con la app instalada)
@@ -78,6 +80,7 @@ const ARCHIVOS_ESTATICOS = [
   '/assets/js/components/toast.js',
   '/assets/js/paginator.js',
   '/assets/js/client.js',
+  '/assets/js/categorias-horarios.js',
   '/assets/js/cliente/categorias-dinamicas.js',
   '/assets/js/tienda-oculto.js',
   '/assets/js/cart-empty-cta.js',

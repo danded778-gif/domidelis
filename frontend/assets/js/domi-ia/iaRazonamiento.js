@@ -212,7 +212,9 @@
     }
 
     if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.zonas) {
-      contexto.zonas = Object.entries(APP_CONFIG.zonas).slice(0, 100).map(function (entrada) {
+      contexto.zonas = Object.entries(APP_CONFIG.zonas).filter(function (entrada) {
+        return entrada[1].activo !== false;
+      }).slice(0, 100).map(function (entrada) {
         return {
           nombre: String(entrada[1].nombre || entrada[0]).slice(0, 80),
           envioBase: Number(entrada[1].envio) || 0

@@ -1340,7 +1340,9 @@
   function obtenerZonaMencionada(consulta) {
     const texto = window.DomiIARazonamiento.normalizarTexto(consulta);
     if (typeof APP_CONFIG === 'undefined' || !APP_CONFIG.zonas) return null;
-    return Object.entries(APP_CONFIG.zonas).map(function (entrada) {
+    return Object.entries(APP_CONFIG.zonas).filter(function (entrada) {
+      return entrada[1].activo !== false;
+    }).map(function (entrada) {
       return { id: entrada[0], nombre: entrada[1].nombre, envio: Number(entrada[1].envio) || 0 };
     }).sort(function (a, b) {
       return Math.max(b.nombre.length, b.id.length) - Math.max(a.nombre.length, a.id.length);
@@ -1357,7 +1359,9 @@
 
   function construirRespuestaZonas() {
     const zonas = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.zonas
-      ? Object.entries(APP_CONFIG.zonas).map(function (entrada) {
+      ? Object.entries(APP_CONFIG.zonas).filter(function (entrada) {
+        return entrada[1].activo !== false;
+      }).map(function (entrada) {
         return { nombre: String(entrada[1].nombre || entrada[0]).trim(), envio: Number(entrada[1].envio) || 0 };
       })
       : [];

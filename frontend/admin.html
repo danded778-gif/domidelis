@@ -78,6 +78,8 @@
                     Informes</button>
                 <button class="admin-nav-btn" onclick="cambiarSeccion('infodomi')"><i class="fas fa-motorcycle"></i>
                     Pagos Domis</button>
+                <button class="admin-nav-btn" onclick="cambiarSeccion('horarios-categorias')"><i
+                        class="fas fa-clock"></i> Horarios categorías</button>
                 <!-- ★ NUEVO BOTÓN: ANUNCIOS ★ -->
                 <button class="admin-nav-btn" onclick="cambiarSeccion('anuncios')"><i class="fas fa-bullhorn"></i>
                     Anuncios</button>
@@ -563,6 +565,99 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- ══════════ HORARIOS DE CATEGORÍAS ══════════ -->
+            <div class="admin-section" id="sec-horarios-categorias">
+                <div class="section-header">
+                    <h2><i class="fas fa-clock"></i> Horarios de categorías</h2>
+                    <button class="btn btn-secondary btn-sm" onclick="AdminCategorySchedule.cargar()">
+                        <i class="fas fa-sync-alt"></i> Actualizar categorías
+                    </button>
+                </div>
+                <p style="margin:0 0 1rem;color:var(--gray);">
+                    Define qué categorías prioriza la vitrina estrella en cada franja horaria de Colombia.
+                    Los cambios se guardan para todos los clientes. Las franjas deben cubrir el día completo,
+                    sin espacios ni cruces.
+                </p>
+                <div id="category-schedule-status" role="status" style="margin-bottom:1rem;"></div>
+                <div class="admin-card">
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Desde</th>
+                                    <th>Hasta</th>
+                                    <th>Categorías prioritarias (en orden)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="category-schedule-rows"></tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
+                        <button class="btn btn-secondary btn-sm" onclick="AdminCategorySchedule.agregarFranja()">
+                            <i class="fas fa-plus"></i> Agregar franja
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="category-schedule-save"
+                            onclick="AdminCategorySchedule.guardar()">
+                            <i class="fas fa-save"></i> Guardar horarios
+                        </button>
+                    </div>
+                </div>
+                <div class="admin-card" style="margin-top:1.5rem;">
+                    <h3><i class="fas fa-copy"></i> Plantillas reutilizables</h3>
+                    <p style="color:var(--gray);">Guarda el horario actual con un nombre y aplícalo manualmente cuando quieras, por ejemplo para fines de semana o temporadas.</p>
+                    <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin-top:1rem;">
+                        <input id="category-template-name" type="text" maxlength="50"
+                            placeholder="Nombre de la plantilla (ej. Fin de semana)"
+                            aria-label="Nombre de la plantilla">
+                        <button class="btn btn-secondary btn-sm" onclick="AdminCategorySchedule.guardarPlantilla()">
+                            <i class="fas fa-save"></i> Guardar como plantilla
+                        </button>
+                        <select id="category-template-select" aria-label="Plantillas guardadas">
+                            <option value="">Selecciona una plantilla...</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" onclick="AdminCategorySchedule.aplicarPlantilla()">
+                            <i class="fas fa-file-import"></i> Aplicar plantilla
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="AdminCategorySchedule.eliminarPlantilla()">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </div>
+                <div class="admin-card" style="margin-top:1.5rem;">
+                    <div class="section-header" style="margin-bottom:1rem;">
+                        <h3><i class="fas fa-map-marked-alt"></i> Zonas y tarifas de envío</h3>
+                    </div>
+                    <p style="color:var(--gray);">Los cambios se usarán en los selectores y el cálculo de envío para los próximos pedidos. Las zonas desactivadas se conservan para no alterar el historial.</p>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr><th>Identificador</th><th>Nombre</th><th>Tarifa (COP)</th><th>Activa</th></tr>
+                            </thead>
+                            <tbody id="delivery-zones-rows"></tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:end;margin-top:1rem;">
+                        <div>
+                            <label for="delivery-zone-name">Nueva zona</label>
+                            <input id="delivery-zone-name" type="text" maxlength="80" placeholder="Nombre del barrio o zona">
+                        </div>
+                        <div>
+                            <label for="delivery-zone-fee">Tarifa en COP</label>
+                            <input id="delivery-zone-fee" type="number" min="0" max="100000" step="1" placeholder="Ej: 5000">
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="AdminCategorySchedule.agregarZona()">
+                            <i class="fas fa-plus"></i> Agregar zona
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="delivery-zones-save"
+                            onclick="AdminCategorySchedule.guardarZonas()">
+                            <i class="fas fa-save"></i> Guardar zonas
+                        </button>
+                    </div>
+                    <div id="delivery-zones-status" role="status" style="margin-top:1rem;"></div>
                 </div>
             </div>
 
@@ -1095,6 +1190,8 @@
     <!-- <script src="assets/js/admin.js"></script>// -->
 
     <script src="assets/js/admin/core.js"></script>
+    <script src="assets/js/categorias-horarios.js"></script>
+    <script src="assets/js/admin/categorias-horarios.js"></script>
     <script src="assets/js/admin/audio-notificaciones.js"></script>
     <script src="assets/js/admin/tiendas.js"></script>
     <script src="assets/js/admin/productos.js"></script>
@@ -1131,6 +1228,9 @@
             }
             if (nombre === 'infodomi' && typeof cargarInfoDomiciliarios === 'function' && !infodomiCargado) {
                 cargarInfoDomiciliarios();
+            }
+            if (nombre === 'horarios-categorias' && typeof AdminCategorySchedule !== 'undefined') {
+                AdminCategorySchedule.cargar();
             }
             // ★ Cargar anuncios al entrar a la pestaña
             if (nombre === 'anuncios' && typeof AdminAnuncios !== 'undefined') {

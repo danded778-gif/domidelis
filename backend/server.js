@@ -272,6 +272,290 @@ function verificarToken(req, res, next) {
     }
 }
 
+function validarFranjasCategorias(franjas) {
+    if (!Array.isArray(franjas) || franjas.length < 1 || franjas.length > 24) {
+        return { error: 'Configura entre 1 y 24 franjas horarias.' };
+    }
+
+    const cobertura = new Uint8Array(24 * 60);
+    const normalizadas = [];
+
+    for (const franja of franjas) {
+        if (!franja || typeof franja !== 'object') {
+            return { error: 'Hay una franja horaria inválida.' };
+        }
+        const { inicio, fin } = franja || {};
+        const formatoHora = /^([01]\d|2[0-3]):[0-5]\d$/;
+        if (typeof inicio !== 'string' || typeof fin !== 'string' ||
+            !formatoHora.test(inicio) || !formatoHora.test(fin)) {
+            return { error: 'Cada franja debe tener una hora inicial y final válidas.' };
+        }
+
+        const [horaInicio, minutoInicio] = inicio.split(':').map(Number);
+        const [horaFin, minutoFin] = fin.split(':').map(Number);
+        const minutoInicial = horaInicio * 60 + minutoInicio;
+        const minutoFinal = horaFin * 60 + minutoFin;
+        if (minutoInicial === minutoFinal) {
+            return { error: 'La hora inicial y final de una franja no pueden ser iguales.' };
+        }
+
+        if (!Array.isArray(franja.categorias) || franja.categorias.length < 1 || franja.categorias.length > 30) {
+            return { error: 'Cada franja debe tener entre 1 y 30 categorías.' };
+        }
+
+        const categorias = [];
+        const categoriasVistas = new Set();
+        for (const valor of franja.categorias) {
+            if (typeof valor !== 'string') return { error: 'Hay una categoría inválida.' };
+            const categoria = valor.trim();
+            if (!categoria || categoria.length > 60) return { error: 'Hay una categoría vacía o demasiado larga.' };
+            const clave = categoria.toLocaleLowerCase('es-CO');
+            if (categoriasVistas.has(clave)) return { error: 'No repitas una categoría dentro de la misma franja.' };
+            categoriasVistas.add(clave);
+            categorias.push(categoria);
+        }
+
+        for (let minuto = minutoInicial; minuto !== minutoFinal; minuto = (minuto + 1) % (24 * 60)) {
+            if (cobertura[minuto]) return { error: 'Las franjas se cruzan. Ajusta las horas para que no se superpongan.' };
+            cobertura[minuto] = 1;
+        }
+
+        normalizadas.push({ inicio, fin, categorias });
+    }
+
+    if (cobertura.some(minuto => minuto === 0)) {
+        return { error: 'Las franjas deben cubrir todo el día, sin cruces ni espacios vacíos.' };
+    }
+
+    normalizadas.sort((a, b) => {
+        const [horaA, minutoA] = a.inicio.split(':').map(Number);
+        const [horaB, minutoB] = b.inicio.split(':').map(Number);
+        return horaA * 60 + minutoA - (horaB * 60 + minutoB);
+    });
+    return { franjas: normalizadas };
+}
+
+function validarZonasEnvio(zonas) {
+    if (!Array.isArray(zonas) || zonas.length < 1 || zonas.length > 200) {
+        return { error: 'Debe haber entre 1 y 200 zonas.' };
+    }
+
+    const ids = new Set();
+    const nombres = new Set();
+    const normalizadas = [];
+    for (const zona of zonas) {
+        if (!zona || typeof zona !== 'object') return { error: 'Hay una zona inválida.' };
+        const { id, nombre, envio, activo } = zona;
+        if (typeof id !== 'string' || !/^[\p{L}\p{N}_-]{1,60}$/u.test(id)) {
+            return { error: 'Cada zona debe tener un identificador válido.' };
+        }
+        if (typeof nombre !== 'string' || !nombre.trim() || nombre.trim().length > 80) {
+            return { error: 'Cada zona debe tener un nombre de 1 a 80 caracteres.' };
+        }
+        if (typeof envio !== 'number' || !Number.isSafeInteger(envio) || envio < 0 || envio > 100000) {
+            return { error: 'Cada tarifa debe ser un valor entero entre 0 y 100000.' };
+        }
+        if (typeof activo !== 'boolean') return { error: 'El estado de cada zona debe ser activo o inactivo.' };
+
+        const idNormalizado = id.toLocaleLowerCase('es-CO');
+        const nombreNormalizado = nombre.trim().toLocaleLowerCase('es-CO');
+        if (ids.has(idNormalizado)) return { error: 'No puede haber identificadores de zona repetidos.' };
+        if (nombres.has(nombreNormalizado)) return { error: 'No puede haber nombres de zona repetidos.' };
+        ids.add(idNormalizado);
+        nombres.add(nombreNormalizado);
+        normalizadas.push({ id, nombre: nombre.trim(), envio, activo });
+    }
+
+    if (!normalizadas.some(zona => zona.activo)) return { error: 'Debe quedar al menos una zona activa.' };
+    return { zonas: normalizadas };
+}
+
+app.get('/api/app-config', async (req, res) => {
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de configuración no está disponible.' });
+    }
+
+    try {
+        const snapshot = await firestoreDb.collection('app_config').doc('delivery_zones').get();
+        res.set('Cache-Control', 'no-store');
+        return res.json({
+            success: true,
+            zonas: snapshot.exists && Array.isArray(snapshot.data().zones) ? snapshot.data().zones : null
+        });
+    } catch (error) {
+        console.error('Error leyendo las zonas de envío:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudieron cargar las zonas de envío.' });
+    }
+});
+
+app.put('/api/app-config/zones', verificarToken, async (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Solo un administrador puede cambiar las zonas.' });
+    }
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de configuración no está disponible.' });
+    }
+
+    const resultado = validarZonasEnvio(req.body && req.body.zonas);
+    if (resultado.error) return res.status(400).json({ success: false, error: resultado.error });
+
+    try {
+        await firestoreDb.collection('app_config').doc('delivery_zones').set({
+            zones: resultado.zonas,
+            updatedAt: FieldValue.serverTimestamp(),
+            updatedBy: String(req.user.id || '')
+        });
+        return res.json({ success: true, zonas: resultado.zonas });
+    } catch (error) {
+        console.error('Error guardando las zonas de envío:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudieron guardar las zonas de envío.' });
+    }
+});
+
+app.get('/api/category-schedule', async (req, res) => {
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de horarios no está disponible.' });
+    }
+
+    try {
+        const snapshot = await firestoreDb.collection('app_config').doc('category_schedule').get();
+        res.set('Cache-Control', 'no-store');
+        return res.json({
+            success: true,
+            slots: snapshot.exists && Array.isArray(snapshot.data().slots) ? snapshot.data().slots : null,
+            templates: snapshot.exists && Array.isArray(snapshot.data().templates) ? snapshot.data().templates : []
+        });
+    } catch (error) {
+        console.error('Error leyendo los horarios de categorías:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudieron cargar los horarios de categorías.' });
+    }
+});
+
+app.put('/api/category-schedule', verificarToken, async (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Solo un administrador puede cambiar estos horarios.' });
+    }
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de horarios no está disponible.' });
+    }
+
+    const resultado = validarFranjasCategorias(req.body && req.body.slots);
+    if (resultado.error) {
+        return res.status(400).json({ success: false, error: resultado.error });
+    }
+
+    try {
+        await firestoreDb.collection('app_config').doc('category_schedule').set({
+            slots: resultado.franjas,
+            updatedAt: FieldValue.serverTimestamp(),
+            updatedBy: String(req.user.id || '')
+        });
+        return res.json({ success: true, slots: resultado.franjas });
+    } catch (error) {
+        console.error('Error guardando los horarios de categorías:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudieron guardar los horarios de categorías.' });
+    }
+});
+
+app.post('/api/category-schedule/templates', verificarToken, async (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Solo un administrador puede guardar plantillas.' });
+    }
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de horarios no está disponible.' });
+    }
+
+    const body = req.body || {};
+    const nombre = typeof body.nombre === 'string' ? body.nombre.trim() : '';
+    if (!nombre || nombre.length > 50) {
+        return res.status(400).json({ success: false, error: 'El nombre de la plantilla debe tener entre 1 y 50 caracteres.' });
+    }
+    const resultado = validarFranjasCategorias(body.slots);
+    if (resultado.error) return res.status(400).json({ success: false, error: resultado.error });
+
+    try {
+        const referencia = firestoreDb.collection('app_config').doc('category_schedule');
+        const plantilla = {
+            id: require('crypto').randomUUID(),
+            nombre,
+            slots: resultado.franjas
+        };
+        const templates = await firestoreDb.runTransaction(async transaction => {
+            const snapshot = await transaction.get(referencia);
+            const actuales = snapshot.exists && Array.isArray(snapshot.data().templates)
+                ? snapshot.data().templates
+                : [];
+            if (actuales.length >= 20) {
+                const error = new Error('Ya hay 20 plantillas. Elimina una antes de agregar otra.');
+                error.status = 400;
+                throw error;
+            }
+            if (actuales.some(actual =>
+                String(actual && actual.nombre || '').toLocaleLowerCase('es-CO') === nombre.toLocaleLowerCase('es-CO')
+            )) {
+                const error = new Error('Ya existe una plantilla con ese nombre.');
+                error.status = 400;
+                throw error;
+            }
+            const actualizadas = [...actuales, plantilla];
+            transaction.set(referencia, {
+                templates: actualizadas,
+                updatedAt: FieldValue.serverTimestamp(),
+                updatedBy: String(req.user.id || '')
+            }, { merge: true });
+            return actualizadas;
+        });
+        return res.json({ success: true, templates });
+    } catch (error) {
+        if (error.status === 400) {
+            return res.status(400).json({ success: false, error: error.message });
+        }
+        console.error('Error guardando la plantilla de horarios:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudo guardar la plantilla.' });
+    }
+});
+
+app.delete('/api/category-schedule/templates/:templateId', verificarToken, async (req, res) => {
+    if (!req.user || req.user.rol !== 'admin') {
+        return res.status(403).json({ success: false, error: 'Solo un administrador puede eliminar plantillas.' });
+    }
+    if (!firestoreDb) {
+        return res.status(503).json({ success: false, error: 'El almacenamiento de horarios no está disponible.' });
+    }
+
+    try {
+        const referencia = firestoreDb.collection('app_config').doc('category_schedule');
+        const templates = await firestoreDb.runTransaction(async transaction => {
+            const snapshot = await transaction.get(referencia);
+            if (!snapshot.exists || !Array.isArray(snapshot.data().templates)) {
+                const error = new Error('No se encontró la plantilla.');
+                error.status = 404;
+                throw error;
+            }
+            const actuales = snapshot.data().templates;
+            const actualizadas = actuales.filter(plantilla => plantilla.id !== req.params.templateId);
+            if (actualizadas.length === actuales.length) {
+                const error = new Error('No se encontró la plantilla.');
+                error.status = 404;
+                throw error;
+            }
+            transaction.set(referencia, {
+                templates: actualizadas,
+                updatedAt: FieldValue.serverTimestamp(),
+                updatedBy: String(req.user.id || '')
+            }, { merge: true });
+            return actualizadas;
+        });
+        return res.json({ success: true, templates });
+    } catch (error) {
+        if (error.status === 404) {
+            return res.status(404).json({ success: false, error: error.message });
+        }
+        console.error('Error eliminando la plantilla de horarios:', error.message);
+        return res.status(500).json({ success: false, error: 'No se pudo eliminar la plantilla.' });
+    }
+});
+
 app.post('/api/fcm/token', async (req, res) => {
     if (!firestoreDb) {
         return res.status(503).json({ success: false, error: 'El servicio de notificaciones no está disponible.' });

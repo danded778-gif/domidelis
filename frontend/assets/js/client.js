@@ -79,15 +79,13 @@ function obtenerHoraColombia() {
     return fecha.getHours() + (fecha.getMinutes() / 60);
 }
 
-// 0.2 Retorna las categorías prioritarias según el bloque horario:
-//     06:00–10:30 → Menú + Bebidas + Farmacia (desayunos)
-//     10:30–15:00 → Almuerzo + Bebidas + Menú
-//     15:00–16:00 → Detalles + Bebidas (snacks de tarde)
-//     16:00–17:00 → Farmacia + Bebidas (bienestar)
-//     17:00–21:00 → Menú + Bebidas (comidas rápidas)
-//     21:00–23:00 → Licores + Cervezas + Bebidas (noche)
-//     23:00–06:00 → Modo dinámico base
+// 0.2 Retorna las categorías del horario configurado desde el Admin.
+//     Si la configuración remota no está disponible, usa las franjas base.
 function obtenerPrioridadesPorHorario() {
+    if (window.CategoriasHorario) {
+        return window.CategoriasHorario.obtenerPrioridades(franjasPrioridadCategorias);
+    }
+
     const hora = obtenerHoraColombia();
     if (hora >= 6.0 && hora < 10.5) return ['Menu', 'Bebidas', 'Farmacia'];
     if (hora >= 10.5 && hora < 15.0) return ['Almuerzo', 'Bebidas', 'Menu'];
@@ -101,15 +99,12 @@ function obtenerPrioridadesPorHorario() {
 // 0.3 Filtra, BARAJA y prioriza los productos de la vitrina estrella.
 //     ★ v4.8: dentro de cada grupo el orden es aleatorio en cada recarga,
 //     pero la regla de prioridad se mantiene intacta:
-//       1º) productos de la categoría ideal de la hora (ej: Almuerzo al mediodía)
-//       2º) productos de la 2ª categoría del horario (ej: Bebidas) — rotan
-//       3º) el resto de productos — también barajados
+//       1º) categorías configuradas en orden de prioridad para esa franja
+//       2º) el resto de productos — también barajados
 //     Se conservan las protecciones originales (imágenes 'null'/'undefined'
 //     descartadas y badge "Agotado" detectado sin importar mayúsculas).
 function obtenerProductosEstrellaPriorizados(productos, limite = 4) {
     const prioridad = obtenerPrioridadesPorHorario();
-    const catPrincipal = prioridad[0];   // La categoría ideal de la hora actual
-    const catSecundaria = prioridad[1];  // ★ v4.8: 2ª prioridad (ej: Bebidas)
 
     const validos = (productos || []).filter(p =>
         p.imagen_url &&
@@ -119,20 +114,47 @@ function obtenerProductosEstrellaPriorizados(productos, limite = 4) {
         !(p.badge && String(p.badge).toLowerCase() === 'agotado')
     );
 
-    // ★ v4.8: Barajamos DENTRO de cada grupo (rotación por recarga)
-    const prioritarios = barajarArray(validos.filter(p => p.categoria === catPrincipal));
-
-    const secundarios = (catSecundaria && catSecundaria !== catPrincipal)
-        ? barajarArray(validos.filter(p => p.categoria === catSecundaria))
-        : [];
-
-    const otros = barajarArray(validos.filter(p =>
-        p.categoria !== catPrincipal &&
-        p.categoria !== catSecundaria
+    const priorizadas = prioridad.map(categoria =>
+        barajarArray(validos.filter(producto => String(producto.categoria || '').trim() === categoria))
+    );
+    const otras = barajarArray(validos.filter(producto =>
+        !prioridad.includes(String(producto.categoria || '').trim())
     ));
 
-    // Prioridad de categorías intacta: principal → secundaria (Bebidas) → resto
-    return [...prioritarios, ...secundarios, ...otros].slice(0, limite);
+    return [...priorizadas.flat(), ...otras].slice(0, limite);
+}
+
+async function cargarFranjasCategorias() {
+    const claveCache = 'domidelis_horarios_categorias_v1';
+    try {
+        const guardadas = localStorage.getItem(claveCache);
+        const franjasCacheadas = guardadas ? JSON.parse(guardadas) : null;
+        if (Array.isArray(franjasCacheadas) && franjasCacheadas.length) {
+            franjasPrioridadCategorias = franjasCacheadas;
+        }
+    } catch (error) {
+        console.warn('No se pudo leer la copia local de horarios de categorías:', error.message);
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/category-schedule`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (!data.success) throw new Error(data.error || 'Respuesta inválida del servidor');
+
+        franjasPrioridadCategorias = Array.isArray(data.slots) && data.slots.length
+            ? data.slots
+            : window.CategoriasHorario.obtenerFranjasPredeterminadas();
+        localStorage.setItem(claveCache, JSON.stringify(franjasPrioridadCategorias));
+
+        if (productosGlobal.length) {
+            const categorias = [...new Set(productosGlobal.map(producto => producto.categoria).filter(Boolean))];
+            renderizarCategorias(categorias);
+            renderizarProductosDestacados();
+        }
+    } catch (error) {
+        console.warn('No se pudieron actualizar los horarios de categorías; se conserva la configuración disponible:', error.message);
+    }
 }
 
 function esProductoValido(p) {
@@ -155,6 +177,9 @@ let carrito = [];
 let categoriaActiva = 'Todas';
 let productosGlobal = [];
 let complementosGlobal = [];
+let franjasPrioridadCategorias = window.CategoriasHorario
+    ? window.CategoriasHorario.obtenerFranjasPredeterminadas()
+    : null;
 
 let currentPaginator = null;
 let currentStoreProducts = [];
@@ -191,10 +216,13 @@ function observeLazyBg(container) {
 // ============================================
 // 1. INICIALIZACIÓN
 // ============================================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    if (window.APP_CONFIG_READY) await window.APP_CONFIG_READY;
+    actualizarZonasAutocompletado();
     carrito = obtenerCarrito();
     actualizarCarritoUI();
     inicializarEventos();
+    if (window.CategoriasHorario) cargarFranjasCategorias();
 
     const scrollLeft = document.getElementById('scroll-left');
     const scrollRight = document.getElementById('scroll-right');
@@ -1716,11 +1744,26 @@ function checkStoreStatus(horario) {
 // ============================================
 // 8. ZONE AUTOCOMPLETE
 // ============================================
-const ZONAS = Object.entries(APP_CONFIG.zonas).map(([id, data]) => ({
-    id: id,
-    nombre: data.nombre,
-    envio: data.envio
-})).sort((a, b) => a.nombre.localeCompare(b.nombre));
+let ZONAS = Object.entries(APP_CONFIG.zonas)
+    .filter(([, data]) => data.activo !== false)
+    .map(([id, data]) => ({ id, nombre: data.nombre, envio: data.envio }))
+    .sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+function actualizarZonasAutocompletado() {
+    ZONAS = Object.entries(APP_CONFIG.zonas)
+        .filter(([, data]) => data.activo !== false)
+        .map(([id, data]) => ({ id, nombre: data.nombre, envio: data.envio }))
+        .sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    if (_zonaSeleccionada && !ZONAS.some(zona => zona.id === _zonaSeleccionada.id)) {
+        _zonaSeleccionada = null;
+    }
+    if (_checkoutZonaSeleccionada && !ZONAS.some(zona => zona.id === _checkoutZonaSeleccionada.id)) {
+        _checkoutZonaSeleccionada = null;
+    }
+}
+
+window.addEventListener('domidelis:zonas-actualizadas', actualizarZonasAutocompletado);
 
 let _zonaSeleccionada = null;
 let _highlightedIndex = -1;
@@ -1847,7 +1890,14 @@ function _actualizarHighlight(options) {
 let _checkoutZonaSeleccionada = null;
 let _checkoutHighlightedIndex = -1;
 
-function initZoneAutocompleteCheckout() {
+function initZoneAutocompleteCheckout(configuracionLista = false) {
+    if (!configuracionLista && window.APP_CONFIG_READY) {
+        return window.APP_CONFIG_READY.then(() => {
+            actualizarZonasAutocompletado();
+            return initZoneAutocompleteCheckout(true);
+        });
+    }
+
     const input = document.getElementById('zona-checkout-input');
     const hiddenInput = document.getElementById('zona-checkout');
     const dropdown = document.getElementById('zone-dropdown-checkout');

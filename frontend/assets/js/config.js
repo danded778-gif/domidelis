@@ -500,4 +500,4 @@ window.addEventListener('pageshow', (event) => {
         document.fonts.ready.then(ajustarAlturaHeader);
     }
     ajustarAlturaHeader();
-})();
+})(); 
