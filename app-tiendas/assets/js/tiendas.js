@@ -23,7 +23,7 @@ function cambiarTab(tab) {
     // Cargar datos dinámicos al cambiar de tab
     if(tab === 'productos') cargarProductos();
     if(tab === 'pedidos') cargarPedidos('cambio de pestaña');
-    if(tab === 'comision') cargarDatosComision();
+    if(tab === 'comision') cargarDatosComision('cambio a pestaña Comisión');
     if(tab === 'configuracion') cargarConfiguracion();
 }
 
@@ -67,11 +67,15 @@ async function cargarProductos() {
 let solicitudPedidosEnCurso = null;
 let cargaPedidosEnCurso = null;
 
-function obtenerPedidosTienda() {
-    if (solicitudPedidosEnCurso) return solicitudPedidosEnCurso;
+function obtenerPedidosTienda(origen = 'consumidor de pedidos') {
+    if (solicitudPedidosEnCurso) {
+        console.info(`[Tienda] ${origen} reutiliza una petición de pedidos en curso.`);
+        return solicitudPedidosEnCurso;
+    }
 
     solicitudPedidosEnCurso = (async () => {
         const inicio = performance.now();
+        console.info(`[Tienda] GET /pedidos solicitado por: ${origen}.`);
         try {
             const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
             const tiempoCabeceras = Math.round(performance.now() - inicio);
@@ -129,7 +133,7 @@ function cargarPedidos(origen = 'reintento') {
         }
 
         try {
-            const pedidos = await obtenerPedidosTienda();
+            const pedidos = await obtenerPedidosTienda(origen);
 
             if (pedidos.length === 0) {
                 EstadoCargaTienda.mostrarPedidos(grid, 'vacio', 'No tienes pedidos aún.');
@@ -176,14 +180,14 @@ function cargarPedidos(origen = 'reintento') {
 // ============================================
 // LÓGICA PARA LA PESTAÑA DE COMISIONES
 // ============================================
-async function cargarDatosComision() {
+async function cargarDatosComision(origen = 'pestaña Comisión') {
     const comisionPct = getMiComision();
     
     const pctText = document.getElementById('comision-pct-text');
     if (pctText) pctText.innerText = comisionPct;
 
     try {
-        const todosPedidos = await obtenerPedidosTienda();
+        const todosPedidos = await obtenerPedidosTienda(origen);
         
         const pedidosEntregados = todosPedidos.filter(p => p.estado === 'entregado');
 
