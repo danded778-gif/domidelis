@@ -71,9 +71,30 @@ function obtenerPedidosTienda() {
     if (solicitudPedidosEnCurso) return solicitudPedidosEnCurso;
 
     solicitudPedidosEnCurso = (async () => {
-        const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
-        if (!res.ok) throw new Error(`Error cargando pedidos (HTTP ${res.status})`);
-        return res.json();
+        const inicio = performance.now();
+        try {
+            const res = await fetch(`${API_URL}/pedidos`, { headers: authHeaders() });
+            const tiempoCabeceras = Math.round(performance.now() - inicio);
+            const medicionServidor = res.headers.get('Server-Timing');
+            let resultado;
+            try {
+                resultado = await res.json();
+            } catch (error) {
+                if (res.ok) throw new Error('El servidor devolvió una respuesta de pedidos inválida.');
+                resultado = {};
+            }
+            console.info(
+                `[Tienda] GET /pedidos: cabeceras=${tiempoCabeceras} ms; total=${Math.round(performance.now() - inicio)} ms; servidor=${medicionServidor || 'no disponible'}`
+            );
+            if (!res.ok) {
+                throw new Error((resultado && resultado.error) || `Error cargando pedidos (HTTP ${res.status})`);
+            }
+            if (!Array.isArray(resultado)) throw new Error('El servidor devolvió un formato de pedidos inválido.');
+            return resultado;
+        } catch (error) {
+            console.info(`[Tienda] GET /pedidos falló tras ${Math.round(performance.now() - inicio)} ms.`);
+            throw error;
+        }
     })().finally(() => {
         solicitudPedidosEnCurso = null;
     });
@@ -84,27 +105,69 @@ function obtenerPedidosTienda() {
 function cargarPedidos() {
     if (cargaPedidosEnCurso) return cargaPedidosEnCurso;
 
-    cargaPedidosEnCurso = (async () => {
+    cargaPedidosEnCurso = Promise.resolve().then(async () => {
         const inicio = performance.now();
+        const grid = document.getElementById('lista-pedidos');
+        if (!grid) return;
+
+        const yaTieneDatos = grid.dataset.cargado === 'true';
+        if (!navigator.onLine) {
+            const mensaje = 'Sin conexión a internet. Revisa tu conexión para actualizar los pedidos.';
+            if (yaTieneDatos) {
+                EstadoCargaTienda.mostrarConexion('offline', mensaje, cargarPedidos);
+            } else {
+                EstadoCargaTienda.mostrarPedidos(grid, 'offline', mensaje, cargarPedidos);
+            }
+            return;
+        }
+
+        if (!yaTieneDatos) {
+            EstadoCargaTienda.mostrarPedidos(grid, 'cargando', 'Cargando tus pedidos…');
+        } else {
+            EstadoCargaTienda.mostrarConexion('cargando', 'Actualizando pedidos…');
+        }
+
         try {
             const pedidos = await obtenerPedidosTienda();
 
-            const grid = document.getElementById('lista-pedidos');
-            if (!grid) return;
-
             if (pedidos.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; color:var(--gray); padding:2rem;">No tienes pedidos aún.</p>';
+                EstadoCargaTienda.mostrarPedidos(grid, 'vacio', 'No tienes pedidos aún.');
+                grid.dataset.cargado = 'true';
+                EstadoCargaTienda.mostrarConexion('', '');
                 return;
             }
 
             grid.innerHTML = pedidos.map(p => crearTarjetaPedido(p, { modo: 'tienda' })).join('');
+            grid.dataset.cargado = 'true';
+            EstadoCargaTienda.mostrarConexion('', '');
         } catch (err) {
             console.error('Error cargando pedidos:', err);
+            const sinConexion = !navigator.onLine ||
+                err instanceof TypeError ||
+                /sin conexión al servidor/i.test(err.message);
+            const mensaje = sinConexion
+                ? 'No se pudo conectar al servidor. Verifica internet e inténtalo de nuevo.'
+                : 'No pudimos cargar los pedidos. Inténtalo de nuevo.';
+            if (yaTieneDatos) {
+                EstadoCargaTienda.mostrarConexion(
+                    sinConexion ? 'offline' : 'error',
+                    `${mensaje} Se conservan los pedidos mostrados anteriormente.`,
+                    cargarPedidos
+                );
+            } else {
+                EstadoCargaTienda.mostrarPedidos(
+                    grid,
+                    sinConexion ? 'offline' : 'error',
+                    mensaje,
+                    cargarPedidos
+                );
+            }
         } finally {
             console.info(`Carga de pedidos completada en ${Math.round(performance.now() - inicio)} ms.`);
-            cargaPedidosEnCurso = null;
         }
-    })();
+    }).finally(() => {
+        cargaPedidosEnCurso = null;
+    });
 
     return cargaPedidosEnCurso;
 }

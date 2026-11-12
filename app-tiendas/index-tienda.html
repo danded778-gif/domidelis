@@ -19,6 +19,10 @@
      - ★ REGLA v2.6: el botón activo y el div de contenido activo
        SIEMPRE deben apuntar al MISMO tab (textos, onclick, íconos
        y clases active en pareja).
+     ★ v2.7 — ESTADOS Y RECUPERACIÓN
+     - Carga inicial visible, errores con reintento y aviso de conexión.
+     - Actualiza al recuperar internet/Socket sin sondeos periódicos.
+     - El permiso de notificaciones se solicita desde el botón de activar.
      ============================================================ -->
 <html lang="es">
 
@@ -40,7 +44,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Mi Tienda">
     <link rel="apple-touch-icon" href="/app-tiendas/assets/img/icon-152x152.png">
-    <link rel="manifest" href="../app-tiendas/manifest-tienda.json">
+    <link rel="manifest" href="/app-tiendas/manifest-tienda.json">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-96x96.png">
 
     <title>Mi Tienda - Panel</title>
@@ -316,6 +320,7 @@
                 <button class="tab-btn" onclick="cambiarTab('configuracion')"><i class="fas fa-cog"></i>
                     Config</button>
             </div>
+            <div id="estado-conexion-tienda" class="estado-conexion" role="status" aria-live="polite" hidden></div>
 
             <!-- ============================================
                  ★ v2.6: el contenido activo al entrar es PEDIDOS.
@@ -496,8 +501,9 @@
     <!-- ★★★ NUEVO: Importar fcm-manager unificado de la raíz ★★★ -->
     <script type="module" src="/assets/js/fcm-manager.js"></script>
     <script src="/app-tiendas/assets/js/push-manager-tienda.js"></script>
-<!-- ★ NUEVO: componente de estados (badge con icono + botones tienda) -->
-<script src="/assets/js/components/estados-pedido.js"></script>
+    <script src="/app-tiendas/assets/js/components/estado-carga.js"></script>
+    <!-- ★ NUEVO: componente de estados (badge con icono + botones tienda) -->
+    <script src="/assets/js/components/estados-pedido.js"></script>
 
 
 <script src="/assets/js/pedido-card.js?v=1.8.0"></script>
@@ -549,23 +555,11 @@
         //    la tabla de pedidos se refresca sola, con debounce 2s)
         //   + 'visibilitychange' (al reabrir la app desde segundo
         //    plano, la pestaña Pedidos nunca queda con datos viejos)
+        //   + online/offline y reconexión Socket para recuperar pedidos
         // ============================================
         (function () {
             const sesion = obtenerSesionTienda();
             if (!sesion.info || !sesion.info.id) return;
-
-            // ★ Esperar a que fcm-manager.js cargue y registrar token ★
-            const fcmInterval = setInterval(() => {
-                if (typeof window.solicitarPermisoFCM === 'function') {
-                    clearInterval(fcmInterval);
-                    console.log(`⚙️ Registrando token FCM de Tienda ID: ${sesion.info.id}...`);
-                    window.solicitarPermisoFCM('tienda', sesion.info.id)
-                        .then(token => {
-                            if (token) console.log("✅ Token de tienda registrado correctamente.");
-                        })
-                        .catch(err => console.error("❌ Error token tienda:", err));
-                }
-            }, 150);
 
             const socket = io(SOCKET_URL, {
                 transports: ['websocket', 'polling'],
@@ -574,9 +568,30 @@
                 reconnectionDelay: 1000
             });
 
+            let primeraConexionSocket = true;
             socket.on('connect', () => {
                 socket.emit('identificar', { rol: 'tienda', id: sesion.info.id });
                 console.log('✅ [Tienda] Socket conectado:', socket.id);
+                EstadoCargaTienda.mostrarConexion('', '');
+                if (primeraConexionSocket) {
+                    primeraConexionSocket = false;
+                } else {
+                    pedirRefrescoPedidos();
+                }
+            });
+
+            socket.on('disconnect', () => {
+                EstadoCargaTienda.mostrarConexion(
+                    'offline',
+                    'Se perdió la conexión en tiempo real. Intentando reconectar…'
+                );
+            });
+
+            socket.on('connect_error', () => {
+                EstadoCargaTienda.mostrarConexion(
+                    'offline',
+                    'No se pudo conectar para recibir actualizaciones en tiempo real. Reintentando…'
+                );
             });
 
             socket.on('nuevoPedidoTienda', (data) => {
@@ -640,18 +655,54 @@
                     cargarPedidos();
                 }
             });
+
+            let estabaSinConexion = !navigator.onLine;
+            window.addEventListener('offline', () => {
+                estabaSinConexion = true;
+            });
+
+            window.addEventListener('online', () => {
+                if (!estabaSinConexion) return;
+                estabaSinConexion = false;
+                EstadoCargaTienda.mostrarConexion('', '');
+                if (typeof cargarPedidos === 'function') cargarPedidos();
+            });
+
+            window.addEventListener('offline', () => {
+                EstadoCargaTienda.mostrarConexion(
+                    'offline',
+                    'Sin conexión a internet. Revisa tu conexión para actualizar los pedidos.',
+                    cargarPedidos
+                );
+            });
+
+            window.addEventListener('load', () => {
+                if (!('Notification' in window)) return;
+                if (Notification.permission !== 'granted') return;
+
+                const banner = document.getElementById('permisos-banner-tienda');
+                if (banner) banner.style.display = 'none';
+                if (typeof window.solicitarPermisoFCM !== 'function') return;
+
+                window.solicitarPermisoFCM('tienda', sesion.info.id)
+                    .then(token => {
+                        if (token) console.log('✅ Token FCM de tienda actualizado.');
+                    })
+                    .catch(err => console.error('❌ Error token tienda:', err));
+            }, { once: true });
         })();
 
         async function activarPermisosTienda() {
+            const solicitudPermiso = 'Notification' in window
+                ? Notification.requestPermission()
+                : Promise.resolve('denied');
+
             initAudioTienda();
             if (audioCtxTienda?.state === 'suspended') {
                 try { await audioCtxTienda.resume(); } catch (e) { }
             }
 
-            let permiso = false;
-            if ('Notification' in window) {
-                permiso = (await Notification.requestPermission()) === 'granted';
-            }
+            const permiso = (await solicitudPermiso) === 'granted';
 
             const banner = document.getElementById('permisos-banner-tienda');
             if (banner) banner.style.display = 'none';

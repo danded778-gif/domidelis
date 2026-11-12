@@ -645,6 +645,75 @@ main {
     margin: 0 auto;
 }
 
+.estado-pedidos {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 220px;
+    padding: 2rem;
+    color: var(--gray);
+    text-align: center;
+}
+
+.estado-pedidos p {
+    margin: 0;
+}
+
+.estado-pedidos-icono {
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.estado-pedidos-spinner {
+    display: block;
+    border-color: #f3dfe0;
+    border-top-color: var(--primary);
+}
+
+.estado-pedidos--error,
+.estado-pedidos--offline {
+    color: var(--danger);
+}
+
+.estado-pedidos-reintentar {
+    min-width: 140px;
+}
+
+.estado-conexion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius-sm);
+    background: #fff3cd;
+    color: #664d03;
+    text-align: center;
+}
+
+.estado-conexion[hidden] {
+    display: none;
+}
+
+.estado-conexion--offline {
+    background: #ffebee;
+    color: #b71c1c;
+}
+
+.estado-conexion-reintentar {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);

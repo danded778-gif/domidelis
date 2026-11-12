@@ -22,6 +22,7 @@
 //   domiciliarioNombre) queda intacto.
 // - Pareja de trabajo: index-tienda.html v2.5 (listeners
 //   estadoActualizado / pedidoAsignado → tabla de pedidos en vivo).
+// - Server-Timing separa la latencia de GAS, domiciliarios y procesamiento.
 // ============================================
 
 const express = require('express');
@@ -160,16 +161,33 @@ router.get('/productos', verifyTienda, async (req, res) => {
 // ============================================
 router.get('/pedidos', verifyTienda, async (req, res) => {
     const inicio = Date.now();
+    let demoraPedidos = 0;
+    let demoraDomiciliarios = 0;
+    let demoraProcesamiento = 0;
     try {
+        const medir = (promesa, guardarDuracion) => {
+            const inicioSolicitud = Date.now();
+            return promesa.finally(() => {
+                guardarDuracion(Date.now() - inicioSolicitud);
+            });
+        };
+
         const [pedidosRes, domisRes] = await Promise.allSettled([
-            axios.get(gasUrl('getPedidosTienda', { tiendaId: req.tienda.id })),
-            obtenerDomiciliariosCacheados()
+            medir(
+                axios.get(gasUrl('getPedidosTienda', { tiendaId: req.tienda.id })),
+                duracion => { demoraPedidos = duracion; }
+            ),
+            medir(
+                obtenerDomiciliariosCacheados(),
+                duracion => { demoraDomiciliarios = duracion; }
+            )
         ]);
 
         // Pedidos es el viaje obligatorio: si falló, propagamos el error
         // (termina en el catch de abajo → 500, igual que antes)
         if (pedidosRes.status === 'rejected') throw pedidosRes.reason;
         const response = pedidosRes.value;
+        const inicioProcesamiento = Date.now();
 
         // ★ v2.4: blindaje — si el GAS rechazó, responde objeto y no array
         const pedidos = Array.isArray(response.data) ? response.data : [];
@@ -224,9 +242,19 @@ router.get('/pedidos', verifyTienda, async (req, res) => {
             };
         });
 
-        res.set('Server-Timing', `orders;dur=${Date.now() - inicio}`);
+        demoraProcesamiento = Date.now() - inicioProcesamiento;
+        res.set(
+            'Server-Timing',
+            `orders;dur=${Date.now() - inicio}, gas_orders;dur=${demoraPedidos}, domiciliarios;dur=${demoraDomiciliarios}, processing;dur=${demoraProcesamiento}`
+        );
+        res.set('Access-Control-Expose-Headers', 'Server-Timing');
         res.json(pedidosProcesados);
     } catch (err) {
+        res.set(
+            'Server-Timing',
+            `orders;dur=${Date.now() - inicio}, gas_orders;dur=${demoraPedidos}, domiciliarios;dur=${demoraDomiciliarios}, processing;dur=${demoraProcesamiento}`
+        );
+        res.set('Access-Control-Expose-Headers', 'Server-Timing');
         console.error(`Error obteniendo pedidos de tienda (${Date.now() - inicio} ms):`, err.message);
         res.status(500).json({ error: 'Error obteniendo pedidos.' });
     }

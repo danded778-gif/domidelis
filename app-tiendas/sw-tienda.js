@@ -41,17 +41,17 @@ messaging.onBackgroundMessage((payload) => {
 // ============================================
 // CONFIGURACIÓN PWA (Caché)
 // ============================================
-const CACHE_NAME = 'tienda-cache-v1.1.1';
+const CACHE_NAME = 'tienda-cache-v1.1.3';
 
 // Archivos estáticos de la tienda para cachear al instalar (RUTAS ABSOLUTAS)
 const ARCHIVOS_ESTATICOS_TIENDA = [
-  '/app-tiendas/',
   '/app-tiendas/index-tienda.html',
   '/app-tiendas/login-tienda.html',
   '/app-tiendas/manifest-tienda.json',
   '/app-tiendas/assets/css/tiendas.css',
   '/app-tiendas/assets/js/config-tienda.js',
   '/app-tiendas/assets/js/tiendas.js',
+  '/app-tiendas/assets/js/components/estado-carga.js',
   '/app-tiendas/assets/img/icon-192x192.png',
   '/app-tiendas/assets/img/icon-512x512.png'
 ];
@@ -98,24 +98,15 @@ self.addEventListener('fetch', e => {
   // Ignorar peticiones POST, PUT, DELETE
   if (e.request.method !== 'GET') return;
 
-  // ─── Network First para la API ───
+  // ─── La API nunca se cachea: evita mostrar datos privados o antiguos ───
   if (e.request.url.includes('/api/')) {
     e.respondWith(
       fetch(e.request)
-        .then(networkResponse => {
-          if (networkResponse && networkResponse.ok) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(e.request, responseClone));
-          }
-          return networkResponse;
-        })
         .catch(() => {
-          return caches.match(e.request).then(cachedResponse => {
-            return cachedResponse || new Response(
-              JSON.stringify({ error: 'Sin conexión al servidor' }),
-              { headers: { 'Content-Type': 'application/json' }, status: 503 }
-            );
-          });
+          return new Response(
+            JSON.stringify({ error: 'Sin conexión al servidor' }),
+            { headers: { 'Content-Type': 'application/json' }, status: 503 }
+          );
         })
     );
     return;
