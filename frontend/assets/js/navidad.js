@@ -22,7 +22,7 @@ var NavidadTheme = (function () {
     var BULB_COLORS = ['red', 'gold', 'green'];
 
     var DEFAULTS = {
-        startDate: '11-12',            // MM-DD: 1 de diciembre
+        startDate: '12-01',            // MM-DD: 1 de diciembre
         endDate: '01-06',              // MM-DD: 6 de enero (Día de Reyes)
         storageKey: 'navidad_v1',
         cartButtonSelector: '#header-cart',
