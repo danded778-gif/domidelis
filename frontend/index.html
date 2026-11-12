@@ -671,8 +671,9 @@
     <script>
         if ('serviceWorker' in navigator) {
             let refreshing = false;
+            const yaTeniaServiceWorkerControlador = Boolean(navigator.serviceWorker.controller);
             navigator.serviceWorker.addEventListener('controllerchange', function () {
-                if (refreshing) return;
+                if (!yaTeniaServiceWorkerControlador || refreshing) return;
                 // ★ Blindaje iOS: Solo recargar si la página ya terminó de cargar
                 if (document.readyState === 'complete') {
                     console.log('🔄 Nuevo SW activo. Recargando página...');
