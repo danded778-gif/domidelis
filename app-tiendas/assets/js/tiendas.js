@@ -22,7 +22,7 @@ function cambiarTab(tab) {
 
     // Cargar datos dinámicos al cambiar de tab
     if(tab === 'productos') cargarProductos();
-    if(tab === 'pedidos') cargarPedidos();
+    if(tab === 'pedidos') cargarPedidos('cambio de pestaña');
     if(tab === 'comision') cargarDatosComision();
     if(tab === 'configuracion') cargarConfiguracion();
 }
@@ -102,11 +102,12 @@ function obtenerPedidosTienda() {
     return solicitudPedidosEnCurso;
 }
 
-function cargarPedidos() {
+function cargarPedidos(origen = 'reintento') {
     if (cargaPedidosEnCurso) return cargaPedidosEnCurso;
 
     cargaPedidosEnCurso = Promise.resolve().then(async () => {
         const inicio = performance.now();
+        console.info(`[Tienda] Solicitando carga de pedidos: ${origen}.`);
         const grid = document.getElementById('lista-pedidos');
         if (!grid) return;
 
@@ -378,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ★ v1.0: cargar los PEDIDOS por defecto (pestaña inicial)
-    cargarPedidos();
+    cargarPedidos('inicio de la aplicación');
 });
 
 // ============================================
@@ -414,7 +415,7 @@ async function cambiarEstadoPedido(pedidoId, nuevoEstado) {
       // Refrescar la lista inmediatamente. El backend también emite
       // 'estadoActualizado' por socket (que dispara pedirRefrescoPedidos
       // con debounce 2s), pero la tienda debe ver el cambio YA.
-      cargarPedidos();
+      cargarPedidos('cambio de estado del pedido');
     } else {
       mostrarToastTienda(
         '❌ Error',

@@ -499,7 +499,7 @@
     <script src="/app-tiendas/assets/js/config-tienda.js"></script>
     <script src="/app-tiendas/assets/js/notificaciones-tienda.js"></script>
     <!-- ★★★ NUEVO: Importar fcm-manager unificado de la raíz ★★★ -->
-    <script type="module" src="/assets/js/fcm-manager.js"></script>
+    <script type="module" src="/assets/js/fcm-manager.js?v=2.1.0"></script>
     <script src="/app-tiendas/assets/js/push-manager-tienda.js"></script>
     <script src="/app-tiendas/assets/js/components/estado-carga.js"></script>
     <!-- ★ NUEVO: componente de estados (badge con icono + botones tienda) -->
@@ -604,7 +604,7 @@
                     'pedido',
                     10000
                 );
-                if (typeof cargarPedidos === 'function') cargarPedidos();
+                if (typeof cargarPedidos === 'function') cargarPedidos('notificación de nuevo pedido');
             });
 
             // ============================================
@@ -625,7 +625,7 @@
                     if (tabPedidos && tabPedidos.classList.contains('active') &&
                         typeof cargarPedidos === 'function') {
                         console.log('🔄 [Tienda] Cambio en pedidos → refrescando tabla');
-                        cargarPedidos();
+                        cargarPedidos('evento Socket.IO de pedido');
                     }
                 }, 2000);
             }
@@ -646,13 +646,18 @@
             // push FCM) y el usuario la reabre, la lista podría estar
             // vieja. Al volver a estar visible → refresco inmediato.
             // ============================================
+            let paginaYaEstuvoVisible = document.visibilityState === 'visible';
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState !== 'visible') return;
+                if (!paginaYaEstuvoVisible) {
+                    paginaYaEstuvoVisible = true;
+                    return;
+                }
                 const tabPedidos = document.getElementById('tab-pedidos');
                 if (tabPedidos && tabPedidos.classList.contains('active') &&
                     typeof cargarPedidos === 'function') {
                     console.log('👁️ [Tienda] App visible de nuevo → refrescando pedidos');
-                    cargarPedidos();
+                    cargarPedidos('regreso desde segundo plano');
                 }
             });
 
@@ -665,7 +670,7 @@
                 if (!estabaSinConexion) return;
                 estabaSinConexion = false;
                 EstadoCargaTienda.mostrarConexion('', '');
-                if (typeof cargarPedidos === 'function') cargarPedidos();
+                if (typeof cargarPedidos === 'function') cargarPedidos('recuperación de internet');
             });
 
             window.addEventListener('offline', () => {

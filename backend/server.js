@@ -181,7 +181,8 @@ app.use(cors({
         }
     },
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Server-Timing']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
