@@ -13,6 +13,7 @@ var NavidadTheme = (function () {
     var _moveTimers = [];
     var _counterObserver = null;
     var _itemsObserver = null;
+    var _dayNightTimer = null;
     var _lastCelebrate = 0;
     var _cartCountPrev = null;
     var _emptyOriginal = null;
@@ -21,7 +22,7 @@ var NavidadTheme = (function () {
     var BULB_COLORS = ['red', 'gold', 'green'];
 
     var DEFAULTS = {
-        startDate: '12-01',            // MM-DD: 1 de diciembre
+        startDate: '11-12',            // MM-DD: 1 de diciembre
         endDate: '01-06',              // MM-DD: 6 de enero (Día de Reyes)
         storageKey: 'navidad_v1',
         cartButtonSelector: '#header-cart',
@@ -395,17 +396,63 @@ var NavidadTheme = (function () {
         return moon;
     }
 
+    function _createDayVillage() {
+        var village = document.createElement('div');
+        village.id = 'xm-day-village';
+        village.className = 'xm-day-village';
+        village.setAttribute('aria-hidden', 'true');
+        village.innerHTML = '<svg viewBox="0 0 1200 280" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">' +
+            '<path fill="#f7fcff" d="M0 224Q150 185 300 220T600 215t300 8 300-16v73H0z"/>' +
+            '<path fill="#d9edfb" d="M0 253q180-36 350 0t350-1 300-8 200 4v32H0z"/>' +
+            '<g stroke="#6688a1" stroke-width="4" stroke-linejoin="round">' +
+            '<path fill="#c94b4b" d="M105 203v-74l65-51 66 51v74z"/><path fill="#fff" d="m99 132 71-59 72 59-12 9-60-49-59 49z"/>' +
+            '<path fill="#ffe2a8" d="M158 151h25v52h-25z"/><path fill="#9ed7ed" d="M124 145h22v22h-22z"/>' +
+            '<path fill="#e1a34b" d="M387 214v-95l78-61 80 61v95z"/><path fill="#fff" d="m376 126 89-72 91 72-13 12-78-61-76 61z"/>' +
+            '<path fill="#9ed7ed" d="M415 139h25v25h-25zm83 0h25v25h-25z"/><path fill="#fff" d="M450 174h28v40h-28z"/>' +
+            '<path fill="#b84a4a" d="M690 207v-69l59-47 60 47v69z"/><path fill="#fff" d="m682 145 67-55 69 55-11 10-58-46-57 46z"/>' +
+            '<path fill="#9ed7ed" d="M710 153h22v22h-22z"/><path fill="#fff" d="M750 170h24v37h-24z"/>' +
+            '</g>' +
+            '<g fill="#28664b" stroke="#1d513c" stroke-width="3" stroke-linejoin="round">' +
+            '<path d="m284 205 39-77 39 77z"/><path d="m290 174 33-65 33 65z"/><path d="m298 145 25-53 26 53z"/><path d="M318 202h11v27h-11z"/>' +
+            '<path d="m835 213 47-91 46 91z"/><path d="m844 175 38-73 38 73z"/><path d="m852 142 30-58 30 58z"/><path d="M876 209h13v30h-13z"/>' +
+            '<path d="m1010 218 35-68 35 68z"/><path d="m1017 188 28-56 29 56z"/><path d="m1023 162 22-44 23 44z"/><path d="M1040 214h11v25h-11z"/>' +
+            '</g>' +
+            '<g fill="#fff"><circle cx="169" cy="113" r="13"/><circle cx="465" cy="97" r="14"/><circle cx="749" cy="127" r="12"/><ellipse cx="323" cy="204" rx="43" ry="9"/><ellipse cx="882" cy="211" rx="49" ry="9"/><ellipse cx="1045" cy="216" rx="37" ry="8"/></g>' +
+            '<g fill="#ffd166"><circle cx="136" cy="174" r="5"/><circle cx="463" cy="154" r="5"/><circle cx="761" cy="164" r="5"/></g>' +
+            '</svg>';
+        return village;
+    }
+
+    function _isDaytimeInBogota() {
+        var hour = Number(new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Bogota',
+            hour: 'numeric',
+            hourCycle: 'h23'
+        }).format(new Date()));
+        return hour >= 6 && hour < 16;
+    }
+
+    function _updateDayNight() {
+        if (!document.body) return;
+        var daytime = _isDaytimeInBogota();
+        document.body.classList.toggle('xm-navidad-dia', daytime);
+        document.body.classList.toggle('xm-navidad-noche', !daytime);
+    }
+
     /* ---------- mostrar / ocultar ---------- */
 
     function _show() {
         if (_active || !document.body) return;
 
         document.body.appendChild(_createMoon());
+        document.body.appendChild(_createDayVillage());
         document.body.appendChild(_createSnow());
         document.body.appendChild(_createScene());
         document.body.appendChild(_createGarland(true));
         document.body.appendChild(_createDismiss());
         document.body.classList.add('xm-navidad-active');
+        _updateDayNight();
+        _dayNightTimer = window.setInterval(_updateDayNight, 60000);
         _observeCart();
         _active = true;
     }
@@ -415,13 +462,19 @@ var NavidadTheme = (function () {
             window.clearTimeout(timer);
         });
         _moveTimers = [];
+        if (_dayNightTimer !== null) {
+            window.clearInterval(_dayNightTimer);
+            _dayNightTimer = null;
+        }
         _unobserveCart();
 
-        ['xm-bigmoon', 'xm-scene', 'xm-bottom-garland', 'xm-snow', 'xm-dismiss'].forEach(function (id) {
+        ['xm-bigmoon', 'xm-day-village', 'xm-scene', 'xm-bottom-garland', 'xm-snow', 'xm-dismiss'].forEach(function (id) {
             var element = document.getElementById(id);
             if (element && element.parentNode) element.parentNode.removeChild(element);
         });
-        if (document.body) document.body.classList.remove('xm-navidad-active');
+        if (document.body) {
+            document.body.classList.remove('xm-navidad-active', 'xm-navidad-dia', 'xm-navidad-noche');
+        }
         _active = false;
     }
 
