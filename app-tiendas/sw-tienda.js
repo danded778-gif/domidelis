@@ -41,7 +41,7 @@ messaging.onBackgroundMessage((payload) => {
 // ============================================
 // CONFIGURACIÓN PWA (Caché)
 // ============================================
-const CACHE_NAME = 'tienda-cache-v1.1.3';
+const CACHE_NAME = 'tienda-cache-v1.1.4';
 
 // Archivos estáticos de la tienda para cachear al instalar (RUTAS ABSOLUTAS)
 const ARCHIVOS_ESTATICOS_TIENDA = [

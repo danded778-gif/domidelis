@@ -596,6 +596,7 @@
 
             socket.on('nuevoPedidoTienda', (data) => {
                 console.log('🛎️ [Tienda] nuevoPedidoTienda:', data);
+                invalidarCachePedidosTienda();
                 initAudioTienda();
                 if (audioCtxTienda && audioCtxTienda.state === 'running') sonidoNuevoPedidoTienda();
                 mostrarToastTienda(
@@ -632,11 +633,13 @@
 
             socket.on('estadoActualizado', (data) => {
                 console.log('🔄 [Tienda] estadoActualizado:', data);
+                invalidarCachePedidosTienda();
                 pedirRefrescoPedidos();
             });
 
             socket.on('pedidoAsignado', (data) => {
                 console.log('📢 [Tienda] pedidoAsignado:', data);
+                invalidarCachePedidosTienda();
                 pedirRefrescoPedidos();
             });
 
@@ -649,7 +652,7 @@
             let paginaYaEstuvoVisible = document.visibilityState === 'visible';
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState !== 'visible') return;
-                if (!paginaYaEstuvoVisible) { 
+                if (!paginaYaEstuvoVisible) {
                     paginaYaEstuvoVisible = true;
                     return;
                 }
@@ -657,6 +660,7 @@
                 if (tabPedidos && tabPedidos.classList.contains('active') &&
                     typeof cargarPedidos === 'function') {
                     console.log('👁️ [Tienda] App visible de nuevo → refrescando pedidos');
+                    invalidarCachePedidosTienda();
                     cargarPedidos('regreso desde segundo plano');
                 }
             });
@@ -670,7 +674,10 @@
                 if (!estabaSinConexion) return;
                 estabaSinConexion = false;
                 EstadoCargaTienda.mostrarConexion('', '');
-                if (typeof cargarPedidos === 'function') cargarPedidos('recuperación de internet');
+                if (typeof cargarPedidos === 'function') {
+                    invalidarCachePedidosTienda();
+                    cargarPedidos('recuperación de internet');
+                }
             });
 
             window.addEventListener('offline', () => {

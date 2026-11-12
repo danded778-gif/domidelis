@@ -66,6 +66,16 @@ async function cargarProductos() {
 // ============================================
 let solicitudPedidosEnCurso = null;
 let cargaPedidosEnCurso = null;
+let pedidosTiendaCache = null;
+let pedidosTiendaCacheTimestamp = 0;
+let pedidosTiendaCacheVersion = 0;
+const PEDIDOS_TIENDA_CACHE_TTL_MS = 30 * 1000;
+
+function invalidarCachePedidosTienda() {
+    pedidosTiendaCache = null;
+    pedidosTiendaCacheTimestamp = 0;
+    pedidosTiendaCacheVersion++;
+}
 
 function obtenerPedidosTienda(origen = 'consumidor de pedidos') {
     if (solicitudPedidosEnCurso) {
@@ -73,6 +83,13 @@ function obtenerPedidosTienda(origen = 'consumidor de pedidos') {
         return solicitudPedidosEnCurso;
     }
 
+    if (pedidosTiendaCache &&
+        Date.now() - pedidosTiendaCacheTimestamp < PEDIDOS_TIENDA_CACHE_TTL_MS) {
+        console.info(`[Tienda] ${origen} reutiliza pedidos cargados recientemente.`);
+        return Promise.resolve(pedidosTiendaCache);
+    }
+
+    const versionCache = pedidosTiendaCacheVersion;
     solicitudPedidosEnCurso = (async () => {
         const inicio = performance.now();
         console.info(`[Tienda] GET /pedidos solicitado por: ${origen}.`);
@@ -94,6 +111,10 @@ function obtenerPedidosTienda(origen = 'consumidor de pedidos') {
                 throw new Error((resultado && resultado.error) || `Error cargando pedidos (HTTP ${res.status})`);
             }
             if (!Array.isArray(resultado)) throw new Error('El servidor devolvió un formato de pedidos inválido.');
+            if (versionCache === pedidosTiendaCacheVersion) {
+                pedidosTiendaCache = resultado;
+                pedidosTiendaCacheTimestamp = Date.now();
+            }
             return resultado;
         } catch (error) {
             console.info(`[Tienda] GET /pedidos falló tras ${Math.round(performance.now() - inicio)} ms.`);
@@ -419,6 +440,7 @@ async function cambiarEstadoPedido(pedidoId, nuevoEstado) {
       // Refrescar la lista inmediatamente. El backend también emite
       // 'estadoActualizado' por socket (que dispara pedirRefrescoPedidos
       // con debounce 2s), pero la tienda debe ver el cambio YA.
+      invalidarCachePedidosTienda();
       cargarPedidos('cambio de estado del pedido');
     } else {
       mostrarToastTienda(
