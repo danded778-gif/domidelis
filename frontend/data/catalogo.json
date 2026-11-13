@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-11T23-36-29",
-  "ultimaActualizacion": "2026-11-11T23:36:29.488Z",
+  "version": "v2026-11-13T00-23-40",
+  "ultimaActualizacion": "2026-11-13T00:23:40.666Z",
   "tiendas": [
     {
       "id": 1,
@@ -1550,7 +1550,7 @@
           "nombre": "1/4 Pollo Asado",
           "descripcion": "Papá cocida arepa y salsa de la casa",
           "precio": 12000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3568,7 +3568,7 @@
       "nombre": "1/4 Pollo Asado",
       "descripcion": "Papá cocida arepa y salsa de la casa",
       "precio": 12000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
