@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-13T00-25-44",
-  "ultimaActualizacion": "2026-11-13T00:25:44.649Z",
+  "version": "v2026-11-13T00-26-11",
+  "ultimaActualizacion": "2026-11-13T00:26:11.191Z",
   "tiendas": [
     {
       "id": 1,
@@ -1615,7 +1615,7 @@
           "nombre": "Pollo Asado Completo",
           "descripcion": "Papa francesa Arepa sopa salsa de la casa",
           "precio": 49000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20bistec%20con%20papas%20y%20arroz_200kb.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3633,7 +3633,7 @@
       "nombre": "Pollo Asado Completo",
       "descripcion": "Papa francesa Arepa sopa salsa de la casa",
       "precio": 49000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20bistec%20con%20papas%20y%20arroz_200kb.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
