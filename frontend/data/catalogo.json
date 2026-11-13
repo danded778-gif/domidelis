@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-13T00-47-57",
-  "ultimaActualizacion": "2026-11-13T00:47:57.939Z",
+  "version": "v2026-11-13T00-49-39",
+  "ultimaActualizacion": "2026-11-13T00:49:39.969Z",
   "tiendas": [
     {
       "id": 1,
@@ -1576,7 +1576,7 @@
           "nombre": "1/2 Pollo Asado",
           "descripcion": "Papas cocidas Arepa y salsas",
           "precio": 23000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Banquete%20de%20pollo%2C%20sopa%20y%20jugo_200kb.webp",
+          "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3594,7 +3594,7 @@
       "nombre": "1/2 Pollo Asado",
       "descripcion": "Papas cocidas Arepa y salsas",
       "precio": 23000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Banquete%20de%20pollo%2C%20sopa%20y%20jugo_200kb.webp",
+      "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
