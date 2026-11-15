@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T22-58-46",
-  "ultimaActualizacion": "2026-11-15T22:58:46.817Z",
+  "version": "v2026-11-15T22-59-16",
+  "ultimaActualizacion": "2026-11-15T22:59:16.396Z",
   "tiendas": [
     {
       "id": 1,
@@ -1774,6 +1774,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
           "badge": "NUEVO",
           "categoria": "almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 818,
+          "nombre": "combo 2",
+          "descripcion": "1/4 pollo broaster , ensalada, papas a la Francesa sofa frijoles o limonada",
+          "precio": 22000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3805,6 +3818,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
       "badge": "NUEVO",
       "categoria": "almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
+      "id": 818,
+      "nombre": "combo 2",
+      "descripcion": "1/4 pollo broaster , ensalada, papas a la Francesa sofa frijoles o limonada",
+      "precio": 22000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "22",
