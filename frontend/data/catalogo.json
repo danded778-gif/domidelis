@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T16-01-59",
-  "ultimaActualizacion": "2026-11-15T16:01:59.996Z",
+  "version": "v2026-11-15T16-26-53",
+  "ultimaActualizacion": "2026-11-15T16:26:53.284Z",
   "tiendas": [
     {
       "id": 1,
@@ -144,6 +144,19 @@
           "tiendaNombre": "Domi Delis"
         },
         {
+          "id": 175,
+          "nombre": "Gaseosa naranja",
+          "descripcion": "400ml",
+          "precio": 4000,
+          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
+          "badge": "Disponible",
+          "categoria": "Bebidas",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "1",
+          "tiendaNombre": "Domi Delis"
+        },
+        {
           "id": 173,
           "nombre": "Hit Naranja piña",
           "descripcion": "500 ml",
@@ -162,19 +175,6 @@
           "descripcion": "400ml",
           "precio": 4000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
-          "badge": "Disponible",
-          "categoria": "Bebidas",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "1",
-          "tiendaNombre": "Domi Delis"
-        },
-        {
-          "id": 175,
-          "nombre": "Gaseosa naranja",
-          "descripcion": "400ml",
-          "precio": 4000,
-          "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
           "badge": "Disponible",
           "categoria": "Bebidas",
           "cantidadTipo": "UND",
@@ -1765,6 +1765,19 @@
           "activo": true,
           "tiendaId": "22",
           "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 817,
+          "nombre": "Combo 1",
+          "descripcion": "1/4 de pollo asado ensalada Papa cocida sopa o frijoles y limonada",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
+          "badge": "NUEVO",
+          "categoria": "Carnes",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
         }
       ]
     },
@@ -2849,6 +2862,19 @@
       "tiendaNombre": "Domi Delis"
     },
     {
+      "id": 175,
+      "nombre": "Gaseosa naranja",
+      "descripcion": "400ml",
+      "precio": 4000,
+      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
+      "badge": "Disponible",
+      "categoria": "Bebidas",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "1",
+      "tiendaNombre": "Domi Delis"
+    },
+    {
       "id": 173,
       "nombre": "Hit Naranja piña",
       "descripcion": "500 ml",
@@ -2867,19 +2893,6 @@
       "descripcion": "400ml",
       "precio": 4000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_manazana_.png",
-      "badge": "Disponible",
-      "categoria": "Bebidas",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "1",
-      "tiendaNombre": "Domi Delis"
-    },
-    {
-      "id": 175,
-      "nombre": "Gaseosa naranja",
-      "descripcion": "400ml",
-      "precio": 4000,
-      "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/Mi%20tienda/bebidas/botella_naranjada_.png",
       "badge": "Disponible",
       "categoria": "Bebidas",
       "cantidadTipo": "UND",
@@ -3790,12 +3803,12 @@
       "descripcion": "1/4 de pollo asado ensalada Papa cocida sopa o frijoles y limonada",
       "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
-      "badge": "",
-      "categoria": "Otras",
+      "badge": "NUEVO",
+      "categoria": "Carnes",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
     }
   ],
   "complementosGlobal": [
