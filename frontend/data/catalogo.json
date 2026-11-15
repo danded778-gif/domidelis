@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T16-43-58",
-  "ultimaActualizacion": "2026-11-15T16:43:58.726Z",
+  "version": "v2026-11-15T16-45-57",
+  "ultimaActualizacion": "2026-11-15T16:45:57.331Z",
   "tiendas": [
     {
       "id": 1,
@@ -1719,7 +1719,7 @@
           "nombre": "Lomo de Cerdo",
           "descripcion": "300 G ensalada Papa francesa y arroz blanco",
           "precio": 25000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20bistec%20con%20papas%20y%20arroz_200kb.webp",
           "badge": "NUEVO",
           "categoria": "Carnes",
           "cantidadTipo": "UND",
@@ -3750,7 +3750,7 @@
       "nombre": "Lomo de Cerdo",
       "descripcion": "300 G ensalada Papa francesa y arroz blanco",
       "precio": 25000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20bistec%20con%20papas%20y%20arroz_200kb.webp",
       "badge": "NUEVO",
       "categoria": "Carnes",
       "cantidadTipo": "UND",
