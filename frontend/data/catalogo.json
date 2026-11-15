@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T15-33-10",
-  "ultimaActualizacion": "2026-11-15T15:33:10.799Z",
+  "version": "v2026-11-15T15-33-34",
+  "ultimaActualizacion": "2026-11-15T15:33:34.879Z",
   "tiendas": [
     {
       "id": 1,
@@ -3786,10 +3786,10 @@
     },
     {
       "id": 817,
-      "nombre": "",
+      "nombre": "Combo 1",
       "descripcion": "",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
