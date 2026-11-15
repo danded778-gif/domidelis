@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T23-00-01",
-  "ultimaActualizacion": "2026-11-15T23:00:01.846Z",
+  "version": "v2026-11-15T23-01-54",
+  "ultimaActualizacion": "2026-11-15T23:01:54.001Z",
   "tiendas": [
     {
       "id": 1,
@@ -1781,7 +1781,7 @@
         },
         {
           "id": 818,
-          "nombre": "combo 2",
+          "nombre": "Combo 2",
           "descripcion": "1/4 pollo broaster , ensalada, papas a la Francesa sofa frijoles o limonada",
           "precio": 22000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Banquete%20de%20pollo%2C%20sopa%20y%20jugo_200kb.webp",
@@ -3825,7 +3825,7 @@
     },
     {
       "id": 818,
-      "nombre": "combo 2",
+      "nombre": "Combo 2",
       "descripcion": "1/4 pollo broaster , ensalada, papas a la Francesa sofa frijoles o limonada",
       "precio": 22000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Banquete%20de%20pollo%2C%20sopa%20y%20jugo_200kb.webp",
