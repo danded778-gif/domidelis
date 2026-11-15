@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-15T15-52-56",
-  "ultimaActualizacion": "2026-11-15T15:52:56.263Z",
+  "version": "v2026-11-15T15-53-33",
+  "ultimaActualizacion": "2026-11-15T15:53:33.193Z",
   "tiendas": [
     {
       "id": 1,
@@ -3787,7 +3787,7 @@
     {
       "id": 817,
       "nombre": "Combo 1",
-      "descripcion": "",
+      "descripcion": "1/4 de pollo asado ensalada Papa cocida sopa o frijoles y limonada",
       "precio": 20000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20t%C3%ADpico%20con%20sopa%20y%20jugo%20c%C3%ADtrico_200kb.webp",
       "badge": "",
