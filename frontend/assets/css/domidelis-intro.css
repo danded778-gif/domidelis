@@ -7,14 +7,12 @@
 
 /* ------------------------------------------------------------
    1. FIX HUECO SUPERIOR
-   Elimina el espacio entre el header y el banner.
-   !important es necesario porque styles.css/home.css definen
-   padding en main con selectores propios.
+   El contenido comienza justo debajo del header fijo.
    ------------------------------------------------------------ */
 
 .page-home main,
 main {
-    padding-top: 86px !important;
+    padding-top: var(--header-height, 56px) !important;
     margin-top: 0 !important;
 }
 
@@ -35,7 +33,7 @@ main {
 
 
 /* ------------------------------------------------------------
-   3. BANNER DE IDENTIDAD — tamaño medio, en su cuadro
+   3. BANNER DE IDENTIDAD
    ------------------------------------------------------------ */
 
 .domidelis-intro {

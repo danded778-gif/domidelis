@@ -67,9 +67,8 @@
     --border-radius-sm: 12px;
     --border-radius-lg: 50px;
 
-    /* ★ FIX LAYOUT: altura real del header fijo (medida: 92px).
-       config.js la ajusta dinámicamente según dispositivo. */
-    --header-height: 92px;
+    /* config.js calibra esta altura con el header renderizado. */
+    --header-height: 56px;
 
     /* Transiciones */
     --transition: all 0.3s ease;
@@ -121,9 +120,7 @@ body {
 }
 
 main {
-    /* ★ FIX LAYOUT: antes 55px fijos y el header (92px real)
-       tapaba el contenido. Ahora usa la variable que
-       config.js calibra con la altura real del header. */
+    /* Evita que el header fijo tape el contenido. */
     margin-top: var(--header-height);
     padding: 1rem 0 2rem 0;
     flex: 1;
@@ -563,7 +560,7 @@ header .nav-links li a:hover {
     }
 
     header .mobile-menu {
-        display: block;
+        display: flex;
         font-size: 1.5rem;
     }
 
@@ -2000,4 +1997,119 @@ footer .social-links a:focus-visible {
 .menu-social-links a:active {
     background: rgba(255,255,255,0.25);
     transform: scale(0.97);
+}
+
+/* ============================================================
+   DOMIDELIS — HEADER COMPACTO Y ACCESIBLE
+   Comparte el offset del header con el contenido y barras sticky.
+   ============================================================ */
+
+/* Mantiene una altura estable incluso al desplazarse. */
+header {
+    padding: 6px 0 !important;
+}
+
+header.header-scrolled {
+    padding: 6px 0 !important;
+}
+
+/* La fila tiene espacio para controles tactiles de 44px. */
+header .main-nav {
+    height: auto !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+    gap: 10px !important;
+}
+
+header .logo {
+    font-size: 1.25rem !important;
+    line-height: 1.2 !important;
+}
+
+header .logo i {
+    font-size: 1.4rem !important;
+}
+
+.mobile-menu {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.25rem !important;
+}
+
+@media (max-width: 768px) {
+    body.page-home .main-nav {
+        grid-template-columns: 44px minmax(0, 1fr) 44px 44px !important;
+    }
+
+    header .logo {
+        font-size: 1.1rem !important;
+    }
+
+    header .logo i {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Buscador de escritorio alineado con los controles de 44px. */
+body.page-home .header-search {
+    height: 44px !important;
+}
+
+body.page-home .header-search input {
+    height: 44px !important;
+    font-size: 0.9rem !important;
+    padding: 0 40px 0 42px !important;
+}
+
+body.page-home .header-search > i {
+    left: 16px !important;
+    font-size: 1rem !important;
+}
+
+/* Botones de buscar y carrito. */
+body.page-home .header-search-btn,
+body.page-home .header-cart {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    font-size: 1.15rem !important;
+}
+
+/* Contador del carrito. */
+body.page-home .header-cart-count {
+    min-width: 20px !important;
+    height: 20px !important;
+    font-size: 0.7rem !important;
+    top: -4px !important;
+    right: -4px !important;
+}
+
+/* ADMIN, DOMICILIARIO Y CHECKOUT usan nav sin .main-nav. */
+
+header nav {
+    padding: 0 !important;
+    min-height: 44px !important;
+}
+
+body.page-admin main,
+body:has(.admin-nav) main,
+body:has(.tabs-container) main,
+body:has(.checkout-container) main {
+    margin-top: var(--header-height) !important;
+    padding-top: 0 !important;
+}
+
+/* Barras sticky ancladas justo debajo del header. */
+.tabs-container,
+.admin-nav {
+    top: var(--header-height, 56px) !important;
+}
+
+/* Enlaces del menu en escritorio; el menu movil conserva su tamaño. */
+@media (min-width: 769px) {
+    header .nav-links li a {
+        min-height: 44px !important;
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+    }
 }
