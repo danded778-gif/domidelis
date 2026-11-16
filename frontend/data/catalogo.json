@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-16T05-29-50",
-  "ultimaActualizacion": "2026-11-16T05:29:50.967Z",
+  "version": "v2026-11-16T05-30-24",
+  "ultimaActualizacion": "2026-11-16T05:30:24.911Z",
   "tiendas": [
     {
       "id": 1,
@@ -1539,7 +1539,7 @@
       "nombre": "Mr Pollo",
       "descripcion": "el Santuario",
       "direccion": "Plaza De Mercado",
-      "horario": "{\"mon\":\"08:00-20:00\",\"tue\":\"08:00-20:00\",\"wed\":\"08:00-20:00\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"08:00-20:00\",\"tue\":\"08:00-20:00\",\"wed\":\"08:00-20:00\",\"thu\":\"08:00-20:00\",\"fri\":\"08:00-20:00\",\"sat\":\"08:00-20:00\",\"sun\":\"08:00-20:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/Mr.pollo/Restaurante%20Mr.%20Pollo%20al%20anochecer_201kb.jpg",
       "promovida": 1,
