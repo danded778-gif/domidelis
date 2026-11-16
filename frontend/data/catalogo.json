@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-16T05-23-07",
-  "ultimaActualizacion": "2026-11-16T05:23:07.839Z",
+  "version": "v2026-11-16T05-24-27",
+  "ultimaActualizacion": "2026-11-16T05:24:27.281Z",
   "tiendas": [
     {
       "id": 1,
@@ -1680,7 +1680,7 @@
           "nombre": "Alas BBQ",
           "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
           "precio": 18000,
-          "imagen_url": "",
+          "imagen_url": "Plato completo con arroz, papas y carne en salsa_200kb.webp (1274×1234)",
           "badge": "NUEVO",
           "categoria": "Menu",
           "cantidadTipo": "UND",
@@ -3724,7 +3724,7 @@
       "nombre": "Alas BBQ",
       "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
       "precio": 18000,
-      "imagen_url": "",
+      "imagen_url": "Plato completo con arroz, papas y carne en salsa_200kb.webp (1274×1234)",
       "badge": "NUEVO",
       "categoria": "Menu",
       "cantidadTipo": "UND",
