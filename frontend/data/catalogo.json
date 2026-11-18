@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-18T20-53-31",
-  "ultimaActualizacion": "2026-11-18T20:53:31.166Z",
+  "version": "v2026-11-18T20-56-24",
+  "ultimaActualizacion": "2026-11-18T20:56:24.123Z",
   "tiendas": [
     {
       "id": 1,
@@ -2012,6 +2012,19 @@
           "activo": true,
           "tiendaId": "21",
           "tiendaNombre": "Pika Peke"
+        },
+        {
+          "id": 823,
+          "nombre": "Choripán",
+          "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
+          "precio": 16000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "21",
+          "tiendaNombre": "Pika Peke"
         }
       ]
     },
@@ -3933,6 +3946,19 @@
       "nombre": "Hamburguesa chicharrón",
       "descripcion": "Chicharrón ahumado  guacamole y pico de gallo",
       "precio": 22000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "21",
+      "tiendaNombre": "Pika Peke"
+    },
+    {
+      "id": 823,
+      "nombre": "Choripán",
+      "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
+      "precio": 16000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
