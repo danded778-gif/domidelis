@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-18T19-34-52",
-  "ultimaActualizacion": "2026-11-18T19:34:52.456Z",
+  "version": "v2026-11-18T20-47-35",
+  "ultimaActualizacion": "2026-11-18T20:47:35.421Z",
   "tiendas": [
     {
       "id": 1,
@@ -1960,7 +1960,21 @@
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Fachada%20Pika%20Peke%20Cerrada_201kb.jpg",
       "promovida": 1,
       "activo": true,
-      "productos": []
+      "productos": [
+        {
+          "id": 819,
+          "nombre": "picada x6",
+          "descripcion": "Picada para 6 personas.",
+          "precio": 120000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "21",
+          "tiendaNombre": "Pika Peke"
+        }
+      ]
     },
     {
       "id": 19,
@@ -3835,6 +3849,19 @@
       "activo": true,
       "tiendaId": "22",
       "tiendaNombre": "Mr Pollo"
+    },
+    {
+      "id": 819,
+      "nombre": "picada x6",
+      "descripcion": "Picada para 6 personas.",
+      "precio": 120000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "21",
+      "tiendaNombre": "Pika Peke"
     }
   ],
   "complementosGlobal": [
