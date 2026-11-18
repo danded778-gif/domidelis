@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-18T20-52-11",
-  "ultimaActualizacion": "2026-11-18T20:52:11.760Z",
+  "version": "v2026-11-18T20-53-31",
+  "ultimaActualizacion": "2026-11-18T20:53:31.166Z",
   "tiendas": [
     {
       "id": 1,
@@ -1999,6 +1999,19 @@
           "activo": true,
           "tiendaId": "21",
           "tiendaNombre": "Pika Peke"
+        },
+        {
+          "id": 822,
+          "nombre": "Hamburguesa chicharrón",
+          "descripcion": "Chicharrón ahumado  guacamole y pico de gallo",
+          "precio": 22000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "21",
+          "tiendaNombre": "Pika Peke"
         }
       ]
     },
@@ -3907,6 +3920,19 @@
       "nombre": "Tacos x3",
       "descripcion": "Bondiola",
       "precio": 26000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "21",
+      "tiendaNombre": "Pika Peke"
+    },
+    {
+      "id": 822,
+      "nombre": "Hamburguesa chicharrón",
+      "descripcion": "Chicharrón ahumado  guacamole y pico de gallo",
+      "precio": 22000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
