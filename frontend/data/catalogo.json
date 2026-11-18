@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-18T20-47-35",
-  "ultimaActualizacion": "2026-11-18T20:47:35.421Z",
+  "version": "v2026-11-18T20-49-07",
+  "ultimaActualizacion": "2026-11-18T20:49:07.389Z",
   "tiendas": [
     {
       "id": 1,
@@ -1973,6 +1973,19 @@
           "activo": true,
           "tiendaId": "21",
           "tiendaNombre": "Pika Peke"
+        },
+        {
+          "id": 820,
+          "nombre": "Picada x4",
+          "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
+          "precio": 85000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "21",
+          "tiendaNombre": "Pika Peke"
         }
       ]
     },
@@ -3855,6 +3868,19 @@
       "nombre": "picada x6",
       "descripcion": "Picada para 6 personas.",
       "precio": 120000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "21",
+      "tiendaNombre": "Pika Peke"
+    },
+    {
+      "id": 820,
+      "nombre": "Picada x4",
+      "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
+      "precio": 85000,
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Otras",
