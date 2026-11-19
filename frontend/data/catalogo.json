@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-40-15",
-  "ultimaActualizacion": "2026-11-19T06:40:15.836Z",
+  "version": "v2026-11-19T07-00-17",
+  "ultimaActualizacion": "2026-11-19T07:00:17.638Z",
   "tiendas": [
     {
       "id": 1,
@@ -2044,7 +2044,7 @@
           "nombre": "1/4 Pollo Broaster",
           "descripcion": "Papa francesa Arepa y salsa de la casa",
           "precio": 14000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+          "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3842,7 +3842,7 @@
       "nombre": "1/4 Pollo Broaster",
       "descripcion": "Papa francesa Arepa y salsa de la casa",
       "precio": 14000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+      "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
