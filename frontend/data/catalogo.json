@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-29-25",
-  "ultimaActualizacion": "2026-11-19T06:29:25.294Z",
+  "version": "v2026-11-19T06-32-19",
+  "ultimaActualizacion": "2026-11-19T06:32:19.963Z",
   "tiendas": [
     {
       "id": 1,
@@ -1962,7 +1962,7 @@
       "activo": true,
       "productos": [
         {
-          "id": 819,
+          "id": 900,
           "nombre": "picada x6",
           "descripcion": "Picada para 6 personas.",
           "precio": 120000,
@@ -3903,7 +3903,7 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
-      "id": 819,
+      "id": 900,
       "nombre": "picada x6",
       "descripcion": "Picada para 6 personas.",
       "precio": 120000,
