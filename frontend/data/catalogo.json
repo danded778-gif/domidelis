@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-32-23",
-  "ultimaActualizacion": "2026-11-19T06:32:23.638Z",
+  "version": "v2026-11-19T06-32-50",
+  "ultimaActualizacion": "2026-11-19T06:32:50.139Z",
   "tiendas": [
     {
       "id": 1,
@@ -1771,7 +1771,7 @@
           "nombre": "Crispetas de pollo",
           "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
           "precio": 14000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -1988,7 +1988,7 @@
           "tiendaNombre": "Pika Peke"
         },
         {
-          "id": 821,
+          "id": 902,
           "nombre": "Tacos x3",
           "descripcion": "Bondiola",
           "precio": 26000,
@@ -2001,7 +2001,7 @@
           "tiendaNombre": "Pika Peke"
         },
         {
-          "id": 822,
+          "id": 903,
           "nombre": "Hamburguesa chicharrón",
           "descripcion": "Chicharrón ahumado  guacamole y pico de gallo",
           "precio": 22000,
@@ -2014,7 +2014,7 @@
           "tiendaNombre": "Pika Peke"
         },
         {
-          "id": 823,
+          "id": 904,
           "nombre": "Choripán",
           "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
           "precio": 16000,
@@ -3881,7 +3881,7 @@
       "nombre": "Crispetas de pollo",
       "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
       "precio": 14000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
@@ -3929,7 +3929,7 @@
       "tiendaNombre": "Pika Peke"
     },
     {
-      "id": 821,
+      "id": 902,
       "nombre": "Tacos x3",
       "descripcion": "Bondiola",
       "precio": 26000,
@@ -3942,7 +3942,7 @@
       "tiendaNombre": "Pika Peke"
     },
     {
-      "id": 822,
+      "id": 903,
       "nombre": "Hamburguesa chicharrón",
       "descripcion": "Chicharrón ahumado  guacamole y pico de gallo",
       "precio": 22000,
@@ -3955,7 +3955,7 @@
       "tiendaNombre": "Pika Peke"
     },
     {
-      "id": 823,
+      "id": 904,
       "nombre": "Choripán",
       "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
       "precio": 16000,
