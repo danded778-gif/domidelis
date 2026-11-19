@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-33-49",
-  "ultimaActualizacion": "2026-11-19T06:33:49.383Z",
+  "version": "v2026-11-19T06-34-36",
+  "ultimaActualizacion": "2026-11-19T06:34:36.342Z",
   "tiendas": [
     {
       "id": 1,
@@ -1715,6 +1715,19 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
+          "id": 809,
+          "nombre": "Crispetas de pollo",
+          "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
+          "precio": 14000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
           "id": 803,
           "nombre": "1/2 Pollo Asado",
           "descripcion": "Papa francesa Arepa y salsa de la casa",
@@ -1759,19 +1772,6 @@
           "descripcion": "Papa francesa Arepa y salsa de la casa",
           "precio": 27000,
           "imagen_url": "",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
-          "id": 809,
-          "nombre": "Crispetas de pollo",
-          "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
-          "precio": 14000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3825,6 +3825,19 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
+      "id": 809,
+      "nombre": "Crispetas de pollo",
+      "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
+      "precio": 14000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
       "id": 803,
       "nombre": "1/2 Pollo Asado",
       "descripcion": "Papa francesa Arepa y salsa de la casa",
@@ -3869,19 +3882,6 @@
       "descripcion": "Papa francesa Arepa y salsa de la casa",
       "precio": 27000,
       "imagen_url": "",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
-      "id": 809,
-      "nombre": "Crispetas de pollo",
-      "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
-      "precio": 14000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
