@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-34-36",
-  "ultimaActualizacion": "2026-11-19T06:34:36.342Z",
+  "version": "v2026-11-19T06-38-17",
+  "ultimaActualizacion": "2026-11-19T06:38:17.371Z",
   "tiendas": [
     {
       "id": 1,
@@ -1728,6 +1728,19 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
+          "id": 806,
+          "nombre": "1/4 Pollo Broaster",
+          "descripcion": "Papa francesa Arepa y salsa de la casa",
+          "precio": 14000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
           "id": 803,
           "nombre": "1/2 Pollo Asado",
           "descripcion": "Papa francesa Arepa y salsa de la casa",
@@ -1746,19 +1759,6 @@
           "descripcion": "Papa francesa Arepa sopa salsa de la casa",
           "precio": 49000,
           "imagen_url": "",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
-          "id": 806,
-          "nombre": "1/4 Pollo Broaster",
-          "descripcion": "Papa francesa Arepa y salsa de la casa",
-          "precio": 14000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -1869,6 +1869,84 @@
           "activo": true,
           "tiendaId": "18",
           "tiendaNombre": "Don perro"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "Luna Cremosa",
+      "descripcion": "Copas de diferentes sabores",
+      "direccion": "Carrera 49 #41-51 Parque principal",
+      "horario": "{\"mon\":\"11:00-20:00\",\"tue\":\"11:00-20:00\",\"wed\":\"11:00-20:00\",\"thu\":\"11:00-20:00\",\"fri\":\"11:00-20:00\",\"sat\":\"10:00-20:00\",\"sun\":\"10:00-20:00\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/lunacremosa/Fachada%20colorida%20de%20Luna%20Cremosa_200k.jpg",
+      "promovida": 0,
+      "activo": true,
+      "productos": [
+        {
+          "id": 700,
+          "nombre": "Copa Frutimix",
+          "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
+          "precio": 17000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20con%20caramelo%20y%20cereza_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 701,
+          "nombre": "Copa Queso",
+          "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20de%20caramelo%20con%20cereza%20y%20obleas_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 702,
+          "nombre": "Ensalada de frutas",
+          "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20de%20frutas%20en%20copa_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 703,
+          "nombre": "Waffle Especial",
+          "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
+          "precio": 20000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Postre%20de%20fresa%20y%20chocolate%20en%20plato%20blanco_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
+        },
+        {
+          "id": 704,
+          "nombre": "Banana Splitt",
+          "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Banana%20Split%20Multicolor%20con%20Fresas%20y%20Caramelo_200kb.jpg",
+          "badge": "NUEVO",
+          "categoria": "Detalles",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "19",
+          "tiendaNombre": "Luna Cremosa"
         }
       ]
     },
@@ -2025,84 +2103,6 @@
           "activo": true,
           "tiendaId": "21",
           "tiendaNombre": "Pika Peke"
-        }
-      ]
-    },
-    {
-      "id": 19,
-      "nombre": "Luna Cremosa",
-      "descripcion": "Copas de diferentes sabores",
-      "direccion": "Carrera 49 #41-51 Parque principal",
-      "horario": "{\"mon\":\"11:00-20:00\",\"tue\":\"11:00-20:00\",\"wed\":\"11:00-20:00\",\"thu\":\"11:00-20:00\",\"fri\":\"11:00-20:00\",\"sat\":\"10:00-20:00\",\"sun\":\"10:00-20:00\"}",
-      "rating": 5,
-      "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/lunacremosa/Fachada%20colorida%20de%20Luna%20Cremosa_200k.jpg",
-      "promovida": 0,
-      "activo": true,
-      "productos": [
-        {
-          "id": 700,
-          "nombre": "Copa Frutimix",
-          "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
-          "precio": 17000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20con%20caramelo%20y%20cereza_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "19",
-          "tiendaNombre": "Luna Cremosa"
-        },
-        {
-          "id": 701,
-          "nombre": "Copa Queso",
-          "descripcion": "Dos sabores de helado acompañados de queso A Chantilly Cereza salsa Lluvia de chocolate Y barquillos",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20de%20caramelo%20con%20cereza%20y%20obleas_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "19",
-          "tiendaNombre": "Luna Cremosa"
-        },
-        {
-          "id": 702,
-          "nombre": "Ensalada de frutas",
-          "descripcion": "Mezcla de frutas especial Acompañado De un sabor De helado Kumis Barquillos y salsa",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20de%20frutas%20en%20copa_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "19",
-          "tiendaNombre": "Luna Cremosa"
-        },
-        {
-          "id": 703,
-          "nombre": "Waffle Especial",
-          "descripcion": "Waffle acompañado de un sabor de helado Dos frutas a tu elección queso cerezas antilli lluvia de chocolate y salsa",
-          "precio": 20000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Postre%20de%20fresa%20y%20chocolate%20en%20plato%20blanco_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "19",
-          "tiendaNombre": "Luna Cremosa"
-        },
-        {
-          "id": 704,
-          "nombre": "Banana Splitt",
-          "descripcion": "3 bolas de helado Banano Queso cereza Fresa Chantilly  lluvia de chocolate salsa y barquillos",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Banana%20Split%20Multicolor%20con%20Fresas%20y%20Caramelo_200kb.jpg",
-          "badge": "NUEVO",
-          "categoria": "Detalles",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "19",
-          "tiendaNombre": "Luna Cremosa"
         }
       ]
     }
@@ -3838,6 +3838,19 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
+      "id": 806,
+      "nombre": "1/4 Pollo Broaster",
+      "descripcion": "Papa francesa Arepa y salsa de la casa",
+      "precio": 14000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
       "id": 803,
       "nombre": "1/2 Pollo Asado",
       "descripcion": "Papa francesa Arepa y salsa de la casa",
@@ -3856,19 +3869,6 @@
       "descripcion": "Papa francesa Arepa sopa salsa de la casa",
       "precio": 49000,
       "imagen_url": "",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
-      "id": 806,
-      "nombre": "1/4 Pollo Broaster",
-      "descripcion": "Papa francesa Arepa y salsa de la casa",
-      "precio": 14000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
