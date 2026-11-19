@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T17-28-41",
-  "ultimaActualizacion": "2026-11-19T17:28:41.281Z",
+  "version": "v2026-11-19T23-42-07",
+  "ultimaActualizacion": "2026-11-19T23:42:07.255Z",
   "tiendas": [
     {
       "id": 1,
@@ -1539,7 +1539,7 @@
       "nombre": "Don perro",
       "descripcion": "Sabor Criminal",
       "direccion": "Parque Lineal",
-      "horario": "{\"mon\":\"17:30-22:00\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"17:30-22:00\",\"fri\":\"17:30-22:00\",\"sat\":\"17:30-22:00\",\"sun\":\"17:30-22:00\"}",
+      "horario": "{\"mon\":\"17:30-22:00\",\"tue\":\"Cerrado\",\"wed\":\"17:30-22:00\",\"thu\":\"17:30-22:00\",\"fri\":\"17:30-22:00\",\"sat\":\"17:30-22:00\",\"sun\":\"17:30-22:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/Hamburguesas%20Don%20Perro%20de%20Noche_200kb.jpg",
       "promovida": 0,
