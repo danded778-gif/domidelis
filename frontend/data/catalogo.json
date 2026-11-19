@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T06-32-19",
-  "ultimaActualizacion": "2026-11-19T06:32:19.963Z",
+  "version": "v2026-11-19T06-32-23",
+  "ultimaActualizacion": "2026-11-19T06:32:23.638Z",
   "tiendas": [
     {
       "id": 1,
@@ -1975,7 +1975,7 @@
           "tiendaNombre": "Pika Peke"
         },
         {
-          "id": 820,
+          "id": 901,
           "nombre": "Picada x4",
           "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
           "precio": 85000,
@@ -3916,7 +3916,7 @@
       "tiendaNombre": "Pika Peke"
     },
     {
-      "id": 820,
+      "id": 901,
       "nombre": "Picada x4",
       "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
       "precio": 85000,
