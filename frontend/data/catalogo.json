@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-20T05-28-00",
-  "ultimaActualizacion": "2026-11-20T05:28:00.208Z",
+  "version": "v2026-11-20T16-40-08",
+  "ultimaActualizacion": "2026-11-20T16:40:08.536Z",
   "tiendas": [
     {
       "id": 1,
@@ -2005,9 +2005,9 @@
           "nombre": "Alas BBQ",
           "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
           "precio": 18000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20completo%20con%20arroz%2C%20papas%20y%20carne%20en%20salsa_200kb.webp",
+          "imagen_url": "",
           "badge": "NUEVO",
-          "categoria": "Menu",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3803,9 +3803,9 @@
       "nombre": "Alas BBQ",
       "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
       "precio": 18000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20completo%20con%20arroz%2C%20papas%20y%20carne%20en%20salsa_200kb.webp",
+      "imagen_url": "",
       "badge": "NUEVO",
-      "categoria": "Menu",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "22",
