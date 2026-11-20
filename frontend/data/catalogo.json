@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-19T23-42-12",
-  "ultimaActualizacion": "2026-11-19T23:42:12.946Z",
+  "version": "v2026-11-20T05-28-00",
+  "ultimaActualizacion": "2026-11-20T05:28:00.208Z",
   "tiendas": [
     {
       "id": 1,
@@ -979,7 +979,7 @@
           "id": 161,
           "nombre": "Pizza mediana",
           "descripcion": "",
-          "precio": 25000,
+          "precio": 28000,
           "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
           "badge": "NUEVO",
           "categoria": "Menu",
@@ -2814,7 +2814,7 @@
       "id": 161,
       "nombre": "Pizza mediana",
       "descripcion": "",
-      "precio": 25000,
+      "precio": 28000,
       "imagen_url": "https://cdn.jsdelivr.net/gh/soluvencon/imagenes-domicilios@main/basilica/pizza.png",
       "badge": "NUEVO",
       "categoria": "Menu",
