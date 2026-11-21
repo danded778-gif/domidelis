@@ -149,7 +149,16 @@ const Anuncios = {
     abrirPopup: function(anuncioId) {
         const anuncio = this.activos.find(a => a.id === anuncioId) || this.anuncioDestacado;
         if (!anuncio) return;
-
+//------------------------------------------------------------------------------------------------------
+        // ★ ANALYTICS v1: clic en anuncio del carrusel ★
+        if (typeof gtag === 'function') {
+            gtag('event', 'clic_anuncio', {
+                anuncio_id: String(anuncio.id),
+                tipo_anuncio: anuncio.tipo || 'general',
+                titulo: anuncio.titulo || ''
+            });
+        }
+//------------------------------------------------------------------------------------------------------
         const existing = document.getElementById('anuncioPopupOverlay');
         if (existing) existing.remove();
 
