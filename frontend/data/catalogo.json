@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-56-52",
-  "ultimaActualizacion": "2026-11-24T15:56:52.537Z",
+  "version": "v2026-11-24T15-57-17",
+  "ultimaActualizacion": "2026-11-24T15:57:17.592Z",
   "tiendas": [
     {
       "id": 1,
@@ -6980,12 +6980,12 @@
     {
       "id": 353,
       "id_producto": 905,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Salsa",
+      "nombre": "Birria",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 354,
