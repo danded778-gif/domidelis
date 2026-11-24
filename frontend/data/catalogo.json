@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-43-20",
-  "ultimaActualizacion": "2026-11-24T16:43:20.062Z",
+  "version": "v2026-11-24T16-44-01",
+  "ultimaActualizacion": "2026-11-24T16:44:01.636Z",
   "tiendas": [
     {
       "id": 1,
@@ -4034,9 +4034,9 @@
     {
       "id": 201,
       "nombre": "",
-      "descripcion": "",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
       "precio": 0,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
       "badge": "",
       "categoria": "Otras",
       "cantidadTipo": "UND",
