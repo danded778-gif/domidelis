@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-36-49",
-  "ultimaActualizacion": "2026-11-24T16:36:49.732Z",
+  "version": "v2026-11-24T16-38-34",
+  "ultimaActualizacion": "2026-11-24T16:38:34.061Z",
   "tiendas": [
     {
       "id": 1,
@@ -552,6 +552,19 @@
           "descripcion": "4 und",
           "precio": 8000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Advil%20Max%20con%20Bl%C3%ADster%20de%20C%C3%A1psulas_comprimido.png",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 200,
+          "nombre": "",
+          "descripcion": "",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Farmacia",
           "cantidadTipo": "UND",
@@ -4004,6 +4017,19 @@
       "activo": true,
       "tiendaId": "21",
       "tiendaNombre": "Pika Peke"
+    },
+    {
+      "id": 200,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     }
   ],
   "complementosGlobal": [
