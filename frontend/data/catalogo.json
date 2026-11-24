@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-48-16",
-  "ultimaActualizacion": "2026-11-24T16:48:16.438Z",
+  "version": "v2026-11-24T16-48-56",
+  "ultimaActualizacion": "2026-11-24T16:48:56.204Z",
   "tiendas": [
     {
       "id": 1,
@@ -578,6 +578,19 @@
           "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 202,
+          "nombre": "Durex",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Farmacia",
           "cantidadTipo": "UND",
@@ -4060,15 +4073,15 @@
     {
       "id": 202,
       "nombre": "Durex",
-      "descripcion": "",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
       "precio": 0,
-      "imagen_url": "",
-      "badge": "",
-      "categoria": "Otras",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     }
   ],
   "complementosGlobal": [
