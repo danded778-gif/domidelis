@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-57-42",
-  "ultimaActualizacion": "2026-11-24T15:57:42.744Z",
+  "version": "v2026-11-24T15-58-30",
+  "ultimaActualizacion": "2026-11-24T15:58:30.564Z",
   "tiendas": [
     {
       "id": 1,
@@ -1773,7 +1773,7 @@
       "nombre": "Pika Peke",
       "descripcion": "Aqui No Hay Remordimiento",
       "direccion": "Parque Principal",
-      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"08:00 - 15:00\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Pika%20%26%20Peke_%20Picader%C3%ADa%20acogedora.webp",
       "promovida": 1,
@@ -6981,7 +6981,7 @@
       "id": 353,
       "id_producto": 905,
       "grupo": "Salsa",
-      "nombre": "Birria",
+      "nombre": "Birria por separado",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
