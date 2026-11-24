@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-41-10",
-  "ultimaActualizacion": "2026-11-24T15:41:10.131Z",
+  "version": "v2026-11-24T15-42-56",
+  "ultimaActualizacion": "2026-11-24T15:42:56.816Z",
   "tiendas": [
     {
       "id": 1,
@@ -1772,7 +1772,7 @@
       "id": 21,
       "nombre": "Pika Peke",
       "descripcion": "Aqui No Hay Remordimiento",
-      "direccion": "p.p",
+      "direccion": "Parque Principal",
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/pikapeke/Pika%20%26%20Peke_%20Picader%C3%ADa%20acogedora.webp",
