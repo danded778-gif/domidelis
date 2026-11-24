@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-45-22",
-  "ultimaActualizacion": "2026-11-24T16:45:22.077Z",
+  "version": "v2026-11-24T16-45-26",
+  "ultimaActualizacion": "2026-11-24T16:45:26.635Z",
   "tiendas": [
     {
       "id": 1,
@@ -1655,7 +1655,7 @@
           "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
           "precio": 17000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20con%20caramelo%20y%20cereza_200kb.jpg",
-          "badge": "NUEVO",
+          "badge": "Disponible",
           "categoria": "Detalles",
           "cantidadTipo": "UND",
           "activo": true,
@@ -3634,7 +3634,7 @@
       "descripcion": "Dos sabores de lado acompañados de kiwi Fresa Durazno Cereza Chantilly Salsa Y barquillos",
       "precio": 17000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/lunacremosa/Sundae%20tropical%20con%20caramelo%20y%20cereza_200kb.jpg",
-      "badge": "NUEVO",
+      "badge": "Disponible",
       "categoria": "Detalles",
       "cantidadTipo": "UND",
       "activo": true,
