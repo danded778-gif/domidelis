@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-23T22-50-41",
-  "ultimaActualizacion": "2026-11-23T22:50:41.974Z",
+  "version": "v2026-11-24T05-22-54",
+  "ultimaActualizacion": "2026-11-24T05:22:54.285Z",
   "tiendas": [
     {
       "id": 1,
@@ -2105,6 +2105,18 @@
           "tiendaNombre": "Mr Pollo"
         }
       ]
+    },
+    {
+      "id": 23,
+      "nombre": "Gusto Pan",
+      "descripcion": "",
+      "direccion": "Sector Hospital",
+      "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"Cerrado\",\"thu\":\"Cerrado\",\"fri\":\"Cerrado\",\"sat\":\"Cerrado\",\"sun\":\"Cerrado\"}",
+      "rating": 5,
+      "imagen": "https://raw.githubusercontent.com/danded778-gif/domidelis/refs/heads/main/frontend/assets/img/tienda-error.png",
+      "promovida": 0,
+      "activo": true,
+      "productos": []
     }
   ],
   "productosGlobal": [
