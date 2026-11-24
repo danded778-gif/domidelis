@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-12-13",
-  "ultimaActualizacion": "2026-11-24T15:12:13.385Z",
+  "version": "v2026-11-24T15-13-06",
+  "ultimaActualizacion": "2026-11-24T15:13:06.972Z",
   "tiendas": [
     {
       "id": 1,
@@ -3981,7 +3981,7 @@
     },
     {
       "id": 905,
-      "nombre": "",
+      "nombre": "Tacos de Birria",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "",
