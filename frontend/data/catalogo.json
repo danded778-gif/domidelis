@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-09-10",
-  "ultimaActualizacion": "2026-11-24T15:09:10.223Z",
+  "version": "v2026-11-24T15-10-07",
+  "ultimaActualizacion": "2026-11-24T15:10:07.580Z",
   "tiendas": [
     {
       "id": 1,
@@ -1836,7 +1836,7 @@
           "nombre": "Choripán",
           "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
           "precio": 16000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/S%C3%A1ndwich%20tostado%20con%20papas%20doradas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -3971,7 +3971,7 @@
       "nombre": "Choripán",
       "descripcion": "pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
       "precio": 16000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/S%C3%A1ndwich%20tostado%20con%20papas%20doradas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
