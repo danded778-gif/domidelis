@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-40-07",
-  "ultimaActualizacion": "2026-11-24T15:40:07.134Z",
+  "version": "v2026-11-24T15-40-30",
+  "ultimaActualizacion": "2026-11-24T15:40:30.874Z",
   "tiendas": [
     {
       "id": 1,
@@ -6948,7 +6948,7 @@
       "id": 351,
       "id_producto": 902,
       "grupo": "Presentación",
-      "nombre": "Ensalada de frutas especial",
+      "nombre": "Cochinita Pibill",
       "precio": 7000,
       "tipo": "",
       "max": 1,
