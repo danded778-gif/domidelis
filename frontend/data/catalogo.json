@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-58-30",
-  "ultimaActualizacion": "2026-11-24T15:58:30.564Z",
+  "version": "v2026-11-24T16-00-02",
+  "ultimaActualizacion": "2026-11-24T16:00:02.315Z",
   "tiendas": [
     {
       "id": 1,
@@ -6984,8 +6984,8 @@
       "nombre": "Birria por separado",
       "precio": 0,
       "tipo": "opcion",
-      "max": 1,
-      "min": 1
+      "max": null,
+      "min": 0
     },
     {
       "id": 354,
