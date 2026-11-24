@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-44-01",
-  "ultimaActualizacion": "2026-11-24T16:44:01.636Z",
+  "version": "v2026-11-24T16-44-30",
+  "ultimaActualizacion": "2026-11-24T16:44:30.271Z",
   "tiendas": [
     {
       "id": 1,
@@ -565,6 +565,19 @@
           "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 201,
+          "nombre": "",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+          "precio": 0,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Farmacia",
           "cantidadTipo": "UND",
@@ -1163,7 +1176,7 @@
           "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
           "precio": 27000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Salchipapas%20con%20birria.png",
-          "badge": "NUEVO",
+          "badge": "Disponible",
           "categoria": "Menu",
           "cantidadTipo": "UND",
           "activo": true,
@@ -1176,7 +1189,7 @@
           "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
           "precio": 19500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Tacos%20mixtos.png",
-          "badge": "NUEVO",
+          "badge": "Disponible",
           "categoria": "Menu",
           "cantidadTipo": "UND",
           "activo": true,
@@ -3114,7 +3127,7 @@
       "descripcion": "400 gramos de papas francesa\n Carne de birria dulce fusión, tocineta, salchicha, guacamole,sour cream, pico de gallo,salsa BBQ artesanal, queso mozarella( opcional salsa picante)",
       "precio": 27000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Salchipapas%20con%20birria.png",
-      "badge": "NUEVO",
+      "badge": "Disponible",
       "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
@@ -3127,7 +3140,7 @@
       "descripcion": "Carne mixta de cerdo y pechuga, tortillas de maiz, pico de gallo, guacamole, sour cream, salsa mexicana picosita,queso mozarella  frijol refrito lechuga",
       "precio": 19500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Tacos%20mixtos.png",
-      "badge": "NUEVO",
+      "badge": "Disponible",
       "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
@@ -4037,12 +4050,12 @@
       "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
-      "badge": "",
-      "categoria": "Otras",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
     }
   ],
   "complementosGlobal": [
