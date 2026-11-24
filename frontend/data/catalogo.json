@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-41-14",
-  "ultimaActualizacion": "2026-11-24T16:41:14.492Z",
+  "version": "v2026-11-24T16-42-26",
+  "ultimaActualizacion": "2026-11-24T16:42:26.904Z",
   "tiendas": [
     {
       "id": 1,
@@ -4030,6 +4030,19 @@
       "activo": true,
       "tiendaId": "2",
       "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 201,
+      "nombre": "",
+      "descripcion": "",
+      "precio": 0,
+      "imagen_url": "",
+      "badge": "",
+      "categoria": "Otras",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "",
+      "tiendaNombre": "Sin tienda"
     }
   ],
   "complementosGlobal": [
