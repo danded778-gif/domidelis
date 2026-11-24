@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-54-01",
-  "ultimaActualizacion": "2026-11-24T15:54:01.339Z",
+  "version": "v2026-11-24T15-54-27",
+  "ultimaActualizacion": "2026-11-24T15:54:27.566Z",
   "tiendas": [
     {
       "id": 1,
@@ -1786,7 +1786,7 @@
           "precio": 120000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Gran%20Platter%20Mixto%20de%20Antojitos%20Grillados_comprimido.webp",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "carnes",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "21",
@@ -3934,7 +3934,7 @@
       "precio": 120000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Gran%20Platter%20Mixto%20de%20Antojitos%20Grillados_comprimido.webp",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "carnes",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "21",
