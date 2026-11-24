@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-44-30",
-  "ultimaActualizacion": "2026-11-24T16:44:30.271Z",
+  "version": "v2026-11-24T16-44-33",
+  "ultimaActualizacion": "2026-11-24T16:44:33.382Z",
   "tiendas": [
     {
       "id": 1,
@@ -1202,7 +1202,7 @@
           "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
           "precio": 32500,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
-          "badge": "NUEVO",
+          "badge": "Disponible",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
           "activo": true,
@@ -3153,7 +3153,7 @@
       "descripcion": "Frijoles arroz ensalada chicharrón chorizo carne molido tajada de maduro aguacate morcilla huevo arepa.",
       "precio": 32500,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Dulce%20fusion/Bandeja%20paisa.png",
-      "badge": "NUEVO",
+      "badge": "Disponible",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
       "activo": true,
