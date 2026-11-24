@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-57-17",
-  "ultimaActualizacion": "2026-11-24T15:57:17.592Z",
+  "version": "v2026-11-24T15-57-42",
+  "ultimaActualizacion": "2026-11-24T15:57:42.744Z",
   "tiendas": [
     {
       "id": 1,
@@ -6953,7 +6953,7 @@
       "grupo": "Presentación",
       "nombre": "Bondiola",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -6963,7 +6963,7 @@
       "grupo": "Presentación",
       "nombre": "Cochinita Pibill",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
@@ -6973,7 +6973,7 @@
       "grupo": "Presentación",
       "nombre": "Chicharron",
       "precio": 0,
-      "tipo": "",
+      "tipo": "opcion",
       "max": 1,
       "min": 1
     },
