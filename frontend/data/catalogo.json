@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-28-09",
-  "ultimaActualizacion": "2026-11-24T15:28:09.513Z",
+  "version": "v2026-11-24T15-30-18",
+  "ultimaActualizacion": "2026-11-24T15:30:18.034Z",
   "tiendas": [
     {
       "id": 1,
@@ -1797,7 +1797,7 @@
           "nombre": "Picada x4",
           "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
           "precio": 85000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Parrillada%20de%20carnes%2C%20papas%20y%20ma%C3%ADz_comprimido200.webp",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -3932,7 +3932,7 @@
       "nombre": "Picada x4",
       "descripcion": "Bondiola ahumada chorizo morcilla chicharrón costilla ahumada albóndigas arepas y papa",
       "precio": 85000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Parrillada%20de%20carnes%2C%20papas%20y%20ma%C3%ADz_comprimido200.webp",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
