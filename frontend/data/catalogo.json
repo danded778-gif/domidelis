@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-38-34",
-  "ultimaActualizacion": "2026-11-24T16:38:34.061Z",
+  "version": "v2026-11-24T16-39-59",
+  "ultimaActualizacion": "2026-11-24T16:39:59.564Z",
   "tiendas": [
     {
       "id": 1,
@@ -561,7 +561,7 @@
         },
         {
           "id": 200,
-          "nombre": "",
+          "nombre": "Today Condoms",
           "descripcion": "",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
@@ -4020,7 +4020,7 @@
     },
     {
       "id": 200,
-      "nombre": "",
+      "nombre": "Today Condoms",
       "descripcion": "",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
