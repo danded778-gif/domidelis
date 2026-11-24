@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-55-21",
-  "ultimaActualizacion": "2026-11-24T15:55:21.720Z",
+  "version": "v2026-11-24T15-56-28",
+  "ultimaActualizacion": "2026-11-24T15:56:28.325Z",
   "tiendas": [
     {
       "id": 1,
@@ -1838,7 +1838,7 @@
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/S%C3%A1ndwich%20tostado%20con%20papas%20doradas_comprimido.webp",
           "badge": "NUEVO",
-          "categoria": "Otras",
+          "categoria": "Menu",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "21",
@@ -3986,7 +3986,7 @@
       "precio": 16000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/S%C3%A1ndwich%20tostado%20con%20papas%20doradas_comprimido.webp",
       "badge": "NUEVO",
-      "categoria": "Otras",
+      "categoria": "Menu",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "21",
@@ -6979,7 +6979,7 @@
     },
     {
       "id": 353,
-      "id_producto": "",
+      "id_producto": 905,
       "grupo": "",
       "nombre": "",
       "precio": 0,
