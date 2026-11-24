@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T06-03-38",
-  "ultimaActualizacion": "2026-11-24T06:03:38.745Z",
+  "version": "v2026-11-24T15-08-23",
+  "ultimaActualizacion": "2026-11-24T15:08:23.378Z",
   "tiendas": [
     {
       "id": 1,
@@ -1784,7 +1784,7 @@
           "nombre": "picada x6",
           "descripcion": "Picada para 6 personas.",
           "precio": 120000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Gran%20Platter%20Mixto%20de%20Antojitos%20Grillados_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -3919,7 +3919,7 @@
       "nombre": "picada x6",
       "descripcion": "Picada para 6 personas.",
       "precio": 120000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Gran%20Platter%20Mixto%20de%20Antojitos%20Grillados_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
