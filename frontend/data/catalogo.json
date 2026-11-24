@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-40-30",
-  "ultimaActualizacion": "2026-11-24T15:40:30.874Z",
+  "version": "v2026-11-24T15-41-10",
+  "ultimaActualizacion": "2026-11-24T15:41:10.131Z",
   "tiendas": [
     {
       "id": 1,
@@ -6949,7 +6949,7 @@
       "id_producto": 902,
       "grupo": "Presentación",
       "nombre": "Cochinita Pibill",
-      "precio": 7000,
+      "precio": 0,
       "tipo": "",
       "max": 1,
       "min": 1
@@ -6957,12 +6957,12 @@
     {
       "id": 352,
       "id_producto": 902,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Presentación",
+      "nombre": "Chicharron",
       "precio": 0,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 353,
@@ -7218,9 +7218,9 @@
       "id": 702,
       "id_producto": 188,
       "grupo": "Presentación",
-      "nombre": "Galletas oreo",
+      "nombre": "Bondiola",
       "precio": 0,
-      "tipo": "opcion",
+      "tipo": "",
       "max": 1,
       "min": 1
     },
@@ -7228,9 +7228,9 @@
       "id": 703,
       "id_producto": 188,
       "grupo": "Presentación",
-      "nombre": "Gomitas",
+      "nombre": "Cochinita Pibill",
       "precio": 0,
-      "tipo": "opcion",
+      "tipo": "",
       "max": 1,
       "min": 1
     },
@@ -7238,9 +7238,9 @@
       "id": 704,
       "id_producto": 188,
       "grupo": "Presentación",
-      "nombre": "chispitas de color",
+      "nombre": "Chicharron",
       "precio": 0,
-      "tipo": "opcion",
+      "tipo": "",
       "max": 1,
       "min": 1
     },
