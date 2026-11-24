@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-39-59",
-  "ultimaActualizacion": "2026-11-24T16:39:59.564Z",
+  "version": "v2026-11-24T16-41-14",
+  "ultimaActualizacion": "2026-11-24T16:41:14.492Z",
   "tiendas": [
     {
       "id": 1,
@@ -562,7 +562,7 @@
         {
           "id": 200,
           "nombre": "Today Condoms",
-          "descripcion": "",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
           "precio": 0,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
           "badge": "NUEVO",
@@ -4021,7 +4021,7 @@
     {
       "id": 200,
       "nombre": "Today Condoms",
-      "descripcion": "",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
       "precio": 0,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
       "badge": "NUEVO",
