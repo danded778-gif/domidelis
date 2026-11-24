@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-35-07",
-  "ultimaActualizacion": "2026-11-24T15:35:07.853Z",
+  "version": "v2026-11-24T15-35-32",
+  "ultimaActualizacion": "2026-11-24T15:35:32.410Z",
   "tiendas": [
     {
       "id": 1,
@@ -6935,7 +6935,7 @@
       "min": 0
     },
     {
-      "id": 500,
+      "id": 700,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -6945,7 +6945,7 @@
       "min": 0
     },
     {
-      "id": 501,
+      "id": 701,
       "id_producto": 188,
       "grupo": "",
       "nombre": "Und Fresas con Crema",
@@ -6955,7 +6955,7 @@
       "min": 0
     },
     {
-      "id": 502,
+      "id": 702,
       "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Galletas oreo",
@@ -6965,7 +6965,7 @@
       "min": 1
     },
     {
-      "id": 503,
+      "id": 703,
       "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "Gomitas",
@@ -6975,7 +6975,7 @@
       "min": 1
     },
     {
-      "id": 504,
+      "id": 704,
       "id_producto": 188,
       "grupo": "Presentación",
       "nombre": "chispitas de color",
@@ -6985,7 +6985,7 @@
       "min": 1
     },
     {
-      "id": 505,
+      "id": 705,
       "id_producto": 188,
       "grupo": "Salsa",
       "nombre": "Lecherita",
@@ -6995,7 +6995,7 @@
       "min": 1
     },
     {
-      "id": 506,
+      "id": 706,
       "id_producto": 188,
       "grupo": "Salsa",
       "nombre": "Mora",
@@ -7005,7 +7005,7 @@
       "min": 1
     },
     {
-      "id": 507,
+      "id": 707,
       "id_producto": 188,
       "grupo": "Salsa",
       "nombre": "Chocolate",
@@ -7015,7 +7015,7 @@
       "min": 1
     },
     {
-      "id": 508,
+      "id": 708,
       "id_producto": 188,
       "grupo": "Salsa",
       "nombre": "Arequipe",
@@ -7025,7 +7025,7 @@
       "min": 1
     },
     {
-      "id": 509,
+      "id": 709,
       "id_producto": "",
       "grupo": "",
       "nombre": "",
@@ -7035,7 +7035,7 @@
       "min": 0
     },
     {
-      "id": 510,
+      "id": 710,
       "id_producto": 167,
       "grupo": "Proteína",
       "nombre": "Alitas",
@@ -7045,7 +7045,7 @@
       "min": 1
     },
     {
-      "id": 511,
+      "id": 711,
       "id_producto": 167,
       "grupo": "Acompañamiento",
       "nombre": "papa",
@@ -7055,7 +7055,7 @@
       "min": 1
     },
     {
-      "id": 512,
+      "id": 712,
       "id_producto": 167,
       "grupo": "Acompañamiento",
       "nombre": "Yuquitas",
@@ -7065,7 +7065,7 @@
       "min": 1
     },
     {
-      "id": 513,
+      "id": 713,
       "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa de la casa",
@@ -7075,7 +7075,7 @@
       "min": 0
     },
     {
-      "id": 514,
+      "id": 714,
       "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa BBQ",
@@ -7085,7 +7085,7 @@
       "min": 0
     },
     {
-      "id": 515,
+      "id": 715,
       "id_producto": 167,
       "grupo": "Salsa",
       "nombre": "Salsa miel mostaza",
@@ -7095,7 +7095,7 @@
       "min": 0
     },
     {
-      "id": 516,
+      "id": 716,
       "id_producto": 167,
       "grupo": "",
       "nombre": "Alitas extra",
@@ -7105,7 +7105,7 @@
       "min": 0
     },
     {
-      "id": 517,
+      "id": 717,
       "id_producto": 167,
       "grupo": "",
       "nombre": "Yuquitas",
@@ -7115,7 +7115,7 @@
       "min": 0
     },
     {
-      "id": 518,
+      "id": 718,
       "id_producto": 167,
       "grupo": "",
       "nombre": "salsa",
