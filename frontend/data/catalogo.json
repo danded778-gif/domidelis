@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T16-52-41",
-  "ultimaActualizacion": "2026-11-24T16:52:41.211Z",
+  "version": "v2026-11-24T16-54-01",
+  "ultimaActualizacion": "2026-11-24T16:54:01.287Z",
   "tiendas": [
     {
       "id": 1,
@@ -482,6 +482,45 @@
           "tiendaNombre": "Domi Express"
         },
         {
+          "id": 200,
+          "nombre": "Today Condoms x3",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+          "precio": 16000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 201,
+          "nombre": "DUO G x3",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+          "precio": 13000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
+          "id": 202,
+          "nombre": "Dure Invicible  x3",
+          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+          "precio": 19000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Farmacia",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "2",
+          "tiendaNombre": "Domi Express"
+        },
+        {
           "id": 156,
           "nombre": "📦 Encargo Express",
           "descripcion": "",
@@ -553,45 +592,6 @@
           "precio": 8000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Advil%20Max%20con%20Bl%C3%ADster%20de%20C%C3%A1psulas_comprimido.png",
           "badge": "Disponible",
-          "categoria": "Farmacia",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 200,
-          "nombre": "Today Condoms x3",
-          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-          "precio": 16000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
-          "badge": "NUEVO",
-          "categoria": "Farmacia",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 201,
-          "nombre": "DUO G x3",
-          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-          "precio": 13000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
-          "badge": "NUEVO",
-          "categoria": "Farmacia",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "2",
-          "tiendaNombre": "Domi Express"
-        },
-        {
-          "id": 202,
-          "nombre": "Dure Invicible  x3",
-          "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-          "precio": 13000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
-          "badge": "NUEVO",
           "categoria": "Farmacia",
           "cantidadTipo": "UND",
           "activo": true,
@@ -2524,6 +2524,45 @@
       "tiendaNombre": "Domi Express"
     },
     {
+      "id": 200,
+      "nombre": "Today Condoms x3",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+      "precio": 16000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 201,
+      "nombre": "DUO G x3",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+      "precio": 13000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
+      "id": 202,
+      "nombre": "Dure Invicible  x3",
+      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
+      "precio": 19000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Farmacia",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "2",
+      "tiendaNombre": "Domi Express"
+    },
+    {
       "id": 128,
       "nombre": "Hamburguesa de pollo",
       "descripcion": "130 G de pechuga apanada pan artesanal tomate lechuga pepino cebolla caramelizada y salsas de la casa",
@@ -4043,45 +4082,6 @@
       "activo": true,
       "tiendaId": "21",
       "tiendaNombre": "Pika Peke"
-    },
-    {
-      "id": 200,
-      "nombre": "Today Condoms x3",
-      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-      "precio": 16000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Empaque%20de%20condones%20Today%20sobre%20madera%20clara_comprimido.webp",
-      "badge": "NUEVO",
-      "categoria": "Farmacia",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 201,
-      "nombre": "DUO G x3",
-      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-      "precio": 13000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20de%20Condones%20DUO%20G-Sensation_comprimido.webp",
-      "badge": "NUEVO",
-      "categoria": "Farmacia",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
-    },
-    {
-      "id": 202,
-      "nombre": "Dure Invicible  x3",
-      "descripcion": "Cuida tu bienestar y disfruta con responsabilidad. El uso correcto del preservativo ayuda a prevenir embarazos no planeados y reduce el riesgo de infecciones de transmisión sexual.",
-      "precio": 13000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mi%20tienda/farmacia/Caja%20Durex%20Invisible%20hologr%C3%A1fica_comprimido.webp",
-      "badge": "NUEVO",
-      "categoria": "Farmacia",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "2",
-      "tiendaNombre": "Domi Express"
     }
   ],
   "complementosGlobal": [
