@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T17-13-01",
-  "ultimaActualizacion": "2026-11-24T17:13:01.278Z",
+  "version": "v2026-11-24T17-15-53",
+  "ultimaActualizacion": "2026-11-24T17:15:53.258Z",
   "tiendas": [
     {
       "id": 1,
@@ -7059,7 +7059,7 @@
       "id": 353,
       "id_producto": 905,
       "grupo": "Salsa",
-      "nombre": "Birria por separado",
+      "nombre": "picante por separado",
       "precio": 0,
       "tipo": "opcion",
       "max": null,
