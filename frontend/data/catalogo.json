@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-37-03",
-  "ultimaActualizacion": "2026-11-24T15:37:03.793Z",
+  "version": "v2026-11-24T15-39-32",
+  "ultimaActualizacion": "2026-11-24T15:39:32.925Z",
   "tiendas": [
     {
       "id": 1,
@@ -6937,26 +6937,26 @@
     {
       "id": 350,
       "id_producto": 902,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas Sencilla",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "columna 2",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 351,
-      "id_producto": "",
-      "grupo": "",
-      "nombre": "",
-      "precio": 0,
+      "id_producto": 902,
+      "grupo": "Presentación",
+      "nombre": "Ensalada de frutas especial",
+      "precio": 7000,
       "tipo": "",
-      "max": null,
-      "min": 0
+      "max": 1,
+      "min": 1
     },
     {
       "id": 352,
-      "id_producto": "",
+      "id_producto": 902,
       "grupo": "",
       "nombre": "",
       "precio": 0,
