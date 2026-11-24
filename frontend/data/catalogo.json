@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-08-23",
-  "ultimaActualizacion": "2026-11-24T15:08:23.378Z",
+  "version": "v2026-11-24T15-09-10",
+  "ultimaActualizacion": "2026-11-24T15:09:10.223Z",
   "tiendas": [
     {
       "id": 1,
@@ -1810,7 +1810,7 @@
           "nombre": "Tacos x3",
           "descripcion": "Bondiola",
           "precio": 26000,
-          "imagen_url": "",
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Mujer%20feliz%20con%20tacos%20y%20texto%20vibrante_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -3945,7 +3945,7 @@
       "nombre": "Tacos x3",
       "descripcion": "Bondiola",
       "precio": 26000,
-      "imagen_url": "",
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Mujer%20feliz%20con%20tacos%20y%20texto%20vibrante_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
