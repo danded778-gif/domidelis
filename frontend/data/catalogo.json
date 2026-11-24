@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-39-32",
-  "ultimaActualizacion": "2026-11-24T15:39:32.925Z",
+  "version": "v2026-11-24T15-39-38",
+  "ultimaActualizacion": "2026-11-24T15:39:38.282Z",
   "tiendas": [
     {
       "id": 1,
@@ -6940,7 +6940,7 @@
       "grupo": "Presentación",
       "nombre": "Ensalada de frutas Sencilla",
       "precio": 0,
-      "tipo": "columna 2",
+      "tipo": "",
       "max": 1,
       "min": 1
     },
