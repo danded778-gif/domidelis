@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-39-38",
-  "ultimaActualizacion": "2026-11-24T15:39:38.282Z",
+  "version": "v2026-11-24T15-40-07",
+  "ultimaActualizacion": "2026-11-24T15:40:07.134Z",
   "tiendas": [
     {
       "id": 1,
@@ -6938,7 +6938,7 @@
       "id": 350,
       "id_producto": 902,
       "grupo": "Presentación",
-      "nombre": "Ensalada de frutas Sencilla",
+      "nombre": "Bondiola",
       "precio": 0,
       "tipo": "",
       "max": 1,
