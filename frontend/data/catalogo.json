@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-13-06",
-  "ultimaActualizacion": "2026-11-24T15:13:06.972Z",
+  "version": "v2026-11-24T15-15-30",
+  "ultimaActualizacion": "2026-11-24T15:15:30.166Z",
   "tiendas": [
     {
       "id": 1,
@@ -3982,8 +3982,8 @@
     {
       "id": 905,
       "nombre": "Tacos de Birria",
-      "descripcion": "",
-      "precio": 0,
+      "descripcion": "Con Birria",
+      "precio": 30000,
       "imagen_url": "",
       "badge": "",
       "categoria": "Otras",
