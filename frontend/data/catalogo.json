@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-24T15-43-56",
-  "ultimaActualizacion": "2026-11-24T15:43:56.533Z",
+  "version": "v2026-11-24T15-54-01",
+  "ultimaActualizacion": "2026-11-24T15:54:01.339Z",
   "tiendas": [
     {
       "id": 1,
@@ -1837,6 +1837,19 @@
           "descripcion": "Pan baguette cebolla caramelizada chimichurri salsa alioli papa criolla",
           "precio": 16000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/S%C3%A1ndwich%20tostado%20con%20papas%20doradas_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Otras",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "21",
+          "tiendaNombre": "Pika Peke"
+        },
+        {
+          "id": 905,
+          "nombre": "Tacos de Birria",
+          "descripcion": "Con Birria",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Tacos%20de%20birria%20con%20consom%C3%A9%20y%20limas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Otras",
           "cantidadTipo": "UND",
@@ -3985,12 +3998,12 @@
       "descripcion": "Con Birria",
       "precio": 30000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/pikapeke/Tacos%20de%20birria%20con%20consom%C3%A9%20y%20limas_comprimido.webp",
-      "badge": "",
+      "badge": "NUEVO",
       "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
-      "tiendaId": "",
-      "tiendaNombre": "Sin tienda"
+      "tiendaId": "21",
+      "tiendaNombre": "Pika Peke"
     }
   ],
   "complementosGlobal": [
