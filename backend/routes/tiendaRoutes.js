@@ -30,7 +30,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const router = express.Router();
 
-const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbyAYydmeZX4Ae1SJfvad3K4EI7WTAX9cxjVvYVF7ERQy027sPEzNP8DYJXu6oSzARe4/exec';
+const GAS_URL = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycbyEa34NdiQZwlREf-7vOtSQpiJ6ELTGs5Ji_ys8iLEkTrnhU2vg5Pf0_mnI3viAAI34/exec';
 const JWT_SECRET = process.env.JWT_SECRET;
 const GAS_SECRET_KEY = process.env.GAS_SECRET_KEY;
 const DOMICILIARIOS_CACHE_TTL_MS = 60 * 1000;
