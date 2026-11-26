@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-25T02-43-45",
-  "ultimaActualizacion": "2026-11-25T02:43:45.403Z",
+  "version": "v2026-11-26T01-43-30",
+  "ultimaActualizacion": "2026-11-26T01:43:30.103Z",
   "tiendas": [
     {
       "id": 1,
@@ -1581,7 +1581,7 @@
       "horario": "{\"mon\":\"Cerrado\",\"tue\":\"Cerrado\",\"wed\":\"17:30-22:00\",\"thu\":\"17:30-22:00\",\"fri\":\"17:30-22:00\",\"sat\":\"17:30-22:00\",\"sun\":\"17:30-22:00\"}",
       "rating": 5,
       "imagen": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/refs/heads/main/don%20perro/Hamburguesas%20Don%20Perro%20de%20Noche_200kb.jpg",
-      "promovida": 0,
+      "promovida": 1,
       "activo": true,
       "productos": [
         {
