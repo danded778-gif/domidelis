@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-53-19",
-  "ultimaActualizacion": "2026-11-26T15:53:19.513Z",
+  "version": "v2026-11-26T15-54-56",
+  "ultimaActualizacion": "2026-11-26T15:54:56.712Z",
   "tiendas": [
     {
       "id": 1,
@@ -2079,6 +2079,19 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
+          "id": 812,
+          "nombre": "Chuleta de cerdo",
+          "descripcion": "Ensalada Papa francesa y arroz blanco",
+          "precio": 30000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20carne%20a%20la%20parrilla%20con%20acompa%C3%B1amientos_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Carnes",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
           "id": 809,
           "nombre": "Crispetas de pollo",
           "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
@@ -2138,19 +2151,6 @@
           "imagen_url": "",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
-          "id": 812,
-          "nombre": "Chuleta de cerdo",
-          "descripcion": "Ensalada Papa francesa y arroz blanco",
-          "precio": 30000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20carne%20a%20la%20parrilla%20con%20acompa%C3%B1amientos_comprimido.webp",
-          "badge": "NUEVO",
-          "categoria": "Carnes",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3928,6 +3928,19 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
+      "id": 812,
+      "nombre": "Chuleta de cerdo",
+      "descripcion": "Ensalada Papa francesa y arroz blanco",
+      "precio": 30000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20carne%20a%20la%20parrilla%20con%20acompa%C3%B1amientos_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Carnes",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
       "id": 809,
       "nombre": "Crispetas de pollo",
       "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
@@ -3987,19 +4000,6 @@
       "imagen_url": "",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
-      "id": 812,
-      "nombre": "Chuleta de cerdo",
-      "descripcion": "Ensalada Papa francesa y arroz blanco",
-      "precio": 30000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Plato%20de%20carne%20a%20la%20parrilla%20con%20acompa%C3%B1amientos_comprimido.webp",
-      "badge": "NUEVO",
-      "categoria": "Carnes",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "22",
@@ -7257,6 +7257,16 @@
     },
     {
       "id": 419,
+      "id_producto": 806,
+      "grupo": "Presentación",
+      "nombre": "Muslo Contramuslo",
+      "precio": 0,
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
+    },
+    {
+      "id": 420,
       "id_producto": 803,
       "grupo": "",
       "nombre": "Sopa",
@@ -7266,7 +7276,7 @@
       "min": 0
     },
     {
-      "id": 420,
+      "id": 421,
       "id_producto": 805,
       "grupo": "",
       "nombre": "Sopa",
@@ -7276,7 +7286,7 @@
       "min": 0
     },
     {
-      "id": 421,
+      "id": 422,
       "id_producto": 812,
       "grupo": "",
       "nombre": "Sopa",
