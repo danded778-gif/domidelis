@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T16-10-42",
-  "ultimaActualizacion": "2026-11-26T16:10:42.471Z",
+  "version": "v2026-11-26T16-11-07",
+  "ultimaActualizacion": "2026-11-26T16:11:07.154Z",
   "tiendas": [
     {
       "id": 1,
@@ -7116,6 +7116,16 @@
       "min": 0
     },
     {
+      "id": 411,
+      "id_producto": 804,
+      "grupo": "",
+      "nombre": "Sopa",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
       "id": 416,
       "id_producto": 807,
       "grupo": "",
@@ -7158,16 +7168,6 @@
     {
       "id": 422,
       "id_producto": 812,
-      "grupo": "",
-      "nombre": "Sopa",
-      "precio": 5000,
-      "tipo": "extra",
-      "max": null,
-      "min": 0
-    },
-    {
-      "id": 411,
-      "id_producto": 804,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
