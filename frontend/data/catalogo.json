@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-17-53",
-  "ultimaActualizacion": "2026-11-26T15:17:53.831Z",
+  "version": "v2026-11-26T15-19-50",
+  "ultimaActualizacion": "2026-11-26T15:19:50.999Z",
   "tiendas": [
     {
       "id": 1,
@@ -7068,7 +7068,7 @@
     {
       "id": 400,
       "id_producto": "",
-      "grupo": "",
+      "grupo": "Pechuga - Ala",
       "nombre": "",
       "precio": 0,
       "tipo": "",
