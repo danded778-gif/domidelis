@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-52-53",
-  "ultimaActualizacion": "2026-11-26T15:52:53.700Z",
+  "version": "v2026-11-26T15-53-19",
+  "ultimaActualizacion": "2026-11-26T15:53:19.513Z",
   "tiendas": [
     {
       "id": 1,
@@ -7248,12 +7248,12 @@
     {
       "id": 418,
       "id_producto": 806,
-      "grupo": "",
-      "nombre": "",
+      "grupo": "Presentación",
+      "nombre": "Pechuga Ala",
       "precio": 0,
-      "tipo": "",
-      "max": null,
-      "min": 0
+      "tipo": "opcion",
+      "max": 1,
+      "min": 1
     },
     {
       "id": 419,
