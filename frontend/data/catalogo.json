@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-45-50",
-  "ultimaActualizacion": "2026-11-26T15:45:50.317Z",
+  "version": "v2026-11-26T15-46-21",
+  "ultimaActualizacion": "2026-11-26T15:46:21.829Z",
   "tiendas": [
     {
       "id": 1,
@@ -7089,9 +7089,9 @@
       "id": 402,
       "id_producto": "",
       "grupo": "",
-      "nombre": "",
-      "precio": 0,
-      "tipo": "",
+      "nombre": "Sopa",
+      "precio": 27500,
+      "tipo": "extra",
       "max": null,
       "min": 0
     },
