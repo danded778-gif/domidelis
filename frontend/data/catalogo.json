@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-52-28",
-  "ultimaActualizacion": "2026-11-26T15:52:28.176Z",
+  "version": "v2026-11-26T15-52-53",
+  "ultimaActualizacion": "2026-11-26T15:52:53.700Z",
   "tiendas": [
     {
       "id": 1,
@@ -7087,7 +7087,7 @@
     },
     {
       "id": 402,
-      "id_producto": 801,
+      "id_producto": 800,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7097,7 +7097,7 @@
     },
     {
       "id": 403,
-      "id_producto": 802,
+      "id_producto": 801,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7107,7 +7107,7 @@
     },
     {
       "id": 404,
-      "id_producto": 813,
+      "id_producto": 802,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7117,7 +7117,7 @@
     },
     {
       "id": 405,
-      "id_producto": 814,
+      "id_producto": 813,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7127,7 +7127,7 @@
     },
     {
       "id": 406,
-      "id_producto": 815,
+      "id_producto": 814,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7137,7 +7137,7 @@
     },
     {
       "id": 407,
-      "id_producto": 816,
+      "id_producto": 815,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7147,7 +7147,7 @@
     },
     {
       "id": 408,
-      "id_producto": 817,
+      "id_producto": 816,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7157,7 +7157,7 @@
     },
     {
       "id": 409,
-      "id_producto": 818,
+      "id_producto": 817,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7167,7 +7167,7 @@
     },
     {
       "id": 410,
-      "id_producto": 804,
+      "id_producto": 818,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7177,7 +7177,7 @@
     },
     {
       "id": 411,
-      "id_producto": 808,
+      "id_producto": 804,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7187,7 +7187,7 @@
     },
     {
       "id": 412,
-      "id_producto": 810,
+      "id_producto": 808,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7197,7 +7197,7 @@
     },
     {
       "id": 413,
-      "id_producto": 811,
+      "id_producto": 810,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7207,7 +7207,7 @@
     },
     {
       "id": 414,
-      "id_producto": 809,
+      "id_producto": 811,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7217,7 +7217,7 @@
     },
     {
       "id": 415,
-      "id_producto": 807,
+      "id_producto": 809,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7227,7 +7227,7 @@
     },
     {
       "id": 416,
-      "id_producto": 806,
+      "id_producto": 807,
       "grupo": "",
       "nombre": "Sopa",
       "precio": 5000,
@@ -7239,6 +7239,16 @@
       "id": 417,
       "id_producto": 806,
       "grupo": "",
+      "nombre": "Sopa",
+      "precio": 5000,
+      "tipo": "extra",
+      "max": null,
+      "min": 0
+    },
+    {
+      "id": 418,
+      "id_producto": 806,
+      "grupo": "",
       "nombre": "",
       "precio": 0,
       "tipo": "",
@@ -7246,7 +7256,7 @@
       "min": 0
     },
     {
-      "id": 418,
+      "id": 419,
       "id_producto": 803,
       "grupo": "",
       "nombre": "Sopa",
@@ -7256,7 +7266,7 @@
       "min": 0
     },
     {
-      "id": 419,
+      "id": 420,
       "id_producto": 805,
       "grupo": "",
       "nombre": "Sopa",
@@ -7266,7 +7276,7 @@
       "min": 0
     },
     {
-      "id": 420,
+      "id": 421,
       "id_producto": 812,
       "grupo": "",
       "nombre": "Sopa",
