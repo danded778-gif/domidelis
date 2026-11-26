@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T16-11-07",
-  "ultimaActualizacion": "2026-11-26T16:11:07.154Z",
+  "version": "v2026-11-26T16-12-46",
+  "ultimaActualizacion": "2026-11-26T16:12:46.147Z",
   "tiendas": [
     {
       "id": 1,
@@ -7116,7 +7116,7 @@
       "min": 0
     },
     {
-      "id": 411,
+      "id": 405,
       "id_producto": 804,
       "grupo": "",
       "nombre": "Sopa",
@@ -7126,7 +7126,7 @@
       "min": 0
     },
     {
-      "id": 416,
+      "id": 406,
       "id_producto": 807,
       "grupo": "",
       "nombre": "Sopa",
@@ -7136,7 +7136,7 @@
       "min": 0
     },
     {
-      "id": 412,
+      "id": 407,
       "id_producto": 808,
       "grupo": "",
       "nombre": "Sopa",
@@ -7146,7 +7146,7 @@
       "min": 0
     },
     {
-      "id": 415,
+      "id": 408,
       "id_producto": 809,
       "grupo": "",
       "nombre": "Sopa",
@@ -7156,7 +7156,7 @@
       "min": 0
     },
     {
-      "id": 414,
+      "id": 409,
       "id_producto": 811,
       "grupo": "",
       "nombre": "Sopa",
@@ -7166,7 +7166,7 @@
       "min": 0
     },
     {
-      "id": 422,
+      "id": 410,
       "id_producto": 812,
       "grupo": "",
       "nombre": "Sopa",
@@ -7176,7 +7176,7 @@
       "min": 0
     },
     {
-      "id": 405,
+      "id": 411,
       "id_producto": 813,
       "grupo": "",
       "nombre": "Sopa",
@@ -7186,7 +7186,7 @@
       "min": 0
     },
     {
-      "id": 406,
+      "id": 412,
       "id_producto": 814,
       "grupo": "",
       "nombre": "Sopa",
@@ -7196,7 +7196,7 @@
       "min": 0
     },
     {
-      "id": 407,
+      "id": 413,
       "id_producto": 815,
       "grupo": "",
       "nombre": "Sopa",
@@ -7206,7 +7206,7 @@
       "min": 0
     },
     {
-      "id": 408,
+      "id": 414,
       "id_producto": 816,
       "grupo": "",
       "nombre": "Sopa",
@@ -7216,7 +7216,7 @@
       "min": 0
     },
     {
-      "id": 409,
+      "id": 415,
       "id_producto": 817,
       "grupo": "",
       "nombre": "Sopa",
@@ -7226,7 +7226,7 @@
       "min": 0
     },
     {
-      "id": 410,
+      "id": 416,
       "id_producto": 818,
       "grupo": "",
       "nombre": "Sopa",
@@ -7236,7 +7236,7 @@
       "min": 0
     },
     {
-      "id": 420,
+      "id": 417,
       "id_producto": 803,
       "grupo": "",
       "nombre": "Sopa",
@@ -7246,7 +7246,7 @@
       "min": 0
     },
     {
-      "id": 421,
+      "id": 418,
       "id_producto": 805,
       "grupo": "",
       "nombre": "Sopa",
@@ -7256,7 +7256,7 @@
       "min": 0
     },
     {
-      "id": 418,
+      "id": 419,
       "id_producto": 806,
       "grupo": "Presentación",
       "nombre": "Pechuga Ala",
@@ -7266,7 +7266,7 @@
       "min": 1
     },
     {
-      "id": 419,
+      "id": 420,
       "id_producto": 806,
       "grupo": "Presentación",
       "nombre": "Muslo Contramuslo",
@@ -7276,7 +7276,7 @@
       "min": 1
     },
     {
-      "id": 417,
+      "id": 421,
       "id_producto": 806,
       "grupo": "",
       "nombre": "Sopa",
@@ -7286,7 +7286,7 @@
       "min": 0
     },
     {
-      "id": 413,
+      "id": 422,
       "id_producto": 810,
       "grupo": "",
       "nombre": "Sopa",
