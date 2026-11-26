@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-54-56",
-  "ultimaActualizacion": "2026-11-26T15:54:56.712Z",
+  "version": "v2026-11-26T15-56-42",
+  "ultimaActualizacion": "2026-11-26T15:56:42.585Z",
   "tiendas": [
     {
       "id": 1,
@@ -2053,19 +2053,6 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
-          "id": 810,
-          "nombre": "Alas BBQ",
-          "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
-          "precio": 18000,
-          "imagen_url": "",
-          "badge": "NUEVO",
-          "categoria": "Otras",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
           "id": 811,
           "nombre": "Churrasco",
           "descripcion": "270 G ensalada Papa francés arroz blanco",
@@ -2112,6 +2099,19 @@
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 810,
+          "nombre": "Alas BBQ",
+          "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
+          "precio": 18000,
+          "imagen_url": "",
+          "badge": "NUEVO",
+          "categoria": "Otras",
           "cantidadTipo": "UND",
           "activo": true,
           "tiendaId": "22",
@@ -3902,19 +3902,6 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
-      "id": 810,
-      "nombre": "Alas BBQ",
-      "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
-      "precio": 18000,
-      "imagen_url": "",
-      "badge": "NUEVO",
-      "categoria": "Otras",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
       "id": 811,
       "nombre": "Churrasco",
       "descripcion": "270 G ensalada Papa francés arroz blanco",
@@ -3961,6 +3948,19 @@
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
+      "id": 810,
+      "nombre": "Alas BBQ",
+      "descripcion": "A las apanadas con salsa Armiku Papa francesa y salsa de la casa",
+      "precio": 18000,
+      "imagen_url": "",
+      "badge": "NUEVO",
+      "categoria": "Otras",
       "cantidadTipo": "UND",
       "activo": true,
       "tiendaId": "22",
