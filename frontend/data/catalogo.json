@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-39-25",
-  "ultimaActualizacion": "2026-11-26T15:39:25.899Z",
+  "version": "v2026-11-26T15-41-03",
+  "ultimaActualizacion": "2026-11-26T15:41:03.086Z",
   "tiendas": [
     {
       "id": 1,
@@ -7068,8 +7068,8 @@
     {
       "id": 400,
       "id_producto": 800,
-      "grupo": "Pechuga  Ala",
-      "nombre": "",
+      "grupo": "",
+      "nombre": "Pechuga Ala",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
@@ -7078,8 +7078,8 @@
     {
       "id": 401,
       "id_producto": 800,
-      "grupo": "Muslo  - Contramuslo",
-      "nombre": "",
+      "grupo": "",
+      "nombre": "Muslo Contramuslo",
       "precio": 0,
       "tipo": "opcion",
       "max": 1,
