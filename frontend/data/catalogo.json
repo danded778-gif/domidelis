@@ -1,6 +1,6 @@
 {
-  "version": "v2026-11-26T15-56-42",
-  "ultimaActualizacion": "2026-11-26T15:56:42.585Z",
+  "version": "v2026-11-26T15-57-23",
+  "ultimaActualizacion": "2026-11-26T15:57:23.812Z",
   "tiendas": [
     {
       "id": 1,
@@ -1949,6 +1949,32 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
+          "id": 804,
+          "nombre": "Pollo Asado Completo",
+          "descripcion": "Papa cocida arepa sopa y salsa de la casa",
+          "precio": 45000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
+          "id": 807,
+          "nombre": "1/2 Pollo Broaster",
+          "descripcion": "Papa francesa Arepa y salsa de la casa",
+          "precio": 27000,
+          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+          "badge": "NUEVO",
+          "categoria": "Almuerzo",
+          "cantidadTipo": "UND",
+          "activo": true,
+          "tiendaId": "22",
+          "tiendaNombre": "Mr Pollo"
+        },
+        {
           "id": 813,
           "nombre": "Lomo de Cerdo",
           "descripcion": "300 G ensalada Papa francesa y arroz blanco",
@@ -2027,19 +2053,6 @@
           "tiendaNombre": "Mr Pollo"
         },
         {
-          "id": 804,
-          "nombre": "Pollo Asado Completo",
-          "descripcion": "Papa cocida arepa sopa y salsa de la casa",
-          "precio": 45000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
           "id": 808,
           "nombre": "Pollo Braster Completo",
           "descripcion": "Papa francesa Arepa sopa salsa de la casa",
@@ -2084,19 +2097,6 @@
           "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
           "precio": 14000,
           "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
-          "badge": "NUEVO",
-          "categoria": "Almuerzo",
-          "cantidadTipo": "UND",
-          "activo": true,
-          "tiendaId": "22",
-          "tiendaNombre": "Mr Pollo"
-        },
-        {
-          "id": 807,
-          "nombre": "1/2 Pollo Broaster",
-          "descripcion": "Papa francesa Arepa y salsa de la casa",
-          "precio": 27000,
-          "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
           "badge": "NUEVO",
           "categoria": "Almuerzo",
           "cantidadTipo": "UND",
@@ -3798,6 +3798,32 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
+      "id": 804,
+      "nombre": "Pollo Asado Completo",
+      "descripcion": "Papa cocida arepa sopa y salsa de la casa",
+      "precio": 45000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
+      "id": 807,
+      "nombre": "1/2 Pollo Broaster",
+      "descripcion": "Papa francesa Arepa y salsa de la casa",
+      "precio": 27000,
+      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
+      "badge": "NUEVO",
+      "categoria": "Almuerzo",
+      "cantidadTipo": "UND",
+      "activo": true,
+      "tiendaId": "22",
+      "tiendaNombre": "Mr Pollo"
+    },
+    {
       "id": 813,
       "nombre": "Lomo de Cerdo",
       "descripcion": "300 G ensalada Papa francesa y arroz blanco",
@@ -3876,19 +3902,6 @@
       "tiendaNombre": "Mr Pollo"
     },
     {
-      "id": 804,
-      "nombre": "Pollo Asado Completo",
-      "descripcion": "Papa cocida arepa sopa y salsa de la casa",
-      "precio": 45000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20cafeter%C3%ADa%20con%20pollo%20asado%20y%20sopa_200kb.webp",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
       "id": 808,
       "nombre": "Pollo Braster Completo",
       "descripcion": "Papa francesa Arepa sopa salsa de la casa",
@@ -3933,19 +3946,6 @@
       "descripcion": "Acompañada de Papa francesa Y salsa de la casa",
       "precio": 14000,
       "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Combo%20de%20Pollo%20Frito%20y%20Papas_comprimido.webp",
-      "badge": "NUEVO",
-      "categoria": "Almuerzo",
-      "cantidadTipo": "UND",
-      "activo": true,
-      "tiendaId": "22",
-      "tiendaNombre": "Mr Pollo"
-    },
-    {
-      "id": 807,
-      "nombre": "1/2 Pollo Broaster",
-      "descripcion": "Papa francesa Arepa y salsa de la casa",
-      "precio": 27000,
-      "imagen_url": "https://raw.githubusercontent.com/soluvencon/imagenes-domicilios/main/Mr.pollo/Bandeja%20de%20pollo%20frito%20y%20papas%20fritas_comprimido.webp",
       "badge": "NUEVO",
       "categoria": "Almuerzo",
       "cantidadTipo": "UND",
